@@ -1,0 +1,4 @@
+<APIProxy name="vrsa">
+  <!-- This is the root of the application -->
+  <Description>"validated-relationships-service-api"</Description>
+</APIProxy>

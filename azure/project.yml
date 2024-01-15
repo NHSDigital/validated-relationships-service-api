@@ -1,0 +1,8 @@
+variables:
+  - group: status-endpoint
+  - name: service_name
+    value: validated-relationships-service-api
+  - name: short_service_name
+    value: vrsa
+  - name: service_base_path
+    value: validated-relationships-service-api
