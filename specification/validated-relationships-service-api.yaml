@@ -2,11 +2,14 @@
 # for validated-relationships-service-api owned by NHS Digital (https://digital.nhs.uk/)
 openapi: '3.0.0'
 info:
-  title: 'validated-relationships-service-api'
+  title: 'Validated Relationships Service API'
   version: 'Computed and injected at build time by `scripts/set_version.py`'
   description: |
-    ## Overview
-    Add a fully fledged description here with markdown syntax.
+    ## Overview    
+    This is an Open API specification for the Validated Relationship Service.
+    
+    To be completed.    
+    
     For help completing the content of your API spec, see [our guidance](https://nhsd-confluence.digital.nhs.uk/display/APM/Documenting+your+API).
     You should also base your content on our exemplar API - [PDS FHIR](https://digital.nhs.uk/developer/api-catalogue/personal-demographics-service-fhir).
     ## Who can use this API
@@ -33,14 +36,429 @@ info:
     To be completed.
     
   contact:
-    name: 'validated-relationships-service-api API Support'
+    name: 'Validated Relationships Service API Support'
     url: 'https://digital.nhs.uk/developer/help-and-support'
     email: api.management@nhs.net
 servers:
-  - url: 'https://sandbox.api.service.nhs.uk/validated-relationships-service-api'
+  - url: 'https://sandbox.api.service.nhs.uk/validated-relationships'
     description: Sandbox environment.
-  - url: 'https://int.api.service.nhs.uk/validated-relationships-service-api'
+  - url: 'https://int.api.service.nhs.uk/validated-relationships'
     description: Integration test environment.
-  - url: 'https://api.service.nhs.uk/validated-relationships-service-api'
+  - url: 'https://api.service.nhs.uk/validated-relationships'
     description: Production environment.
-paths: {}
+paths:
+  /RelatedPerson:
+    get:
+      summary: Get relationships.
+      parameters:
+        - $ref: "#/components/parameters/BearerAuthorisation"
+        - $ref: "#/components/parameters/proxyID"
+        - $ref: "#/components/parameters/patientID"
+        - $ref: "#/components/parameters/RequestID"
+        - $ref: "#/components/parameters/CorrelationID"
+      responses:
+        "200":
+          description: Successful retrieval.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Relationship"
+        "4XX":
+          description: |
+            Bad request.
+
+            | HTTP status | Error code                       | Description                                                                                                                               |
+            | ----------- | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+            | 400         | `INVALID_IDENTIFIER_SYSTEM`             | Invalid identifier system.                                                                                                    |
+            | 400         | `MISSING_IDENTIFIER_VALUE`             | Missing RelatedPerson NHS number.                                                                                                    |
+            | 400         | `INVALID_IDENTIFIER_VALUE`             | Malformed RelatedPerson NHS number.                                                                                                    |
+            | 400         | `INVALID_PATIENT_IDENTIFIER_VALUE`     | Malformed Patient NHS number.                                                                                                  |
+            | 400         | `NOT_SUPPORTED`                  | The request is not currently supported.                                                                                                   |
+            | 401         | `ACCESS_DENIED`                  | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
+            | 408         | `TIMEOUT`                        | Request timed out.                                                                                                                        |
+            | 429         | `THROTTLED`                      | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationOutcome'
+        "500":
+          description: |
+            Server error.
+
+            | HTTP status | Error code                       | Description                                                                                                                               |
+            | ----------- | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+            | 500         | `SERVER_ERROR`                   | An internal error has occurred when processing the request.                                                                               |
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationOutcome'
+
+components:
+  schemas:
+    Relationship:
+      type: object
+      description: A FHIR searchset.
+      properties:
+        resourceType:
+          type: string
+          description: FHIR resource type.
+          enum: [Bundle]
+        type:
+          type: string
+          description: Denotes that the Bundle is a collection of resources returned as a result of a search.
+          enum: [searchset]
+        timestamp:
+          type: string
+          description: The time the search results were returned.
+          example: "2020-08-26T14:00:00+00:00"
+        total:
+          type: number
+          description: |
+            The number of resources contained within the Bundle. 
+
+            An empty bundle suggests that the proxy does not have patients they can act on behalf of.
+          example: 2
+        entry:
+          type: array
+          description: |
+            A collection of resources contained within the Bundle.
+
+            An empty bundle suggests that the proxy does not have patients they can act on behalf of.
+          items:
+            anyOf:
+              - $ref: "#/components/schemas/RelatedPerson"
+              - $ref: "#/components/schemas/Patient"
+
+    RelatedPerson:
+      type: object
+      description: The proxy's details. This includes their relationship to the referenced patient.
+      properties:
+        resource:
+          type: object
+          properties:
+            resourceType:
+              type: string
+              description: FHIR resource type.
+              enum: [RelatedPerson]
+            identifier:
+              type: array
+              description: The proxy's NHS number.
+              items:
+                type: object
+                properties:
+                  system:
+                    type: string
+                    description: Codesystem URL for the proxy's NHS number.
+                    enum: ["https://fhir.nhs.uk/Id/nhs-number"]
+                  value:
+                    type: string
+                    description: The RelatedPerson's (proxy) NHS number.
+                    example: "9449304130"
+            patient:
+              type: object
+              description: A reference to a patient the proxy is related to.
+              properties:
+                type:
+                  type: string
+                  description: FHIR resource type.
+                  enum: ["Patient"]
+                identifier:
+                  type: object
+                  description: The Patient's NHS number.
+                  example: "9459304130"
+            relationship:
+              type: array
+              description: How the proxy is related to the patient.
+              items:
+                type: object
+                properties:
+                  coding:
+                    type: array
+                    description: FHIR coding array.
+                    items:
+                      type: object
+                      properties:
+                        system:
+                          type: string
+                          description: FHIR codesystem.
+                          enum:
+                            [
+                              "https://fhir.nhs.uk/R4/CodeSystem/UKCore-AdditionalRelatedPersonRole",
+                            ]
+                        code:
+                          type: string
+                          description: FHIR relationship type code.
+                          enum:
+                            - "MTH"
+                        display:
+                          type: string
+                          description: FHIR relationship type.
+                          enum:
+                            - "MOTHER"
+    Patient:
+      type: object
+      description: The patient's details.
+      properties:
+        resourceType:
+          type: string
+          description: FHIR resource type.
+          enum: [Patient]
+        identifier:
+          type: array
+          description: The patient's NHS number.
+          items:
+            type: object
+            properties:
+              system:
+                type: string
+                description: Codesystem URL for the NHS number.
+                enum: ["https://fhir.nhs.uk/Id/nhs-number"]
+              value:
+                type: string
+                description: The NHS number.
+                example: "9000000009"
+        name:
+          type: array
+          description: List of names associated with the patient.
+          items:
+            type: object
+            required:
+              - use
+              - family
+            additionalProperties: false
+            properties:
+              id:
+                type: string
+                description: Unique object identifier for this name.
+                example: "123"
+              use:
+                type: string
+                description: |
+                  How this name should be used.
+                  * usual - Known as, conventional or the one patient normally uses. A patient always has a usual name.
+                  * temp - An alias or temporary name. This may also be used for temporary names assigned at birth or in emergency situations.
+                  * nickname - A name that the patient prefers to be addressed by, but is not part of their usual name.
+                  * old - This name is no longer in use (or was never correct, but retained for records).
+                  * maiden - Name changed for Marriage. A name used prior to changing name because of marriage. This term is not gender specific. The use of this term does not imply any particular history for a person's name.
+
+                  The following use codes are included in the [name-use](https://www.hl7.org/fhir/valueset-name-use.html) value set, but should not be used and is not be returned as part of a retrieval.
+                  * official - The formal name as registered in an official (government) registry, but which name might not be commonly used. May be called "legal name".
+                  * anonymous - Anonymous assigned name, alias, or pseudonym (used to protect a person's identity for privacy reasons).
+                enum: [usual, temp, nickname, old, maiden]
+                example: usual
+              period:
+                type: object
+                description: |
+                  Business effective period when the name was, is, or will be in use.
+                required:
+                  - start
+                properties:
+                  start:
+                    type: string
+                    format: date
+                    description: Start date of time period, if known, in format `yyyy-mm-dd`. Can be a future date.
+                    example: 2020-01-01
+                  end:
+                    type: string
+                    format: date
+                    description: End date of time period, if known and if not ongoing, in format `yyyy-mm-dd`. Can be a future date.
+                    example: 2021-12-31
+              given:
+                type: array
+                maxItems: 5
+                description: |
+                  Given names, including any middle names.
+
+                  Each name(s) should be a separate item in the list. The first given name may include multiple names, separated by a space.
+                  Subsequent names must be broken down into list items. For example, the input `[Jane Marie Anne, Jo Adele]` returns `[Jane Marie Anne, Jo, Adele]`.
+
+                example: [Jane Marie Anne]
+                items:
+                  type: string
+                  maxLength: 35
+                  example: Jane
+              family:
+                type: string
+                maxLength: 35
+                description: Family name (often called Surname).
+                example: Smith
+              prefix:
+                type: array
+                description: Name prefixes, titles, and prenominals.
+                example: [Mrs]
+                items:
+                  type: string
+                  example: Mrs
+              suffix:
+                type: array
+                description: Name suffices and postnominals.
+                example: [MBE, PhD]
+                items:
+                  type: string
+                  example: MBE
+        birthDate:
+          description: |
+            The date on which the patient was born or is officially deemed to have been born.
+
+            It is a date in the format `yyyy-mm-dd`. Due to data quality issues on a small number of patients `yyyy-mm` and `yyyy` format may also be returned.
+          example: "2010-10-22"
+          type: string
+          format: date
+    OperationOutcome:
+      type: object
+      description: |
+        Outcome of an operation that does not result in a resource or bundle being returned, for example an error or an async/batch submission.
+        There are a number of possible error codes that can be returned along with a more detailed description in the `display` field.
+      properties:
+        resourceType:
+          type: string
+          description: FHIR Resource Type.
+          default: OperationOutcome
+        issue:
+          type: array
+          description: List of issues that have occurred.
+          minItems: 1
+          items:
+            type: object
+            required:
+              - severity
+              - code
+            properties:
+              severity:
+                type: string
+                enum: [fatal, error, warning, information]
+                description: Severity of the error.
+                example: error
+              code:
+                type: string
+                description: FHIR error code.
+                example: invalid
+                enum:
+                  - invalid
+                  - structure
+                  - required
+                  - value
+                  - invariant
+                  - security
+                  - login
+                  - unknown
+                  - expired
+                  - forbidden
+                  - suppressed
+                  - processing
+                  - not-supported
+                  - duplicate
+                  - multiple-matches
+                  - not-found
+                  - deleted
+                  - too-long
+                  - code-invalid
+                  - extension
+                  - too-costly
+                  - business-rule
+                  - conflict
+                  - transient
+                  - lock-error
+                  - no-store
+                  - exception
+                  - timeout
+                  - incomplete
+                  - throttled
+                  - informational
+              details:
+                type: object
+                description: Internal error code.
+                properties:
+                  coding:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        system:
+                          type: string
+                          description: URI of the coding system specification.
+                          example: https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode
+                        version:
+                          type: string
+                          description: Version of the coding system in use.
+                          example: '1'
+                        code:
+                          type: string
+                          description: Symbol in syntax defined by the system.
+                          example: INVALID_IDENTIFIER_VALUE
+                        display:
+                          type: string
+                          description: Representation defined by the system.
+                          example: Provided value is invalid
+              diagnostics:
+                type: string
+                description: Additional diagnostic information about the issue. This information is subject to change.
+                example: Not a valid NHS Number provided for the 'identifier' parameter
+              expression:
+                type: string
+                description: FHIRPath of element(s) related to the error.
+                example: RelatedPerson.identifier
+  parameters:
+    proxyID:
+      in: query
+      name: identifier
+      description: |
+        The proxy's NHS number.
+      required: false
+      schema:
+        type: string
+      examples:
+        withoutSystem:
+          value: "9000000009"
+          summary: "NHS number specified without system"
+        withSystem:
+          value: "https://fhir.nhs.uk/Id/nhs-number/9000000009"
+          summary: "System and NHS number specified"
+
+    patientID:
+      in: query
+      name: patient:identifier
+      description: |
+        The patient's NHS number.
+      required: false
+      schema:
+        type: string
+      examples:
+        withoutSystem:
+          value: "9000000009"
+          summary: "NHS number specified without system"
+        withSystem:
+          value: "https://fhir.nhs.uk/Id/nhs-number/9000000009"
+          summary: "System and NHS number specified"
+    BearerAuthorisation:
+      in: header
+      name: Authorisation
+      description: |
+        An [OAuth 2.0 bearer token](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#user-restricted-apis).
+      required: true
+      schema:
+        type: string
+        format: '^Bearer\ [[:ascii:]]+$'
+        example: "Bearer g1112R_ccQ1Ebbb4gtHBP1aaaNM"
+    RequestID:
+      in: header
+      name: X-Request-ID
+      required: true
+      description: |
+        A globally unique identifier (GUID) for the request, which we use to correlate logs through different components.
+        Must be a universally unique identifier (UUID) (ideally version 4).
+        Mirrored back in a response header.
+      schema:
+        type: string
+        pattern: "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+        example: 60E0B220-8136-4CA5-AE46-1D97EF59D068
+    CorrelationID:
+      in: header
+      name: X-Correlation-ID
+      required: false
+      description: |
+        An optional ID which you can use to track transactions across multiple systems. It can have any value, but we recommend avoiding `.` characters.
+        Mirrored back in a response header.
+      schema:
+        type: string
+        example: 11C46F5F-CDEF-4865-94B2-0EE0EDCC26DA
