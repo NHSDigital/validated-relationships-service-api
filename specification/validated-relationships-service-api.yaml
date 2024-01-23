@@ -144,6 +144,7 @@ paths:
         - $ref: "#/components/parameters/BearerAuthorisation"
         - $ref: "#/components/parameters/RelatedPersonIdentifier"
         - $ref: "#/components/parameters/PatientIdentifier"
+        - $ref: "#/components/parameters/IncludePatient"
         - $ref: "#/components/parameters/RequestID"
         - $ref: "#/components/parameters/CorrelationID"
       responses:
@@ -519,7 +520,16 @@ components:
           summary: "NHS number specified without system"
         withSystem:
           value: "https://fhir.nhs.uk/Id/nhs-number/9000000009"
-          summary: "System and NHS number specified"
+          summary: "System and NHS number specified"    
+    IncludePatient:
+      in: query
+      name: _include
+      description: |
+        Include Patient resources with their respective RelatedPerson in the bundle returned in the response. Further info [here](https://www.hl7.org/fhir/search.html#_include).
+      required: false
+      schema:
+        type: string
+        example: patient
     BearerAuthorisation:
       in: header
       name: Authorisation
