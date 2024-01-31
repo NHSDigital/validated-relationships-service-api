@@ -494,10 +494,11 @@ components:
       in: query
       name: identifier
       description: |
-        The RelatedPerson's NHS number.
+        The RelatedPerson's NHS number. For more information on FHIR tokens in general, [see here](https://build.fhir.org/search.html#token).
       required: false
       schema:
         type: string
+        format: token
       examples:
         withoutSystem:
           value: "9000000009"
@@ -510,10 +511,11 @@ components:
       in: query
       name: patient:identifier
       description: |
-        The Patient's NHS number.
+        The Patient's NHS number. For more information on FHIR tokens in general, [see here](https://build.fhir.org/search.html#token).
       required: false
       schema:
         type: string
+        format: token
       examples:
         withoutSystem:
           value: "9000000009"
@@ -550,6 +552,7 @@ components:
         Mirrored back in a response header.
       schema:
         type: string
+        format: uuid
         pattern: "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
         example: 60E0B220-8136-4CA5-AE46-1D97EF59D068
     CorrelationID:
@@ -561,4 +564,6 @@ components:
         Mirrored back in a response header.
       schema:
         type: string
+        format: uuid
+        pattern: "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
         example: 11C46F5F-CDEF-4865-94B2-0EE0EDCC26DA
