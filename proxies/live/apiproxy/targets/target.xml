@@ -20,24 +20,14 @@
       <Condition>oauthV2.OauthV2.VerifyAccessToken.failed</Condition>
     </FaultRule>
   </FaultRules>
-  <!--
-    To point to a named target server as this is how it SHOULD be implemented:
-    For example:
-    <HTTPTargetConnection>
-      <SSLInfo>
-        <Enabled>true</Enabled>
-      </SSLInfo>
-      <LoadBalancer>
-        <Server name="validated-relationships-service-api" />
-      </LoadBalancer>
-    </HTTPTargetConnection>
-  -->
   <HTTPTargetConnection>
-    <URL>http://mocktarget.apigee.net</URL>
-    <Properties>
-      <Property name="supports.http10">true</Property>
-      <Property name="request.retain.headers">User-Agent,Referer,Accept-Language</Property>
-      <Property name="retain.queryparams">apikey</Property>
-    </Properties>
+      <!--TODO: The target needs to configured on a per enironment basis (NPA-1979)
+          This URL will also need to change once we have DNS in place (NPA-1669)
+      -->
+      <URL>https://6e6ljoc1a5.execute-api.eu-west-2.amazonaws.com/default/api</URL>
+      <Properties>
+          <Property name="supports.http10">true</Property>
+          <Property name="request.retain.headers">User-Agent,Referer,Accept-Language</Property>
+      </Properties>
   </HTTPTargetConnection>
 </TargetEndpoint>
