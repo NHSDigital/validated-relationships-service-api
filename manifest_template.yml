@@ -1,6 +1,6 @@
 SERVICE_NAME: validated-relationships-service-api
 PRODUCT_DISPLAY_NAME: validated-relationships-service-api
-DESCRIPTION: example description
+DESCRIPTION: Validated Relationships Service API
 APIGEE_ENVIRONMENTS:
   - name: internal-dev
     display_name: Internal Development
