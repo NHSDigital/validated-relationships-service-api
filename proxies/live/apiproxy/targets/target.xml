@@ -7,6 +7,9 @@
       <Step>
         <Name>FlowCallout.ApplyRateLimiting</Name>
       </Step>
+      <Step>
+        <Name>AddAPIToken</Name>
+      </Step>
     </Request>
   </PreFlow>
   <FaultRules>
@@ -24,7 +27,7 @@
       <!--TODO: The target needs to configured on a per enironment basis (NPA-1979)
           This URL will also need to change once we have DNS in place (NPA-1669)
       -->
-      <URL>https://6e6ljoc1a5.execute-api.eu-west-2.amazonaws.com/default/api</URL>
+      <URL>https://jfhedvdn0k.execute-api.eu-west-2.amazonaws.com/default/api</URL>
       <Properties>
           <Property name="supports.http10">true</Property>
           <Property name="request.retain.headers">User-Agent,Referer,Accept-Language</Property>
