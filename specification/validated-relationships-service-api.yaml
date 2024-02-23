@@ -194,6 +194,10 @@ components:
           type: string
           description: FHIR resource type.
           enum: [Bundle]
+        id: 
+          type: string
+          description: Auto-generated unique identifier for the bundle
+          example: "320391c9-1222-4e02-ac34-09a6a0fc185c"
         type:
           type: string
           description: Denotes that the Bundle is a collection of resources returned as a result of a search.
@@ -209,6 +213,19 @@ components:
 
             An empty bundle suggests that the proxy does not have patients they can act on behalf of.
           example: 2
+        link: 
+          type: array
+          items:
+            type: object
+            properties:
+              relation:
+                type: string
+                description: "http://www.iana.org/assignments/link-relations/link-relations.xhtml"                
+                example: "self"
+              url: 
+                type: string
+                format: uri
+                example: https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson?_include=RelatedPerson%3apatient&identifier=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C9449304130&patient=7c236cce-7dca-4e93-91c8-b00e98ff0041
         entry:
           type: array
           description: |
@@ -224,6 +241,10 @@ components:
       type: object
       description: The proxy's details. This includes their relationship to the referenced patient.
       properties:
+        fullUrl: 
+          type: string
+          description: The canonical URL of the resource in the entry
+          example: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/17773b27-427e-4940-8c16-64cdac715001"
         resource:
           type: object
           properties:
@@ -231,6 +252,10 @@ components:
               type: string
               description: FHIR resource type.
               enum: [RelatedPerson]
+            id: 
+              type: string
+              description: Identifier of the resource
+              example: "17773b27-427e-4940-8c16-64cdac715001"
             identifier:
               type: array
               description: The proxy's NHS number.
@@ -256,7 +281,15 @@ components:
                 identifier:
                   type: object
                   description: The Patient's NHS number.
-                  example: "9459304130"
+                  properties:
+                    system:
+                      type: string
+                      description: Codesystem URL for the patient's NHS number.
+                      enum: ["https://fhir.nhs.uk/Id/nhs-number"]
+                    value:
+                      type: string
+                      description: The Patient's NHS number.
+                      example: "9449304130"
             relationship:
               type: array
               description: How the proxy is related to the patient.
@@ -274,7 +307,7 @@ components:
                           description: FHIR codesystem.
                           enum:
                             [
-                              "https://fhir.nhs.uk/R4/CodeSystem/UKCore-AdditionalRelatedPersonRole",
+                              "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
                             ]
                         code:
                           type: string
@@ -285,116 +318,149 @@ components:
                           type: string
                           description: FHIR relationship type.
                           enum:
-                            - "MOTHER"
+                            - "mother"
+        search:
+          type: object
+          description: 1234sdfsds
+          properties:
+            mode: 
+              type: string
+              enum: 
+                - match
+                - include
+                - outcome
+              example: match
     Patient:
       type: object
       description: The patient's details.
       properties:
-        resourceType:
+        fullUrl: 
           type: string
-          description: FHIR resource type.
-          enum: [Patient]
-        identifier:
-          type: array
-          description: The patient's NHS number.
-          items:
-            type: object
-            properties:
-              system:
-                type: string
-                description: Codesystem URL for the NHS number.
-                enum: ["https://fhir.nhs.uk/Id/nhs-number"]
-              value:
-                type: string
-                description: The NHS number.
-                example: "9000000009"
-        name:
-          type: array
-          description: List of names associated with the patient.
-          items:
-            type: object
-            required:
-              - use
-              - family
-            additionalProperties: false
-            properties:
-              id:
-                type: string
-                description: Unique object identifier for this name.
-                example: "123"
-              use:
-                type: string
-                description: |
-                  How this name should be used.
-                  * usual - Known as, conventional or the one patient normally uses. A patient always has a usual name.
-                  * temp - An alias or temporary name. This may also be used for temporary names assigned at birth or in emergency situations.
-                  * nickname - A name that the patient prefers to be addressed by, but is not part of their usual name.
-                  * old - This name is no longer in use (or was never correct, but retained for records).
-                  * maiden - Name changed for Marriage. A name used prior to changing name because of marriage. This term is not gender specific. The use of this term does not imply any particular history for a person's name.
-
-                  The following use codes are included in the [name-use](https://www.hl7.org/fhir/valueset-name-use.html) value set, but should not be used and is not be returned as part of a retrieval.
-                  * official - The formal name as registered in an official (government) registry, but which name might not be commonly used. May be called "legal name".
-                  * anonymous - Anonymous assigned name, alias, or pseudonym (used to protect a person's identity for privacy reasons).
-                enum: [usual, temp, nickname, old, maiden]
-                example: usual
-              period:
+          description: The canonical URL of the resource in the entry
+          example: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/27773b27-427e-4940-8c16-64cdac715002"
+        resource:
+          type: object
+          properties:
+            resourceType:
+              type: string
+              description: FHIR resource type.
+              enum: [Patient]
+            id:
+              type: string
+              description: Identifier of the resource
+              example: "27773b27-427e-4940-8c16-64cdac715002"
+            identifier:
+              type: array
+              description: The patient's NHS number.
+              items:
                 type: object
-                description: |
-                  Business effective period when the name was, is, or will be in use.
-                required:
-                  - start
                 properties:
-                  start:
+                  system:
                     type: string
-                    format: date
-                    description: Start date of time period, if known, in format `yyyy-mm-dd`. Can be a future date.
-                    example: 2020-01-01
-                  end:
+                    description: Codesystem URL for the NHS number.
+                    enum: ["https://fhir.nhs.uk/Id/nhs-number"]
+                  value:
                     type: string
-                    format: date
-                    description: End date of time period, if known and if not ongoing, in format `yyyy-mm-dd`. Can be a future date.
-                    example: 2021-12-31
-              given:
-                type: array
-                maxItems: 5
-                description: |
-                  Given names, including any middle names.
+                    description: The NHS number.
+                    example: "9000000009"
+            name:
+              type: array
+              description: List of names associated with the patient.
+              items:
+                type: object
+                required:
+                  - use
+                  - family
+                additionalProperties: false
+                properties:
+                  id:
+                    type: string
+                    description: Unique object identifier for this name.
+                    example: "123"
+                  use:
+                    type: string
+                    description: |
+                      How this name should be used.
+                      * usual - Known as, conventional or the one patient normally uses. A patient always has a usual name.
+                      * temp - An alias or temporary name. This may also be used for temporary names assigned at birth or in emergency situations.
+                      * nickname - A name that the patient prefers to be addressed by, but is not part of their usual name.
+                      * old - This name is no longer in use (or was never correct, but retained for records).
+                      * maiden - Name changed for Marriage. A name used prior to changing name because of marriage. This term is not gender specific. The use of this term does not imply any particular history for a person's name.
 
-                  Each name(s) should be a separate item in the list. The first given name may include multiple names, separated by a space.
-                  Subsequent names must be broken down into list items. For example, the input `[Jane Marie Anne, Jo Adele]` returns `[Jane Marie Anne, Jo, Adele]`.
+                      The following use codes are included in the [name-use](https://www.hl7.org/fhir/valueset-name-use.html) value set, but should not be used and is not be returned as part of a retrieval.
+                      * official - The formal name as registered in an official (government) registry, but which name might not be commonly used. May be called "legal name".
+                      * anonymous - Anonymous assigned name, alias, or pseudonym (used to protect a person's identity for privacy reasons).
+                    enum: [usual, temp, nickname, old, maiden]
+                    example: usual
+                  period:
+                    type: object
+                    description: |
+                      Business effective period when the name was, is, or will be in use.
+                    required:
+                      - start
+                    properties:
+                      start:
+                        type: string
+                        format: date
+                        description: Start date of time period, if known, in format `yyyy-mm-dd`. Can be a future date.
+                        example: 2020-01-01
+                      end:
+                        type: string
+                        format: date
+                        description: End date of time period, if known and if not ongoing, in format `yyyy-mm-dd`. Can be a future date.
+                        example: 2021-12-31
+                  given:
+                    type: array
+                    maxItems: 5
+                    description: |
+                      Given names, including any middle names.
 
-                example: [Jane Marie Anne]
-                items:
-                  type: string
-                  maxLength: 35
-                  example: Jane
-              family:
-                type: string
-                maxLength: 35
-                description: Family name (often called Surname).
-                example: Smith
-              prefix:
-                type: array
-                description: Name prefixes, titles, and prenominals.
-                example: [Mrs]
-                items:
-                  type: string
-                  example: Mrs
-              suffix:
-                type: array
-                description: Name suffices and postnominals.
-                example: [MBE, PhD]
-                items:
-                  type: string
-                  example: MBE
-        birthDate:
-          description: |
-            The date on which the patient was born or is officially deemed to have been born.
+                      Each name(s) should be a separate item in the list. The first given name may include multiple names, separated by a space.
+                      Subsequent names must be broken down into list items. For example, the input `[Jane Marie Anne, Jo Adele]` returns `[Jane Marie Anne, Jo, Adele]`.
 
-            It is a date in the format `yyyy-mm-dd`. Due to data quality issues on a small number of patients `yyyy-mm` and `yyyy` format may also be returned.
-          example: "2010-10-22"
-          type: string
-          format: date
+                    example: [Jane Marie Anne]
+                    items:
+                      type: string
+                      maxLength: 35
+                      example: Jane
+                  family:
+                    type: string
+                    maxLength: 35
+                    description: Family name (often called Surname).
+                    example: Smith
+                  prefix:
+                    type: array
+                    description: Name prefixes, titles, and prenominals.
+                    example: [Mrs]
+                    items:
+                      type: string
+                      example: Mrs
+                  suffix:
+                    type: array
+                    description: Name suffices and postnominals.
+                    example: [MBE, PhD]
+                    items:
+                      type: string
+                      example: MBE
+            birthDate:
+              description: |
+                The date on which the patient was born or is officially deemed to have been born.
+
+                It is a date in the format `yyyy-mm-dd`. Due to data quality issues on a small number of patients `yyyy-mm` and `yyyy` format may also be returned.
+              example: "2010-10-22"
+              type: string
+              format: date
+        search:
+          type: object
+          description: 1234sdfsds
+          properties:
+            mode: 
+              type: string
+              enum: 
+                - match
+                - include
+                - outcome
+              example: include
     OperationOutcome:
       type: object
       description: |
@@ -504,7 +570,7 @@ components:
           value: "9000000009"
           summary: "NHS number specified without system"
         withSystem:
-          value: "https://fhir.nhs.uk/Id/nhs-number/9000000009"
+          value: "https://fhir.nhs.uk/Id/nhs-number|9000000009"
           summary: "System and NHS number specified"
 
     PatientIdentifier:
@@ -521,7 +587,7 @@ components:
           value: "9000000009"
           summary: "NHS number specified without system"
         withSystem:
-          value: "https://fhir.nhs.uk/Id/nhs-number/9000000009"
+          value: "https://fhir.nhs.uk/Id/nhs-number|9000000009"
           summary: "System and NHS number specified"    
     IncludePatient:
       in: query
@@ -531,7 +597,7 @@ components:
       required: false
       schema:
         type: string
-        example: patient
+        example: RelatedPerson:patient
     BearerAuthorisation:
       in: header
       name: Authorisation
