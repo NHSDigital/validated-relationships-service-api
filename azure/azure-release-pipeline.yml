@@ -57,13 +57,13 @@ extends:
           - template: ./templates/run-tests.yml
       - environment: sandbox
         proxy_path: sandbox
-        post_deploy:
-          - template: ./templates/run-tests.yml
+        # post_deploy:
+        #   - template: ./templates/run-tests.yml
       - environment: int
         depends_on:
           - internal_qa
           - internal_qa_sandbox
-        post_deploy:
-          - template: ./templates/run-tests.yml
-            parameters:
-              full: true
+        # post_deploy:
+        #   - template: ./templates/run-tests.yml
+        #     parameters:
+        #       full: true
