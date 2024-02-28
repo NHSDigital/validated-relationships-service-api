@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AddUserDetails">
+    <DisplayName>Add User Details</DisplayName>
+    <Add>
+        <Headers>
+            <Header name="accesstoken.auth_user_id">{accesstoken.auth_user_id}</Header>
+            <Header name="accesstoken.auth_level">{accesstoken.auth_level}</Header>
+        </Headers>
+    </Add>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>
