@@ -193,11 +193,7 @@ components:
         resourceType:
           type: string
           description: FHIR resource type.
-          enum: [Bundle]
-        id: 
-          type: string
-          description: Auto-generated unique identifier for the bundle
-          example: "320391c9-1222-4e02-ac34-09a6a0fc185c"
+          enum: [Bundle]        
         type:
           type: string
           description: Denotes that the Bundle is a collection of resources returned as a result of a search.
@@ -269,7 +265,7 @@ components:
                   value:
                     type: string
                     description: The RelatedPerson's (proxy) NHS number.
-                    example: "9449304130"
+                    example: "9000000001"
             patient:
               type: object
               description: A reference to a patient the proxy is related to.
@@ -289,7 +285,7 @@ components:
                     value:
                       type: string
                       description: The Patient's NHS number.
-                      example: "9449304130"
+                      example: "9000000002"
             relationship:
               type: array
               description: How the proxy is related to the patient.
@@ -320,8 +316,7 @@ components:
                           enum:
                             - "mother"
         search:
-          type: object
-          description: 1234sdfsds
+          type: object          
           properties:
             mode: 
               type: string
@@ -362,7 +357,7 @@ components:
                   value:
                     type: string
                     description: The NHS number.
-                    example: "9000000009"
+                    example: "9000000002"
             name:
               type: array
               description: List of names associated with the patient.
@@ -452,7 +447,6 @@ components:
               format: date
         search:
           type: object
-          description: 1234sdfsds
           properties:
             mode: 
               type: string
