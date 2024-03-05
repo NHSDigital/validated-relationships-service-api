@@ -2,10 +2,13 @@
   <PreFlow>
     <Request>
       <Step>
-        <Name>OauthV2.VerifyAccessTokenAppLevel3OrCis2Aal3</Name>
+        <Name>VerifyAccessTokenUserNhsLoginP9</Name>
       </Step>
       <Step>
         <Name>FlowCallout.ApplyRateLimiting</Name>
+      </Step>
+      <Step>
+        <Name>AddAPIToken</Name>
       </Step>
     </Request>
   </PreFlow>
