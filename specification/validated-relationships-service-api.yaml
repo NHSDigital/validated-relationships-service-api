@@ -8,7 +8,8 @@ info:
     ## Overview    
     Use this API to access the Validated Relationships Service - the national electronic database of relationships
     that have been verified for the purpose of enabling individuals to access healthcare services on behalf of 
-    those they care for. This is known as acting as a 'Proxy' for those individuals.
+    those they care for. This is known as acting as a 'Proxy' for those individuals requesting access on befhalf
+    of those they care for..
 
     You can: 
     
@@ -117,13 +118,18 @@ info:
     | Production        | `https://api.service.nhs.uk/validated-relationships/FHIR/R4/`            |
 
     ### Sandbox testing
-    TO BE COMPLETED    
+    Our [sandbox environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#sandbox-testing)
 
+    * is for early developer testing
+    * only covers a limited set of scenarios
+    * is open access, so does not allow you to test authorisation
+ 
     ### Integration testing
-    TO BE COMPLETED
+ 
+    Our [integration test environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#integration-testing)
 
-    ### Production smoke testing
-    TO BE COMPLETED
+    * is for formal integration testing
+    * includes authorisation with NHS Login
 
     ## Onboarding
     You must get your software onboarded before it can go live.
