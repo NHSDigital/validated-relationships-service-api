@@ -6,15 +6,19 @@ info:
   version: 'Computed and injected at build time by `scripts/set_version.py`'
   description: |
     ## Overview    
-    Use this API to access the Validated Relationships Service - the national electronic database of relationships that have been verified for the purpose of enabling individuals to access healthcare services on behalf of (proxy) those they care for.
+    Use this API to access the Validated Relationships Service - the national electronic database of relationships
+    that have been verified for the purpose of enabling individuals to access healthcare services on behalf of 
+    those they care for. This is known as acting as a 'Proxy' for those individuals requesting access on befhalf
+    of those they care for..
 
     You can: 
     
-    - search for verified relationships for a given proxy
+    - search for validated relationships for a given proxy
 
     ## Who can use this API
-    This API can only be used where there is a legal basis to do so. Make sure you have a valid use case before you go too far with your development.  You must demonstrate you have a valid use case as part of digital onboarding.
-    
+    This API can only be used where there is a legal basis to do so. Make sure you have this and a valid use case before 
+    you go too far with your development, by [contacting us](https://digital.nhs.uk/developer/help-and-support)
+
     You must do this before you can go live (see 'Onboarding' below).
 
     ## Related APIs
@@ -55,7 +59,16 @@ info:
 
     There are [libraries and SDKs available](https://digital.nhs.uk/developer/guides-and-documentation/api-technologies-at-nhs-digital#fhir-libraries-and-sdks) to help with FHIR API integration.
 
-    ### Open source
+    ## Errors
+    We use standard HTTP status codes to show whether an API request succeeded or not. They are usually in the range:
+
+    * 200 to 299 if it succeeded, including code 202 if it was accepted by an API that needs to wait for further action
+    * 400 to 499 if it failed because of a client error by your application
+    * 500 to 599 if it failed because of an error on our server
+
+    Errors specific to each API are shown in the Endpoints section, under Response. See our [reference guide](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#http-status-codes) for more on errors.
+
+    ## Open source
     You might find the following [open source](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#open-source) resources useful:
 
     | Resource                  | Description                                                          | Links                                                                          |
@@ -105,25 +118,23 @@ info:
     | Production        | `https://api.service.nhs.uk/validated-relationships/FHIR/R4/`            |
 
     ### Sandbox testing
-    TO BE COMPLETED    
+    Our [sandbox environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#sandbox-testing)
 
+    * is for early developer testing
+    * only covers a limited set of scenarios
+    * is open access, so does not allow you to test authorisation
+ 
     ### Integration testing
-    TO BE COMPLETED
+ 
+    Our [integration test environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#integration-testing)
 
-    ### Production smoke testing
-    TO BE COMPLETED
+    * is for formal integration testing
+    * includes authorisation with NHS Login
 
     ## Onboarding
-    To be completed.
-    ## Errors
-    We use standard HTTP status codes to show whether an API request succeeded or not. They are usually in the range:
+    You must get your software onboarded before it can go live.
 
-    * 200 to 299 if it succeeded, including code 202 if it was accepted by an API that needs to wait for further action
-    * 400 to 499 if it failed because of a client error by your application
-    * 500 to 599 if it failed because of an error on our server
-    
-    Errors specific to each API are shown in the Endpoints section, under Response. See our [reference guide](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#http-status-codes) for more on errors.
-    
+    For more details, contact us at [england.vrs-team@nhs.net](mailto:england.vrs-team@nhs.net).
     
   contact:
     name: 'Validated Relationships Service API Support'
@@ -139,7 +150,7 @@ servers:
 paths:
   /RelatedPerson:
     get:
-      summary: Get relationships.
+      summary: Get relationships
       parameters:
         - $ref: "#/components/parameters/BearerAuthorisation"
         - $ref: "#/components/parameters/RelatedPersonIdentifier"
