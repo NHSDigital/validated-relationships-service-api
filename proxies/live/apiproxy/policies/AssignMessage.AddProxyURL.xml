@@ -3,7 +3,7 @@
     <DisplayName>Add Proxy URL</DisplayName>
     <Add>
         <Headers>
-            <Header name="proxy.url">{proxy.url}</Header>
+            <Header name="Proxy-Url">{proxy.url}</Header>
         </Headers>
     </Add>
     <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
