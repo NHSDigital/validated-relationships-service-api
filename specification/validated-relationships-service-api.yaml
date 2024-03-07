@@ -6,7 +6,7 @@ info:
   version: 'Computed and injected at build time by `scripts/set_version.py`'
   description: |
     ## Overview    
-    Use this API to access the Validated Relationships Service - the national electronic database of relationships
+    The Validated Relationships Service provides access the national electronic database of relationships
     that have been verified for the purpose of enabling individuals to access healthcare services on behalf of 
     those they care for. This is known as acting as a 'Proxy' for those individuals requesting access on befhalf
     of those they care for..
