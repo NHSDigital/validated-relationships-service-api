@@ -221,7 +221,7 @@ components:
               url: 
                 type: string
                 format: uri
-                example: https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson?_include=RelatedPerson%3apatient&identifier=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C9449304130&patient=7c236cce-7dca-4e93-91c8-b00e98ff0041
+                example: https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson?_include=RelatedPerson%3apatient&identifier=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C9449304130&patient=9000000001
         entry:
           type: array
           description: |
@@ -240,7 +240,7 @@ components:
         fullUrl: 
           type: string
           description: The canonical URL of the resource in the entry
-          example: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/17773b27-427e-4940-8c16-64cdac715001"
+          example: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/507B7621"
         resource:
           type: object
           properties:
@@ -251,7 +251,7 @@ components:
             id: 
               type: string
               description: Identifier of the resource
-              example: "17773b27-427e-4940-8c16-64cdac715001"
+              example: "507B7621"
             identifier:
               type: array
               description: The proxy's NHS number.
@@ -332,7 +332,7 @@ components:
         fullUrl: 
           type: string
           description: The canonical URL of the resource in the entry
-          example: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/27773b27-427e-4940-8c16-64cdac715002"
+          example: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/9000000002"
         resource:
           type: object
           properties:
@@ -343,7 +343,7 @@ components:
             id:
               type: string
               description: Identifier of the resource
-              example: "27773b27-427e-4940-8c16-64cdac715002"
+              example: "9000000002"
             identifier:
               type: array
               description: The patient's NHS number.
