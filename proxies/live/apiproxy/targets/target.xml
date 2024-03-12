@@ -10,9 +10,20 @@
       <Step>
         <Name>AddAPIToken</Name>
       </Step>
+      <Step>
+          <Name>AddProxyURL</Name>
+      </Step>
     </Request>
   </PreFlow>
   <FaultRules>
+    <FaultRule name="unauthorized">
+        <Step>
+            <Name>RaiseFault.401Unauthorized</Name>
+              <Condition>
+              oauthV2.OauthV2.VerifyAccessToken.failed = true or fault.name = "invalid_access_token" or fault.name = "InvalidAccessToken" or fault.name = "access_token_not_approved" or fault.name = "apiresource_doesnot_exist" or fault.name = "InvalidAPICallAsNo" or fault.name = "ApiProductMatchFound"
+              </Condition>
+        </Step>
+    </FaultRule>
     <FaultRule name="access_token_expired">
       <Step>
         <Name>ExtractVariables.OAuthErrorFaultString</Name>
@@ -24,10 +35,9 @@
     </FaultRule>
   </FaultRules>
   <HTTPTargetConnection>
-      <!--TODO: The target needs to configured on a per enironment basis (NPA-1979)
-          This URL will also need to change once we have DNS in place (NPA-1669)
-      -->
-      <URL>https://jfhedvdn0k.execute-api.eu-west-2.amazonaws.com/default/api</URL>
+      <LoadBalancer>
+          <Server name="validated-relationships-service-api"/>
+      </LoadBalancer>
       <Properties>
           <Property name="supports.http10">true</Property>
           <Property name="request.retain.headers">User-Agent,Referer,Accept-Language</Property>
