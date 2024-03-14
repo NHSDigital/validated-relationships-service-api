@@ -221,7 +221,7 @@ components:
               url: 
                 type: string
                 format: uri
-                example: https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson?_include=RelatedPerson%3apatient&identifier=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C9449304130&patient=9000000001
+                example: https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson?_include=RelatedPerson%3apatient&identifier=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C9000000001
         entry:
           type: array
           description: |
@@ -301,9 +301,11 @@ components:
                         system:
                           type: string
                           description: FHIR codesystem.
+                          default: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
                           enum:
                             [
-                              "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+                              "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                              "https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole"
                             ]
                         code:
                           type: string
@@ -561,10 +563,10 @@ components:
         format: token
       examples:
         withoutSystem:
-          value: "9000000009"
+          value: "9000000001"
           summary: "NHS number specified without system"
         withSystem:
-          value: "https://fhir.nhs.uk/Id/nhs-number|9000000009"
+          value: "https://fhir.nhs.uk/Id/nhs-number|9000000001"
           summary: "System and NHS number specified"
 
     PatientIdentifier:
@@ -578,10 +580,10 @@ components:
         format: token
       examples:
         withoutSystem:
-          value: "9000000009"
+          value: "9000000002"
           summary: "NHS number specified without system"
         withSystem:
-          value: "https://fhir.nhs.uk/Id/nhs-number|9000000009"
+          value: "https://fhir.nhs.uk/Id/nhs-number|9000000002"
           summary: "System and NHS number specified"    
     IncludePatient:
       in: query
