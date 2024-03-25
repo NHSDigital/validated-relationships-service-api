@@ -8,10 +8,7 @@
         <Name>FlowCallout.ApplyRateLimiting</Name>
       </Step>
       <Step>
-        <Name>AddAPIToken</Name>
-      </Step>
-      <Step>
-          <Name>AddProxyURL</Name>
+        <Name>AddProxyURL</Name>
       </Step>
     </Request>
   </PreFlow>
