@@ -3,7 +3,7 @@
     <DisplayName>Add User Auth Level</DisplayName>
     <Add>
         <Headers>
-            <Header name="accesstoken.auth_level">{accesstoken.auth_level}</Header>
+            <Header name="accesstoken.auth_level">toUpperCase(accesstoken.auth_level)</Header>
         </Headers>
     </Add>
     <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
