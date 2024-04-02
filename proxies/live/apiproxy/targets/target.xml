@@ -10,6 +10,12 @@
       <Step>
         <Name>AddProxyURL</Name>
       </Step>
+      <Step>
+        <Name>AddUserAuthLevel</Name>
+      </Step>
+      <Step>
+        <Name>AddUserNHSNumber</Name>
+      </Step>
     </Request>
   </PreFlow>
   <FaultRules>
