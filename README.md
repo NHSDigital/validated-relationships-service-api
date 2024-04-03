@@ -38,7 +38,7 @@ You can install some pre-commit hooks to ensure you can't commit invalid spec ch
 in CI, but it's useful to run them locally too.
 
 ```
-$ make install-hooks
+$ make install
 ```
 
 ### Environment Variables
