@@ -10,6 +10,11 @@ update_configs:
   - package_manager: "javascript"
     directory: "/sandbox"
     update_schedule: "live"
+    groups:
+      sandbox-dependencies:
+        applies-to: version-updates
+        patterns:
+          - "*"
     automerged_updates:
       - match:
           dependency_type: "all"
