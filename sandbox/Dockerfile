@@ -6,7 +6,7 @@ WORKDIR /sandbox
 
 RUN pip install poetry
 
-RUN poetry install --only sandbox
+RUN poetry install --without dev
 
 EXPOSE 9000
 
