@@ -2,15 +2,19 @@ SHELL := /bin/bash
 dirname := $(notdir $(patsubst %/,%,$(CURDIR)))
 
 install:
-	cd .. && make install-python
+	poetry install
 
 list:
 	@grep '^[^#[:space:]].*:' Makefile
 
 build:
-	cp ../pyproject.toml . && cp ../poetry.lock . && cp ../poetry.toml .
 	docker build -t validate-relationships-service-api-sandbox .
-	rm -f pyproject.toml poetry.lock poetry.toml
+
+start:
+	poetry run flask --app api.app:app run -p 9000
+
+start-dev:
+	poetry run flask --app api.app:app run -p 9000 --reload --debug
 
 test:
 	poetry run pytest
