@@ -1,0 +1,53 @@
+{
+  "entry": [
+    {
+      "fullUrl": "https://internal-dev.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/47CD795E",
+      "resource": {
+        "id": "47CD795E",
+        "identifier": [
+          {
+            "system": "https://fhir.nhs.uk/Id/nhs-number",
+            "value": "1234567890"
+          }
+        ],
+        "patient": {
+          "identifier": {
+            "system": "https://fhir.nhs.uk/Id/nhs-number",
+            "value": "0987654321"
+          },
+          "type": "Patient"
+        },
+        "relationship": [
+          {
+            "coding": [
+              {
+                "code": "MTH",
+                "display": "mother",
+                "system": "http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype"
+              },
+              {
+                "code": "Personal",
+                "display": "Personal relationship with the patient",
+                "system": "https://fhir.nhs.uk/R4/CodeSystem/UKCore-AdditionalRelatedPersonRole"
+              }
+            ]
+          }
+        ],
+        "resourceType": "RelatedPerson"
+      },
+      "search": {
+        "mode": "match"
+      }
+    }
+  ],
+  "link": [
+    {
+      "relation": "self",
+      "url": "https://internal-dev.api.service.nhs.uk/validated-relationships-service-api/RelatedPerson?identifier=1234567890&patient%3Aidentifier=0987654321"
+    }
+  ],
+  "timestamp": "2024-04-03T15:15:23+00:00",
+  "total": 1,
+  "type": "searchset",
+  "resourceType": "Bundle"
+}
