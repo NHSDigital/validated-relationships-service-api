@@ -2,14 +2,31 @@
   <PreFlow>
     <Request>
       <Step>
-        <Name>OauthV2.VerifyAccessTokenAppLevel3OrCis2Aal3</Name>
+        <Name>VerifyAccessTokenUserNhsLoginP9</Name>
       </Step>
       <Step>
         <Name>FlowCallout.ApplyRateLimiting</Name>
       </Step>
+      <Step>
+        <Name>AddProxyURL</Name>
+      </Step>
+      <Step>
+        <Name>AddUserAuthLevel</Name>
+      </Step>
+      <Step>
+        <Name>AddUserNHSNumber</Name>
+      </Step>
     </Request>
   </PreFlow>
   <FaultRules>
+    <FaultRule name="unauthorized">
+        <Step>
+            <Name>RaiseFault.401Unauthorized</Name>
+              <Condition>
+              oauthV2.OauthV2.VerifyAccessToken.failed = true or fault.name = "invalid_access_token" or fault.name = "InvalidAccessToken" or fault.name = "access_token_not_approved" or fault.name = "apiresource_doesnot_exist" or fault.name = "InvalidAPICallAsNo" or fault.name = "ApiProductMatchFound"
+              </Condition>
+        </Step>
+    </FaultRule>
     <FaultRule name="access_token_expired">
       <Step>
         <Name>ExtractVariables.OAuthErrorFaultString</Name>
@@ -20,24 +37,13 @@
       <Condition>oauthV2.OauthV2.VerifyAccessToken.failed</Condition>
     </FaultRule>
   </FaultRules>
-  <!--
-    To point to a named target server as this is how it SHOULD be implemented:
-    For example:
-    <HTTPTargetConnection>
-      <SSLInfo>
-        <Enabled>true</Enabled>
-      </SSLInfo>
-      <LoadBalancer>
-        <Server name="validated-relationships-service-api" />
-      </LoadBalancer>
-    </HTTPTargetConnection>
-  -->
   <HTTPTargetConnection>
-    <URL>http://mocktarget.apigee.net</URL>
-    <Properties>
-      <Property name="supports.http10">true</Property>
-      <Property name="request.retain.headers">User-Agent,Referer,Accept-Language</Property>
-      <Property name="retain.queryparams">apikey</Property>
-    </Properties>
+      <LoadBalancer>
+          <Server name="validated-relationships-service-api"/>
+      </LoadBalancer>
+      <Properties>
+          <Property name="supports.http10">true</Property>
+          <Property name="request.retain.headers">User-Agent,Referer,Accept-Language</Property>
+      </Properties>
   </HTTPTargetConnection>
 </TargetEndpoint>
