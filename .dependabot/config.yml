@@ -1,5 +1,11 @@
 version: 1
 update_configs:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    groups:
+      github-action-dependencies:
+        patterns:
+          - "*"
   - package_manager: "javascript"
     directory: "/"
     update_schedule: "live"
