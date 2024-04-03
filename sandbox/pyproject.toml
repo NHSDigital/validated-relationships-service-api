@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "validated-relationships-service-api-sandbox"
+version = "1.0.0"
+description = "Sandbox for the Validated Relationships Service API"
+authors = []
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.group.sandbox.dependencies]
+flask = "^3.0.2"
+gunicorn = "^21.2.0"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^3.7.9"
+black = "^24.3.0"
+

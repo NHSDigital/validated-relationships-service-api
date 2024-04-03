@@ -2,7 +2,7 @@ SHELL=/bin/bash -euo pipefail
 
 #Installs dependencies using poetry.
 install-python:
-	poetry install
+	poetry install --no-root
 
 #Installs dependencies using npm.
 install-node:
@@ -18,7 +18,7 @@ install: install-node install-python .git/hooks/pre-commit
 
 #Run the npm linting script (specified in package.json). Used to check the syntax and formatting of files.
 lint:
-	npm run lint
+# TODO: Python linting
 	find . -name '*.py' -not -path '**/.venv/*' | xargs poetry run flake8
 
 #Removes build/ + dist/ directories
