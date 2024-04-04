@@ -10,4 +10,4 @@ RUN poetry install --without dev
 
 EXPOSE 9000
 
-CMD ["poetry", "run", "gunicorn", "app:app", "--bind=localhost:9000"]
+CMD ["poetry", "run", "gunicorn", "api.app:app", "--bind=0.0.0.0:9000"]

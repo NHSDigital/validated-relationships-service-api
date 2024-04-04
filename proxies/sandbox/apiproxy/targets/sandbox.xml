@@ -1,4 +1,4 @@
-<TargetEndpoint name="sandbox">
+<TargetEndpoint name="RelatedPerson">
     <Description/>
     <FaultRules/>
     <Flows/>
