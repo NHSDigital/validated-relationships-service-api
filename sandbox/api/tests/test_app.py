@@ -3,6 +3,7 @@ from unittest.mock import MagicMock, patch
 import pytest
 
 FILE_PATH = "sandbox.api.app"
+RELATED_PERSON_API_ENDPOINT = "/FHIR/R4/RelatedPerson"
 
 
 @pytest.mark.parametrize("endpoint", ["/_status", "/_ping", "/health"])
@@ -26,7 +27,7 @@ def test_related_person__identifier_only(
     # Arrange
     mock_get_response.return_value = expected_body = {"data": "mocked"}
     # Act
-    response = client.get("/RelatedPerson?identifier=1234567890")
+    response = client.get(f"{RELATED_PERSON_API_ENDPOINT}?identifier=1234567890")
     # Assert
     mock_get_response.assert_called_once_with(
         "./api/responses/GET_RelatedPerson/identifier.json"
@@ -43,7 +44,9 @@ def test_related_person__identifier_and_patient(
     # Arrange
     mock_get_response.return_value = expected_body = {"data": "mocked"}
     # Act
-    response = client.get("/RelatedPerson?identifier=1234567890&patient=0987654321")
+    response = client.get(
+        f"{RELATED_PERSON_API_ENDPOINT}?identifier=1234567890&patient=0987654321"
+    )
     # Assert
     mock_get_response.assert_called_once_with(
         "./api/responses/GET_RelatedPerson/identifier_and_patient.json"
