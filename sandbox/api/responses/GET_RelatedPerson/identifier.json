@@ -1,9 +1,9 @@
 {
   "entry": [
     {
-      "fullUrl": "https://internal-dev.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/47CD795E",
+      "fullUrl": "/validated-relationships/FHIR/R4/RelatedPerson/ABCD1234",
       "resource": {
-        "id": "47CD795E",
+        "id": "ABCD1234",
         "identifier": [
           {
             "system": "https://fhir.nhs.uk/Id/nhs-number",
@@ -35,18 +35,11 @@
         ],
         "resourceType": "RelatedPerson"
       },
-      "search": {
-        "mode": "match"
-      }
+      "search": { "mode": "match" }
     }
   ],
-  "link": [
-    {
-      "relation": "self",
-      "url": "https://internal-dev.api.service.nhs.uk/validated-relationships-service-api/RelatedPerson?identifier=1234567890&patient%3Aidentifier=0987654321"
-    }
-  ],
-  "timestamp": "2024-04-03T15:15:23+00:00",
+  "link": [{ "relation": "self", "url": "sandbox" }],
+  "timestamp": "2024-00-00T00:00:00+00:00",
   "total": 1,
   "type": "searchset",
   "resourceType": "Bundle"
