@@ -1,0 +1,83 @@
+{
+  "entry": [
+    {
+      "fullUrl": "/validated-relationships/FHIR/R4/RelatedPerson/ABCD1234",
+      "resource": {
+        "id": "ABCD1234",
+        "identifier": [
+          {
+            "system": "https://fhir.nhs.uk/Id/nhs-number",
+            "value": "1234567890"
+          }
+        ],
+        "patient": {
+          "identifier": {
+            "system": "https://fhir.nhs.uk/Id/nhs-number",
+            "value": "0987654321"
+          },
+          "type": "Patient"
+        },
+        "relationship": [
+          {
+            "coding": [
+              {
+                "code": "MTH",
+                "display": "mother",
+                "system": "http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype"
+              },
+              {
+                "code": "Personal",
+                "display": "Personal relationship with the patient",
+                "system": "https://fhir.nhs.uk/R4/CodeSystem/UKCore-AdditionalRelatedPersonRole"
+              }
+            ]
+          }
+        ],
+        "resourceType": "RelatedPerson"
+      },
+      "search": { "mode": "match" }
+    },
+    {
+      "fullUrl": "/validated-relationships/FHIR/R4/RelatedPerson/1234ABCD",
+      "resource": {
+        "id": "1234ABCD",
+        "identifier": [
+          {
+            "system": "https://fhir.nhs.uk/Id/nhs-number",
+            "value": "1234567890"
+          }
+        ],
+        "patient": {
+          "identifier": {
+            "system": "https://fhir.nhs.uk/Id/nhs-number",
+            "value": "2234567890"
+          },
+          "type": "Patient"
+        },
+        "relationship": [
+          {
+            "coding": [
+              {
+                "code": "MTH",
+                "display": "mother",
+                "system": "http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype"
+              },
+              {
+                "code": "Personal",
+                "display": "Personal relationship with the patient",
+                "system": "https://fhir.nhs.uk/R4/CodeSystem/UKCore-AdditionalRelatedPersonRole"
+              }
+            ]
+          }
+        ],
+        "resourceType": "RelatedPerson"
+      },
+      "search": { "mode": "match" }
+    }
+  ],
+  "link": [{ "relation": "self", "url": "" }],
+  "timestamp": "2024-00-00T00:00:00+00:00",
+  "total": 2,
+  "type": "searchset",
+  "resourceType": "Bundle"
+}
