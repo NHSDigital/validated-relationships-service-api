@@ -33,12 +33,31 @@ def get_related_persons() -> Union[dict, tuple]:
         # Check Headers
         if errors := check_for_errors(request):
             return errors
+
         # Successful request, select response
-        if request.args.get("identifier") and request.args.get("patient"):
+        if (
+            request.args.get("identifier")
+            and request.args.get("patient")
+            and request.args.get("_include") == "patient"
+        ):
+            # Request with identifier, patient and _include=patient
+            return get_response(
+                "./api/responses/GET_RelatedPerson/identifier_and_patient_include.json"
+            )
+        elif request.args.get("identifier") and request.args.get("patient"):
+            # Request with identifier and patient
             return get_response(
                 "./api/responses/GET_RelatedPerson/identifier_and_patient.json"
             )
+        elif (
+            request.args.get("identifier") and request.args.get("_include") == "patient"
+        ):
+            # Request with identifier and _include=patient
+            return get_response(
+                "./api/responses/GET_RelatedPerson/identifier_include.json"
+            )
         elif request.args.get("identifier"):
+            # Request with identifier
             return get_response("./api/responses/GET_RelatedPerson/identifier.json")
         else:
             raise ValueError("Invalid request")

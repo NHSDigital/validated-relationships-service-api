@@ -1,7 +1,7 @@
 {
   "entry": [
     {
-      "fullUrl": "/validated-relationships/FHIR/R4/RelatedPerson/ABCD1234",
+      "fullUrl": "https://internal-dev.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/ABCD1234",
       "resource": {
         "id": "ABCD1234",
         "identifier": [
@@ -38,7 +38,12 @@
       "search": { "mode": "match" }
     }
   ],
-  "link": [{ "relation": "self", "url": "sandbox" }],
+  "link": [
+    {
+      "relation": "self",
+      "url": "sandbox"
+    }
+  ],
   "timestamp": "2024-00-00T00:00:00+00:00",
   "total": 1,
   "type": "searchset",
