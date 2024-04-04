@@ -6,7 +6,7 @@ This is a specification for the *validated-relationships-service-api* API.
 
 
 * `specification/` This [Open API Specification](https://swagger.io/docs/specification/about/) describes the endpoints, methods and messages exchanged by the API. Use it to generate interactive documentation; the contract between the API and its consumers.
-* `sandbox/` This NodeJS application implements a mock implementation of the service. Use it as a back-end service to the interactive documentation to illustrate interactions and concepts. It is not intended to provide an exhaustive/faithful environment suitable for full development and testing.
+* `sandbox/` A flask (Python) API to provide mock implementation of the service. It's to be used as interactive documentation to illustrate interactions and concepts. It is not intended to provide an exhaustive/faithful environment suitable for full development and testing.
 * `scripts/` Utilities helpful to developers of this specification.
 * `proxies/` Live (connecting to another service) and sandbox (using the sandbox container) Apigee API Proxy definitions.
 
@@ -25,7 +25,7 @@ The contents of this repository are protected by Crown Copyright (C).
 ### Requirements
 * make
 * nodejs + npm/yarn
-* [poetry](https://github.com/python-poetry/poetry)
+* Python 3.8 + [poetry](https://github.com/python-poetry/poetry)
 * Java 8+
 
 ### Install
@@ -38,7 +38,7 @@ You can install some pre-commit hooks to ensure you can't commit invalid spec ch
 in CI, but it's useful to run them locally too.
 
 ```
-$ make install-hooks
+$ make install
 ```
 
 ### Environment Variables
@@ -102,9 +102,10 @@ To get started developing your API use this template repo alongside guidance pro
 
 This folder contains templates that can be customised for items such as opening pull requests or issues within the repo
 
-`/.github/workflows`: This folder contains templates for github action workflows such as:
+`/.github/workflows`: This folder contains templates for GitHub action workflows such as:
 - `pr-lint.yaml`: This workflow template shows how to link Pull Request's to Jira tickets and runs when a pull request is opened.
 - `continuous-integration.yml`: This workflow template shows how to publish a Github release when pushing to master.
+- `sandbox-checks.yaml`: This workflow checks the sandbox meets the formatting and linting rules (Black + Flake8). Also it runs the sandbox unit tests (Pytest)
 
 #### `/azure`:
 
@@ -115,7 +116,7 @@ Contains templates defining Azure Devops pipelines. By default the following pip
 
 The `project.yml` file needs to be populated with your service names to make them available to the pipelines
 
-`/azure/templates`: Here you can define reusable actions, such as running tests, and call these actions during Azure Devops pipelines. 
+`/azure/templates`: Here you can define reusable actions, such as running tests, and call these actions during Azure Devops pipelines.
 
 #### `/proxies`:
 
@@ -136,8 +137,11 @@ See the APM confluence for more information on how the [_ping](https://nhsd-conf
 
 #### `/sandbox`:
 
-This folder contains a template for a sandbox API. This example is a NodeJs application running in Docker. The application handles a few simple endpoints such as: /_ping, /health, /_status, /hello and some logging logic.
-For more information about building sandbox APIs see the [API Producer Zone confluence](https://nhsd-confluence.digital.nhs.uk/display/APM/Setting+up+your+API+sandbox ).
+Sandbox provides a API for exploring the Proxy API. It uses pre-canned responses to most common scenarios.
+
+##### Development
+
+For information on how to develop the sandbox API see [README.md](sandbox/README.md)
 
 #### `/scripts`:
 
@@ -160,7 +164,7 @@ These files are required to deploy containers alongside your Apigee proxy during
 
 `ecs-proxies-containers.yml`: The path to a container's Dockerfile is defined here. This path needs to be defined to allow containers to be pushed to our repository during the `azure-build-pipeline`.
 
-`ecs-proxies-deploy.yml` : Here you can define config for your container deployment.  
+`ecs-proxies-deploy.yml` : Here you can define config for your container deployment.
 
 For more information about deploying ECS containers see the [API Producer Zone confluence](https://nhsd-confluence.digital.nhs.uk/display/APM/Developing+ECS+proxies#DevelopingECSproxies-Buildingandpushingdockercontainers ).
 
