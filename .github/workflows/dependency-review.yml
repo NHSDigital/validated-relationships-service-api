@@ -11,3 +11,5 @@ jobs:
         uses: actions/checkout@v4
       - name: Dependency Review
         uses: actions/dependency-review-action@v4
+        with:
+            allow-ghsas: GHSA-w596-4wvx-j9j6 # Due to APIM Pytest dependency
