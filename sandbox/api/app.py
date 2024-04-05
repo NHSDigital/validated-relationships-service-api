@@ -38,19 +38,20 @@ def get_related_persons() -> Union[dict, tuple]:
         if (
             request.args.get("identifier")
             and request.args.get("patient")
-            and request.args.get("_include") == "patient"
+            and request.args.get("_include") == "RelatedPerson:patient"
         ):
             # Request with identifier, patient and _include=patient
             return get_response(
-                "./api/responses/GET_RelatedPerson/identifier_and_patient_include.json"
+                "./api/responses/GET_RelatedPerson/identifier_and_patient_identifier_include.json"
             )
         elif request.args.get("identifier") and request.args.get("patient"):
             # Request with identifier and patient
             return get_response(
-                "./api/responses/GET_RelatedPerson/identifier_and_patient.json"
+                "./api/responses/GET_RelatedPerson/identifier_and_patient_identifier.json"
             )
         elif (
-            request.args.get("identifier") and request.args.get("_include") == "patient"
+            request.args.get("identifier")
+            and request.args.get("_include") == "RelatedPerson:patient"
         ):
             # Request with identifier and _include=patient
             return get_response(

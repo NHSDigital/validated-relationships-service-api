@@ -24,11 +24,6 @@
                 "code": "MTH",
                 "display": "mother",
                 "system": "http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype"
-              },
-              {
-                "code": "Personal",
-                "display": "Personal relationship with the patient",
-                "system": "https://fhir.nhs.uk/R4/CodeSystem/UKCore-AdditionalRelatedPersonRole"
               }
             ]
           }

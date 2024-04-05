@@ -1,6 +1,31 @@
 {
   "entry": [
     {
+      "fullUrl": "https://internal-dev.api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/3456789101",
+      "resource": {
+        "id": "3456789101",
+        "birthDate": "2017-09-23",
+        "identifier": [
+          {
+            "system": "https://fhir.nhs.uk/Id/nhs-number",
+            "value": "3456789101"
+          }
+        ],
+        "name": [
+          {
+            "id": "BLnbA",
+            "family": "MOGAJI",
+            "given": ["GADIL"],
+            "period": { "start": "2021-07-08" },
+            "prefix": ["MR"],
+            "use": "usual"
+          }
+        ],
+        "resourceType": "Patient"
+      },
+      "search": { "mode": "include" }
+    },
+    {
       "fullUrl": "https://internal-dev.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742",
       "resource": {
         "id": "BE974742",
@@ -24,11 +49,6 @@
                 "code": "MTH",
                 "display": "mother",
                 "system": "http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype"
-              },
-              {
-                "code": "Personal",
-                "display": "Personal relationship with the patient",
-                "system": "https://fhir.nhs.uk/R4/CodeSystem/UKCore-AdditionalRelatedPersonRole"
               }
             ]
           }
@@ -36,6 +56,31 @@
         "resourceType": "RelatedPerson"
       },
       "search": { "mode": "match" }
+    },
+    {
+      "fullUrl": "https://internal-dev.api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/5678910123",
+      "resource": {
+        "id": "5678910123",
+        "birthDate": "2018-04-27",
+        "identifier": [
+          {
+            "system": "https://fhir.nhs.uk/Id/nhs-number",
+            "value": "5678910123"
+          }
+        ],
+        "name": [
+          {
+            "id": "vitjN",
+            "family": "FEARON",
+            "given": ["Daren"],
+            "period": { "start": "2018-09-21" },
+            "prefix": ["MR"],
+            "use": "usual"
+          }
+        ],
+        "resourceType": "Patient"
+      },
+      "search": { "mode": "include" }
     },
     {
       "fullUrl": "https://internal-dev.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/A3CC67E2",
@@ -61,11 +106,6 @@
                 "code": "MTH",
                 "display": "mother",
                 "system": "http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype"
-              },
-              {
-                "code": "Personal",
-                "display": "Personal relationship with the patient",
-                "system": "https://fhir.nhs.uk/R4/CodeSystem/UKCore-AdditionalRelatedPersonRole"
               }
             ]
           }
@@ -82,7 +122,7 @@
     }
   ],
   "timestamp": "2024-00-00T00:00:00+00:00",
-  "total": 2,
+  "total": 4,
   "type": "searchset",
   "resourceType": "Bundle"
 }

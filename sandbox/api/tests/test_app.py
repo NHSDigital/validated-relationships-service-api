@@ -26,15 +26,23 @@ def test_health_check(client: object, endpoint: str) -> None:
         ("identifier=1234567890", "./api/responses/GET_RelatedPerson/identifier.json"),
         (
             "identifier=1234567890&patient=0987654321",
-            "./api/responses/GET_RelatedPerson/identifier_and_patient.json",
+            "./api/responses/GET_RelatedPerson/identifier_and_patient_identifier.json",
         ),
         (
-            "identifier=1234567890&_include=patient",
+            "identifier=1234567890&_include=RelatedPerson:patient",
             "./api/responses/GET_RelatedPerson/identifier_include.json",
         ),
         (
-            "identifier=1234567890&patient=0987654321&_include=patient",
-            "./api/responses/GET_RelatedPerson/identifier_and_patient_include.json",
+            "identifier=1234567890&patient=0987654321&_include=RelatedPerson:patient",
+            "./api/responses/GET_RelatedPerson/identifier_and_patient_identifier_include.json",
+        ),
+        (
+            "identifier=1234567890&_include=any",
+            "./api/responses/GET_RelatedPerson/identifier.json",
+        ),
+        (
+            "identifier=1234567890&patient=0987654321&_include=any",
+            "./api/responses/GET_RelatedPerson/identifier_and_patient_identifier.json",
         ),
     ],
 )
