@@ -106,6 +106,8 @@ This folder contains templates that can be customised for items such as opening 
 - `pr-lint.yaml`: This workflow template shows how to link Pull Request's to Jira tickets and runs when a pull request is opened.
 - `continuous-integration.yml`: This workflow template shows how to publish a Github release when pushing to master.
 - `sandbox-checks.yaml`: This workflow checks the sandbox meets the formatting and linting rules (Black + Flake8). Also it runs the sandbox unit tests (Pytest)
+- `dependency-review.yml`: This workflow checks for any vulnerabilities in dependencies to be added to the project.
+- `codeql-analysis.yml`: This workflow checks for any code vulnerabilities in the project.
 
 #### `/azure`:
 
