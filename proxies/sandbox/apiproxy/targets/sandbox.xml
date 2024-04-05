@@ -8,6 +8,9 @@
     </PostFlow>
     <PreFlow name="PreFlow">
         <Request/>
+          <Step>
+            <Name>FlowCallout.ApplyRateLimiting</Name>
+          </Step>
         <Response>
           <Step>
             <Name>AssignMessage.AddCors</Name>
