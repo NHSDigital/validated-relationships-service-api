@@ -8,7 +8,7 @@ info:
     ## Overview    
     The Validated Relationships Service provides access the national electronic database of relationships
     that have been verified for the purpose of enabling individuals to access healthcare services on behalf of 
-    those they care for. This is known as acting as a 'Proxy' for those individuals requesting access on befhalf
+    those they care for. This is known as acting as a 'Proxy' for those individuals requesting access on behalf
     of those they care for..
 
     You can: 
@@ -70,7 +70,7 @@ info:
     - patient access
 
     ### Patient access
-    Use this access mode if you wish to perform the following on behald of a user: 
+    Use this access mode if you wish to perform the following on behalf of a user: 
     * get the patients a person can act on behalf of (proxy for)     
     
     This access mode is [user-restricted](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#user-restricted-apis), meaning an end user must be present, authenticated and authorised.
@@ -150,7 +150,7 @@ paths:
     get:
       summary: Get relationships
       parameters:
-        - $ref: "#/components/parameters/BearerAuthorisation"
+        - $ref: "#/components/parameters/BearerAuthorization"
         - $ref: "#/components/parameters/RelatedPersonIdentifier"
         - $ref: "#/components/parameters/PatientIdentifier"
         - $ref: "#/components/parameters/IncludePatient"
@@ -539,9 +539,9 @@ components:
       schema:
         type: string
         example: patient
-    BearerAuthorisation:
+    BearerAuthorization:
       in: header
-      name: Authorisation
+      name: Authorization
       description: |
         An [OAuth 2.0 bearer token](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#user-restricted-apis).
       required: true
