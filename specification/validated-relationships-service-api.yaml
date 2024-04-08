@@ -150,7 +150,7 @@ paths:
     get:
       summary: Get relationships
       parameters:
-        - $ref: "#/components/parameters/BearerAuthorisation"
+        - $ref: "#/components/parameters/BearerAuthorization"
         - $ref: "#/components/parameters/RelatedPersonIdentifier"
         - $ref: "#/components/parameters/PatientIdentifier"
         - $ref: "#/components/parameters/IncludePatient"
@@ -539,9 +539,9 @@ components:
       schema:
         type: string
         example: patient
-    BearerAuthorisation:
+    BearerAuthorization:
       in: header
-      name: Authorisation
+      name: Authorization
       description: |
         An [OAuth 2.0 bearer token](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#user-restricted-apis).
       required: true
