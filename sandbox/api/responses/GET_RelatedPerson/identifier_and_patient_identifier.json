@@ -1,0 +1,78 @@
+{
+  "entry": [
+    {
+      "fullUrl": "https://internal-dev.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742",
+      "resource": {
+        "id": "BE974742",
+        "identifier": [
+          {
+            "system": "https://fhir.nhs.uk/Id/nhs-number",
+            "value": "4567891012"
+          }
+        ],
+        "patient": {
+          "identifier": {
+            "system": "https://fhir.nhs.uk/Id/nhs-number",
+            "value": "3456789101"
+          },
+          "type": "Patient"
+        },
+        "relationship": [
+          {
+            "coding": [
+              {
+                "code": "MTH",
+                "display": "mother",
+                "system": "http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype"
+              }
+            ]
+          }
+        ],
+        "resourceType": "RelatedPerson"
+      },
+      "search": { "mode": "match" }
+    },
+    {
+      "fullUrl": "https://internal-dev.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/A3CC67E2",
+      "resource": {
+        "id": "A3CC67E2",
+        "identifier": [
+          {
+            "system": "https://fhir.nhs.uk/Id/nhs-number",
+            "value": "4567891012"
+          }
+        ],
+        "patient": {
+          "identifier": {
+            "system": "https://fhir.nhs.uk/Id/nhs-number",
+            "value": "5678910123"
+          },
+          "type": "Patient"
+        },
+        "relationship": [
+          {
+            "coding": [
+              {
+                "code": "MTH",
+                "display": "mother",
+                "system": "http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype"
+              }
+            ]
+          }
+        ],
+        "resourceType": "RelatedPerson"
+      },
+      "search": { "mode": "match" }
+    }
+  ],
+  "link": [
+    {
+      "relation": "self",
+      "url": "sandbox"
+    }
+  ],
+  "timestamp": "2024-00-00T00:00:00+00:00",
+  "total": 2,
+  "type": "searchset",
+  "resourceType": "Bundle"
+}

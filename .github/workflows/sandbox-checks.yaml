@@ -1,0 +1,26 @@
+name: Sandbox Check
+on: pull_request
+jobs:
+  sandbox-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install poetry
+        run: pipx install poetry
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.8'
+          cache: 'poetry'
+      - name: Install Sandbox dependencies
+        run: make install
+        working-directory: ./sandbox
+      - name: Install CI dependencies
+        run: poetry install --only ci --no-root
+      - name: Check Sandbox Formatting
+        run: make format
+      - name: Run Sandbox Linting
+        run: make lint
+      - name: Run Sandbox Unit Tests
+        run: make test
+        working-directory: ./sandbox

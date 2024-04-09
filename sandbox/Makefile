@@ -1,23 +1,23 @@
 SHELL := /bin/bash
 dirname := $(notdir $(patsubst %/,%,$(CURDIR)))
 
+install: # Installs dependencies using poetry.
+	poetry install --no-root
+
 list:
 	@grep '^[^#[:space:]].*:' Makefile
 
-build:
-	docker build .
+build: # Build the Docker image to simulate ECS build
+	docker build -t validate-relationships-service-api-sandbox .
 
-clean:
-	rm -rf ./node_modules
+format: # Formats the code using black
+	poetry run black .
 
-install:
-	npm install --dev
+start: # Starts the Flask app (Don't use this in production)
+	poetry run flask --app api.app:app run -p 9000
 
-update:
-	npm update
+start-dev: # Starts the Flask app in development mode
+	poetry run flask --app api.app:app run -p 9000 --reload --debug
 
-test:
-	NODE_ENV=test npx mocha --reporter spec
-
-test-report:
-	NODE_ENV=test npx mocha --reporter mocha-junit-reporter --reporter-options mochaFile=../../reports/tests/$(dirname).xml || true
+test: # Runs the unit tests using pytest
+	poetry run pytest
