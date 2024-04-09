@@ -21,7 +21,7 @@ For more information about building sandbox APIs see the [API Producer Zone conf
 
 ## Prerequisites
 
-- Python 3.8
+- Python 3.12
 - [Poetry](https://python-poetry.org/docs/)
 - [Docker](https://docs.docker.com/get-docker/)
 
