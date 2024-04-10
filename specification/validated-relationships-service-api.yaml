@@ -631,7 +631,8 @@ components:
       name: X-Correlation-ID
       required: false
       description: |
-        An optional ID which you can use to track transactions across multiple systems. It can have any value, but we recommend avoiding `.` characters.
+        An optional ID which you can use to track transactions across multiple systems.
+        Must be a universally unique identifier (UUID) (ideally version 4).
         Mirrored back in a response header.
       schema:
         type: string
