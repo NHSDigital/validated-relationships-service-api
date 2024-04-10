@@ -1,0 +1,71 @@
+{
+  "entry": [
+    {
+      "fullUrl": "https://internal-dev.api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/0987654321",
+      "resource": {
+        "id": "0987654321",
+        "birthDate": "2014-09-21",
+        "identifier": [
+          {
+            "system": "https://fhir.nhs.uk/Id/nhs-number",
+            "value": "0987654321"
+          }
+        ],
+        "name": [
+          {
+            "id": "ggvay",
+            "family": "WOMACK",
+            "given": ["David", "Gus"],
+            "period": { "start": "2018-06-24" },
+            "prefix": ["MR"],
+            "use": "usual"
+          }
+        ],
+        "resourceType": "Patient"
+      },
+      "search": { "mode": "include" }
+    },
+    {
+      "fullUrl": "https://internal-dev.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/ABCD1234",
+      "resource": {
+        "id": "ABCD1234",
+        "identifier": [
+          {
+            "system": "https://fhir.nhs.uk/Id/nhs-number",
+            "value": "1234567890"
+          }
+        ],
+        "patient": {
+          "identifier": {
+            "system": "https://fhir.nhs.uk/Id/nhs-number",
+            "value": "0987654321"
+          },
+          "type": "Patient"
+        },
+        "relationship": [
+          {
+            "coding": [
+              {
+                "code": "MTH",
+                "display": "mother",
+                "system": "http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype"
+              }
+            ]
+          }
+        ],
+        "resourceType": "RelatedPerson"
+      },
+      "search": { "mode": "match" }
+    }
+  ],
+  "link": [
+    {
+      "relation": "self",
+      "url": "sandbox"
+    }
+  ],
+  "timestamp": "2024-00-00T00:00:00+00:00",
+  "total": 2,
+  "type": "searchset",
+  "resourceType": "Bundle"
+}

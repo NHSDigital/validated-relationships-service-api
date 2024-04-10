@@ -60,8 +60,8 @@
   <RouteRule name="NoRoute">
     <Condition>(request.verb = "OPTIONS") and (request.header.origin != null) and (request.header.Access-Control-Request-Method != null)</Condition>
   </RouteRule>
-  <RouteRule name="sandbox">
-    <TargetEndpoint>sandbox</TargetEndpoint>
+  <RouteRule name="RelatedPerson">
+    <TargetEndpoint>RelatedPerson</TargetEndpoint>
   </RouteRule>
   <DefaultFaultRule>
     <Step>

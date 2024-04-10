@@ -1,6 +1,3 @@
-[project]
-python = "^3.8"
-
 [tool.poetry]
 name = "validated-relationships-service-api"
 version = "0.0.1-alpha"
@@ -14,17 +11,22 @@ repository = "https://github.com/NHSDigital/validated-relationships-service-api"
 homepage = "https://digital.nhs.uk/developer/api-catalogue"
 keywords = ["healthcare", "uk", "nhs"] #TODO add additional keywords
 
-
 [tool.poetry.dependencies]
 python = "^3.8"
+
+[tool.poetry.group.ci.dependencies]
+flake8 = "^3.7.9"
+black = "^24.3.0"
+
+[tool.poetry.group.test.dependencies]
 pytest-nhsd-apim = "^3.3.2"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.7.9"
-black = "^20.8b1"
+black = "^24.3.0"
 pip-licenses = "^2.0.1"
-jinja2 = "^2.11.1"
-pyyaml = "^5.2"
+jinja2 = "^3.1.3"
+pyyaml = "^6.0.1"
 docopt = "^0.6.2"
 jsonpath-rw = "^1.4.0"
 semver = "^2.9.0"
@@ -33,5 +35,3 @@ pytest = "^6.1.2"
 coverage = "^5.5"
 aiohttp = "^3.7.3"
 pytest-asyncio = "^0.14.0"
-
-[tool.poetry.scripts]

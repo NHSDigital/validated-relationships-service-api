@@ -1,11 +1,13 @@
-FROM node:12
+FROM python:3.8
 
 COPY . /sandbox
 
 WORKDIR /sandbox
 
-RUN npm install
+RUN pip install poetry
+
+RUN poetry install --without dev
 
 EXPOSE 9000
 
-CMD ["npm", "start"]
+CMD ["poetry", "run", "gunicorn", "api.app:app", "--bind=0.0.0.0:9000"]
