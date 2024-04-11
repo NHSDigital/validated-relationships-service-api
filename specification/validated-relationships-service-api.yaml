@@ -3,7 +3,7 @@
 openapi: '3.0.0'
 info:
   title: 'Validated Relationships Service API'
-  version: 'Computed and injected at build time by `scripts/set_version.py`'
+  version: '1.0.0'
   description: |
     ## Overview    
     Use this API to access the Validated Relationships Service - the national electronic database of relationships 
