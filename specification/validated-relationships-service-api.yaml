@@ -158,7 +158,9 @@ paths:
         You can (optionally) include the `_include=RelatedPerson:patient` request parameter to include the patient's details in the operation response.
 
         ## Sandbox test scenarios
-        TO BE COMPLETED
+
+        For details of sandbox test scenarios, or to try out the sandbox using our 'Try it out' feature, see the documentation for each endpoint.
+
       operationId: get-validated-relationships
       parameters:
         - $ref: "#/components/parameters/BearerAuthorization"
@@ -178,16 +180,16 @@ paths:
           description: |
             An error occurred as follows:
 
-            | HTTP status | Error code                       | Description                                                                                                                               |
-            | ----------- | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-            | 400         | `INVALID_IDENTIFIER_SYSTEM`             | Invalid identifier system.                                                                                                    |
-            | 400         | `MISSING_IDENTIFIER_VALUE`             | Missing RelatedPerson NHS number.                                                                                                    |
-            | 400         | `INVALID_IDENTIFIER_VALUE`             | Malformed RelatedPerson NHS number.                                                                                                    |
-            | 400         | `INVALID_PATIENT_IDENTIFIER_VALUE`     | Malformed Patient NHS number.                                                                                                  |
-            | 400         | `NOT_SUPPORTED`                  | The request is not currently supported.                                                                                                   |
-            | 401         | `ACCESS_DENIED`                  | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
-            | 408         | `TIMEOUT`                        | Request timed out.                                                                                                                        |
-            | 429         | `THROTTLED`                      | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
+            | HTTP status | Error code                        | Description                                                                                                                               |
+            | ----------- | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+            | 400         | `INVALID_IDENTIFIER_SYSTEM`       | Invalid identifier system.                                                                                                                |
+            | 400         | `MISSING_IDENTIFIER_VALUE`        | Missing RelatedPerson NHS number.                                                                                                         |
+            | 400         | `INVALID_IDENTIFIER_VALUE`        | Malformed RelatedPerson NHS number.                                                                                                       |
+            | 400         | `INVALID_PATIENT_IDENTIFIER_VALUE`| Malformed Patient NHS number.                                                                                                             |
+            | 400         | `NOT_SUPPORTED`                   | The request is not currently supported.                                                                                                   |
+            | 401         | `ACCESS_DENIED`                   | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
+            | 408         | `TIMEOUT`                         | Request timed out.                                                                                                                        |
+            | 429         | `THROTTLED`                       | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
           content:
             application/fhir+json:
               schema:
