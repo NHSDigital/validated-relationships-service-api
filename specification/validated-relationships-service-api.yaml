@@ -227,7 +227,9 @@ components:
             properties:
               relation:
                 type: string
-                description: "http://www.iana.org/assignments/link-relations/link-relations.xhtml"                
+                description: |
+                  Links related to this Bundle - see:
+                  http://www.iana.org/assignments/link-relations/link-relations.xhtml               
                 example: "self"
               url: 
                 type: string
