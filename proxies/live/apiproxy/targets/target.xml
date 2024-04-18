@@ -16,6 +16,9 @@
       <Step>
         <Name>AddUserNHSNumber</Name>
       </Step>
+      <Step>
+        <Name>javascript.RemoveFHIRPath</Name>
+      </Step>
     </Request>
   </PreFlow>
   <FaultRules>

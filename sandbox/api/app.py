@@ -21,7 +21,7 @@ def health() -> dict:
     }
 
 
-@app.route("/FHIR/R4/RelatedPerson", methods=["GET"])
+@app.route("/RelatedPerson", methods=["GET"])
 def get_related_persons() -> Union[dict, tuple]:
     """Sandbox API for GET /RelatedPerson
 
