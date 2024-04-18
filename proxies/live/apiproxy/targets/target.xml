@@ -18,6 +18,13 @@
       </Step>
     </Request>
   </PreFlow>
+  <PostFlow>
+      <Response>
+          <Step>
+              <Name>SetMimeType</Name>
+          </Step>
+      </Response>
+  </PostFlow>
   <FaultRules>
     <FaultRule name="unauthorized">
         <Step>
