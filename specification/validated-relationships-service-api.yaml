@@ -178,7 +178,7 @@ paths:
                 $ref: "#/components/schemas/Relationship"
         "4XX":
           description: |
-            An error occurred as follows:
+            Errors will be returned for the first error encountered in the request. An error occurred as follows:
 
             | HTTP status | Error code                        | Description                                                                                                                               |
             | ----------- | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
