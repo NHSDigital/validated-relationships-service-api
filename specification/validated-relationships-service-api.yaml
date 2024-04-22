@@ -148,7 +148,7 @@ servers:
 paths:
   /RelatedPerson:
     get:
-      summary: Get validated relationships. 
+      summary: Get validated relationships 
       description: |
         ## Overview        
         Use this endpoint to get validated relationships for a proxy with a given NHS Number. 
