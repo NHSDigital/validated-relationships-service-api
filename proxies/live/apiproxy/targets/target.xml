@@ -23,13 +23,15 @@
           <Step>
               <Name>SetMimeType</Name>
           </Step>
-          <Step>
-              <Name>RaiseFault.404NotFound</Name>
-              <Condition>response.header.x-amzn-ErrorType = IncompleteSignatureException</Condition>
-          </Step>
       </Response>
   </PostFlow>
   <FaultRules>
+    <FaultRule name="404_Not_Found">
+        <Step>
+            <Name>RaiseFault.404NotFound</Name>
+        </Step>
+        <Condition>response.header.x-amzn-ErrorType = "IncompleteSignatureException"</Condition>
+    </FaultRule>
     <FaultRule name="unauthorized">
         <Step>
             <Name>RaiseFault.401Unauthorized</Name>
