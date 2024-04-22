@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ This policy raises a 404 error response for an invalid resource request.
+
+ Raisefault policies stop the execution of the current flow and move to the error flow, which returns the error response defined here to the requesting application.
+
+ For more information on RaiseFault policies within Apigee see the following resource:
+    * https://docs.apigee.com/api-platform/reference/policies/raise-fault-policy
+-->
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RaiseFault.404NotFound">
+    <DisplayName>RaiseFault.404NotFound</DisplayName>
+    <Properties/>
+    <FaultResponse>
+        <Set>
+            <Headers/>
+            <StatusCode>404</StatusCode>
+            <ReasonPhrase>NotFound</ReasonPhrase>
+            <Payload>
+{
+    "issue": [
+        {
+            "code": "processing",
+            "details": {
+                "coding": [
+                    {
+                        "code": "INVALIDATED_RESOURCE",
+                        "display": "Resource that has been marked as invalid was requested - invalid resources cannot be retrieved",
+                        "system": "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode",
+                        "version": "1"
+                    }
+                ]
+            },
+            "severity": "error"
+        }
+    ],
+    "resourceType": "OperationOutcome"
+}
+            </Payload>
+        </Set>
+    </FaultResponse>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>
