@@ -23,6 +23,10 @@
           <Step>
               <Name>SetMimeType</Name>
           </Step>
+          <Step>
+              <Name>RaiseFault.404NotFound</Name>
+              <Condition>response.header.x-amzn-ErrorType = IncompleteSignatureException</Condition>
+          </Step>
       </Response>
   </PostFlow>
   <FaultRules>
@@ -30,18 +34,9 @@
         <Step>
             <Name>RaiseFault.401Unauthorized</Name>
               <Condition>
-              oauthV2.OauthV2.VerifyAccessToken.failed = true or fault.name = "invalid_access_token" or fault.name = "InvalidAccessToken" or fault.name = "access_token_not_approved" or fault.name = "apiresource_doesnot_exist" or fault.name = "InvalidAPICallAsNo" or fault.name = "ApiProductMatchFound"
+              oauthV2.OauthV2.VerifyAccessToken.failed = true or fault.name = "invalid_access_token" or fault.name = "InvalidAccessToken" or fault.name = "access_token_not_approved" or fault.name = "apiresource_doesnot_exist" or fault.name = "InvalidAPICallAsNo" or fault.name = "ApiProductMatchFound" or fault.name = "access_token_expired"
               </Condition>
         </Step>
-    </FaultRule>
-    <FaultRule name="access_token_expired">
-      <Step>
-        <Name>ExtractVariables.OAuthErrorFaultString</Name>
-      </Step>
-      <Step>
-        <Name>AssignMessage.OAuthPolicyErrorResponse</Name>
-      </Step>
-      <Condition>oauthV2.OauthV2.VerifyAccessToken.failed</Condition>
     </FaultRule>
   </FaultRules>
   <HTTPTargetConnection>
