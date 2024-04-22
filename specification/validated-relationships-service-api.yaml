@@ -109,11 +109,11 @@ info:
     The source code for the PDS FHIR back end (the Core Spine source code) is not currently in the open. If you think this would be useful, you can [upvote the suggestion on our Interactive Product Backlog](https://nhs-digital-api-management.featureupvote.com/suggestions/466692/open-source-core-spine-including-pds-eps-scr-and-more).
 
     ## Environments and testing
-    | Environment       | Base URL                                                               |
-    | ----------------- | ---------------------------------------------------------------------- |
-    | Sandbox           | `https://internal-dev-sandbox.api.service.nhs.uk/validated-relationships-service-api/FHIR/R4/`    |
-    | Integration test  | `https://int.api.service.nhs.uk/validated-relationships/FHIR/R4/`        |
-    | Production        | `https://api.service.nhs.uk/validated-relationships/FHIR/R4/`            |
+    | Environment       | Base URL                                                                             |
+    | ----------------- | ------------------------------------------------------------------------------------ |
+    | Sandbox           | `https://sandbox.api.service.nhs.uk/validated-relationships-service-api/FHIR/R4/`    |
+    | Integration test  | `https://int.api.service.nhs.uk/validated-relationships/FHIR/R4/`                    |
+    | Production        | `https://api.service.nhs.uk/validated-relationships/FHIR/R4/`                        |
 
     ### Sandbox testing
     Our [sandbox environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#sandbox-testing)
@@ -148,7 +148,7 @@ servers:
 paths:
   /RelatedPerson:
     get:
-      summary: Get validated relationships. 
+      summary: Get validated relationships 
       description: |
         ## Overview        
         Use this endpoint to get validated relationships for a proxy with a given NHS Number. 
