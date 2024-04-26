@@ -11,6 +11,9 @@
           <Step>
             <Name>FlowCallout.ApplyRateLimiting</Name>
           </Step>
+          <Step>
+            <Name>AddProxyURL</Name>
+          </Step>
         <Response>
           <Step>
             <Name>AssignMessage.AddCors</Name>

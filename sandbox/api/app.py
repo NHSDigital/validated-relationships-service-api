@@ -28,7 +28,7 @@ def get_related_persons() -> Union[dict, tuple]:
     Returns:
         Union[dict, tuple]: Response for GET /RelatedPerson
     """
-
+    print(request.args)
     try:
         # Check Headers
         if errors := check_for_errors(request):
