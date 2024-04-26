@@ -1,7 +1,7 @@
 {
   "entry": [
     {
-      "fullUrl": "{{proxy_url}}/FHIR/R4/Patient/0987654321",
+      "fullUrl": "https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/0987654321",
       "resource": {
         "id": "0987654321",
         "birthDate": "2014-09-21",
@@ -26,7 +26,7 @@
       "search": { "mode": "include" }
     },
     {
-      "fullUrl": "{{proxy_url}}/FHIR/R4/RelatedPerson/ABCD1234",
+      "fullUrl": "https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/ABCD1234",
       "resource": {
         "id": "ABCD1234",
         "identifier": [

@@ -1,7 +1,7 @@
 {
   "entry": [
     {
-      "fullUrl": "{{proxy_url}}/FHIR/R4/RelatedPerson/ABCD1234",
+      "fullUrl": "https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/ABCD1234",
       "resource": {
         "id": "ABCD1234",
         "identifier": [

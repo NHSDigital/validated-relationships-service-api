@@ -3,7 +3,7 @@ from typing import Union
 
 from flask import Flask, request
 
-from .utils import check_for_errors, get_response, get_error
+from .utils import check_for_errors, get_response
 
 app = Flask(__name__)
 basicConfig(level=INFO, format="%(asctime)s - %(message)s")
@@ -28,9 +28,8 @@ def get_related_persons() -> Union[dict, tuple]:
     Returns:
         Union[dict, tuple]: Response for GET /RelatedPerson
     """
-    try:
-        proxy_url = request.args.get("Proxy-URL")
 
+    try:
         # Check Headers
         if errors := check_for_errors(request):
             return errors
@@ -43,14 +42,12 @@ def get_related_persons() -> Union[dict, tuple]:
         ):
             # Request with identifier, patient and _include=patient
             return get_response(
-                proxy_url,
-                "./api/responses/GET_RelatedPerson/identifier_and_patient_identifier_include.json",
+                "./api/responses/GET_RelatedPerson/identifier_and_patient_identifier_include.json"
             )
         elif request.args.get("identifier") and request.args.get("patient"):
             # Request with identifier and patient
             return get_response(
-                proxy_url,
-                "./api/responses/GET_RelatedPerson/identifier_and_patient_identifier.json",
+                "./api/responses/GET_RelatedPerson/identifier_and_patient_identifier.json"
             )
         elif (
             request.args.get("identifier")
@@ -58,16 +55,14 @@ def get_related_persons() -> Union[dict, tuple]:
         ):
             # Request with identifier and _include=patient
             return get_response(
-                proxy_url, "./api/responses/GET_RelatedPerson/identifier_include.json"
+                "./api/responses/GET_RelatedPerson/identifier_include.json"
             )
         elif request.args.get("identifier"):
             # Request with identifier
-            return get_response(
-                proxy_url, "./api/responses/GET_RelatedPerson/identifier.json"
-            )
+            return get_response("./api/responses/GET_RelatedPerson/identifier.json")
         else:
             raise ValueError("Invalid request")
 
     except Exception as e:
         logger.error(e)
-        return get_error("./api/responses/internal_server_error.json"), 500
+        return get_response("./api/responses/internal_server_error.json"), 500
