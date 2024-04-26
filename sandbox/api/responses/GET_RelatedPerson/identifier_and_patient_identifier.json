@@ -1,7 +1,7 @@
 {
   "entry": [
     {
-      "fullUrl": "https://internal-dev.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742",
+      "fullUrl": "{{proxy_url}}/FHIR/R4/RelatedPerson/BE974742",
       "resource": {
         "id": "BE974742",
         "identifier": [
@@ -33,7 +33,7 @@
       "search": { "mode": "match" }
     },
     {
-      "fullUrl": "https://internal-dev.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/A3CC67E2",
+      "fullUrl": "{{proxy_url}}/FHIR/R4/RelatedPerson/A3CC67E2",
       "resource": {
         "id": "A3CC67E2",
         "identifier": [

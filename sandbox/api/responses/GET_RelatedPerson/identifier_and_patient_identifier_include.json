@@ -1,7 +1,7 @@
 {
   "entry": [
     {
-      "fullUrl": "https://internal-dev.api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/3456789101",
+      "fullUrl": "{{proxy_url}}/FHIR/R4/Patient/3456789101",
       "resource": {
         "id": "3456789101",
         "birthDate": "2017-09-23",
@@ -26,7 +26,7 @@
       "search": { "mode": "include" }
     },
     {
-      "fullUrl": "https://internal-dev.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742",
+      "fullUrl": "{{proxy_url}}/FHIR/R4/RelatedPerson/BE974742",
       "resource": {
         "id": "BE974742",
         "identifier": [
@@ -58,7 +58,7 @@
       "search": { "mode": "match" }
     },
     {
-      "fullUrl": "https://internal-dev.api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/5678910123",
+      "fullUrl": "{{proxy_url}}/FHIR/R4/Patient/5678910123",
       "resource": {
         "id": "5678910123",
         "birthDate": "2018-04-27",
@@ -83,7 +83,7 @@
       "search": { "mode": "include" }
     },
     {
-      "fullUrl": "https://internal-dev.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/A3CC67E2",
+      "fullUrl": "{{proxy_url}}/FHIR/R4/RelatedPerson/A3CC67E2",
       "resource": {
         "id": "A3CC67E2",
         "identifier": [
