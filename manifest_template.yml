@@ -46,7 +46,7 @@ APIGEE_ENVIRONMENTS:
 ---
 meta:
   api:
-    name: validated-relationships-service-api
+    name: validated-relationships
     guid: dc0575cf-249a-4b08-9ccf-8d87b51501ad
     spec_guids:
       - 3a12b334-4022-412e-b00e-04409ad56ceb
