@@ -5,4 +5,4 @@ variables:
   - name: short_service_name
     value: vrsa
   - name: service_base_path
-    value: validated-relationships-service-api
+    value: validated-relationships
