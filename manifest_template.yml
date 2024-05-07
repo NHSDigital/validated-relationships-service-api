@@ -1,4 +1,4 @@
-SERVICE_NAME: validated-relationships-service-api
+SERVICE_NAME: validated-relationships
 PRODUCT_DISPLAY_NAME: validated-relationships-service-api
 DESCRIPTION: Validated Relationships Service API
 APIGEE_ENVIRONMENTS:
