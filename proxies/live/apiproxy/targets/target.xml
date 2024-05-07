@@ -27,23 +27,29 @@
         </Response>
     </PostFlow>
     <FaultRules>
+        <FaultRule name="400_Bad_Request">
+            <Step>
+                <Name>RaiseFault.400BadRequest</Name>
+            </Step>
+            <Condition>response.status.code = 400</Condition>
+        </FaultRule>
+        <FaultRule name="Unauthorized">
+            <Step>
+                <Name>RaiseFault.401Unauthorized</Name>
+            </Step>
+            <Condition>oauthV2.OauthV2.VerifyAccessToken.failed = true or fault.name = "invalid_access_token" or fault.name = "InvalidAccessToken" or fault.name = "access_token_not_approved" or fault.name = "apiresource_doesnot_exist" or fault.name = "InvalidAPICallAsNo" or fault.name = "ApiProductMatchFound" or fault.name = "access_token_expired"</Condition>
+        </FaultRule>
         <FaultRule name="404_Not_Found">
             <Step>
                 <Name>RaiseFault.404NotFound</Name>
             </Step>
             <Condition>response.header.x-amzn-ErrorType = "IncompleteSignatureException"</Condition>
         </FaultRule>
-        <FaultRule name="unauthorized">
-            <Step>
-                <Name>RaiseFault.401Unauthorized</Name>
-            </Step>
-            <Condition>oauthV2.OauthV2.VerifyAccessToken.failed = true or fault.name = "invalid_access_token" or fault.name = "InvalidAccessToken" or fault.name = "access_token_not_approved" or fault.name = "apiresource_doesnot_exist" or fault.name = "InvalidAPICallAsNo" or fault.name = "ApiProductMatchFound" or fault.name = "access_token_expired"</Condition>
-        </FaultRule>
-        <FaultRule name="internal_server_error">
+        <FaultRule name="500_Internal_Server_Error">
             <Step>
                 <Name>RaiseFault.500InternalServerError</Name>
             </Step>
-            <Condition>response.status_code = "400"</Condition>
+            <Condition>response.status.code = 500</Condition>
         </FaultRule>
     </FaultRules>
     <HTTPTargetConnection>
