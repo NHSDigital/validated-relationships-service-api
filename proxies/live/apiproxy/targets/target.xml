@@ -27,13 +27,7 @@
         </Response>
     </PostFlow>
     <FaultRules>
-        <FaultRule name="400_Bad_Request">
-            <Step>
-                <Name>RaiseFault.400BadRequest</Name>
-            </Step>
-            <Condition>response.status.code = 400</Condition>
-        </FaultRule>
-        <FaultRule name="Unauthorized">
+        <FaultRule name="401_Unauthorized">
             <Step>
                 <Name>RaiseFault.401Unauthorized</Name>
             </Step>
@@ -45,13 +39,13 @@
             </Step>
             <Condition>response.header.x-amzn-ErrorType = "IncompleteSignatureException"</Condition>
         </FaultRule>
-        <FaultRule name="500_Internal_Server_Error">
-            <Step>
-                <Name>RaiseFault.500InternalServerError</Name>
-            </Step>
-            <Condition>response.status.code = 500</Condition>
-        </FaultRule>
     </FaultRules>
+    <DefaultFaultRule name="DefaultFaultRule">
+      <Step>
+        <Name>RaiseFault.DefaultError</Name>
+      </Step>
+      <AlwaysEnforce>true</AlwaysEnforce>
+    </DefaultFaultRule>
     <HTTPTargetConnection>
         <LoadBalancer>
             <Server name="validated-relationships-service-api"/>

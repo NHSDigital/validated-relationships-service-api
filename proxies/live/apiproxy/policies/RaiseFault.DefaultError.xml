@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!--
- This policy raises a 400 error response for an application failure.
+ This policy raises when an error occurs in the AWS Application.
 
  Raisefault policies stop the execution of the current flow and move to the error flow, which returns the error response defined here to the requesting application.
 
  For more information on RaiseFault policies within Apigee see the following resource:
     * https://docs.apigee.com/api-platform/reference/policies/raise-fault-policy
 -->
-<RaiseFault async="false" continueOnError="false" enabled="true" name="RaiseFault.400BadRequest">
-    <DisplayName>RaiseFault.400BadRequest</DisplayName>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RaiseFault.DefaultError">
+    <DisplayName>RaiseFault.DefaultError</DisplayName>
     <Properties/>
     <FaultResponse>
         <Set>
             <Headers>
               <Header name="Content-Type">application/fhir+json</Header>
             </Headers>
-            <StatusCode>400</StatusCode>
-            <ReasonPhrase>BadRequest</ReasonPhrase>
         </Set>
     </FaultResponse>
     <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
