@@ -1,53 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <TargetEndpoint name="validated-relationships-service-api-target">
-  <PreFlow>
-    <Request>
+    <PreFlow>
+        <Request>
+            <Step>
+                <Name>VerifyAccessTokenUserNhsLoginP9</Name>
+            </Step>
+            <Step>
+                <Name>FlowCallout.ApplyRateLimiting</Name>
+            </Step>
+            <Step>
+                <Name>AddProxyURL</Name>
+            </Step>
+            <Step>
+                <Name>AddUserAuthLevel</Name>
+            </Step>
+            <Step>
+                <Name>AddUserNHSNumber</Name>
+            </Step>
+        </Request>
+    </PreFlow>
+    <PostFlow>
+        <Response>
+            <Step>
+                <Name>SetMimeType</Name>
+            </Step>
+        </Response>
+    </PostFlow>
+    <FaultRules>
+        <FaultRule name="401_Unauthorized">
+            <Step>
+                <Name>RaiseFault.401Unauthorized</Name>
+            </Step>
+            <Condition>oauthV2.OauthV2.VerifyAccessToken.failed = true or fault.name = "invalid_access_token" or fault.name = "InvalidAccessToken" or fault.name = "access_token_not_approved" or fault.name = "apiresource_doesnot_exist" or fault.name = "InvalidAPICallAsNo" or fault.name = "ApiProductMatchFound" or fault.name = "access_token_expired"</Condition>
+        </FaultRule>
+        <FaultRule name="404_Not_Found">
+            <Step>
+                <Name>RaiseFault.404NotFound</Name>
+            </Step>
+            <Condition>response.header.x-amzn-ErrorType = "IncompleteSignatureException"</Condition>
+        </FaultRule>
+    </FaultRules>
+    <DefaultFaultRule name="DefaultFaultRule">
       <Step>
-        <Name>VerifyAccessTokenUserNhsLoginP9</Name>
+        <Name>RaiseFault.DefaultError</Name>
       </Step>
-      <Step>
-        <Name>FlowCallout.ApplyRateLimiting</Name>
-      </Step>
-      <Step>
-        <Name>AddProxyURL</Name>
-      </Step>
-      <Step>
-        <Name>AddUserAuthLevel</Name>
-      </Step>
-      <Step>
-        <Name>AddUserNHSNumber</Name>
-      </Step>
-    </Request>
-  </PreFlow>
-  <PostFlow>
-      <Response>
-          <Step>
-              <Name>SetMimeType</Name>
-          </Step>
-      </Response>
-  </PostFlow>
-  <FaultRules>
-    <FaultRule name="404_Not_Found">
-        <Step>
-            <Name>RaiseFault.404NotFound</Name>
-        </Step>
-        <Condition>response.header.x-amzn-ErrorType = "IncompleteSignatureException"</Condition>
-    </FaultRule>
-    <FaultRule name="unauthorized">
-        <Step>
-            <Name>RaiseFault.401Unauthorized</Name>
-              <Condition>
-              oauthV2.OauthV2.VerifyAccessToken.failed = true or fault.name = "invalid_access_token" or fault.name = "InvalidAccessToken" or fault.name = "access_token_not_approved" or fault.name = "apiresource_doesnot_exist" or fault.name = "InvalidAPICallAsNo" or fault.name = "ApiProductMatchFound" or fault.name = "access_token_expired"
-              </Condition>
-        </Step>
-    </FaultRule>
-  </FaultRules>
-  <HTTPTargetConnection>
-      <LoadBalancer>
-          <Server name="validated-relationships-service-api"/>
-      </LoadBalancer>
-      <Properties>
-          <Property name="supports.http10">true</Property>
-          <Property name="request.retain.headers">User-Agent,Referer,Accept-Language</Property>
-      </Properties>
-  </HTTPTargetConnection>
+      <AlwaysEnforce>true</AlwaysEnforce>
+    </DefaultFaultRule>
+    <HTTPTargetConnection>
+        <LoadBalancer>
+            <Server name="validated-relationships-service-api"/>
+        </LoadBalancer>
+        <Properties>
+            <Property name="supports.http10">true</Property>
+            <Property name="request.retain.headers">User-Agent,Referer,Accept-Language</Property>
+        </Properties>
+    </HTTPTargetConnection>
 </TargetEndpoint>

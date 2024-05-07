@@ -12,7 +12,9 @@
     <Properties/>
     <FaultResponse>
         <Set>
-            <Headers/>
+            <Headers>
+              <Header name="Content-Type">application/fhir+json</Header>
+            </Headers>
             <StatusCode>401</StatusCode>
             <ReasonPhrase>Unauthorized</ReasonPhrase>
             <Payload>
@@ -35,7 +37,7 @@
                     }
                   ],
                   "resourceType": "OperationOutcome"
-                }          
+                }
             </Payload>
         </Set>
     </FaultResponse>

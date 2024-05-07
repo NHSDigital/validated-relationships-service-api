@@ -12,7 +12,9 @@
     <Properties/>
     <FaultResponse>
         <Set>
-            <Headers/>
+            <Headers>
+              <Header name="Content-Type">application/fhir+json</Header>
+            </Headers>
             <StatusCode>404</StatusCode>
             <ReasonPhrase>NotFound</ReasonPhrase>
             <Payload>
