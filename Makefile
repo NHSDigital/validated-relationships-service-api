@@ -56,7 +56,7 @@ release: clean publish build-proxy
 TEST_CMD := @APIGEE_ACCESS_TOKEN=$(APIGEE_ACCESS_TOKEN) \
 		poetry run pytest -v \
 		--color=yes \
-		--api-name=validated-relationships \
+		--api-name=validated-relationships-service-api \
 		--proxy-name=$(PROXY_NAME) \
 		-s
 
