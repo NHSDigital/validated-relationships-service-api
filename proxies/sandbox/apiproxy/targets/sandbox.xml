@@ -3,8 +3,11 @@
     <FaultRules/>
     <Flows/>
     <PostFlow name="PostFlow">
-        <Request/>
-        <Response/>
+        <Response>
+            <Step>
+                <Name>SetMimeType</Name>
+            </Step>
+        </Response>
     </PostFlow>
     <PreFlow name="PreFlow">
         <Request/>
@@ -17,6 +20,12 @@
           </Step>
         </Response>
     </PreFlow>
+    <DefaultFaultRule name="DefaultFaultRule">
+      <Step>
+        <Name>RaiseFault.DefaultError</Name>
+      </Step>
+      <AlwaysEnforce>true</AlwaysEnforce>
+    </DefaultFaultRule>
     <HTTPTargetConnection>
       {{ HOSTED_TARGET_CONNECTION }}
     </HTTPTargetConnection>
