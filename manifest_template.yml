@@ -12,11 +12,6 @@ APIGEE_ENVIRONMENTS:
     has_mock_auth: true
     rate_limit: 300
     spike_rate_limit: 600pm # 10 requests per second
-  - name: ref
-    display_name: Reference
-    has_mock_auth: true
-    rate_limit: 300
-    spike_rate_limit: 600pm # 10 requests per second
   - name: internal-dev-sandbox
     display_name: Internal Development Sandbox
     portal_visibility: false
