@@ -49,7 +49,7 @@ updates:
       day: "monday"
       time: "09:00"
     commit-message:
-      prefix: "pip "
+      prefix: "npm "
       include: scope
     groups:
       npm-dependencies:
