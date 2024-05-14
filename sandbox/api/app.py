@@ -3,7 +3,7 @@ from typing import Union
 
 from flask import Flask, request
 
-from .utils import check_for_errors, get_response
+import sandbox.api.utils as utils
 
 app = Flask(__name__)
 basicConfig(level=INFO, format="%(asctime)s - %(message)s")
@@ -31,38 +31,48 @@ def get_related_persons() -> Union[dict, tuple]:
 
     try:
         # Check Headers
-        if errors := check_for_errors(request):
+        if errors := utils.check_for_errors(request):
             return errors
 
+        identifier = request.args.get("identifier")
+        patient_identifier = request.args.get("patient:identifier")
+        include = request.args.get("_include")
+
+        if empty := utils.check_for_empty(identifier, patient_identifier):
+            return empty
+
         # Successful request, select response
-        if (
-            request.args.get("identifier")
-            and request.args.get("patient")
-            and request.args.get("_include") == "RelatedPerson:patient"
+        if zero_nine := utils.check_for_validate(
+            "9000000009",
+            identifier,
+            patient_identifier,
+            include,
+            utils.VALIDATE_RELATIONSHIP_009,
+            utils.VALIDATE_RELATIONSHIP_INCLUDE_009,
         ):
-            # Request with identifier, patient and _include=patient
-            return get_response(
-                "./api/responses/GET_RelatedPerson/identifier_and_patient_identifier_include.json"
-            )
-        elif request.args.get("identifier") and request.args.get("patient"):
-            # Request with identifier and patient
-            return get_response(
-                "./api/responses/GET_RelatedPerson/identifier_and_patient_identifier.json"
-            )
-        elif (
-            request.args.get("identifier")
-            and request.args.get("_include") == "RelatedPerson:patient"
+            return zero_nine
+
+        if two_five := utils.check_for_validate(
+            "9000000025",
+            identifier,
+            patient_identifier,
+            include,
+            utils.VALIDATE_RELATIONSHIP_025,
+            utils.VALIDATE_RELATIONSHIP_INCLUDE_025,
         ):
-            # Request with identifier and _include=patient
-            return get_response(
-                "./api/responses/GET_RelatedPerson/identifier_include.json"
-            )
-        elif request.args.get("identifier"):
-            # Request with identifier
-            return get_response("./api/responses/GET_RelatedPerson/identifier.json")
-        else:
-            raise ValueError("Invalid request")
+            return two_five
+
+        if one_seven := utils.check_for_list(
+            "9000000017",
+            identifier,
+            include,
+            utils.LIST_RELATIONSHIP,
+            utils.LIST_RELATIONSHIP_INCLUDE,
+        ):
+            return one_seven
+
+        raise ValueError("Invalid request")
 
     except Exception as e:
         logger.error(e)
-        return get_response("./api/responses/internal_server_error.json"), 500
+        return utils.generate_response(utils.load_json_file(utils.ERROR_RESPONSE), 500)
