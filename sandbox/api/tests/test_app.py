@@ -4,7 +4,7 @@ import pytest
 
 from .conftest import RELATED_PERSON_API_ENDPOINT
 
-FILE_PATH = "sandbox.api.app"
+FILE_PATH = "sandbox.api.utils"
 
 
 @pytest.mark.parametrize("endpoint", ["/_status", "/_ping", "/health"])
