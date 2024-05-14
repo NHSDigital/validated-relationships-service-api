@@ -1,19 +1,44 @@
 {
   "entry": [
     {
+      "fullUrl": "https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/9000000009",
+      "resource": {
+        "id": "9000000009",
+        "birthDate": "2017-09-23",
+        "identifier": [
+          {
+            "system": "https://fhir.nhs.uk/Id/nhs-number",
+            "value": "9000000009"
+          }
+        ],
+        "name": [
+          {
+            "id": "BLnbA",
+            "family": "MOGAJI",
+            "given": ["GADIL"],
+            "period": { "start": "2021-07-08" },
+            "prefix": ["MR"],
+            "use": "usual"
+          }
+        ],
+        "resourceType": "Patient"
+      },
+      "search": { "mode": "include" }
+    },
+    {
       "fullUrl": "https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742",
       "resource": {
         "id": "BE974742",
         "identifier": [
           {
             "system": "https://fhir.nhs.uk/Id/nhs-number",
-            "value": "4567891012"
+            "value": "9000000017"
           }
         ],
         "patient": {
           "identifier": {
             "system": "https://fhir.nhs.uk/Id/nhs-number",
-            "value": "3456789101"
+            "value": "9000000009"
           },
           "type": "Patient"
         },
@@ -32,6 +57,32 @@
       },
       "search": { "mode": "match" }
     },
+
+    {
+      "fullUrl": "https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/9000000025",
+      "resource": {
+        "id": "9000000025",
+        "birthDate": "2018-04-27",
+        "identifier": [
+          {
+            "system": "https://fhir.nhs.uk/Id/nhs-number",
+            "value": "9000000025"
+          }
+        ],
+        "name": [
+          {
+            "id": "vitjN",
+            "family": "FEARON",
+            "given": ["Daren"],
+            "period": { "start": "2018-09-21" },
+            "prefix": ["MR"],
+            "use": "usual"
+          }
+        ],
+        "resourceType": "Patient"
+      },
+      "search": { "mode": "include" }
+    },
     {
       "fullUrl": "https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/A3CC67E2",
       "resource": {
@@ -39,13 +90,13 @@
         "identifier": [
           {
             "system": "https://fhir.nhs.uk/Id/nhs-number",
-            "value": "4567891012"
+            "value": "9000000017"
           }
         ],
         "patient": {
           "identifier": {
             "system": "https://fhir.nhs.uk/Id/nhs-number",
-            "value": "5678910123"
+            "value": "9000000025"
           },
           "type": "Patient"
         },
@@ -68,11 +119,11 @@
   "link": [
     {
       "relation": "self",
-      "url": "sandbox"
+      "url": "https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson?identifier=9000000017&_include=RelatedPerson:patient"
     }
   ],
-  "timestamp": "2024-00-00T00:00:00+00:00",
-  "total": 2,
+  "timestamp": "2024-01-01T00:00:00+00:00",
+  "total": 4,
   "type": "searchset",
   "resourceType": "Bundle"
 }
