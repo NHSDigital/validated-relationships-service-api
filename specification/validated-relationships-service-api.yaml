@@ -272,7 +272,59 @@ components:
           description: The Questionnaire that defines and organizes the questions for which answers are being provided.
         item:
           type: array
-          description: A group or question item from the original questionnaire for which answers are provided.                
+          description: A group or question item from the original questionnaire for which answers are provided.
+          items:
+            oneOf:
+              - $ref: '#/components/schemas/QuestionnaireItem/ProxyDetails
+              # - $ref: '#/components/schemas/QuestionnaireItem/PatientDetails
+              # - $ref: '#/components/schemas/QuestionnaireItem/RequestedServices
+
+    QuestionnaireItem:
+      ProxyDetails:
+        type: object
+        properties:
+          linkId:
+          text:
+          item:
+            type: array
+            description: Proxy Details
+            items:
+              oneOf:
+                - type: object
+                  properties:
+                    linkId:
+                      type: string
+                      enum: ["proxy_details"]
+                    text:
+                      type: string
+                    item:
+                      type: array
+                      items:
+                        oneOf:
+                          - type: object
+                            properties:
+                              linkId:
+                                type: string
+                                enum ["nhs_number"]
+                              text:
+                                type: string
+                              answer:
+                                type: array
+                                items:
+                                  oneOf:
+                                    - type: object
+                                      properties:
+                                        valueString:
+                                          type: string
+      # PatientDetails:
+      #   type: object
+      #   properties:
+
+      # RequestedServices:
+      #   type: object
+      #   properties:
+
+      
     Relationship:
       type: object
       description: A FHIR searchset.
