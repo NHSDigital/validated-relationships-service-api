@@ -149,7 +149,7 @@ servers:
   - url: 'https://api.service.nhs.uk/validated-relationships/FHIR/R4'
     description: Production environment.
 paths:
-  /QuestionnaireResponse
+  /QuestionnaireResponse:
     post:
       summary: New Access request
       description: |
@@ -158,7 +158,7 @@ paths:
         Proxy Access Service and submitted as a QuestionaireResponse. 
         
         For the most part demographics information doesn't need to be provided in the access request since it can be pulled from PDS.
-    operationId: new-access-request
+      operationId: new-access-request
       requestBody:
         description: FHIR QuestionnaireResponse
         required: true
@@ -172,13 +172,13 @@ paths:
           content:
             application:fhir+/json:
               schema:
-                $ref: '#/components/schemas/OpearationOutcome'
+                $ref: '#/components/schemas/OperationOutcome'
         '400':
           description: Bad request
           content:
             application:fhir+/json:
               schema:
-                $ref: '#/components/schemas/OpearationOutcome'
+                $ref: '#/components/schemas/OperationOutcome'
 
   /RelatedPerson:
     get:
@@ -239,11 +239,11 @@ components:
           description: The FHIR resource type
           enum: ["QuestionnaireResponse"]
         status:
-          type: code
+          type: string
           description: The position of the questionnaire response within its overall lifecycle.
           enum: ["completed"]
         authored: 
-          type: dateTime
+          type: string
           description: The date and/or time that this set of answers were last changed.
           # On Confluence the example has this as a string but here:
           # https://simplifier.net/packages/hl7.fhir.r4.core/4.0.1/files/81730/~details
@@ -254,7 +254,6 @@ components:
           properties:
             type:
               type: string
-              description: 
               enum: [RelatedPerson] # Here: https://simplifier.net/packages/hl7.fhir.r4.core/4.0.1/files/81189/~details this looks like it should be a URI
             identifier:
               description: An identifier - identifies some entity uniquely and unambiguously. Typically this is used for business identifiers.
@@ -266,7 +265,7 @@ components:
                 value:
                   type: string
                   description: The patient's NHS number.
-                  example: "9000000009"
+                  example: "9000000001"
         questionnaire:
           type: string
           description: The Questionnaire that defines and organizes the questions for which answers are being provided.
@@ -275,54 +274,46 @@ components:
           description: A group or question item from the original questionnaire for which answers are provided.
           items:
             oneOf:
-              - $ref: '#/components/schemas/QuestionnaireItem/ProxyDetails
-              # - $ref: '#/components/schemas/QuestionnaireItem/PatientDetails
-              # - $ref: '#/components/schemas/QuestionnaireItem/RequestedServices
+              - $ref: '#/components/schemas/QuestionnaireItem_ProxyDetails'
+              # - $ref: '#/components/schemas/QuestionnaireItem/PatientDetails'
+              # - $ref: '#/components/schemas/QuestionnaireItem/RequestedServices'
 
-    QuestionnaireItem:
-      ProxyDetails:
-        type: object
-        properties:
-          linkId:
-          text:
-          item:
-            type: array
-            description: Proxy Details
-            items:
-              oneOf:
-                - type: object
-                  properties:
-                    linkId:
-                      type: string
-                      enum: ["proxy_details"]
-                    text:
-                      type: string
-                    item:
-                      type: array
-                      items:
-                        oneOf:
-                          - type: object
-                            properties:
-                              linkId:
-                                type: string
-                                enum ["nhs_number"]
-                              text:
-                                type: string
-                              answer:
-                                type: array
-                                items:
-                                  oneOf:
-                                    - type: object
-                                      properties:
-                                        valueString:
-                                          type: string
-      # PatientDetails:
-      #   type: object
-      #   properties:
+    QuestionnaireItem_ProxyDetails:
+      type: object
+      properties:
+        linkId:
+          type: string
+          enum: ["proxy_details"]
+        text:
+          type: string
+        item:
+          type: array
+          items:
+            oneOf:
+              - type: object
+                properties:
+                  linkId:
+                    type: string
+                    enum: ["nhs_number"]
+                  text:
+                    type: string
+                    example: "9000000001"
+                  answer:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            valueString:
+                              type: string
+                              example: "9000000005"
+    # PatientDetails:
+    #   type: object
+    #   properties:
 
-      # RequestedServices:
-      #   type: object
-      #   properties:
+    # RequestedServices:
+    #   type: object
+    #   properties:
 
       
     Relationship:
