@@ -1,0 +1,234 @@
+{
+	"info": {
+		"_postman_id": "a7ded7b6-5327-41f5-bf02-dcfe56d258c8",
+		"name": "Validate Relationship Service Sandbox",
+		"description": "Example usage of the Validate Relationship Service (VRS) sandbox.\n\nFull specification is available at [https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21394218"
+	},
+	"item": [
+		{
+			"name": "Validate Relationship",
+			"item": [
+				{
+					"name": "Relationship information",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_base_url}}/RelatedPerson?patient:identifier=9000000009&identifier=9000000017",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"RelatedPerson"
+							],
+							"query": [
+								{
+									"key": "patient:identifier",
+									"value": "9000000009"
+								},
+								{
+									"key": "identifier",
+									"value": "9000000017"
+								}
+							]
+						},
+						"description": "Returns information about the relationship between the two specified NHS numbers."
+					},
+					"response": []
+				},
+				{
+					"name": "Relationship with additional information",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_base_url}}/RelatedPerson?patient:identifier=9000000025&identifier=9000000017&_include=RelatedPerson:patient",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"RelatedPerson"
+							],
+							"query": [
+								{
+									"key": "patient:identifier",
+									"value": "9000000025"
+								},
+								{
+									"key": "identifier",
+									"value": "9000000017"
+								},
+								{
+									"key": "_include",
+									"value": "RelatedPerson:patient"
+								}
+							]
+						},
+						"description": "Returns information about the relationship between the two specified NHS numbers as well as the related patient record."
+					},
+					"response": []
+				}
+			],
+			"description": "Examples of validate relationship requests."
+		},
+		{
+			"name": "List Relationships",
+			"item": [
+				{
+					"name": "Relationship list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_base_url}}/RelatedPerson?identifier=9000000017",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"RelatedPerson"
+							],
+							"query": [
+								{
+									"key": "identifier",
+									"value": "9000000017"
+								}
+							]
+						},
+						"description": "Retrieves a list of validated relationships for a given NHS number."
+					},
+					"response": []
+				},
+				{
+					"name": "Relationship list with additional information",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_base_url}}/RelatedPerson?identifier=9000000017&_include=RelatedPerson:patient",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"RelatedPerson"
+							],
+							"query": [
+								{
+									"key": "identifier",
+									"value": "9000000017"
+								},
+								{
+									"key": "_include",
+									"value": "RelatedPerson:patient"
+								}
+							]
+						},
+						"description": "Retrieves a list of validated relationships for a given NHS number with additional patient information."
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid NHS number",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_base_url}}/RelatedPerson?identifier=12345678900",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"RelatedPerson"
+							],
+							"query": [
+								{
+									"key": "identifier",
+									"value": "12345678900"
+								}
+							]
+						},
+						"description": "Example of an error raised when the specified NHS number is not valid."
+					},
+					"response": []
+				},
+				{
+					"name": "No matching record",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_base_url}}/RelatedPerson?identifier=9000000041",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"RelatedPerson"
+							],
+							"query": [
+								{
+									"key": "identifier",
+									"value": "9000000041"
+								}
+							]
+						},
+						"description": "Example of a response where the given NHS number does not have any validated relationships."
+					},
+					"response": []
+				},
+				{
+					"name": "No relationships found",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_base_url}}/RelatedPerson?identifier=9000000033",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"RelatedPerson"
+							],
+							"query": [
+								{
+									"key": "identifier",
+									"value": "9000000033"
+								}
+							]
+						},
+						"description": "Example of a response where the given NHS numbers do not have a relationship."
+					},
+					"response": []
+				}
+			],
+			"description": "Examples of how to utilise the API to list relationships for a given NHS record."
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api_base_url",
+			"value": "https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4",
+			"type": "string"
+		}
+	]
+}
