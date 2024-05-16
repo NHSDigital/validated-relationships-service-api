@@ -177,6 +177,9 @@ paths:
             application:fhir+/json:
               schema:
                 $ref: '#/components/schemas/OperationOutcome'
+              examples:
+                postQuestionnaireResponseSuccess:
+                  $ref: '#/components/examples/PostQuestionnaireResponseSuccess'
         '400':
           description: Bad request
           content:
@@ -945,3 +948,13 @@ components:
                  version: "1"
                  code: "SERVER_ERROR"
                  display: "Failed to generate response"
+    PostQuestionnaireResponseSuccess:
+      value:
+        resourceType: "OperationOutcome"
+        issue: 
+          - severity: information
+            code: informational
+            details:
+              coding:
+               - code: "HDJ2123F"
+                 display: "HDJ2123F"    
