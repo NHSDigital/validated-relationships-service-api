@@ -189,7 +189,7 @@ paths:
         "500":
           description: Internal server error
           content:
-            application/json:
+            application/fhir+json:
               schema:
                 $ref: '#/components/schemas/OperationOutcome'
               examples:  
@@ -223,7 +223,7 @@ paths:
         "200":
           description: Information successfully returned.
           content:
-            application/json:
+            application/fhir+json:
               schema:
                 $ref: "#/components/schemas/Relationship"
         "4XX":
@@ -242,13 +242,13 @@ paths:
             | 429         | `THROTTLED`                       | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
       
           content:
-            application/json:
+            application/fhir+json:
               schema:
                 $ref: '#/components/schemas/OperationOutcome'
         "500":
           description: Internal server error
           content:
-            application/json:
+            application/fhir+json:
               schema:
                 $ref: '#/components/schemas/OperationOutcome'
               examples:  
