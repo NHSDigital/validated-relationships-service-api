@@ -384,10 +384,10 @@ components:
                 properties:
                   linkId:
                     type: string
-                    enum: ["first_name"]
+                    enum: ["last_name"]
                   text:
                     type: string
-                    example: "First Name"
+                    example: "Last Name"
                   answer:
                     type: array
                     items:
