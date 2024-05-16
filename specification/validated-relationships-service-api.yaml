@@ -3,7 +3,7 @@
 openapi: '3.0.0'
 info:
   title: 'Validated Relationships Service API'
-  version: '1.0.0'
+  version: '1.1.0'
   description: |
     ## Overview
     Use this API to access the Validated Relationships Service - the national electronic database of relationships
@@ -149,6 +149,53 @@ servers:
   - url: 'https://api.service.nhs.uk/validated-relationships/FHIR/R4'
     description: Production environment.
 paths:
+  /QuestionnaireResponse:
+    post:
+      summary: New Access request
+      description: |
+        ## Overview
+        For any new access request, the necessary details should be collected from a user facing service e.g. 
+        Proxy Access Service and submitted as a QuestionaireResponse. 
+        
+        For the most part demographics information doesn't need to be provided in the access request since it can be pulled from PDS.
+      operationId: new-access-request
+      parameters:
+        - $ref: "#/components/parameters/BearerAuthorization"
+        - $ref: "#/components/parameters/RequestID"
+        - $ref: "#/components/parameters/CorrelationID"
+      requestBody:
+        description: FHIR QuestionnaireResponse
+        required: true
+        content:
+          application/fhir+json:
+            schema:
+              $ref: '#/components/schemas/QuestionnaireResponse'
+      responses:
+        '200':
+          description: Request was received successfully for processing
+          content:
+            application:fhir+/json:
+              schema:
+                $ref: '#/components/schemas/OperationOutcome'
+              examples:
+                postQuestionnaireResponseSuccess:
+                  $ref: '#/components/examples/PostQuestionnaireResponseSuccess'
+        '400':
+          description: Bad request
+          content:
+            application:fhir+/json:
+              schema:
+                $ref: '#/components/schemas/OperationOutcome'
+        "500":
+          description: Internal server error
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/OperationOutcome'
+              examples:  
+                internalServerError:
+                  $ref: '#/components/examples/InternalServerError'
+
   /RelatedPerson:
     get:
       summary: Get validated relationships
@@ -193,12 +240,252 @@ paths:
             | 401         | `ACCESS_DENIED`                   | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
             | 408         | `TIMEOUT`                         | Request timed out.                                                                                                                        |
             | 429         | `THROTTLED`                       | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
+      
           content:
             application/fhir+json:
               schema:
                 $ref: '#/components/schemas/OperationOutcome'
+        "500":
+          description: Internal server error
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/OperationOutcome'
+              examples:  
+                internalServerError:
+                  $ref: '#/components/examples/InternalServerError'
 components:
   schemas:
+    QuestionnaireResponse:
+      type: object
+      description: A FHIR QuestionnaireResponse
+      properties:
+        resourceType:
+          type: string
+          description: The FHIR resource type
+          enum: ["QuestionnaireResponse"]
+        status:
+          type: string
+          description: The position of the questionnaire response within its overall lifecycle.
+          enum: ["completed"]
+        authored: 
+          type: string
+          description: The date and/or time that this set of answers were last changed.
+          # On Confluence the example has this as a string but here:
+          # https://simplifier.net/packages/hl7.fhir.r4.core/4.0.1/files/81730/~details
+          # it looks like an object
+        source: 
+          type: object
+          description: The person who answered the questions about the subject.
+          properties:
+            type:
+              type: string
+              enum: [RelatedPerson] # Here: https://simplifier.net/packages/hl7.fhir.r4.core/4.0.1/files/81189/~details this looks like it should be a URI
+            identifier:
+              description: An identifier - identifies some entity uniquely and unambiguously. Typically this is used for business identifiers.
+              properties:
+                system:
+                  type: string
+                  description: Codesystem URL for the patient's NHS number.
+                  enum: ["https://fhir.nhs.uk/Id/nhs-number"]
+                value:
+                  type: string
+                  description: The patient's NHS number.
+                  example: "9000000001"
+        questionnaire:
+          type: string
+          description: The Questionnaire that defines and organizes the questions for which answers are being provided.
+        item:
+          type: array
+          description: A group or question item from the original questionnaire for which answers are provided.
+          items:
+            oneOf:
+              - $ref: '#/components/schemas/QuestionnaireItem_ProxyDetails'
+              - $ref: '#/components/schemas/QuestionnaireItem_PatientDetails'
+              - $ref: '#/components/schemas/QuestionnaireItem_RequestedServices'
+
+    QuestionnaireItem_ProxyDetails:
+      type: object
+      properties:
+        linkId:
+          type: string
+          enum: ["proxy_details"]
+        text:
+          type: string
+        item:
+          type: array
+          items:
+            oneOf:
+              - type: object
+                properties:
+                  linkId:
+                    type: string
+                    enum: ["nhs_number"]
+                  text:
+                    type: string
+                    example: "NHS Number"
+                  answer:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            valueString:
+                              type: string
+                              example: "9000000005"
+              - type: object
+                properties:
+                  linkId:
+                    type: string
+                    enum: ["relationship"]
+                  text:
+                    type: string
+                    example: "Relationship"
+                  answer:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            valueCoding:
+                              type: object
+                              properties:
+                                system:
+                                  type: string
+                                  enum: ['http://terminology.hl7.org/CodeSystem/v3-RoleCode']
+                                code:
+                                  type: string
+                                  enum: ['PRN', 'Personal']
+                                display:
+                                  type: string
+                                  example: "Personal"
+                                  
+    QuestionnaireItem_PatientDetails:
+      type: object
+      properties:
+        linkId:
+          type: string
+          enum: ["patient_details"]
+        text:
+          type: string
+        item:
+          type: array
+          items:
+            oneOf:
+              - type: object
+                properties:
+                  linkId:
+                    type: string
+                    enum: ["nhs_number"]
+                  text:
+                    type: string
+                    example: "NHS Number"
+                  answer:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            valueString:
+                              type: string
+                              example: "9000000006"
+              - type: object
+                properties:
+                  linkId:
+                    type: string
+                    enum: ["first_name"]
+                  text:
+                    type: string
+                    example: "First Name"
+                  answer:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            valueString:
+                              type: string
+                              example: "Timmy"
+              - type: object
+                properties:
+                  linkId:
+                    type: string
+                    enum: ["last_name"]
+                  text:
+                    type: string
+                    example: "Last Name"
+                  answer:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            valueString:
+                              type: string
+                              example: "Tenenbaum"
+              - type: object
+                properties:
+                  linkId:
+                    type: string
+                    enum: ["date_of_birth"]
+                  text:
+                    type: string
+                    example: "Date pf Birth"
+                  answer:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            valueString:
+                              type: string
+                              example: "2020-10-22"
+              - type: object
+                properties:
+                  linkId:
+                    type: string
+                    enum: ["postcode"]
+                  text:
+                    type: string
+                    example: "Postcode"
+                  answer:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            valueString:
+                              type: string
+                              example: "LS1 4AP"
+
+    QuestionnaireItem_RequestedServices:
+      type: object
+      properties:
+        linkId:
+          type: string
+          enum: ["requested_services"]
+        text:
+          type: string
+          example: "Requested services"
+        answer:
+          type: array
+          items:
+            anyOf:
+              - type: object
+                properties:
+                  valueCoding:
+                    type: object
+                    properties:
+                      system:
+                        type: string
+                        enum: ['http://terminology.hl7.org/CodeSystem/consentaction']
+                      code:
+                        type: string
+                        enum: ['appointments','medicines','records','demographics']
+                      display:
+                        type: string
+                        example: "manage appointments"
+      
     Relationship:
       type: object
       description: A FHIR searchset.
@@ -646,3 +933,28 @@ components:
         format: uuid
         pattern: "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
         example: 11C46F5F-CDEF-4865-94B2-0EE0EDCC26DA
+
+  examples:
+    InternalServerError:
+      value:
+        resourceType: "OperationOutcome"
+        issue: 
+          - severity: error
+            code: invalid
+            diagnostics: "Internal Server Error - Failed to generate response is present in the response"          
+            details:
+              coding:
+               - system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
+                 version: "1"
+                 code: "SERVER_ERROR"
+                 display: "Failed to generate response"
+    PostQuestionnaireResponseSuccess:
+      value:
+        resourceType: "OperationOutcome"
+        issue: 
+          - severity: information
+            code: informational
+            details:
+              coding:
+               - code: "HDJ2123F"
+                 display: "HDJ2123F"    
