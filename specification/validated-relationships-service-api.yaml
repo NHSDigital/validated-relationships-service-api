@@ -159,6 +159,10 @@ paths:
         
         For the most part demographics information doesn't need to be provided in the access request since it can be pulled from PDS.
       operationId: new-access-request
+      parameters:
+        - $ref: "#/components/parameters/BearerAuthorization"
+        - $ref: "#/components/parameters/RequestID"
+        - $ref: "#/components/parameters/CorrelationID"
       requestBody:
         description: FHIR QuestionnaireResponse
         required: true
@@ -179,6 +183,15 @@ paths:
             application:fhir+/json:
               schema:
                 $ref: '#/components/schemas/OperationOutcome'
+        "500":
+          description: Internal server error
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/OperationOutcome'
+              examples:  
+                internalServerError:
+                  $ref: '#/components/examples/InternalServerError'
 
   /RelatedPerson:
     get:
@@ -224,10 +237,20 @@ paths:
             | 401         | `ACCESS_DENIED`                   | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
             | 408         | `TIMEOUT`                         | Request timed out.                                                                                                                        |
             | 429         | `THROTTLED`                       | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
+      
           content:
             application/fhir+json:
               schema:
                 $ref: '#/components/schemas/OperationOutcome'
+        "500":
+          description: Internal server error
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/OperationOutcome'
+              examples:  
+                internalServerError:
+                  $ref: '#/components/examples/InternalServerError'
 components:
   schemas:
     QuestionnaireResponse:
@@ -907,3 +930,18 @@ components:
         format: uuid
         pattern: "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
         example: 11C46F5F-CDEF-4865-94B2-0EE0EDCC26DA
+
+  examples:
+    InternalServerError:
+      value:
+        resourceType: "OperationOutcome"
+        issue: 
+          - severity: error
+            code: invalid
+            diagnostics: "Internal Server Error - Failed to generate response is present in the response"          
+            details:
+              coding:
+               - system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
+                 version: "1"
+                 code: "SERVER_ERROR"
+                 display: "Failed to generate response"
