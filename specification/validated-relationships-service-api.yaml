@@ -180,8 +180,18 @@ paths:
               examples:
                 postQuestionnaireResponseSuccess:
                   $ref: '#/components/examples/PostQuestionnaireResponseSuccess'
-        '400':
-          description: Bad request
+        "4XX":
+          description: |
+            Errors will be returned for the first error encountered in the request. An error occurred as follows:
+
+            | HTTP status | Error code      | Description                                                                                                                               |
+            | ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+            | 400         | `BAD_REQUEST`   | Bad request.                                                                                                                              |
+            | 400         | `NOT_SUPPORTED` | The request is not currently supported.                                                                                                   |
+            | 401         | `ACCESS_DENIED` | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
+            | 408         | `TIMEOUT`       | Request timed out.                                                                                                                        |
+            | 429         | `THROTTLED`     | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
+          
           content:
             application/fhir+json:
               schema:
