@@ -275,8 +275,8 @@ components:
           items:
             oneOf:
               - $ref: '#/components/schemas/QuestionnaireItem_ProxyDetails'
-              # - $ref: '#/components/schemas/QuestionnaireItem/PatientDetails'
-              # - $ref: '#/components/schemas/QuestionnaireItem/RequestedServices'
+              - $ref: '#/components/schemas/QuestionnaireItem_PatientDetails'
+              - $ref: '#/components/schemas/QuestionnaireItem_RequestedServices'
 
     QuestionnaireItem_ProxyDetails:
       type: object
@@ -297,7 +297,7 @@ components:
                     enum: ["nhs_number"]
                   text:
                     type: string
-                    example: "9000000001"
+                    example: "NHS Number"
                   answer:
                     type: array
                     items:
@@ -307,14 +307,158 @@ components:
                             valueString:
                               type: string
                               example: "9000000005"
-    # PatientDetails:
-    #   type: object
-    #   properties:
+              - type: object
+                properties:
+                  linkId:
+                    type: string
+                    enum: ["relationship"]
+                  text:
+                    type: string
+                    example: "Relationship"
+                  answer:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            valueCoding:
+                              type: object
+                              properties:
+                                system:
+                                  type: string
+                                  enum: ['http://terminology.hl7.org/CodeSystem/v3-RoleCode']
+                                code:
+                                  type: string
+                                  enum: ['PRN', 'Personal']
+                                display:
+                                  type: string
+                                  example: "Personal"
+                                  
+    QuestionnaireItem_PatientDetails:
+      type: object
+      properties:
+        linkId:
+          type: string
+          enum: ["patient_details"]
+        text:
+          type: string
+        item:
+          type: array
+          items:
+            oneOf:
+              - type: object
+                properties:
+                  linkId:
+                    type: string
+                    enum: ["nhs_number"]
+                  text:
+                    type: string
+                    example: "NHS Number"
+                  answer:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            valueString:
+                              type: string
+                              example: "9000000006"
+              - type: object
+                properties:
+                  linkId:
+                    type: string
+                    enum: ["first_name"]
+                  text:
+                    type: string
+                    example: "First Name"
+                  answer:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            valueString:
+                              type: string
+                              example: "Timmy"
+              - type: object
+                properties:
+                  linkId:
+                    type: string
+                    enum: ["first_name"]
+                  text:
+                    type: string
+                    example: "First Name"
+                  answer:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            valueString:
+                              type: string
+                              example: "Tenenbaum"
+              - type: object
+                properties:
+                  linkId:
+                    type: string
+                    enum: ["date_of_birth"]
+                  text:
+                    type: string
+                    example: "Date pf Birth"
+                  answer:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            valueString:
+                              type: string
+                              example: "2020-10-22"
+              - type: object
+                properties:
+                  linkId:
+                    type: string
+                    enum: ["postcode"]
+                  text:
+                    type: string
+                    example: "Postcode"
+                  answer:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            valueString:
+                              type: string
+                              example: "LS1 4AP"
 
-    # RequestedServices:
-    #   type: object
-    #   properties:
-
+    QuestionnaireItem_RequestedServices:
+      type: object
+      properties:
+        linkId:
+          type: string
+          enum: ["requested_services"]
+        text:
+          type: string
+          example: "Requested services"
+        answer:
+          type: array
+          items:
+            anyOf:
+              - type: object
+                properties:
+                  valueCoding:
+                    type: object
+                    properties:
+                      system:
+                        type: string
+                        enum: ['http://terminology.hl7.org/CodeSystem/consentaction']
+                      code:
+                        type: string
+                        enum: ['appointments','medicines','records','demographics']
+                      display:
+                        type: string
+                        example: "manage appointments"
       
     Relationship:
       type: object
