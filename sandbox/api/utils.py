@@ -26,6 +26,10 @@ VALIDATE_RELATIONSHIP_INCLUDE_025 = (
 ERROR_RESPONSE = "./api/responses/internal_server_error.json"
 INCLUDE_FLAG = "RelatedPerson:patient"
 
+QUESTIONNAIRE_RESPONSE_SUCCESS = (
+    "./api/responses/POST_QuestionnaireResponse/questionnaire_response_success.json"
+)
+
 PATIENT_IDENTIFIERS = ["9000000017", "9000000033"]
 RELATED_IDENTIFIERS = ["9000000009", "9000000025"]
 
