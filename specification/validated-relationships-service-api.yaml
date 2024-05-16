@@ -174,7 +174,7 @@ paths:
         '200':
           description: Request was received successfully for processing
           content:
-            application:fhir+/json:
+            application:fhir+json:
               schema:
                 $ref: '#/components/schemas/OperationOutcome'
               examples:
@@ -183,7 +183,7 @@ paths:
         '400':
           description: Bad request
           content:
-            application:fhir+/json:
+            application:fhir+json:
               schema:
                 $ref: '#/components/schemas/OperationOutcome'
         "500":
