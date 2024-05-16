@@ -17,6 +17,10 @@
             <Step>
                 <Name>AddUserNHSNumber</Name>
             </Step>
+            <Step>
+                <Name>SetRequestAWSMimeType</Name>
+                <Condition>request.header.Content-Type = "application/fhir+json"</Condition>
+            </Step>
         </Request>
     </PreFlow>
     <PostFlow>
