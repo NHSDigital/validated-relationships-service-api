@@ -158,6 +158,11 @@ paths:
         Proxy Access Service and submitted as a QuestionaireResponse. 
         
         For the most part demographics information doesn't need to be provided in the access request since it can be pulled from PDS.
+
+        ## Sandbox test scenarios
+
+        For details of sandbox test scenarios, or to try out the sandbox using our 'Try it out' feature, see the documentation for each endpoint.
+
       operationId: new-access-request
       parameters:
         - $ref: "#/components/parameters/BearerAuthorization"
