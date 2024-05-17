@@ -3,7 +3,7 @@ from typing import Optional
 
 from flask import request, Response
 
-NOT_FOUND = "./api/responses/GET_RelatedPerson/not_found.json"
+NOT_FOUND = "./api/responses/not_found.json"
 EMPTY_RESPONSE = "./api/responses/GET_RelatedPerson/empty_response_9000000033.json"
 LIST_RELATIONSHIP = (
     "./api/responses/GET_RelatedPerson/list_relationship_9000000017.json"

@@ -103,8 +103,7 @@ def post_questionnaire_response() -> Union[dict, tuple]:
     """
 
     try:
-        generate_response(load_json_file(QUESTIONNAIRE_RESPONSE_SUCCESS), 200)
-
+        return generate_response(load_json_file(QUESTIONNAIRE_RESPONSE_SUCCESS), 200)
     except Exception as e:
         logger.error(e)
         return generate_response(load_json_file(ERROR_RESPONSE), 500)
