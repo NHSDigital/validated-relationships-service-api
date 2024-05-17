@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "baa50c46-c6a2-4203-89ed-fa97e9afc872",
+		"_postman_id": "85ee4695-8528-4e6e-82a6-29c4bea26a6d",
 		"name": "Validate Relationship Service Sandbox",
 		"description": "Example usage of the Validate Relationship Service (VRS) sandbox.\n\nFull specification is available at [https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -205,40 +205,40 @@
 		},
 		{
 			"name": "Questionnaire Response",
-			"item": []
-		},
-		{
-			"name": "Questionnaire Response",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/fhir+json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"resourceType\": \"QuestionnaireResponse\",\n  \"status\": \"completed\",\n  \"authored\": \"2024-03-24T16:32:12.363Z\",\n  \"source\": {    \n    \"type\": \"RelatedPerson\",\n    \"identifier\": \"9000000001\"            \n  },\n  \"item\": [\n    {\n      \"linkId\": \"proxy_details\",\n      \"text\": \"Proxy details\",\n      \"item\": [\n        {\n          \"linkId\": \"nhs_number\",\n          \"text\": \"NHS Number\",\n          \"answer\": [           \n            {\n              \"valueString\": \"9000000001\"\n            }\n          ]\n        },\n        {\n          \"linkId\": \"relationship\",\n          \"text\": \"Relationship\",\n          \"answer\": [\n            {\n              \"valueCoding\": {\n                \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",\n                \"code\": \"PRN\",\n                \"display\": \"Parent\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"linkId\": \"patient_details\",\n      \"text\": \"Patient details\",\n      \"item\": [\n        {\n          \"linkId\": \"nhs_number\",\n          \"text\": \"NHS Number\",\n          \"answer\": [\n            {\n              \"valueString\": \"9000000002\"\n            }\n          ]\n        },\n        {\n          \"linkId\": \"first_name\",\n          \"text\": \"First Name\",\n          \"answer\": [\n            {\n              \"valueString\": \"Timmy\"\n            }\n          ]\n        },\n        {\n          \"linkId\": \"last_name\",\n          \"text\": \"Last name\",\n          \"answer\": [\n            {\n              \"valueString\": \"Tenenbaum\"\n            }\n          ]\n        },\n        {\n          \"linkId\": \"date_of_birth\",\n          \"text\": \"Date of Birth\",\n          \"answer\": [\n            {\n              \"valueDate\": \"2020-10-22\"\n            }\n          ]\n        },\n        {\n          \"linkId\": \"postcode\",\n          \"text\": \"Postcode\",\n          \"answer\": [\n            {\n              \"valueString\": \"LS1 4AP\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"linkId\": \"requested_services\",\n      \"text\": \"Requested services\",\n      \"answer\": [\n        {\n          \"valueCoding\": {\n            \"system\": \"http://terminology.hl7.org/CodeSystem/consentaction\",\n            \"code\": \"appointments\",\n            \"display\": \"manage appointments\"\n          }\n        },\n        {\n          \"valueCoding\": {\n            \"system\": \"http://terminology.hl7.org/CodeSystem/consentaction\",\n            \"code\": \"medicines\",\n            \"display\": \"manage medicines\"\n          }\n        },\n        {\n          \"valueCoding\": {\n            \"system\": \"http://terminology.hl7.org/CodeSystem/consentaction\",\n            \"code\": \"records\",\n            \"display\": \"access medical records\"\n          }\n        },\n        {\n          \"valueCoding\": {\n            \"system\": \"http://terminology.hl7.org/CodeSystem/consentaction\",\n            \"code\": \"demographics\",\n            \"display\": \"manage demographics and contact details\"\n          }\n        }\n      ]\n    }\n  ]\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{api_base_url}}/QuestionnaireResponse",
-					"host": [
-						"{{api_base_url}}"
-					],
-					"path": [
-						"QuestionnaireResponse"
-					]
-				},
-				"description": "Example of a response where the given NHS numbers do not have a relationship."
-			},
-			"response": []
+			"item": [
+				{
+					"name": "Questionnaire Response",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/fhir+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"resourceType\": \"QuestionnaireResponse\",\n  \"status\": \"completed\",\n  \"authored\": \"2024-03-24T16:32:12.363Z\",\n  \"source\": {    \n    \"type\": \"RelatedPerson\",\n    \"identifier\": \"9000000001\"            \n  },\n  \"item\": [\n    {\n      \"linkId\": \"proxy_details\",\n      \"text\": \"Proxy details\",\n      \"item\": [\n        {\n          \"linkId\": \"nhs_number\",\n          \"text\": \"NHS Number\",\n          \"answer\": [           \n            {\n              \"valueString\": \"9000000001\"\n            }\n          ]\n        },\n        {\n          \"linkId\": \"relationship\",\n          \"text\": \"Relationship\",\n          \"answer\": [\n            {\n              \"valueCoding\": {\n                \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",\n                \"code\": \"PRN\",\n                \"display\": \"Parent\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"linkId\": \"patient_details\",\n      \"text\": \"Patient details\",\n      \"item\": [\n        {\n          \"linkId\": \"nhs_number\",\n          \"text\": \"NHS Number\",\n          \"answer\": [\n            {\n              \"valueString\": \"9000000002\"\n            }\n          ]\n        },\n        {\n          \"linkId\": \"first_name\",\n          \"text\": \"First Name\",\n          \"answer\": [\n            {\n              \"valueString\": \"Timmy\"\n            }\n          ]\n        },\n        {\n          \"linkId\": \"last_name\",\n          \"text\": \"Last name\",\n          \"answer\": [\n            {\n              \"valueString\": \"Tenenbaum\"\n            }\n          ]\n        },\n        {\n          \"linkId\": \"date_of_birth\",\n          \"text\": \"Date of Birth\",\n          \"answer\": [\n            {\n              \"valueDate\": \"2020-10-22\"\n            }\n          ]\n        },\n        {\n          \"linkId\": \"postcode\",\n          \"text\": \"Postcode\",\n          \"answer\": [\n            {\n              \"valueString\": \"LS1 4AP\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"linkId\": \"requested_services\",\n      \"text\": \"Requested services\",\n      \"answer\": [\n        {\n          \"valueCoding\": {\n            \"system\": \"http://terminology.hl7.org/CodeSystem/consentaction\",\n            \"code\": \"appointments\",\n            \"display\": \"manage appointments\"\n          }\n        },\n        {\n          \"valueCoding\": {\n            \"system\": \"http://terminology.hl7.org/CodeSystem/consentaction\",\n            \"code\": \"medicines\",\n            \"display\": \"manage medicines\"\n          }\n        },\n        {\n          \"valueCoding\": {\n            \"system\": \"http://terminology.hl7.org/CodeSystem/consentaction\",\n            \"code\": \"records\",\n            \"display\": \"access medical records\"\n          }\n        },\n        {\n          \"valueCoding\": {\n            \"system\": \"http://terminology.hl7.org/CodeSystem/consentaction\",\n            \"code\": \"demographics\",\n            \"display\": \"manage demographics and contact details\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_base_url}}/QuestionnaireResponse",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"QuestionnaireResponse"
+							]
+						},
+						"description": "Example of a response where the given NHS numbers do not have a relationship."
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [
