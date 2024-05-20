@@ -2,9 +2,10 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from .conftest import RELATED_PERSON_API_ENDPOINT
+from .conftest import RELATED_PERSON_API_ENDPOINT, QUESTIONNAIRE_RESPONSE_API_ENDPOINT
 
-FILE_PATH = "sandbox.api.utils"
+UTILS_FILE_PATH = "sandbox.api.utils"
+APP_FILE_PATH = "sandbox.api.app"
 
 
 @pytest.mark.parametrize("endpoint", ["/_status", "/_ping", "/health"])
@@ -25,12 +26,12 @@ def test_health_check(client: object, endpoint: str) -> None:
     [
         (
             "identifier=9000000041",
-            "./api/responses/GET_RelatedPerson/not_found.json",
+            "./api/responses/not_found.json",
             404,
         ),
         (
             "identifier=9000000017&patient:identifier=9000000041",
-            "./api/responses/GET_RelatedPerson/not_found.json",
+            "./api/responses/not_found.json",
             404,
         ),
         (
@@ -85,9 +86,9 @@ def test_health_check(client: object, endpoint: str) -> None:
         ),
     ],
 )
-@patch(f"{FILE_PATH}.load_json_file")
+@patch(f"{UTILS_FILE_PATH}.load_json_file")
 def test_related_person(
-    mock_get_response: MagicMock,
+    mock_load_json_file: MagicMock,
     request_args: str,
     response_file_name: str,
     client: object,
@@ -95,10 +96,39 @@ def test_related_person(
 ) -> None:
     """Test related_persons endpoint with identifier only."""
     # Arrange
-    mock_get_response.return_value = expected_body = {"data": "mocked"}
+    mock_load_json_file.return_value = expected_body = {"data": "mocked"}
     # Act
     response = client.get(f"{RELATED_PERSON_API_ENDPOINT}?{request_args}")
     # Assert
-    mock_get_response.assert_called_once_with(response_file_name)
+    mock_load_json_file.assert_called_once_with(response_file_name)
+    assert response.status_code == status_code
+    assert response.json == expected_body
+
+
+@pytest.mark.parametrize(
+    "url_path,response_file_name,status_code",
+    [
+        (
+            QUESTIONNAIRE_RESPONSE_API_ENDPOINT,
+            "./api/responses/POST_QuestionnaireResponse/questionnaire_response_success.json",
+            200,
+        ),
+    ],
+)
+@patch(f"{APP_FILE_PATH}.load_json_file")
+def test_questionnaire_response(
+    mock_load_json_file: MagicMock,
+    url_path: str,
+    response_file_name: str,
+    client: object,
+    status_code: int,
+) -> None:
+    """Test related_persons endpoint with identifier only."""
+    # Arrange
+    mock_load_json_file.return_value = expected_body = {"data": "mocked"}
+    # Act
+    response = client.post(url_path, json={"data": "mocked"})
+    # Assert
+    mock_load_json_file.assert_called_once_with(response_file_name)
     assert response.status_code == status_code
     assert response.json == expected_body

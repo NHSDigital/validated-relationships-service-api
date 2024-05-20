@@ -4,17 +4,18 @@ from typing import Union
 from flask import Flask, request
 
 from .utils import (
-    VALIDATE_RELATIONSHIP_009,
-    VALIDATE_RELATIONSHIP_INCLUDE_009,
-    VALIDATE_RELATIONSHIP_025,
-    VALIDATE_RELATIONSHIP_INCLUDE_025,
+    ERROR_RESPONSE,
     LIST_RELATIONSHIP,
     LIST_RELATIONSHIP_INCLUDE,
-    ERROR_RESPONSE,
-    check_for_errors,
+    QUESTIONNAIRE_RESPONSE_SUCCESS,
+    VALIDATE_RELATIONSHIP_009,
+    VALIDATE_RELATIONSHIP_025,
+    VALIDATE_RELATIONSHIP_INCLUDE_009,
+    VALIDATE_RELATIONSHIP_INCLUDE_025,
     check_for_empty,
-    check_for_validate,
+    check_for_errors,
     check_for_list,
+    check_for_validate,
     generate_response,
     load_json_file,
 )
@@ -22,6 +23,7 @@ from .utils import (
 app = Flask(__name__)
 basicConfig(level=INFO, format="%(asctime)s - %(message)s")
 logger = getLogger(__name__)
+COMMON_PATH = "FHIR/R4"
 
 
 @app.route("/_status", methods=["GET"])
@@ -35,7 +37,7 @@ def health() -> dict:
     }
 
 
-@app.route("/FHIR/R4/RelatedPerson", methods=["GET"])
+@app.route(f"/{COMMON_PATH}/RelatedPerson", methods=["GET"])
 def get_related_persons() -> Union[dict, tuple]:
     """Sandbox API for GET /RelatedPerson
 
@@ -87,6 +89,21 @@ def get_related_persons() -> Union[dict, tuple]:
 
         raise ValueError("Invalid request")
 
+    except Exception as e:
+        logger.error(e)
+        return generate_response(load_json_file(ERROR_RESPONSE), 500)
+
+
+@app.route(f"/{COMMON_PATH}/QuestionnaireResponse", methods=["POST"])
+def post_questionnaire_response() -> Union[dict, tuple]:
+    """Sandbox API for POST /QuestionnaireResponse
+
+    Returns:
+        Union[dict, tuple]: Response for POST /QuestionnaireResponse
+    """
+
+    try:
+        return generate_response(load_json_file(QUESTIONNAIRE_RESPONSE_SUCCESS), 200)
     except Exception as e:
         logger.error(e)
         return generate_response(load_json_file(ERROR_RESPONSE), 500)

@@ -14,8 +14,7 @@
               ]
           },
           "diagnostics": "The 'identifier' parameter is required",
-          "severity": "error",
-          "expression": ["RelatedPerson.identifier"]
+          "severity": "error"
       }
   ],
   "resourceType": "OperationOutcome"

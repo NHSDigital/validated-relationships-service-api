@@ -1,0 +1,17 @@
+{
+  "resourceType": "OperationOutcome",
+  "issue": [
+    {
+      "severity": "information",
+      "code": "informational",
+      "details": {
+        "coding": [
+          {
+            "code": "HDJ2123F",
+            "display": "HDJ2123F"
+          }
+        ]
+      }
+    }
+  ]
+}

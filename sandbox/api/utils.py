@@ -3,7 +3,7 @@ from typing import Optional
 
 from flask import request, Response
 
-NOT_FOUND = "./api/responses/GET_RelatedPerson/not_found.json"
+NOT_FOUND = "./api/responses/not_found.json"
 EMPTY_RESPONSE = "./api/responses/GET_RelatedPerson/empty_response_9000000033.json"
 LIST_RELATIONSHIP = (
     "./api/responses/GET_RelatedPerson/list_relationship_9000000017.json"
@@ -25,6 +25,10 @@ VALIDATE_RELATIONSHIP_INCLUDE_025 = (
 )
 ERROR_RESPONSE = "./api/responses/internal_server_error.json"
 INCLUDE_FLAG = "RelatedPerson:patient"
+
+QUESTIONNAIRE_RESPONSE_SUCCESS = (
+    "./api/responses/POST_QuestionnaireResponse/questionnaire_response_success.json"
+)
 
 PATIENT_IDENTIFIERS = ["9000000017", "9000000033"]
 RELATED_IDENTIFIERS = ["9000000009", "9000000025"]

@@ -2,7 +2,9 @@ import pytest
 
 from ..app import app
 
-RELATED_PERSON_API_ENDPOINT = "/FHIR/R4/RelatedPerson"
+FHIR_PATH = "/FHIR/R4"
+RELATED_PERSON_API_ENDPOINT = f"{FHIR_PATH}/RelatedPerson"
+QUESTIONNAIRE_RESPONSE_API_ENDPOINT = f"{FHIR_PATH}/QuestionnaireResponse"
 
 
 @pytest.fixture()

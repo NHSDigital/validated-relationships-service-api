@@ -13,8 +13,7 @@
               ]
           },
           "diagnostics": "The identifier system is not valid.",
-          "severity": "error",
-          "expression": ["identifier"]
+          "severity": "error"
       }
   ],
   "resourceType": "OperationOutcome"
