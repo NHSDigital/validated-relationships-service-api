@@ -23,7 +23,6 @@
             </Step>
             <Step>
                 <Name>SetRequestAWSMimeType</Name>
-                <Condition>(request.verb = "GET") or ((request.verb = "POST") and (request.header.Content-Type = "application/fhir+json"))</Condition>
             </Step>
         </Request>
     </PreFlow>
@@ -46,6 +45,12 @@
                 <Name>RaiseFault.404NotFound</Name>
             </Step>
             <Condition>response.header.x-amzn-ErrorType = "IncompleteSignatureException"</Condition>
+        </FaultRule>
+        <FaultRule name="ApplicationOperationOutcome">
+            <Step>
+                <Name>RaiseFault.ApplicationOperationOutcome</Name>
+                <Condition>response.header.x-amzn-RequestId != null</Condition>
+            </Step>
         </FaultRule>
     </FaultRules>
     <HTTPTargetConnection>
