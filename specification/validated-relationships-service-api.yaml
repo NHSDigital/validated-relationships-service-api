@@ -198,6 +198,7 @@ paths:
             | 404         | `INVALIDATED_RESOURCE` | Resource that has been marked as invalid was requested - invalid resources cannot be retrieved                                            |
             | 405         | `METHOD_NOT_ALLOWED`   | The method is not allowed.                                                                                                                |
             | 408         | `TIMEOUT`              | Request timed out.                                                                                                                        |
+            | 415         | `UNSUPPORTED_MEDIA`    | Unsupported media type.                                                                                                                    |
             | 429         | `THROTTLED`            | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
           
           content:

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ This policy raises a 415 error response for an invalid media type request.
+
+ Raisefault policies stop the execution of the current flow and move to the error flow, which returns the error response defined here to the requesting application.
+
+ For more information on RaiseFault policies within Apigee see the following resource:
+    * https://docs.apigee.com/api-platform/reference/policies/raise-fault-policy
+-->
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RaiseFault.415UnsupportedMediaType">
+    <DisplayName>RaiseFault.415UnsupportedMediaType</DisplayName>
+    <Properties/>
+    <FaultResponse>
+        <Set>
+            <Headers>
+              <Header name="Content-Type">application/fhir+json</Header>
+            </Headers>
+            <StatusCode>415</StatusCode>
+            <ReasonPhrase>UnsupportedMediaType</ReasonPhrase>
+            <Payload>
+              {
+                "issue": [
+                  {
+                    "code": "not-supported",
+                    "details": {
+                      "coding": [
+                        {
+                          "code": "UNSUPPORTED_MEDIA_TYPE",
+                          "display": "Unsupported Media Type.",
+                          "system": "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode",
+                          "version": "1"
+                        }
+                      ]
+                    },
+                    "diagnostics": "Unsupported Media Type.",
+                    "severity": "error"
+                  }
+                ],
+                "resourceType": "OperationOutcome"
+              }
+            </Payload>
+        </Set>
+    </FaultResponse>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>
