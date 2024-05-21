@@ -1,19 +1,32 @@
-## Summary
-* Routine Change
-* :exclamation: Breaking Change
-* :robot: Operational or Infrastructure Change
-* :sparkles: New Feature
-* :warning: Potential issues that might be caused by this change
+## Pull Request Checklist
 
-Add any other relevant notes or explanations here. **Remove this line if you have nothing to add.**
+## Ticket Link
 
+<!-- Add the Jira ticket link here -->
+https://nhsd-jira.digital.nhs.uk/browse/NPA-XXXX
 
-## Reviews Required
-* [x] Dev
-* [ ] Test
-* [ ] Tech Author
-* [ ] Product Owner
+## Description/Change Summary
 
+<!-- Describe the changes made in this PR -->
+
+-
+-
+-
+
+# How to test?
+<!--- Describe in detail how you tested your changes -->
+<!--- Include details of your testing environment and the tests you ran to see how your change affects other areas of the code etc. -->
+<!--- Are there any automated tests that mean changes don't need to be manually changed? -->
+
+-
+-
+-
+
+<!--
+Stages to complete before opening the Pull Request:
+- PR title should be formatted in the following structure `NPA-XXXXX: title abc`
+- Added yourself/others as Assignees
+-->
 
 ## Review Checklist
 :information_source: This section is to be filled in by the **reviewer**.
