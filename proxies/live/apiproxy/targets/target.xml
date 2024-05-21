@@ -18,8 +18,12 @@
                 <Name>AddUserNHSNumber</Name>
             </Step>
             <Step>
+                <Name>RaiseFault.415UnsupportedMediaType</Name>
+                <Condition>request.verb = "POST" and request.header.Content-Type != "application/fhir+json"</Condition>
+            </Step>
+            <Step>
                 <Name>SetRequestAWSMimeType</Name>
-                <Condition>request.header.Content-Type = "application/fhir+json"</Condition>
+                <Condition>(request.verb = "GET") or ((request.verb = "POST") and (request.header.Content-Type = "application/fhir+json"))</Condition>
             </Step>
         </Request>
     </PreFlow>
@@ -44,12 +48,6 @@
             <Condition>response.header.x-amzn-ErrorType = "IncompleteSignatureException"</Condition>
         </FaultRule>
     </FaultRules>
-    <DefaultFaultRule name="DefaultFaultRule">
-      <Step>
-        <Name>RaiseFault.DefaultError</Name>
-      </Step>
-      <AlwaysEnforce>true</AlwaysEnforce>
-    </DefaultFaultRule>
     <HTTPTargetConnection>
         <LoadBalancer>
             <Server name="validated-relationships-service-api"/>
