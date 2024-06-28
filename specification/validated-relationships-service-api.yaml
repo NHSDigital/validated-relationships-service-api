@@ -175,6 +175,9 @@ paths:
           application/fhir+json:
             schema:
               $ref: '#/components/schemas/QuestionnaireResponse'
+          application/fhir+json; charset=utf-8:
+            schema: 
+              $ref: '#/components/schemas/QuestionnaireResponse'
       responses:
         '200':
           description: Request was received successfully for processing
