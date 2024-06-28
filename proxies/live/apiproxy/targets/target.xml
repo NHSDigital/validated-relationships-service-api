@@ -19,7 +19,7 @@
             </Step>
             <Step>
                 <Name>RaiseFault.415UnsupportedMediaType</Name>
-                <Condition>request.verb = "POST" and request.header.Content-Type != "application/fhir+json" or request.verb = "POST" and request.header.Content-Type != "application/fhir+json; charset=utf-8"</Condition>
+                <Condition>request.verb = "POST" and request.header.Content-Type != "application/fhir+json" and request.verb = "POST" and request.header.Content-Type != "application/fhir+json; charset=utf-8"</Condition>
             </Step>
             <Step>
                 <Name>SetRequestAWSMimeType</Name>
