@@ -3,7 +3,7 @@
 openapi: '3.0.0'
 info:
   title: 'Validated Relationships Service API'
-  version: '1.1.0'
+  version: '1.2.0'
   description: |
     ## Overview
     Use this API to access the Validated Relationships Service - the national electronic database of relationships
@@ -296,6 +296,7 @@ components:
         authored: 
           type: string
           description: The date and/or time that this set of answers were last changed.
+          example: "2024-06-23 11:23:22"
           # On Confluence the example has this as a string but here:
           # https://simplifier.net/packages/hl7.fhir.r4.core/4.0.1/files/81730/~details
           # it looks like an object
@@ -326,6 +327,7 @@ components:
           items:
             oneOf:
               - $ref: '#/components/schemas/QuestionnaireItem_ProxyDetails'
+              - $ref: '#/components/schemas/QuestionnaireItem_ParentalDetails'
               - $ref: '#/components/schemas/QuestionnaireItem_PatientDetails'
               - $ref: '#/components/schemas/QuestionnaireItem_RequestedServices'
 
@@ -362,6 +364,40 @@ components:
                 properties:
                   linkId:
                     type: string
+                    enum: ["nhs_login_email"]
+                  text:
+                    type: string
+                    example: "NHS Login Email"
+                  answer:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            valueString:
+                              type: string
+                              example: "tim@nhs.net"
+              - type: object
+                properties:
+                  linkId:
+                    type: string
+                    enum: ["nhs_login_mobile"]
+                  text:
+                    type: string
+                    example: "NHS Login Mobile Number"
+                  answer:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            valueString:
+                              type: string
+                              example: "07123456718"
+              - type: object
+                properties:
+                  linkId:
+                    type: string
                     enum: ["relationship"]
                   text:
                     type: string
@@ -380,11 +416,152 @@ components:
                                   enum: ['http://terminology.hl7.org/CodeSystem/v3-RoleCode']
                                 code:
                                   type: string
-                                  enum: ['PRN', 'Personal']
+                                  enum: ['Parent', 'Child', 'Partner, wife or husband', 'Other family member', 'Friend, neighbour or housemate', 'Paid carer or support worker', 'Other']
                                 display:
                                   type: string
-                                  example: "Personal"
-                                  
+                                  example: "Parent"
+
+    QuestionnaireItem_ParentalDetails:
+      type: object
+      properties:
+        linkId:
+          type: string
+          enum: ["parental_details"]
+        text:
+          type: string
+        item:
+          type: array
+          items:
+            oneOf:
+              - type: object
+                properties:
+                  linkId:
+                    type: string
+                    enum: ["proof_of_responsibility"]
+                  text:
+                    type: string
+                    example: "Proof of responsibility"
+                  answer:
+                    type: array
+                    items:
+                      anyOf:
+                        - type: object
+                          properties:
+                            valueCoding:
+                              type: object
+                              properties:
+                                system:
+                                  type: string
+                                  enum: ['http://terminology.hl7.org/CodeSystem/consentaction']
+                                code:
+                                  type: string
+                                  enum: ['Birth certificate','Adoption certificate','Court-witnessed parental responsibility agreement','Court-witnessed step-parent parental responsibility agreement','Parental order','Special guardianship order','Other court order','Other','I do not have proof of parental responsibility']
+                                display:
+                                  type: string
+                                  example: "Other court order"
+              - type: object
+                properties:
+                  linkId:
+                    type: string
+                    enum: ["proof_of_responsibility_moreinfo"]
+                  text:
+                    type: string
+                    example: "Proof of responsibility - further information"
+                  answer:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            valueString:
+                              type: string
+                              example: "Birth Certificate is original"
+              - type: object
+                properties:
+                  linkId:
+                    type: string
+                    enum: ["is_current_address_confirmed"]
+                  text:
+                    type: string
+                    example: "Is current address confirmed?"
+                  answer:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            valueString:
+                              type: string
+                              example: "Yes"                                    
+              - type: object
+                properties:
+                  linkId:
+                    type: string
+                    enum: ["new_address_entered"]
+                  text:
+                    type: string
+                    example: "New address entered by applicant?"
+                  answer:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            valueString:
+                              type: string
+                              example: "No"
+              - type: object
+                properties:
+                  linkId:
+                    type: string
+                    enum: ["adult_and_child_at_same_address"]
+                  text:
+                    type: string
+                    example: "Do the adult and child live at the same address?"
+                  answer:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            valueString:
+                              type: string
+                              example: "Yes"
+              - type: object
+                properties:
+                  linkId:
+                    type: string
+                    enum: ["can_child_consent"]
+                  text:
+                    type: string
+                    example: "Can the child consent?"
+                  answer:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            valueString:
+                              type: string
+                              example: "No"
+              - type: object
+                properties:
+                  linkId:
+                    type: string
+                    enum: ["reason_child_cannot_consent"]
+                  text:
+                    type: string
+                    example: "Reason the child cannot consent?"
+                  answer:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            valueString:
+                              type: string
+                              example: "Child is too young"
+
     QuestionnaireItem_PatientDetails:
       type: object
       properties:
@@ -455,7 +632,7 @@ components:
                     enum: ["date_of_birth"]
                   text:
                     type: string
-                    example: "Date pf Birth"
+                    example: "Date of Birth"
                   answer:
                     type: array
                     items:
@@ -465,14 +642,50 @@ components:
                             valueString:
                               type: string
                               example: "2020-10-22"
+
+    QuestionnaireItem_RequestedServices:
+      type: object
+      properties:
+        linkId:
+          type: string
+          enum: ["requested_access"]
+        text:
+          type: string
+        item:
+          type: array
+          items:
+            oneOf:
               - type: object
                 properties:
                   linkId:
                     type: string
-                    enum: ["postcode"]
+                    enum: ["requested_access_level"]
                   text:
                     type: string
-                    example: "Postcode"
+                    example: "Requested access level"
+                  answer:
+                    type: array
+                    items:
+                      anyOf:
+                        - type: object
+                          properties:
+                            valueCoding:
+                              type: object
+                              properties:
+                                code:
+                                  type: string
+                                  enum: ['Order repeat prescriptions','Books appointments','Contact the surgery or speak to surgery staff','View test results','View vaccinations','Access detailed medical records']
+                                display:
+                                  type: string
+                                  example: "Order repeat prescriptions"
+              - type: object
+                properties:
+                  linkId:
+                    type: string
+                    enum: ["requested_access_level_moreinfo"]
+                  text:
+                    type: string
+                    example: "Requested access level - further information"
                   answer:
                     type: array
                     items:
@@ -481,36 +694,48 @@ components:
                           properties:
                             valueString:
                               type: string
-                              example: "LS1 4AP"
-
-    QuestionnaireItem_RequestedServices:
-      type: object
-      properties:
-        linkId:
-          type: string
-          enum: ["requested_services"]
-        text:
-          type: string
-          example: "Requested services"
-        answer:
-          type: array
-          items:
-            anyOf:
+                              example: "Needed for day to day care"
               - type: object
                 properties:
-                  valueCoding:
-                    type: object
-                    properties:
-                      system:
-                        type: string
-                        enum: ['http://terminology.hl7.org/CodeSystem/consentaction']
-                      code:
-                        type: string
-                        enum: ['appointments','medicines','records','demographics']
-                      display:
-                        type: string
-                        example: "manage appointments"
-      
+                  linkId:
+                    type: string
+                    enum: ["reason_for_access"]
+                  text:
+                    type: string
+                    example: "Reason for access"
+                  answer:
+                    type: array
+                    items:
+                      anyOf:
+                        - type: object
+                          properties:
+                            valueCoding:
+                              type: object
+                              properties:
+                                code:
+                                  type: string
+                                  enum: ['They have problems using technology','They find it hard to speak to staff','They have a physical condition','They are neurodiverse','They have a learning disability','For convenience or practical reasons','Other','Prefer not to say']
+                                display:
+                                  type: string
+                                  example: "They have problems using technology"
+              - type: object
+                properties:
+                  linkId:
+                    type: string
+                    enum: ["reason_for_access_moreinfo"]
+                  text:
+                    type: string
+                    example: "Reason for access - further information"
+                  answer:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            valueString:
+                              type: string
+                              example: "No internet connection"
+
     Relationship:
       type: object
       description: A FHIR searchset.
