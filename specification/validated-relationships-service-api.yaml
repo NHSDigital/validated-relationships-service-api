@@ -279,6 +279,7 @@ paths:
               examples:  
                 internalServerError:
                   $ref: '#/components/examples/InternalServerError'
+
 components:
   schemas:
     QuestionnaireResponse:
@@ -296,7 +297,7 @@ components:
         authored: 
           type: string
           description: The date and/or time that this set of answers were last changed.
-          example: "2024-06-23 11:23:22"
+          example: "2024-07-15T09:43:03.280Z"
           # On Confluence the example has this as a string but here:
           # https://simplifier.net/packages/hl7.fhir.r4.core/4.0.1/files/81730/~details
           # it looks like an object
@@ -318,25 +319,44 @@ components:
                   type: string
                   description: The patient's NHS number.
                   example: "9000000001"
+        subject: 
+          type: object
+          description: The person who is the subject.
+          properties:
+            type:
+              type: string
+              enum: [Patient] # Here: https://simplifier.net/packages/hl7.fhir.r4.core/4.0.1/files/81189/~details this looks like it should be a URI
+            identifier:
+              description: An identifier - identifies some entity uniquely and unambiguously. Typically this is used for business identifiers.
+              properties:
+                system:
+                  type: string
+                  description: Codesystem URL for the subject's NHS number.
+                  enum: ["https://fhir.nhs.uk/Id/nhs-number"]
+                value:
+                  type: string
+                  description: The subject's NHS number.
+                  example: "9000000002"
         questionnaire:
           type: string
           description: The Questionnaire that defines and organizes the questions for which answers are being provided.
+          example: "Questionnaire/01dc6813-3421-4d14-948d-a4888241add1"
         item:
           type: array
           description: A group or question item from the original questionnaire for which answers are provided.
           items:
             oneOf:
-              - $ref: '#/components/schemas/QuestionnaireItem_ProxyDetails'
-              - $ref: '#/components/schemas/QuestionnaireItem_ParentalDetails'
-              - $ref: '#/components/schemas/QuestionnaireItem_PatientDetails'
-              - $ref: '#/components/schemas/QuestionnaireItem_RequestedServices'
+              - $ref: '#/components/schemas/QuestionnaireItem_RelatedPerson'
+              - $ref: '#/components/schemas/QuestionnaireItem_ParentalApplicationSupplementaryDetails'
+              - $ref: '#/components/schemas/QuestionnaireItem_Patient'
+              - $ref: '#/components/schemas/QuestionnaireItem_RequestedAccess'
 
-    QuestionnaireItem_ProxyDetails:
+    QuestionnaireItem_RelatedPerson:
       type: object
       properties:
         linkId:
           type: string
-          enum: ["proxy_details"]
+          enum: ["relatedPerson"]
         text:
           type: string
         item:
@@ -347,7 +367,7 @@ components:
                 properties:
                   linkId:
                     type: string
-                    enum: ["nhs_number"]
+                    enum: ["relatedPerson_identifier"]
                   text:
                     type: string
                     example: "NHS Number"
@@ -359,15 +379,67 @@ components:
                           properties:
                             valueString:
                               type: string
-                              example: "9000000005"
+                              example: "9000000001"
+
+              - type: object
+                properties:
+                  relatedPerson_name:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            linkId:
+                              type: string
+                              enum: ["relatedPerson_name_given"]
+                            text:
+                              type: string
+                              example: "Given names, including any middle names."
+                            answer:
+                              type: array
+                              items:
+                                oneOf:
+                                  - type: object
+                                    properties:
+                                      valueString:
+                                        type: array
+                                        description: |
+                                          Each name(s) should be a separate item in the list. The first given name may include multiple names, separated by a space.
+                                          Subsequent names must be broken down into list items. For example, the input `[Jane Marie Anne, Jo Adele]` returns `[Jane Marie Anne, Jo, Adele]`.
+
+                                        maxItems: 5                                  
+                                        example: [Sharon Melissa]
+                                        items:
+                                          type: string
+                                          maxLength: 35
+                                          example: Sharon
+
+                        - type: object
+                          properties:
+                            linkId:
+                              type: string
+                              enum: ["relatedPerson_name_family"]
+                            text:
+                              type: string
+                              example: "Family name (often called Surname)."
+                            answer:
+                              type: array
+                              items:
+                                oneOf:
+                                  - type: object
+                                    properties:
+                                      valueString:
+                                        type: string
+                                        example: "Smith"
+
               - type: object
                 properties:
                   linkId:
                     type: string
-                    enum: ["nhs_login_email"]
+                    enum: ["relatedPerson_birthDate"]
                   text:
                     type: string
-                    example: "NHS Login Email"
+                    example: "Date of Birth"
                   answer:
                     type: array
                     items:
@@ -376,29 +448,46 @@ components:
                           properties:
                             valueString:
                               type: string
-                              example: "tim@nhs.net"
+                              example: "1994-03-21"
+
               - type: object
                 properties:
                   linkId:
                     type: string
-                    enum: ["nhs_login_mobile"]
+                    enum: ["relatedPerson_basisForAccess"]
                   text:
                     type: string
-                    example: "NHS Login Mobile Number"
+                    example: "Basis For Access"
                   answer:
                     type: array
                     items:
                       oneOf:
                         - type: object
                           properties:
-                            valueString:
-                              type: string
-                              example: "07123456718"
+                            valueCoding:
+                              type: object
+                              properties:
+                                system:
+                                  type: string
+                                  enum:
+                                    [
+                                      "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                                      "https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole",
+                                      "https://fhir.nhs.uk/STU3/CodeSystem/RARecord-ProxyRole-1"
+                                    ]                                
+                                code:
+                                  type: string
+                                  enum: ['PRN', 'Personal', '002']
+                                display:
+                                  type: string
+                                  description: FHIR relationship type.
+                                  enum: ['Parent', 'Personal relationship with the patient', 'Best interest decision made on behalf of the patient (Mental Capacity Act 2005)']
+
               - type: object
                 properties:
                   linkId:
                     type: string
-                    enum: ["relationship"]
+                    enum: ["relatedPerson_relationship"]
                   text:
                     type: string
                     example: "Relationship"
@@ -413,20 +502,26 @@ components:
                               properties:
                                 system:
                                   type: string
-                                  enum: ['http://terminology.hl7.org/CodeSystem/v3-RoleCode']
+                                  enum:
+                                    [
+                                      "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                                      "http://terminology.hl7.org/CodeSystem/v3-RoleClass",
+                                      "https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole"
+                                    ]                                
                                 code:
                                   type: string
-                                  enum: ['Parent', 'Child', 'Partner, wife or husband', 'Other family member', 'Friend, neighbour or housemate', 'Paid carer or support worker', 'Other']
+                                  enum: ['PRN', 'CHILD', 'SPS', 'FAMMEMB', 'FRND', 'CAREGIVER', 'SIGOTHR']
                                 display:
                                   type: string
-                                  example: "Parent"
+                                  description: FHIR relationship type.
+                                  enum: ['Parent', 'Child', 'Partner, wife or husband', 'Other family member', 'Friend, neighbour or housemate', 'Paid carer or support worker', 'Other']
 
-    QuestionnaireItem_ParentalDetails:
+    QuestionnaireItem_ParentalApplicationSupplementaryDetails:
       type: object
       properties:
         linkId:
           type: string
-          enum: ["parental_details"]
+          enum: ["parentalApplicationSupplementaryDetails"]
         text:
           type: string
         item:
@@ -437,14 +532,14 @@ components:
                 properties:
                   linkId:
                     type: string
-                    enum: ["proof_of_responsibility"]
+                    enum: ["parentalApplicationSupplementaryDetails_evidenceOfResponsibility"]
                   text:
                     type: string
-                    example: "Proof of responsibility"
+                    example: "Evidence of parental responsibility"
                   answer:
                     type: array
                     items:
-                      anyOf:
+                      oneOf:
                         - type: object
                           properties:
                             valueCoding:
@@ -452,21 +547,23 @@ components:
                               properties:
                                 system:
                                   type: string
-                                  enum: ['http://terminology.hl7.org/CodeSystem/consentaction']
+                                  enum: ["https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-EvidenceOfResponsibility"]                                
                                 code:
                                   type: string
-                                  enum: ['Birth certificate','Adoption certificate','Court-witnessed parental responsibility agreement','Court-witnessed step-parent parental responsibility agreement','Parental order','Special guardianship order','Other court order','Other','I do not have proof of parental responsibility']
+                                  enum: ['BRTH', 'ADPT', 'PRNA', 'SPRNA', 'PORD', 'SGORD', 'OTHCOURT', 'OTHR' ]
                                 display:
                                   type: string
-                                  example: "Other court order"
+                                  description: FHIR relationship type.
+                                  enum: ['Birth certificate', 'Adoption certificate', 'Court-witnessed parental responsibility agreement','Court-witnessed step-parent parental responsibility agreement', 'Parental order', 'Special guardianship order', 'Other court order', 'Other' ]
+
               - type: object
                 properties:
                   linkId:
                     type: string
-                    enum: ["proof_of_responsibility_moreinfo"]
+                    enum: ["parentalApplicationSupplementaryDetails_evidenceOfResponsibilityMoreinfo"]
                   text:
                     type: string
-                    example: "Proof of responsibility - further information"
+                    example: "Evidence of responsibility - Further Information"
                   answer:
                     type: array
                     items:
@@ -480,7 +577,7 @@ components:
                 properties:
                   linkId:
                     type: string
-                    enum: ["is_current_address_confirmed"]
+                    enum: ["parentalApplicationSupplementaryDetails_isCurrentAddressConfirmed"]
                   text:
                     type: string
                     example: "Is current address confirmed?"
@@ -493,28 +590,122 @@ components:
                             valueString:
                               type: string
                               example: "Yes"                                    
+
               - type: object
                 properties:
-                  linkId:
-                    type: string
-                    enum: ["new_address_entered"]
-                  text:
-                    type: string
-                    example: "New address entered by applicant?"
-                  answer:
+                  parentalApplicationSupplementaryDetails_newAddress:
                     type: array
                     items:
                       oneOf:
                         - type: object
                           properties:
-                            valueString:
+                            linkId:
                               type: string
-                              example: "No"
+                              enum: ["parentalApplicationSupplementaryDetails_line1"]
+                            text:
+                              type: string
+                              example: "Address Line 1"
+                            answer:
+                              type: array
+                              items:
+                                oneOf:
+                                  - type: object
+                                    properties:
+                                      valueString:
+                                        type: string
+                                        example: "24 Hoves Edge"
+                        - type: object
+                          properties:
+                            linkId:
+                              type: string
+                              enum: ["parentalApplicationSupplementaryDetails_line2"]
+                            text:
+                              type: string
+                              example: "Address Line 2"
+                            answer:
+                              type: array
+                              items:
+                                oneOf:
+                                  - type: object
+                                    properties:
+                                      valueString:
+                                        type: string
+                                        example: "Remington"
+                        - type: object
+                          properties:
+                            linkId:
+                              type: string
+                              enum: ["parentalApplicationSupplementaryDetails_line3"]
+                            text:
+                              type: string
+                              example: "Address Line 3"
+                            answer:
+                              type: array
+                              items:
+                                oneOf:
+                                  - type: object
+                                    properties:
+                                      valueString:
+                                        type: string
+                                        example: "Boroughbridge"
+
+                        - type: object
+                          properties:
+                            linkId:
+                              type: string
+                              enum: ["parentalApplicationSupplementaryDetails_city"]
+                            text:
+                              type: string
+                              example: "Town / City"
+                            answer:
+                              type: array
+                              items:
+                                oneOf:
+                                  - type: object
+                                    properties:
+                                      valueString:
+                                        type: string
+                                        example: "Leeds"
+                        - type: object
+                          properties:
+                            linkId:
+                              type: string
+                              enum: ["parentalApplicationSupplementaryDetails_district"]
+                            text:
+                              type: string
+                              example: "County"
+                            answer:
+                              type: array
+                              items:
+                                oneOf:
+                                  - type: object
+                                    properties:
+                                      valueString:
+                                        type: string
+                                        example: "West Yorkshire"
+                        - type: object
+                          properties:
+                            linkId:
+                              type: string
+                              enum: ["parentalApplicationSupplementaryDetails_postalCode"]
+                            text:
+                              type: string
+                              example: "Postcode"
+                            answer:
+                              type: array
+                              items:
+                                oneOf:
+                                  - type: object
+                                    properties:
+                                      valueString:
+                                        type: string
+                                        example: "LS1 1DW "
+
               - type: object
                 properties:
                   linkId:
                     type: string
-                    enum: ["adult_and_child_at_same_address"]
+                    enum: ["parentalApplicationSupplementaryDetails_liveAtSameAddress"]
                   text:
                     type: string
                     example: "Do the adult and child live at the same address?"
@@ -527,11 +718,12 @@ components:
                             valueString:
                               type: string
                               example: "Yes"
+
               - type: object
                 properties:
                   linkId:
                     type: string
-                    enum: ["can_child_consent"]
+                    enum: ["parentalApplicationSupplementaryDetails_canChildConsent"]
                   text:
                     type: string
                     example: "Can the child consent?"
@@ -548,10 +740,10 @@ components:
                 properties:
                   linkId:
                     type: string
-                    enum: ["reason_child_cannot_consent"]
+                    enum: ["parentalApplicationSupplementaryDetails_reasonNoChildConsent"]
                   text:
                     type: string
-                    example: "Reason the child cannot consent?"
+                    example: "Reason the child cannot consent"
                   answer:
                     type: array
                     items:
@@ -562,12 +754,12 @@ components:
                               type: string
                               example: "Child is too young"
 
-    QuestionnaireItem_PatientDetails:
+    QuestionnaireItem_Patient:
       type: object
       properties:
         linkId:
           type: string
-          enum: ["patient_details"]
+          enum: ["patient"]
         text:
           type: string
         item:
@@ -578,7 +770,7 @@ components:
                 properties:
                   linkId:
                     type: string
-                    enum: ["nhs_number"]
+                    enum: ["patient_identifier"]
                   text:
                     type: string
                     example: "NHS Number"
@@ -590,46 +782,64 @@ components:
                           properties:
                             valueString:
                               type: string
-                              example: "9000000006"
+                              example: "9000000002"
+
               - type: object
                 properties:
-                  linkId:
-                    type: string
-                    enum: ["first_name"]
-                  text:
-                    type: string
-                    example: "First Name"
-                  answer:
+                  patient_name:
                     type: array
                     items:
                       oneOf:
                         - type: object
                           properties:
-                            valueString:
+                            linkId:
                               type: string
-                              example: "Timmy"
-              - type: object
-                properties:
-                  linkId:
-                    type: string
-                    enum: ["last_name"]
-                  text:
-                    type: string
-                    example: "Last Name"
-                  answer:
-                    type: array
-                    items:
-                      oneOf:
+                              enum: ["patient_name_given"]
+                            text:
+                              type: string
+                              example: "Given names, including any middle names."
+                            answer:
+                              type: array
+                              items:
+                                oneOf:
+                                  - type: object
+                                    properties:
+                                      valueString:
+                                        type: array
+                                        description: |
+                                          Each name(s) should be a separate item in the list. The first given name may include multiple names, separated by a space.
+                                          Subsequent names must be broken down into list items. For example, the input `[Jane Marie Anne, Jo Adele]` returns `[Jane Marie Anne, Jo, Adele]`.
+
+                                        maxItems: 5                                  
+                                        example: [Jane Marie Anne]
+                                        items:
+                                          type: string
+                                          maxLength: 35
+                                          example: Jane
+
                         - type: object
                           properties:
-                            valueString:
+                            linkId:
                               type: string
-                              example: "Tenenbaum"
+                              enum: ["patient_name_family"]
+                            text:
+                              type: string
+                              example: "Family name (often called Surname)."
+                            answer:
+                              type: array
+                              items:
+                                oneOf:
+                                  - type: object
+                                    properties:
+                                      valueString:
+                                        type: string
+                                        example: "Smith"
+
               - type: object
                 properties:
                   linkId:
                     type: string
-                    enum: ["date_of_birth"]
+                    enum: ["patient_birthDate"]
                   text:
                     type: string
                     example: "Date of Birth"
@@ -643,12 +853,12 @@ components:
                               type: string
                               example: "2020-10-22"
 
-    QuestionnaireItem_RequestedServices:
+    QuestionnaireItem_RequestedAccess:
       type: object
       properties:
         linkId:
           type: string
-          enum: ["requested_access"]
+          enum: ["requestedAccess"]
         text:
           type: string
         item:
@@ -659,30 +869,24 @@ components:
                 properties:
                   linkId:
                     type: string
-                    enum: ["requested_access_level"]
+                    enum: ["requestedAccess_accessLevel"]
                   text:
                     type: string
                     example: "Requested access level"
                   answer:
                     type: array
                     items:
-                      anyOf:
+                      oneOf:
                         - type: object
                           properties:
-                            valueCoding:
-                              type: object
-                              properties:
-                                code:
-                                  type: string
-                                  enum: ['Order repeat prescriptions','Books appointments','Contact the surgery or speak to surgery staff','View test results','View vaccinations','Access detailed medical records']
-                                display:
-                                  type: string
-                                  example: "Order repeat prescriptions"
+                            valueString:
+                              type: string
+                              example: "Order repeat prescriptions"
               - type: object
                 properties:
                   linkId:
                     type: string
-                    enum: ["requested_access_level_moreinfo"]
+                    enum: ["requestedAccess_accessLevelMoreinfo"]
                   text:
                     type: string
                     example: "Requested access level - further information"
@@ -693,36 +897,39 @@ components:
                         - type: object
                           properties:
                             valueString:
-                              type: string
-                              example: "Needed for day to day care"
+                              type: array
+                              description: Each requested access level should be a separate item in the list
+                              example: ["Order repeat prescriptions","View test results"]
+                              items:
+                                type: string
+                                example: "View test results"
               - type: object
                 properties:
                   linkId:
                     type: string
-                    enum: ["reason_for_access"]
+                    enum: ["requestedAccess_reasonsForAccess"]
                   text:
                     type: string
                     example: "Reason for access"
                   answer:
                     type: array
                     items:
-                      anyOf:
+                      oneOf:
                         - type: object
                           properties:
-                            valueCoding:
-                              type: object
-                              properties:
-                                code:
-                                  type: string
-                                  enum: ['They have problems using technology','They find it hard to speak to staff','They have a physical condition','They are neurodiverse','They have a learning disability','For convenience or practical reasons','Other','Prefer not to say']
-                                display:
-                                  type: string
-                                  example: "They have problems using technology"
+                            valueString:
+                              type: array
+                              description: Each reason for access should be a separate item in the list
+                              example: ["They have problems using technology","They find it hard to speak to staff"]
+                              items:
+                                type: string
+                                example: "They have problems using technology"
+                                
               - type: object
                 properties:
                   linkId:
                     type: string
-                    enum: ["reason_for_access_moreinfo"]
+                    enum: ["requestedAccess_reasonsForAccessMoreinfo"]
                   text:
                     type: string
                     example: "Reason for access - further information"
@@ -880,6 +1087,7 @@ components:
                 - include
                 - outcome
               example: match
+
     Patient:
       type: object
       description: The patient's details.
@@ -1010,6 +1218,7 @@ components:
                 - include
                 - outcome
               example: include
+
     OperationOutcome:
       type: object
       description: |
@@ -1104,6 +1313,8 @@ components:
                 type: string
                 description: FHIRPath of element(s) related to the error.
                 example: RelatedPerson.identifier
+
+
   parameters:
     RelatedPersonIdentifier:
       in: query
