@@ -538,6 +538,7 @@ components:
                     example: "Evidence of parental responsibility"
                   answer:
                     type: array
+                    description: A multiple option selection where multiple items of evidence can be selected
                     items:
                       oneOf:
                         - type: object
@@ -865,6 +866,8 @@ components:
           type: array
           items:
             oneOf:
+
+
               - type: object
                 properties:
                   linkId:
@@ -875,13 +878,25 @@ components:
                     example: "Requested access level"
                   answer:
                     type: array
+                    description: A multiple option selection where multiple access levels can be selected
                     items:
                       oneOf:
                         - type: object
                           properties:
-                            valueString:
-                              type: string
-                              example: "Order repeat prescriptions"
+                            valueCoding:
+                              type: object
+                              properties:
+                                system:
+                                  type: string
+                                  enum: ["https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"]                                
+                                code:
+                                  type: string
+                                  enum: ['APPT', 'CNTCT', 'RECRD', 'TEST', 'VACC', 'PRESCR']
+                                display:
+                                  type: string
+                                  description: FHIR Requested access level.
+                                  enum: ['Appointment Booking', 'Contacting Surgery', 'Medical Records Access', 'Test Results', 'Vaccination Records', 'Repeat Prescription Requests']
+
               - type: object
                 properties:
                   linkId:
@@ -897,12 +912,9 @@ components:
                         - type: object
                           properties:
                             valueString:
-                              type: array
-                              description: Each requested access level should be a separate item in the list
-                              example: ["Order repeat prescriptions","View test results"]
-                              items:
-                                type: string
-                                example: "View test results"
+                              type: string
+                              example: "Access only required to most recent 3 years"
+
               - type: object
                 properties:
                   linkId:
@@ -913,17 +925,24 @@ components:
                     example: "Reason for access"
                   answer:
                     type: array
+                    description: A multiple option selection where multiple reasons can be selected
                     items:
                       oneOf:
                         - type: object
                           properties:
-                            valueString:
-                              type: array
-                              description: Each reason for access should be a separate item in the list
-                              example: ["They have problems using technology","They find it hard to speak to staff"]
-                              items:
-                                type: string
-                                example: "They have problems using technology"
+                            valueCoding:
+                              type: object
+                              properties:
+                                system:
+                                  type: string
+                                  enum: ["https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-ReasonForAccess"]                                
+                                code:
+                                  type: string
+                                  enum: ['COMB', 'MHEA', 'PHYS', 'PRAC', 'TECH', 'NEUR', 'LRN', 'OTHR']
+                                display:
+                                  type: string
+                                  description: FHIR Reason for access.
+                                  enum: ['Communication Barriers', 'Mental Health Condition', 'Physical Condition', 'Practical Reasons', 'Technical Barriers', 'Neurodiverse', 'Learning Disability', 'Other']
                                 
               - type: object
                 properties:
