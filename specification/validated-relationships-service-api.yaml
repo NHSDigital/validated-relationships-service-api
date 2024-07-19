@@ -285,6 +285,11 @@ components:
     QuestionnaireResponse:
       type: object
       description: A FHIR QuestionnaireResponse
+      required:
+        - status
+        - authored
+        - source
+        - questionnaire
       properties:
         resourceType:
           type: string
@@ -296,11 +301,9 @@ components:
           enum: ["completed"]
         authored: 
           type: string
-          description: The date and/or time that this set of answers were last changed.
+          format: date-time
+          description: The date time that this set of answers were last changed.
           example: "2024-07-15T09:43:03.280Z"
-          # On Confluence the example has this as a string but here:
-          # https://simplifier.net/packages/hl7.fhir.r4.core/4.0.1/files/81730/~details
-          # it looks like an object
         source: 
           type: object
           description: The person who answered the questions about the subject.
@@ -325,7 +328,7 @@ components:
           properties:
             type:
               type: string
-              enum: [Patient] # Here: https://simplifier.net/packages/hl7.fhir.r4.core/4.0.1/files/81189/~details this looks like it should be a URI
+              enum: [Patient, RelatedPerson] # Here: https://simplifier.net/packages/hl7.fhir.r4.core/4.0.1/files/81189/~details this looks like it should be a URI
             identifier:
               description: An identifier - identifies some entity uniquely and unambiguously. Typically this is used for business identifiers.
               properties:
@@ -346,24 +349,33 @@ components:
           description: A group or question item from the original questionnaire for which answers are provided.
           items:
             oneOf:
-              - $ref: '#/components/schemas/QuestionnaireItem_RelatedPerson'
-              - $ref: '#/components/schemas/QuestionnaireItem_ParentalApplicationSupplementaryDetails'
-              - $ref: '#/components/schemas/QuestionnaireItem_Patient'
-              - $ref: '#/components/schemas/QuestionnaireItem_RequestedAccess'
+              - $ref: '#/components/schemas/QuestionnaireResponseItem_RelatedPerson'
+              - $ref: '#/components/schemas/QuestionnaireResponseItem_ParentalApplicationSupplementaryDetails'
+              - $ref: '#/components/schemas/QuestionnaireResponseItem_Patient'
+              - $ref: '#/components/schemas/QuestionnaireResponseItem_RequestedAccess'
 
-    QuestionnaireItem_RelatedPerson:
+    QuestionnaireResponseItem_RelatedPerson:
       type: object
+      required:
+        - linkId
+        - text
+        - item
       properties:
         linkId:
           type: string
           enum: ["relatedPerson"]
         text:
           type: string
+          example: "relatedPerson"
         item:
           type: array
           items:
             oneOf:
               - type: object
+                required: 
+                  - linkId
+                  - text
+                  - answer
                 properties:
                   linkId:
                     type: string
@@ -373,6 +385,8 @@ components:
                     example: "NHS Number"
                   answer:
                     type: array
+                    minItems: 1
+                    maxItems: 1
                     items:
                       oneOf:
                         - type: object
@@ -382,12 +396,18 @@ components:
                               example: "9000000001"
 
               - type: object
+                required: 
+                  - relatedPerson_name
                 properties:
                   relatedPerson_name:
                     type: array
                     items:
                       oneOf:
                         - type: object
+                          required:
+                            - linkId
+                            - text
+                            - answer
                           properties:
                             linkId:
                               type: string
@@ -415,6 +435,10 @@ components:
                                           example: Sharon
 
                         - type: object
+                          required:
+                            - linkId
+                            - text
+                            - answer
                           properties:
                             linkId:
                               type: string
@@ -424,6 +448,8 @@ components:
                               example: "Family name (often called Surname)."
                             answer:
                               type: array
+                              minItems: 1
+                              maxItems: 1
                               items:
                                 oneOf:
                                   - type: object
@@ -433,6 +459,10 @@ components:
                                         example: "Smith"
 
               - type: object
+                required:
+                  - linkId
+                  - text
+                  - answer
                 properties:
                   linkId:
                     type: string
@@ -442,6 +472,8 @@ components:
                     example: "Date of Birth"
                   answer:
                     type: array
+                    minItems: 1
+                    maxItems: 1
                     items:
                       oneOf:
                         - type: object
@@ -451,6 +483,10 @@ components:
                               example: "1994-03-21"
 
               - type: object
+                required:
+                  - linkId
+                  - text
+                  - answer
                 properties:
                   linkId:
                     type: string
@@ -460,6 +496,8 @@ components:
                     example: "Basis For Access"
                   answer:
                     type: array
+                    minItems: 1
+                    maxItems: 1
                     items:
                       oneOf:
                         - type: object
@@ -484,6 +522,10 @@ components:
                                   enum: ['Parent', 'Personal relationship with the patient', 'Best interest decision made on behalf of the patient (Mental Capacity Act 2005)']
 
               - type: object
+                required:
+                  - linkId
+                  - text
+                  - answer
                 properties:
                   linkId:
                     type: string
@@ -493,6 +535,8 @@ components:
                     example: "Relationship"
                   answer:
                     type: array
+                    minItems: 1
+                    maxItems: 1
                     items:
                       oneOf:
                         - type: object
@@ -516,7 +560,7 @@ components:
                                   description: FHIR relationship type.
                                   enum: ['Parent', 'Child', 'Partner, wife or husband', 'Other family member', 'Friend, neighbour or housemate', 'Paid carer or support worker', 'Other']
 
-    QuestionnaireItem_ParentalApplicationSupplementaryDetails:
+    QuestionnaireResponseItem_ParentalApplicationSupplementaryDetails:
       type: object
       properties:
         linkId:
@@ -524,6 +568,7 @@ components:
           enum: ["parentalApplicationSupplementaryDetails"]
         text:
           type: string
+          example: "parentalApplicationSupplementaryDetails"
         item:
           type: array
           items:
@@ -755,19 +800,28 @@ components:
                               type: string
                               example: "Child is too young"
 
-    QuestionnaireItem_Patient:
+    QuestionnaireResponseItem_Patient:
       type: object
+      required:
+        - linkId
+        - text
+        - item
       properties:
         linkId:
           type: string
           enum: ["patient"]
         text:
           type: string
+          example: "patient"
         item:
           type: array
           items:
             oneOf:
               - type: object
+                required:
+                  - linkId
+                  - text
+                  - answer
                 properties:
                   linkId:
                     type: string
@@ -777,6 +831,8 @@ components:
                     example: "NHS Number"
                   answer:
                     type: array
+                    minItems: 1
+                    maxItems: 1
                     items:
                       oneOf:
                         - type: object
@@ -786,12 +842,20 @@ components:
                               example: "9000000002"
 
               - type: object
+                required:
+                  - patient_name
                 properties:
                   patient_name:
                     type: array
+                    minItems: 1
+                    maxItems: 1
                     items:
                       oneOf:
                         - type: object
+                          required:
+                            - linkId
+                            - text
+                            - answer
                           properties:
                             linkId:
                               type: string
@@ -819,6 +883,10 @@ components:
                                           example: Jane
 
                         - type: object
+                          required:
+                            - linkId
+                            - text
+                            - answer
                           properties:
                             linkId:
                               type: string
@@ -828,6 +896,8 @@ components:
                               example: "Family name (often called Surname)."
                             answer:
                               type: array
+                              minItems: 1
+                              maxItems: 1
                               items:
                                 oneOf:
                                   - type: object
@@ -837,6 +907,10 @@ components:
                                         example: "Smith"
 
               - type: object
+                required:
+                  - linkId
+                  - text
+                  - answer
                 properties:
                   linkId:
                     type: string
@@ -846,6 +920,8 @@ components:
                     example: "Date of Birth"
                   answer:
                     type: array
+                    minItems: 1
+                    maxItems: 1
                     items:
                       oneOf:
                         - type: object
@@ -854,21 +930,28 @@ components:
                               type: string
                               example: "2020-10-22"
 
-    QuestionnaireItem_RequestedAccess:
+    QuestionnaireResponseItem_RequestedAccess:
       type: object
+      required:
+        - linkId
+        - text
+        - item
       properties:
         linkId:
           type: string
           enum: ["requestedAccess"]
         text:
           type: string
+          example: "requestedAccess"
         item:
           type: array
           items:
             oneOf:
-
-
               - type: object
+                required:
+                  - linkId
+                  - text
+                  - answer
                 properties:
                   linkId:
                     type: string
@@ -878,6 +961,7 @@ components:
                     example: "Requested access level"
                   answer:
                     type: array
+                    minItems: 1
                     description: A multiple option selection where multiple access levels can be selected
                     items:
                       oneOf:
@@ -916,6 +1000,10 @@ components:
                               example: "Access only required to most recent 3 years"
 
               - type: object
+                required:
+                  - linkId
+                  - text
+                  - answer
                 properties:
                   linkId:
                     type: string
@@ -925,6 +1013,7 @@ components:
                     example: "Reason for access"
                   answer:
                     type: array
+                    minItems: 1
                     description: A multiple option selection where multiple reasons can be selected
                     items:
                       oneOf:
