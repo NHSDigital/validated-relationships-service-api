@@ -17,10 +17,10 @@ info:
     You can:
 
     - get validated relationships (to support decision making when granting proxy access)
+    - create a new proxy access request
 
     In the future you will be able to:
 
-    - create a new proxy access request
     - update a proxy access request
     - update a validated proxy relationship
     - delete (revoke) a validated proxy relationship
@@ -289,6 +289,7 @@ components:
         - status
         - authored
         - source
+        - subject
         - questionnaire
       properties:
         resourceType:
@@ -310,9 +311,11 @@ components:
           properties:
             type:
               type: string
-              enum: [RelatedPerson] # Here: https://simplifier.net/packages/hl7.fhir.r4.core/4.0.1/files/81189/~details this looks like it should be a URI
+              enum: [RelatedPerson] 
             identifier:
-              description: An identifier - identifies some entity uniquely and unambiguously. Typically this is used for business identifiers.
+              description: |
+                The patient's NHS number. The primary identifier of a patient, unique within NHS England and Wales. Always 10 digits and must be a valid NHS number - see:
+                https://www.datadictionary.nhs.uk/attributes/nhs_number.html
               properties:
                 system:
                   type: string
@@ -328,9 +331,11 @@ components:
           properties:
             type:
               type: string
-              enum: [Patient, RelatedPerson] # Here: https://simplifier.net/packages/hl7.fhir.r4.core/4.0.1/files/81189/~details this looks like it should be a URI
+              enum: [Patient, RelatedPerson]
             identifier:
-              description: An identifier - identifies some entity uniquely and unambiguously. Typically this is used for business identifiers.
+              description: |
+                The patient's NHS number. The primary identifier of a patient, unique within NHS England and Wales. Always 10 digits and must be a valid NHS number - see:
+                https://www.datadictionary.nhs.uk/attributes/nhs_number.html
               properties:
                 system:
                   type: string
@@ -396,8 +401,6 @@ components:
                               example: "9000000001"
 
               - type: object
-                required: 
-                  - relatedPerson_name
                 properties:
                   relatedPerson_name:
                     type: array
@@ -459,10 +462,6 @@ components:
                                         example: "Smith"
 
               - type: object
-                required:
-                  - linkId
-                  - text
-                  - answer
                 properties:
                   linkId:
                     type: string
@@ -842,8 +841,6 @@ components:
                               example: "9000000002"
 
               - type: object
-                required:
-                  - patient_name
                 properties:
                   patient_name:
                     type: array
@@ -907,10 +904,6 @@ components:
                                         example: "Smith"
 
               - type: object
-                required:
-                  - linkId
-                  - text
-                  - answer
                 properties:
                   linkId:
                     type: string
