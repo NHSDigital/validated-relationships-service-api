@@ -477,8 +477,9 @@ components:
                       oneOf:
                         - type: object
                           properties:
-                            valueString:
+                            valueDate:
                               type: string
+                              format: date
                               example: "1994-03-21"
 
               - type: object
@@ -573,6 +574,10 @@ components:
           items:
             oneOf:
               - type: object
+                required:
+                  - linkId
+                  - text
+                  - answer
                 properties:
                   linkId:
                     type: string
@@ -619,6 +624,10 @@ components:
                               type: string
                               example: "Birth Certificate is original"
               - type: object
+                required:
+                  - linkId
+                  - text
+                  - answer
                 properties:
                   linkId:
                     type: string
@@ -747,6 +756,10 @@ components:
                                         example: "LS1 1DW "
 
               - type: object
+                required:
+                  - linkId
+                  - text
+                  - answer
                 properties:
                   linkId:
                     type: string
@@ -765,6 +778,10 @@ components:
                               example: "Yes"
 
               - type: object
+                required:
+                  - linkId
+                  - text
+                  - answer
                 properties:
                   linkId:
                     type: string
@@ -919,8 +936,9 @@ components:
                       oneOf:
                         - type: object
                           properties:
-                            valueString:
+                            valueDate:
                               type: string
+                              format: date
                               example: "2020-10-22"
 
     QuestionnaireResponseItem_RequestedAccess:
