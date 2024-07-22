@@ -1,5 +1,6 @@
 SHELL=/bin/bash -euo pipefail
 
+
 #Installs dependencies using poetry.
 install-python:
 	poetry install --no-root
