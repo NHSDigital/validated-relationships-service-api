@@ -402,8 +402,16 @@ components:
 
               - type: object
                 properties:
-                  relatedPerson_name:
+                  linkId:
+                    type: string
+                    enum: ["relatedPerson_name"]
+                  text:
+                    type: string
+                    example: "relatedPerson_name"
+                  item:
                     type: array
+                    minItems: 1
+                    maxItems: 1
                     items:
                       oneOf:
                         - type: object
@@ -414,28 +422,21 @@ components:
                           properties:
                             linkId:
                               type: string
-                              enum: ["relatedPerson_name_given"]
+                              enum: ["relatedPerson_name_first"]
                             text:
                               type: string
-                              example: "Given names, including any middle names."
+                              example: "First name."
                             answer:
                               type: array
+                              minItems: 1
+                              maxItems: 1
                               items:
                                 oneOf:
                                   - type: object
                                     properties:
                                       valueString:
-                                        type: array
-                                        description: |
-                                          Each name(s) should be a separate item in the list. The first given name may include multiple names, separated by a space.
-                                          Subsequent names must be broken down into list items. For example, the input `[Jane Marie Anne, Jo Adele]` returns `[Jane Marie Anne, Jo, Adele]`.
-
-                                        maxItems: 5                                  
-                                        example: [Sharon Melissa]
-                                        items:
-                                          type: string
-                                          maxLength: 35
-                                          example: Sharon
+                                        type: string
+                                        example: "Sharon"
 
                         - type: object
                           required:
@@ -647,7 +648,13 @@ components:
 
               - type: object
                 properties:
-                  parentalApplicationSupplementaryDetails_newAddress:
+                  linkId:
+                    type: string
+                    enum: ["parentalApplicationSupplementaryDetails_newAddress"]
+                  text:
+                    type: string
+                    example: "parentalApplicationSupplementaryDetails_newAddress"
+                  item:
                     type: array
                     items:
                       oneOf:
@@ -753,7 +760,7 @@ components:
                                     properties:
                                       valueString:
                                         type: string
-                                        example: "LS1 1DW "
+                                        example: "LS1 1DW"
 
               - type: object
                 required:
@@ -859,7 +866,13 @@ components:
 
               - type: object
                 properties:
-                  patient_name:
+                  linkId:
+                    type: string
+                    enum: ["patient_name"]
+                  text:
+                    type: string
+                    example: "patient_name"
+                  item:
                     type: array
                     minItems: 1
                     maxItems: 1
@@ -873,29 +886,22 @@ components:
                           properties:
                             linkId:
                               type: string
-                              enum: ["patient_name_given"]
+                              enum: ["patient_name_first"]
                             text:
                               type: string
-                              example: "Given names, including any middle names."
+                              example: "First name."
                             answer:
                               type: array
+                              minItems: 1
+                              maxItems: 1
                               items:
                                 oneOf:
                                   - type: object
                                     properties:
                                       valueString:
-                                        type: array
-                                        description: |
-                                          Each name(s) should be a separate item in the list. The first given name may include multiple names, separated by a space.
-                                          Subsequent names must be broken down into list items. For example, the input `[Jane Marie Anne, Jo Adele]` returns `[Jane Marie Anne, Jo, Adele]`.
-
-                                        maxItems: 5                                  
-                                        example: [Jane Marie Anne]
-                                        items:
-                                          type: string
-                                          maxLength: 35
-                                          example: Jane
-
+                                        type: string
+                                        example: "Jane"
+                                        
                         - type: object
                           required:
                             - linkId
