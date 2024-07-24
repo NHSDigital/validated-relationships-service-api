@@ -311,19 +311,19 @@ components:
           properties:
             type:
               type: string
-              enum: [RelatedPerson] 
+              enum: [Patient, RelatedPerson] 
             identifier:
               description: |
-                The patient's NHS number. The primary identifier of a patient, unique within NHS England and Wales. Always 10 digits and must be a valid NHS number - see:
+                The person who answered the questions about the subject NHS number. The primary identifier of a patient, unique within NHS England and Wales. Always 10 digits and must be a valid NHS number - see:
                 https://www.datadictionary.nhs.uk/attributes/nhs_number.html
               properties:
                 system:
                   type: string
-                  description: Codesystem URL for the patient's NHS number.
+                  description: Codesystem URL for source's NHS number.
                   enum: ["https://fhir.nhs.uk/Id/nhs-number"]
                 value:
                   type: string
-                  description: The patient's NHS number.
+                  description: The source's NHS number.
                   example: "9000000001"
         subject: 
           type: object
@@ -331,7 +331,7 @@ components:
           properties:
             type:
               type: string
-              enum: [Patient, RelatedPerson]
+              enum: [Patient]
             identifier:
               description: |
                 The patient's NHS number. The primary identifier of a patient, unique within NHS England and Wales. Always 10 digits and must be a valid NHS number - see:
