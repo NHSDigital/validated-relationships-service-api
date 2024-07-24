@@ -38,7 +38,7 @@ info:
 
     ## API status and roadmap
     This API is [in production, beta](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#statuses), meaning:
-    - we might make breaking changes, but only if we cannot avoid it, and we will give advance notice
+    - we might make breaking changes, but only if we cannot avoid it, and we will give advance notice 
 
     If you would like to be involved in our beta programme, [contact us](https://digital.nhs.uk/developer/help-and-support).
 
