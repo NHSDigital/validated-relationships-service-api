@@ -9,6 +9,9 @@
                 <Name>FlowCallout.ApplyRateLimiting</Name>
             </Step>
             <Step>
+                <Name>AddDeveloperAppId</Name>
+            </Step>
+            <Step>
                 <Name>AddProxyURL</Name>
             </Step>
             <Step>
