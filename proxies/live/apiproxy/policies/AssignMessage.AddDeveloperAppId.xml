@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AddDeveloperAppId">
+    <DisplayName>Add Developer App Id</DisplayName>
+    <Add>
+        <Headers>
+            <Header name="Developer-App-Id">{developer.app.id}</Header>
+        </Headers>
+    </Add>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>
