@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<AssignMessage async="false" continueOnError="false" enabled="true" name="AddDeveloperAppId">
-    <DisplayName>Add Developer App Id</DisplayName>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AddDeveloperAppData">
+    <DisplayName>Add Developer App Data</DisplayName>
     <Add>
         <Headers>
             <Header name="Developer-App-Id">{developer.app.id}</Header>
+            <Header name="Developer-App-Name">{developer.app.name}</Header>
         </Headers>
     </Add>
     <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
