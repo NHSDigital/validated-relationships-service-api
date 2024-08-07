@@ -1482,32 +1482,73 @@ components:
           example: ABCC67E2
         status:
           type: string
-          description: Indicates the current state of this consent.
-          example: proposed
+          description: "The status of the consent, following the ConsentStateCodes value set."
+          enum: [draft, proposed, active, rejected, inactive, entered-in-error]          
+          example: active
         scope:
-          type: string
-          description: TODO
-          example: TODO
+          $ref: '#/components/schemas/CodeableConcept'
+          description: "The scope of the consent, bound to http://terminology.hl7.org/CodeSystem/consentscope"
+          enum: [patient-privacy]
+          example:
+            coding:
+              - system: http://terminology.hl7.org/CodeSystem/consentscope"
+                code: patient-privacy
+                display: "Patient Privacy"
+            text: "Patient Privacy Consent"
         category:
-          type: string
-          description: TODO
-          example: TODO
+          type: array          
+          items:
+            $ref: '#/components/schemas/CodeableConcept'
+          description: "Classification of the type of consent, bound to http://terminology.hl7.org/CodeSystem/v3-ActCode."
+          example:
+            - coding:
+                - system: http://terminology.hl7.org/CodeSystem/v3-ActCode
+                  code: INFA
+                  display: "Information Access"
+              text: "Information Access Consent"
         patient:
-          type: string
-          description: TODO
-          example: TODO
+          $ref: '#/components/schemas/Reference'
+          description: "The patient who is the subject of the consent."          
         dateTime:
           type: string
-          description: TODO
-          example: TODO
+          format: date-time
+          description: "Date and time when the consent was created."
+          example: "2024-07-21T17:32:28Z"
         performer:
-          type: string
-          description: TODO
-          example: TODO
-        varification:
-          type: string
-          description: TODO
-          example: TODO
+          type: array
+          items:
+            $ref: '#/components/schemas/Reference'
+          description: "Individuals or organizations that agreed to the consent."
+        policy:
+          type: object
+          description: Policies covered by this consent
+          properties:
+            authority: 
+              type: string
+              description: Organization having regulatory accountability for enforcing policies pertaining to this Consent Directive.
+              example: "https://www.england.nhs.uk"
+            uri: 
+              type: string
+              format: uri
+              description: The reference to the National Proxy Service policy that are included in this consent scope.
+              example: "<REPLACE WITH LINK TO PUBLISHED NATIONAL PROXY STANDARD>"
+        verification:
+          type: array
+          description: Whether consent was verified with the patient, or another authorized person.
+          items:
+            type: object
+            properties:
+              verified:
+                type: boolean
+                description: Whether the consent has been verified
+                example: true
+              verifiedWith:
+                $ref: '#/components/schemas/Reference'
+              verificationDate:
+                type: string
+                description: The date and time when consent was collected.
+                format: date-time
+                example: "2024-07-21T17:32:28Z"
 
     OperationOutcome:
       type: object
@@ -1604,6 +1645,45 @@ components:
                 description: FHIRPath of element(s) related to the error.
                 example: RelatedPerson.identifier
 
+    Reference:
+      type: object
+      properties:        
+        identifier:
+          $ref: '#/components/schemas/Identifier'
+
+    Identifier:
+      type: object
+      properties:
+        system:
+          type: string
+          description: "The namespace for the identifier."
+        value:
+          type: string
+          description: "The value that is unique."        
+
+    CodeableConcept:
+      type: object
+      properties:
+        coding:
+          type: array
+          items:
+            $ref: '#/components/schemas/Coding'
+        text:
+          type: string
+          description: "Plain text representation of the concept."
+
+    Coding:
+      type: object
+      properties:
+        system:
+          type: string
+          description: "The identification of the code system that defines the meaning of the code."
+        code:
+          type: string
+          description: "The actual code from the code system."
+        display:
+          type: string
+          description: "A human-readable representation of the code."
 
   parameters:
     RelatedPersonIdentifier:
