@@ -16,14 +16,15 @@ info:
 
     You can:
 
-    - get validated relationships (to support decision making when granting proxy access)
+    - get verified relationships (to support decision making when granting proxy access)
     - create a new proxy access request
+    - get proxy relationships
 
     In the future you will be able to:
 
     - update a proxy access request
-    - update a validated proxy relationship
-    - delete (revoke) a validated proxy relationship
+    - update a proxy relationship
+    - delete (revoke) a proxy relationship
 
     ## Who can use this API
     This API can only be used where there is a legal basis to do so. Make sure you have this and a valid use case before
@@ -220,12 +221,12 @@ paths:
 
   /RelatedPerson:
     get:
-      summary: Get validated relationships
+      summary: Get verified relationships
       description: |
         ## Overview
-        Use this endpoint to get validated relationships for a proxy with a given NHS Number.
+        Use this endpoint to get relationships that have been verified against authoritative sources for a proxy with a given NHS Number.
 
-        You can (optionally) include `patient:identifier={nhsNumber}` request parameter with the patient's NHS number to get a specific validated relationship for the proxy.
+        You can (optionally) include `patient:identifier={nhsNumber}` request parameter with the patient's NHS number to get a specific verified relationship for the proxy.
 
         You can (optionally) include the `_include=RelatedPerson:patient` request parameter to include the patient's details in the operation response.
 
@@ -1803,7 +1804,7 @@ components:
           summary: Only revoked proxy relationships
           value: inactive
         ActiveOrProposed:
-          summary: Active OR proposed (but not yet authoirsed) proxy relationships
+          summary: Active OR proposed (but not yet authorised) proxy relationships
           value:
             - proposed
             - active
