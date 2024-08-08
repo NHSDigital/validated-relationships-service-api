@@ -561,6 +561,24 @@ components:
                                   description: FHIR relationship type.
                                   enum: ['Parent', 'Child', 'Partner, wife or husband', 'Other family member', 'Friend, neighbour or housemate', 'Paid carer or support worker', 'Other']
 
+              - type: object
+                properties:
+                  linkId:
+                    type: string
+                    enum: ["relatedPerson_relationshipMoreinfo"]
+                  text:
+                    type: string
+                    example: "Relationship - further information"
+                  answer:
+                    type: array
+                    maxItems: 1
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            valueString:
+                              type: string
+
     QuestionnaireResponseItem_ParentalApplicationSupplementaryDetails:
       type: object
       properties:
@@ -1044,11 +1062,11 @@ components:
                                   enum: ["https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-ReasonForAccess"]                                
                                 code:
                                   type: string
-                                  enum: ['COMB', 'MHEA', 'PHYS', 'PRAC', 'TECH', 'NEUR', 'LRN', 'OTHR']
+                                  enum: ['COMB', 'MHEA', 'PHYS', 'PRAC', 'TECH', 'NEUR', 'LRN', 'PNS', 'OTHR']
                                 display:
                                   type: string
                                   description: FHIR Reason for access.
-                                  enum: ['Communication Barriers', 'Mental Health Condition', 'Physical Condition', 'Practical Reasons', 'Technical Barriers', 'Neurodiverse', 'Learning Disability', 'Other']
+                                  enum: ['Communication Barriers', 'Mental Health Condition', 'Physical Condition', 'Practical Reasons', 'Technical Barriers', 'Neurodiverse', 'Learning Disability', 'Prefer not to Say', 'Other']
                                 
               - type: object
                 properties:
