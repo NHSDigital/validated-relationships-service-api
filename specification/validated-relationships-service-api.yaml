@@ -238,7 +238,7 @@ paths:
         - $ref: "#/components/parameters/BearerAuthorization"
         - $ref: "#/components/parameters/RelatedPersonIdentifier"
         - $ref: "#/components/parameters/PatientIdentifier"
-        - $ref: "#/components/parameters/IncludePatient"
+        - $ref: "#/components/parameters/RelatedPersonBundleIncludes"
         - $ref: "#/components/parameters/RequestID"
         - $ref: "#/components/parameters/CorrelationID"
       responses:
@@ -287,7 +287,7 @@ paths:
           ## Overview
           Use this endpoint to get the details about proxy relationships, including current status, based on a provided proxy's NHS Number.
 
-          You can (optionally) include `status={TODO}` request parameter to filter the limit the response to records with a given status e.g. active.
+          You can (optionally) include `status={status}` request parameter to filter the limit the response to records with a given status bound to the http://hl7.org/fhir/consent-state-codes CodeSystem e.g. `status=active`.
 
           You can (optionally) include the `_include=Consent:performer` request parameter to include the proxy's details in the operation response.
 
@@ -300,9 +300,9 @@ paths:
         operationId: get-consent
         parameters:
           - $ref: "#/components/parameters/BearerAuthorization"
-          - $ref: "#/components/parameters/RelatedPersonIdentifier"
-          - $ref: "#/components/parameters/PatientIdentifier"
-          - $ref: "#/components/parameters/IncludePatient"
+          - $ref: "#/components/parameters/ConsentBundlePerformerIdentifier"
+          - $ref: "#/components/parameters/ConsentStatus" 
+          - $ref: "#/components/parameters/ConsentBundleIncludes"       
           - $ref: "#/components/parameters/RequestID"
           - $ref: "#/components/parameters/CorrelationID"
         responses:
@@ -1492,7 +1492,8 @@ components:
         resourceType:
           type: string
           description: FHIR resource type.
-          enum: [Consent] 
+          enum: 
+            - Consent
           default: Consent   
         id:
           type: string
@@ -1500,13 +1501,20 @@ components:
           example: ABCC67E2
         status:
           type: string
-          description: "The status of the consent, following the ConsentStateCodes value set."
-          enum: [draft, proposed, active, rejected, inactive, entered-in-error]          
+          description: "The status of the consent, following the ConsentStateCodes value set ."
+          enum: 
+            - draft
+            - proposed
+            - active
+            - rejected 
+            - inactive
+            - entered-in-error          
           example: active
         scope:
           $ref: '#/components/schemas/CodeableConcept'
           description: "The scope of the consent, bound to http://terminology.hl7.org/CodeSystem/consentscope"
-          enum: [patient-privacy]
+          enum: 
+            - patient-privacy
           example:
             coding:
               - system: http://terminology.hl7.org/CodeSystem/consentscope"
@@ -1737,15 +1745,104 @@ components:
         withSystem:
           value: https://fhir.nhs.uk/Id/nhs-number|9000000017
           summary: System and NHS number specified
-    IncludePatient:
+    
+    ConsentBundlePerformerIdentifier:
+      in: query
+      name: performer:identifier
+      description: |
+        The performer's (Proxy) NHS number. For more information on FHIR tokens in general, [see here](https://build.fhir.org/search.html#token).
+      required: true
+      schema:
+        type: string
+        format: token
+      examples:
+        withoutSystem:
+          value: 9000000017
+          summary: NHS number specified without system
+        withSystem:
+          value: https://fhir.nhs.uk/Id/nhs-number|9000000017
+          summary: System and NHS number specified
+    
+    RelatedPersonBundleIncludes:
       in: query
       name: _include
       description: |
-        Include Patient resources with their respective RelatedPerson in the bundle returned in the response. Further info [here](https://www.hl7.org/fhir/search.html#_include).
+        Include referenced resources in the bundle response by specifying one or more `_include` parameters. Further info [here](https://www.hl7.org/fhir/search.html#_include).
       required: false
+      style: form
+      explode: true
       schema:
-        type: string
-        example: RelatedPerson:patient
+        type: array
+        items:
+          type: string
+          enum:
+            - "RelatedPerson:patient"
+      examples:         
+        IncludePatient:
+          summary: Include the patient in the bundle
+          value: 
+            - "RelatedPerson:patient"
+
+    ConsentBundleIncludes:
+      in: query
+      name: _include
+      description: Include referenced resources in the bundle response by specifying one or more `_include` parameters. Further info [here](https://www.hl7.org/fhir/search.html#_include).
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - "Consent:performer"
+            - "Consent:patient"
+      examples: 
+        IncludePerformer:
+          summary: Include the performer (proxy) in the bundle
+          value: Consent:performer
+        IncludePatient:
+          summary: Include the patient in the bundle
+          value: Consent:patient
+        FullInclude:
+          summary: Include the performer (Proxy) and patient in the bundle
+          value: 
+            - "Consent:performer"
+            - "Consent:patient"
+    
+    ConsentStatus: 
+      in: query
+      name: status
+      description: Specify one or more `status` to filter the records returned in the bundle. For example you can filter to only `active` or `proposed` proxy relationships.
+      required: false      
+      style: form
+      explode: true
+      schema:
+        type: array
+        items:
+          type: string
+          enum: 
+            - draft
+            - proposed
+            - active
+            - rejected 
+            - inactive
+            - entered-in-error
+      examples:
+        Active:
+          summary: Only active authorised proxy relationships
+          value: active
+        Revoked:
+          summary: Only revoked proxy relationships
+          value: inactive
+        ActiveOrProposed:
+          summary: Active OR proposed (but not yet authoirsed) proxy relationships
+          value:
+            - proposed
+            - active
+        
+
+
     BearerAuthorization:
       in: header
       name: Authorization
@@ -1756,6 +1853,7 @@ components:
         type: string
         format: '^Bearer\ [[:ascii:]]+$'
         example: "Bearer g1112R_ccQ1Ebbb4gtHBP1aaaNM"
+    
     RequestID:
       in: header
       name: X-Request-ID
@@ -1769,6 +1867,7 @@ components:
         format: uuid
         pattern: "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
         example: 60E0B220-8136-4CA5-AE46-1D97EF59D068
+    
     CorrelationID:
       in: header
       name: X-Correlation-ID
