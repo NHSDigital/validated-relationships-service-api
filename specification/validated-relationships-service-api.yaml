@@ -228,7 +228,7 @@ paths:
 
         You can (optionally) include `patient:identifier={nhsNumber}` request parameter with the patient's NHS number to get a specific verified relationship for the proxy.
 
-        You can (optionally) include the `_include=RelatedPerson:patient` request parameter to include the patient's details in the operation response.
+        You can (optionally) include the `_include=RelatedPerson:patient` request parameter to include the patient's details in the response.
 
         ## Sandbox test scenarios
 
@@ -290,9 +290,9 @@ paths:
 
           You can (optionally) include `status={status}` request parameter to filter the limit the response to records with a given status bound to the http://hl7.org/fhir/consent-state-codes CodeSystem e.g. `status=active`.
 
-          You can (optionally) include the `_include=Consent:performer` request parameter to include the proxy's details in the operation response.
+          You can (optionally) include the `_include=Consent:performer` request parameter to include the proxy's details in the response.
 
-          You can (optionally) include the `_include=Consent:patient` request parameter to include the patient's details in the operation response.
+          You can (optionally) include the `_include=Consent:patient` request parameter to include the patient's details in the response.
 
           ## Sandbox test scenarios
 
