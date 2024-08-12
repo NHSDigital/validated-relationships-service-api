@@ -3,7 +3,7 @@
 openapi: '3.0.0'
 info:
   title: 'Validated Relationships Service API'
-  version: '1.2.0'
+  version: '1.2.1'
   description: |
     ## Overview
     Use this API to access the Validated Relationships Service - the national electronic database of relationships
@@ -560,6 +560,24 @@ components:
                                   type: string
                                   description: FHIR relationship type.
                                   enum: ['Parent', 'Child', 'Partner, wife or husband', 'Other family member', 'Friend, neighbour or housemate', 'Paid carer or support worker', 'Other']
+
+              - type: object
+                properties:
+                  linkId:
+                    type: string
+                    enum: ["relatedPerson_relationshipMoreinfo"]
+                  text:
+                    type: string
+                    example: "Relationship - further information"
+                  answer:
+                    type: array
+                    maxItems: 1
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            valueString:
+                              type: string
 
     QuestionnaireResponseItem_ParentalApplicationSupplementaryDetails:
       type: object
