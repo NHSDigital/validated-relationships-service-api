@@ -57,6 +57,9 @@ extends:
         depends_on:
           - internal_qa
           - internal_qa_sandbox
+      - environment: prod
+        depends_on:
+          - int
         # post_deploy:
         #   - template: ./templates/run-tests.yml
         #     parameters:
