@@ -7,37 +7,50 @@ APIGEE_ENVIRONMENTS:
     has_mock_auth: true
     rate_limit: 300
     spike_rate_limit: 600pm # 10 requests per second
+    approval_type: auto
   - name: internal-qa
     display_name: Internal QA
     has_mock_auth: true
     rate_limit: 300
     spike_rate_limit: 600pm # 10 requests per second
+    approval_type: auto
   - name: internal-dev-sandbox
     display_name: Internal Development Sandbox
     portal_visibility: false
     rate_limit: 300
     spike_rate_limit: 600pm # 10 requests per second
+    approval_type: auto
   - name: internal-qa
     display_name: Internal QA
     has_mock_auth: true
     portal_visibility: false
     rate_limit: 300
     spike_rate_limit: 600pm # 10 requests per second
+    approval_type: auto
   - name: internal-qa-sandbox
     display_name: Internal QA Sandbox
     portal_visibility: false
     rate_limit: 300
     spike_rate_limit: 600pm # 10 requests per second
+    approval_type: auto
   - name: sandbox
     display_name: Sandbox
     portal_visibility: false
     rate_limit: 120
     spike_rate_limit: 300pm # 5 requests per second
+    approval_type: auto
   - name: int
     display_name: Integration Testing
     has_mock_auth: true
     rate_limit: 300
     spike_rate_limit: 600pm # 10 requests per second
+    approval_type: auto
+  - name: prod
+    display_name: Production
+    has_mock_auth: false
+    rate_limit: 300
+    spike_rate_limit: 600pm # 10 requests per second
+    approval_type: manual
 ---
 meta:
   api:
@@ -54,7 +67,7 @@ apigee:
   - name: {{ ENV.name }}
     products:
       - name: {{ NAME }}
-        approvalType: auto
+        approvalType: {{ ENV.approval_type }}
         attributes:
           - name: access
             value: public
