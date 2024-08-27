@@ -1014,7 +1014,7 @@ components:
                                 display:
                                   type: string
                                   description: FHIR Requested access level.
-                                  enum: ['Appointment Booking', 'Contacting Surgery', 'Medical Records Access', 'Test Results', 'Vaccination Records', 'Repeat Prescription Requests']
+                                  enum: ['Appointment Booking', 'Contacting Surgery', 'Medical Records Access', 'Test Results', 'Vaccination Records', 'Request and manage repeat prescriptions']
 
               - type: object
                 properties:
@@ -1062,11 +1062,11 @@ components:
                                   enum: ["https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-ReasonForAccess"]                                
                                 code:
                                   type: string
-                                  enum: ['COMB', 'MHEA', 'PHYS', 'PRAC', 'TECH', 'NEUR', 'LRN', 'OTHR']
+                                  enum: ['COMB', 'MHEA', 'PHYS', 'PRAC', 'TECH', 'NEUR', 'LRN', 'OTHR' 'NotSpecified']
                                 display:
                                   type: string
                                   description: FHIR Reason for access.
-                                  enum: ['Communication Barriers', 'Mental Health Condition', 'Physical Condition', 'Practical Reasons', 'Technical Barriers', 'Neurodiverse', 'Learning Disability', 'Other']
+                                  enum: ['Communication Barriers', 'Mental Health Condition', 'Physical Condition', 'Practical Reasons', 'Technical Barriers', 'Neurodiverse', 'Learning Disability', 'Other', 'prefer not to say']
                                 
               - type: object
                 properties:
