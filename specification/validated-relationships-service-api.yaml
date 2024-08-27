@@ -306,6 +306,7 @@ paths:
           - $ref: "#/components/parameters/ConsentBundleIncludes"       
           - $ref: "#/components/parameters/RequestID"
           - $ref: "#/components/parameters/CorrelationID"
+          - $ref: "#/components/parameters/Im1ConnectionParams"
         responses:
           "200":
             description: Information successfully returned.
@@ -1847,6 +1848,20 @@ components:
         format: uuid
         pattern: "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
         example: 11C46F5F-CDEF-4865-94B2-0EE0EDCC26DA
+
+    Im1ConnectionParams:
+      in: header
+      name: X-IM1-Connection-Params
+      required: false
+      description: |
+        An optional `;` delimited string containing parameters required to refresh proxy relationships from GPIT supplier systems. Parameters that comprise this string are:
+
+        - IM1 User Connection token
+        - ODS Code
+      schema:
+        type: string        
+        pattern: "^[^;]+;[^;]+$"
+        example: NiV3CyMJH3xYV26ghlVpbbjT7pDVEA8HpFczAjRLTs1VezC4CYzupZ3XxXAWM7ELuseqrV8r0Ill7EL7G2tXUaVHCPWgg4q10+MxFjnRPrjDvckBRSZazqZcp0K2VBdUV0rZ7RUYJNJsjVAeefWhiK/Y4R+GFO86QDpt41JS9xA=;G123456
 
   examples:
     MotherChildConsentBundle:
