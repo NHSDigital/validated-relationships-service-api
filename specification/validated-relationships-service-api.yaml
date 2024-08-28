@@ -325,10 +325,11 @@ paths:
 
               | HTTP status | Error code                         | Description                                                                                                                               |
               | ----------- | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+              | 400         | `MISSING_VALUE`                    | Missing header parameter. For details, see the `diagnostics` field.                                                                       |
+              | 400         | `INVALID_VALUE`                    | Invalid header parameter. For details, see the `diagnostics` field.                                                                       |
               | 400         | `INVALID_IDENTIFIER_SYSTEM`        | Invalid identifier system.                                                                                                                |
-              | 400         | `MISSING_IDENTIFIER_VALUE`         | Missing RelatedPerson NHS number.                                                                                                         |
-              | 400         | `INVALID_IDENTIFIER_VALUE`         | Malformed RelatedPerson NHS number.                                                                                                       |
-              | 400         | `INVALID_PATIENT_IDENTIFIER_VALUE` | Malformed Patient NHS number.                                                                                                             |
+              | 400         | `MISSING_IDENTIFIER_VALUE`         | Missing performer NHS number.                                                                                                             |
+              | 400         | `INVALID_IDENTIFIER_VALUE`         | Malformed performer NHS number.                                                                                                           |              
               | 400         | `NOT_SUPPORTED`                    | The request is not currently supported.                                                                                                   |
               | 401         | `ACCESS_DENIED`                    | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
               | 403         | `FORBIDDEN`                        | Access denied to resource.                                                                                                                |
@@ -1626,20 +1627,18 @@ components:
                         code:
                           type: string
                           description: Symbol in syntax defined by the system.
-                          example: INVALID_IDENTIFIER_VALUE
+                          example: ACCESS_DENIED
                         display:
                           type: string
                           description: Representation defined by the system.
-                          example: Provided value is invalid
+                          example: Missing or invalid OAuth 2.0 bearer token in request.
               diagnostics:
                 type: string
-                description: Additional diagnostic information about the issue. This information is subject to change.
-                example: Not a valid NHS Number provided for the 'identifier' parameter
+                description: Additional diagnostic information about the issue. This information is subject to change.                
               expression:
                 type: string
-                description: FHIRPath of element(s) related to the error.
-                example: RelatedPerson.identifier
-
+                description: FHIRPath of element(s) related to the error. 
+    
     Reference:
       type: object
       properties:        
@@ -2214,6 +2213,7 @@ components:
                  version: "1"
                  code: "SERVER_ERROR"
                  display: "Failed to generate response"
+    
     PostQuestionnaireResponseSuccess:
       value:
         resourceType: "OperationOutcome"
