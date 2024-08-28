@@ -3,7 +3,7 @@
 openapi: '3.0.0'
 info:
   title: 'Validated Relationships Service API'
-  version: '1.2.0'
+  version: '1.3.0'
   description: |
     ## Overview
     Use this API to access the Validated Relationships Service - the national electronic database of relationships
@@ -634,6 +634,24 @@ components:
                                   description: FHIR relationship type.
                                   enum: ['Parent', 'Child', 'Partner, wife or husband', 'Other family member', 'Friend, neighbour or housemate', 'Paid carer or support worker', 'Other']
 
+              - type: object
+                properties:
+                  linkId:
+                    type: string
+                    enum: ["relatedPerson_relationshipMoreinfo"]
+                  text:
+                    type: string
+                    example: "Relationship - further information"
+                  answer:
+                    type: array
+                    maxItems: 1
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            valueString:
+                              type: string
+                              
     QuestionnaireResponseItem_ParentalApplicationSupplementaryDetails:
       type: object
       properties:
@@ -1065,11 +1083,23 @@ components:
                                   enum: ["https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"]                                
                                 code:
                                   type: string
-                                  enum: ['APPT', 'CNTCT', 'RECRD', 'TEST', 'VACC', 'PRESCR']
+                                  enum: 
+                                    - 'APPT'
+                                    - 'CNTCT'
+                                    - 'RECRD'
+                                    - 'TEST'
+                                    - 'VACC'
+                                    - 'PRESCR'
                                 display:
                                   type: string
                                   description: FHIR Requested access level.
-                                  enum: ['Appointment Booking', 'Contacting Surgery', 'Medical Records Access', 'Test Results', 'Vaccination Records', 'Repeat Prescription Requests']
+                                  enum: 
+                                    - 'Appointment Booking'
+                                    - 'Contacting Surgery'
+                                    - 'Medical Records Access'
+                                    - 'Test Results'
+                                    - 'Vaccination Records'
+                                    - 'Request and manage repeat prescriptions'
 
               - type: object
                 properties:
@@ -1117,11 +1147,29 @@ components:
                                   enum: ["https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-ReasonForAccess"]                                
                                 code:
                                   type: string
-                                  enum: ['COMB', 'MHEA', 'PHYS', 'PRAC', 'TECH', 'NEUR', 'LRN', 'OTHR']
+                                  enum: 
+                                    - 'COMB'
+                                    - 'MHEA'
+                                    - 'PHYS'
+                                    - 'PRAC'
+                                    - 'TECH'
+                                    - 'NEUR'
+                                    - 'LRN'
+                                    - 'OTHR'
+                                    - 'NotSpecified'
                                 display:
                                   type: string
                                   description: FHIR Reason for access.
-                                  enum: ['Communication Barriers', 'Mental Health Condition', 'Physical Condition', 'Practical Reasons', 'Technical Barriers', 'Neurodiverse', 'Learning Disability', 'Other']
+                                  enum: 
+                                    - 'Communication Barriers'
+                                    - 'Mental Health Condition'
+                                    - 'Physical Condition'
+                                    - 'Practical Reasons'
+                                    - 'Technical Barriers'
+                                    - 'Neurodiverse'
+                                    - 'Learning Disability'
+                                    - 'Other'
+                                    - 'Prefer not to say'
                                 
               - type: object
                 properties:
