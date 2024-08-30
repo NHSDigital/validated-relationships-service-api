@@ -1066,7 +1066,7 @@ components:
                                 display:
                                   type: string
                                   description: FHIR Reason for access.
-                                  enum: ['Communication Barriers', 'Mental Health Condition', 'Physical Condition', 'Practical Reasons', 'Technical Barriers', 'Neurodiverse', 'Learning Disability', 'Other', 'prefer not to say']
+                                  enum: ['Communication Barriers', 'Mental Health Condition', 'Physical Condition', 'Practical Reasons', 'Technical Barriers', 'Neurodiverse', 'Learning Disability', 'Other', 'Prefer not to say']
                                 
               - type: object
                 properties:
