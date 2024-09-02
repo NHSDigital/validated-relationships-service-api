@@ -319,6 +319,9 @@ paths:
                     $ref: "#/components/examples/MotherChildConsentBundle"
                   ConsentingAdultsConsentBundle:
                     $ref: "#/components/examples/ConsentingAdultsConsentBundle"
+                  MultipleConsentBundle:
+                    $ref: "#/components/examples/MultipleConsentBundle"
+
           "4XX":
             description: |
               Errors will be returned for the first error encountered in the request. An error occurred as follows:
@@ -1521,6 +1524,9 @@ components:
           example: "2010-10-22"
           type: string
           format: date
+        generalPractitioner:
+          $ref: '#/components/schemas/Reference'
+          description: "Patient's nominated primary care provider"
 
     Consent: 
       type: object
@@ -1689,7 +1695,10 @@ components:
     
     Reference:
       type: object
-      properties:        
+      properties:  
+        type:
+          type: string
+          description: The resource type that the reference refers to
         identifier:
           $ref: '#/components/schemas/Identifier'
 
@@ -1926,6 +1935,8 @@ components:
               identifier:
                 - system: "https://fhir.nhs.uk/Id/nhs-number"
                   value: "9000000017"
+                - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
+                  value: "ABC0000001"
               patient:
                 type: Patient
                 identifier:
@@ -1948,6 +1959,8 @@ components:
               identifier:
                 - system: "https://fhir.nhs.uk/Id/nhs-number"
                   value: "9000000009"
+                - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
+                  value: "ABC1234556"
               name:
                 - id: "123456"
                   use: usual
@@ -1963,6 +1976,11 @@ components:
                     - MBE
                     - PhD
               birthDate: "2022-10-22"
+              generalPractitioner:
+                - type: "Organization"
+                  identifier: 
+                    value: "ODS12345"
+                    system: "https://fhir.nhs.uk/Id/ods-organization-code"
             search:
               mode: include
           - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/BBCC67E9"
@@ -2012,6 +2030,8 @@ components:
               identifier:
                 - system: "https://fhir.nhs.uk/Id/nhs-number"
                   value: "9000000010"
+                - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
+                  value: "ABC0000008"
               patient:
                 type: Patient
                 identifier:
@@ -2031,6 +2051,8 @@ components:
               identifier:
                 - system: "https://fhir.nhs.uk/Id/nhs-number"
                   value: "9000000005"
+                - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
+                  value: "ABC1234567"
               name:
                 - id: "123456"
                   use: usual
@@ -2043,6 +2065,11 @@ components:
                   prefix:
                     - Mrs
               birthDate: "1995-10-22"
+              generalPractitioner:
+                - type: "Organization"
+                  identifier: 
+                    value: "ODS12345"
+                    system: "https://fhir.nhs.uk/Id/ods-organization-code"
             search:
               mode: include
           - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/WWCC67T1"
@@ -2099,6 +2126,8 @@ components:
               identifier:
                 - system: "https://fhir.nhs.uk/Id/nhs-number"
                   value: "9000000017"
+                - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
+                  value: "ABC0000003"
               patient:
                 type: Patient
                 identifier:
@@ -2121,6 +2150,8 @@ components:
               identifier:
                 - system: "https://fhir.nhs.uk/Id/nhs-number"
                   value: "9000000009"
+                - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
+                  value: "ABC1234567"
               name:
                 - id: "123456"
                   use: usual
@@ -2136,6 +2167,11 @@ components:
                     - MBE
                     - PhD
               birthDate: "2022-10-22"
+              generalPractitioner:
+                - type: "Organization"
+                  identifier: 
+                    value: "ODS12345"
+                    system: "https://fhir.nhs.uk/Id/ods-organization-code"
             search:
               mode: include
           - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/BBCC67E9"
@@ -2176,6 +2212,8 @@ components:
               identifier:
                 - system: "https://fhir.nhs.uk/Id/nhs-number"
                   value: "9000000010"
+                - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
+                  value: "ABC00000234"
               patient:
                 type: Patient
                 identifier:
@@ -2195,6 +2233,8 @@ components:
               identifier:
                 - system: "https://fhir.nhs.uk/Id/nhs-number"
                   value: "9000000005"
+                - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
+                  value: "ABC9999999"
               name:
                 - id: "123456"
                   use: usual
@@ -2207,6 +2247,11 @@ components:
                   prefix:
                     - Mrs
               birthDate: "1995-10-22"
+              generalPractitioner:
+                - type: "Organization"
+                  identifier: 
+                    value: "ODS12345"
+                    system: "https://fhir.nhs.uk/Id/ods-organization-code"
             search:
               mode: include
           - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/WWCC67T1"
