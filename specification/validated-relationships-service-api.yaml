@@ -315,12 +315,12 @@ paths:
                 schema:
                   $ref: "#/components/schemas/ConsentBundle"
                 examples: 
-                  MotherChildConsentBundle:
-                    $ref: "#/components/examples/MotherChildConsentBundle"
-                  ConsentingAdultsConsentBundle:
-                    $ref: "#/components/examples/ConsentingAdultsConsentBundle"
-                  MultipleConsentBundle:
-                    $ref: "#/components/examples/MultipleConsentBundle"
+                  consentMotherChildBundle:
+                    $ref: "#/components/examples/ConsentMotherChildBundle"
+                  consentAdultsConsentingBundle:
+                    $ref: "#/components/examples/ConsentAdultsConsentingBundle"
+                  consentMultipleBundle:
+                    $ref: "#/components/examples/ConsentMultipleBundle"
 
           "4XX":
             description: |
@@ -1525,8 +1525,10 @@ components:
           type: string
           format: date
         generalPractitioner:
-          $ref: '#/components/schemas/Reference'
-          description: "Patient's nominated primary care provider"
+          type: array
+          description: Patient's nominated primary care provider, each a Reference(Organization | Practitioner | PractitionerRole).
+          items: 
+            $ref: '#/components/schemas/Reference'
 
     Consent: 
       type: object
@@ -1574,16 +1576,19 @@ components:
             $ref: '#/components/schemas/Reference'
           description: "Individuals or organizations that agreed to the consent."
         policy:
-          type: object
-          description: Policies covered by this consent
-          properties:
-            authority: 
-              type: string
-              description: Organization having regulatory accountability for enforcing policies pertaining to this Consent Directive.
-            uri: 
-              type: string
-              format: uri
-              description: The reference to the National Proxy Service policy that are included in this consent scope.
+          type: array
+          description: The policies covered by this consent
+          items:
+            type: object
+            description: A policy covered by this consent
+            properties:
+              authority: 
+                type: string
+                description: Organization having regulatory accountability for enforcing policies pertaining to this Consent Directive.
+              uri: 
+                type: string
+                format: uri
+                description: The reference to the National Proxy Service policy that are included in this consent scope.
         verification:
           type: array
           description: Whether consent was verified with the patient, or another authorized person.
@@ -1920,7 +1925,7 @@ components:
         example: NiV3CyMJH3xYV26ghlVpbbjT7pDVEA8HpFczAjRLTs1VezC4CYzupZ3XxXAWM7ELuseqrV8r0Ill7EL7G2tXUaVHCPWgg4q10+MxFjnRPrjDvckBRSZazqZcp0K2VBdUV0rZ7RUYJNJsjVAeefWhiK/Y4R+GFO86QDpt41JS9xA=;G123456
 
   examples:
-    MotherChildConsentBundle:
+    ConsentMotherChildBundle:
       summary: Bundle containing a single active proxy relationship for a birth mother & child
       value:
         resourceType: Bundle
@@ -1990,9 +1995,9 @@ components:
               status: active
               scope:
                 coding:
-                  - system: http://terminology.hl7.org/CodeSystem/consentscope"
+                  - system: "http://terminology.hl7.org/CodeSystem/consentscope"
                     code: patient-privacy
-                    display: "Patient Privacy"
+                    display: "Privacy Consent"
                 text: "Patient Privacy Consent"
               category:
                 - coding:
@@ -2010,12 +2015,12 @@ components:
                     system: "https://fhir.nhs.uk/Id/nhs-number"
                     value: "9000000017"
               policy:
-                authority: "https://www.england.nhs.uk"
-                uri: "<REPLACE WITH LINK TO PUBLISHED NATIONAL PROXY STANDARD>"
+                - authority: "https://www.england.nhs.uk"
+                  uri: "<REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD>"
             search:
               mode: match
 
-    ConsentingAdultsConsentBundle:
+    ConsentAdultsConsentingBundle:
       summary: Bundle containing a single active proxy relationship for two consenting adults with capacity
       value:
         resourceType: Bundle
@@ -2039,7 +2044,7 @@ components:
                   value: "9000000005"
               relationship:
                 - coding:
-                    - system: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+                    - system: "https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole"
                       code: Personal
                       display: "Personal relationship with the patient"                    
             search:
@@ -2079,9 +2084,9 @@ components:
               status: active
               scope:
                 coding:
-                  - system: http://terminology.hl7.org/CodeSystem/consentscope"
+                  - system: "http://terminology.hl7.org/CodeSystem/consentscope"
                     code: patient-privacy
-                    display: "Patient Privacy"
+                    display: "Privacy Consent"
                 text: "Patient Privacy Consent"
               category:
                 - coding:
@@ -2099,8 +2104,8 @@ components:
                     system: "https://fhir.nhs.uk/Id/nhs-number"
                     value: "9000000010"
               policy:
-                authority: "https://www.england.nhs.uk"
-                uri: "<REPLACE WITH LINK TO PUBLISHED NATIONAL PROXY STANDARD>"
+                - authority: "https://www.england.nhs.uk"
+                  uri: "<REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD>"
               verification:
                 - verified: true
                   verifiedWith:
@@ -2111,7 +2116,7 @@ components:
             search:
               mode: match
 
-    MultipleConsentBundle:
+    ConsentMultipleBundle:
       summary: Bundle containing a multiple active proxy relationships
       value:
         resourceType: Bundle
@@ -2181,9 +2186,9 @@ components:
               status: active
               scope:
                 coding:
-                  - system: http://terminology.hl7.org/CodeSystem/consentscope"
+                  - system: "http://terminology.hl7.org/CodeSystem/consentscope"
                     code: patient-privacy
-                    display: "Patient Privacy"
+                    display: "Privacy Consent"
                 text: "Patient Privacy Consent"
               category:
                 - coding:
@@ -2201,8 +2206,8 @@ components:
                     system: "https://fhir.nhs.uk/Id/nhs-number"
                     value: "9000000017"
               policy:
-                authority: "https://www.england.nhs.uk"
-                uri: "<REPLACE WITH LINK TO PUBLISHED NATIONAL PROXY STANDARD>"
+                - authority: "https://www.england.nhs.uk"
+                  uri: "<REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD>"
             search:
               mode: match
           - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/RP974720"
@@ -2221,7 +2226,7 @@ components:
                   value: "9000000005"
               relationship:
                 - coding:
-                    - system: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+                    - system: "https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole"
                       code: Personal
                       display: "Personal relationship with the patient"                    
             search:
@@ -2261,9 +2266,9 @@ components:
               status: active
               scope:
                 coding:
-                  - system: http://terminology.hl7.org/CodeSystem/consentscope"
+                  - system: "http://terminology.hl7.org/CodeSystem/consentscope"
                     code: patient-privacy
-                    display: "Patient Privacy"
+                    display: "Privacy Consent"
                 text: "Patient Privacy Consent"
               category:
                 - coding:
@@ -2281,8 +2286,8 @@ components:
                     system: "https://fhir.nhs.uk/Id/nhs-number"
                     value: "9000000010"
               policy:
-                authority: "https://www.england.nhs.uk"
-                uri: "<REPLACE WITH LINK TO PUBLISHED NATIONAL PROXY STANDARD>"
+                - authority: "https://www.england.nhs.uk"
+                  uri: "<REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD>"
               verification:
                 - verified: true
                   verifiedWith:
