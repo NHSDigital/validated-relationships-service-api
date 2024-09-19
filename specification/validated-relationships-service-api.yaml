@@ -266,7 +266,12 @@ paths:
           content:
             application/fhir+json:
               schema:
-                $ref: "#/components/schemas/RelatedPersonBundle"              
+                $ref: "#/components/schemas/RelatedPersonBundle"
+              examples:
+                relatedPersonDefault:
+                  $ref: '#/components/examples/RelatedPersonDefault'                  
+                relatedPersonIncludePatientLinks:
+                  $ref: '#/components/examples/RelatedPersonIncludePatientLinks'
 
         "4XX":
           description: |
@@ -1164,12 +1169,10 @@ components:
           type: string
           format: date-time
           description: The UTC date and time the search results were returned.
-          example: 2020-08-26T14:00:00+00:00
         total:
           type: number
           description: |
             The number of resources contained within the Bundle.
-          example: 2
 
     Searchset:
       allOf:
@@ -1196,11 +1199,9 @@ components:
                     description: |
                       Links related to this Bundle - see:
                       http://www.iana.org/assignments/link-relations/link-relations.xhtml
-                    example: "self"
                   url:
                     type: string
                     format: uri
-                    example: https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson?_include=RelatedPerson%3apatient&identifier=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C9000000017
             entry:
               type: array
               description: |
@@ -1236,7 +1237,6 @@ components:
         fullUrl:
           type: string
           description: The canonical URL of the resource in the entry
-          example: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742"
         resource:
           $ref: "#/components/schemas/RelatedPerson"                        
         search:
@@ -1256,7 +1256,6 @@ components:
         fullUrl:
           type: string
           description: The canonical URL of the resource in the entry
-          example: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/A3CC67E2
         resource:          
           $ref: "#/components/schemas/Patient"          
         search:
@@ -1300,7 +1299,6 @@ components:
         id:
           type: string
           description: Unique identifier of the RelatedPerson resource.
-          example: BE974742
         identifier:
           type: array
           description: The proxy's NHS number. The primary identifier of a patient, unique within NHS England and Wales. Always 10 digits and must be a [valid NHS number](https://www.datadictionary.nhs.uk/attributes/nhs_number.html).
@@ -1314,7 +1312,6 @@ components:
               value:
                 type: string
                 description: The proxy's NHS number.
-                example: "9000000017"
         patient:
           type: object
           description: A reference to a patient the proxy is related to.
@@ -1334,7 +1331,6 @@ components:
                 value:
                   type: string
                   description: The patient's NHS number.
-                  example: "9000000009"
         relationship:
           type: array
           description: How the proxy is related to the patient.
@@ -1379,7 +1375,6 @@ components:
         id:
           type: string
           description: Unique identifier of the Patient resource
-          example: A3CC67E2
         identifier:
           type: array
           description: The patient's NHS number. The primary identifier of a patient, unique within NHS England and Wales. Always 10 digits and must be a [valid NHS number](https://www.datadictionary.nhs.uk/attributes/nhs_number.html).
@@ -1393,7 +1388,6 @@ components:
               value:
                 type: string
                 description: The NHS number.
-                example: "9000000009"
         name:
           type: array
           description: List of names associated with the patient.
@@ -1407,7 +1401,6 @@ components:
               id:
                 type: string
                 description: Unique object identifier for this name.
-                example: "123"
               use:
                 type: string
                 description: |
@@ -1422,7 +1415,6 @@ components:
                   * official - The formal name as registered in an official (government) registry, but which name might not be commonly used. May be called "legal name".
                   * anonymous - Anonymous assigned name, alias, or pseudonym (used to protect a person's identity for privacy reasons).
                 enum: [usual, temp, nickname, old, maiden]
-                example: usual
               period:
                 type: object
                 description: |
@@ -1434,12 +1426,10 @@ components:
                     type: string
                     format: date
                     description: Start date of time period, if known, in format `yyyy-mm-dd`. Can be a future date.
-                    example: 2020-01-01
                   end:
                     type: string
                     format: date
                     description: End date of time period, if known and if not ongoing, in format `yyyy-mm-dd`. Can be a future date.
-                    example: 2021-12-31
               given:
                 type: array
                 maxItems: 5
@@ -1449,36 +1439,28 @@ components:
                   Each name(s) should be a separate item in the list. The first given name may include multiple names, separated by a space.
                   Subsequent names must be broken down into list items. For example, the input `[Jane Marie Anne, Jo Adele]` returns `[Jane Marie Anne, Jo, Adele]`.
 
-                example: [Jane Marie Anne]
                 items:
                   type: string
                   maxLength: 35
-                  example: Jane
               family:
                 type: string
                 maxLength: 35
                 description: Family name (often called Surname).
-                example: Smith
               prefix:
                 type: array
                 description: Name prefixes, titles, and prenominals.
-                example: [Mrs]
                 items:
                   type: string
-                  example: Mrs
               suffix:
                 type: array
                 description: Name suffices and postnominals.
-                example: [MBE, PhD]
                 items:
                   type: string
-                  example: MBE
         birthDate:
           description: |
             The date on which the patient was born or is officially deemed to have been born.
 
             It is a date in the format `yyyy-mm-dd`. Due to data quality issues on a small number of patients `yyyy-mm` and `yyyy` format may also be returned.
-          example: "2010-10-22"
           type: string
           format: date
         generalPractitioner:
@@ -1572,11 +1554,9 @@ components:
                 type: string
                 enum: [fatal, error, warning, information]
                 description: Severity of the error.
-                example: error
               code:
                 type: string
                 description: FHIR error code.
-                example: invalid
                 enum:
                   - invalid
                   - structure
@@ -1621,19 +1601,15 @@ components:
                         system:
                           type: string
                           description: URI of the coding system specification.
-                          example: https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode
                         version:
                           type: string
                           description: Version of the coding system in use.
-                          example: '1'
                         code:
                           type: string
                           description: Symbol in syntax defined by the system.
-                          example: ACCESS_DENIED
                         display:
                           type: string
                           description: Representation defined by the system.
-                          example: Missing or invalid OAuth 2.0 bearer token in request.
               diagnostics:
                 type: string
                 description: Additional diagnostic information about the issue. This information is subject to change.                
@@ -1868,6 +1844,123 @@ components:
         example: NiV3CyMJH3xYV26ghlVpbbjT7pDVEA8HpFczAjRLTs1VezC4CYzupZ3XxXAWM7ELuseqrV8r0Ill7EL7G2tXUaVHCPWgg4q10+MxFjnRPrjDvckBRSZazqZcp0K2VBdUV0rZ7RUYJNJsjVAeefWhiK/Y4R+GFO86QDpt41JS9xA=;G123456
 
   examples:
+    RelatedPersonDefault:
+      summary: Default behaviour
+      description: |
+        Example response containing the details of two matched candidate proxy relationships between a birth mother and her two children.
+        
+        The FHIR Bundle contains a `RelatedPerson` resource per relationship verified against authoritative sources. 
+        
+        `Patient` resources are not included by default.
+      value:
+        resourceType: Bundle
+        timestamp: "2020-08-26T14:00:00+00:00"
+        total: 2
+        type: searchset
+        link:
+          - relation: self
+            url: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson?_include=RelatedPerson%3apatient&identifier=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C9000000017"
+        entry:
+          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742"
+            resource:
+              resourceType: RelatedPerson
+              id: BE974742
+              identifier:
+                - system: "https://fhir.nhs.uk/Id/nhs-number"
+                  value: "9000000017"
+              patient:
+                type: Patient
+                identifier:
+                  system: "https://fhir.nhs.uk/Id/nhs-number"
+                  value: "9000000009"
+              relationship:
+                - coding:
+                    - system: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+                      code: MTH
+                      display: mother
+            search:
+              mode: match
+          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974741"
+            resource:
+              resourceType: RelatedPerson
+              id: BE974741
+              identifier:
+                - system: "https://fhir.nhs.uk/Id/nhs-number"
+                  value: "9000000017"
+              patient:
+                type: Patient
+                identifier:
+                  system: "https://fhir.nhs.uk/Id/nhs-number"
+                  value: "9000000002"
+              relationship:
+                - coding:
+                    - system: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+                      code: MTH
+                      display: mother
+            search:
+              mode: match
+
+    RelatedPersonIncludePatientLinks:
+      summary: With patient '_include'
+      description: |
+        Example response containing the details of a single matched candidate proxy relationship between a birth mother and her child.
+        
+        The FHIR Bundle contains a `RelatedPerson` and a `Patient` resource per relationship verified against authoritative sources. 
+        
+        `Patient` resources are included in the bundle when the `_include=RelatedPerson:patient` query parameter is specified.
+      value:
+        resourceType: Bundle
+        timestamp: "2020-08-26T14:00:00+00:00"
+        total: 1
+        type: searchset
+        link:
+          - relation: self
+            url: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson?_include=RelatedPerson%3apatient&identifier=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C9000000017"
+        entry:
+          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742"
+            resource:
+              resourceType: RelatedPerson
+              id: BE974742
+              identifier:
+                - system: "https://fhir.nhs.uk/Id/nhs-number"
+                  value: "9000000017"
+              patient:
+                type: Patient
+                identifier:
+                  system: "https://fhir.nhs.uk/Id/nhs-number"
+                  value: "9000000009"
+              relationship:
+                - coding:
+                    - system: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+                      code: MTH
+                      display: mother
+            search:
+              mode: match
+          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/A3CC67E2"
+            resource:
+              resourceType: Patient
+              id: A3CC67E2
+              identifier:
+                - system: "https://fhir.nhs.uk/Id/nhs-number"
+                  value: "9000000009"
+              name:
+                - id: "123"
+                  use: usual
+                  period:
+                    start: "2020-01-01"
+                    end: "2021-12-31"
+                  given:
+                    - Jane Marie Anne
+                  family: Smith
+                  prefix:
+                    - Mrs
+                  suffix:
+                    - MBE
+                    - PhD
+              birthDate: "2010-10-22"
+            search:
+              mode: include
+
     QuestionnaireResponseMotherChildRequest:
       summary: Mother > Child access request
       description: |
