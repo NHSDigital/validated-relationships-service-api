@@ -5,18 +5,22 @@ QuestionnaireResponseAdultNominatesAdultRequest:
     
     Significant things to point out:
 
-    - `source` should be the NHS number of the patient completing the form - this should correlate with the Identity token in the request
-    - `subject` should be the NHS Number of the patient to which the application relates
+    - `source.type` should be `Patient` when a patient is nominating a proxy
+    - `source.identifier.value` should be the NHS number of the user completing the form - this should correlate with the Identity token in the request
+    - `subject.type` should be `Patient` since it is the patient that is the subject of the application
+    - `subject.identifier.value` should be the NHS Number of the patient to which the application relates
     - `relatedPerson` demographics are present in the request as a result of being provided by the applicant
   value: 
     resourceType: QuestionnaireResponse        
     status: "completed"
     authored: "2024-07-15T09:43:03.280Z"
     source:
+      type: "Patient"
       identifier:
         system: "https://fhir.nhs.uk/Id/nhs-number"
         value: "9000000006"
     subject:
+      type: "Patient"
       identifier:
         system: "https://fhir.nhs.uk/Id/nhs-number"
         value: "9000000006"
