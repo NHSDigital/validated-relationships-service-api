@@ -178,25 +178,25 @@ paths:
               $ref: '#/components/schemas/QuestionnaireResponse'
             examples:
               questionnaireResponseMotherChildRequest:
-                $ref: '#/components/examples/QuestionnaireResponseMotherChildRequest'
+                $ref: './examples/requests/POST_QuestionnaireResponse/mother-child.yaml#/QuestionnaireResponseMotherChildRequest'
               questionnaireResponseAdultToAdultWithoutCapacityRequest:
-                $ref: '#/components/examples/QuestionnaireResponseAdultToAdultWithoutCapacityRequest'
+                $ref: './examples/requests/POST_QuestionnaireResponse/adult-to-adult-without-capacity.yaml#/QuestionnaireResponseAdultToAdultWithoutCapacityRequest'
               questionnaireResponseAdultToAdultWithCapacityRequest:
-                $ref: '#/components/examples/QuestionnaireResponseAdultToAdultWithCapacityRequest'
+                $ref: './examples/requests/POST_QuestionnaireResponse/adult-to-adult-with-capacity.yaml#/QuestionnaireResponseAdultToAdultWithCapacityRequest'
               questionnaireResponseAdultNominatesAdultRequest:
-                $ref: '#/components/examples/QuestionnaireResponseAdultNominatesAdultRequest'
+                $ref: './examples/requests/POST_QuestionnaireResponse/adult-nominates-adult.yaml#/QuestionnaireResponseAdultNominatesAdultRequest'
           application/fhir+json; charset=utf-8:
             schema: 
               $ref: '#/components/schemas/QuestionnaireResponse'
             examples:
               questionnaireResponseMotherChildRequest:
-                $ref: '#/components/examples/QuestionnaireResponseMotherChildRequest'
+                $ref: './examples/requests/POST_QuestionnaireResponse/mother-child.yaml#/QuestionnaireResponseMotherChildRequest'
               questionnaireResponseAdultToAdultWithoutCapacityRequest:
-                $ref: '#/components/examples/QuestionnaireResponseAdultToAdultWithoutCapacityRequest'
+                $ref: './examples/requests/POST_QuestionnaireResponse/adult-to-adult-without-capacity.yaml#/QuestionnaireResponseAdultToAdultWithoutCapacityRequest'
               questionnaireResponseAdultToAdultWithCapacityRequest:
-                $ref: '#/components/examples/QuestionnaireResponseAdultToAdultWithCapacityRequest'
+                $ref: './examples/requests/POST_QuestionnaireResponse/adult-to-adult-with-capacity.yaml#/QuestionnaireResponseAdultToAdultWithCapacityRequest'
               questionnaireResponseAdultNominatesAdultRequest:
-                $ref: '#/components/examples/QuestionnaireResponseAdultNominatesAdultRequest'
+                $ref: './examples/requests/POST_QuestionnaireResponse/adult-nominates-adult.yaml#/QuestionnaireResponseAdultNominatesAdultRequest'
       responses:
         '200':
           description: Request was received successfully for processing
@@ -206,7 +206,7 @@ paths:
                 $ref: '#/components/schemas/OperationOutcome'
               examples:
                 postQuestionnaireResponseSuccess:
-                  $ref: '#/components/examples/PostQuestionnaireResponseSuccess'
+                  $ref: './examples/responses/POST_QuestionnaireResponse/success.yaml#/PostQuestionnaireResponseSuccess'
         "4XX":
           description: |
             Errors will be returned for the first error encountered in the request. An error occurred as follows:
@@ -229,7 +229,7 @@ paths:
                 $ref: '#/components/schemas/OperationOutcome'
               examples:
                 accessDeniedError:
-                  $ref: '#/components/examples/AccessDeniedError' 
+                  $ref: './examples/responses/errors/access-denied.yaml#/AccessDeniedError' 
         "500":
           description: Internal server error
           content:
@@ -238,7 +238,7 @@ paths:
                 $ref: '#/components/schemas/OperationOutcome'
               examples:  
                 internalServerError:
-                  $ref: '#/components/examples/InternalServerError'
+                  $ref: './examples/responses/errors/internal-server-error.yaml#/InternalServerError'
 
   /RelatedPerson:
     get:
@@ -271,10 +271,10 @@ paths:
               schema:
                 $ref: "#/components/schemas/RelatedPersonBundle"
               examples:
-                relatedPersonDefault:
-                  $ref: '#/components/examples/RelatedPersonDefault'                  
-                relatedPersonIncludePatientLinks:
-                  $ref: '#/components/examples/RelatedPersonIncludePatientLinks'
+                relatedPersonWithoutPatients:
+                  $ref: './examples/responses/GET_RelatedPerson/without-patients.yaml#/RelatedPersonWithoutPatients'
+                relatedPersonIncludePatients:
+                  $ref: './examples/responses/GET_RelatedPerson/include-patients.yaml#/RelatedPersonIncludePatients'
 
         "4XX":
           description: |
@@ -300,9 +300,9 @@ paths:
                 $ref: '#/components/schemas/OperationOutcome'
               examples:
                 accessDeniedError:
-                  $ref: '#/components/examples/AccessDeniedError'  
+                  $ref: './examples/responses/errors/access-denied.yaml#/AccessDeniedError'  
                 relatedPersonInvalidIdentifierError:
-                  $ref: '#/components/examples/RelatedPersonInvalidIdentifierError'
+                  $ref: './examples/responses/GET_RelatedPerson/errors/invalid-identifier.yaml#/RelatedPersonInvalidIdentifierError'
 
         "500":
           description: Internal server error
@@ -312,7 +312,7 @@ paths:
                 $ref: '#/components/schemas/OperationOutcome'
               examples:  
                 internalServerError:
-                  $ref: '#/components/examples/InternalServerError'
+                  $ref: './examples/responses/errors/internal-server-error.yaml#/InternalServerError'
 
   /Consent:
     get:
@@ -349,11 +349,11 @@ paths:
                   $ref: "#/components/schemas/ConsentBundle"
                 examples: 
                   consentMotherChildBundle:
-                    $ref: "#/components/examples/ConsentMotherChildBundle"
+                    $ref: "./examples/responses/GET_Consent/mother-child.yaml#/ConsentMotherChildBundle"
                   consentAdultsConsentingBundle:
-                    $ref: "#/components/examples/ConsentAdultsConsentingBundle"
+                    $ref: "./examples/responses/GET_Consent/adults-consenting.yaml#/ConsentAdultsConsentingBundle"
                   consentMultipleBundle:
-                    $ref: "#/components/examples/ConsentMultipleBundle"
+                    $ref: "./examples/responses/GET_Consent/mixed.yaml#/ConsentMixedBundle"
 
           "4XX":
             description: |
@@ -380,7 +380,7 @@ paths:
                   $ref: '#/components/schemas/OperationOutcome'
                 examples:
                   accessDeniedError:
-                    $ref: '#/components/examples/AccessDeniedError' 
+                    $ref: './examples/responses/errors/access-denied.yaml#/AccessDeniedError' 
           "500":
             description: Internal server error
             content:
@@ -389,7 +389,7 @@ paths:
                   $ref: '#/components/schemas/OperationOutcome'
                 examples:  
                   internalServerError:
-                    $ref: '#/components/examples/InternalServerError'
+                    $ref: './examples/responses/errors/internal-server-error.yaml#/InternalServerError'
 
 
 components:
@@ -1854,935 +1854,3 @@ components:
         type: string        
         pattern: "^[^;]+;[^;]+$"
         example: NiV3CyMJH3xYV26ghlVpbbjT7pDVEA8HpFczAjRLTs1VezC4CYzupZ3XxXAWM7ELuseqrV8r0Ill7EL7G2tXUaVHCPWgg4q10+MxFjnRPrjDvckBRSZazqZcp0K2VBdUV0rZ7RUYJNJsjVAeefWhiK/Y4R+GFO86QDpt41JS9xA=;G123456
-
-  examples:
-    RelatedPersonDefault:
-      summary: Default behaviour
-      description: |
-        Example response containing the details of two matched candidate proxy relationships between a birth mother and her two children.
-        
-        The FHIR Bundle contains a `RelatedPerson` resource per relationship verified against authoritative sources. 
-        
-        `Patient` resources are not included by default.
-      value:
-        resourceType: Bundle
-        timestamp: "2020-08-26T14:00:00+00:00"
-        total: 2
-        type: searchset
-        link:
-          - relation: self
-            url: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson?_include=RelatedPerson%3apatient&identifier=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C9000000017"
-        entry:
-          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742"
-            resource:
-              resourceType: RelatedPerson
-              id: BE974742
-              identifier:
-                - system: "https://fhir.nhs.uk/Id/nhs-number"
-                  value: "9000000017"
-              patient:
-                type: Patient
-                identifier:
-                  system: "https://fhir.nhs.uk/Id/nhs-number"
-                  value: "9000000009"
-              relationship:
-                - coding:
-                    - system: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
-                      code: MTH
-                      display: mother
-            search:
-              mode: match
-          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974741"
-            resource:
-              resourceType: RelatedPerson
-              id: BE974741
-              identifier:
-                - system: "https://fhir.nhs.uk/Id/nhs-number"
-                  value: "9000000017"
-              patient:
-                type: Patient
-                identifier:
-                  system: "https://fhir.nhs.uk/Id/nhs-number"
-                  value: "9000000002"
-              relationship:
-                - coding:
-                    - system: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
-                      code: MTH
-                      display: mother
-            search:
-              mode: match
-
-    RelatedPersonIncludePatientLinks:
-      summary: With patient '_include'
-      description: |
-        Example response containing the details of a single matched candidate proxy relationship between a birth mother and her child.
-        
-        The FHIR Bundle contains a `RelatedPerson` and a `Patient` resource per relationship verified against authoritative sources. 
-        
-        `Patient` resources are included in the bundle when the `_include=RelatedPerson:patient` query parameter is specified.
-      value:
-        resourceType: Bundle
-        timestamp: "2020-08-26T14:00:00+00:00"
-        total: 1
-        type: searchset
-        link:
-          - relation: self
-            url: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson?_include=RelatedPerson%3apatient&identifier=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C9000000017"
-        entry:
-          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742"
-            resource:
-              resourceType: RelatedPerson
-              id: BE974742
-              identifier:
-                - system: "https://fhir.nhs.uk/Id/nhs-number"
-                  value: "9000000017"
-              patient:
-                type: Patient
-                identifier:
-                  system: "https://fhir.nhs.uk/Id/nhs-number"
-                  value: "9000000009"
-              relationship:
-                - coding:
-                    - system: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
-                      code: MTH
-                      display: mother
-            search:
-              mode: match
-          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/A3CC67E2"
-            resource:
-              resourceType: Patient
-              id: A3CC67E2
-              identifier:
-                - system: "https://fhir.nhs.uk/Id/nhs-number"
-                  value: "9000000009"
-              name:
-                - id: "123"
-                  use: usual
-                  period:
-                    start: "2020-01-01"
-                    end: "2021-12-31"
-                  given:
-                    - Jane Marie Anne
-                  family: Smith
-                  prefix:
-                    - Mrs
-                  suffix:
-                    - MBE
-                    - PhD
-              birthDate: "2010-10-22"
-            search:
-              mode: include
-
-    QuestionnaireResponseMotherChildRequest:
-      summary: Mother > Child access request
-      description: |
-        Example proxy access request from a mother (Martha) with NHS number `9000000001` requesting access to act on behalf of their child (Timmy) with NHS number `9000000002`. 
-        
-        Significant details to point out:
-
-        - `source` should be the NHS number of the proxy completing the form - this should correlate with the Identity token in the request
-        - `subject` should be the NHS Number of the patient to which the application relates (the child)
-        - `patient` demographics are present in the request as a result of being provided by the applicant
-      value: 
-        resourceType: QuestionnaireResponse        
-        status: "completed"
-        authored: "2024-07-15T09:43:03.280Z"
-        source:
-          identifier:
-            system: "https://fhir.nhs.uk/Id/nhs-number"
-            value: "9000000001"
-        subject:
-          identifier:
-            system: "https://fhir.nhs.uk/Id/nhs-number"
-            value: "9000000002"
-        questionnaire: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Questionnaire/01dc6813-3421-4d14-948d-a4888241add1"
-        item:
-          - linkId: "relatedPerson"
-            text: "Proxy details"
-            item:
-              - linkId: "relatedPerson_identifier"
-                text: "NHS number"
-                answer:
-                  - valueString: "9000000001"
-              - linkId: "relatedPerson_basisForAccess"
-                text: "Basis for Access"
-                answer:
-                  - valueCoding:
-                      system: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
-                      code: "PRN"
-                      display: "Parent"
-              - linkId: "relatedPerson_relationship"
-                text: "Relationship"
-                answer:
-                  - valueCoding:
-                      system: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
-                      code: "PRN"
-                      display: "Parent"
-          - linkId: "parentalApplicationSupplementaryDetails"
-            text: "Parental Application Supplementary Details"
-            item:
-              - linkId: "parentalApplicationSupplementaryDetails_evidenceOfResponsibility"
-                text: "Evidence of parental responsibility"
-                answer:
-                  - valueCoding:
-                      system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-EvidenceOfResponsibility"
-                      code: "BRTH"
-                      display: "Birth certificate"
-              - linkId: "parentalApplicationSupplementaryDetails_isCurrentAddressConfirmed"
-                text: "Is current address confirmed?"
-                answer:
-                  - valueBoolean: true
-              - linkId: "parentalApplicationSupplementaryDetails_liveAtSameAddress"
-                text: "Do adult and child live at the same address?"
-                answer:
-                  - valueBoolean: true
-          - linkId: "patient"
-            text: "Patient details"
-            item:
-              - linkId: "patient_identifier"
-                text: "NHS number"
-                answer:
-                  - valueString: "9000000002"
-              - linkId: "patient_name"
-                text: "Name"
-                item:
-                  - linkId: "patient_name_first"
-                    text: "First name"
-                    answer:
-                      - valueString: "Timothy"
-                  - linkId: "patient_name_family"
-                    text: "Last name"
-                    answer:
-                      - valueString: "Tenenbaum"
-              - linkId: "patient_birthDate"
-                text: "Date of birth"
-                answer:
-                  - valueDate: "2020-10-22"
-          - linkId: "requestedAccess"
-            text: "Requested access"
-            item:
-              - linkId: "requestedAccess_accessLevel"
-                text: "Requested access level"
-                answer:
-                  - valueCoding:
-                      system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"
-                      code: "APPT"
-                      display: "Appointment Booking"
-                  - valueCoding:
-                      system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"
-                      code: "CNTCT"
-                      display: "Contacting Surgery"
-                  - valueCoding:
-                      system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"
-                      code: "RECRD"
-                      display: "Medical Records Access"
-                  - valueCoding:
-                      system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"
-                      code: "TEST"
-                      display: "Test Results"
-                  - valueCoding:
-                      system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"
-                      code: "VACC"
-                      display: "Vaccination Records"
-                  - valueCoding:
-                      system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"
-                      code: "PRESCR"
-                      display: "Repeat Prescription Requests"
-              - linkId: "requestedAccess_accessLevelMoreinfo"
-                text: "Requested access level - further information"
-                answer:
-                  - valueString: "My child cannot access their own record"
-              - linkId: "requestedAccess_reasonsForAccess"
-                text: "Reason for access"
-                answer:
-                  - valueCoding:
-                      system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-ReasonForAccess"
-                      code: "PRAC"
-                      display: "Practical Reasons"
-
-    QuestionnaireResponseAdultToAdultWithoutCapacityRequest:
-      summary: Adult > Adult (without capacity) access request
-      description: |
-        Example proxy access request from an adult (Danny) with NHS number `9876543210` requesting access to act on behalf of an elderly parent (Florence) without capacity wth NHS number `9000000008`. 
-        
-        Significant details to point out:
-
-        - `source` should be the NHS number of the proxy completing the form - this should correlate with the Identity token in the request
-        - `subject` should be the NHS Number of the patient to which the application relates (the parent without capacity in this case)
-        - `patient` demographics are present in the request as a result of being provided by the applicant
-      value: 
-        resourceType: QuestionnaireResponse        
-        status: "completed"
-        authored: "2024-07-15T09:43:03.280Z"
-        source:
-          identifier:
-            system: "https://fhir.nhs.uk/Id/nhs-number"
-            value: "9876543210"
-        subject:
-          identifier:
-            system: "https://fhir.nhs.uk/Id/nhs-number"
-            value: "9000000008"
-        questionnaire: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Questionnaire/01dc6813-3421-4d14-948d-a4888241add1"
-        item:
-          - linkId: "relatedPerson"
-            text: "Proxy details"
-            item:
-              - linkId: "relatedPerson_identifier"
-                text: "NHS number"
-                answer:
-                  - valueString: "9876543210"
-              - linkId: "relatedPerson_basisForAccess"
-                text: "Basis for Access"
-                answer:
-                  - valueCoding:
-                      system: "https://fhir.nhs.uk/STU3/CodeSystem/RARecord-ProxyRole-1"
-                      code: "002"
-                      display: "Best interest decision made on behalf of the patient (Mental Capacity Act 2005)"
-              - linkId: "relatedPerson_relationship"
-                text: "Relationship"
-                answer:
-                  - valueCoding:
-                      system: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
-                      code: "CHILD"
-                      display: "Child"
-          - linkId: "patient"
-            text: "Patient details"
-            item:
-              - linkId: "patient_identifier"
-                text: "NHS number"
-                answer:
-                  - valueString: "9000000008"
-              - linkId: "patient_name"
-                text: "Name"
-                item:
-                  - linkId: "patient_name_first"
-                    text: "First name"
-                    answer:
-                      - valueString: "Florence"
-                  - linkId: "patient_name_family"
-                    text: "Last name"
-                    answer:
-                      - valueString: "Smith"
-              - linkId: "patient_birthDate"
-                text: "Date of birth"
-                answer:
-                  - valueDate: "1935-01-02"
-          - linkId: "requestedAccess"
-            text: "Requested access"
-            item:
-              - linkId: "requestedAccess_accessLevel"
-                text: "Requested access level"
-                answer:
-                  - valueCoding:
-                      system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"
-                      code: "APPT"
-                      display: "Appointment Booking"
-                  - valueCoding:
-                      system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"
-                      code: "VACC"
-                      display: "Vaccination Records"
-              - linkId: "requestedAccess_reasonsForAccess"
-                text: "Reason for access"
-                answer:
-                  - valueCoding:
-                      system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-ReasonForAccess"
-                      code: "TECH"
-                      display: "Technical Barriers"
-
-    QuestionnaireResponseAdultToAdultWithCapacityRequest:
-      summary: Adult > Adult (with capacity) access request
-      description: |
-        Example proxy access request from an adult (Tom) with NHS number `9000000005` requesting access to act on behalf of his wife (Jill) with NHS number `9000000006`. 
-        
-        Significant details to point out:
-
-        - `source` should be the NHS number of the proxy completing the form - this should correlate with the Identity token in the request
-        - `subject` should be the NHS Number of the patient to which the application relates        
-        - `patient` demographics are present in the request as a result of being provided by the applicant
-      value: 
-        resourceType: QuestionnaireResponse        
-        status: "completed"
-        authored: "2024-07-15T09:43:03.280Z"
-        source:
-          identifier:
-            system: "https://fhir.nhs.uk/Id/nhs-number"
-            value: "9000000005"
-        subject:
-          identifier:
-            system: "https://fhir.nhs.uk/Id/nhs-number"
-            value: "9000000006"
-        questionnaire: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Questionnaire/01dc6813-3421-4d14-948d-a4888241add1"
-        item:
-          - linkId: "relatedPerson"
-            text: "Proxy details"
-            item:
-              - linkId: "relatedPerson_identifier"
-                text: "NHS number"
-                answer:
-                  - valueString: "9000000005"
-              - linkId: "relatedPerson_basisForAccess"
-                text: "Basis for Access"
-                answer:
-                  - valueCoding:
-                      system: "https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole"
-                      code: "Personal"
-                      display: "Personal relationship with the patient"
-              - linkId: "relatedPerson_relationship"
-                text: "Relationship"
-                answer:
-                  - valueCoding:
-                      system: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
-                      code: "SPS"
-                      display: "Spouse"
-          - linkId: "patient"
-            text: "Patient details"
-            item:
-              - linkId: "patient_identifier"
-                text: "NHS number"
-                answer:
-                  - valueString: "9000000006"
-              - linkId: "patient_name"
-                text: "Name"
-                item:
-                  - linkId: "patient_name_first"
-                    text: "First name"
-                    answer:
-                      - valueString: "Jill"
-                  - linkId: "patient_name_family"
-                    text: "Last name"
-                    answer:
-                      - valueString: "Jones"
-              - linkId: "patient_birthDate"
-                text: "Date of birth"
-                answer:
-                  - valueDate: "1965-01-01"
-          - linkId: "requestedAccess"
-            text: "Requested access"
-            item:
-              - linkId: "requestedAccess_accessLevel"
-                text: "Requested access level"
-                answer:
-                  - valueCoding:
-                      system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"
-                      code: "APPT"
-                      display: "Appointment Booking"
-                  - valueCoding:
-                      system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"
-                      code: "VACC"
-                      display: "Vaccination Records"
-              - linkId: "requestedAccess_reasonsForAccess"
-                text: "Reason for access"
-                answer:
-                  - valueCoding:
-                      system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-ReasonForAccess"
-                      code: "PRAC"
-                      display: "Practical Reasons"
-
-    QuestionnaireResponseAdultNominatesAdultRequest:
-      summary: Adult nominates Adult access request
-      description: |
-        Example proxy access request from an adult (Jill) with NHS number `9000000006` nominating her husband (Tom) with NHS number `9000000005` to act on her behalf. 
-        
-        Significant things to point out:
-
-        - `source` should be the NHS number of the patient completing the form - this should correlate with the Identity token in the request
-        - `subject` should be the NHS Number of the patient to which the application relates
-        - `relatedPerson` demographics are present in the request as a result of being provided by the applicant
-      value: 
-        resourceType: QuestionnaireResponse        
-        status: "completed"
-        authored: "2024-07-15T09:43:03.280Z"
-        source:
-          identifier:
-            system: "https://fhir.nhs.uk/Id/nhs-number"
-            value: "9000000006"
-        subject:
-          identifier:
-            system: "https://fhir.nhs.uk/Id/nhs-number"
-            value: "9000000006"
-        questionnaire: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Questionnaire/01dc6813-3421-4d14-948d-a4888241add1"
-        item:
-          - linkId: "relatedPerson"
-            text: "Proxy details"
-            item:
-              - linkId: "relatedPerson_identifier"
-                text: "NHS number"
-                answer:
-                  - valueString: "9000000005"
-              - linkId: "relatedPerson_name"
-                text: "Name"
-                item:
-                  - linkId: "relatedPerson_name_first"
-                    text: "First name"
-                    answer:
-                      - valueString: "Tom"
-                  - linkId: "relatedPerson_name_family"
-                    text: "Last name"
-                    answer:
-                      - valueString: "Jones"
-              - linkId: "relatedPerson_birthDate"
-                text: "Date of birth"
-                answer:
-                  - valueDate: "1970-07-12"
-              - linkId: "relatedPerson_basisForAccess"
-                text: "Basis for Access"
-                answer:
-                  - valueCoding:
-                      system: "https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole"
-                      code: "Personal"
-                      display: "Personal relationship with the patient"
-              - linkId: "relatedPerson_relationship"
-                text: "Relationship"
-                answer:
-                  - valueCoding:
-                      system: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
-                      code: "SPS"
-                      display: "Spouse"
-          - linkId: "patient"
-            text: "Patient details"
-            item:
-              - linkId: "patient_identifier"
-                text: "NHS number"
-                answer:
-                  - valueString: "9000000006"
-          - linkId: "requestedAccess"
-            text: "Requested access"
-            item:
-              - linkId: "requestedAccess_accessLevel"
-                text: "Requested access level"
-                answer:
-                  - valueCoding:
-                      system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"
-                      code: "APPT"
-                      display: "Appointment Booking"
-                  - valueCoding:
-                      system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"
-                      code: "VACC"
-                      display: "Vaccination Records"
-              - linkId: "requestedAccess_reasonsForAccess"
-                text: "Reason for access"
-                answer:
-                  - valueCoding:
-                      system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-ReasonForAccess"
-                      code: "PRAC"
-                      display: "Practical Reasons"
-
-    ConsentMotherChildBundle:
-      summary: Bundle containing a single active proxy relationship for a birth mother & child
-      value:
-        resourceType: Bundle
-        timestamp: "2020-08-26T14:00:00+00:00"
-        total: 1
-        type: searchset
-        entry:
-          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742"
-            resource:
-              resourceType: RelatedPerson
-              id: BE974742
-              identifier:
-                - system: "https://fhir.nhs.uk/Id/nhs-number"
-                  value: "9000000017"
-                - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
-                  value: "ABC0000001"
-              patient:
-                type: Patient
-                identifier:
-                  system: "https://fhir.nhs.uk/Id/nhs-number"
-                  value: "9000000009"
-              relationship:
-                - coding:
-                    - system: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
-                      code: PRN
-                      display: Parent
-                    - system: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
-                      code: MTH
-                      display: mother
-            search:
-              mode: include
-          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/A3CC67E2"
-            resource:
-              resourceType: Patient
-              id: A3CC67E2
-              identifier:
-                - system: "https://fhir.nhs.uk/Id/nhs-number"
-                  value: "9000000009"
-                - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
-                  value: "ABC1234556"
-              name:
-                - id: "123456"
-                  use: usual
-                  period:
-                    start: "2020-01-01"
-                    end: "2021-12-31"
-                  given:
-                    - "Jane Marie Anne"
-                  family: Smith
-                  prefix:
-                    - Mrs
-                  suffix:
-                    - MBE
-                    - PhD
-              birthDate: "2022-10-22"
-              generalPractitioner:
-                - type: "Organization"
-                  identifier: 
-                    value: "ODS12345"
-                    system: "https://fhir.nhs.uk/Id/ods-organization-code"
-            search:
-              mode: include
-          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/BBCC67E9"
-            resource:
-              resourceType: Consent
-              id: BBCC67E9
-              status: active
-              scope:
-                coding:
-                  - system: "http://terminology.hl7.org/CodeSystem/consentscope"
-                    code: patient-privacy
-                    display: "Privacy Consent"
-                text: "Patient Privacy Consent"
-              category:
-                - coding:
-                    - system: "http://terminology.hl7.org/CodeSystem/v3-ActCode"
-                      code: INFA
-                      display: "Information Access"
-                  text: "Information Access Consent"
-              patient:
-                identifier:
-                  system: "https://fhir.nhs.uk/Id/nhs-number"
-                  value: "9000000009"
-              dateTime: "2024-07-21T17:32:28Z"
-              performer:
-                - identifier:
-                    system: "https://fhir.nhs.uk/Id/nhs-number"
-                    value: "9000000017"              
-            search:
-              mode: match
-
-    ConsentAdultsConsentingBundle:
-      summary: Bundle containing a single active proxy relationship for two consenting adults with capacity
-      value:
-        resourceType: Bundle
-        timestamp: "2020-08-26T14:00:00+00:00"
-        total: 1
-        type: searchset
-        entry:
-          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/RP974720"
-            resource:
-              resourceType: RelatedPerson
-              id: RP974720
-              identifier:
-                - system: "https://fhir.nhs.uk/Id/nhs-number"
-                  value: "9000000010"
-                - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
-                  value: "ABC0000008"
-              patient:
-                type: Patient
-                identifier:
-                  system: "https://fhir.nhs.uk/Id/nhs-number"
-                  value: "9000000005"
-              relationship:
-                - coding:
-                    - system: "https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole"
-                      code: Personal
-                      display: "Personal relationship with the patient"                    
-            search:
-              mode: include
-          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/DFCC67F5"
-            resource:
-              resourceType: Patient
-              id: DFCC67F5
-              identifier:
-                - system: "https://fhir.nhs.uk/Id/nhs-number"
-                  value: "9000000005"
-                - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
-                  value: "ABC1234567"
-              name:
-                - id: "123456"
-                  use: usual
-                  period:
-                    start: "2020-01-01"
-                    end: "2021-12-31"
-                  given:
-                    - "Sally"
-                  family: Evans
-                  prefix:
-                    - Mrs
-              birthDate: "1995-10-22"
-              generalPractitioner:
-                - type: "Organization"
-                  identifier: 
-                    value: "ODS12345"
-                    system: "https://fhir.nhs.uk/Id/ods-organization-code"
-            search:
-              mode: include
-          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/WWCC67T1"
-            resource:
-              resourceType: Consent
-              id: WWCC67T1
-              status: active
-              scope:
-                coding:
-                  - system: "http://terminology.hl7.org/CodeSystem/consentscope"
-                    code: patient-privacy
-                    display: "Privacy Consent"
-                text: "Patient Privacy Consent"
-              category:
-                - coding:
-                    - system: "http://terminology.hl7.org/CodeSystem/v3-ActCode"
-                      code: INFA
-                      display: "Information Access"
-                  text: "Information Access Consent"
-              patient:
-                identifier:
-                  system: "https://fhir.nhs.uk/Id/nhs-number"
-                  value: "9000000005"
-              dateTime: "2024-07-21T17:32:28Z"
-              performer:
-                - identifier:
-                    system: "https://fhir.nhs.uk/Id/nhs-number"
-                    value: "9000000010"
-              verification:
-                - verified: true
-                  verifiedWith:
-                    identifier:
-                      system: "https://fhir.nhs.uk/Id/nhs-number"
-                      value: "9000000005"
-                  verificationDate: "2024-07-21T17:32:28Z"
-            search:
-              mode: match
-
-    ConsentMultipleBundle:
-      summary: Bundle containing a multiple active proxy relationships
-      value:
-        resourceType: Bundle
-        timestamp: "2020-08-26T14:00:00+00:00"
-        total: 1
-        type: searchset
-        entry:
-          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742"
-            resource:
-              resourceType: RelatedPerson
-              id: BE974742
-              identifier:
-                - system: "https://fhir.nhs.uk/Id/nhs-number"
-                  value: "9000000017"
-                - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
-                  value: "ABC0000003"
-              patient:
-                type: Patient
-                identifier:
-                  system: "https://fhir.nhs.uk/Id/nhs-number"
-                  value: "9000000009"
-              relationship:
-                - coding:
-                    - system: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
-                      code: PRN
-                      display: Parent
-                    - system: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
-                      code: MTH
-                      display: mother
-            search:
-              mode: include
-          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/A3CC67E2"
-            resource:
-              resourceType: Patient
-              id: A3CC67E2
-              identifier:
-                - system: "https://fhir.nhs.uk/Id/nhs-number"
-                  value: "9000000009"
-                - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
-                  value: "ABC1234567"
-              name:
-                - id: "123456"
-                  use: usual
-                  period:
-                    start: "2020-01-01"
-                    end: "2021-12-31"
-                  given:
-                    - "Jane Marie Anne"
-                  family: Smith
-                  prefix:
-                    - Mrs
-                  suffix:
-                    - MBE
-                    - PhD
-              birthDate: "2022-10-22"
-              generalPractitioner:
-                - type: "Organization"
-                  identifier: 
-                    value: "ODS12345"
-                    system: "https://fhir.nhs.uk/Id/ods-organization-code"
-            search:
-              mode: include
-          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/BBCC67E9"
-            resource:
-              resourceType: Consent
-              id: BBCC67E9
-              status: active
-              scope:
-                coding:
-                  - system: "http://terminology.hl7.org/CodeSystem/consentscope"
-                    code: patient-privacy
-                    display: "Privacy Consent"
-                text: "Patient Privacy Consent"
-              category:
-                - coding:
-                    - system: "http://terminology.hl7.org/CodeSystem/v3-ActCode"
-                      code: INFA
-                      display: "Information Access"
-                  text: "Information Access Consent"
-              patient:
-                identifier:
-                  system: "https://fhir.nhs.uk/Id/nhs-number"
-                  value: "9000000009"
-              dateTime: "2024-07-21T17:32:28Z"
-              performer:
-                - identifier:
-                    system: "https://fhir.nhs.uk/Id/nhs-number"
-                    value: "9000000017"
-            search:
-              mode: match
-          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/RP974720"
-            resource:
-              resourceType: RelatedPerson
-              id: RP974720
-              identifier:
-                - system: "https://fhir.nhs.uk/Id/nhs-number"
-                  value: "9000000010"
-                - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
-                  value: "ABC00000234"
-              patient:
-                type: Patient
-                identifier:
-                  system: "https://fhir.nhs.uk/Id/nhs-number"
-                  value: "9000000005"
-              relationship:
-                - coding:
-                    - system: "https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole"
-                      code: Personal
-                      display: "Personal relationship with the patient"                    
-            search:
-              mode: include
-          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/DFCC67F5"
-            resource:
-              resourceType: Patient
-              id: DFCC67F5
-              identifier:
-                - system: "https://fhir.nhs.uk/Id/nhs-number"
-                  value: "9000000005"
-                - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
-                  value: "ABC9999999"
-              name:
-                - id: "123456"
-                  use: usual
-                  period:
-                    start: "2020-01-01"
-                    end: "2021-12-31"
-                  given:
-                    - "Sally"
-                  family: Evans
-                  prefix:
-                    - Mrs
-              birthDate: "1995-10-22"
-              generalPractitioner:
-                - type: "Organization"
-                  identifier: 
-                    value: "ODS12345"
-                    system: "https://fhir.nhs.uk/Id/ods-organization-code"
-            search:
-              mode: include
-          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/WWCC67T1"
-            resource:
-              resourceType: Consent
-              id: WWCC67T1
-              status: active
-              scope:
-                coding:
-                  - system: "http://terminology.hl7.org/CodeSystem/consentscope"
-                    code: patient-privacy
-                    display: "Privacy Consent"
-                text: "Patient Privacy Consent"
-              category:
-                - coding:
-                    - system: "http://terminology.hl7.org/CodeSystem/v3-ActCode"
-                      code: INFA
-                      display: "Information Access"
-                  text: "Information Access Consent"
-              patient:
-                identifier:
-                  system: "https://fhir.nhs.uk/Id/nhs-number"
-                  value: "9000000005"
-              dateTime: "2024-07-21T17:32:28Z"
-              performer:
-                - identifier:
-                    system: "https://fhir.nhs.uk/Id/nhs-number"
-                    value: "9000000010"
-              verification:
-                - verified: true
-                  verifiedWith:
-                    identifier:
-                      system: "https://fhir.nhs.uk/Id/nhs-number"
-                      value: "9000000005"
-                  verificationDate: "2024-07-21T17:32:28Z"
-            search:
-              mode: match
-
-    InternalServerError:
-      summary: Internal Eerver Error
-      value:
-        resourceType: "OperationOutcome"
-        issue: 
-          - severity: error
-            code: invalid
-            diagnostics: "Internal Server Error - Failed to generate response is present in the response"          
-            details:
-              coding:
-               - system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
-                 version: "1"
-                 code: "SERVER_ERROR"
-                 display: "Failed to generate response"
-
-    AccessDeniedError:
-      summary: Access Denied
-      value:
-        resourceType: "OperationOutcome"
-        issue: 
-          - severity: error
-            code: invalid            
-            details:
-              coding:
-               - "system": "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
-                 version: "1"
-                 code: "ACCESS_DENIED"
-                 display: "Missing or invalid OAuth 2.0 bearer token in request."              
-          
-    RelatedPersonInvalidIdentifierError:
-      summary: Invalid RelatedPerson identifier
-      description: Error raised due to an invalid RelatedPerson identifier being specified in the request.
-      value:
-        resourceType: "OperationOutcome"
-        issue: 
-          - severity: error
-            code: invalid
-            diagnostics: "Not a valid NHS Number provided for the 'identifier' parameter"            
-            expression: "RelatedPerson.identifier"
-            details:
-              coding:
-               - "system": "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
-                 version: "1"
-                 code: "INVALID_IDENTIFIER_VALUE"
-                 display: "Provided value is invalid"
-
-    PostQuestionnaireResponseSuccess:
-      summary: Success
-      description: A sample of the payload returned when a QuestionnaireResponse (proxy access request) has been successfully submitted. It contains a unique alpha-numeric reference code to identify the request by.
-      value:
-        resourceType: "OperationOutcome"
-        issue: 
-          - severity: information
-            code: informational
-            details:
-              coding:
-               - code: "HDJ2123F"
-                 display: "HDJ2123F"    
