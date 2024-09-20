@@ -5,19 +5,23 @@ QuestionnaireResponseAdultToAdultWithCapacityRequest:
     
     Significant details to point out:
 
-    - `source` should be the NHS number of the proxy completing the form - this should correlate with the Identity token in the request
-    - `subject` should be the NHS Number of the patient to which the application relates        
+    - `source.type` should be `RelatedPerson` when a proxy is applying
+    - `source.identifier.value` should be the NHS number of the user completing the form - this should correlate with the Identity token in the request
+    - `subject.type` should be `Patient` since it is the patient that is the subject of the application
+    - `subject.identifier.value` should be the NHS Number of the patient to which the application relates
     - `patient` demographics are present in the request as a result of being provided by the applicant
   value: 
     resourceType: QuestionnaireResponse        
     status: "completed"
     authored: "2024-07-15T09:43:03.280Z"
     source:
-      identifier:
+      type: "RelatedPerson"
+      identifier:        
         system: "https://fhir.nhs.uk/Id/nhs-number"
         value: "9000000005"
     subject:
-      identifier:
+      type: "Patient"
+      identifier:        
         system: "https://fhir.nhs.uk/Id/nhs-number"
         value: "9000000006"
     questionnaire: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Questionnaire/01dc6813-3421-4d14-948d-a4888241add1"
