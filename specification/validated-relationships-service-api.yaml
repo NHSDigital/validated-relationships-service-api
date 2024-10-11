@@ -1287,7 +1287,6 @@ components:
               enum:
                 - match
                 - include
-                - outcome
               example: match
 
     PatientBundleEntry: 
@@ -1308,7 +1307,6 @@ components:
               enum:
                 - match
                 - include
-                - outcome
               example: match
 
     ConsentBundleEntry: 
@@ -1328,7 +1326,6 @@ components:
               enum:
                 - match
                 - include
-                - outcome
               example: match
 
     RelatedPerson:
