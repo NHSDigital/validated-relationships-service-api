@@ -3,7 +3,7 @@
 openapi: '3.0.0'
 info:
   title: 'Validated Relationships Service API'
-  version: '1.2.1'
+  version: '1.3.0'
   description: |
     ## Overview
     Use this API to access the Validated Relationships Service - the national electronic database of relationships
@@ -16,14 +16,15 @@ info:
 
     You can:
 
-    - get validated relationships (to support decision making when granting proxy access)
+    - get verified relationships (to support decision making when granting proxy access)
     - create a new proxy access request
+    - get proxy relationships
 
     In the future you will be able to:
 
     - update a proxy access request
-    - update a validated proxy relationship
-    - delete (revoke) a validated proxy relationship
+    - update a proxy relationship
+    - delete (revoke) a proxy relationship
 
     ## Who can use this API
     This API can only be used where there is a legal basis to do so. Make sure you have this and a valid use case before
@@ -38,7 +39,7 @@ info:
 
     ## API status and roadmap
     This API is [in production, beta](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#statuses), meaning:
-    - we might make breaking changes, but only if we cannot avoid it, and we will give advance notice 
+    - we might make breaking changes, but only if we cannot avoid it, and we will give advance notice
 
     If you would like to be involved in our beta programme, [contact us](https://digital.nhs.uk/developer/help-and-support).
 
@@ -220,14 +221,14 @@ paths:
 
   /RelatedPerson:
     get:
-      summary: Get validated relationships
+      summary: Get verified relationships
       description: |
         ## Overview
-        Use this endpoint to get validated relationships for a proxy with a given NHS Number.
+        Use this endpoint to get relationships that have been verified against authoritative sources for a proxy with a given NHS Number.
 
-        You can (optionally) include `patient:identifier={nhsNumber}` request parameter with the patient's NHS number to get a specific validated relationship for the proxy.
+        You can (optionally) include `patient:identifier={nhsNumber}` request parameter with the patient's NHS number to get a specific verified relationship for the proxy.
 
-        You can (optionally) include the `_include=RelatedPerson:patient` request parameter to include the patient's details in the operation response.
+        You can (optionally) include the `_include=RelatedPerson:patient` request parameter to include the patient's details in the response.
 
         ## Sandbox test scenarios
 
@@ -238,16 +239,16 @@ paths:
         - $ref: "#/components/parameters/BearerAuthorization"
         - $ref: "#/components/parameters/RelatedPersonIdentifier"
         - $ref: "#/components/parameters/PatientIdentifier"
-        - $ref: "#/components/parameters/IncludePatient"
+        - $ref: "#/components/parameters/RelatedPersonBundleIncludes"
         - $ref: "#/components/parameters/RequestID"
         - $ref: "#/components/parameters/CorrelationID"
       responses:
         "200":
-          description: Information successfully returned.
+          description: Information successfully returned. 
           content:
             application/fhir+json:
               schema:
-                $ref: "#/components/schemas/Relationship"
+                $ref: "#/components/schemas/RelatedPersonBundle"
         "4XX":
           description: |
             Errors will be returned for the first error encountered in the request. An error occurred as follows:
@@ -279,6 +280,81 @@ paths:
               examples:  
                 internalServerError:
                   $ref: '#/components/examples/InternalServerError'
+
+  /Consent:
+    get:
+        summary: Get proxy relationships
+        description: |
+          ## Overview
+          Use this endpoint to get the details about proxy relationships, including current status, based on a provided proxy's NHS Number.
+
+          You can (optionally) include `status={status}` request parameter to filter the limit the response to records with a given status bound to the http://hl7.org/fhir/consent-state-codes CodeSystem e.g. `status=active`.
+
+          You can (optionally) include the `_include=Consent:performer` request parameter to include the proxy's details in the response.
+
+          You can (optionally) include the `_include=Consent:patient` request parameter to include the patient's details in the response.
+
+          ## Sandbox test scenarios
+
+          For details of sandbox test scenarios, or to try out the sandbox using our 'Try it out' feature, see the documentation for each endpoint.
+
+        operationId: get-consent
+        parameters:
+          - $ref: "#/components/parameters/BearerAuthorization"
+          - $ref: "#/components/parameters/ConsentBundlePerformerIdentifier"
+          - $ref: "#/components/parameters/ConsentStatus" 
+          - $ref: "#/components/parameters/ConsentBundleIncludes"       
+          - $ref: "#/components/parameters/RequestID"
+          - $ref: "#/components/parameters/CorrelationID"
+          - $ref: "#/components/parameters/Im1ConnectionParams"
+        responses:
+          "200":
+            description: Information successfully returned.
+            content:
+              application/fhir+json:
+                schema:
+                  $ref: "#/components/schemas/ConsentBundle"
+                examples: 
+                  consentMotherChildBundle:
+                    $ref: "#/components/examples/ConsentMotherChildBundle"
+                  consentAdultsConsentingBundle:
+                    $ref: "#/components/examples/ConsentAdultsConsentingBundle"
+                  consentMultipleBundle:
+                    $ref: "#/components/examples/ConsentMultipleBundle"
+
+          "4XX":
+            description: |
+              Errors will be returned for the first error encountered in the request. An error occurred as follows:
+
+              | HTTP status | Error code                         | Description                                                                                                                               |
+              | ----------- | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+              | 400         | `MISSING_VALUE`                    | Missing header parameter. For details, see the `diagnostics` field.                                                                       |
+              | 400         | `INVALID_VALUE`                    | Invalid header parameter. For details, see the `diagnostics` field.                                                                       |
+              | 400         | `INVALID_IDENTIFIER_SYSTEM`        | Invalid identifier system.                                                                                                                |
+              | 400         | `MISSING_IDENTIFIER_VALUE`         | Missing performer NHS number.                                                                                                             |
+              | 400         | `INVALID_IDENTIFIER_VALUE`         | Malformed performer NHS number.                                                                                                           |              
+              | 400         | `NOT_SUPPORTED`                    | The request is not currently supported.                                                                                                   |
+              | 401         | `ACCESS_DENIED`                    | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
+              | 403         | `FORBIDDEN`                        | Access denied to resource.                                                                                                                |
+              | 404         | `INVALIDATED_RESOURCE`             | Resource that has been marked as invalid was requested - invalid resources cannot be retrieved                                            |
+              | 405         | `METHOD_NOT_ALLOWED`               | The method is not allowed.                                                                                                                |
+              | 408         | `TIMEOUT`                          | Request timed out.                                                                                                                        |
+              | 429         | `THROTTLED`                        | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
+        
+            content:
+              application/fhir+json:
+                schema:
+                  $ref: '#/components/schemas/OperationOutcome'
+          "500":
+            description: Internal server error
+            content:
+              application/fhir+json:
+                schema:
+                  $ref: '#/components/schemas/OperationOutcome'
+                examples:  
+                  internalServerError:
+                    $ref: '#/components/examples/InternalServerError'
+
 
 components:
   schemas:
@@ -578,7 +654,7 @@ components:
                           properties:
                             valueString:
                               type: string
-
+                              
     QuestionnaireResponseItem_ParentalApplicationSupplementaryDetails:
       type: object
       properties:
@@ -1010,11 +1086,23 @@ components:
                                   enum: ["https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"]                                
                                 code:
                                   type: string
-                                  enum: ['APPT', 'CNTCT', 'RECRD', 'TEST', 'VACC', 'PRESCR']
+                                  enum: 
+                                    - 'APPT'
+                                    - 'CNTCT'
+                                    - 'RECRD'
+                                    - 'TEST'
+                                    - 'VACC'
+                                    - 'PRESCR'
                                 display:
                                   type: string
                                   description: FHIR Requested access level.
-                                  enum: ['Appointment Booking', 'Contacting Surgery', 'Medical Records Access', 'Test Results', 'Vaccination Records', 'Request and manage repeat prescriptions']
+                                  enum: 
+                                    - 'Appointment Booking'
+                                    - 'Contacting Surgery'
+                                    - 'Medical Records Access'
+                                    - 'Test Results'
+                                    - 'Vaccination Records'
+                                    - 'Request and manage repeat prescriptions'
 
               - type: object
                 properties:
@@ -1062,11 +1150,29 @@ components:
                                   enum: ["https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-ReasonForAccess"]                                
                                 code:
                                   type: string
-                                  enum: ['COMB', 'MHEA', 'PHYS', 'PRAC', 'TECH', 'NEUR', 'LRN', 'OTHR', 'NotSpecified']
+                                  enum: 
+                                    - 'COMB'
+                                    - 'MHEA'
+                                    - 'PHYS'
+                                    - 'PRAC'
+                                    - 'TECH'
+                                    - 'NEUR'
+                                    - 'LRN'
+                                    - 'OTHR'
+                                    - 'NotSpecified'
                                 display:
                                   type: string
                                   description: FHIR Reason for access.
-                                  enum: ['Communication Barriers', 'Mental Health Condition', 'Physical Condition', 'Practical Reasons', 'Technical Barriers', 'Neurodiverse', 'Learning Disability', 'Other', 'Prefer not to say']
+                                  enum: 
+                                    - 'Communication Barriers'
+                                    - 'Mental Health Condition'
+                                    - 'Physical Condition'
+                                    - 'Practical Reasons'
+                                    - 'Technical Barriers'
+                                    - 'Neurodiverse'
+                                    - 'Learning Disability'
+                                    - 'Other'
+                                    - 'Prefer not to say'
                                 
               - type: object
                 properties:
@@ -1085,19 +1191,15 @@ components:
                             valueString:
                               type: string
                               example: "No internet connection"
-
-    Relationship:
+    
+    BaseBundle: 
       type: object
-      description: A FHIR searchset.
+      description: A FHIR Bundle.
       properties:
         resourceType:
           type: string
           description: FHIR resource type.
-          enum: [Bundle]
-        type:
-          type: string
-          description: Denotes that the Bundle is a collection of resources returned as a result of a search.
-          enum: [searchset]
+          enum: [Bundle]        
         timestamp:
           type: string
           format: date-time
@@ -1107,119 +1209,76 @@ components:
           type: number
           description: |
             The number of resources contained within the Bundle.
-
-            An empty bundle suggests that the proxy does not have patients they can act on behalf of.
           example: 2
-        link:
-          type: array
-          items:
-            type: object
+
+    Searchset:
+      allOf:
+          - $ref: "#/components/schemas/BaseBundle"
+          - type: object                       
             properties:
-              relation:
-                type: string
-                description: |
-                  Links related to this Bundle - see:
-                  http://www.iana.org/assignments/link-relations/link-relations.xhtml
-                example: "self"
-              url:
-                type: string
-                format: uri
-                example: https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson?_include=RelatedPerson%3apatient&identifier=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C9000000017
-        entry:
-          type: array
-          description: |
-            A collection of resources contained within the Bundle.
+              type:
+                  type: string
+                  description: Denotes that the Bundle is a collection of resources returned as a result of a search.
+                  enum: [searchset]
+     
+    RelatedPersonBundle:
+      allOf:
+        - $ref: "#/components/schemas/Searchset"
+        - type: object          
+          properties:
+            link:
+              type: array
+              items:
+                type: object
+                properties:
+                  relation:
+                    type: string
+                    description: |
+                      Links related to this Bundle - see:
+                      http://www.iana.org/assignments/link-relations/link-relations.xhtml
+                    example: "self"
+                  url:
+                    type: string
+                    format: uri
+                    example: https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson?_include=RelatedPerson%3apatient&identifier=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C9000000017
+            entry:
+              type: array
+              description: |
+                A collection of resources contained within the Bundle.
 
-            An empty bundle suggests that the proxy does not have patients they can act on behalf of.
-          items:
-            anyOf:
-              - $ref: "#/components/schemas/RelatedPerson"
-              - $ref: "#/components/schemas/Patient"
+                An empty bundle suggests that no candidate proxy/patient links were identified.
+              items:
+                anyOf:
+                  - $ref: "#/components/schemas/RelatedPersonBundleEntry"
+                  - $ref: "#/components/schemas/PatientBundleEntry"
 
-    RelatedPerson:
+    ConsentBundle:
+      allOf:
+        - $ref: "#/components/schemas/Searchset"
+        - type: object
+          properties:
+            entry:
+              type: array
+              description: |
+                A collection of resources contained within the Bundle.
+
+                An empty bundle suggests that the proxy has no proxy relationships.
+              items:
+                anyOf:
+                  - $ref: "#/components/schemas/RelatedPersonBundleEntry"
+                  - $ref: "#/components/schemas/PatientBundleEntry"
+                  - $ref: "#/components/schemas/ConsentBundleEntry"  
+    
+    RelatedPersonBundleEntry: 
       type: object
-      description: The proxy's details. This includes their relationship to the referenced patient.
+      description: A RelatedPerson bundle entry.
       properties:
         fullUrl:
           type: string
           description: The canonical URL of the resource in the entry
           example: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742"
         resource:
-          type: object
-          properties:
-            resourceType:
-              type: string
-              description: FHIR resource type.
-              enum: [RelatedPerson]
-            id:
-              type: string
-              description: Unique identifier of the RelatedPerson resource.
-              example: BE974742
-            identifier:
-              type: array
-              description: The proxy's NHS number. The primary identifier of a patient, unique within NHS England and Wales. Always 10 digits and must be a [valid NHS number](https://www.datadictionary.nhs.uk/attributes/nhs_number.html).
-              items:
-                type: object
-                properties:
-                  system:
-                    type: string
-                    description: Codesystem URL for the proxy's NHS number.
-                    enum: ["https://fhir.nhs.uk/Id/nhs-number"]
-                  value:
-                    type: string
-                    description: The proxy's NHS number.
-                    example: "9000000017"
-            patient:
-              type: object
-              description: A reference to a patient the proxy is related to.
-              properties:
-                type:
-                  type: string
-                  description: FHIR resource type.
-                  enum: ["Patient"]
-                identifier:
-                  type: object
-                  description: The patient's NHS number. The primary identifier of a patient, unique within NHS England and Wales. Always 10 digits and must be a [valid NHS number](https://www.datadictionary.nhs.uk/attributes/nhs_number.html).
-                  properties:
-                    system:
-                      type: string
-                      description: Codesystem URL for the patient's NHS number.
-                      enum: ["https://fhir.nhs.uk/Id/nhs-number"]
-                    value:
-                      type: string
-                      description: The patient's NHS number.
-                      example: "9000000009"
-            relationship:
-              type: array
-              description: How the proxy is related to the patient.
-              items:
-                type: object
-                properties:
-                  coding:
-                    type: array
-                    description: FHIR coding array.
-                    items:
-                      type: object
-                      properties:
-                        system:
-                          type: string
-                          description: FHIR codesystem.
-                          default: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
-                          enum:
-                            [
-                              "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
-                              "https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole"
-                            ]
-                        code:
-                          type: string
-                          description: FHIR relationship type code.
-                          enum:
-                            - "MTH"
-                        display:
-                          type: string
-                          description: FHIR relationship type.
-                          enum:
-                            - "mother"
+          $ref: "#/components/schemas/RelatedPerson"                        
         search:
           type: object
           properties:
@@ -1228,129 +1287,18 @@ components:
               enum:
                 - match
                 - include
-                - outcome
               example: match
 
-    Patient:
+    PatientBundleEntry: 
       type: object
-      description: The patient's details.
+      description: A Patient bundle entry.
       properties:
         fullUrl:
           type: string
           description: The canonical URL of the resource in the entry
           example: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/A3CC67E2
-        resource:
-          type: object
-          properties:
-            resourceType:
-              type: string
-              description: FHIR resource type.
-              enum: [Patient]
-            id:
-              type: string
-              description: Unique identifier of the Patient resource
-              example: A3CC67E2
-            identifier:
-              type: array
-              description: The patient's NHS number. The primary identifier of a patient, unique within NHS England and Wales. Always 10 digits and must be a [valid NHS number](https://www.datadictionary.nhs.uk/attributes/nhs_number.html).
-              items:
-                type: object
-                properties:
-                  system:
-                    type: string
-                    description: Codesystem URL for the NHS number.
-                    enum: ["https://fhir.nhs.uk/Id/nhs-number"]
-                  value:
-                    type: string
-                    description: The NHS number.
-                    example: "9000000009"
-            name:
-              type: array
-              description: List of names associated with the patient.
-              items:
-                type: object
-                required:
-                  - use
-                  - family
-                additionalProperties: false
-                properties:
-                  id:
-                    type: string
-                    description: Unique object identifier for this name.
-                    example: "123"
-                  use:
-                    type: string
-                    description: |
-                      How this name should be used.
-                      * usual - Known as, conventional or the one patient normally uses. A patient always has a usual name.
-                      * temp - An alias or temporary name. This may also be used for temporary names assigned at birth or in emergency situations.
-                      * nickname - A name that the patient prefers to be addressed by, but is not part of their usual name.
-                      * old - This name is no longer in use (or was never correct, but retained for records).
-                      * maiden - Name changed for Marriage. A name used prior to changing name because of marriage. This term is not gender specific. The use of this term does not imply any particular history for a person's name.
-
-                      The following use codes are included in the [name-use](https://www.hl7.org/fhir/valueset-name-use.html) value set, but should not be used and is not be returned as part of a retrieval.
-                      * official - The formal name as registered in an official (government) registry, but which name might not be commonly used. May be called "legal name".
-                      * anonymous - Anonymous assigned name, alias, or pseudonym (used to protect a person's identity for privacy reasons).
-                    enum: [usual, temp, nickname, old, maiden]
-                    example: usual
-                  period:
-                    type: object
-                    description: |
-                      Business effective period when the name was, is, or will be in use.
-                    required:
-                      - start
-                    properties:
-                      start:
-                        type: string
-                        format: date
-                        description: Start date of time period, if known, in format `yyyy-mm-dd`. Can be a future date.
-                        example: 2020-01-01
-                      end:
-                        type: string
-                        format: date
-                        description: End date of time period, if known and if not ongoing, in format `yyyy-mm-dd`. Can be a future date.
-                        example: 2021-12-31
-                  given:
-                    type: array
-                    maxItems: 5
-                    description: |
-                      Given names, including any middle names.
-
-                      Each name(s) should be a separate item in the list. The first given name may include multiple names, separated by a space.
-                      Subsequent names must be broken down into list items. For example, the input `[Jane Marie Anne, Jo Adele]` returns `[Jane Marie Anne, Jo, Adele]`.
-
-                    example: [Jane Marie Anne]
-                    items:
-                      type: string
-                      maxLength: 35
-                      example: Jane
-                  family:
-                    type: string
-                    maxLength: 35
-                    description: Family name (often called Surname).
-                    example: Smith
-                  prefix:
-                    type: array
-                    description: Name prefixes, titles, and prenominals.
-                    example: [Mrs]
-                    items:
-                      type: string
-                      example: Mrs
-                  suffix:
-                    type: array
-                    description: Name suffices and postnominals.
-                    example: [MBE, PhD]
-                    items:
-                      type: string
-                      example: MBE
-            birthDate:
-              description: |
-                The date on which the patient was born or is officially deemed to have been born.
-
-                It is a date in the format `yyyy-mm-dd`. Due to data quality issues on a small number of patients `yyyy-mm` and `yyyy` format may also be returned.
-              example: "2010-10-22"
-              type: string
-              format: date
+        resource:          
+          $ref: "#/components/schemas/Patient"          
         search:
           type: object
           properties:
@@ -1359,8 +1307,300 @@ components:
               enum:
                 - match
                 - include
-                - outcome
-              example: include
+              example: match
+
+    ConsentBundleEntry: 
+      type: object
+      description: A Consent bundle entry.
+      properties:
+        fullUrl:
+          type: string
+          description: The canonical URL of the resource in the entry
+        resource:
+          $ref: "#/components/schemas/Consent"
+        search:
+          type: object
+          properties:
+            mode:
+              type: string
+              enum:
+                - match
+                - include
+              example: match
+
+    RelatedPerson:
+      type: object
+      description: The proxy's details. This includes their relationship to the referenced patient.
+      properties:  
+        resourceType:
+          type: string
+          description: FHIR resource type.
+          enum: [RelatedPerson] 
+          default: RelatedPerson
+        id:
+          type: string
+          description: Unique identifier of the RelatedPerson resource.
+          example: BE974742
+        identifier:
+          type: array
+          description: The proxy's NHS number. The primary identifier of a patient, unique within NHS England and Wales. Always 10 digits and must be a [valid NHS number](https://www.datadictionary.nhs.uk/attributes/nhs_number.html).
+          items:
+            type: object
+            properties:
+              system:
+                type: string
+                description: Codesystem URL for the proxy's NHS number.
+                enum: ["https://fhir.nhs.uk/Id/nhs-number"]
+              value:
+                type: string
+                description: The proxy's NHS number.
+                example: "9000000017"
+        patient:
+          type: object
+          description: A reference to a patient the proxy is related to.
+          properties:
+            type:
+              type: string
+              description: FHIR resource type.
+              enum: ["Patient"]
+            identifier:
+              type: object
+              description: The patient's NHS number. The primary identifier of a patient, unique within NHS England and Wales. Always 10 digits and must be a [valid NHS number](https://www.datadictionary.nhs.uk/attributes/nhs_number.html).
+              properties:
+                system:
+                  type: string
+                  description: Codesystem URL for the patient's NHS number.
+                  enum: ["https://fhir.nhs.uk/Id/nhs-number"]
+                value:
+                  type: string
+                  description: The patient's NHS number.
+                  example: "9000000009"
+        relationship:
+          type: array
+          description: How the proxy is related to the patient.
+          items:
+            type: object
+            properties:
+              coding:
+                type: array
+                description: FHIR coding array.
+                items:
+                  type: object
+                  properties:
+                    system:
+                      type: string
+                      description: FHIR codesystem.
+                      default: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+                      enum:
+                        [
+                          "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                          "https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole"
+                        ]
+                    code:
+                      type: string
+                      description: FHIR relationship type code.
+                      enum:
+                        - "MTH"
+                    display:
+                      type: string
+                      description: FHIR relationship type.
+                      enum:
+                        - "mother"  
+
+    Patient:
+      type: object
+      description: The patient's details.
+      properties: 
+        resourceType:
+          type: string
+          description: FHIR resource type.
+          enum: [Patient]
+          default: Patient
+        id:
+          type: string
+          description: Unique identifier of the Patient resource
+          example: A3CC67E2
+        identifier:
+          type: array
+          description: The patient's NHS number. The primary identifier of a patient, unique within NHS England and Wales. Always 10 digits and must be a [valid NHS number](https://www.datadictionary.nhs.uk/attributes/nhs_number.html).
+          items:
+            type: object
+            properties:
+              system:
+                type: string
+                description: Codesystem URL for the NHS number.
+                enum: ["https://fhir.nhs.uk/Id/nhs-number"]
+              value:
+                type: string
+                description: The NHS number.
+                example: "9000000009"
+        name:
+          type: array
+          description: List of names associated with the patient.
+          items:
+            type: object
+            required:
+              - use
+              - family
+            additionalProperties: false
+            properties:
+              id:
+                type: string
+                description: Unique object identifier for this name.
+                example: "123"
+              use:
+                type: string
+                description: |
+                  How this name should be used.
+                  * usual - Known as, conventional or the one patient normally uses. A patient always has a usual name.
+                  * temp - An alias or temporary name. This may also be used for temporary names assigned at birth or in emergency situations.
+                  * nickname - A name that the patient prefers to be addressed by, but is not part of their usual name.
+                  * old - This name is no longer in use (or was never correct, but retained for records).
+                  * maiden - Name changed for Marriage. A name used prior to changing name because of marriage. This term is not gender specific. The use of this term does not imply any particular history for a person's name.
+
+                  The following use codes are included in the [name-use](https://www.hl7.org/fhir/valueset-name-use.html) value set, but should not be used and is not be returned as part of a retrieval.
+                  * official - The formal name as registered in an official (government) registry, but which name might not be commonly used. May be called "legal name".
+                  * anonymous - Anonymous assigned name, alias, or pseudonym (used to protect a person's identity for privacy reasons).
+                enum: [usual, temp, nickname, old, maiden]
+                example: usual
+              period:
+                type: object
+                description: |
+                  Business effective period when the name was, is, or will be in use.
+                required:
+                  - start
+                properties:
+                  start:
+                    type: string
+                    format: date
+                    description: Start date of time period, if known, in format `yyyy-mm-dd`. Can be a future date.
+                    example: 2020-01-01
+                  end:
+                    type: string
+                    format: date
+                    description: End date of time period, if known and if not ongoing, in format `yyyy-mm-dd`. Can be a future date.
+                    example: 2021-12-31
+              given:
+                type: array
+                maxItems: 5
+                description: |
+                  Given names, including any middle names.
+
+                  Each name(s) should be a separate item in the list. The first given name may include multiple names, separated by a space.
+                  Subsequent names must be broken down into list items. For example, the input `[Jane Marie Anne, Jo Adele]` returns `[Jane Marie Anne, Jo, Adele]`.
+
+                example: [Jane Marie Anne]
+                items:
+                  type: string
+                  maxLength: 35
+                  example: Jane
+              family:
+                type: string
+                maxLength: 35
+                description: Family name (often called Surname).
+                example: Smith
+              prefix:
+                type: array
+                description: Name prefixes, titles, and prenominals.
+                example: [Mrs]
+                items:
+                  type: string
+                  example: Mrs
+              suffix:
+                type: array
+                description: Name suffices and postnominals.
+                example: [MBE, PhD]
+                items:
+                  type: string
+                  example: MBE
+        birthDate:
+          description: |
+            The date on which the patient was born or is officially deemed to have been born.
+
+            It is a date in the format `yyyy-mm-dd`. Due to data quality issues on a small number of patients `yyyy-mm` and `yyyy` format may also be returned.
+          example: "2010-10-22"
+          type: string
+          format: date
+        generalPractitioner:
+          type: array
+          description: Patient's nominated primary care provider, each a Reference(Organization | Practitioner | PractitionerRole).
+          items: 
+            $ref: '#/components/schemas/Reference'
+
+    Consent: 
+      type: object
+      description: The details of the consent including who the patient and care "performer" are, status of the relationship and whether consent was given by a patient with capacity.
+      properties:
+        resourceType:
+          type: string
+          description: FHIR resource type.
+          enum: 
+            - Consent
+          default: Consent   
+        id:
+          type: string
+          description: Unique identifier of the Consent resource
+        status:
+          type: string
+          description: "The status of the consent, following the ConsentStateCodes value set ."
+          enum: 
+            - draft
+            - proposed
+            - active
+            - rejected 
+            - inactive
+            - entered-in-error
+        scope:
+          $ref: '#/components/schemas/CodeableConcept'
+          description: "The scope of the consent, bound to http://terminology.hl7.org/CodeSystem/consentscope"
+          enum: 
+            - patient-privacy
+        category:
+          type: array          
+          items:
+            $ref: '#/components/schemas/CodeableConcept'
+          description: "Classification of the type of consent, bound to http://terminology.hl7.org/CodeSystem/v3-ActCode."
+        patient:
+          $ref: '#/components/schemas/Reference'
+          description: "The patient who is the subject of the consent."          
+        dateTime:
+          type: string
+          format: date-time
+          description: "Date and time when the consent was created."
+        performer:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reference'
+          description: "Individuals or organizations that agreed to the consent."
+        policy:
+          type: array
+          description: The policies covered by this consent
+          items:
+            type: object
+            description: A policy covered by this consent
+            properties:
+              authority: 
+                type: string
+                description: Organization having regulatory accountability for enforcing policies pertaining to this Consent Directive.
+              uri: 
+                type: string
+                format: uri
+                description: The reference to the National Proxy Service policy that are included in this consent scope.
+        verification:
+          type: array
+          description: Whether consent was verified with the patient, or another authorized person.
+          items:
+            type: object
+            properties:
+              verified:
+                type: boolean
+                description: Whether the consent has been verified                
+              verifiedWith:
+                $ref: '#/components/schemas/Reference'
+              verificationDate:
+                type: string
+                description: The date and time when consent was collected.
+                format: date-time
 
     OperationOutcome:
       type: object
@@ -1443,20 +1683,60 @@ components:
                         code:
                           type: string
                           description: Symbol in syntax defined by the system.
-                          example: INVALID_IDENTIFIER_VALUE
+                          example: ACCESS_DENIED
                         display:
                           type: string
                           description: Representation defined by the system.
-                          example: Provided value is invalid
+                          example: Missing or invalid OAuth 2.0 bearer token in request.
               diagnostics:
                 type: string
-                description: Additional diagnostic information about the issue. This information is subject to change.
-                example: Not a valid NHS Number provided for the 'identifier' parameter
+                description: Additional diagnostic information about the issue. This information is subject to change.                
               expression:
                 type: string
-                description: FHIRPath of element(s) related to the error.
-                example: RelatedPerson.identifier
+                description: FHIRPath of element(s) related to the error. 
+    
+    Reference:
+      type: object
+      properties:  
+        type:
+          type: string
+          description: The resource type that the reference refers to
+        identifier:
+          $ref: '#/components/schemas/Identifier'
 
+    Identifier:
+      type: object
+      properties:
+        system:
+          type: string
+          description: "The namespace for the identifier."
+        value:
+          type: string
+          description: "The value that is unique."        
+
+    CodeableConcept:
+      type: object
+      properties:
+        coding:
+          type: array
+          items:
+            $ref: '#/components/schemas/Coding'
+        text:
+          type: string
+          description: "Plain text representation of the concept."
+
+    Coding:
+      type: object
+      properties:
+        system:
+          type: string
+          description: "The identification of the code system that defines the meaning of the code."
+        code:
+          type: string
+          description: "The actual code from the code system."
+        display:
+          type: string
+          description: "A human-readable representation of the code."
 
   parameters:
     RelatedPersonIdentifier:
@@ -1492,15 +1772,102 @@ components:
         withSystem:
           value: https://fhir.nhs.uk/Id/nhs-number|9000000017
           summary: System and NHS number specified
-    IncludePatient:
+    
+    ConsentBundlePerformerIdentifier:
+      in: query
+      name: performer:identifier
+      description: |
+        The performer's (Proxy) NHS number. For more information on FHIR tokens in general, [see here](https://build.fhir.org/search.html#token).
+      required: true
+      schema:
+        type: string
+        format: token
+      examples:
+        withoutSystem:
+          value: 9000000017
+          summary: NHS number specified without system
+        withSystem:
+          value: https://fhir.nhs.uk/Id/nhs-number|9000000017
+          summary: System and NHS number specified
+    
+    RelatedPersonBundleIncludes:
       in: query
       name: _include
       description: |
-        Include Patient resources with their respective RelatedPerson in the bundle returned in the response. Further info [here](https://www.hl7.org/fhir/search.html#_include).
+        Include referenced resources in the bundle response by specifying one or more `_include` parameters. Further info [here](https://www.hl7.org/fhir/search.html#_include).
       required: false
+      style: form
+      explode: true
       schema:
-        type: string
-        example: RelatedPerson:patient
+        type: array
+        items:
+          type: string
+          enum:
+            - "RelatedPerson:patient"
+      examples:         
+        IncludePatient:
+          summary: Include the patient in the bundle
+          value: 
+            - "RelatedPerson:patient"
+
+    ConsentBundleIncludes:
+      in: query
+      name: _include
+      description: Include referenced resources in the bundle response by specifying one or more `_include` parameters. Further info [here](https://www.hl7.org/fhir/search.html#_include).
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - "Consent:performer"
+            - "Consent:patient"
+      examples: 
+        IncludePerformer:
+          summary: Include the performer (proxy) in the bundle
+          value: Consent:performer
+        IncludePatient:
+          summary: Include the patient in the bundle
+          value: Consent:patient
+        FullInclude:
+          summary: Include the performer (Proxy) and patient in the bundle
+          value: 
+            - "Consent:performer"
+            - "Consent:patient"
+    
+    ConsentStatus: 
+      in: query
+      name: status
+      description: Specify one or more `status` to filter the records returned in the bundle. For example you can filter to only `active` or `proposed` proxy relationships.
+      required: false      
+      style: form
+      explode: true
+      schema:
+        type: array
+        items:
+          type: string
+          enum: 
+            - draft
+            - proposed
+            - active
+            - rejected 
+            - inactive
+            - entered-in-error
+      examples:
+        Active:
+          summary: Only active authorised proxy relationships
+          value: active
+        Revoked:
+          summary: Only revoked proxy relationships
+          value: inactive
+        ActiveOrProposed:
+          summary: Active OR proposed (but not yet authorised) proxy relationships
+          value:
+            - proposed
+            - active
+
     BearerAuthorization:
       in: header
       name: Authorization
@@ -1511,6 +1878,7 @@ components:
         type: string
         format: '^Bearer\ [[:ascii:]]+$'
         example: "Bearer g1112R_ccQ1Ebbb4gtHBP1aaaNM"
+    
     RequestID:
       in: header
       name: X-Request-ID
@@ -1524,6 +1892,7 @@ components:
         format: uuid
         pattern: "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
         example: 60E0B220-8136-4CA5-AE46-1D97EF59D068
+    
     CorrelationID:
       in: header
       name: X-Correlation-ID
@@ -1538,7 +1907,394 @@ components:
         pattern: "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
         example: 11C46F5F-CDEF-4865-94B2-0EE0EDCC26DA
 
+    Im1ConnectionParams:
+      in: header
+      name: X-IM1-Connection-Params
+      required: false
+      description: |
+        An optional `;` delimited string containing parameters required to refresh proxy relationships from GPIT supplier systems. Parameters that comprise this string are:
+
+        - IM1 User Connection token
+        - ODS Code
+      schema:
+        type: string        
+        pattern: "^[^;]+;[^;]+$"
+        example: NiV3CyMJH3xYV26ghlVpbbjT7pDVEA8HpFczAjRLTs1VezC4CYzupZ3XxXAWM7ELuseqrV8r0Ill7EL7G2tXUaVHCPWgg4q10+MxFjnRPrjDvckBRSZazqZcp0K2VBdUV0rZ7RUYJNJsjVAeefWhiK/Y4R+GFO86QDpt41JS9xA=;G123456
+
   examples:
+    ConsentMotherChildBundle:
+      summary: Bundle containing a single active proxy relationship for a birth mother & child
+      value:
+        resourceType: Bundle
+        timestamp: "2020-08-26T14:00:00+00:00"
+        total: 1
+        type: searchset
+        entry:
+          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742"
+            resource:
+              resourceType: RelatedPerson
+              id: BE974742
+              identifier:
+                - system: "https://fhir.nhs.uk/Id/nhs-number"
+                  value: "9000000017"
+                - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
+                  value: "ABC0000001"
+              patient:
+                type: Patient
+                identifier:
+                  system: "https://fhir.nhs.uk/Id/nhs-number"
+                  value: "9000000009"
+              relationship:
+                - coding:
+                    - system: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+                      code: PRN
+                      display: Parent
+                    - system: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+                      code: MTH
+                      display: mother
+            search:
+              mode: include
+          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/A3CC67E2"
+            resource:
+              resourceType: Patient
+              id: A3CC67E2
+              identifier:
+                - system: "https://fhir.nhs.uk/Id/nhs-number"
+                  value: "9000000009"
+                - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
+                  value: "ABC1234556"
+              name:
+                - id: "123456"
+                  use: usual
+                  period:
+                    start: "2020-01-01"
+                    end: "2021-12-31"
+                  given:
+                    - "Jane Marie Anne"
+                  family: Smith
+                  prefix:
+                    - Mrs
+                  suffix:
+                    - MBE
+                    - PhD
+              birthDate: "2022-10-22"
+              generalPractitioner:
+                - type: "Organization"
+                  identifier: 
+                    value: "ODS12345"
+                    system: "https://fhir.nhs.uk/Id/ods-organization-code"
+            search:
+              mode: include
+          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/BBCC67E9"
+            resource:
+              resourceType: Consent
+              id: BBCC67E9
+              status: active
+              scope:
+                coding:
+                  - system: "http://terminology.hl7.org/CodeSystem/consentscope"
+                    code: patient-privacy
+                    display: "Privacy Consent"
+                text: "Patient Privacy Consent"
+              category:
+                - coding:
+                    - system: "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+                      code: INFA
+                      display: "Information Access"
+                  text: "Information Access Consent"
+              patient:
+                identifier:
+                  system: "https://fhir.nhs.uk/Id/nhs-number"
+                  value: "9000000009"
+              dateTime: "2024-07-21T17:32:28Z"
+              performer:
+                - identifier:
+                    system: "https://fhir.nhs.uk/Id/nhs-number"
+                    value: "9000000017"
+              policy:
+                - authority: "https://www.england.nhs.uk"
+                  uri: "<REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD>"
+            search:
+              mode: match
+
+    ConsentAdultsConsentingBundle:
+      summary: Bundle containing a single active proxy relationship for two consenting adults with capacity
+      value:
+        resourceType: Bundle
+        timestamp: "2020-08-26T14:00:00+00:00"
+        total: 1
+        type: searchset
+        entry:
+          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/RP974720"
+            resource:
+              resourceType: RelatedPerson
+              id: RP974720
+              identifier:
+                - system: "https://fhir.nhs.uk/Id/nhs-number"
+                  value: "9000000010"
+                - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
+                  value: "ABC0000008"
+              patient:
+                type: Patient
+                identifier:
+                  system: "https://fhir.nhs.uk/Id/nhs-number"
+                  value: "9000000005"
+              relationship:
+                - coding:
+                    - system: "https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole"
+                      code: Personal
+                      display: "Personal relationship with the patient"                    
+            search:
+              mode: include
+          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/DFCC67F5"
+            resource:
+              resourceType: Patient
+              id: DFCC67F5
+              identifier:
+                - system: "https://fhir.nhs.uk/Id/nhs-number"
+                  value: "9000000005"
+                - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
+                  value: "ABC1234567"
+              name:
+                - id: "123456"
+                  use: usual
+                  period:
+                    start: "2020-01-01"
+                    end: "2021-12-31"
+                  given:
+                    - "Sally"
+                  family: Evans
+                  prefix:
+                    - Mrs
+              birthDate: "1995-10-22"
+              generalPractitioner:
+                - type: "Organization"
+                  identifier: 
+                    value: "ODS12345"
+                    system: "https://fhir.nhs.uk/Id/ods-organization-code"
+            search:
+              mode: include
+          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/WWCC67T1"
+            resource:
+              resourceType: Consent
+              id: WWCC67T1
+              status: active
+              scope:
+                coding:
+                  - system: "http://terminology.hl7.org/CodeSystem/consentscope"
+                    code: patient-privacy
+                    display: "Privacy Consent"
+                text: "Patient Privacy Consent"
+              category:
+                - coding:
+                    - system: "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+                      code: INFA
+                      display: "Information Access"
+                  text: "Information Access Consent"
+              patient:
+                identifier:
+                  system: "https://fhir.nhs.uk/Id/nhs-number"
+                  value: "9000000005"
+              dateTime: "2024-07-21T17:32:28Z"
+              performer:
+                - identifier:
+                    system: "https://fhir.nhs.uk/Id/nhs-number"
+                    value: "9000000010"
+              policy:
+                - authority: "https://www.england.nhs.uk"
+                  uri: "<REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD>"
+              verification:
+                - verified: true
+                  verifiedWith:
+                    identifier:
+                      system: "https://fhir.nhs.uk/Id/nhs-number"
+                      value: "9000000005"
+                  verificationDate: "2024-07-21T17:32:28Z"
+            search:
+              mode: match
+
+    ConsentMultipleBundle:
+      summary: Bundle containing a multiple active proxy relationships
+      value:
+        resourceType: Bundle
+        timestamp: "2020-08-26T14:00:00+00:00"
+        total: 1
+        type: searchset
+        entry:
+          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742"
+            resource:
+              resourceType: RelatedPerson
+              id: BE974742
+              identifier:
+                - system: "https://fhir.nhs.uk/Id/nhs-number"
+                  value: "9000000017"
+                - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
+                  value: "ABC0000003"
+              patient:
+                type: Patient
+                identifier:
+                  system: "https://fhir.nhs.uk/Id/nhs-number"
+                  value: "9000000009"
+              relationship:
+                - coding:
+                    - system: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+                      code: PRN
+                      display: Parent
+                    - system: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+                      code: MTH
+                      display: mother
+            search:
+              mode: include
+          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/A3CC67E2"
+            resource:
+              resourceType: Patient
+              id: A3CC67E2
+              identifier:
+                - system: "https://fhir.nhs.uk/Id/nhs-number"
+                  value: "9000000009"
+                - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
+                  value: "ABC1234567"
+              name:
+                - id: "123456"
+                  use: usual
+                  period:
+                    start: "2020-01-01"
+                    end: "2021-12-31"
+                  given:
+                    - "Jane Marie Anne"
+                  family: Smith
+                  prefix:
+                    - Mrs
+                  suffix:
+                    - MBE
+                    - PhD
+              birthDate: "2022-10-22"
+              generalPractitioner:
+                - type: "Organization"
+                  identifier: 
+                    value: "ODS12345"
+                    system: "https://fhir.nhs.uk/Id/ods-organization-code"
+            search:
+              mode: include
+          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/BBCC67E9"
+            resource:
+              resourceType: Consent
+              id: BBCC67E9
+              status: active
+              scope:
+                coding:
+                  - system: "http://terminology.hl7.org/CodeSystem/consentscope"
+                    code: patient-privacy
+                    display: "Privacy Consent"
+                text: "Patient Privacy Consent"
+              category:
+                - coding:
+                    - system: "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+                      code: INFA
+                      display: "Information Access"
+                  text: "Information Access Consent"
+              patient:
+                identifier:
+                  system: "https://fhir.nhs.uk/Id/nhs-number"
+                  value: "9000000009"
+              dateTime: "2024-07-21T17:32:28Z"
+              performer:
+                - identifier:
+                    system: "https://fhir.nhs.uk/Id/nhs-number"
+                    value: "9000000017"
+              policy:
+                - authority: "https://www.england.nhs.uk"
+                  uri: "<REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD>"
+            search:
+              mode: match
+          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/RP974720"
+            resource:
+              resourceType: RelatedPerson
+              id: RP974720
+              identifier:
+                - system: "https://fhir.nhs.uk/Id/nhs-number"
+                  value: "9000000010"
+                - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
+                  value: "ABC00000234"
+              patient:
+                type: Patient
+                identifier:
+                  system: "https://fhir.nhs.uk/Id/nhs-number"
+                  value: "9000000005"
+              relationship:
+                - coding:
+                    - system: "https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole"
+                      code: Personal
+                      display: "Personal relationship with the patient"                    
+            search:
+              mode: include
+          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/DFCC67F5"
+            resource:
+              resourceType: Patient
+              id: DFCC67F5
+              identifier:
+                - system: "https://fhir.nhs.uk/Id/nhs-number"
+                  value: "9000000005"
+                - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
+                  value: "ABC9999999"
+              name:
+                - id: "123456"
+                  use: usual
+                  period:
+                    start: "2020-01-01"
+                    end: "2021-12-31"
+                  given:
+                    - "Sally"
+                  family: Evans
+                  prefix:
+                    - Mrs
+              birthDate: "1995-10-22"
+              generalPractitioner:
+                - type: "Organization"
+                  identifier: 
+                    value: "ODS12345"
+                    system: "https://fhir.nhs.uk/Id/ods-organization-code"
+            search:
+              mode: include
+          - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/WWCC67T1"
+            resource:
+              resourceType: Consent
+              id: WWCC67T1
+              status: active
+              scope:
+                coding:
+                  - system: "http://terminology.hl7.org/CodeSystem/consentscope"
+                    code: patient-privacy
+                    display: "Privacy Consent"
+                text: "Patient Privacy Consent"
+              category:
+                - coding:
+                    - system: "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+                      code: INFA
+                      display: "Information Access"
+                  text: "Information Access Consent"
+              patient:
+                identifier:
+                  system: "https://fhir.nhs.uk/Id/nhs-number"
+                  value: "9000000005"
+              dateTime: "2024-07-21T17:32:28Z"
+              performer:
+                - identifier:
+                    system: "https://fhir.nhs.uk/Id/nhs-number"
+                    value: "9000000010"
+              policy:
+                - authority: "https://www.england.nhs.uk"
+                  uri: "<REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD>"
+              verification:
+                - verified: true
+                  verifiedWith:
+                    identifier:
+                      system: "https://fhir.nhs.uk/Id/nhs-number"
+                      value: "9000000005"
+                  verificationDate: "2024-07-21T17:32:28Z"
+            search:
+              mode: match
+
     InternalServerError:
       value:
         resourceType: "OperationOutcome"
@@ -1552,6 +2308,7 @@ components:
                  version: "1"
                  code: "SERVER_ERROR"
                  display: "Failed to generate response"
+    
     PostQuestionnaireResponseSuccess:
       value:
         resourceType: "OperationOutcome"
