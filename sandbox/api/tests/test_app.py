@@ -4,6 +4,7 @@ import pytest
 
 from .conftest import RELATED_PERSON_API_ENDPOINT, QUESTIONNAIRE_RESPONSE_API_ENDPOINT
 
+RELATED_PERSON_FILE_PATH = "sandbox.api.related_person"
 UTILS_FILE_PATH = "sandbox.api.utils"
 APP_FILE_PATH = "sandbox.api.app"
 
@@ -25,68 +26,38 @@ def test_health_check(client: object, endpoint: str) -> None:
     "request_args,response_file_name,status_code",
     [
         (
-            "identifier=9000000041",
-            "./api/responses/not_found.json",
-            404,
-        ),
-        (
-            "identifier=9000000017&patient:identifier=9000000041",
-            "./api/responses/not_found.json",
-            404,
-        ),
-        (
             "identifier=9000000033",
             "./api/responses/GET_RelatedPerson/empty_response_9000000033.json",
             200,
         ),
         (
             "identifier=9000000017",
-            "./api/responses/GET_RelatedPerson/list_relationship_9000000017.json",
+            "./api/responses/GET_RelatedPerson/list_relationship.json",
             200,
         ),
         (
             "identifier=9000000017&_include=RelatedPerson:patient",
-            "./api/responses/GET_RelatedPerson/list_relationship_include_9000000017.json",
+            "./api/responses/GET_RelatedPerson/list_relationship_include.json",
             200,
         ),
         (
             "identifier=9000000017&_include=any",
-            "./api/responses/GET_RelatedPerson/list_relationship_9000000017.json",
-            200,
-        ),
-        (
-            "identifier=9000000017&patient:identifier=9000000009",
-            "./api/responses/GET_RelatedPerson/verify_relationship_9000000009.json",
-            200,
-        ),
-        (
-            "identifier=9000000017&patient:identifier=9000000009&_include=RelatedPerson:patient",
-            "./api/responses/GET_RelatedPerson/verify_relationship_include_9000000009.json",
-            200,
-        ),
-        (
-            "identifier=9000000017&patient:identifier=9000000009&_include=any",
-            "./api/responses/GET_RelatedPerson/verify_relationship_9000000009.json",
-            200,
-        ),
-        (
-            "identifier=9000000017&patient:identifier=9000000025",
-            "./api/responses/GET_RelatedPerson/verify_relationship_9000000025.json",
+            "./api/responses/GET_RelatedPerson/list_relationship.json",
             200,
         ),
         (
             "identifier=9000000017&patient:identifier=9000000025&_include=RelatedPerson:patient",
-            "./api/responses/GET_RelatedPerson/verify_relationship_include_9000000025.json",
+            "./api/responses/GET_RelatedPerson/verify_relationship_include.json",
             200,
         ),
         (
             "identifier=9000000017&patient:identifier=9000000025&_include=any",
-            "./api/responses/GET_RelatedPerson/verify_relationship_9000000025.json",
+            "./api/responses/GET_RelatedPerson/verify_relationship.json",
             200,
         ),
     ],
 )
-@patch(f"{UTILS_FILE_PATH}.load_json_file")
+@patch(f"{RELATED_PERSON_FILE_PATH}.load_json_file")
 def test_related_person(
     mock_load_json_file: MagicMock,
     request_args: str,

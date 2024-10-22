@@ -2,11 +2,11 @@ from logging import INFO, basicConfig, getLogger
 from typing import Union
 
 from flask import Flask, request
-from .related_person import determine_success_response
+
+from .related_person import determine_success_response, special_cases
 from .utils import (
     ERROR_RESPONSE,
     QUESTIONNAIRE_RESPONSE_SUCCESS,
-    EMPTY_RESPONSE,
     check_for_errors,
     generate_response,
     load_json_file,
@@ -46,9 +46,8 @@ def get_related_persons() -> Union[dict, tuple]:
         patient_identifier = request.args.get("patient:identifier", "")
         include = request.args.get("_include", "")
 
-        if identifier == "9000000033":
-            # 200 But Empty response
-            return generate_response(load_json_file(EMPTY_RESPONSE))
+        if response := special_cases(identifier):
+            return response
 
         return determine_success_response(identifier, patient_identifier, include)
 
