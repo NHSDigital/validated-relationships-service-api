@@ -2,20 +2,12 @@ from logging import INFO, basicConfig, getLogger
 from typing import Union
 
 from flask import Flask, request
-
+from .related_person import determine_success_response
 from .utils import (
     ERROR_RESPONSE,
-    LIST_RELATIONSHIP,
-    LIST_RELATIONSHIP_INCLUDE,
     QUESTIONNAIRE_RESPONSE_SUCCESS,
-    VALIDATE_RELATIONSHIP_009,
-    VALIDATE_RELATIONSHIP_025,
-    VALIDATE_RELATIONSHIP_INCLUDE_009,
-    VALIDATE_RELATIONSHIP_INCLUDE_025,
-    check_for_empty,
+    EMPTY_RESPONSE,
     check_for_errors,
-    check_for_list,
-    check_for_validate,
     generate_response,
     load_json_file,
 )
@@ -50,44 +42,15 @@ def get_related_persons() -> Union[dict, tuple]:
         if errors := check_for_errors(request):
             return errors
 
-        identifier = request.args.get("identifier")
-        patient_identifier = request.args.get("patient:identifier")
-        include = request.args.get("_include")
+        identifier = request.args.get("identifier", "")
+        patient_identifier = request.args.get("patient:identifier", "")
+        include = request.args.get("_include", "")
 
-        if empty := check_for_empty(identifier, patient_identifier):
-            return empty
+        if identifier == "9000000033":
+            # 200 But Empty response
+            return generate_response(load_json_file(EMPTY_RESPONSE))
 
-        # Successful request, select response
-        if zero_nine := check_for_validate(
-            "9000000009",
-            identifier,
-            patient_identifier,
-            include,
-            VALIDATE_RELATIONSHIP_009,
-            VALIDATE_RELATIONSHIP_INCLUDE_009,
-        ):
-            return zero_nine
-
-        if two_five := check_for_validate(
-            "9000000025",
-            identifier,
-            patient_identifier,
-            include,
-            VALIDATE_RELATIONSHIP_025,
-            VALIDATE_RELATIONSHIP_INCLUDE_025,
-        ):
-            return two_five
-
-        if one_seven := check_for_list(
-            "9000000017",
-            identifier,
-            include,
-            LIST_RELATIONSHIP,
-            LIST_RELATIONSHIP_INCLUDE,
-        ):
-            return one_seven
-
-        raise ValueError("Invalid request")
+        return determine_success_response(identifier, patient_identifier, include)
 
     except Exception as e:
         logger.error(e)
