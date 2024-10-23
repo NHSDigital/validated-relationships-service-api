@@ -1,6 +1,6 @@
 # validated-relationships-service-api
 
-This is a RESTful API for the Validated Relationship Service (VRS) API.
+This is a RESTful FHIR API for the [Validated Relationship Service API](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service).
 
 It includes:
 
@@ -11,7 +11,7 @@ It includes:
 
 Consumers of the API will find developer documentation on the [NHS Digital Developer Hub](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service).
 
-This repo does _not_ include the Validated Relationship Service FHIR API back-end. That is part of 'Core Spine' which is not currently open source.
+This repository does _not_ include the Validated Relationship Service FHIR API back-end. That is part of 'Proxy Validated Relationship Service' repository which is not currently open source.
 
 ## Contributing
 
