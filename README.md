@@ -6,6 +6,17 @@ Consumers of the API will find developer documentation on the [NHS Digital Devel
 
 This repository does _not_ include the Validated Relationship Service FHIR API back-end. That is part of 'Proxy Validated Relationship Service' repository which is not currently open source.
 
+## Table of Contents
+
+- [validated-relationships-service-api](#validated-relationships-service-api)
+  - [Table of Contents](#table-of-contents)
+  - [Repository Structure](#repository-structure)
+  - [Contributing](#contributing)
+  - [Development \& Testing](#development--testing)
+    - [Licensing](#licensing)
+
+## Repository Structure
+
 This repository includes:
 
 -   [specification/validated-relationships-service-api.yaml](./specification/validated-relationships-service-api.yaml) - The [Open API Specification](https://swagger.io/docs/specification/about/) describes the endpoints, methods and messages exchanged by the API. Use it to generate interactive documentation; the contract between the API and its consumers.
@@ -13,13 +24,6 @@ This repository includes:
 -   `scripts/` - Utilities helpful to developers for the development and release of the specification.
 -   `proxies/` - Live and sandbox Apigee API Proxy definitions.
 
-## Table of Contents
-
-- [validated-relationships-service-api](#validated-relationships-service-api)
-  - [Table of Contents](#table-of-contents)
-  - [Contributing](#contributing)
-  - [Development \& Testing](#development--testing)
-    - [Licensing](#licensing)
 
 ## Contributing
 

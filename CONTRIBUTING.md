@@ -6,16 +6,6 @@
     - [Merge responsibility](#merge-responsibility)
     - [Branch naming](#branch-naming)
     - [Commit messages](#commit-messages)
-  - [Development](#development)
-    - [Requirements](#requirements)
-    - [Install](#install)
-      - [Updating hooks](#updating-hooks)
-    - [Environment Variables](#environment-variables)
-    - [Make commands](#make-commands)
-    - [Testing](#testing)
-    - [VS Code Plugins](#vs-code-plugins)
-    - [Emacs Plugins](#emacs-plugins)
-    - [Speccy](#speccy)
 
 ## Raising an Issue
 

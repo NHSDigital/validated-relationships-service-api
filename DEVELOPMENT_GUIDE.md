@@ -1,7 +1,11 @@
 # Development Guide
 
+This documentation is intended for developers to develop the schema, sandbox and proxies. It may be used by developers working within the NHS Digital organisation and outside contributors.
+
+## Table of Contents
 
 - [Development Guide](#development-guide)
+  - [Table of Contents](#table-of-contents)
   - [Development](#development)
     - [Requirements](#requirements)
     - [Install](#install)
@@ -29,6 +33,7 @@
       - [`ecs-proxies-containers.yml ` and `ecs-proxies-deploy.yml`:](#ecs-proxies-containersyml--and-ecs-proxies-deployyml)
       - [`manifest_template.yml`:](#manifest_templateyml)
       - [Package management:](#package-management)
+  - [Releasing a new schema version](#releasing-a-new-schema-version)
 
 ## Development
 
@@ -201,3 +206,16 @@ This file defines 2 dictionaries of fields that are required for the Apigee depl
 This template uses poetry for python dependency management, and uses these files: poetry.lock, poetry.toml, pyproject.toml.
 
 Node dependencies of this template project and some npm scripts are listed in: package.json, package-lock.json.
+
+## Releasing a new schema version
+
+To release a new version of the schema, follow the steps below:
+
+1. Update the version number in [specification/validated-relationships-service-api.yaml](./specification/validated-relationships-service-api.yaml).
+2. Update the Postman collection - [postman/Validate Relationship Service Sandbox.postman_collection.json](./postman/Validate%20Relationship%20Service%20Sandbox.postman_collection.json).
+    1. Documentation on how to update the Postman collection can be found [here](https://nhsd-confluence.digital.nhs.uk/pages/viewpage.action?pageId=874694621).
+3. Update the sandbox - [sandbox](./sandbox).
+4. Create a pull request with the changes.
+5. Once the pull request has been approved, merge it into the `master` branch.
+6. Request a schema changes are published to the [Validated Relationship Service API](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service) page.
+    1. Documentation on how to update the published specification page can be found [here](https://nhsd-confluence.digital.nhs.uk/display/NPA/Deploy+to+Public+Validated+Relationship+Service+API+Page)
