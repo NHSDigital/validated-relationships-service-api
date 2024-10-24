@@ -4,29 +4,29 @@ This documentation is intended for developers to develop the schema, sandbox and
 
 ## Table of Contents
 
-- [Development Guide](#development-guide)
-  - [Table of Contents](#table-of-contents)
-  - [Development](#development)
-    - [Requirements](#requirements)
-    - [Make commands](#make-commands)
-    - [Testing](#testing)
-    - [Caveats](#caveats)
-      - [Swagger UI](#swagger-ui)
-      - [Apigee Portal](#apigee-portal)
-    - [Platform setup](#platform-setup)
-    - [Detailed folder walk through](#detailed-folder-walk-through)
-      - [`/.github`:](#github)
-      - [`/azure`:](#azure)
-      - [`/proxies`:](#proxies)
-      - [`/sandbox`:](#sandbox)
-        - [Development](#development-1)
-      - [`/scripts`:](#scripts)
-      - [`/specification`:](#specification)
-      - [`/tests`:](#tests)
-      - [`Makefile`:](#makefile)
-      - [`ecs-proxies-containers.yml ` and `ecs-proxies-deploy.yml`:](#ecs-proxies-containersyml--and-ecs-proxies-deployyml)
-      - [`manifest_template.yml`:](#manifest_templateyml)
-  - [Releasing a new schema version](#releasing-a-new-schema-version)
+-   [Development Guide](#development-guide)
+    -   [Table of Contents](#table-of-contents)
+    -   [Development](#development)
+        -   [Requirements](#requirements)
+        -   [Make commands](#make-commands)
+        -   [Testing](#testing)
+        -   [Caveats](#caveats)
+            -   [Swagger UI](#swagger-ui)
+            -   [Apigee Portal](#apigee-portal)
+        -   [Platform setup](#platform-setup)
+        -   [Detailed folder walk through](#detailed-folder-walk-through)
+            -   [`/.github`:](#github)
+            -   [`/azure`:](#azure)
+            -   [`/proxies`:](#proxies)
+            -   [`/sandbox`:](#sandbox)
+                -   [Development](#development-1)
+            -   [`/scripts`:](#scripts)
+            -   [`/specification`:](#specification)
+            -   [`/tests`:](#tests)
+            -   [`Makefile`:](#makefile)
+            -   [`ecs-proxies-containers.yml ` and `ecs-proxies-deploy.yml`:](#ecs-proxies-containersyml--and-ecs-proxies-deployyml)
+            -   [`manifest_template.yml`:](#manifest_templateyml)
+    -   [Releasing a new schema version](#releasing-a-new-schema-version)
 
 ## Development
 
@@ -37,9 +37,9 @@ This documentation is intended for developers to develop the schema, sandbox and
 
 -   GNU make
 -   nodejs 22+
-    - npm 10.8+
+    -   npm 10.8+
 -   Python 3.8 +
-    - [poetry](https://github.com/python-poetry/poetry) 1.8+
+    -   [poetry](https://github.com/python-poetry/poetry) 1.8+
 -   Java 8+
 
 ### Make commands

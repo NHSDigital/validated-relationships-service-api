@@ -1,11 +1,11 @@
 # Contribution Guidelines
 
-- [Contribution Guidelines](#contribution-guidelines)
-  - [Raising an Issue](#raising-an-issue)
-  - [Contributing code](#contributing-code)
-    - [Merge responsibility](#merge-responsibility)
-    - [Branch naming](#branch-naming)
-    - [Commit messages](#commit-messages)
+-   [Contribution Guidelines](#contribution-guidelines)
+    -   [Raising an Issue](#raising-an-issue)
+    -   [Contributing code](#contributing-code)
+        -   [Merge responsibility](#merge-responsibility)
+        -   [Branch naming](#branch-naming)
+        -   [Commit messages](#commit-messages)
 
 ## Raising an Issue
 

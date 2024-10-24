@@ -8,12 +8,12 @@ This repository does _not_ include the Validated Relationship Service FHIR API b
 
 ## Table of Contents
 
-- [validated-relationships-service-api](#validated-relationships-service-api)
-  - [Table of Contents](#table-of-contents)
-  - [Repository Structure](#repository-structure)
-  - [Contributing](#contributing)
-  - [Development \& Testing](#development--testing)
-    - [Licensing](#licensing)
+-   [validated-relationships-service-api](#validated-relationships-service-api)
+    -   [Table of Contents](#table-of-contents)
+    -   [Repository Structure](#repository-structure)
+    -   [Contributing](#contributing)
+    -   [Development \& Testing](#development--testing)
+        -   [Licensing](#licensing)
 
 ## Repository Structure
 
@@ -23,7 +23,6 @@ This repository includes:
 -   `sandbox/` - A flask (Python) API to provide mock implementation of the service. It's to be used as interactive documentation to illustrate interactions and concepts. It is not intended to provide an exhaustive/faithful environment suitable for full development and testing.
 -   `scripts/` - Utilities helpful to developers for the development and release of the specification.
 -   `proxies/` - Live and sandbox Apigee API Proxy definitions.
-
 
 ## Contributing
 
