@@ -3,31 +3,31 @@
 This documentation is intended for developers to develop the schema, sandbox and proxies. It may be used by developers working within the NHS Digital organisation and outside contributors.
 
 > [!WARNING]
-> Some of this documentation is specific to the maintainers of this repository and is only available to NHS England staff.
+> Some of the documentation and links are specific to the maintainers of this repository and are only available to NHS England staff.
 
 ## Table of Contents
 
--   [Development Guide](#development-guide)
-    -   [Table of Contents](#table-of-contents)
-    -   [Development](#development)
-        -   [Requirements](#requirements)
-        -   [Make commands](#make-commands)
-        -   [Testing](#testing)
-        -   [Platform setup](#platform-setup)
-        -   [Detailed folder walk through](#detailed-folder-walk-through)
-            -   [`/.github`:](#github)
-            -   [`/azure`:](#azure)
-            -   [`/proxies`:](#proxies)
-            -   [`/scripts`:](#scripts)
-            -   [`/specification`:](#specification)
-            -   [`/tests`:](#tests)
-            -   [`Makefile`:](#makefile)
-            -   [`ecs-proxies-containers.yml ` and `ecs-proxies-deploy.yml`:](#ecs-proxies-containersyml--and-ecs-proxies-deployyml)
-            -   [`manifest_template.yml`:](#manifest_templateyml)
-    -   [Releasing a new schema version](#releasing-a-new-schema-version)
-        -   [Caveats](#caveats)
-            -   [Swagger UI](#swagger-ui)
-            -   [Apigee Portal](#apigee-portal)
+- [Development Guide](#development-guide)
+  - [Table of Contents](#table-of-contents)
+  - [Development](#development)
+    - [Requirements](#requirements)
+    - [Make commands](#make-commands)
+    - [Testing](#testing)
+    - [Platform setup](#platform-setup)
+    - [Detailed folder walk through](#detailed-folder-walk-through)
+      - [`/.github`:](#github)
+      - [`/azure`:](#azure)
+      - [`/proxies`:](#proxies)
+      - [`/scripts`:](#scripts)
+      - [`/specification`:](#specification)
+      - [`/tests`:](#tests)
+      - [`Makefile`:](#makefile)
+      - [`ecs-proxies-containers.yml ` and `ecs-proxies-deploy.yml`:](#ecs-proxies-containersyml--and-ecs-proxies-deployyml)
+      - [`manifest_template.yml`:](#manifest_templateyml)
+  - [Releasing a new schema version](#releasing-a-new-schema-version)
+    - [Caveats](#caveats)
+      - [Swagger UI](#swagger-ui)
+      - [Apigee Portal](#apigee-portal)
 
 ## Development
 
