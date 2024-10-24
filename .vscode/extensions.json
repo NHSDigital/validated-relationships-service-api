@@ -1,0 +1,6 @@
+{
+  "recommendations": [
+    "mermade.openapi-lint",
+    "42Crunch.vscode-openapi"
+  ]
+}
