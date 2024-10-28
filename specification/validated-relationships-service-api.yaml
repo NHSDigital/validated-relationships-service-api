@@ -253,8 +253,6 @@ paths:
 
         ## Sandbox test scenarios
 
-        NOTE: Headers are not tested in the sandbox. `X-Request-ID` and `X-Correlation-ID` are disregarded.
-
         | Scenario                                                                    | Request                                                                                                | Response                                                                                       |
         | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |
         | List Relationship                                                           | `identifier`=`9000000017`                                                                              | HTTP Status 200 List of relationships for the proxy                                            |
@@ -264,12 +262,14 @@ paths:
         | Verify Relationship between proxy and patient and include patient's details | `identifier`=`9000000017` and `patient:identifier`=`9000000009` and `_include`=`RelatedPerson:patient` | HTTP Status 200 Verified relationship between patient and proxy and includes patient's details |
         | Verify Relationship between proxy and patient                               | `identifier`=`9000000017` and `patient:identifier`=`9000000025`                                        | HTTP Status 200 Verified relationship between patient and proxy                                |
         | Verify Relationship between proxy and patient and include patient's details | `identifier`=`9000000017` and `patient:identifier`=`9000000025` and `_include`=`RelatedPerson:patient` | HTTP Status 200 Verified relationship between patient and proxy and includes patient's details |
-        | Missing identifier                                                          | identifier`=``                                                                                         | HTTP Status 400 and MISSING_IDENTIFIER_VALUE error message                                     |
-        | Invalid identifier                                                          | identifier`=`900000000` Note: This identifier is 9 characters long too short to be NHS Number          | HTTP Status 400 and INVALID_IDENTIFIER_VALUE error message                                     |
-        | Invalid identifier system                                                   | identifier`=`https://fhir.nhs.uk/Id/nhs-number/9730675929`                                             | HTTP Status 400 and INVALID_IDENTIFIER_SYSTEM error message                                    |
-        | Identifier not supported in sandbox                                         | identifier`=`1000000001`                                                                               | HTTP Status 404 and INVALIDATED_RESOURCE error message                                    |
+        | Missing identifier                                                          | `patient:identifier`=`9000000009`                                                                      | HTTP Status 400 and MISSING_IDENTIFIER_VALUE error message                                     |
+        | Invalid identifier                                                          | `identifier`=`900000000` Note: This identifier is 9 characters long too short to be NHS Number         | HTTP Status 400 and INVALID_IDENTIFIER_VALUE error message                                     |
+        | Invalid identifier system                                                   | `identifier`=`https://fhir.nhs.uk/Id/nhs-number/9730675929`                                            | HTTP Status 400 and INVALID_IDENTIFIER_SYSTEM error message                                    |
+        | Identifier not supported in sandbox                                         | `identifier`=`1000000001`                                                                              | HTTP Status 404 and INVALIDATED_RESOURCE error message                                    |
 
-        Or perhaps you'd like to try out the sandbox using our 'Try it out' feature, see the documentation for each endpoint.
+        NOTE: Headers are not tested in the sandbox. `X-Request-ID` and `X-Correlation-ID` are disregarded.
+
+        Or perhaps you'd like to try out the sandbox using our 'Try it out' feature.
 
       operationId: get-validated-relationships
       parameters:
