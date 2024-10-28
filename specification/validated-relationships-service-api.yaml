@@ -231,7 +231,12 @@ paths:
 
         ## Sandbox test scenarios
 
-        For details of sandbox test scenarios, or to try out the sandbox using our 'Try it out' feature, see the documentation for each endpoint.
+        | Scenario                         | Request                                                          | Response                                                                                                                                      |
+        | -------------------------------- | ---------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+        | List Relationship                | `identifier`=`9000000017`                                        | HTTP Status 200 List of relationships for the proxy                                                                                           |
+        | List Relationship and Include    | `identifier`=`9000000017` and `_include`=`RelatedPerson:patient` | HTTP Status 200 List of relationships for the proxy and include patient data                                                                  |       
+
+        Or perhaps you'd like to try out the sandbox using our 'Try it out' feature, see the documentation for each endpoint.
 
       operationId: get-validated-relationships
       parameters:
