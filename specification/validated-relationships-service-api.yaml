@@ -162,7 +162,15 @@ paths:
 
         ## Sandbox test scenarios
 
-        For details of sandbox test scenarios, or to try out the sandbox using our 'Try it out' feature, see the documentation for each endpoint.
+        | Scenario        | Request                                         | Response                         |
+        | --------------- | ----------------------------------------------- | -------------------------------- |
+        | Example request | Example questionnaire response from try it now  | HTTP Status 200 Success response |
+
+        ### Sandbox constraints
+          - Questionnaire Response is not validated.
+          - Headers are not tested. `X-Request-ID` and `X-Correlation-ID` are disregarded.
+
+        Or perhaps you'd like to try out the sandbox using our 'Try it out' feature.
 
       operationId: new-access-request
       parameters:
