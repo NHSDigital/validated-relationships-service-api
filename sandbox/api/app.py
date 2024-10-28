@@ -18,6 +18,7 @@ from .utils import (
     check_for_validate,
     generate_response,
     load_json_file,
+    remove_system,
 )
 
 app = Flask(__name__)
@@ -50,8 +51,8 @@ def get_related_persons() -> Union[dict, tuple]:
         if errors := check_for_errors(request):
             return errors
 
-        identifier = request.args.get("identifier")
-        patient_identifier = request.args.get("patient:identifier")
+        identifier = remove_system(request.args.get("identifier"))
+        patient_identifier = remove_system(request.args.get("patient:identifier"))
         include = request.args.get("_include")
 
         if empty := check_for_empty(identifier, patient_identifier):
