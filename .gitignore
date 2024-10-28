@@ -19,3 +19,8 @@ smoketest-report.xml
 env
 .dir-locals.el
 *.pyc
+
+sandbox/output.json
+sandbox/pytest_html_report.html
+sandbox/archive/
+sandbox/.hypothesis/

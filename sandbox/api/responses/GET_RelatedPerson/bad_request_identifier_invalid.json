@@ -1,0 +1,20 @@
+{
+  "issue": [
+    {
+      "code": "invalid",
+      "details": {
+        "coding": [
+          {
+            "code": "INVALID_IDENTIFIER_VALUE",
+            "display": "Provided value is invalid",
+            "system": "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode",
+            "version": "1"
+          }
+        ]
+      },
+      "diagnostics": "Not a valid NHS Number provided for the 'identifier' parameter",
+      "severity": "error"
+    }
+  ],
+  "resourceType": "OperationOutcome"
+}

@@ -32,7 +32,12 @@ def test_get_response(mock_open: MagicMock) -> None:
         ),
         (
             "identifier=123456789",  # identifier length is less than 10
-            "./api/responses/GET_RelatedPerson/bad_request_identifier_not_as_expected.json",
+            "./api/responses/GET_RelatedPerson/bad_request_identifier_invalid.json",
+            400,
+        ),
+        (
+            "identifier=https://fhir.nhs.uk/ID/nhs-number|1234567890",  # identifier system invalid
+            "./api/responses/GET_RelatedPerson/bad_request_identifier_invalid_system.json",
             400,
         ),
     ],
