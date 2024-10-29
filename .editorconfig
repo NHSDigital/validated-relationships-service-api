@@ -17,9 +17,6 @@ indent_size = 2
 [*.postman_collection.json]
 indent_style = tab
 
-[*.yaml]
-trim_trailing_whitespace = false
-
 [*.js]
 ij_javascript_force_semicolon_style = true
 ij_javascript_use_semicolon_after_statement = false

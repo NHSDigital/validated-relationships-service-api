@@ -1,8 +1,8 @@
 QuestionnaireResponseAdultNominatesAdultRequest:
   summary: Adult nominates Adult access request
   description: |
-    Example proxy access request from an adult (Jill) with NHS number `9000000006` nominating her husband (Tom) with NHS number `9000000005` to act on her behalf. 
-    
+    Example proxy access request from an adult (Jill) with NHS number `9000000006` nominating her husband (Tom) with NHS number `9000000005` to act on her behalf.
+
     Significant things to point out:
 
     - `source.type` should be `Patient` when a patient is nominating a proxy
@@ -10,8 +10,8 @@ QuestionnaireResponseAdultNominatesAdultRequest:
     - `subject.type` should be `Patient` since it is the patient that is the subject of the application
     - `subject.identifier.value` should be the NHS Number of the patient to which the application relates
     - `relatedPerson` demographics are present in the request as a result of being provided by the applicant
-  value: 
-    resourceType: QuestionnaireResponse        
+  value:
+    resourceType: QuestionnaireResponse
     status: "completed"
     authored: "2024-07-15T09:43:03.280Z"
     source:

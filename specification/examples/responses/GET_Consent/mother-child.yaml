@@ -56,7 +56,7 @@ ConsentMotherChildBundle:
           birthDate: "2022-10-22"
           generalPractitioner:
             - type: "Organization"
-              identifier: 
+              identifier:
                 value: "ODS12345"
                 system: "https://fhir.nhs.uk/Id/ods-organization-code"
         search:

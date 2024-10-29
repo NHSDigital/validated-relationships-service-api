@@ -1,8 +1,8 @@
 QuestionnaireResponseMotherChildRequest:
   summary: Mother > Child access request
   description: |
-    Example proxy access request from a mother (Martha) with NHS number `9000000001` requesting access to act on behalf of their child (Timmy) with NHS number `9000000002`. 
-    
+    Example proxy access request from a mother (Martha) with NHS number `9000000001` requesting access to act on behalf of their child (Timmy) with NHS number `9000000002`.
+
     Significant details to point out:
 
     - `source.type` should be `RelatedPerson` when a proxy is applying
@@ -10,8 +10,8 @@ QuestionnaireResponseMotherChildRequest:
     - `subject.type` should be `Patient` since it is the patient that is the subject of the application
     - `subject.identifier.value` should be the NHS Number of the patient to which the application relates
     - `patient` demographics are present in the request as a result of being provided by the applicant
-  value: 
-    resourceType: QuestionnaireResponse        
+  value:
+    resourceType: QuestionnaireResponse
     status: "completed"
     authored: "2024-07-15T09:43:03.280Z"
     source:

@@ -3,10 +3,10 @@ PostQuestionnaireResponseSuccess:
   description: A sample of the payload returned when a QuestionnaireResponse (proxy access request) has been successfully submitted. It contains a unique alpha-numeric reference code to identify the request by.
   value:
     resourceType: "OperationOutcome"
-    issue: 
+    issue:
       - severity: information
         code: informational
         details:
           coding:
             - code: "HDJ2123F"
-              display: "HDJ2123F"    
+              display: "HDJ2123F"

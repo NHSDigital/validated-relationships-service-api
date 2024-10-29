@@ -2,9 +2,9 @@ RelatedPersonWithoutPatients:
   summary: Default behaviour
   description: |
     Example response containing the details of two matched candidate proxy relationships between a birth mother and her two children.
-    
-    The FHIR Bundle contains a `RelatedPerson` resource per relationship verified against authoritative sources. 
-    
+
+    The FHIR Bundle contains a `RelatedPerson` resource per relationship verified against authoritative sources.
+
     `Patient` resources are not included by default.
   value:
     resourceType: Bundle

@@ -24,7 +24,7 @@ ConsentAdultsConsentingBundle:
             - coding:
                 - system: "https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole"
                   code: Personal
-                  display: "Personal relationship with the patient"                    
+                  display: "Personal relationship with the patient"
         search:
           mode: include
       - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/DFCC67F5"
@@ -50,7 +50,7 @@ ConsentAdultsConsentingBundle:
           birthDate: "1995-10-22"
           generalPractitioner:
             - type: "Organization"
-              identifier: 
+              identifier:
                 value: "ODS12345"
                 system: "https://fhir.nhs.uk/Id/ods-organization-code"
         search:
