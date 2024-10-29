@@ -1,18 +1,18 @@
 {
   "issue": [
     {
-      "code": "exception",
+      "code": "invalid",
       "details": {
         "coding": [
           {
-            "code": "BAD_REQUEST",
-            "display": "Required parameter(s) are missing.",
+            "code": "INVALID_IDENTIFIER_VALUE",
+            "display": "Provided value is invalid",
             "system": "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode",
             "version": "1"
           }
         ]
       },
-      "diagnostics": "Invalid request with error - One or more required parameters are missing.",
+      "diagnostics": "Not a valid NHS Number provided for the 'identifier' parameter",
       "severity": "error"
     }
   ],

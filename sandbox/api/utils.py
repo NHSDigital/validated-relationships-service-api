@@ -1,5 +1,5 @@
 from json import load, dumps
-from typing import Optional
+from typing import Optional, Any
 
 from flask import request, Response
 
@@ -49,17 +49,33 @@ def check_for_errors(request: request) -> Optional[tuple]:
     Returns:
         Optional[tuple]: Tuple with response and status code if error is found
     """
-    if not request.args.get("identifier"):
+    identifier = request.args.get("identifier")
+    identifier_without_system = remove_system(request.args.get("identifier"))
+
+    if not identifier:
         return (
             load_json_file(
                 "./api/responses/GET_RelatedPerson/bad_request_identifier_missing.json"
             ),
             400,
         )
-    elif request.args.get("identifier") and len(request.args.get("identifier")) != 10:
+    elif identifier and len(identifier_without_system) != 10:
+        # invalid identifier
         return (
             load_json_file(
-                "./api/responses/GET_RelatedPerson/bad_request_identifier_not_as_expected.json"
+                "./api/responses/GET_RelatedPerson/bad_request_identifier_invalid.json"
+            ),
+            400,
+        )
+    elif (
+        isinstance(identifier, str)
+        and "|" in identifier
+        and "https://fhir.nhs.uk/Id/nhs-number" != identifier.split("|", maxsplit=2)[0]
+    ):
+        # invalid identifier system
+        return (
+            load_json_file(
+                "./api/responses/GET_RelatedPerson/bad_request_identifier_invalid_system.json"
             ),
             400,
         )
@@ -91,8 +107,8 @@ def check_for_validate(
     identifier: str,
     patient_identifier: str,
     include: str,
-    basefile: str,
-    incfile: str,
+    base_file: str,
+    inc_file: str,
 ) -> Response:
     """Checks for validate request responses for a given relationship record
 
@@ -101,22 +117,22 @@ def check_for_validate(
         identifier (str): The identifier supplied to the request
         patient_identifier (str): The patient:identifier supplied to the request
         include (str): The include parameter supplied to the request
-        basefile (str): The file to return when record matches but does not request includeded data
-        incfile (str): The file to return when record matches and does request included data
+        base_file (str): The file to return when record matches but does not request included data
+        inc_file (str): The file to return when record matches and does request included data
 
     Returns:
         Response: Resultant response or None
     """
     if identifier and patient_identifier == value and include == INCLUDE_FLAG:
         # Request with identifier, patient and _include=patient
-        return generate_response(load_json_file(incfile))
+        return generate_response(load_json_file(inc_file))
     elif identifier and patient_identifier == value:
         # Request with identifier and patient
-        return generate_response(load_json_file(basefile))
+        return generate_response(load_json_file(base_file))
 
 
 def check_for_list(
-    value: str, identifier: str, include: str, basefile: str, incfile: str
+    value: str, identifier: str, include: str, base_file: str, inc_file: str
 ) -> Response:
     """Check for a list relationship response for a given NHS number
 
@@ -124,18 +140,18 @@ def check_for_list(
         value (str): NHS number of the relationship to look for
         identifier (str): The identifier supplied to the request
         include (str): The include parameter supplied to the request
-        basefile (str): The file to return when record matches but does not request includeded data
-        incfile (str): The file to return when record matches and does request included data
+        base_file (str): The file to return when record matches but does not request included data
+        inc_file (str): The file to return when record matches and does request included data
 
     Returns:
         Response: Resultant response or None
     """
     if identifier == value and include == INCLUDE_FLAG:
         # Request with identifier and _include=patient
-        return generate_response(load_json_file(incfile))
+        return generate_response(load_json_file(inc_file))
     elif identifier:
         # Request with identifier
-        return generate_response(load_json_file(basefile))
+        return generate_response(load_json_file(base_file))
 
 
 def generate_response(content: str, status: int = 200):
@@ -149,3 +165,12 @@ def generate_response(content: str, status: int = 200):
         Response: Resultant Response object based on input.
     """
     return Response(dumps(content), status=status, mimetype="application/fhir+json")
+
+
+def remove_system(identifier: Any) -> str:
+    if isinstance(identifier, str):
+        if "|" in identifier:
+            # Identifier includes system
+            return identifier.split("|", maxsplit=1)[1]
+        return identifier
+    return ""
