@@ -1,0 +1,92 @@
+QuestionnaireResponseAdultToAdultWithoutCapacityRequest:
+  summary: Adult > Adult (without capacity) access request
+  description: |
+    Example proxy access request from an adult (Danny) with NHS number `9876543210` requesting access to act on behalf of an elderly parent (Florence) without capacity wth NHS number `9000000008`. 
+    
+    Significant details to point out:
+
+    - `source.type` should be `RelatedPerson` when a proxy is applying
+    - `source.identifier.value` should be the NHS number of the user completing the form - this should correlate with the Identity token in the request
+    - `subject.type` should be `Patient` since it is the patient that is the subject of the application
+    - `subject.identifier.value` should be the NHS Number of the patient to which the application relates
+    - `patient` demographics are present in the request as a result of being provided by the applicant
+  value: 
+    resourceType: QuestionnaireResponse        
+    status: "completed"
+    authored: "2024-07-15T09:43:03.280Z"
+    source:
+      type: "RelatedPerson"
+      identifier:        
+        system: "https://fhir.nhs.uk/Id/nhs-number"
+        value: "9876543210"
+    subject:
+      type: "Patient"
+      identifier:        
+        system: "https://fhir.nhs.uk/Id/nhs-number"
+        value: "9000000008"
+    questionnaire: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Questionnaire/01dc6813-3421-4d14-948d-a4888241add1"
+    item:
+      - linkId: "relatedPerson"
+        text: "Proxy details"
+        item:
+          - linkId: "relatedPerson_identifier"
+            text: "NHS number"
+            answer:
+              - valueString: "9876543210"
+          - linkId: "relatedPerson_basisForAccess"
+            text: "Basis for Access"
+            answer:
+              - valueCoding:
+                  system: "https://fhir.nhs.uk/STU3/CodeSystem/RARecord-ProxyRole-1"
+                  code: "002"
+                  display: "Best interest decision made on behalf of the patient (Mental Capacity Act 2005)"
+          - linkId: "relatedPerson_relationship"
+            text: "Relationship"
+            answer:
+              - valueCoding:
+                  system: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+                  code: "CHILD"
+                  display: "Child"
+      - linkId: "patient"
+        text: "Patient details"
+        item:
+          - linkId: "patient_identifier"
+            text: "NHS number"
+            answer:
+              - valueString: "9000000008"
+          - linkId: "patient_name"
+            text: "Name"
+            item:
+              - linkId: "patient_name_first"
+                text: "First name"
+                answer:
+                  - valueString: "Florence"
+              - linkId: "patient_name_family"
+                text: "Last name"
+                answer:
+                  - valueString: "Smith"
+          - linkId: "patient_birthDate"
+            text: "Date of birth"
+            answer:
+              - valueDate: "1935-01-02"
+      - linkId: "requestedAccess"
+        text: "Requested access"
+        item:
+          - linkId: "requestedAccess_accessLevel"
+            text: "Requested access level"
+            answer:
+              - valueCoding:
+                  system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"
+                  code: "APPT"
+                  display: "Appointment Booking"
+              - valueCoding:
+                  system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"
+                  code: "VACC"
+                  display: "Vaccination Records"
+          - linkId: "requestedAccess_reasonsForAccess"
+            text: "Reason for access"
+            answer:
+              - valueCoding:
+                  system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-ReasonForAccess"
+                  code: "TECH"
+                  display: "Technical Barriers"

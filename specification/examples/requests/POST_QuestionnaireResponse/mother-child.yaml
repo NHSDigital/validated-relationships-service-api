@@ -1,0 +1,130 @@
+QuestionnaireResponseMotherChildRequest:
+  summary: Mother > Child access request
+  description: |
+    Example proxy access request from a mother (Martha) with NHS number `9000000001` requesting access to act on behalf of their child (Timmy) with NHS number `9000000002`. 
+    
+    Significant details to point out:
+
+    - `source.type` should be `RelatedPerson` when a proxy is applying
+    - `source.identifier.value` should be the NHS number of the user completing the form - this should correlate with the Identity token in the request
+    - `subject.type` should be `Patient` since it is the patient that is the subject of the application
+    - `subject.identifier.value` should be the NHS Number of the patient to which the application relates
+    - `patient` demographics are present in the request as a result of being provided by the applicant
+  value: 
+    resourceType: QuestionnaireResponse        
+    status: "completed"
+    authored: "2024-07-15T09:43:03.280Z"
+    source:
+      type: "RelatedPerson"
+      identifier:
+        system: "https://fhir.nhs.uk/Id/nhs-number"
+        value: "9000000001"
+    subject:
+      type: "Patient"
+      identifier:
+        system: "https://fhir.nhs.uk/Id/nhs-number"
+        value: "9000000002"
+    questionnaire: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Questionnaire/01dc6813-3421-4d14-948d-a4888241add1"
+    item:
+      - linkId: "relatedPerson"
+        text: "Proxy details"
+        item:
+          - linkId: "relatedPerson_identifier"
+            text: "NHS number"
+            answer:
+              - valueString: "9000000001"
+          - linkId: "relatedPerson_basisForAccess"
+            text: "Basis for Access"
+            answer:
+              - valueCoding:
+                  system: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+                  code: "PRN"
+                  display: "Parent"
+          - linkId: "relatedPerson_relationship"
+            text: "Relationship"
+            answer:
+              - valueCoding:
+                  system: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+                  code: "PRN"
+                  display: "Parent"
+      - linkId: "parentalApplicationSupplementaryDetails"
+        text: "Parental Application Supplementary Details"
+        item:
+          - linkId: "parentalApplicationSupplementaryDetails_evidenceOfResponsibility"
+            text: "Evidence of parental responsibility"
+            answer:
+              - valueCoding:
+                  system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-EvidenceOfResponsibility"
+                  code: "BRTH"
+                  display: "Birth certificate"
+          - linkId: "parentalApplicationSupplementaryDetails_isCurrentAddressConfirmed"
+            text: "Is current address confirmed?"
+            answer:
+              - valueBoolean: true
+          - linkId: "parentalApplicationSupplementaryDetails_liveAtSameAddress"
+            text: "Do adult and child live at the same address?"
+            answer:
+              - valueBoolean: true
+      - linkId: "patient"
+        text: "Patient details"
+        item:
+          - linkId: "patient_identifier"
+            text: "NHS number"
+            answer:
+              - valueString: "9000000002"
+          - linkId: "patient_name"
+            text: "Name"
+            item:
+              - linkId: "patient_name_first"
+                text: "First name"
+                answer:
+                  - valueString: "Timothy"
+              - linkId: "patient_name_family"
+                text: "Last name"
+                answer:
+                  - valueString: "Tenenbaum"
+          - linkId: "patient_birthDate"
+            text: "Date of birth"
+            answer:
+              - valueDate: "2020-10-22"
+      - linkId: "requestedAccess"
+        text: "Requested access"
+        item:
+          - linkId: "requestedAccess_accessLevel"
+            text: "Requested access level"
+            answer:
+              - valueCoding:
+                  system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"
+                  code: "APPT"
+                  display: "Appointment Booking"
+              - valueCoding:
+                  system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"
+                  code: "CNTCT"
+                  display: "Contacting Surgery"
+              - valueCoding:
+                  system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"
+                  code: "RECRD"
+                  display: "Medical Records Access"
+              - valueCoding:
+                  system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"
+                  code: "TEST"
+                  display: "Test Results"
+              - valueCoding:
+                  system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"
+                  code: "VACC"
+                  display: "Vaccination Records"
+              - valueCoding:
+                  system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"
+                  code: "PRESCR"
+                  display: "Repeat Prescription Requests"
+          - linkId: "requestedAccess_accessLevelMoreinfo"
+            text: "Requested access level - further information"
+            answer:
+              - valueString: "My child cannot access their own record"
+          - linkId: "requestedAccess_reasonsForAccess"
+            text: "Reason for access"
+            answer:
+              - valueCoding:
+                  system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-ReasonForAccess"
+                  code: "PRAC"
+                  display: "Practical Reasons"
