@@ -3,7 +3,7 @@
 openapi: '3.0.0'
 info:
   title: 'Validated Relationships Service API'
-  version: '1.2.1'
+  version: '1.3.0'
   description: |
     ## Overview
     Use this API to access the Validated Relationships Service - the national electronic database of relationships
@@ -16,14 +16,15 @@ info:
 
     You can:
 
-    - get validated relationships (to support decision making when granting proxy access)
+    - get verified relationships (to support decision making when granting proxy access)
     - create a new proxy access request
+    - get proxy relationships
 
     In the future you will be able to:
 
     - update a proxy access request
-    - update a validated proxy relationship
-    - delete (revoke) a validated proxy relationship
+    - update a proxy relationship
+    - delete (revoke) a proxy relationship
 
     ## Who can use this API
     This API can only be used where there is a legal basis to do so. Make sure you have this and a valid use case before
@@ -38,7 +39,7 @@ info:
 
     ## API status and roadmap
     This API is [in production, beta](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#statuses), meaning:
-    - we might make breaking changes, but only if we cannot avoid it, and we will give advance notice 
+    - we might make breaking changes, but only if we cannot avoid it, and we will give advance notice
 
     If you would like to be involved in our beta programme, [contact us](https://digital.nhs.uk/developer/help-and-support).
 
@@ -154,9 +155,9 @@ paths:
       summary: New Access request
       description: |
         ## Overview
-        For any new access request, the necessary details should be collected from a user facing service e.g. 
-        Proxy Access Service and submitted as a QuestionnaireResponse. 
-        
+        For any new access request, the necessary details should be collected from a user facing service e.g.
+        Proxy Access Service and submitted as a QuestionnaireResponse.
+
         For the most part demographics information doesn't need to be provided in the access request since it can be pulled from PDS.
 
         ## Sandbox test scenarios
@@ -175,9 +176,27 @@ paths:
           application/fhir+json:
             schema:
               $ref: '#/components/schemas/QuestionnaireResponse'
+            examples:
+              questionnaireResponseMotherChildRequest:
+                $ref: './examples/requests/POST_QuestionnaireResponse/mother-child.yaml#/QuestionnaireResponseMotherChildRequest'
+              questionnaireResponseAdultToAdultWithoutCapacityRequest:
+                $ref: './examples/requests/POST_QuestionnaireResponse/adult-to-adult-without-capacity.yaml#/QuestionnaireResponseAdultToAdultWithoutCapacityRequest'
+              questionnaireResponseAdultToAdultWithCapacityRequest:
+                $ref: './examples/requests/POST_QuestionnaireResponse/adult-to-adult-with-capacity.yaml#/QuestionnaireResponseAdultToAdultWithCapacityRequest'
+              questionnaireResponseAdultNominatesAdultRequest:
+                $ref: './examples/requests/POST_QuestionnaireResponse/adult-nominates-adult.yaml#/QuestionnaireResponseAdultNominatesAdultRequest'
           application/fhir+json; charset=utf-8:
-            schema: 
+            schema:
               $ref: '#/components/schemas/QuestionnaireResponse'
+            examples:
+              questionnaireResponseMotherChildRequest:
+                $ref: './examples/requests/POST_QuestionnaireResponse/mother-child.yaml#/QuestionnaireResponseMotherChildRequest'
+              questionnaireResponseAdultToAdultWithoutCapacityRequest:
+                $ref: './examples/requests/POST_QuestionnaireResponse/adult-to-adult-without-capacity.yaml#/QuestionnaireResponseAdultToAdultWithoutCapacityRequest'
+              questionnaireResponseAdultToAdultWithCapacityRequest:
+                $ref: './examples/requests/POST_QuestionnaireResponse/adult-to-adult-with-capacity.yaml#/QuestionnaireResponseAdultToAdultWithCapacityRequest'
+              questionnaireResponseAdultNominatesAdultRequest:
+                $ref: './examples/requests/POST_QuestionnaireResponse/adult-nominates-adult.yaml#/QuestionnaireResponseAdultNominatesAdultRequest'
       responses:
         '200':
           description: Request was received successfully for processing
@@ -187,7 +206,7 @@ paths:
                 $ref: '#/components/schemas/OperationOutcome'
               examples:
                 postQuestionnaireResponseSuccess:
-                  $ref: '#/components/examples/PostQuestionnaireResponseSuccess'
+                  $ref: './examples/responses/POST_QuestionnaireResponse/success.yaml#/PostQuestionnaireResponseSuccess'
         "4XX":
           description: |
             Errors will be returned for the first error encountered in the request. An error occurred as follows:
@@ -203,31 +222,34 @@ paths:
             | 408         | `TIMEOUT`              | Request timed out.                                                                                                                        |
             | 415         | `UNSUPPORTED_MEDIA`    | Unsupported media type.                                                                                                                    |
             | 429         | `THROTTLED`            | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
-          
+
           content:
             application/fhir+json:
               schema:
                 $ref: '#/components/schemas/OperationOutcome'
+              examples:
+                accessDeniedError:
+                  $ref: './examples/responses/errors/access-denied.yaml#/AccessDeniedError'
         "500":
           description: Internal server error
           content:
             application/fhir+json:
               schema:
                 $ref: '#/components/schemas/OperationOutcome'
-              examples:  
+              examples:
                 internalServerError:
-                  $ref: '#/components/examples/InternalServerError'
+                  $ref: './examples/responses/errors/internal-server-error.yaml#/InternalServerError'
 
   /RelatedPerson:
     get:
-      summary: Get validated relationships
+      summary: Get verified candidate relationships
       description: |
         ## Overview
-        Use this endpoint to get validated relationships for a proxy with a given NHS Number.
+        Use this endpoint to get candidate proxy relationships for a user with a given NHS Number. This endpoint should NOT be used to retrieve proxy relationships; these should be queried from the `/Consent` endpoint.
 
-        You can (optionally) include `patient:identifier={nhsNumber}` request parameter with the patient's NHS number to get a specific validated relationship for the proxy.
+        You can (optionally) include `patient:identifier={nhsNumber}` request parameter with the patient's NHS number to get a specific verified relationship for the proxy.
 
-        You can (optionally) include the `_include=RelatedPerson:patient` request parameter to include the patient's details in the operation response.
+        You can (optionally) include the `_include=RelatedPerson:patient` request parameter to include the patient's details in the response.
 
         ## Sandbox test scenarios
 
@@ -238,7 +260,7 @@ paths:
         - $ref: "#/components/parameters/BearerAuthorization"
         - $ref: "#/components/parameters/RelatedPersonIdentifier"
         - $ref: "#/components/parameters/PatientIdentifier"
-        - $ref: "#/components/parameters/IncludePatient"
+        - $ref: "#/components/parameters/RelatedPersonBundleIncludes"
         - $ref: "#/components/parameters/RequestID"
         - $ref: "#/components/parameters/CorrelationID"
       responses:
@@ -247,7 +269,13 @@ paths:
           content:
             application/fhir+json:
               schema:
-                $ref: "#/components/schemas/Relationship"
+                $ref: "#/components/schemas/RelatedPersonBundle"
+              examples:
+                relatedPersonWithoutPatients:
+                  $ref: './examples/responses/GET_RelatedPerson/without-patients.yaml#/RelatedPersonWithoutPatients'
+                relatedPersonIncludePatients:
+                  $ref: './examples/responses/GET_RelatedPerson/include-patients.yaml#/RelatedPersonIncludePatients'
+
         "4XX":
           description: |
             Errors will be returned for the first error encountered in the request. An error occurred as follows:
@@ -265,20 +293,104 @@ paths:
             | 405         | `METHOD_NOT_ALLOWED`               | The method is not allowed.                                                                                                                |
             | 408         | `TIMEOUT`                          | Request timed out.                                                                                                                        |
             | 429         | `THROTTLED`                        | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
-      
+
           content:
             application/fhir+json:
               schema:
                 $ref: '#/components/schemas/OperationOutcome'
+              examples:
+                accessDeniedError:
+                  $ref: './examples/responses/errors/access-denied.yaml#/AccessDeniedError'
+                relatedPersonInvalidIdentifierError:
+                  $ref: './examples/responses/GET_RelatedPerson/errors/invalid-identifier.yaml#/RelatedPersonInvalidIdentifierError'
+
         "500":
           description: Internal server error
           content:
             application/fhir+json:
               schema:
                 $ref: '#/components/schemas/OperationOutcome'
-              examples:  
+              examples:
                 internalServerError:
-                  $ref: '#/components/examples/InternalServerError'
+                  $ref: './examples/responses/errors/internal-server-error.yaml#/InternalServerError'
+
+  /Consent:
+    get:
+        summary: Get proxy relationships
+        description: |
+          ## Overview
+          Use this endpoint to get the details about proxy relationships, including current status, based on a provided proxy's NHS Number.
+
+          You can (optionally) include `status={status}` request parameter to filter the limit the response to records with a given status bound to the http://hl7.org/fhir/consent-state-codes CodeSystem e.g. `status=active`.
+
+          You can (optionally) include the `_include=Consent:performer` request parameter to include the proxy's details in the response.
+
+          You can (optionally) include the `_include=Consent:patient` request parameter to include the patient's details in the response.
+
+          ## Sandbox test scenarios
+
+          For details of sandbox test scenarios, or to try out the sandbox using our 'Try it out' feature, see the documentation for each endpoint.
+
+        operationId: get-consent
+        parameters:
+          - $ref: "#/components/parameters/BearerAuthorization"
+          - $ref: "#/components/parameters/ConsentBundlePerformerIdentifier"
+          - $ref: "#/components/parameters/ConsentStatus"
+          - $ref: "#/components/parameters/ConsentBundleIncludes"
+          - $ref: "#/components/parameters/RequestID"
+          - $ref: "#/components/parameters/CorrelationID"
+          - $ref: "#/components/parameters/Im1ConnectionParams"
+        responses:
+          "200":
+            description: Information successfully returned.
+            content:
+              application/fhir+json:
+                schema:
+                  $ref: "#/components/schemas/ConsentBundle"
+                examples:
+                  consentMotherChildBundle:
+                    $ref: "./examples/responses/GET_Consent/mother-child.yaml#/ConsentMotherChildBundle"
+                  consentAdultsConsentingBundle:
+                    $ref: "./examples/responses/GET_Consent/adults-consenting.yaml#/ConsentAdultsConsentingBundle"
+                  consentMultipleBundle:
+                    $ref: "./examples/responses/GET_Consent/mixed.yaml#/ConsentMixedBundle"
+
+          "4XX":
+            description: |
+              Errors will be returned for the first error encountered in the request. An error occurred as follows:
+
+              | HTTP status | Error code                         | Description                                                                                                                               |
+              | ----------- | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+              | 400         | `MISSING_VALUE`                    | Missing header parameter. For details, see the `diagnostics` field.                                                                       |
+              | 400         | `INVALID_VALUE`                    | Invalid header parameter. For details, see the `diagnostics` field.                                                                       |
+              | 400         | `INVALID_IDENTIFIER_SYSTEM`        | Invalid identifier system.                                                                                                                |
+              | 400         | `MISSING_IDENTIFIER_VALUE`         | Missing performer NHS number.                                                                                                             |
+              | 400         | `INVALID_IDENTIFIER_VALUE`         | Malformed performer NHS number.                                                                                                           |
+              | 400         | `NOT_SUPPORTED`                    | The request is not currently supported.                                                                                                   |
+              | 401         | `ACCESS_DENIED`                    | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
+              | 403         | `FORBIDDEN`                        | Access denied to resource.                                                                                                                |
+              | 404         | `INVALIDATED_RESOURCE`             | Resource that has been marked as invalid was requested - invalid resources cannot be retrieved                                            |
+              | 405         | `METHOD_NOT_ALLOWED`               | The method is not allowed.                                                                                                                |
+              | 408         | `TIMEOUT`                          | Request timed out.                                                                                                                        |
+              | 429         | `THROTTLED`                        | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
+
+            content:
+              application/fhir+json:
+                schema:
+                  $ref: '#/components/schemas/OperationOutcome'
+                examples:
+                  accessDeniedError:
+                    $ref: './examples/responses/errors/access-denied.yaml#/AccessDeniedError'
+          "500":
+            description: Internal server error
+            content:
+              application/fhir+json:
+                schema:
+                  $ref: '#/components/schemas/OperationOutcome'
+                examples:
+                  internalServerError:
+                    $ref: './examples/responses/errors/internal-server-error.yaml#/InternalServerError'
+
 
 components:
   schemas:
@@ -300,18 +412,17 @@ components:
           type: string
           description: The position of the questionnaire response within its overall lifecycle.
           enum: ["completed"]
-        authored: 
+        authored:
           type: string
           format: date-time
           description: The date time that this set of answers were last changed.
-          example: "2024-07-15T09:43:03.280Z"
-        source: 
+        source:
           type: object
           description: The person who answered the questions about the subject.
           properties:
             type:
               type: string
-              enum: [Patient, RelatedPerson] 
+              enum: [Patient, RelatedPerson]
             identifier:
               description: |
                 The person who answered the questions about the subject NHS number. The primary identifier of a patient, unique within NHS England and Wales. Always 10 digits and must be a valid NHS number - see:
@@ -324,8 +435,7 @@ components:
                 value:
                   type: string
                   description: The source's NHS number.
-                  example: "9000000001"
-        subject: 
+        subject:
           type: object
           description: The person who is the subject.
           properties:
@@ -344,11 +454,9 @@ components:
                 value:
                   type: string
                   description: The subject's NHS number.
-                  example: "9000000002"
         questionnaire:
           type: string
           description: The Questionnaire that defines and organizes the questions for which answers are being provided.
-          example: "Questionnaire/01dc6813-3421-4d14-948d-a4888241add1"
         item:
           type: array
           description: A group or question item from the original questionnaire for which answers are provided.
@@ -371,13 +479,12 @@ components:
           enum: ["relatedPerson"]
         text:
           type: string
-          example: "relatedPerson"
         item:
           type: array
           items:
             oneOf:
               - type: object
-                required: 
+                required:
                   - linkId
                   - text
                   - answer
@@ -387,7 +494,6 @@ components:
                     enum: ["relatedPerson_identifier"]
                   text:
                     type: string
-                    example: "NHS Number"
                   answer:
                     type: array
                     minItems: 1
@@ -398,7 +504,6 @@ components:
                           properties:
                             valueString:
                               type: string
-                              example: "9000000001"
 
               - type: object
                 properties:
@@ -407,7 +512,6 @@ components:
                     enum: ["relatedPerson_name"]
                   text:
                     type: string
-                    example: "relatedPerson_name"
                   item:
                     type: array
                     minItems: 2
@@ -425,7 +529,6 @@ components:
                               enum: ["relatedPerson_name_first"]
                             text:
                               type: string
-                              example: "First name."
                             answer:
                               type: array
                               minItems: 1
@@ -436,7 +539,6 @@ components:
                                     properties:
                                       valueString:
                                         type: string
-                                        example: "Sharon"
 
                         - type: object
                           required:
@@ -449,7 +551,6 @@ components:
                               enum: ["relatedPerson_name_family"]
                             text:
                               type: string
-                              example: "Family name (often called Surname)."
                             answer:
                               type: array
                               minItems: 1
@@ -460,7 +561,6 @@ components:
                                     properties:
                                       valueString:
                                         type: string
-                                        example: "Smith"
 
               - type: object
                 properties:
@@ -469,7 +569,6 @@ components:
                     enum: ["relatedPerson_birthDate"]
                   text:
                     type: string
-                    example: "Date of Birth"
                   answer:
                     type: array
                     minItems: 1
@@ -481,7 +580,6 @@ components:
                             valueDate:
                               type: string
                               format: date
-                              example: "1994-03-21"
 
               - type: object
                 required:
@@ -494,7 +592,6 @@ components:
                     enum: ["relatedPerson_basisForAccess"]
                   text:
                     type: string
-                    example: "Basis For Access"
                   answer:
                     type: array
                     minItems: 1
@@ -513,7 +610,7 @@ components:
                                       "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
                                       "https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole",
                                       "https://fhir.nhs.uk/STU3/CodeSystem/RARecord-ProxyRole-1"
-                                    ]                                
+                                    ]
                                 code:
                                   type: string
                                   enum: ['PRN', 'Personal', '002']
@@ -533,7 +630,6 @@ components:
                     enum: ["relatedPerson_relationship"]
                   text:
                     type: string
-                    example: "Relationship"
                   answer:
                     type: array
                     minItems: 1
@@ -552,7 +648,7 @@ components:
                                       "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
                                       "http://terminology.hl7.org/CodeSystem/v3-RoleClass",
                                       "https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole"
-                                    ]                                
+                                    ]
                                 code:
                                   type: string
                                   enum: ['PRN', 'CHILD', 'SPS', 'FAMMEMB', 'FRND', 'CAREGIVER', 'SIGOTHR']
@@ -568,7 +664,6 @@ components:
                     enum: ["relatedPerson_relationshipMoreinfo"]
                   text:
                     type: string
-                    example: "Relationship - further information"
                   answer:
                     type: array
                     maxItems: 1
@@ -587,7 +682,6 @@ components:
           enum: ["parentalApplicationSupplementaryDetails"]
         text:
           type: string
-          example: "parentalApplicationSupplementaryDetails"
         item:
           type: array
           items:
@@ -603,7 +697,6 @@ components:
                     enum: ["parentalApplicationSupplementaryDetails_evidenceOfResponsibility"]
                   text:
                     type: string
-                    example: "Evidence of parental responsibility"
                   answer:
                     type: array
                     description: A multiple option selection where multiple items of evidence can be selected
@@ -616,7 +709,7 @@ components:
                               properties:
                                 system:
                                   type: string
-                                  enum: ["https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-EvidenceOfResponsibility"]                                
+                                  enum: ["https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-EvidenceOfResponsibility"]
                                 code:
                                   type: string
                                   enum: ['BRTH', 'ADPT', 'PRNA', 'SPRNA', 'PORD', 'SGORD', 'OTHCOURT', 'OTHR' ]
@@ -632,7 +725,6 @@ components:
                     enum: ["parentalApplicationSupplementaryDetails_evidenceOfResponsibilityMoreinfo"]
                   text:
                     type: string
-                    example: "Evidence of responsibility - Further Information"
                   answer:
                     type: array
                     items:
@@ -641,7 +733,6 @@ components:
                           properties:
                             valueString:
                               type: string
-                              example: "Birth Certificate is original"
               - type: object
                 required:
                   - linkId
@@ -653,7 +744,6 @@ components:
                     enum: ["parentalApplicationSupplementaryDetails_isCurrentAddressConfirmed"]
                   text:
                     type: string
-                    example: "Is current address confirmed?"
                   answer:
                     type: array
                     items:
@@ -662,7 +752,6 @@ components:
                           properties:
                             valueString:
                               type: string
-                              example: "Yes"                                    
 
               - type: object
                 properties:
@@ -671,7 +760,6 @@ components:
                     enum: ["parentalApplicationSupplementaryDetails_newAddress"]
                   text:
                     type: string
-                    example: "parentalApplicationSupplementaryDetails_newAddress"
                   item:
                     type: array
                     items:
@@ -683,7 +771,6 @@ components:
                               enum: ["parentalApplicationSupplementaryDetails_line1"]
                             text:
                               type: string
-                              example: "Address Line 1"
                             answer:
                               type: array
                               items:
@@ -692,7 +779,6 @@ components:
                                     properties:
                                       valueString:
                                         type: string
-                                        example: "24 Hoves Edge"
                         - type: object
                           properties:
                             linkId:
@@ -700,7 +786,6 @@ components:
                               enum: ["parentalApplicationSupplementaryDetails_line2"]
                             text:
                               type: string
-                              example: "Address Line 2"
                             answer:
                               type: array
                               items:
@@ -709,7 +794,6 @@ components:
                                     properties:
                                       valueString:
                                         type: string
-                                        example: "Remington"
                         - type: object
                           properties:
                             linkId:
@@ -717,7 +801,6 @@ components:
                               enum: ["parentalApplicationSupplementaryDetails_line3"]
                             text:
                               type: string
-                              example: "Address Line 3"
                             answer:
                               type: array
                               items:
@@ -726,7 +809,6 @@ components:
                                     properties:
                                       valueString:
                                         type: string
-                                        example: "Boroughbridge"
 
                         - type: object
                           properties:
@@ -735,7 +817,6 @@ components:
                               enum: ["parentalApplicationSupplementaryDetails_city"]
                             text:
                               type: string
-                              example: "Town / City"
                             answer:
                               type: array
                               items:
@@ -744,7 +825,6 @@ components:
                                     properties:
                                       valueString:
                                         type: string
-                                        example: "Leeds"
                         - type: object
                           properties:
                             linkId:
@@ -752,7 +832,6 @@ components:
                               enum: ["parentalApplicationSupplementaryDetails_district"]
                             text:
                               type: string
-                              example: "County"
                             answer:
                               type: array
                               items:
@@ -761,7 +840,6 @@ components:
                                     properties:
                                       valueString:
                                         type: string
-                                        example: "West Yorkshire"
                         - type: object
                           properties:
                             linkId:
@@ -769,7 +847,6 @@ components:
                               enum: ["parentalApplicationSupplementaryDetails_postalCode"]
                             text:
                               type: string
-                              example: "Postcode"
                             answer:
                               type: array
                               items:
@@ -778,7 +855,6 @@ components:
                                     properties:
                                       valueString:
                                         type: string
-                                        example: "LS1 1DW"
 
               - type: object
                 required:
@@ -791,7 +867,6 @@ components:
                     enum: ["parentalApplicationSupplementaryDetails_liveAtSameAddress"]
                   text:
                     type: string
-                    example: "Do the adult and child live at the same address?"
                   answer:
                     type: array
                     items:
@@ -800,7 +875,6 @@ components:
                           properties:
                             valueString:
                               type: string
-                              example: "Yes"
 
               - type: object
                 required:
@@ -813,7 +887,6 @@ components:
                     enum: ["parentalApplicationSupplementaryDetails_canChildConsent"]
                   text:
                     type: string
-                    example: "Can the child consent?"
                   answer:
                     type: array
                     items:
@@ -822,7 +895,6 @@ components:
                           properties:
                             valueString:
                               type: string
-                              example: "No"
               - type: object
                 properties:
                   linkId:
@@ -830,7 +902,6 @@ components:
                     enum: ["parentalApplicationSupplementaryDetails_reasonNoChildConsent"]
                   text:
                     type: string
-                    example: "Reason the child cannot consent"
                   answer:
                     type: array
                     items:
@@ -839,7 +910,6 @@ components:
                           properties:
                             valueString:
                               type: string
-                              example: "Child is too young"
 
     QuestionnaireResponseItem_Patient:
       type: object
@@ -853,7 +923,6 @@ components:
           enum: ["patient"]
         text:
           type: string
-          example: "patient"
         item:
           type: array
           items:
@@ -869,7 +938,6 @@ components:
                     enum: ["patient_identifier"]
                   text:
                     type: string
-                    example: "NHS Number"
                   answer:
                     type: array
                     minItems: 1
@@ -880,7 +948,6 @@ components:
                           properties:
                             valueString:
                               type: string
-                              example: "9000000002"
 
               - type: object
                 properties:
@@ -889,7 +956,6 @@ components:
                     enum: ["patient_name"]
                   text:
                     type: string
-                    example: "patient_name"
                   item:
                     type: array
                     minItems: 2
@@ -907,7 +973,6 @@ components:
                               enum: ["patient_name_first"]
                             text:
                               type: string
-                              example: "First name."
                             answer:
                               type: array
                               minItems: 1
@@ -918,8 +983,7 @@ components:
                                     properties:
                                       valueString:
                                         type: string
-                                        example: "Jane"
-                                        
+
                         - type: object
                           required:
                             - linkId
@@ -931,7 +995,6 @@ components:
                               enum: ["patient_name_family"]
                             text:
                               type: string
-                              example: "Family name (often called Surname)."
                             answer:
                               type: array
                               minItems: 1
@@ -942,7 +1005,6 @@ components:
                                     properties:
                                       valueString:
                                         type: string
-                                        example: "Smith"
 
               - type: object
                 properties:
@@ -951,7 +1013,6 @@ components:
                     enum: ["patient_birthDate"]
                   text:
                     type: string
-                    example: "Date of Birth"
                   answer:
                     type: array
                     minItems: 1
@@ -963,7 +1024,6 @@ components:
                             valueDate:
                               type: string
                               format: date
-                              example: "2020-10-22"
 
     QuestionnaireResponseItem_RequestedAccess:
       type: object
@@ -977,7 +1037,6 @@ components:
           enum: ["requestedAccess"]
         text:
           type: string
-          example: "requestedAccess"
         item:
           type: array
           items:
@@ -993,7 +1052,6 @@ components:
                     enum: ["requestedAccess_accessLevel"]
                   text:
                     type: string
-                    example: "Requested access level"
                   answer:
                     type: array
                     minItems: 1
@@ -1007,14 +1065,26 @@ components:
                               properties:
                                 system:
                                   type: string
-                                  enum: ["https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"]                                
+                                  enum: ["https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"]
                                 code:
                                   type: string
-                                  enum: ['APPT', 'CNTCT', 'RECRD', 'TEST', 'VACC', 'PRESCR']
+                                  enum:
+                                    - 'APPT'
+                                    - 'CNTCT'
+                                    - 'RECRD'
+                                    - 'TEST'
+                                    - 'VACC'
+                                    - 'PRESCR'
                                 display:
                                   type: string
                                   description: FHIR Requested access level.
-                                  enum: ['Appointment Booking', 'Contacting Surgery', 'Medical Records Access', 'Test Results', 'Vaccination Records', 'Request and manage repeat prescriptions']
+                                  enum:
+                                    - 'Appointment Booking'
+                                    - 'Contacting Surgery'
+                                    - 'Medical Records Access'
+                                    - 'Test Results'
+                                    - 'Vaccination Records'
+                                    - 'Request and manage repeat prescriptions'
 
               - type: object
                 properties:
@@ -1023,7 +1093,6 @@ components:
                     enum: ["requestedAccess_accessLevelMoreinfo"]
                   text:
                     type: string
-                    example: "Requested access level - further information"
                   answer:
                     type: array
                     items:
@@ -1032,7 +1101,6 @@ components:
                           properties:
                             valueString:
                               type: string
-                              example: "Access only required to most recent 3 years"
 
               - type: object
                 required:
@@ -1045,7 +1113,6 @@ components:
                     enum: ["requestedAccess_reasonsForAccess"]
                   text:
                     type: string
-                    example: "Reason for access"
                   answer:
                     type: array
                     minItems: 1
@@ -1059,15 +1126,33 @@ components:
                               properties:
                                 system:
                                   type: string
-                                  enum: ["https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-ReasonForAccess"]                                
+                                  enum: ["https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-ReasonForAccess"]
                                 code:
                                   type: string
-                                  enum: ['COMB', 'MHEA', 'PHYS', 'PRAC', 'TECH', 'NEUR', 'LRN', 'OTHR', 'NotSpecified']
+                                  enum:
+                                    - 'COMB'
+                                    - 'MHEA'
+                                    - 'PHYS'
+                                    - 'PRAC'
+                                    - 'TECH'
+                                    - 'NEUR'
+                                    - 'LRN'
+                                    - 'OTHR'
+                                    - 'NotSpecified'
                                 display:
                                   type: string
                                   description: FHIR Reason for access.
-                                  enum: ['Communication Barriers', 'Mental Health Condition', 'Physical Condition', 'Practical Reasons', 'Technical Barriers', 'Neurodiverse', 'Learning Disability', 'Other', 'Prefer not to say']
-                                
+                                  enum:
+                                    - 'Communication Barriers'
+                                    - 'Mental Health Condition'
+                                    - 'Physical Condition'
+                                    - 'Practical Reasons'
+                                    - 'Technical Barriers'
+                                    - 'Neurodiverse'
+                                    - 'Learning Disability'
+                                    - 'Other'
+                                    - 'Prefer not to say'
+
               - type: object
                 properties:
                   linkId:
@@ -1075,7 +1160,6 @@ components:
                     enum: ["requestedAccess_reasonsForAccessMoreinfo"]
                   text:
                     type: string
-                    example: "Reason for access - further information"
                   answer:
                     type: array
                     items:
@@ -1084,283 +1168,379 @@ components:
                           properties:
                             valueString:
                               type: string
-                              example: "No internet connection"
 
-    Relationship:
+    BaseBundle:
       type: object
-      description: A FHIR searchset.
+      description: A FHIR Bundle.
       properties:
         resourceType:
           type: string
           description: FHIR resource type.
           enum: [Bundle]
-        type:
-          type: string
-          description: Denotes that the Bundle is a collection of resources returned as a result of a search.
-          enum: [searchset]
         timestamp:
           type: string
           format: date-time
           description: The UTC date and time the search results were returned.
-          example: 2020-08-26T14:00:00+00:00
         total:
           type: number
           description: |
             The number of resources contained within the Bundle.
 
-            An empty bundle suggests that the proxy does not have patients they can act on behalf of.
-          example: 2
-        link:
-          type: array
-          items:
-            type: object
+    Searchset:
+      allOf:
+          - $ref: "#/components/schemas/BaseBundle"
+          - type: object
             properties:
-              relation:
-                type: string
-                description: |
-                  Links related to this Bundle - see:
-                  http://www.iana.org/assignments/link-relations/link-relations.xhtml
-                example: "self"
-              url:
-                type: string
-                format: uri
-                example: https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson?_include=RelatedPerson%3apatient&identifier=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C9000000017
-        entry:
-          type: array
-          description: |
-            A collection of resources contained within the Bundle.
+              type:
+                  type: string
+                  description: Denotes that the Bundle is a collection of resources returned as a result of a search.
+                  enum: [searchset]
 
-            An empty bundle suggests that the proxy does not have patients they can act on behalf of.
-          items:
-            anyOf:
-              - $ref: "#/components/schemas/RelatedPerson"
-              - $ref: "#/components/schemas/Patient"
+    RelatedPersonBundle:
+      allOf:
+        - $ref: "#/components/schemas/Searchset"
+        - type: object
+          properties:
+            link:
+              type: array
+              items:
+                type: object
+                properties:
+                  relation:
+                    type: string
+                    description: |
+                      Links related to this Bundle - see:
+                      http://www.iana.org/assignments/link-relations/link-relations.xhtml
+                  url:
+                    type: string
+                    format: uri
+            entry:
+              type: array
+              description: |
+                A collection of resources contained within the Bundle.
+
+                An empty bundle suggests that no candidate proxy/patient links were identified.
+              items:
+                anyOf:
+                  - $ref: "#/components/schemas/RelatedPersonBundleEntry"
+                  - $ref: "#/components/schemas/PatientBundleEntry"
+
+    ConsentBundle:
+      allOf:
+        - $ref: "#/components/schemas/Searchset"
+        - type: object
+          properties:
+            entry:
+              type: array
+              description: |
+                A collection of resources contained within the Bundle.
+
+                An empty bundle suggests that the proxy has no proxy relationships.
+              items:
+                anyOf:
+                  - $ref: "#/components/schemas/RelatedPersonBundleEntry"
+                  - $ref: "#/components/schemas/PatientBundleEntry"
+                  - $ref: "#/components/schemas/ConsentBundleEntry"
+
+    RelatedPersonBundleEntry:
+      type: object
+      description: A RelatedPerson bundle entry.
+      properties:
+        fullUrl:
+          type: string
+          description: The canonical URL of the resource in the entry
+        resource:
+          $ref: "#/components/schemas/RelatedPerson"
+        search:
+          type: object
+          properties:
+            mode:
+              type: string
+              enum:
+                - match
+                - include
+              example: match
+
+    PatientBundleEntry:
+      type: object
+      description: A Patient bundle entry.
+      properties:
+        fullUrl:
+          type: string
+          description: The canonical URL of the resource in the entry
+        resource:
+          $ref: "#/components/schemas/Patient"
+        search:
+          type: object
+          properties:
+            mode:
+              type: string
+              enum:
+                - match
+                - include
+              example: match
+
+    ConsentBundleEntry:
+      type: object
+      description: A Consent bundle entry.
+      properties:
+        fullUrl:
+          type: string
+          description: The canonical URL of the resource in the entry
+        resource:
+          $ref: "#/components/schemas/Consent"
+        search:
+          type: object
+          properties:
+            mode:
+              type: string
+              enum:
+                - match
+                - include
+              example: match
 
     RelatedPerson:
       type: object
       description: The proxy's details. This includes their relationship to the referenced patient.
       properties:
-        fullUrl:
+        resourceType:
           type: string
-          description: The canonical URL of the resource in the entry
-          example: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742"
-        resource:
+          description: FHIR resource type.
+          enum: [RelatedPerson]
+          default: RelatedPerson
+        id:
+          type: string
+          description: Unique identifier of the RelatedPerson resource.
+        identifier:
+          type: array
+          description: The proxy's NHS number. The primary identifier of a patient, unique within NHS England and Wales. Always 10 digits and must be a [valid NHS number](https://www.datadictionary.nhs.uk/attributes/nhs_number.html).
+          items:
+            type: object
+            properties:
+              system:
+                type: string
+                description: Codesystem URL for the proxy's NHS number.
+                enum: ["https://fhir.nhs.uk/Id/nhs-number"]
+              value:
+                type: string
+                description: The proxy's NHS number.
+        patient:
           type: object
+          description: A reference to a patient the proxy is related to.
           properties:
-            resourceType:
+            type:
               type: string
               description: FHIR resource type.
-              enum: [RelatedPerson]
-            id:
-              type: string
-              description: Unique identifier of the RelatedPerson resource.
-              example: BE974742
+              enum: ["Patient"]
             identifier:
-              type: array
-              description: The proxy's NHS number. The primary identifier of a patient, unique within NHS England and Wales. Always 10 digits and must be a [valid NHS number](https://www.datadictionary.nhs.uk/attributes/nhs_number.html).
-              items:
-                type: object
-                properties:
-                  system:
-                    type: string
-                    description: Codesystem URL for the proxy's NHS number.
-                    enum: ["https://fhir.nhs.uk/Id/nhs-number"]
-                  value:
-                    type: string
-                    description: The proxy's NHS number.
-                    example: "9000000017"
-            patient:
               type: object
-              description: A reference to a patient the proxy is related to.
+              description: The patient's NHS number. The primary identifier of a patient, unique within NHS England and Wales. Always 10 digits and must be a [valid NHS number](https://www.datadictionary.nhs.uk/attributes/nhs_number.html).
               properties:
-                type:
+                system:
                   type: string
-                  description: FHIR resource type.
-                  enum: ["Patient"]
-                identifier:
+                  description: Codesystem URL for the patient's NHS number.
+                  enum: ["https://fhir.nhs.uk/Id/nhs-number"]
+                value:
+                  type: string
+                  description: The patient's NHS number.
+        relationship:
+          type: array
+          description: How the proxy is related to the patient.
+          items:
+            type: object
+            properties:
+              coding:
+                type: array
+                description: FHIR coding array.
+                items:
                   type: object
-                  description: The patient's NHS number. The primary identifier of a patient, unique within NHS England and Wales. Always 10 digits and must be a [valid NHS number](https://www.datadictionary.nhs.uk/attributes/nhs_number.html).
                   properties:
                     system:
                       type: string
-                      description: Codesystem URL for the patient's NHS number.
-                      enum: ["https://fhir.nhs.uk/Id/nhs-number"]
-                    value:
+                      description: FHIR codesystem.
+                      default: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+                      enum:
+                        [
+                          "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                          "https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole"
+                        ]
+                    code:
                       type: string
-                      description: The patient's NHS number.
-                      example: "9000000009"
-            relationship:
-              type: array
-              description: How the proxy is related to the patient.
-              items:
-                type: object
-                properties:
-                  coding:
-                    type: array
-                    description: FHIR coding array.
-                    items:
-                      type: object
-                      properties:
-                        system:
-                          type: string
-                          description: FHIR codesystem.
-                          default: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
-                          enum:
-                            [
-                              "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
-                              "https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole"
-                            ]
-                        code:
-                          type: string
-                          description: FHIR relationship type code.
-                          enum:
-                            - "MTH"
-                        display:
-                          type: string
-                          description: FHIR relationship type.
-                          enum:
-                            - "mother"
-        search:
-          type: object
-          properties:
-            mode:
-              type: string
-              enum:
-                - match
-                - include
-                - outcome
-              example: match
+                      description: FHIR relationship type code.
+                      enum:
+                        - "MTH"
+                    display:
+                      type: string
+                      description: FHIR relationship type.
+                      enum:
+                        - "mother"
 
     Patient:
       type: object
       description: The patient's details.
       properties:
-        fullUrl:
+        resourceType:
           type: string
-          description: The canonical URL of the resource in the entry
-          example: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/A3CC67E2
-        resource:
-          type: object
-          properties:
-            resourceType:
-              type: string
-              description: FHIR resource type.
-              enum: [Patient]
-            id:
-              type: string
-              description: Unique identifier of the Patient resource
-              example: A3CC67E2
-            identifier:
-              type: array
-              description: The patient's NHS number. The primary identifier of a patient, unique within NHS England and Wales. Always 10 digits and must be a [valid NHS number](https://www.datadictionary.nhs.uk/attributes/nhs_number.html).
-              items:
+          description: FHIR resource type.
+          enum: [Patient]
+          default: Patient
+        id:
+          type: string
+          description: Unique identifier of the Patient resource
+        identifier:
+          type: array
+          description: The patient's NHS number. The primary identifier of a patient, unique within NHS England and Wales. Always 10 digits and must be a [valid NHS number](https://www.datadictionary.nhs.uk/attributes/nhs_number.html).
+          items:
+            type: object
+            properties:
+              system:
+                type: string
+                description: Codesystem URL for the NHS number.
+                enum: ["https://fhir.nhs.uk/Id/nhs-number"]
+              value:
+                type: string
+                description: The NHS number.
+        name:
+          type: array
+          description: List of names associated with the patient.
+          items:
+            type: object
+            required:
+              - use
+              - family
+            additionalProperties: false
+            properties:
+              id:
+                type: string
+                description: Unique object identifier for this name.
+              use:
+                type: string
+                description: |
+                  How this name should be used.
+                  * usual - Known as, conventional or the one patient normally uses. A patient always has a usual name.
+                  * temp - An alias or temporary name. This may also be used for temporary names assigned at birth or in emergency situations.
+                  * nickname - A name that the patient prefers to be addressed by, but is not part of their usual name.
+                  * old - This name is no longer in use (or was never correct, but retained for records).
+                  * maiden - Name changed for Marriage. A name used prior to changing name because of marriage. This term is not gender specific. The use of this term does not imply any particular history for a person's name.
+
+                  The following use codes are included in the [name-use](https://www.hl7.org/fhir/valueset-name-use.html) value set, but should not be used and is not be returned as part of a retrieval.
+                  * official - The formal name as registered in an official (government) registry, but which name might not be commonly used. May be called "legal name".
+                  * anonymous - Anonymous assigned name, alias, or pseudonym (used to protect a person's identity for privacy reasons).
+                enum: [usual, temp, nickname, old, maiden]
+              period:
                 type: object
-                properties:
-                  system:
-                    type: string
-                    description: Codesystem URL for the NHS number.
-                    enum: ["https://fhir.nhs.uk/Id/nhs-number"]
-                  value:
-                    type: string
-                    description: The NHS number.
-                    example: "9000000009"
-            name:
-              type: array
-              description: List of names associated with the patient.
-              items:
-                type: object
+                description: |
+                  Business effective period when the name was, is, or will be in use.
                 required:
-                  - use
-                  - family
-                additionalProperties: false
+                  - start
                 properties:
-                  id:
+                  start:
                     type: string
-                    description: Unique object identifier for this name.
-                    example: "123"
-                  use:
+                    format: date
+                    description: Start date of time period, if known, in format `yyyy-mm-dd`. Can be a future date.
+                  end:
                     type: string
-                    description: |
-                      How this name should be used.
-                      * usual - Known as, conventional or the one patient normally uses. A patient always has a usual name.
-                      * temp - An alias or temporary name. This may also be used for temporary names assigned at birth or in emergency situations.
-                      * nickname - A name that the patient prefers to be addressed by, but is not part of their usual name.
-                      * old - This name is no longer in use (or was never correct, but retained for records).
-                      * maiden - Name changed for Marriage. A name used prior to changing name because of marriage. This term is not gender specific. The use of this term does not imply any particular history for a person's name.
+                    format: date
+                    description: End date of time period, if known and if not ongoing, in format `yyyy-mm-dd`. Can be a future date.
+              given:
+                type: array
+                maxItems: 5
+                description: |
+                  Given names, including any middle names.
 
-                      The following use codes are included in the [name-use](https://www.hl7.org/fhir/valueset-name-use.html) value set, but should not be used and is not be returned as part of a retrieval.
-                      * official - The formal name as registered in an official (government) registry, but which name might not be commonly used. May be called "legal name".
-                      * anonymous - Anonymous assigned name, alias, or pseudonym (used to protect a person's identity for privacy reasons).
-                    enum: [usual, temp, nickname, old, maiden]
-                    example: usual
-                  period:
-                    type: object
-                    description: |
-                      Business effective period when the name was, is, or will be in use.
-                    required:
-                      - start
-                    properties:
-                      start:
-                        type: string
-                        format: date
-                        description: Start date of time period, if known, in format `yyyy-mm-dd`. Can be a future date.
-                        example: 2020-01-01
-                      end:
-                        type: string
-                        format: date
-                        description: End date of time period, if known and if not ongoing, in format `yyyy-mm-dd`. Can be a future date.
-                        example: 2021-12-31
-                  given:
-                    type: array
-                    maxItems: 5
-                    description: |
-                      Given names, including any middle names.
+                  Each name(s) should be a separate item in the list. The first given name may include multiple names, separated by a space.
+                  Subsequent names must be broken down into list items. For example, the input `[Jane Marie Anne, Jo Adele]` returns `[Jane Marie Anne, Jo, Adele]`.
 
-                      Each name(s) should be a separate item in the list. The first given name may include multiple names, separated by a space.
-                      Subsequent names must be broken down into list items. For example, the input `[Jane Marie Anne, Jo Adele]` returns `[Jane Marie Anne, Jo, Adele]`.
+                items:
+                  type: string
+                  maxLength: 35
+              family:
+                type: string
+                maxLength: 35
+                description: Family name (often called Surname).
+              prefix:
+                type: array
+                description: Name prefixes, titles, and prenominals.
+                items:
+                  type: string
+              suffix:
+                type: array
+                description: Name suffices and postnominals.
+                items:
+                  type: string
+        birthDate:
+          description: |
+            The date on which the patient was born or is officially deemed to have been born.
 
-                    example: [Jane Marie Anne]
-                    items:
-                      type: string
-                      maxLength: 35
-                      example: Jane
-                  family:
-                    type: string
-                    maxLength: 35
-                    description: Family name (often called Surname).
-                    example: Smith
-                  prefix:
-                    type: array
-                    description: Name prefixes, titles, and prenominals.
-                    example: [Mrs]
-                    items:
-                      type: string
-                      example: Mrs
-                  suffix:
-                    type: array
-                    description: Name suffices and postnominals.
-                    example: [MBE, PhD]
-                    items:
-                      type: string
-                      example: MBE
-            birthDate:
-              description: |
-                The date on which the patient was born or is officially deemed to have been born.
+            It is a date in the format `yyyy-mm-dd`. Due to data quality issues on a small number of patients `yyyy-mm` and `yyyy` format may also be returned.
+          type: string
+          format: date
+        generalPractitioner:
+          type: array
+          description: Patient's nominated primary care provider, each a Reference(Organization | Practitioner | PractitionerRole).
+          items:
+            $ref: '#/components/schemas/Reference'
 
-                It is a date in the format `yyyy-mm-dd`. Due to data quality issues on a small number of patients `yyyy-mm` and `yyyy` format may also be returned.
-              example: "2010-10-22"
-              type: string
-              format: date
-        search:
-          type: object
-          properties:
-            mode:
-              type: string
-              enum:
-                - match
-                - include
-                - outcome
-              example: include
+    Consent:
+      type: object
+      description: The details of the consent including who the patient and care "performer" are, status of the relationship and whether consent was given by a patient with capacity.
+      properties:
+        resourceType:
+          type: string
+          description: FHIR resource type.
+          enum:
+            - Consent
+          default: Consent
+        id:
+          type: string
+          description: Unique identifier of the Consent resource
+        status:
+          type: string
+          description: "The status of the consent, following the ConsentStateCodes value set ."
+          enum:
+            - draft
+            - proposed
+            - active
+            - rejected
+            - inactive
+            - entered-in-error
+        scope:
+          $ref: '#/components/schemas/CodeableConcept'
+          description: "The scope of the consent, bound to http://terminology.hl7.org/CodeSystem/consentscope"
+          enum:
+            - patient-privacy
+        category:
+          type: array
+          items:
+            $ref: '#/components/schemas/CodeableConcept'
+          description: "Classification of the type of consent, bound to http://terminology.hl7.org/CodeSystem/v3-ActCode."
+        patient:
+          $ref: '#/components/schemas/Reference'
+          description: "The patient who is the subject of the consent."
+        dateTime:
+          type: string
+          format: date-time
+          description: "Date and time when the consent was created."
+        performer:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reference'
+          description: "Individuals or organizations that agreed to the consent."
+        verification:
+          type: array
+          description: Whether consent was verified with the patient, or another authorized person.
+          items:
+            type: object
+            properties:
+              verified:
+                type: boolean
+                description: Whether the consent has been verified
+              verifiedWith:
+                $ref: '#/components/schemas/Reference'
+              verificationDate:
+                type: string
+                description: The date and time when consent was collected.
+                format: date-time
 
     OperationOutcome:
       type: object
@@ -1386,11 +1566,9 @@ components:
                 type: string
                 enum: [fatal, error, warning, information]
                 description: Severity of the error.
-                example: error
               code:
                 type: string
                 description: FHIR error code.
-                example: invalid
                 enum:
                   - invalid
                   - structure
@@ -1435,28 +1613,64 @@ components:
                         system:
                           type: string
                           description: URI of the coding system specification.
-                          example: https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode
                         version:
                           type: string
                           description: Version of the coding system in use.
-                          example: '1'
                         code:
                           type: string
                           description: Symbol in syntax defined by the system.
-                          example: INVALID_IDENTIFIER_VALUE
                         display:
                           type: string
                           description: Representation defined by the system.
-                          example: Provided value is invalid
               diagnostics:
                 type: string
                 description: Additional diagnostic information about the issue. This information is subject to change.
-                example: Not a valid NHS Number provided for the 'identifier' parameter
               expression:
                 type: string
                 description: FHIRPath of element(s) related to the error.
-                example: RelatedPerson.identifier
 
+    Reference:
+      type: object
+      properties:
+        type:
+          type: string
+          description: The resource type that the reference refers to
+        identifier:
+          $ref: '#/components/schemas/Identifier'
+
+    Identifier:
+      type: object
+      properties:
+        system:
+          type: string
+          description: "The namespace for the identifier."
+        value:
+          type: string
+          description: "The value that is unique."
+
+    CodeableConcept:
+      type: object
+      properties:
+        coding:
+          type: array
+          items:
+            $ref: '#/components/schemas/Coding'
+        text:
+          type: string
+          description: "Plain text representation of the concept."
+
+    Coding:
+      type: object
+      properties:
+        system:
+          type: string
+          description: "The identification of the code system that defines the meaning of the code."
+        code:
+          type: string
+          description: "The actual code from the code system."
+        display:
+          type: string
+          description: "A human-readable representation of the code."
 
   parameters:
     RelatedPersonIdentifier:
@@ -1492,15 +1706,102 @@ components:
         withSystem:
           value: https://fhir.nhs.uk/Id/nhs-number|9000000017
           summary: System and NHS number specified
-    IncludePatient:
+
+    ConsentBundlePerformerIdentifier:
+      in: query
+      name: performer:identifier
+      description: |
+        The performer's (Proxy) NHS number. For more information on FHIR tokens in general, [see here](https://build.fhir.org/search.html#token).
+      required: true
+      schema:
+        type: string
+        format: token
+      examples:
+        withoutSystem:
+          value: 9000000017
+          summary: NHS number specified without system
+        withSystem:
+          value: https://fhir.nhs.uk/Id/nhs-number|9000000017
+          summary: System and NHS number specified
+
+    RelatedPersonBundleIncludes:
       in: query
       name: _include
       description: |
-        Include Patient resources with their respective RelatedPerson in the bundle returned in the response. Further info [here](https://www.hl7.org/fhir/search.html#_include).
+        Include referenced resources in the bundle response by specifying one or more `_include` parameters. Further info [here](https://www.hl7.org/fhir/search.html#_include).
       required: false
+      style: form
+      explode: true
       schema:
-        type: string
-        example: RelatedPerson:patient
+        type: array
+        items:
+          type: string
+          enum:
+            - "RelatedPerson:patient"
+      examples:
+        IncludePatient:
+          summary: Include the patient in the bundle
+          value:
+            - "RelatedPerson:patient"
+
+    ConsentBundleIncludes:
+      in: query
+      name: _include
+      description: Include referenced resources in the bundle response by specifying one or more `_include` parameters. Further info [here](https://www.hl7.org/fhir/search.html#_include).
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - "Consent:performer"
+            - "Consent:patient"
+      examples:
+        IncludePerformer:
+          summary: Include the performer (proxy) in the bundle
+          value: Consent:performer
+        IncludePatient:
+          summary: Include the patient in the bundle
+          value: Consent:patient
+        FullInclude:
+          summary: Include the performer (Proxy) and patient in the bundle
+          value:
+            - "Consent:performer"
+            - "Consent:patient"
+
+    ConsentStatus:
+      in: query
+      name: status
+      description: Specify one or more `status` to filter the records returned in the bundle. For example you can filter to only `active` or `proposed` proxy relationships.
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - draft
+            - proposed
+            - active
+            - rejected
+            - inactive
+            - entered-in-error
+      examples:
+        Active:
+          summary: Only active authorised proxy relationships
+          value: active
+        Revoked:
+          summary: Only revoked proxy relationships
+          value: inactive
+        ActiveOrProposed:
+          summary: Active OR proposed (but not yet authorised) proxy relationships
+          value:
+            - proposed
+            - active
+
     BearerAuthorization:
       in: header
       name: Authorization
@@ -1511,6 +1812,7 @@ components:
         type: string
         format: '^Bearer\ [[:ascii:]]+$'
         example: "Bearer g1112R_ccQ1Ebbb4gtHBP1aaaNM"
+
     RequestID:
       in: header
       name: X-Request-ID
@@ -1524,6 +1826,7 @@ components:
         format: uuid
         pattern: "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
         example: 60E0B220-8136-4CA5-AE46-1D97EF59D068
+
     CorrelationID:
       in: header
       name: X-Correlation-ID
@@ -1538,27 +1841,16 @@ components:
         pattern: "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
         example: 11C46F5F-CDEF-4865-94B2-0EE0EDCC26DA
 
-  examples:
-    InternalServerError:
-      value:
-        resourceType: "OperationOutcome"
-        issue: 
-          - severity: error
-            code: invalid
-            diagnostics: "Internal Server Error - Failed to generate response is present in the response"          
-            details:
-              coding:
-               - system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
-                 version: "1"
-                 code: "SERVER_ERROR"
-                 display: "Failed to generate response"
-    PostQuestionnaireResponseSuccess:
-      value:
-        resourceType: "OperationOutcome"
-        issue: 
-          - severity: information
-            code: informational
-            details:
-              coding:
-               - code: "HDJ2123F"
-                 display: "HDJ2123F"    
+    Im1ConnectionParams:
+      in: header
+      name: X-IM1-Connection-Params
+      required: false
+      description: |
+        An optional `;` delimited string containing parameters required to refresh proxy relationships from GPIT supplier systems. Parameters that comprise this string are:
+
+        - IM1 User Connection token
+        - ODS Code
+      schema:
+        type: string
+        pattern: "^[^;]+;[^;]+$"
+        example: NiV3CyMJH3xYV26ghlVpbbjT7pDVEA8HpFczAjRLTs1VezC4CYzupZ3XxXAWM7ELuseqrV8r0Ill7EL7G2tXUaVHCPWgg4q10+MxFjnRPrjDvckBRSZazqZcp0K2VBdUV0rZ7RUYJNJsjVAeefWhiK/Y4R+GFO86QDpt41JS9xA=;G123456
