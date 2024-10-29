@@ -221,10 +221,10 @@ paths:
 
   /RelatedPerson:
     get:
-      summary: Get verified relationships
+      summary: Get verified candidate relationships
       description: |
         ## Overview
-        Use this endpoint to get relationships that have been verified against authoritative sources for a proxy with a given NHS Number.
+        Use this endpoint to get candidate proxy relationships for a user with a given NHS Number. This endpoint should NOT be used to retrieve proxy relationships; these should be queried from the `/Consent` endpoint.
 
         You can (optionally) include `patient:identifier={nhsNumber}` request parameter with the patient's NHS number to get a specific verified relationship for the proxy.
 
@@ -1571,21 +1571,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Reference'
-          description: "Individuals or organizations that agreed to the consent."
-        policy:
-          type: array
-          description: The policies covered by this consent
-          items:
-            type: object
-            description: A policy covered by this consent
-            properties:
-              authority: 
-                type: string
-                description: Organization having regulatory accountability for enforcing policies pertaining to this Consent Directive.
-              uri: 
-                type: string
-                format: uri
-                description: The reference to the National Proxy Service policy that are included in this consent scope.
+          description: "Individuals or organizations that agreed to the consent."        
         verification:
           type: array
           description: Whether consent was verified with the patient, or another authorized person.
@@ -2010,10 +1996,7 @@ components:
               performer:
                 - identifier:
                     system: "https://fhir.nhs.uk/Id/nhs-number"
-                    value: "9000000017"
-              policy:
-                - authority: "https://www.england.nhs.uk"
-                  uri: "<REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD>"
+                    value: "9000000017"              
             search:
               mode: match
 
@@ -2100,9 +2083,6 @@ components:
                 - identifier:
                     system: "https://fhir.nhs.uk/Id/nhs-number"
                     value: "9000000010"
-              policy:
-                - authority: "https://www.england.nhs.uk"
-                  uri: "<REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD>"
               verification:
                 - verified: true
                   verifiedWith:
@@ -2202,9 +2182,6 @@ components:
                 - identifier:
                     system: "https://fhir.nhs.uk/Id/nhs-number"
                     value: "9000000017"
-              policy:
-                - authority: "https://www.england.nhs.uk"
-                  uri: "<REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD>"
             search:
               mode: match
           - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/RP974720"
@@ -2282,9 +2259,6 @@ components:
                 - identifier:
                     system: "https://fhir.nhs.uk/Id/nhs-number"
                     value: "9000000010"
-              policy:
-                - authority: "https://www.england.nhs.uk"
-                  uri: "<REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD>"
               verification:
                 - verified: true
                   verifiedWith:
