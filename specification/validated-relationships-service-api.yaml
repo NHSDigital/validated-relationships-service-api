@@ -1710,10 +1710,10 @@ components:
         format: token
       examples:
         withoutSystem:
-          value: 9000000017
+          value: 9000000009
           summary: NHS number specified without system.
         withSystem:
-          value: https://fhir.nhs.uk/Id/nhs-number|9000000017
+          value: https://fhir.nhs.uk/Id/nhs-number|9000000009
           summary: System and NHS number specified
 
     PatientIdentifier:
@@ -1727,10 +1727,10 @@ components:
         format: token
       examples:
         withoutSystem:
-          value: 9000000009
+          value: 9000000017
           summary: NHS number specified without system
         withSystem:
-          value: https://fhir.nhs.uk/Id/nhs-number|9000000009
+          value: https://fhir.nhs.uk/Id/nhs-number|9000000017
           summary: System and NHS number specified
 
     ConsentBundlePerformerIdentifier:
