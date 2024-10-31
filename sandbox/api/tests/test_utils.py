@@ -40,6 +40,11 @@ def test_get_response(mock_open: MagicMock) -> None:
             "./api/responses/GET_RelatedPerson/bad_request_identifier_invalid_system.json",
             400,
         ),
+        (
+            "identifier=https://fhir.nhs.uk/Id/nhs-number/1234567890",  # identifier system invalid
+            "./api/responses/GET_RelatedPerson/bad_request_identifier_invalid_system.json",
+            400,
+        ),
     ],
 )
 @patch(f"{FILE_PATH}.load_json_file")

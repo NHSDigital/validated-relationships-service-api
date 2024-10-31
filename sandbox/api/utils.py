@@ -69,8 +69,8 @@ def check_for_errors(request: request) -> Optional[tuple]:
         )
     elif (
         isinstance(identifier, str)
-        and "|" in identifier
-        and "https://fhir.nhs.uk/Id/nhs-number" != identifier.split("|", maxsplit=2)[0]
+        and len(identifier) > 10
+        and "https://fhir.nhs.uk/Id/nhs-number|" not in identifier
     ):
         # invalid identifier system
         return (
