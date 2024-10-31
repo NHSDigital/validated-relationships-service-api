@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "85ee4695-8528-4e6e-82a6-29c4bea26a6d",
+		"_postman_id": "f29c97c0-1137-4f8e-966f-1affba55fef1",
 		"name": "Validate Relationship Service Sandbox",
 		"description": "Example usage of the Validate Relationship Service (VRS) sandbox.\n\nFull specification is available at [https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -14,7 +14,18 @@
 					"name": "Relationship information",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "X-Request-ID",
+								"value": "d967f4c9-8e83-4930-97ab-ae4e122d8ca5",
+								"type": "text"
+							},
+							{
+								"key": "X-Correlation-ID",
+								"value": "8717c840-c222-4f84-a880-45bc129f8382",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{api_base_url}}/RelatedPerson?patient:identifier=9000000009&identifier=9000000017",
 							"host": [
@@ -42,7 +53,18 @@
 					"name": "Relationship with additional information",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "X-Request-ID",
+								"value": "d967f4c9-8e83-4930-97ab-ae4e122d8ca5",
+								"type": "text"
+							},
+							{
+								"key": "X-Correlation-ID",
+								"value": "8717c840-c222-4f84-a880-45bc129f8382",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{api_base_url}}/RelatedPerson?patient:identifier=9000000025&identifier=9000000017&_include=RelatedPerson:patient",
 							"host": [
@@ -80,7 +102,18 @@
 					"name": "Relationship list",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "X-Request-ID",
+								"value": "d967f4c9-8e83-4930-97ab-ae4e122d8ca5",
+								"type": "text"
+							},
+							{
+								"key": "X-Correlation-ID",
+								"value": "8717c840-c222-4f84-a880-45bc129f8382",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{api_base_url}}/RelatedPerson?identifier=9000000017",
 							"host": [
@@ -104,7 +137,18 @@
 					"name": "Relationship list with additional information",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "X-Request-ID",
+								"value": "d967f4c9-8e83-4930-97ab-ae4e122d8ca5",
+								"type": "text"
+							},
+							{
+								"key": "X-Correlation-ID",
+								"value": "8717c840-c222-4f84-a880-45bc129f8382",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{api_base_url}}/RelatedPerson?identifier=9000000017&_include=RelatedPerson:patient",
 							"host": [
@@ -132,7 +176,18 @@
 					"name": "Invalid NHS number",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "X-Request-ID",
+								"value": "d967f4c9-8e83-4930-97ab-ae4e122d8ca5",
+								"type": "text"
+							},
+							{
+								"key": "X-Correlation-ID",
+								"value": "8717c840-c222-4f84-a880-45bc129f8382",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{api_base_url}}/RelatedPerson?identifier=12345678900",
 							"host": [
@@ -156,7 +211,18 @@
 					"name": "No matching record",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "X-Request-ID",
+								"value": "d967f4c9-8e83-4930-97ab-ae4e122d8ca5",
+								"type": "text"
+							},
+							{
+								"key": "X-Correlation-ID",
+								"value": "8717c840-c222-4f84-a880-45bc129f8382",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{api_base_url}}/RelatedPerson?identifier=9000000041",
 							"host": [
@@ -180,7 +246,18 @@
 					"name": "No relationships found",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "X-Request-ID",
+								"value": "d967f4c9-8e83-4930-97ab-ae4e122d8ca5",
+								"type": "text"
+							},
+							{
+								"key": "X-Correlation-ID",
+								"value": "8717c840-c222-4f84-a880-45bc129f8382",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{api_base_url}}/RelatedPerson?identifier=9000000033",
 							"host": [
@@ -213,7 +290,18 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/fhir+json"
+								"value": "application/fhir+json",
+								"type": "text"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "d967f4c9-8e83-4930-97ab-ae4e122d8ca5",
+								"type": "text"
+							},
+							{
+								"key": "X-Correlation-ID",
+								"value": "8717c840-c222-4f84-a880-45bc129f8382",
+								"type": "text"
 							}
 						],
 						"body": {
