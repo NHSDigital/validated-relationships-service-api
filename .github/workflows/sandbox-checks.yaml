@@ -24,3 +24,17 @@ jobs:
       - name: Run Sandbox Unit Tests
         run: make test
         working-directory: ./sandbox
+
+  run-postman-collection:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - name: Install Newman
+        run: npm install -g newman
+      - name: Run Postman Collection
+        run: newman run postman/Validate Relationship Service Sandbox.postman_collection.js
