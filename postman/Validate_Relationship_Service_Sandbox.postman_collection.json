@@ -1,0 +1,1448 @@
+{
+	"info": {
+		"_postman_id": "9040fff5-c55f-4c49-8fe3-95bc641eeb5c",
+		"name": "Validate Relationship Service Sandbox",
+		"description": "Example usage of the Validate Relationship Service (VRS) sandbox.\n\nFull specification is available at [https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18067099"
+	},
+	"item": [
+		{
+			"name": "Validate Relationship",
+			"item": [
+				{
+					"name": "Relationship information",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Request-ID",
+								"value": "d967f4c9-8e83-4930-97ab-ae4e122d8ca5",
+								"type": "text"
+							},
+							{
+								"key": "X-Correlation-ID",
+								"value": "8717c840-c222-4f84-a880-45bc129f8382",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_base_url}}/RelatedPerson?patient:identifier=9000000009&identifier=9000000017",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"RelatedPerson"
+							],
+							"query": [
+								{
+									"key": "patient:identifier",
+									"value": "9000000009"
+								},
+								{
+									"key": "identifier",
+									"value": "9000000017"
+								}
+							]
+						},
+						"description": "Returns information about the relationship between the two specified NHS numbers."
+					},
+					"response": []
+				},
+				{
+					"name": "Relationship with additional information",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Request-ID",
+								"value": "d967f4c9-8e83-4930-97ab-ae4e122d8ca5",
+								"type": "text"
+							},
+							{
+								"key": "X-Correlation-ID",
+								"value": "8717c840-c222-4f84-a880-45bc129f8382",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_base_url}}/RelatedPerson?patient:identifier=9000000025&identifier=9000000017&_include=RelatedPerson:patient",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"RelatedPerson"
+							],
+							"query": [
+								{
+									"key": "patient:identifier",
+									"value": "9000000025"
+								},
+								{
+									"key": "identifier",
+									"value": "9000000017"
+								},
+								{
+									"key": "_include",
+									"value": "RelatedPerson:patient"
+								}
+							]
+						},
+						"description": "Returns information about the relationship between the two specified NHS numbers as well as the related patient record."
+					},
+					"response": []
+				}
+			],
+			"description": "Examples of validate relationship requests."
+		},
+		{
+			"name": "List Relationships",
+			"item": [
+				{
+					"name": "Relationship list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const expectedResponseBody = {",
+									"    \"entry\": [",
+									"        {",
+									"        \"fullUrl\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742\",",
+									"        \"resource\": {",
+									"            \"id\": \"BE974742\",",
+									"            \"identifier\": [",
+									"            {",
+									"                \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"                \"value\": \"9000000017\"",
+									"            }",
+									"            ],",
+									"            \"patient\": {",
+									"            \"identifier\": {",
+									"                \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"                \"value\": \"9000000009\"",
+									"            },",
+									"            \"type\": \"Patient\"",
+									"            },",
+									"            \"relationship\": [",
+									"            {",
+									"                \"coding\": [",
+									"                {",
+									"                    \"code\": \"MTH\",",
+									"                    \"display\": \"mother\",",
+									"                    \"system\": \"http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype\"",
+									"                }",
+									"                ]",
+									"            }",
+									"            ],",
+									"            \"resourceType\": \"RelatedPerson\"",
+									"        },",
+									"        \"search\": {",
+									"            \"mode\": \"match\"",
+									"        }",
+									"        },",
+									"        {",
+									"        \"fullUrl\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/A3CC67E2\",",
+									"        \"resource\": {",
+									"            \"id\": \"A3CC67E2\",",
+									"            \"identifier\": [",
+									"                {",
+									"                    \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"                    \"value\": \"9000000017\"",
+									"                }",
+									"            ],",
+									"            \"patient\": {",
+									"            \"identifier\": {",
+									"                \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"                \"value\": \"9000000025\"",
+									"                },",
+									"                \"type\": \"Patient\"",
+									"            },",
+									"            \"relationship\": [",
+									"                {",
+									"                        \"coding\": [",
+									"                        {",
+									"                            \"code\": \"MTH\",",
+									"                            \"display\": \"mother\",",
+									"                            \"system\": \"http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype\"",
+									"                        }",
+									"                    ]",
+									"                }",
+									"            ],",
+									"            \"resourceType\": \"RelatedPerson\"",
+									"        },",
+									"        \"search\": {",
+									"            \"mode\": \"match\"",
+									"        }",
+									"        }",
+									"    ],",
+									"    \"link\": [",
+									"        {",
+									"        \"relation\": \"self\",",
+									"        \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson?identifier=9000000017\"",
+									"        }",
+									"    ],",
+									"    \"timestamp\": \"2024-01-01T00:00:00+00:00\",",
+									"    \"total\": 2,",
+									"    \"type\": \"searchset\",",
+									"    \"resourceType\": \"Bundle\"",
+									"};",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Should have correct response body\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson).to.eql(expectedResponseBody);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Request-ID",
+								"value": "d967f4c9-8e83-4930-97ab-ae4e122d8ca5",
+								"type": "text"
+							},
+							{
+								"key": "X-Correlation-ID",
+								"value": "8717c840-c222-4f84-a880-45bc129f8382",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_base_url}}/RelatedPerson?identifier=9000000017",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"RelatedPerson"
+							],
+							"query": [
+								{
+									"key": "identifier",
+									"value": "9000000017"
+								}
+							]
+						},
+						"description": "Retrieves a list of validated relationships for a given NHS number."
+					},
+					"response": []
+				},
+				{
+					"name": "Relationship list includes patient details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const expectedResponseBody = {",
+									"    \"entry\": [",
+									"          {",
+									"               \"fullUrl\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/9000000009\",",
+									"               \"resource\": {",
+									"                    \"id\": \"9000000009\",",
+									"                    \"birthDate\": \"2017-09-23\",",
+									"                    \"identifier\": [",
+									"                         {",
+									"                              \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"                              \"value\": \"9000000009\"",
+									"                         }",
+									"                    ],",
+									"                    \"name\": [",
+									"                         {",
+									"                              \"id\": \"BLnbA\",",
+									"                              \"family\": \"MOGAJI\",",
+									"                              \"given\": [",
+									"                                   \"GADIL\"",
+									"                              ],",
+									"                              \"period\": {",
+									"                                   \"start\": \"2021-07-08\"",
+									"                              },",
+									"                              \"prefix\": [",
+									"                                   \"MR\"",
+									"                              ],",
+									"                              \"use\": \"usual\"",
+									"                         }",
+									"                    ],",
+									"                    \"resourceType\": \"Patient\"",
+									"               },",
+									"               \"search\": {",
+									"                    \"mode\": \"include\"",
+									"               }",
+									"          },",
+									"          {",
+									"               \"fullUrl\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742\",",
+									"               \"resource\": {",
+									"                    \"id\": \"BE974742\",",
+									"                    \"identifier\": [",
+									"                         {",
+									"                              \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"                              \"value\": \"9000000017\"",
+									"                         }",
+									"                    ],",
+									"                    \"patient\": {",
+									"                         \"identifier\": {",
+									"                              \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"                              \"value\": \"9000000009\"",
+									"                         },",
+									"                         \"type\": \"Patient\"",
+									"                    },",
+									"                    \"relationship\": [",
+									"                         {",
+									"                              \"coding\": [",
+									"                                   {",
+									"                                        \"code\": \"MTH\",",
+									"                                        \"display\": \"mother\",",
+									"                                        \"system\": \"http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype\"",
+									"                                   }",
+									"                              ]",
+									"                         }",
+									"                    ],",
+									"                    \"resourceType\": \"RelatedPerson\"",
+									"               },",
+									"               \"search\": {",
+									"                    \"mode\": \"match\"",
+									"               }",
+									"          },",
+									"          {",
+									"               \"fullUrl\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/9000000025\",",
+									"               \"resource\": {",
+									"                    \"id\": \"9000000025\",",
+									"                    \"birthDate\": \"2018-04-27\",",
+									"                    \"identifier\": [",
+									"                         {",
+									"                              \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"                              \"value\": \"9000000025\"",
+									"                         }",
+									"                    ],",
+									"                    \"name\": [",
+									"                         {",
+									"                              \"id\": \"vitjN\",",
+									"                              \"family\": \"FEARON\",",
+									"                              \"given\": [",
+									"                                   \"Daren\"",
+									"                              ],",
+									"                              \"period\": {",
+									"                                   \"start\": \"2018-09-21\"",
+									"                              },",
+									"                              \"prefix\": [",
+									"                                   \"MR\"",
+									"                              ],",
+									"                              \"use\": \"usual\"",
+									"                         }",
+									"                    ],",
+									"                    \"resourceType\": \"Patient\"",
+									"               },",
+									"               \"search\": {",
+									"                    \"mode\": \"include\"",
+									"               }",
+									"          },",
+									"          {",
+									"               \"fullUrl\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/A3CC67E2\",",
+									"               \"resource\": {",
+									"                    \"id\": \"A3CC67E2\",",
+									"                    \"identifier\": [",
+									"                         {",
+									"                              \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"                              \"value\": \"9000000017\"",
+									"                         }",
+									"                    ],",
+									"                    \"patient\": {",
+									"                         \"identifier\": {",
+									"                              \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"                              \"value\": \"9000000025\"",
+									"                         },",
+									"                         \"type\": \"Patient\"",
+									"                    },",
+									"                    \"relationship\": [",
+									"                         {",
+									"                              \"coding\": [",
+									"                                   {",
+									"                                        \"code\": \"MTH\",",
+									"                                        \"display\": \"mother\",",
+									"                                        \"system\": \"http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype\"",
+									"                                   }",
+									"                              ]",
+									"                         }",
+									"                    ],",
+									"                    \"resourceType\": \"RelatedPerson\"",
+									"               },",
+									"               \"search\": {",
+									"                    \"mode\": \"match\"",
+									"               }",
+									"          }",
+									"     ],",
+									"     \"link\": [",
+									"          {",
+									"               \"relation\": \"self\",",
+									"               \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson?identifier=9000000017&_include=RelatedPerson:patient\"",
+									"          }",
+									"     ],",
+									"     \"timestamp\": \"2024-01-01T00:00:00+00:00\",",
+									"     \"total\": 4,",
+									"     \"type\": \"searchset\",",
+									"     \"resourceType\": \"Bundle\"",
+									"};",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Should have correct response body\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson).to.eql(expectedResponseBody);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Request-ID",
+								"value": "d967f4c9-8e83-4930-97ab-ae4e122d8ca5",
+								"type": "text"
+							},
+							{
+								"key": "X-Correlation-ID",
+								"value": "8717c840-c222-4f84-a880-45bc129f8382",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_base_url}}/RelatedPerson?identifier=9000000017&_include=RelatedPerson:patient",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"RelatedPerson"
+							],
+							"query": [
+								{
+									"key": "identifier",
+									"value": "9000000017"
+								},
+								{
+									"key": "_include",
+									"value": "RelatedPerson:patient"
+								}
+							]
+						},
+						"description": "Retrieves a list of validated relationships for a given NHS number with additional patient information."
+					},
+					"response": []
+				},
+				{
+					"name": "Relationship verified between patient and proxy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const expectedResponseBody = {",
+									"     \"entry\": [",
+									"          {",
+									"               \"fullUrl\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742\",",
+									"               \"resource\": {",
+									"                    \"id\": \"BE974742\",",
+									"                    \"identifier\": [",
+									"                         {",
+									"                              \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"                              \"value\": \"9000000017\"",
+									"                         }",
+									"                    ],",
+									"                    \"patient\": {",
+									"                         \"identifier\": {",
+									"                              \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"                              \"value\": \"9000000009\"",
+									"                         },",
+									"                         \"type\": \"Patient\"",
+									"                    },",
+									"                    \"relationship\": [",
+									"                         {",
+									"                              \"coding\": [",
+									"                                   {",
+									"                                        \"code\": \"MTH\",",
+									"                                        \"display\": \"mother\",",
+									"                                        \"system\": \"http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype\"",
+									"                                   }",
+									"                              ]",
+									"                         }",
+									"                    ],",
+									"                    \"resourceType\": \"RelatedPerson\"",
+									"               },",
+									"               \"search\": {",
+									"                    \"mode\": \"match\"",
+									"               }",
+									"          }",
+									"     ],",
+									"     \"link\": [",
+									"          {",
+									"               \"relation\": \"self\",",
+									"               \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson?patient:identifier=9000000009&identifier=9000000017\"",
+									"          }",
+									"     ],",
+									"     \"timestamp\": \"2024-01-01T00:00:00+00:00\",",
+									"     \"total\": 1,",
+									"     \"type\": \"searchset\",",
+									"     \"resourceType\": \"Bundle\"",
+									"};",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Should have correct response body\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson).to.eql(expectedResponseBody);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Request-ID",
+								"value": "d967f4c9-8e83-4930-97ab-ae4e122d8ca5",
+								"type": "text"
+							},
+							{
+								"key": "X-Correlation-ID",
+								"value": "8717c840-c222-4f84-a880-45bc129f8382",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_base_url}}/RelatedPerson?identifier=9000000017&patient:identifier=9000000009",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"RelatedPerson"
+							],
+							"query": [
+								{
+									"key": "identifier",
+									"value": "9000000017"
+								},
+								{
+									"key": "patient:identifier",
+									"value": "9000000009"
+								}
+							]
+						},
+						"description": "Retrieves information about the relationship between the given NHS numbers"
+					},
+					"response": []
+				},
+				{
+					"name": "Relationship verified between patient and proxy includes patient details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const expectedResponseBody = {",
+									"     \"entry\": [",
+									"          {",
+									"               \"fullUrl\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/9000000009\",",
+									"               \"resource\": {",
+									"                    \"id\": \"9000000009\",",
+									"                    \"birthDate\": \"2017-09-23\",",
+									"                    \"identifier\": [",
+									"                         {",
+									"                              \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"                              \"value\": \"9000000009\"",
+									"                         }",
+									"                    ],",
+									"                    \"name\": [",
+									"                         {",
+									"                              \"id\": \"BLnbA\",",
+									"                              \"family\": \"MOGAJI\",",
+									"                              \"given\": [",
+									"                                   \"GADIL\"",
+									"                              ],",
+									"                              \"period\": {",
+									"                                   \"start\": \"2021-07-08\"",
+									"                              },",
+									"                              \"prefix\": [",
+									"                                   \"MR\"",
+									"                              ],",
+									"                              \"use\": \"usual\"",
+									"                         }",
+									"                    ],",
+									"                    \"resourceType\": \"Patient\"",
+									"               },",
+									"               \"search\": {",
+									"                    \"mode\": \"include\"",
+									"               }",
+									"          },",
+									"          {",
+									"               \"fullUrl\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742\",",
+									"               \"resource\": {",
+									"                    \"id\": \"BE974742\",",
+									"                    \"identifier\": [",
+									"                         {",
+									"                              \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"                              \"value\": \"9000000017\"",
+									"                         }",
+									"                    ],",
+									"                    \"patient\": {",
+									"                         \"identifier\": {",
+									"                              \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"                              \"value\": \"9000000009\"",
+									"                         },",
+									"                         \"type\": \"Patient\"",
+									"                    },",
+									"                    \"relationship\": [",
+									"                         {",
+									"                              \"coding\": [",
+									"                                   {",
+									"                                        \"code\": \"MTH\",",
+									"                                        \"display\": \"mother\",",
+									"                                        \"system\": \"http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype\"",
+									"                                   }",
+									"                              ]",
+									"                         }",
+									"                    ],",
+									"                    \"resourceType\": \"RelatedPerson\"",
+									"               },",
+									"               \"search\": {",
+									"                    \"mode\": \"match\"",
+									"               }",
+									"          }",
+									"     ],",
+									"     \"link\": [",
+									"          {",
+									"               \"relation\": \"self\",",
+									"               \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson?patient:identifier=9000000009&identifier=9000000017&_include=RelatedPerson:patient\"",
+									"          }",
+									"     ],",
+									"     \"timestamp\": \"2024-01-01T00:00:00+00:00\",",
+									"     \"total\": 2,",
+									"     \"type\": \"searchset\",",
+									"     \"resourceType\": \"Bundle\"",
+									"};",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Should have correct response body\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson).to.eql(expectedResponseBody);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Request-ID",
+								"value": "d967f4c9-8e83-4930-97ab-ae4e122d8ca5",
+								"type": "text"
+							},
+							{
+								"key": "X-Correlation-ID",
+								"value": "8717c840-c222-4f84-a880-45bc129f8382",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_base_url}}/RelatedPerson?identifier=9000000017&patient:identifier=9000000009&_include=RelatedPerson:patient",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"RelatedPerson"
+							],
+							"query": [
+								{
+									"key": "identifier",
+									"value": "9000000017"
+								},
+								{
+									"key": "patient:identifier",
+									"value": "9000000009"
+								},
+								{
+									"key": "_include",
+									"value": "RelatedPerson:patient"
+								}
+							]
+						},
+						"description": "Retrieves information about the relationship between the given NHS numbers including the patient details"
+					},
+					"response": []
+				},
+				{
+					"name": "No relationships found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const expectedResponseBody = {",
+									"     \"link\": [",
+									"          {",
+									"               \"relation\": \"self\",",
+									"               \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships-service-api/FHIR/R4/RelatedPerson?identifier=9000000033\"",
+									"          }",
+									"     ],",
+									"     \"timestamp\": \"2024-01-01T00:00:00+00:00\",",
+									"     \"total\": 0,",
+									"     \"type\": \"searchset\",",
+									"     \"resourceType\": \"Bundle\"",
+									"};",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Should have correct response body\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson).to.eql(expectedResponseBody);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Request-ID",
+								"value": "d967f4c9-8e83-4930-97ab-ae4e122d8ca5",
+								"type": "text"
+							},
+							{
+								"key": "X-Correlation-ID",
+								"value": "8717c840-c222-4f84-a880-45bc129f8382",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_base_url}}/RelatedPerson?identifier=9000000033",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"RelatedPerson"
+							],
+							"query": [
+								{
+									"key": "identifier",
+									"value": "9000000033"
+								}
+							]
+						},
+						"description": "Example of a response where the given NHS numbers do not have a relationship."
+					},
+					"response": []
+				},
+				{
+					"name": "Missing identifier",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const expectedResponseBody = {",
+									"  \"issue\": [",
+									"    {",
+									"      \"code\": \"invalid\",",
+									"      \"details\": {",
+									"        \"coding\": [",
+									"          {",
+									"            \"code\": \"MISSING_IDENTIFIER_VALUE\",",
+									"            \"display\": \"Missing RelatedPerson NHS number.\",",
+									"            \"system\": \"https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode\",",
+									"            \"version\": \"1\"",
+									"          }",
+									"        ]",
+									"      },",
+									"      \"diagnostics\": \"The 'identifier' parameter is required\",",
+									"      \"severity\": \"error\"",
+									"    }",
+									"  ],",
+									"  \"resourceType\": \"OperationOutcome\"",
+									"};",
+									"",
+									"const responseJson = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Should have correct error response\", () => {",
+									"    pm.expect(responseJson.issue[0].details.coding[0].code).to.eql(\"MISSING_IDENTIFIER_VALUE\");",
+									"});",
+									"",
+									"pm.test(\"Should have correct response body\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson).to.eql(expectedResponseBody);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Request-ID",
+								"value": "d967f4c9-8e83-4930-97ab-ae4e122d8ca5",
+								"type": "text"
+							},
+							{
+								"key": "X-Correlation-ID",
+								"value": "8717c840-c222-4f84-a880-45bc129f8382",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_base_url}}/RelatedPerson?patient:identifier=9000000009",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"RelatedPerson"
+							],
+							"query": [
+								{
+									"key": "patient:identifier",
+									"value": "9000000009"
+								}
+							]
+						},
+						"description": "Example of an error response when the NHS number is missing"
+					},
+					"response": []
+				},
+				{
+					"name": "No matching record",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const expectedResponseBody = {",
+									"    \"issue\": [",
+									"        {",
+									"            \"code\": \"processing\",",
+									"            \"details\": {",
+									"                \"coding\": [",
+									"                    {",
+									"                        \"code\": \"INVALIDATED_RESOURCE\",",
+									"                        \"display\": \"Resource that has been marked as invalid was requested - invalid resources cannot be retrieved\",",
+									"                        \"system\": \"https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode\",",
+									"                        \"version\": \"1\"",
+									"                    }",
+									"                ]",
+									"            },",
+									"            \"severity\": \"error\"",
+									"        }",
+									"    ],",
+									"    \"resourceType\": \"OperationOutcome\"",
+									"};",
+									"",
+									"const responseJson = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Should have correct error response\", () => {",
+									"    pm.expect(responseJson.issue[0].details.coding[0].code).to.eql(\"INVALIDATED_RESOURCE\");",
+									"});",
+									"",
+									"pm.test(\"Should have correct response body\", () => {",
+									"    pm.expect(responseJson).to.eql(expectedResponseBody);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Request-ID",
+								"value": "d967f4c9-8e83-4930-97ab-ae4e122d8ca5",
+								"type": "text"
+							},
+							{
+								"key": "X-Correlation-ID",
+								"value": "8717c840-c222-4f84-a880-45bc129f8382",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_base_url}}/RelatedPerson?identifier=9000000041",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"RelatedPerson"
+							],
+							"query": [
+								{
+									"key": "identifier",
+									"value": "9000000041"
+								}
+							]
+						},
+						"description": "Example of a response where the given NHS number does not have any validated relationships."
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid NHS number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var expectedResponseBody = {",
+									"  \"issue\": [",
+									"    {",
+									"      \"code\": \"invalid\",",
+									"      \"details\": {",
+									"        \"coding\": [",
+									"          {",
+									"            \"code\": \"INVALID_IDENTIFIER_VALUE\",",
+									"            \"display\": \"Provided value is invalid\",",
+									"            \"system\": \"https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode\",",
+									"            \"version\": \"1\"",
+									"          }",
+									"        ]",
+									"      },",
+									"      \"diagnostics\": \"Not a valid NHS Number provided for the 'identifier' parameter\",",
+									"      \"severity\": \"error\"",
+									"    }",
+									"  ],",
+									"  \"resourceType\": \"OperationOutcome\"",
+									"};",
+									"",
+									"const responseJson = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Should have correct error response\", () => {",
+									"    pm.expect(responseJson.issue[0].details.coding[0].code).to.eql(\"INVALID_IDENTIFIER_VALUE\");",
+									"});",
+									"",
+									"pm.test(\"Should have correct response body\", () => {",
+									"    pm.expect(responseJson).to.eql(expectedResponseBody);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Request-ID",
+								"value": "d967f4c9-8e83-4930-97ab-ae4e122d8ca5",
+								"type": "text"
+							},
+							{
+								"key": "X-Correlation-ID",
+								"value": "8717c840-c222-4f84-a880-45bc129f8382",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_base_url}}/RelatedPerson?identifier=900000000",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"RelatedPerson"
+							],
+							"query": [
+								{
+									"key": "identifier",
+									"value": "900000000"
+								}
+							]
+						},
+						"description": "Example of an error raised when the specified NHS number is not valid."
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid identifier system",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var expectedResponseBody = {",
+									"  \"issue\": [",
+									"    {",
+									"      \"code\": \"invalid\",",
+									"      \"details\": {",
+									"        \"coding\": [",
+									"          {",
+									"            \"code\": \"INVALID_IDENTIFIER_VALUE\",",
+									"            \"display\": \"Provided value is invalid\",",
+									"            \"system\": \"https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode\",",
+									"            \"version\": \"1\"",
+									"          }",
+									"        ]",
+									"      },",
+									"      \"diagnostics\": \"Not a valid NHS Number provided for the 'identifier' parameter\",",
+									"      \"severity\": \"error\"",
+									"    }",
+									"  ],",
+									"  \"resourceType\": \"OperationOutcome\"",
+									"};",
+									"",
+									"const responseJson = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Should have correct error response\", () => {",
+									"    pm.expect(responseJson.issue[0].details.coding[0].code).to.eql(\"INVALID_IDENTIFIER_VALUE\");",
+									"});",
+									"",
+									"pm.test(\"Should have correct response body\", () => {",
+									"    pm.expect(responseJson).to.eql(expectedResponseBody);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Request-ID",
+								"value": "d967f4c9-8e83-4930-97ab-ae4e122d8ca5",
+								"type": "text"
+							},
+							{
+								"key": "X-Correlation-ID",
+								"value": "8717c840-c222-4f84-a880-45bc129f8382",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_base_url}}/RelatedPerson?identifier=https://fhir.nhs.uk/Id/nhs-number/9730675929",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"RelatedPerson"
+							],
+							"query": [
+								{
+									"key": "identifier",
+									"value": "https://fhir.nhs.uk/Id/nhs-number/9730675929"
+								}
+							]
+						},
+						"description": "Example of an error response when the given NHS number uses a different identifier system"
+					},
+					"response": []
+				},
+				{
+					"name": "Identifier not supported",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const expectedResponseBody = {",
+									"  \"issue\": [",
+									"    {",
+									"      \"code\": \"processing\",",
+									"      \"details\": {",
+									"        \"coding\": [",
+									"          {",
+									"            \"code\": \"INVALIDATED_RESOURCE\",",
+									"            \"display\": \"Resource that has been marked as invalid was requested - invalid resources cannot be retrieved\",",
+									"            \"system\": \"https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode\",",
+									"            \"version\": \"1\"",
+									"          }",
+									"        ]",
+									"      },",
+									"      \"severity\": \"error\"",
+									"    }",
+									"  ],",
+									"  \"resourceType\": \"OperationOutcome\"",
+									"};",
+									"",
+									"const responseJson = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Should have correct error response\", () => {",
+									"    pm.expect(responseJson.issue[0].details.coding[0].code).to.eql(\"INVALIDATED_RESOURCE\");",
+									"});",
+									"",
+									"pm.test(\"Should have correct response body\", () => {",
+									"    pm.expect(responseJson).to.eql(expectedResponseBody);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Request-ID",
+								"value": "d967f4c9-8e83-4930-97ab-ae4e122d8ca5",
+								"type": "text"
+							},
+							{
+								"key": "X-Correlation-ID",
+								"value": "8717c840-c222-4f84-a880-45bc129f8382",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_base_url}}/RelatedPerson?identifier=1000000001",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"RelatedPerson"
+							],
+							"query": [
+								{
+									"key": "identifier",
+									"value": "1000000001"
+								}
+							]
+						},
+						"description": "Example of an error response when the given NHS number is not supported by the sandbox"
+					},
+					"response": []
+				}
+			],
+			"description": "Examples of how to utilise the API to list relationships for a given NHS record."
+		},
+		{
+			"name": "Questionnaire Response",
+			"item": [
+				{
+					"name": "Adult to child access request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/fhir+json",
+								"type": "text"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "d967f4c9-8e83-4930-97ab-ae4e122d8ca5",
+								"type": "text"
+							},
+							{
+								"key": "X-Correlation-ID",
+								"value": "8717c840-c222-4f84-a880-45bc129f8382",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"resourceType\": \"QuestionnaireResponse\",\n  \"status\": \"completed\",\n  \"authored\": \"2024-07-15T09:43:03.280Z\",\n  \"source\": {\n    \"type\": \"RelatedPerson\",\n    \"identifier\": {\n      \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n      \"value\": \"9000000001\"\n    }\n  },\n  \"subject\": {\n    \"type\": \"Patient\",\n    \"identifier\": {\n      \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n      \"value\": \"9000000002\"\n    }\n  },\n  \"questionnaire\": \"Questionnaire/01dc6813-3421-4d14-948d-a4888241add1\",\n  \"item\": [\n    {\n      \"linkId\": \"relatedPerson\",\n      \"text\": \"relatedPerson\",\n      \"item\": [\n        {\n          \"linkId\": \"relatedPerson_identifier\",\n          \"text\": \"NHS Number\",\n          \"answer\": [\n            {\n              \"valueString\": \"9000000001\"\n            }\n          ]\n        },\n        {\n          \"linkId\": \"relatedPerson_name\",\n          \"text\": \"relatedPerson_name\",\n          \"item\": [\n            {\n              \"linkId\": \"relatedPerson_name_first\",\n              \"text\": \"First name.\",\n              \"answer\": [\n                {\n                  \"valueString\": \"Sharon\"\n                }\n              ]\n            },\n            {\n              \"linkId\": \"relatedPerson_name_family\",\n              \"text\": \"Family name (often called Surname).\",\n              \"answer\": [\n                {\n                  \"valueString\": \"Smith\"\n                }\n              ]\n            }\n          ]\n        },\n        {\n          \"linkId\": \"relatedPerson_birthDate\",\n          \"text\": \"Date of Birth\",\n          \"answer\": [\n            {\n              \"valueDate\": \"1994-03-21\"\n            }\n          ]\n        },\n        {\n          \"linkId\": \"relatedPerson_basisForAccess\",\n          \"text\": \"Basis For Access\",\n          \"answer\": [\n            {\n              \"valueCoding\": {\n                \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",\n                \"code\": \"PRN\",\n                \"display\": \"Parent\"\n              }\n            }\n          ]\n        },\n        {\n          \"linkId\": \"relatedPerson_relationship\",\n          \"text\": \"Relationship\",\n          \"answer\": [\n            {\n              \"valueCoding\": {\n                \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",\n                \"code\": \"PRN\",\n                \"display\": \"Parent\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"linkId\": \"parentalApplicationSupplementaryDetails\",\n      \"text\": \"parentalApplicationSupplementaryDetails\",\n      \"item\": [\n        {\n          \"linkId\": \"parentalApplicationSupplementaryDetails_evidenceOfResponsibility\",\n          \"text\": \"Evidence of parental responsibility\",\n          \"answer\": [\n            {\n              \"valueCoding\": {\n                \"system\": \"https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-EvidenceOfResponsibility\",\n                \"code\": \"BRTH\",\n                \"display\": \"Birth certificate\"\n              }\n            }\n          ]\n        },\n        {\n          \"linkId\": \"parentalApplicationSupplementaryDetails_evidenceOfResponsibilityMoreinfo\",\n          \"text\": \"Evidence of responsibility - Further Information\",\n          \"answer\": [\n            {\n              \"valueString\": \"Birth Certificate is original\"\n            }\n          ]\n        },\n        {\n          \"linkId\": \"parentalApplicationSupplementaryDetails_isCurrentAddressConfirmed\",\n          \"text\": \"Is current address confirmed?\",\n          \"answer\": [\n            {\n              \"valueString\": \"Yes\"\n            }\n          ]\n        },\n        {\n          \"linkId\": \"parentalApplicationSupplementaryDetails_newAddress\",\n          \"text\": \"parentalApplicationSupplementaryDetails_newAddress\",\n          \"item\": [\n            {\n              \"linkId\": \"parentalApplicationSupplementaryDetails_line1\",\n              \"text\": \"Address Line 1\",\n              \"answer\": [\n                {\n                  \"valueString\": \"24 Hoves Edge\"\n                }\n              ]\n            },\n            {\n              \"linkId\": \"parentalApplicationSupplementaryDetails_line2\",\n              \"text\": \"Address Line 2\",\n              \"answer\": [\n                {\n                  \"valueString\": \"Remington\"\n                }\n              ]\n            },\n            {\n              \"linkId\": \"parentalApplicationSupplementaryDetails_line3\",\n              \"text\": \"Address Line 3\",\n              \"answer\": [\n                {\n                  \"valueString\": \"Boroughbridge\"\n                }\n              ]\n            },\n            {\n              \"linkId\": \"parentalApplicationSupplementaryDetails_city\",\n              \"text\": \"Town / City\",\n              \"answer\": [\n                {\n                  \"valueString\": \"Leeds\"\n                }\n              ]\n            },\n            {\n              \"linkId\": \"parentalApplicationSupplementaryDetails_district\",\n              \"text\": \"County\",\n              \"answer\": [\n                {\n                  \"valueString\": \"West Yorkshire\"\n                }\n              ]\n            },\n            {\n              \"linkId\": \"parentalApplicationSupplementaryDetails_postalCode\",\n              \"text\": \"Postcode\",\n              \"answer\": [\n                {\n                  \"valueString\": \"LS1 1DW\"\n                }\n              ]\n            }\n          ]\n        },\n        {\n          \"linkId\": \"parentalApplicationSupplementaryDetails_liveAtSameAddress\",\n          \"text\": \"Do the adult and child live at the same address?\",\n          \"answer\": [\n            {\n              \"valueString\": \"Yes\"\n            }\n          ]\n        },\n        {\n          \"linkId\": \"parentalApplicationSupplementaryDetails_canChildConsent\",\n          \"text\": \"Can the child consent?\",\n          \"answer\": [\n            {\n              \"valueString\": \"No\"\n            }\n          ]\n        },\n        {\n          \"linkId\": \"parentalApplicationSupplementaryDetails_reasonNoChildConsent\",\n          \"text\": \"Reason the child cannot consent\",\n          \"answer\": [\n            {\n              \"valueString\": \"Child is too young\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"linkId\": \"patient\",\n      \"text\": \"patient\",\n      \"item\": [\n        {\n          \"linkId\": \"patient_identifier\",\n          \"text\": \"NHS Number\",\n          \"answer\": [\n            {\n              \"valueString\": \"9000000002\"\n            }\n          ]\n        },\n        {\n          \"linkId\": \"patient_name\",\n          \"text\": \"patient_name\",\n          \"item\": [\n            {\n              \"linkId\": \"patient_name_first\",\n              \"text\": \"First name.\",\n              \"answer\": [\n                {\n                  \"valueString\": \"Jane\"\n                }\n              ]\n            },\n            {\n              \"linkId\": \"patient_name_family\",\n              \"text\": \"Family name (often called Surname).\",\n              \"answer\": [\n                {\n                  \"valueString\": \"Smith\"\n                }\n              ]\n            }\n          ]\n        },\n        {\n          \"linkId\": \"patient_birthDate\",\n          \"text\": \"Date of Birth\",\n          \"answer\": [\n            {\n              \"valueDate\": \"2020-10-22\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"linkId\": \"requestedAccess\",\n      \"text\": \"requestedAccess\",\n      \"item\": [\n        {\n          \"linkId\": \"requestedAccess_accessLevel\",\n          \"text\": \"Requested access level\",\n          \"answer\": [\n            {\n              \"valueCoding\": {\n                \"system\": \"https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess\",\n                \"code\": \"APPT\",\n                \"display\": \"Appointment Booking\"\n              }\n            }\n          ]\n        },\n        {\n          \"linkId\": \"requestedAccess_accessLevelMoreinfo\",\n          \"text\": \"Requested access level - further information\",\n          \"answer\": [\n            {\n              \"valueString\": \"Access only required to most recent 3 years\"\n            }\n          ]\n        },\n        {\n          \"linkId\": \"requestedAccess_reasonsForAccess\",\n          \"text\": \"Reason for access\",\n          \"answer\": [\n            {\n              \"valueCoding\": {\n                \"system\": \"https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-ReasonForAccess\",\n                \"code\": \"COMB\",\n                \"display\": \"Communication Barriers\"\n              }\n            }\n          ]\n        },\n        {\n          \"linkId\": \"requestedAccess_reasonsForAccessMoreinfo\",\n          \"text\": \"Reason for access - further information\",\n          \"answer\": [\n            {\n              \"valueString\": \"No internet connection\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_base_url}}/QuestionnaireResponse",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"QuestionnaireResponse"
+							]
+						},
+						"description": "Example of an adult to child access request with the reference code returned"
+					},
+					"response": []
+				},
+				{
+					"name": "Adult to adult with ability to consent access request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/fhir+json"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "d967f4c9-8e83-4930-97ab-ae4e122d8ca5",
+								"type": "text"
+							},
+							{
+								"key": "X-Correlation-ID",
+								"value": "8717c840-c222-4f84-a880-45bc129f8382",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"resourceType\": \"QuestionnaireResponse\",\n  \"status\": \"completed\",\n  \"authored\": \"2024-07-15T09:43:03.280Z\",\n  \"source\": {\n    \"type\": \"RelatedPerson\",\n    \"identifier\": {\n      \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n      \"value\": \"9000000005\"\n    }\n  },\n  \"subject\": {\n    \"type\": \"Patient\",\n    \"identifier\": {\n      \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n      \"value\": \"9000000006\"\n    }\n  },\n  \"questionnaire\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/Questionnaire/01dc6813-3421-4d14-948d-a4888241add1\",\n  \"item\": [\n    {\n      \"linkId\": \"relatedPerson\",\n      \"text\": \"Proxy details\",\n      \"item\": [\n        {\n          \"linkId\": \"relatedPerson_identifier\",\n          \"text\": \"NHS number\",\n          \"answer\": [\n            {\n              \"valueString\": \"9000000005\"\n            }\n          ]\n        },\n        {\n          \"linkId\": \"relatedPerson_basisForAccess\",\n          \"text\": \"Basis for Access\",\n          \"answer\": [\n            {\n              \"valueCoding\": {\n                \"system\": \"https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole\",\n                \"code\": \"Personal\",\n                \"display\": \"Personal relationship with the patient\"\n              }\n            }\n          ]\n        },\n        {\n          \"linkId\": \"relatedPerson_relationship\",\n          \"text\": \"Relationship\",\n          \"answer\": [\n            {\n              \"valueCoding\": {\n                \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",\n                \"code\": \"SPS\",\n                \"display\": \"Spouse\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"linkId\": \"patient\",\n      \"text\": \"Patient details\",\n      \"item\": [\n        {\n          \"linkId\": \"patient_identifier\",\n          \"text\": \"NHS number\",\n          \"answer\": [\n            {\n              \"valueString\": \"9000000006\"\n            }\n          ]\n        },\n        {\n          \"linkId\": \"patient_name\",\n          \"text\": \"Name\",\n          \"item\": [\n            {\n              \"linkId\": \"patient_name_first\",\n              \"text\": \"First name\",\n              \"answer\": [\n                {\n                  \"valueString\": \"Jill\"\n                }\n              ]\n            },\n            {\n              \"linkId\": \"patient_name_family\",\n              \"text\": \"Last name\",\n              \"answer\": [\n                {\n                  \"valueString\": \"Jones\"\n                }\n              ]\n            }\n          ]\n        },\n        {\n          \"linkId\": \"patient_birthDate\",\n          \"text\": \"Date of birth\",\n          \"answer\": [\n            {\n              \"valueDate\": \"1965-01-01\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"linkId\": \"requestedAccess\",\n      \"text\": \"Requested access\",\n      \"item\": [\n        {\n          \"linkId\": \"requestedAccess_accessLevel\",\n          \"text\": \"Requested access level\",\n          \"answer\": [\n            {\n              \"valueCoding\": {\n                \"system\": \"https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess\",\n                \"code\": \"APPT\",\n                \"display\": \"Appointment Booking\"\n              }\n            },\n            {\n              \"valueCoding\": {\n                \"system\": \"https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess\",\n                \"code\": \"VACC\",\n                \"display\": \"Vaccination Records\"\n              }\n            }\n          ]\n        },\n        {\n          \"linkId\": \"requestedAccess_reasonsForAccess\",\n          \"text\": \"Reason for access\",\n          \"answer\": [\n            {\n              \"valueCoding\": {\n                \"system\": \"https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-ReasonForAccess\",\n                \"code\": \"PRAC\",\n                \"display\": \"Practical Reasons\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_base_url}}/QuestionnaireResponse",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"QuestionnaireResponse"
+							]
+						},
+						"description": "Example of an adult to adult access request where the patient can consent with the reference code returned"
+					},
+					"response": []
+				},
+				{
+					"name": "Adult to adult without ability to consent access request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/fhir+json"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "d967f4c9-8e83-4930-97ab-ae4e122d8ca5",
+								"type": "text"
+							},
+							{
+								"key": "X-Correlation-ID",
+								"value": "8717c840-c222-4f84-a880-45bc129f8382",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"resourceType\": \"QuestionnaireResponse\",\n  \"status\": \"completed\",\n  \"authored\": \"2024-07-15T09:43:03.280Z\",\n  \"source\": {\n    \"type\": \"RelatedPerson\",\n    \"identifier\": {\n      \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n      \"value\": \"9876543210\"\n    }\n  },\n  \"subject\": {\n    \"type\": \"Patient\",\n    \"identifier\": {\n      \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n      \"value\": \"9000000008\"\n    }\n  },\n  \"questionnaire\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/Questionnaire/01dc6813-3421-4d14-948d-a4888241add1\",\n  \"item\": [\n    {\n      \"linkId\": \"relatedPerson\",\n      \"text\": \"Proxy details\",\n      \"item\": [\n        {\n          \"linkId\": \"relatedPerson_identifier\",\n          \"text\": \"NHS number\",\n          \"answer\": [\n            {\n              \"valueString\": \"9876543210\"\n            }\n          ]\n        },\n        {\n          \"linkId\": \"relatedPerson_basisForAccess\",\n          \"text\": \"Basis for Access\",\n          \"answer\": [\n            {\n              \"valueCoding\": {\n                \"system\": \"https://fhir.nhs.uk/STU3/CodeSystem/RARecord-ProxyRole-1\",\n                \"code\": \"002\",\n                \"display\": \"Best interest decision made on behalf of the patient (Mental Capacity Act 2005)\"\n              }\n            }\n          ]\n        },\n        {\n          \"linkId\": \"relatedPerson_relationship\",\n          \"text\": \"Relationship\",\n          \"answer\": [\n            {\n              \"valueCoding\": {\n                \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",\n                \"code\": \"CHILD\",\n                \"display\": \"Child\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"linkId\": \"patient\",\n      \"text\": \"Patient details\",\n      \"item\": [\n        {\n          \"linkId\": \"patient_identifier\",\n          \"text\": \"NHS number\",\n          \"answer\": [\n            {\n              \"valueString\": \"9000000008\"\n            }\n          ]\n        },\n        {\n          \"linkId\": \"patient_name\",\n          \"text\": \"Name\",\n          \"item\": [\n            {\n              \"linkId\": \"patient_name_first\",\n              \"text\": \"First name\",\n              \"answer\": [\n                {\n                  \"valueString\": \"Florence\"\n                }\n              ]\n            },\n            {\n              \"linkId\": \"patient_name_family\",\n              \"text\": \"Last name\",\n              \"answer\": [\n                {\n                  \"valueString\": \"Smith\"\n                }\n              ]\n            }\n          ]\n        },\n        {\n          \"linkId\": \"patient_birthDate\",\n          \"text\": \"Date of birth\",\n          \"answer\": [\n            {\n              \"valueDate\": \"1935-01-02\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"linkId\": \"requestedAccess\",\n      \"text\": \"Requested access\",\n      \"item\": [\n        {\n          \"linkId\": \"requestedAccess_accessLevel\",\n          \"text\": \"Requested access level\",\n          \"answer\": [\n            {\n              \"valueCoding\": {\n                \"system\": \"https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess\",\n                \"code\": \"APPT\",\n                \"display\": \"Appointment Booking\"\n              }\n            },\n            {\n              \"valueCoding\": {\n                \"system\": \"https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess\",\n                \"code\": \"VACC\",\n                \"display\": \"Vaccination Records\"\n              }\n            }\n          ]\n        },\n        {\n          \"linkId\": \"requestedAccess_reasonsForAccess\",\n          \"text\": \"Reason for access\",\n          \"answer\": [\n            {\n              \"valueCoding\": {\n                \"system\": \"https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-ReasonForAccess\",\n                \"code\": \"TECH\",\n                \"display\": \"Technical Barriers\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_base_url}}/QuestionnaireResponse",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"QuestionnaireResponse"
+							]
+						},
+						"description": "Example of an adult to adult access request where the patient cannot consent with the reference code returned"
+					},
+					"response": []
+				},
+				{
+					"name": "Adult nominates adult access request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/fhir+json"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "d967f4c9-8e83-4930-97ab-ae4e122d8ca5",
+								"type": "text"
+							},
+							{
+								"key": "X-Correlation-ID",
+								"value": "8717c840-c222-4f84-a880-45bc129f8382",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"resourceType\": \"QuestionnaireResponse\",\n  \"status\": \"completed\",\n  \"authored\": \"2024-07-15T09:43:03.280Z\",\n  \"source\": {\n    \"type\": \"Patient\",\n    \"identifier\": {\n      \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n      \"value\": \"9000000006\"\n    }\n  },\n  \"subject\": {\n    \"type\": \"Patient\",\n    \"identifier\": {\n      \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n      \"value\": \"9000000006\"\n    }\n  },\n  \"questionnaire\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/Questionnaire/01dc6813-3421-4d14-948d-a4888241add1\",\n  \"item\": [\n    {\n      \"linkId\": \"relatedPerson\",\n      \"text\": \"Proxy details\",\n      \"item\": [\n        {\n          \"linkId\": \"relatedPerson_identifier\",\n          \"text\": \"NHS number\",\n          \"answer\": [\n            {\n              \"valueString\": \"9000000005\"\n            }\n          ]\n        },\n        {\n          \"linkId\": \"relatedPerson_name\",\n          \"text\": \"Name\",\n          \"item\": [\n            {\n              \"linkId\": \"relatedPerson_name_first\",\n              \"text\": \"First name\",\n              \"answer\": [\n                {\n                  \"valueString\": \"Tom\"\n                }\n              ]\n            },\n            {\n              \"linkId\": \"relatedPerson_name_family\",\n              \"text\": \"Last name\",\n              \"answer\": [\n                {\n                  \"valueString\": \"Jones\"\n                }\n              ]\n            }\n          ]\n        },\n        {\n          \"linkId\": \"relatedPerson_birthDate\",\n          \"text\": \"Date of birth\",\n          \"answer\": [\n            {\n              \"valueDate\": \"1970-07-12\"\n            }\n          ]\n        },\n        {\n          \"linkId\": \"relatedPerson_basisForAccess\",\n          \"text\": \"Basis for Access\",\n          \"answer\": [\n            {\n              \"valueCoding\": {\n                \"system\": \"https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole\",\n                \"code\": \"Personal\",\n                \"display\": \"Personal relationship with the patient\"\n              }\n            }\n          ]\n        },\n        {\n          \"linkId\": \"relatedPerson_relationship\",\n          \"text\": \"Relationship\",\n          \"answer\": [\n            {\n              \"valueCoding\": {\n                \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",\n                \"code\": \"SPS\",\n                \"display\": \"Spouse\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"linkId\": \"patient\",\n      \"text\": \"Patient details\",\n      \"item\": [\n        {\n          \"linkId\": \"patient_identifier\",\n          \"text\": \"NHS number\",\n          \"answer\": [\n            {\n              \"valueString\": \"9000000006\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"linkId\": \"requestedAccess\",\n      \"text\": \"Requested access\",\n      \"item\": [\n        {\n          \"linkId\": \"requestedAccess_accessLevel\",\n          \"text\": \"Requested access level\",\n          \"answer\": [\n            {\n              \"valueCoding\": {\n                \"system\": \"https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess\",\n                \"code\": \"APPT\",\n                \"display\": \"Appointment Booking\"\n              }\n            },\n            {\n              \"valueCoding\": {\n                \"system\": \"https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess\",\n                \"code\": \"VACC\",\n                \"display\": \"Vaccination Records\"\n              }\n            }\n          ]\n        },\n        {\n          \"linkId\": \"requestedAccess_reasonsForAccess\",\n          \"text\": \"Reason for access\",\n          \"answer\": [\n            {\n              \"valueCoding\": {\n                \"system\": \"https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-ReasonForAccess\",\n                \"code\": \"PRAC\",\n                \"display\": \"Practical Reasons\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_base_url}}/QuestionnaireResponse",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"QuestionnaireResponse"
+							]
+						},
+						"description": "Example of an adult to adult access request where the patient is the applicant with the reference code returned"
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const expectedResponseBody = {",
+							"    \"resourceType\": \"OperationOutcome\",",
+							"    \"issue\": [",
+							"        {",
+							"            \"severity\": \"information\",",
+							"            \"code\": \"informational\",",
+							"            \"details\": {",
+							"                \"coding\": [",
+							"                    {",
+							"                        \"code\": \"HDJ2123F\",",
+							"                        \"display\": \"HDJ2123F\"",
+							"                    }",
+							"                ]",
+							"            }",
+							"        }",
+							"    ]",
+							"};",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response has the correct body\", () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.eql(expectedResponseBody);",
+							"});"
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Response has FHIR content type\", () => {",
+					"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/fhir+json');",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api_base_url",
+			"value": "https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4",
+			"type": "string"
+		}
+	]
+}
