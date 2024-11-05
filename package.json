@@ -4,7 +4,7 @@
   "description": "OAS (Swagger v3) API Definition for Template API",
   "scripts": {
     "lint": "node_modules/.bin/openapi-generator-cli validate -i specification/validated-relationships-service-api.yaml",
-    "publish": "./node_modules/.bin/openapi-generator-cli generate -i specification/validated-relationships-service-api.yaml --generator-key v3.0  -g openapi -o build && rm openapitools.json && mv build/openapi.json build/validated-relationships-service-api.json",
+    "publish": "./node_modules/.bin/openapi-generator-cli generate -i specification/validated-relationships-service-api.yaml --generator-key v3.0  -g openapi -o build && rm openapitools.json && cat build/openapi.json | poetry run python scripts/set_version.py > build/validated-relationships-service-api.json",
     "check-licenses": "node_modules/.bin/license-checker --failOn GPL --failOn LGPL"
   },
   "author": "NHS Digital",
