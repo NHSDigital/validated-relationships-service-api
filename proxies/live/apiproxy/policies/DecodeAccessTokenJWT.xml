@@ -1,0 +1,4 @@
+<DecodeJWT async="false" continueOnError="false" enabled="true" name="DecodeAccessTokenJWT">
+  <DisplayName>DecodeAccessTokenJWT</DisplayName>
+  <Source>accesstoken.id_token</Source>
+</DecodeJWT>

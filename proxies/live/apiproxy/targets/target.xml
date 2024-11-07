@@ -15,6 +15,9 @@
                 <Name>AddProxyURL</Name>
             </Step>
             <Step>
+                <Name>DecodeAccessTokenJWT</Name>
+            </Step>
+            <Step>
                 <Name>AddUserAuthHeaders</Name>
             </Step>
             <Step>
