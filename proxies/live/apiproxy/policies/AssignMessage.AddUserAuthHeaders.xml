@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<AssignMessage async="false" continueOnError="false" enabled="true" name="AddUserAuthLevel">
-    <DisplayName>Add User Auth Level</DisplayName>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AddUserAuthHeaders">
+    <DisplayName>Add User Auth Headers</DisplayName>
     <Add>
         <Headers>
             <Header name="accesstoken.auth_level">{toUpperCase(accesstoken.auth_level)}</Header>
+            <Header name="accesstoken.auth_user_id">{accesstoken.auth_user_id}</Header>
+            <Header name="accesstoken.auth_id_token">{accesstoken.id_token}</Header>
         </Headers>
     </Add>
     <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
