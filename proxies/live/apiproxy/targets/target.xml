@@ -15,10 +15,10 @@
                 <Name>AddProxyURL</Name>
             </Step>
             <Step>
-                <Name>AddUserAuthLevel</Name>
+                <Name>DecodeAccessTokenJWT</Name>
             </Step>
             <Step>
-                <Name>AddUserNHSNumber</Name>
+                <Name>AddUserAuthHeaders</Name>
             </Step>
             <Step>
                 <Name>RaiseFault.415UnsupportedMediaType</Name>
