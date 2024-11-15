@@ -14,5 +14,8 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Install dependencies
+        run: npm install -g
+
       - name: Run Schema Validation
-        run: schema validate --filePath specification/examples/responses/GET_Consent/adults-consenting.yaml --schema specification/validated-relationships-service-api.yaml --schema-obj "#/components/schemas/ConsentBundle"
+        run: npx run schema validate --filePath specification/examples/responses/GET_Consent/adults-consenting.yaml --schema specification/validated-relationships-service-api.yaml --schema-obj "#/components/schemas/ConsentBundle"
