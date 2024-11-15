@@ -1,0 +1,18 @@
+name: Schema Checks
+
+on: pull_request
+
+jobs:
+  schema-validate-examples:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Run Schema Validation
+        run: schema validate --filePath specification/examples/responses/GET_Consent/adults-consenting.yaml --schema specification/validated-relationships-service-api.yaml --schema-obj "#/components/schemas/ConsentBundle"

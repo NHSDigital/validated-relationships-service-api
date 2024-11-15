@@ -15,5 +15,8 @@
     "apigeetool": "^0.16.4",
     "license-checker": "^25.0.1",
     "minimist": "^1.2.2"
+  },
+  "dependencies": {
+    "yaml-schema-validator": "^1.2.3"
   }
 }
