@@ -20,6 +20,6 @@ jobs:
       - name: Run Schema Validation
         run: npm run validate-example
         env:
-          EXAMPLE_PATH: specification/examples/responses/GET_Consent/adults-consenting.yaml
-          SCHEMA_PATH: specification/validated-relationships-service-api.yaml
+          EXAMPLE_PATH: ./specification/examples/responses/GET_Consent/adults-consenting.yaml
+          SCHEMA_PATH: ./specification/validated-relationships-service-api.yaml
           SCHEMA_OBJECT: "#/components/schemas/ConsentBundle"
