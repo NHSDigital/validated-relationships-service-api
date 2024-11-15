@@ -108,3 +108,13 @@ def post_questionnaire_response() -> Union[dict, tuple]:
     except Exception as e:
         logger.error(e)
         return generate_response(load_json_file(ERROR_RESPONSE), 500)
+
+@app.route(f"/{COMMON_PATH}/Consent", methods=["GET"])
+def get_consent() -> Union[dict, tuple]:
+    """Sandbox API for GET /Consent
+
+    Returns:
+        Union[dict, tuple]: Response for GET /Consent
+    """
+    
+
