@@ -22,4 +22,4 @@ jobs:
         env:
           EXAMPLE_PATH: "specification/examples/responses/GET_Consent/adults-consenting.yaml"
           SCHEMA_PATH: "specification/validated-relationships-service-api.yaml"
-          SCHEMA_OBJECT: "#/components/schemas/ConsentBundle"
+          SCHEMA_OBJECT: "#/components/schemas/Consent"
