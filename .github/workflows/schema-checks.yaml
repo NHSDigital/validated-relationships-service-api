@@ -18,4 +18,8 @@ jobs:
         run: npm install -g
 
       - name: Run Schema Validation
-        run: npx run schema validate --filePath specification/examples/responses/GET_Consent/adults-consenting.yaml --schema specification/validated-relationships-service-api.yaml --schema-obj "#/components/schemas/ConsentBundle"
+        run: npm run validate-example
+        env:
+          EXAMPLE_PATH: specification/examples/responses/GET_Consent/adults-consenting.yaml
+          SCHEMA_PATH: specification/validated-relationships-service-api.yaml
+          SCHEMA_OBJECT: "#/components/schemas/ConsentBundle"

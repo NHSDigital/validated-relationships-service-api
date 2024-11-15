@@ -5,7 +5,8 @@
   "scripts": {
     "lint": "node_modules/.bin/openapi-generator-cli validate -i specification/validated-relationships-service-api.yaml",
     "publish": "./node_modules/.bin/openapi-generator-cli generate -i specification/validated-relationships-service-api.yaml --generator-key v3.0  -g openapi -o build && rm openapitools.json && mv build/openapi.json build/validated-relationships-service-api.json",
-    "check-licenses": "node_modules/.bin/license-checker --failOn GPL --failOn LGPL"
+    "check-licenses": "node_modules/.bin/license-checker --failOn GPL --failOn LGPL",
+    "validate-example" :"schema validate --filePath $EXAMPLE_PATH --schema $SCHEMA_PATH --schema-obj $SCHEMA_OBJECT"
   },
   "author": "NHS Digital",
   "license": "MIT",
@@ -14,9 +15,7 @@
     "@openapitools/openapi-generator-cli": "^2.15.3",
     "apigeetool": "^0.16.4",
     "license-checker": "^25.0.1",
-    "minimist": "^1.2.2"
-  },
-  "dependencies": {
+    "minimist": "^1.2.2",
     "yaml-schema-validator": "^1.2.3"
   }
 }
