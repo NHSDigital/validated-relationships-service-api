@@ -2,6 +2,7 @@ from json import dumps, load
 from typing import Any, Optional
 
 from flask import Response, Request
+from yaml import CLoader as Loader
 from yaml import load as yaml_load
 from .constants import (
     EMPTY_RESPONSE,
@@ -176,5 +177,7 @@ def generate_response_from_example(example_path: str, status_code: int) -> dict:
         Response: Resultant Response object based on input.
     """
     with open(example_path, "r") as file:
-        content = yaml_load(file)
+        content = yaml_load(file, Loader)
+    # Value of response is always in the first key, then within value
+    content = content[list(content.keys())[0]]["value"]
     return Response(dumps(content), status=status_code, mimetype=FHIR_MIMETYPE)
