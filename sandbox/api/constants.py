@@ -28,5 +28,13 @@ QUESTIONNAIRE_RESPONSE_SUCCESS = (
 PATIENT_IDENTIFIERS = ["9000000017", "9000000033"]
 RELATED_IDENTIFIERS = ["9000000009", "9000000025"]
 
+CONSENT_PERFORMER = "Consent:performer"
+
 # Example files
+
+# Common examples
 INTERNAL_SERVER_ERROR_EXAMPLE = "./api/examples/errors/internal-server-error.yaml"
+# Consent examples
+CONSENT__ADULT_CONSENTING_EXAMPLE = "./api/examples/GET_Consent/adults-consenting.yaml"
+CONSENT__MIXED_EXAMPLE = "./api/examples/GET_Consent/mixed.yaml"
+CONSENT__MOTHER_CHILD_EXAMPLE = "./api/examples/GET_Consent/mother-child.yaml"

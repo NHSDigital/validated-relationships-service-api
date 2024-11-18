@@ -23,6 +23,10 @@ from .constants import (
     VALIDATE_RELATIONSHIP_INCLUDE_009,
     VALIDATE_RELATIONSHIP_INCLUDE_025,
     INTERNAL_SERVER_ERROR_EXAMPLE,
+    CONSENT__ADULT_CONSENTING_EXAMPLE,
+    CONSENT__MIXED_EXAMPLE,
+    CONSENT__MOTHER_CHILD_EXAMPLE,
+    CONSENT_PERFORMER,
 )
 
 app = Flask(__name__)
@@ -122,8 +126,30 @@ def get_consent() -> Union[dict, tuple]:
         Union[dict, tuple]: Response for GET /Consent
     """
     try:
-        return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)
+        performer_identifier = remove_system(request.args.get("performer:identifier"))
+        status = request.args.get("status")
+        _include = request.args.get("_include")
 
+        if (
+            performer_identifier == "9000000017"
+            and status == "active"
+            and _include == CONSENT_PERFORMER
+        ):
+            return generate_response_from_example(
+                CONSENT__ADULT_CONSENTING_EXAMPLE, 200
+            )
+        elif (
+            performer_identifier == "9000000016"
+            and status == "active"
+            and _include == CONSENT_PERFORMER
+        ):
+            return generate_response_from_example(CONSENT__MIXED_EXAMPLE, 200)
+        elif (
+            performer_identifier == "9000000015"
+            and status == "active"
+            and _include == CONSENT_PERFORMER
+        ):
+            return generate_response_from_example(CONSENT__MOTHER_CHILD_EXAMPLE, 200)
         # else:
         #     logger.error(e)
         #     return generate_response(load_json_file(ERROR_RESPONSE), 400)
