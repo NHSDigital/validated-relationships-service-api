@@ -4,14 +4,6 @@ from typing import Union
 from flask import Flask, request
 
 from .utils import (
-    ERROR_RESPONSE,
-    LIST_RELATIONSHIP,
-    LIST_RELATIONSHIP_INCLUDE,
-    QUESTIONNAIRE_RESPONSE_SUCCESS,
-    VALIDATE_RELATIONSHIP_009,
-    VALIDATE_RELATIONSHIP_025,
-    VALIDATE_RELATIONSHIP_INCLUDE_009,
-    VALIDATE_RELATIONSHIP_INCLUDE_025,
     check_for_empty,
     check_for_errors,
     check_for_list,
@@ -19,6 +11,18 @@ from .utils import (
     generate_response,
     load_json_file,
     remove_system,
+    generate_response_from_example,
+)
+from .constants import (
+    INTERNAL_ERROR_RESPONSE,
+    LIST_RELATIONSHIP,
+    LIST_RELATIONSHIP_INCLUDE,
+    QUESTIONNAIRE_RESPONSE_SUCCESS,
+    VALIDATE_RELATIONSHIP_009,
+    VALIDATE_RELATIONSHIP_025,
+    VALIDATE_RELATIONSHIP_INCLUDE_009,
+    VALIDATE_RELATIONSHIP_INCLUDE_025,
+    INTERNAL_SERVER_ERROR_EXAMPLE,
 )
 
 app = Flask(__name__)
@@ -92,7 +96,7 @@ def get_related_persons() -> Union[dict, tuple]:
 
     except Exception as e:
         logger.error(e)
-        return generate_response(load_json_file(ERROR_RESPONSE), 500)
+        return generate_response(load_json_file(INTERNAL_ERROR_RESPONSE), 500)
 
 
 @app.route(f"/{COMMON_PATH}/QuestionnaireResponse", methods=["POST"])
@@ -107,7 +111,8 @@ def post_questionnaire_response() -> Union[dict, tuple]:
         return generate_response(load_json_file(QUESTIONNAIRE_RESPONSE_SUCCESS), 200)
     except Exception as e:
         logger.error(e)
-        return generate_response(load_json_file(ERROR_RESPONSE), 500)
+        return generate_response(load_json_file(INTERNAL_ERROR_RESPONSE), 500)
+
 
 @app.route(f"/{COMMON_PATH}/Consent", methods=["GET"])
 def get_consent() -> Union[dict, tuple]:
@@ -116,5 +121,13 @@ def get_consent() -> Union[dict, tuple]:
     Returns:
         Union[dict, tuple]: Response for GET /Consent
     """
-    
+    try:
+        return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)
 
+        # else:
+        #     logger.error(e)
+        #     return generate_response(load_json_file(ERROR_RESPONSE), 400)
+
+    except Exception as e:
+        logger.error(e)
+        return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)
