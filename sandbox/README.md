@@ -2,28 +2,27 @@
 
 This folder contains a sandbox API for initial development
 
-
-For more information about building sandbox APIs see the [API Producer Zone confluence](https://nhsd-confluence.digital.nhs.uk/display/APM/Setting+up+your+API+sandbox ).
+For more information about building sandbox APIs see the [API Producer Zone confluence](https://nhsd-confluence.digital.nhs.uk/display/APM/Setting+up+your+API+sandbox).
 
 ## Table of Contents
 
-- [Sandbox](#sandbox)
-  - [Table of Contents](#table-of-contents)
-  - [Prerequisites](#prerequisites)
-  - [Quick Start](#quick-start)
-    - [Installing dependencies](#installing-dependencies)
-    - [Starting the API](#starting-the-api)
-  - [Development](#development)
-    - [Starting the API with Hot Reloading](#starting-the-api-with-hot-reloading)
-    - [Testing](#testing)
-      - [Unit Tests](#unit-tests)
-    - [Useful commands](#useful-commands)
+-   [Sandbox](#sandbox)
+    -   [Table of Contents](#table-of-contents)
+    -   [Prerequisites](#prerequisites)
+    -   [Quick Start](#quick-start)
+        -   [Installing dependencies](#installing-dependencies)
+        -   [Starting the API](#starting-the-api)
+    -   [Development](#development)
+        -   [Starting the API with Hot Reloading](#starting-the-api-with-hot-reloading)
+        -   [Testing](#testing)
+            -   [Unit Tests](#unit-tests)
+        -   [Useful commands](#useful-commands)
 
 ## Prerequisites
 
-- Python 3.8
-- [Poetry](https://python-poetry.org/docs/)
-- [Docker](https://docs.docker.com/get-docker/)
+-   Python 3.8
+-   [Poetry](https://python-poetry.org/docs/)
+-   [Docker](https://docs.docker.com/get-docker/)
 
 ## Quick Start
 
@@ -52,7 +51,6 @@ To run the API with hot reloading use `make start-dev`
 #### Unit Tests
 
 Unit tests can be run using `make test`
-
 
 ### Useful commands
 

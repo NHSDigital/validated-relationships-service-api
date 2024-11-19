@@ -1,37 +1,19 @@
-from json import load, dumps
-from typing import Optional, Any
+from json import dumps, load
+from typing import Any, Optional
 
-from flask import request, Response
-
-NOT_FOUND = "./api/responses/not_found.json"
-EMPTY_RESPONSE = "./api/responses/GET_RelatedPerson/empty_response_9000000033.json"
-LIST_RELATIONSHIP = (
-    "./api/responses/GET_RelatedPerson/list_relationship_9000000017.json"
-)
-LIST_RELATIONSHIP_INCLUDE = (
-    "./api/responses/GET_RelatedPerson/list_relationship_include_9000000017.json"
-)
-VALIDATE_RELATIONSHIP_009 = (
-    "./api/responses/GET_RelatedPerson/verify_relationship_9000000009.json"
-)
-VALIDATE_RELATIONSHIP_INCLUDE_009 = (
-    "./api/responses/GET_RelatedPerson/verify_relationship_include_9000000009.json"
-)
-VALIDATE_RELATIONSHIP_025 = (
-    "./api/responses/GET_RelatedPerson/verify_relationship_9000000025.json"
-)
-VALIDATE_RELATIONSHIP_INCLUDE_025 = (
-    "./api/responses/GET_RelatedPerson/verify_relationship_include_9000000025.json"
-)
-ERROR_RESPONSE = "./api/responses/internal_server_error.json"
-INCLUDE_FLAG = "RelatedPerson:patient"
-
-QUESTIONNAIRE_RESPONSE_SUCCESS = (
-    "./api/responses/POST_QuestionnaireResponse/questionnaire_response_success.json"
+from flask import Response, Request
+from yaml import CLoader as Loader
+from yaml import load as yaml_load
+from .constants import (
+    EMPTY_RESPONSE,
+    PATIENT_IDENTIFIERS,
+    NOT_FOUND,
+    INCLUDE_FLAG,
+    RELATED_IDENTIFIERS,
 )
 
-PATIENT_IDENTIFIERS = ["9000000017", "9000000033"]
-RELATED_IDENTIFIERS = ["9000000009", "9000000025"]
+
+FHIR_MIMETYPE = "application/fhir+json"
 
 
 def load_json_file(file_name: str) -> dict:
@@ -40,11 +22,11 @@ def load_json_file(file_name: str) -> dict:
         return load(file)
 
 
-def check_for_errors(request: request) -> Optional[tuple]:
+def check_for_errors(request: Request) -> Optional[tuple]:
     """Check for errors in the request headers and arguments
 
     Args:
-        request (request): Flask request object
+        request (Request): Flask request object
 
     Returns:
         Optional[tuple]: Tuple with response and status code if error is found
@@ -164,13 +146,38 @@ def generate_response(content: str, status: int = 200):
     Returns:
         Response: Resultant Response object based on input.
     """
-    return Response(dumps(content), status=status, mimetype="application/fhir+json")
+    return Response(dumps(content), status=status, mimetype=FHIR_MIMETYPE)
 
 
 def remove_system(identifier: Any) -> str:
+    """Removes the system from an identifier if it exists
+
+    Args:
+        identifier (Any): Identifier to remove system from
+
+    Returns:
+        str: Identifier without system
+    """
     if isinstance(identifier, str):
         if "|" in identifier:
             # Identifier includes system
             return identifier.split("|", maxsplit=1)[1]
         return identifier
     return ""
+
+
+def generate_response_from_example(example_path: str, status_code: int) -> Response:
+    """Converts an example file (yaml) to a response
+
+    Args:
+        example_path (str): Path to the example file
+        status_code (int): Status code for the response
+
+    Returns:
+        response: Resultant Response object based on input.
+    """
+    with open(example_path, "r") as file:
+        content = yaml_load(file, Loader)
+    # Value of response is always in the first key, then within value
+    content = content[list(content.keys())[0]]["value"]
+    return Response(dumps(content), status=status_code, mimetype=FHIR_MIMETYPE)
