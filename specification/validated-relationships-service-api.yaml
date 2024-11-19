@@ -355,7 +355,11 @@ paths:
 
           ## Sandbox test scenarios
 
-          For details of sandbox test scenarios, or to try out the sandbox using our 'Try it out' feature, see the documentation for each endpoint.
+          | Scenario                                                                   | Request                                                                                      | Response                                                                                                     |
+          | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+          | A single active proxy relationship for two consenting adults with capacity | `performer:identifier`=`9000000010` and `status`=`active` and `_include`=`Consent:performer` | HTTP Status 200 Bundle containing a single active proxy relationship for two consenting adults with capacity |
+          | Multiple active proxy relationships with varying legal basis'              | `performer:identifier`=`9000000017` and `status`=`active` and `_include`=`Consent:performer` | HTTP Status 200 A Bundle containing multiple active proxy relationships with varying legal basis'            |
+          | A single active proxy relationship for a birth mother & child              | `performer:identifier`=`9000000019` and `status`=`active` and `_include`=`Consent:performer` | HTTP Status 200 Bundle containing a single active proxy relationship for a birth mother & child              |
 
         operationId: get-consent
         parameters:

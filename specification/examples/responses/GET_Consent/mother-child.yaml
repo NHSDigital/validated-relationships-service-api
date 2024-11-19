@@ -12,7 +12,7 @@ ConsentMotherChildBundle:
           id: BE974742
           identifier:
             - system: "https://fhir.nhs.uk/Id/nhs-number"
-              value: "9000000017"
+              value: "9000000019"
             - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
               value: "ABC0000001"
           patient:
@@ -86,7 +86,7 @@ ConsentMotherChildBundle:
           performer:
             - identifier:
                 system: "https://fhir.nhs.uk/Id/nhs-number"
-                value: "9000000017"
+                value: "9000000019"
           policy:
             - authority: "https://www.england.nhs.uk"
               uri: "<REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD>"

@@ -144,17 +144,17 @@ def test_questionnaire_response(
     ("request_args,response_file_name,status_code"),
     [
         (
-            "performer:identifier=9000000017&status=active&_include=Consent:performer",
+            "performer:identifier=9000000010&status=active&_include=Consent:performer",
             "./api/examples/GET_Consent/adults-consenting.yaml",
             200,
         ),
         (
-            "performer:identifier=9000000016&status=active&_include=Consent:performer",
+            "performer:identifier=9000000017&status=active&_include=Consent:performer",
             "./api/examples/GET_Consent/mixed.yaml",
             200,
         ),
         (
-            "performer:identifier=9000000015&status=active&_include=Consent:performer",
+            "performer:identifier=9000000019&status=active&_include=Consent:performer",
             "./api/examples/GET_Consent/mother-child.yaml",
             200,
         ),
