@@ -1,8 +1,14 @@
+from json import dumps
 from unittest.mock import MagicMock, patch
 
 import pytest
+from flask import Response
 
-from .conftest import RELATED_PERSON_API_ENDPOINT, QUESTIONNAIRE_RESPONSE_API_ENDPOINT
+from .conftest import (
+    CONSENT_API_ENDPOINT,
+    QUESTIONNAIRE_RESPONSE_API_ENDPOINT,
+    RELATED_PERSON_API_ENDPOINT,
+)
 
 UTILS_FILE_PATH = "sandbox.api.utils"
 APP_FILE_PATH = "sandbox.api.app"
@@ -94,7 +100,7 @@ def test_related_person(
     client: object,
     status_code: int,
 ) -> None:
-    """Test related_persons endpoint with identifier only."""
+    """Test related_persons endpoint."""
     # Arrange
     mock_load_json_file.return_value = expected_body = {"data": "mocked"}
     # Act
@@ -132,3 +138,76 @@ def test_questionnaire_response(
     mock_load_json_file.assert_called_once_with(response_file_name)
     assert response.status_code == status_code
     assert response.json == expected_body
+
+
+@pytest.mark.parametrize(
+    ("request_args,response_file_name,status_code"),
+    [
+        (
+            "performer:identifier=9000000017&status=active&_include=Consent:performer",
+            "./api/examples/GET_Consent/adults-consenting.yaml",
+            200,
+        ),
+        (
+            "performer:identifier=9000000016&status=active&_include=Consent:performer",
+            "./api/examples/GET_Consent/mixed.yaml",
+            200,
+        ),
+        (
+            "performer:identifier=9000000015&status=active&_include=Consent:performer",
+            "./api/examples/GET_Consent/mother-child.yaml",
+            200,
+        ),
+    ],
+)
+@patch(f"{APP_FILE_PATH}.generate_response_from_example")
+def test_consent(
+    mock_generate_response_from_example: MagicMock,
+    request_args: str,
+    response_file_name: str,
+    client: object,
+    status_code: int,
+) -> None:
+    """Test Consent endpoint."""
+    mock_generate_response_from_example.return_value = mock_response = Response(
+        dumps({"data": "abc"}), status_code
+    )
+    # Act
+    response = client.get(f"{CONSENT_API_ENDPOINT}?{request_args}")
+    # Assert
+    mock_generate_response_from_example.assert_called_once_with(response_file_name, 200)
+    assert response.status_code == status_code
+    assert response.json == mock_response.json
+
+
+@patch(f"{APP_FILE_PATH}.load_json_file")
+def test_consent__400_bad_request(
+    mock_load_json_file: MagicMock, client: object
+) -> None:
+    """Test Consent endpoint."""
+    mock_load_json_file.return_value = {"data": "mocked"}
+    # Act
+    client.get(
+        f"{CONSENT_API_ENDPOINT}?performer:identifier=9000000012&status=active&_include=Consent:performer"
+    )
+    # Assert
+    mock_load_json_file.assert_called_once_with("./api/responses/not_found.json")
+
+
+@patch(f"{APP_FILE_PATH}.remove_system")
+@patch(f"{APP_FILE_PATH}.generate_response_from_example")
+def test_consent__500_internal_server_error(
+    mock_generate_response_from_example: MagicMock,
+    mock_remove_system: MagicMock,
+    client: object,
+) -> None:
+    """Test Consent endpoint."""
+    mock_remove_system.side_effect = Exception("Test exception")
+    # Act
+    client.get(
+        f"{CONSENT_API_ENDPOINT}?performer:identifier=9000000015&status=active&_include=Consent:performer"
+    )
+    # Assert
+    mock_generate_response_from_example.assert_called_once_with(
+        "./api/examples/errors/internal-server-error.yaml", 500
+    )

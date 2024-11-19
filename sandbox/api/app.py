@@ -3,30 +3,31 @@ from typing import Union
 
 from flask import Flask, request
 
+from .constants import (
+    CONSENT__ADULT_CONSENTING_EXAMPLE,
+    CONSENT__MIXED_EXAMPLE,
+    CONSENT__MOTHER_CHILD_EXAMPLE,
+    CONSENT_PERFORMER,
+    INTERNAL_ERROR_RESPONSE,
+    INTERNAL_SERVER_ERROR_EXAMPLE,
+    LIST_RELATIONSHIP,
+    LIST_RELATIONSHIP_INCLUDE,
+    NOT_FOUND,
+    QUESTIONNAIRE_RESPONSE_SUCCESS,
+    VALIDATE_RELATIONSHIP_009,
+    VALIDATE_RELATIONSHIP_025,
+    VALIDATE_RELATIONSHIP_INCLUDE_009,
+    VALIDATE_RELATIONSHIP_INCLUDE_025,
+)
 from .utils import (
     check_for_empty,
     check_for_errors,
     check_for_list,
     check_for_validate,
     generate_response,
+    generate_response_from_example,
     load_json_file,
     remove_system,
-    generate_response_from_example,
-)
-from .constants import (
-    INTERNAL_ERROR_RESPONSE,
-    LIST_RELATIONSHIP,
-    LIST_RELATIONSHIP_INCLUDE,
-    QUESTIONNAIRE_RESPONSE_SUCCESS,
-    VALIDATE_RELATIONSHIP_009,
-    VALIDATE_RELATIONSHIP_025,
-    VALIDATE_RELATIONSHIP_INCLUDE_009,
-    VALIDATE_RELATIONSHIP_INCLUDE_025,
-    INTERNAL_SERVER_ERROR_EXAMPLE,
-    CONSENT__ADULT_CONSENTING_EXAMPLE,
-    CONSENT__MIXED_EXAMPLE,
-    CONSENT__MOTHER_CHILD_EXAMPLE,
-    CONSENT_PERFORMER,
 )
 
 app = Flask(__name__)
@@ -150,10 +151,8 @@ def get_consent() -> Union[dict, tuple]:
             and _include == CONSENT_PERFORMER
         ):
             return generate_response_from_example(CONSENT__MOTHER_CHILD_EXAMPLE, 200)
-        # else:
-        #     logger.error(e)
-        #     return generate_response(load_json_file(ERROR_RESPONSE), 400)
-
+        else:
+            return generate_response(load_json_file(NOT_FOUND), 400)
     except Exception as e:
         logger.error(e)
         return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)

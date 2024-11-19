@@ -166,7 +166,7 @@ def remove_system(identifier: Any) -> str:
     return ""
 
 
-def generate_response_from_example(example_path: str, status_code: int) -> dict:
+def generate_response_from_example(example_path: str, status_code: int) -> Response:
     """Converts an example file (yaml) to a response
 
     Args:
@@ -174,7 +174,7 @@ def generate_response_from_example(example_path: str, status_code: int) -> dict:
         status_code (int): Status code for the response
 
     Returns:
-        Response: Resultant Response object based on input.
+        response: Resultant Response object based on input.
     """
     with open(example_path, "r") as file:
         content = yaml_load(file, Loader)
