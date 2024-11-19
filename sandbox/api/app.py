@@ -132,7 +132,7 @@ def get_consent() -> Union[dict, tuple]:
         _include = request.args.get("_include")
 
         if (
-            performer_identifier == "9000000017"
+            performer_identifier == "9000000010"
             and status == "active"
             and _include == CONSENT_PERFORMER
         ):
@@ -140,13 +140,13 @@ def get_consent() -> Union[dict, tuple]:
                 CONSENT__ADULT_CONSENTING_EXAMPLE, 200
             )
         elif (
-            performer_identifier == "9000000016"
+            performer_identifier == "9000000017"
             and status == "active"
             and _include == CONSENT_PERFORMER
         ):
             return generate_response_from_example(CONSENT__MIXED_EXAMPLE, 200)
         elif (
-            performer_identifier == "9000000015"
+            performer_identifier == "9000000019"
             and status == "active"
             and _include == CONSENT_PERFORMER
         ):
