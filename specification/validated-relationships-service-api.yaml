@@ -650,7 +650,6 @@ components:
                                   enum: ['Parent', 'Personal relationship with the patient', 'Best interest decision made on behalf of the patient (Mental Capacity Act 2005)']
 
               - type: object
-                description: The relationship of the RelatedPerson to the Patient. For example, if the Patient is a child, and the RelatedPerson is the mother, the relationship would be PRN (parent).
                 required:
                   - linkId
                   - text
@@ -663,6 +662,7 @@ components:
                     type: string
                   answer:
                     type: array
+                    description: The relationship of the RelatedPerson to the Patient. For example, if the Patient is a child, and the RelatedPerson is the mother, the relationship would be PRN (parent).
                     minItems: 1
                     maxItems: 1
                     items:
