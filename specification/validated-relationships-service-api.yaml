@@ -662,7 +662,7 @@ components:
                     type: string
                   answer:
                     type: array
-                    description: The relationship of the RelatedPerson to the Patient. For example, if the Patient is a child, and the RelatedPerson is the mother, the relationship would be PRN (parent).
+                    description: The directionality of the relationship is from the RelatedPerson (proxy) to the Patient. For example, if the Patient is a child, and the RelatedPerson is the mother, the relationship would be PRN (parent). Crucially, the relationship type is defined by the role that the proxy plays in the relationship.
                     minItems: 1
                     maxItems: 1
                     items:
