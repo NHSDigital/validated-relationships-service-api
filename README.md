@@ -1,6 +1,6 @@
 # validated-relationships-service-api
 
-This is a RESTful FHIR API for the [Validated Relationship Service API](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service).
+This is a RESTful FHIR API for the [Validated Relationship Service](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service).
 
 Consumers of the API will find developer documentation on the [NHS Digital Developer Hub](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service).
 
@@ -8,12 +8,12 @@ This repository does _not_ include the Validated Relationship Service FHIR API b
 
 ## Table of Contents
 
--   [validated-relationships-service-api](#validated-relationships-service-api)
-    -   [Table of Contents](#table-of-contents)
-    -   [Repository Structure](#repository-structure)
-    -   [Contributing](#contributing)
-    -   [Development \& Testing](#development--testing)
-        -   [Licensing](#licensing)
+- [validated-relationships-service-api](#validated-relationships-service-api)
+  - [Table of Contents](#table-of-contents)
+  - [Repository Structure](#repository-structure)
+  - [Contributing](#contributing)
+  - [Development \& Testing](#development--testing)
+    - [Licensing](#licensing)
 
 ## Repository Structure
 
@@ -30,7 +30,7 @@ Contributions to this project are welcome from anyone, providing that they confo
 
 ## Development & Testing
 
-All development commands and documentation can be found in [DEVELOPMENT_GUIDE.md](./DEVELOPMENT_GUIDE.md).
+Development documentation can be found in [DEVELOPMENT_GUIDE.md](./DEVELOPMENT_GUIDE.md).
 
 ### Licensing
 
