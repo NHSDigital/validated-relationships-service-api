@@ -1,5 +1,8 @@
 # Contribution Guidelines
 
+> [!WARNING]
+> Some of the documentation and links in this file are specific to the maintainers of this repository and are only available to NHS England staff.
+
 -   [Contribution Guidelines](#contribution-guidelines)
     -   [Raising an Issue](#raising-an-issue)
     -   [Contributing code](#contributing-code)
@@ -47,8 +50,6 @@ Branch names should be of the format:
 
 `short_issue_description`
 
-Multiple branches are permitted for the same ticket.
-
 ### Commit messages
 
 #### Developers within the NHS
@@ -67,7 +68,7 @@ limited to 80 columns and spanning as many lines as you need.
 Commit messages should be formatted as follows:
 
 ```
-APM-NNN Summary of changes
+Summary of changes
 
 Longer description of changes if explaining rationale is necessary,
 limited to 80 columns and spanning as many lines as you need.

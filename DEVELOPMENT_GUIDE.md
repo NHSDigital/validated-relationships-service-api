@@ -3,7 +3,7 @@
 This documentation is intended for developers to develop the schema, sandbox and proxies. It may be used by developers working within the NHS Digital organisation and outside contributors.
 
 > [!WARNING]
-> Some of the documentation and links are specific to the maintainers of this repository and are only available to NHS England staff.
+> Some of the documentation and links in this file are specific to the maintainers of this repository and are only available to NHS England staff.
 
 ## Table of Contents
 
