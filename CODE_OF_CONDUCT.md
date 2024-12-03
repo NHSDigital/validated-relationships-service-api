@@ -11,7 +11,7 @@ appearance, race, religion, or sexual identity and orientation.
 
 ## Our Standards
 
-Examples of behavior that contributes to creating a positive environment
+Examples of behaviour that contributes to creating a positive environment
 include:
 
 -   Using welcoming and inclusive language
@@ -20,7 +20,7 @@ include:
 -   Focusing on what is best for the community
 -   Showing empathy towards other community members
 
-Examples of unacceptable behavior by participants include:
+Examples of unacceptable behaviour by participants include:
 
 -   The use of sexualized language or imagery and unwelcome sexual attention or
     advances

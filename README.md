@@ -8,12 +8,12 @@ This repository does _not_ include the Validated Relationship Service FHIR API b
 
 ## Table of Contents
 
-- [validated-relationships-service-api](#validated-relationships-service-api)
-  - [Table of Contents](#table-of-contents)
-  - [Repository Structure](#repository-structure)
-  - [Contributing](#contributing)
-  - [Development \& Testing](#development--testing)
-    - [Licensing](#licensing)
+-   [validated-relationships-service-api](#validated-relationships-service-api)
+    -   [Table of Contents](#table-of-contents)
+    -   [Repository Structure](#repository-structure)
+    -   [Contributing](#contributing)
+    -   [Development \& Testing](#development--testing)
+        -   [Licensing](#licensing)
 
 ## Repository Structure
 
