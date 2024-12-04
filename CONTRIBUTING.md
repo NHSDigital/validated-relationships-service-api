@@ -1,11 +1,18 @@
 # Contribution Guidelines
 
+> [!WARNING]
+> Some of the documentation and links in this file are specific to the maintainers of this repository and are only available to NHS England staff.
+
 -   [Contribution Guidelines](#contribution-guidelines)
     -   [Raising an Issue](#raising-an-issue)
     -   [Contributing code](#contributing-code)
         -   [Merge responsibility](#merge-responsibility)
         -   [Branch naming](#branch-naming)
+            -   [Developers within the NHS](#developers-within-the-nhs)
+            -   [Developers outside of the NHS](#developers-outside-of-the-nhs)
         -   [Commit messages](#commit-messages)
+            -   [Developers within the NHS](#developers-within-the-nhs-1)
+            -   [Developers outside of the NHS](#developers-outside-of-the-nhs-1)
 
 ## Raising an Issue
 
@@ -28,18 +35,40 @@ so please explain why the changes need to be made (unless it is self-evident).
 
 ### Branch naming
 
+#### Developers within the NHS
+
 Branch names should be of the format:
 
-`apm-nnn-short-issue-description`
+`NPA-nnnn_short_issue_description`
+e.g. `NPA-1234_update_readme`
 
 Multiple branches are permitted for the same ticket.
 
+#### Developers outside of the NHS
+
+Branch names should be of the format:
+
+`short_issue_description`
+
 ### Commit messages
+
+#### Developers within the NHS
 
 Commit messages should be formatted as follows:
 
 ```
 APM-NNN Summary of changes
+
+Longer description of changes if explaining rationale is necessary,
+limited to 80 columns and spanning as many lines as you need.
+```
+
+#### Developers outside of the NHS
+
+Commit messages should be formatted as follows:
+
+```
+Summary of changes
 
 Longer description of changes if explaining rationale is necessary,
 limited to 80 columns and spanning as many lines as you need.

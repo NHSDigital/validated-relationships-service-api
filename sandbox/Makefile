@@ -4,7 +4,7 @@ dirname := $(notdir $(patsubst %/,%,$(CURDIR)))
 install: # Installs dependencies using poetry.
 	poetry install --no-root
 
-list:
+list: # List of make targets
 	@grep '^[^#[:space:]].*:' Makefile
 
 build: # Build the Docker image to simulate ECS build
