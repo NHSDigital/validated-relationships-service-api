@@ -19,12 +19,12 @@ flake8 = "^3.7.9"
 black = "^24.3.0"
 
 [tool.poetry.group.test.dependencies]
-pytest-nhsd-apim = "^3.3.2"
+pytest-nhsd-apim = "^4.0.0"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.7.9"
 black = "^24.3.0"
-pip-licenses = "^4.4.0"
+pip-licenses = "^4.5.1"
 jinja2 = "^3.1.3"
 pyyaml = "^6.0.1"
 docopt = "^0.6.2"
