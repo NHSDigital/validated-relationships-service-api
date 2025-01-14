@@ -1,0 +1,192 @@
+ConsentMultipleRelationshipsIncludePerformerBundle:
+  summary: Multiple relationships with performer details
+  description:
+    A Bundle containing multiple proxy relationships with varying legal basis' including performer details
+  value:
+    resourceType: Bundle
+    timestamp: '2020-08-26T14:00:00+00:00'
+    total: 3
+    type: searchset
+    entry:
+      - fullUrl: >-
+          https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742
+        resource:
+          resourceType: RelatedPerson
+          id: BE974742
+          identifier:
+            - system: 'https://fhir.nhs.uk/Id/nhs-number'
+              value: '9000000022'
+            - system: 'https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier'
+              value: ABC0000003
+          patient:
+            type: Patient
+            identifier:
+              system: 'https://fhir.nhs.uk/Id/nhs-number'
+              value: '9000000009'
+          relationship:
+            - coding:
+                - system: 'http://terminology.hl7.org/CodeSystem/v3-RoleCode'
+                  code: PRN
+                  display: Parent
+                - system: 'http://terminology.hl7.org/CodeSystem/v3-RoleCode'
+                  code: MTH
+                  display: mother
+        search:
+          mode: include
+      - fullUrl: >-
+          https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/BBCC67E9
+        resource:
+          resourceType: Consent
+          id: BBCC67E9
+          status: active
+          scope:
+            coding:
+              - system: 'http://terminology.hl7.org/CodeSystem/consentscope'
+                code: patient-privacy
+                display: Privacy Consent
+            text: Patient Privacy Consent
+          category:
+            - coding:
+                - system: 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
+                  code: INFA
+                  display: Information Access
+              text: Information Access Consent
+          patient:
+            identifier:
+              system: 'https://fhir.nhs.uk/Id/nhs-number'
+              value: '9000000009'
+          dateTime: '2024-07-21T17:32:28Z'
+          performer:
+            - identifier:
+                system: 'https://fhir.nhs.uk/Id/nhs-number'
+                value: '9000000022'
+          policy:
+            - authority: 'https://www.england.nhs.uk'
+              uri: <REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD>
+        search:
+          mode: match
+      - fullUrl: >-
+          https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/RP974720
+        resource:
+          resourceType: RelatedPerson
+          id: RP974720
+          identifier:
+            - system: 'https://fhir.nhs.uk/Id/nhs-number'
+              value: '9000000022'
+            - system: 'https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier'
+              value: ABC00000234
+          patient:
+            type: Patient
+            identifier:
+              system: 'https://fhir.nhs.uk/Id/nhs-number'
+              value: '9000000005'
+          relationship:
+            - coding:
+                - system: >-
+                    https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole
+                  code: Personal
+                  display: Personal relationship with the patient
+        search:
+          mode: include
+      - fullUrl: >-
+          https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/WWCC67T1
+        resource:
+          resourceType: Consent
+          id: WWCC67T1
+          status: active
+          scope:
+            coding:
+              - system: 'http://terminology.hl7.org/CodeSystem/consentscope'
+                code: patient-privacy
+                display: Privacy Consent
+            text: Patient Privacy Consent
+          category:
+            - coding:
+                - system: 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
+                  code: INFA
+                  display: Information Access
+              text: Information Access Consent
+          patient:
+            identifier:
+              system: 'https://fhir.nhs.uk/Id/nhs-number'
+              value: '9000000005'
+          dateTime: '2024-07-21T17:32:28Z'
+          performer:
+            - identifier:
+                system: 'https://fhir.nhs.uk/Id/nhs-number'
+                value: '9000000022'
+          policy:
+            - authority: 'https://www.england.nhs.uk'
+              uri: <REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD>
+          verification:
+            - verified: true
+              verifiedWith:
+                identifier:
+                  system: 'https://fhir.nhs.uk/Id/nhs-number'
+                  value: '9000000005'
+              verificationDate: '2024-07-21T17:32:28Z'
+        search:
+          mode: match
+      - fullUrl: >-
+          https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/AATD11A1
+        resource:
+          resourceType: RelatedPerson
+          id: AATD11A1
+          identifier:
+            - system: 'https://fhir.nhs.uk/Id/nhs-number'
+              value: '9000000022'
+            - system: 'https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier'
+              value: ABC0000001
+          patient:
+            type: Patient
+            identifier:
+              system: 'https://fhir.nhs.uk/Id/nhs-number'
+              value: '9000000006'
+          relationship:
+            - coding:
+                - system: >-
+                    https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole
+                  code: Personal
+                  display: Personal relationship with the patient
+        search:
+          mode: include
+      - fullUrl: >-
+          https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/AATD11A1
+        resource:
+          resourceType: Consent
+          id: AATD11A1
+          status: inactive
+          scope:
+            coding:
+              - system: 'http://terminology.hl7.org/CodeSystem/consentscope'
+                code: patient-privacy
+                display: Privacy Consent
+            text: Patient Privacy Consent
+          category:
+            - coding:
+                - system: 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
+                  code: INFA
+                  display: Information Access
+              text: Information Access Consent
+          patient:
+            identifier:
+              system: 'https://fhir.nhs.uk/Id/nhs-number'
+              value: '9000000006'
+          dateTime: '2024-07-21T17:32:28Z'
+          performer:
+            - identifier:
+                system: 'https://fhir.nhs.uk/Id/nhs-number'
+                value: '9000000022'
+          policy:
+            - authority: 'https://www.england.nhs.uk'
+              uri: <REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD>
+          verification:
+            - verified: true
+              verifiedWith:
+                identifier:
+                  system: 'https://fhir.nhs.uk/Id/nhs-number'
+                  value: '9000000006'
+              verificationDate: '2024-07-21T17:32:28Z'
+        search:
+          mode: match
+

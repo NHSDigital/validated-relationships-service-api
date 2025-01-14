@@ -4,9 +4,6 @@ from typing import Union
 from flask import Flask, request
 
 from .constants import (
-    CONSENT__ADULT_CONSENTING_EXAMPLE,
-    CONSENT__MIXED_EXAMPLE,
-    CONSENT__MOTHER_CHILD_EXAMPLE,
     CONSENT_PERFORMER,
     INTERNAL_ERROR_RESPONSE,
     INTERNAL_SERVER_ERROR_EXAMPLE,
@@ -18,16 +15,17 @@ from .constants import (
     VALIDATE_RELATIONSHIP_025,
     VALIDATE_RELATIONSHIP_INCLUDE_009,
     VALIDATE_RELATIONSHIP_INCLUDE_025, CONSENT_PATIENT, BAD_REQUEST_INCLUDE_PARAM_INVALID,
-    CONSENT__STATUS_PARAM_INVALID, CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_PERFORMER,
-    CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_PATIENT, CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP,
-    CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_BOTH, CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP,
-    CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_PERFORMER,
-    CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_PATIENT, CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH,
-    CONSENT__MULTIPLE_RELATIONSHIPS_STATUS_ACTIVE_INCLUDE_PERFORMER,
-    CONSENT__MULTIPLE_RELATIONSHIPS_STATUS_ACTIVE_INCLUDE_PATIENT, CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_BOTH,
-    CONSENT__MULTIPLE_RELATIONSHIPS_STATUS_ACTIVE, CONSENT__MULTIPLE_RELATIONSHIPS_STATUS_ACTIVE_INCLUDE_BOTH,
-    CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PERFORMER, CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PATIENT,
-    CONSENT__MULTIPLE_RELATIONSHIPS, CONSENT__NO_RELATIONSHIPS,
+    CONSENT__STATUS_PARAM_INVALID,
+    CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP,
+    CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_BOTH,
+    CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP,
+    CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH,
+    CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_BOTH,
+    CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PERFORMER,
+    CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PATIENT,
+    CONSENT__MULTIPLE_RELATIONSHIPS,
+    CONSENT__NO_RELATIONSHIPS, CONSENT__FILTERED_RELATIONSHIPS_STATUS_ACTIVE,
+    CONSENT__FILTERED_RELATIONSHIPS_STATUS_INACTIVE, CONSENT__FILTERED_RELATIONSHIPS_STATUS_PROPOSED_ACTIVE
 )
 from .utils import (
     check_for_empty,
@@ -38,7 +36,8 @@ from .utils import (
     generate_response_from_example,
     load_json_file,
     remove_system,
-    check_for_consent_include_params
+    check_for_consent_include_params,
+    check_for_consent_filtering_params
 )
 
 app = Flask(__name__)
@@ -160,43 +159,37 @@ def get_consent() -> Union[dict, tuple]:
 
         # Single consenting adult relationship
         if (performer_identifier == "9000000010"):
-            return check_for_consent_include_params(
+            check_for_consent_include_params(
                 _include,
-                CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_PATIENT,
-                CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_PERFORMER,
+                CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP,
                 CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_BOTH,
-                CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP
             )
         # Single mother child relationship
         elif (performer_identifier == "9000000019"):
-            return check_for_consent_include_params(
+            check_for_consent_include_params(
                 _include,
-                CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_PATIENT,
-                CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_PERFORMER,
+                CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP,
                 CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH,
-                CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP
             )
-        # multiple relationships
+        # Filtering
         elif (performer_identifier == "9000000017"):
-            if (status == "active"):
-                return check_for_consent_include_params(
-                    _include,
-                    CONSENT__MULTIPLE_RELATIONSHIPS_STATUS_ACTIVE_INCLUDE_PATIENT,
-                    CONSENT__MULTIPLE_RELATIONSHIPS_STATUS_ACTIVE_INCLUDE_PERFORMER,
-                    CONSENT__MULTIPLE_RELATIONSHIPS_STATUS_ACTIVE_INCLUDE_BOTH,
-                    CONSENT__MULTIPLE_RELATIONSHIPS_STATUS_ACTIVE
-                )
-            else:
-                return check_for_consent_include_params(
-                    _include,
-                    CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PATIENT,
-                    CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PERFORMER,
-                    CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_BOTH,
-                    CONSENT__MULTIPLE_RELATIONSHIPS
-                )
+            check_for_consent_filtering_params(
+                status,
+                CONSENT__FILTERED_RELATIONSHIPS_STATUS_ACTIVE,
+                CONSENT__FILTERED_RELATIONSHIPS_STATUS_INACTIVE,
+                CONSENT__FILTERED_RELATIONSHIPS_STATUS_PROPOSED_ACTIVE
+            )
+        elif (performer_identifier == "9000000022"):
+            check_for_consent_include_params(
+                _include,
+                CONSENT__MULTIPLE_RELATIONSHIPS,
+                CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_BOTH,
+                CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PATIENT,
+                CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PERFORMER,
+            )
         # No relationships
         elif (performer_identifier == "9000000025"):
-            return generate_response(load_json_file(CONSENT__NO_RELATIONSHIPS), 200)
+            return generate_response_from_example(CONSENT__NO_RELATIONSHIPS, 200)
         else:
             return generate_response(load_json_file(NOT_FOUND), 400)
 

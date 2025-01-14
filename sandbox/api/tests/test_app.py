@@ -145,7 +145,7 @@ def test_questionnaire_response(
     [
         (
             "performer:identifier=9000000010&status=active&_include=Consent:performer",
-            "./api/examples/GET_Consent/adults-consenting.yaml",
+            "./api/examples/GET_Consent/adults-consenting-active-include-both.yaml",
             200,
         ),
         (

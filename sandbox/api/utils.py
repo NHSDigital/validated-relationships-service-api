@@ -11,7 +11,7 @@ from .constants import (
     INCLUDE_FLAG,
     RELATED_IDENTIFIERS,
     CONSENT_PERFORMER,
-    CONSENT_PATIENT
+    CONSENT_PATIENT, INTERNAL_SERVER_ERROR_EXAMPLE
 )
 
 
@@ -187,24 +187,55 @@ def generate_response_from_example(example_path: str, status_code: int) -> Respo
 
 def check_for_consent_include_params(
     _include : str,
-    include_patient_response_json : str,
-    include_performer_response_json : str,
-    include_both_response_json : str,
-    include_none_response_json : str
+    include_none_response_yaml: str,
+    include_both_response_yaml : str,
+    include_patient_response_yaml: str = None,
+    include_performer_response_yaml: str = None
 ) -> Response:
-    """Checks the GET consent request include params and provides the related response"""
+    """Checks the GET consent request include params and provides the related response
 
+    Args:
+        _include (str): The include parameter supplied to the request
+        include_none_response_yaml (str): The file to return when include params are empty
+        include_both_response_yaml (str): The file to return when include param matches with Consent:performer,Consent:patient
+        include_patient_response_yaml (str): (optional) The file to return when include param matches with Consent:patient
+        include_performer_response_yaml (str): (optional) The response to return when include param matches with Consent:performer
+
+    Returns:
+        response: Resultant Response object based on input.
+    """
     if (_include == CONSENT_PERFORMER):
-        return generate_response(
-            load_json_file(include_performer_response_json), 200
-        )
+        return generate_response_from_example(include_performer_response_yaml, 200)
     elif (_include == CONSENT_PATIENT):
-        return generate_response(
-            load_json_file(include_patient_response_json), 200
-        )
-    if (_include == f"{CONSENT_PATIENT},{CONSENT_PERFORMER}" or f"{CONSENT_PERFORMER},{CONSENT_PATIENT}"):
-        return generate_response(
-            load_json_file(include_both_response_json), 200
-        )
+        return generate_response_from_example(include_patient_response_yaml, 200)
+    elif (_include == f"{CONSENT_PATIENT},{CONSENT_PERFORMER}" or f"{CONSENT_PERFORMER},{CONSENT_PATIENT}"):
+        return generate_response_from_example(include_both_response_yaml, 200)
     else:
-        return generate_response(load_json_file(include_none_response_json), 200)
+        return generate_response(load_json_file(include_none_response_yaml), 200)
+
+
+def check_for_consent_filtering_params(
+    status : str,
+    status_active_response_yaml : str,
+    status_inactive_response_yaml : str,
+    status_proposed_and_inactive_response_yaml : str
+) -> Response:
+    """Checks the GET consent request status params and provides related response
+
+    Args:
+        status (str): The status parameter supplied to the request
+        status_active_response_yaml (str): The file to return when status param matches with 'active'
+        status_inactive_response_yaml (str): The response to return when status param matches with 'inactive'
+        status_proposed_and_inactive_response_yaml (str): The file to return when status param matches with 'proposed,inactive'
+
+    Returns:
+        response: Resultant Response object based on input.
+    """
+    if (status == "active"):
+        return generate_response_from_example( status_active_response_yaml, 200)
+    elif (status == "inactive"):
+        return generate_response_from_example(status_inactive_response_yaml, 200)
+    elif (status == "proposed,active" or status == "active,proposed"):
+        return generate_response_from_example(status_proposed_and_inactive_response_yaml, 200)
+    else:
+        return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)

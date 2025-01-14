@@ -1,0 +1,85 @@
+ConsentMultipleRelationshipsStatusInactiveBundle:
+  summary: Multiple inactive relationships
+  description: A Bundle containing multiple inactive proxy relationships with varying legal basis'
+  value:
+    resourceType: Bundle
+    timestamp: '2020-08-26T14:00:00+00:00'
+    total: 2
+    type: searchset
+    entry:
+      - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/AATD11A1
+        resource:
+          resourceType: Consent
+          id: AATD11A1
+          status: inactive
+          scope:
+            coding:
+              - system: 'http://terminology.hl7.org/CodeSystem/consentscope'
+                code: patient-privacy
+                display: Privacy Consent
+            text: Patient Privacy Consent
+          category:
+            - coding:
+                - system: 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
+                  code: INFA
+                  display: Information Access
+              text: Information Access Consent
+          patient:
+            identifier:
+              system: 'https://fhir.nhs.uk/Id/nhs-number'
+              value: '9000000006'
+          dateTime: '2024-07-21T17:32:28Z'
+          performer:
+            - identifier:
+                system: 'https://fhir.nhs.uk/Id/nhs-number'
+                value: '9000000017'
+          policy:
+            - authority: 'https://www.england.nhs.uk'
+              uri: <REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD>
+          verification:
+            - verified: true
+              verifiedWith:
+                identifier:
+                  system: 'https://fhir.nhs.uk/Id/nhs-number'
+                  value: '9000000006'
+              verificationDate: '2024-07-21T17:32:28Z'
+        search:
+          mode: match
+      - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/ABCD12B3
+        resource:
+          resourceType: Consent
+          id: ABCD12B3
+          status: inactive
+          scope:
+            coding:
+              - system: 'http://terminology.hl7.org/CodeSystem/consentscope'
+                code: patient-privacy
+                display: Privacy Consent
+            text: Patient Privacy Consent
+          category:
+            - coding:
+                - system: 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
+                  code: INFA
+                  display: Information Access
+              text: Information Access Consent
+          patient:
+            identifier:
+              system: 'https://fhir.nhs.uk/Id/nhs-number'
+              value: '9000000007'
+          dateTime: '2024-07-21T17:32:28Z'
+          performer:
+            - identifier:
+                system: 'https://fhir.nhs.uk/Id/nhs-number'
+                value: '9000000017'
+          policy:
+            - authority: 'https://www.england.nhs.uk'
+              uri: <REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD>
+          verification:
+            - verified: true
+              verifiedWith:
+                identifier:
+                  system: 'https://fhir.nhs.uk/Id/nhs-number'
+                  value: '9000000007'
+              verificationDate: '2024-07-21T17:32:28Z'
+        search:
+          mode: match
