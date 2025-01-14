@@ -1,0 +1,121 @@
+{
+  "resourceType": "Bundle",
+  "timestamp": "2020-08-26T14:00:00+00:00",
+  "total": 1,
+  "type": "searchset",
+  "entry": [
+    {
+      "fullUrl": "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/DFCC67F5",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "DFCC67F5",
+        "identifier": [
+          {
+            "system": "https://fhir.nhs.uk/Id/nhs-number",
+            "value": "9000000005"
+          },
+          {
+            "system": "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier",
+            "value": "ABC1234567"
+          }
+        ],
+        "name": [
+          {
+            "id": "123456",
+            "use": "usual",
+            "period": {
+              "start": "2020-01-01",
+              "end": "2021-12-31"
+            },
+            "given": [
+              "Sally"
+            ],
+            "family": "Evans",
+            "prefix": [
+              "Mrs"
+            ]
+          }
+        ],
+        "birthDate": "1995-10-22",
+        "generalPractitioner": [
+          {
+            "type": "Organization",
+            "identifier": {
+              "value": "ODS12345",
+              "system": "https://fhir.nhs.uk/Id/ods-organization-code"
+            }
+          }
+        ]
+      },
+      "search": {
+        "mode": "include"
+      }
+    },
+    {
+      "fullUrl": "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/WWCC67T1",
+      "resource": {
+        "resourceType": "Consent",
+        "id": "WWCC67T1",
+        "status": "active",
+        "scope": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/consentscope",
+              "code": "patient-privacy",
+              "display": "Privacy Consent"
+            }
+          ],
+          "text": "Patient Privacy Consent"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+                "code": "INFA",
+                "display": "Information Access"
+              }
+            ],
+            "text": "Information Access Consent"
+          }
+        ],
+        "patient": {
+          "identifier": {
+            "system": "https://fhir.nhs.uk/Id/nhs-number",
+            "value": "9000000005"
+          }
+        },
+        "dateTime": "2024-07-21T17:32:28Z",
+        "performer": [
+          {
+            "identifier": {
+              "system": "https://fhir.nhs.uk/Id/nhs-number",
+              "value": "9000000010"
+            }
+          }
+        ],
+        "policy": [
+          {
+            "authority": "https://www.england.nhs.uk",
+            "uri": "<REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD>"
+          }
+        ],
+        "verification": [
+          {
+            "verified": true,
+            "verifiedWith": {
+              "identifier": {
+                "system": "https://fhir.nhs.uk/Id/nhs-number",
+                "value": "9000000005"
+              }
+            },
+            "verificationDate": "2024-07-21T17:32:28Z"
+          }
+        ]
+      },
+      "search": {
+        "mode": "match"
+      }
+    }
+  ]
+}
