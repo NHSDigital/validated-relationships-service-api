@@ -38,6 +38,7 @@ from .utils import (
     generate_response_from_example,
     load_json_file,
     remove_system,
+    check_for_consent_include_params
 )
 
 app = Flask(__name__)
@@ -137,90 +138,64 @@ def get_consent() -> Union[dict, tuple]:
         Union[dict, tuple]: Response for GET /Consent
     """
     try:
-        # Check headers
-        if errors := check_for_errors(request):
-            return errors
-
         performer_identifier = remove_system(request.args.get("performer:identifier"))
         status = request.args.get("status")
         _include = request.args.get("_include")
 
+        print(performer_identifier);
+
         # Invalid status params
-        if (status != "active" or status != None):
+        if (status != "active" and status != None):
             return generate_response(load_json_file(CONSENT__STATUS_PARAM_INVALID), 400)
+
         # Invalid include params
         if (
             _include != CONSENT_PERFORMER
-            or _include != CONSENT_PATIENT
-            or _include != f"{CONSENT_PATIENT},{CONSENT_PERFORMER}"
-            or _include != f"{CONSENT_PERFORMER},{CONSENT_PATIENT}"
-            or _include != None
+            and _include != CONSENT_PATIENT
+            and _include != f"{CONSENT_PATIENT},{CONSENT_PERFORMER}"
+            and _include != f"{CONSENT_PERFORMER},{CONSENT_PATIENT}"
+            and _include != None
         ):
             return generate_response(load_json_file(BAD_REQUEST_INCLUDE_PARAM_INVALID), 400)
+
         # Single consenting adult relationship
-        if (performer_identifier == 9000000010):
-            if (_include == CONSENT_PERFORMER):
-                return generate_response(
-                    load_json_file(CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_PERFORMER), 200
-                )
-            elif (_include == CONSENT_PATIENT):
-                return generate_response(
-                    load_json_file(CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_PATIENT), 200
-                )
-            if (_include == f"{CONSENT_PATIENT},{CONSENT_PERFORMER}" or f"{CONSENT_PERFORMER},{CONSENT_PATIENT}"):
-                return generate_response(
-                    load_json_file(CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_BOTH), 200
-                )
-            else :
-                return generate_response(load_json_file(CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP), 200)
+        if (performer_identifier == "9000000010"):
+            return check_for_consent_include_params(
+                _include,
+                CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_PATIENT,
+                CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_PERFORMER,
+                CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_BOTH,
+                CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP
+            )
         # Single mother child relationship
-        if (performer_identifier == 9000000019):
-            if (_include == CONSENT_PERFORMER):
-                return generate_response(
-                    load_json_file(CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_PERFORMER), 200
-                )
-            elif (_include == CONSENT_PATIENT):
-                return generate_response(
-                    load_json_file(CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_PATIENT), 200
-                )
-            elif (_include == f"{CONSENT_PATIENT},{CONSENT_PERFORMER}" or f"{CONSENT_PERFORMER},{CONSENT_PATIENT}"):
-                return generate_response(
-                    load_json_file(CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH), 200
-                )
-            else :
-                return generate_response(load_json_file(CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP), 200)
+        elif (performer_identifier == "9000000019"):
+            return check_for_consent_include_params(
+                _include,
+                CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_PATIENT,
+                CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_PERFORMER,
+                CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH,
+                CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP
+            )
         # multiple relationships
-        if (performer_identifier == 9000000017):
+        elif (performer_identifier == "9000000017"):
             if (status == "active"):
-                if (_include == CONSENT_PERFORMER):
-                    return generate_response(
-                        load_json_file(CONSENT__MULTIPLE_RELATIONSHIPS_STATUS_ACTIVE_INCLUDE_PERFORMER), 200
-                    )
-                if (_include == CONSENT_PATIENT):
-                    return generate_response(
-                        load_json_file(CONSENT__MULTIPLE_RELATIONSHIPS_STATUS_ACTIVE_INCLUDE_PATIENT), 200
-                    )
-                if (_include == f"{CONSENT_PATIENT},{CONSENT_PERFORMER}" or f"{CONSENT_PERFORMER},{CONSENT_PATIENT}"):
-                    return generate_response(
-                        load_json_file(CONSENT__MULTIPLE_RELATIONSHIPS_STATUS_ACTIVE_INCLUDE_BOTH), 200
-                    )
-                else:
-                    return generate_response(load_json_file(CONSENT__MULTIPLE_RELATIONSHIPS_STATUS_ACTIVE), 200)
+                return check_for_consent_include_params(
+                    _include,
+                    CONSENT__MULTIPLE_RELATIONSHIPS_STATUS_ACTIVE_INCLUDE_PATIENT,
+                    CONSENT__MULTIPLE_RELATIONSHIPS_STATUS_ACTIVE_INCLUDE_PERFORMER,
+                    CONSENT__MULTIPLE_RELATIONSHIPS_STATUS_ACTIVE_INCLUDE_BOTH,
+                    CONSENT__MULTIPLE_RELATIONSHIPS_STATUS_ACTIVE
+                )
             else:
-                if (_include == CONSENT_PERFORMER):
-                    return generate_response(
-                        load_json_file(CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PERFORMER), 200
-                    )
-                if (_include == CONSENT_PATIENT):
-                    return generate_response(
-                        load_json_file(CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PATIENT), 200
-                    )
-                if (_include == f"{CONSENT_PATIENT},{CONSENT_PERFORMER}" or f"{CONSENT_PERFORMER},{CONSENT_PATIENT}"):
-                    return generate_response(load_json_file(CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_BOTH), 200)
-                else:
-                    return generate_response(load_json_file(CONSENT__MULTIPLE_RELATIONSHIPS), 200)
+                return check_for_consent_include_params(
+                    _include,
+                    CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PATIENT,
+                    CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PERFORMER,
+                    CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_BOTH,
+                    CONSENT__MULTIPLE_RELATIONSHIPS
+                )
         # No relationships
-        if (performer_identifier == 9000000025):
+        elif (performer_identifier == "9000000025"):
             return generate_response(load_json_file(CONSENT__NO_RELATIONSHIPS), 200)
         else:
             return generate_response(load_json_file(NOT_FOUND), 400)

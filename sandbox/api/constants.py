@@ -70,7 +70,7 @@ PATIENT_IDENTIFIERS = ["9000000017", "9000000033"]
 RELATED_IDENTIFIERS = ["9000000009", "9000000025"]
 
 CONSENT_PERFORMER = "Consent:performer"
-CONSENT_PATIENT = "Consent:performer"
+CONSENT_PATIENT = "Consent:patient"
 
 # Example files
 

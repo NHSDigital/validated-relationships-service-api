@@ -10,6 +10,8 @@ from .constants import (
     NOT_FOUND,
     INCLUDE_FLAG,
     RELATED_IDENTIFIERS,
+    CONSENT_PERFORMER,
+    CONSENT_PATIENT
 )
 
 
@@ -181,3 +183,28 @@ def generate_response_from_example(example_path: str, status_code: int) -> Respo
     # Value of response is always in the first key, then within value
     content = content[list(content.keys())[0]]["value"]
     return Response(dumps(content), status=status_code, mimetype=FHIR_MIMETYPE)
+
+
+def check_for_consent_include_params(
+    _include : str,
+    include_patient_response_json : str,
+    include_performer_response_json : str,
+    include_both_response_json : str,
+    include_none_response_json : str
+) -> Response:
+    """Checks the GET consent request include params and provides the related response"""
+
+    if (_include == CONSENT_PERFORMER):
+        return generate_response(
+            load_json_file(include_performer_response_json), 200
+        )
+    elif (_include == CONSENT_PATIENT):
+        return generate_response(
+            load_json_file(include_patient_response_json), 200
+        )
+    if (_include == f"{CONSENT_PATIENT},{CONSENT_PERFORMER}" or f"{CONSENT_PERFORMER},{CONSENT_PATIENT}"):
+        return generate_response(
+            load_json_file(include_both_response_json), 200
+        )
+    else:
+        return generate_response(load_json_file(include_none_response_json), 200)
