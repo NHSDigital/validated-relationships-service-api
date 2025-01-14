@@ -17,7 +17,17 @@ from .constants import (
     VALIDATE_RELATIONSHIP_009,
     VALIDATE_RELATIONSHIP_025,
     VALIDATE_RELATIONSHIP_INCLUDE_009,
-    VALIDATE_RELATIONSHIP_INCLUDE_025,
+    VALIDATE_RELATIONSHIP_INCLUDE_025, CONSENT_PATIENT, BAD_REQUEST_INCLUDE_PARAM_INVALID,
+    CONSENT__STATUS_PARAM_INVALID, CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_PERFORMER,
+    CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_PATIENT, CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP,
+    CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_BOTH, CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP,
+    CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_PERFORMER,
+    CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_PATIENT, CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH,
+    CONSENT__MULTIPLE_RELATIONSHIPS_STATUS_ACTIVE_INCLUDE_PERFORMER,
+    CONSENT__MULTIPLE_RELATIONSHIPS_STATUS_ACTIVE_INCLUDE_PATIENT, CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_BOTH,
+    CONSENT__MULTIPLE_RELATIONSHIPS_STATUS_ACTIVE, CONSENT__MULTIPLE_RELATIONSHIPS_STATUS_ACTIVE_INCLUDE_BOTH,
+    CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PERFORMER, CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PATIENT,
+    CONSENT__MULTIPLE_RELATIONSHIPS, CONSENT__NO_RELATIONSHIPS,
 )
 from .utils import (
     check_for_empty,
@@ -127,32 +137,94 @@ def get_consent() -> Union[dict, tuple]:
         Union[dict, tuple]: Response for GET /Consent
     """
     try:
+        # Check headers
+        if errors := check_for_errors(request):
+            return errors
+
         performer_identifier = remove_system(request.args.get("performer:identifier"))
         status = request.args.get("status")
         _include = request.args.get("_include")
 
+        # Invalid status params
+        if (status != "active" or status != None):
+            return generate_response(load_json_file(CONSENT__STATUS_PARAM_INVALID), 400)
+        # Invalid include params
         if (
-            performer_identifier == "9000000010"
-            and status == "active"
-            and _include == CONSENT_PERFORMER
+            _include != CONSENT_PERFORMER
+            or _include != CONSENT_PATIENT
+            or _include != f"{CONSENT_PATIENT},{CONSENT_PERFORMER}"
+            or _include != f"{CONSENT_PERFORMER},{CONSENT_PATIENT}"
+            or _include != None
         ):
-            return generate_response_from_example(
-                CONSENT__ADULT_CONSENTING_EXAMPLE, 200
-            )
-        elif (
-            performer_identifier == "9000000017"
-            and status == "active"
-            and _include == CONSENT_PERFORMER
-        ):
-            return generate_response_from_example(CONSENT__MIXED_EXAMPLE, 200)
-        elif (
-            performer_identifier == "9000000019"
-            and status == "active"
-            and _include == CONSENT_PERFORMER
-        ):
-            return generate_response_from_example(CONSENT__MOTHER_CHILD_EXAMPLE, 200)
+            return generate_response(load_json_file(BAD_REQUEST_INCLUDE_PARAM_INVALID), 400)
+        # Single consenting adult relationship
+        if (performer_identifier == 9000000010):
+            if (_include == CONSENT_PERFORMER):
+                return generate_response(
+                    load_json_file(CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_PERFORMER), 200
+                )
+            elif (_include == CONSENT_PATIENT):
+                return generate_response(
+                    load_json_file(CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_PATIENT), 200
+                )
+            if (_include == f"{CONSENT_PATIENT},{CONSENT_PERFORMER}" or f"{CONSENT_PERFORMER},{CONSENT_PATIENT}"):
+                return generate_response(
+                    load_json_file(CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_BOTH), 200
+                )
+            else :
+                return generate_response(load_json_file(CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP), 200)
+        # Single mother child relationship
+        if (performer_identifier == 9000000019):
+            if (_include == CONSENT_PERFORMER):
+                return generate_response(
+                    load_json_file(CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_PERFORMER), 200
+                )
+            elif (_include == CONSENT_PATIENT):
+                return generate_response(
+                    load_json_file(CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_PATIENT), 200
+                )
+            elif (_include == f"{CONSENT_PATIENT},{CONSENT_PERFORMER}" or f"{CONSENT_PERFORMER},{CONSENT_PATIENT}"):
+                return generate_response(
+                    load_json_file(CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH), 200
+                )
+            else :
+                return generate_response(load_json_file(CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP), 200)
+        # multiple relationships
+        if (performer_identifier == 9000000017):
+            if (status == "active"):
+                if (_include == CONSENT_PERFORMER):
+                    return generate_response(
+                        load_json_file(CONSENT__MULTIPLE_RELATIONSHIPS_STATUS_ACTIVE_INCLUDE_PERFORMER), 200
+                    )
+                if (_include == CONSENT_PATIENT):
+                    return generate_response(
+                        load_json_file(CONSENT__MULTIPLE_RELATIONSHIPS_STATUS_ACTIVE_INCLUDE_PATIENT), 200
+                    )
+                if (_include == f"{CONSENT_PATIENT},{CONSENT_PERFORMER}" or f"{CONSENT_PERFORMER},{CONSENT_PATIENT}"):
+                    return generate_response(
+                        load_json_file(CONSENT__MULTIPLE_RELATIONSHIPS_STATUS_ACTIVE_INCLUDE_BOTH), 200
+                    )
+                else:
+                    return generate_response(load_json_file(CONSENT__MULTIPLE_RELATIONSHIPS_STATUS_ACTIVE), 200)
+            else:
+                if (_include == CONSENT_PERFORMER):
+                    return generate_response(
+                        load_json_file(CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PERFORMER), 200
+                    )
+                if (_include == CONSENT_PATIENT):
+                    return generate_response(
+                        load_json_file(CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PATIENT), 200
+                    )
+                if (_include == f"{CONSENT_PATIENT},{CONSENT_PERFORMER}" or f"{CONSENT_PERFORMER},{CONSENT_PATIENT}"):
+                    return generate_response(load_json_file(CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_BOTH), 200)
+                else:
+                    return generate_response(load_json_file(CONSENT__MULTIPLE_RELATIONSHIPS), 200)
+        # No relationships
+        if (performer_identifier == 9000000025):
+            return generate_response(load_json_file(CONSENT__NO_RELATIONSHIPS), 200)
         else:
             return generate_response(load_json_file(NOT_FOUND), 400)
+
     except Exception as e:
         logger.error(e)
         return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)

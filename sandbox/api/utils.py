@@ -23,7 +23,7 @@ def load_json_file(file_name: str) -> dict:
 
 
 def check_for_errors(request: Request) -> Optional[tuple]:
-    """Check for errors in the request headers and arguments
+    """Check for shared in the request headers and arguments
 
     Args:
         request (Request): Flask request object
@@ -37,7 +37,7 @@ def check_for_errors(request: Request) -> Optional[tuple]:
     if not identifier:
         return (
             load_json_file(
-                "./api/responses/GET_RelatedPerson/bad_request_identifier_missing.json"
+                "./api/responses/bad_request_identifier_missing.json"
             ),
             400,
         )
@@ -45,7 +45,7 @@ def check_for_errors(request: Request) -> Optional[tuple]:
         # invalid identifier
         return (
             load_json_file(
-                "./api/responses/GET_RelatedPerson/bad_request_identifier_invalid.json"
+                "./api/responses/bad_request_identifier_invalid.json"
             ),
             400,
         )
@@ -57,7 +57,7 @@ def check_for_errors(request: Request) -> Optional[tuple]:
         # invalid identifier system
         return (
             load_json_file(
-                "./api/responses/GET_RelatedPerson/bad_request_identifier_invalid_system.json"
+                "./api/responses/bad_request_identifier_invalid_system.json"
             ),
             400,
         )
