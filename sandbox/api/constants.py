@@ -1,4 +1,4 @@
-EMPTY_RESPONSE = "./api/responses/GET_RelatedPerson/no_relationships.json"
+EMPTY_RESPONSE = "./api/responses/GET_RelatedPerson/empty_response_9000000033.json"
 LIST_RELATIONSHIP = (
     "./api/responses/GET_RelatedPerson/list_relationship_9000000017.json"
 )
