@@ -775,7 +775,8 @@ components:
                     type: string
                   answer:
                     type: array
-                    description: A multiple option selection where multiple items of evidence can be selected
+                    description: Evidence of responsibility
+                    maxItems: 1
                     items:
                       oneOf:
                         - type: object
@@ -791,7 +792,7 @@ components:
                                   enum: ['BRTH', 'ADPT', 'PRNA', 'SPRNA', 'PORD', 'SGORD', 'OTHCOURT', 'OTHR' ]
                                 display:
                                   type: string
-                                  description: FHIR relationship type.
+                                  description: Evidence of responsibility type.
                                   enum: ['Birth certificate', 'Adoption certificate', 'Court-witnessed parental responsibility agreement','Court-witnessed step-parent parental responsibility agreement', 'Parental order', 'Special guardianship order', 'Other court order', 'Other' ]
 
               - type: object
