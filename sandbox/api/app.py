@@ -67,7 +67,7 @@ def get_related_persons() -> Union[dict, tuple]:
 
     try:
         # Check Headers
-        if errors := check_for_errors(request):
+        if errors := check_for_errors(request, "identifier"):
             return errors
 
         identifier = remove_system(request.args.get("identifier"))
@@ -137,51 +137,42 @@ def get_consent() -> Union[dict, tuple]:
         Union[dict, tuple]: Response for GET /Consent
     """
     try:
+        # Check Headers
+        if errors := check_for_errors(request, "performer:identifier"):
+            return errors
+
         performer_identifier = remove_system(request.args.get("performer:identifier"))
         status = request.args.get("status")
         _include = request.args.get("_include")
 
-        print(performer_identifier);
-
-        # Invalid status params
-        if (status != "active" and status != None):
-            return generate_response(load_json_file(CONSENT__STATUS_PARAM_INVALID), 400)
-
-        # Invalid include params
-        if (
-            _include != CONSENT_PERFORMER
-            and _include != CONSENT_PATIENT
-            and _include != f"{CONSENT_PATIENT},{CONSENT_PERFORMER}"
-            and _include != f"{CONSENT_PERFORMER},{CONSENT_PATIENT}"
-            and _include != None
-        ):
-            return generate_response(load_json_file(BAD_REQUEST_INCLUDE_PARAM_INVALID), 400)
-
         # Single consenting adult relationship
         if (performer_identifier == "9000000010"):
-            check_for_consent_include_params(
+            return check_for_consent_include_params(
                 _include,
+                logger,
                 CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP,
                 CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_BOTH,
             )
         # Single mother child relationship
         elif (performer_identifier == "9000000019"):
-            check_for_consent_include_params(
+            return check_for_consent_include_params(
                 _include,
+                logger,
                 CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP,
-                CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH,
+                CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH
             )
         # Filtering
         elif (performer_identifier == "9000000017"):
-            check_for_consent_filtering_params(
+            return check_for_consent_filtering_params(
                 status,
                 CONSENT__FILTERED_RELATIONSHIPS_STATUS_ACTIVE,
                 CONSENT__FILTERED_RELATIONSHIPS_STATUS_INACTIVE,
                 CONSENT__FILTERED_RELATIONSHIPS_STATUS_PROPOSED_ACTIVE
             )
         elif (performer_identifier == "9000000022"):
-            check_for_consent_include_params(
+            return check_for_consent_include_params(
                 _include,
+                logger,
                 CONSENT__MULTIPLE_RELATIONSHIPS,
                 CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_BOTH,
                 CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PATIENT,
@@ -191,7 +182,8 @@ def get_consent() -> Union[dict, tuple]:
         elif (performer_identifier == "9000000025"):
             return generate_response_from_example(CONSENT__NO_RELATIONSHIPS, 200)
         else:
-            return generate_response(load_json_file(NOT_FOUND), 400)
+            logger.error(f"Performer identifier {performer_identifier} not does not match examples")
+            return generate_response_from_example(NOT_FOUND, 404)
 
     except Exception as e:
         logger.error(e)

@@ -1,4 +1,3 @@
-NOT_FOUND = "./api/responses/not_found.json"
 EMPTY_RESPONSE = "./api/responses/GET_RelatedPerson/no_relationships.json"
 LIST_RELATIONSHIP = (
     "./api/responses/GET_RelatedPerson/list_relationship_9000000017.json"
@@ -35,7 +34,11 @@ CONSENT_PATIENT = "Consent:patient"
 
 # Common examples
 INTERNAL_SERVER_ERROR_EXAMPLE = "./api/examples/errors/internal-server-error.yaml"
-BAD_REQUEST_INCLUDE_PARAM_INVALID = "./api/examples/errors/bad_request_include_param_invalid.json"
+BAD_REQUEST_INCLUDE_PARAM_INVALID = "./api/examples/errors/invalid-include-parameter.yaml"
+NOT_FOUND = "./api/examples/errors/not-found.yaml"
+MISSING_IDENTIFIER = "./api/examples/errors/missing-identifier.yaml"
+INVALID_IDENTIFIER = "./api/examples/errors/invalid-identifier.yaml"
+
 # Consent examples
 consent_dir = "./api/examples/GET_Consent/"
 CONSENT__FILTERED_RELATIONSHIPS_STATUS_ACTIVE = consent_dir + "filtered-relationships-status-active.yaml"
@@ -56,4 +59,4 @@ CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP = consent_dir + "single-mother-child-r
 CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH = (
     consent_dir + "single-mother-child-relationship-include-performer-patient.yaml"
 )
-CONSENT__STATUS_PARAM_INVALID = consent_dir + "bad_request_status_param_invalid.json"
+CONSENT__STATUS_PARAM_INVALID = consent_dir + "/errors/invalid-status-parameter.yaml"

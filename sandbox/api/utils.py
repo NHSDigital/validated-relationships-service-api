@@ -1,9 +1,11 @@
+import logging
 from json import dumps, load
 from typing import Any, Optional
 
 from flask import Response, Request
 from yaml import CLoader as Loader
 from yaml import load as yaml_load
+
 from .constants import (
     EMPTY_RESPONSE,
     PATIENT_IDENTIFIERS,
@@ -11,9 +13,9 @@ from .constants import (
     INCLUDE_FLAG,
     RELATED_IDENTIFIERS,
     CONSENT_PERFORMER,
-    CONSENT_PATIENT, INTERNAL_SERVER_ERROR_EXAMPLE
+    CONSENT_PATIENT, INTERNAL_SERVER_ERROR_EXAMPLE, CONSENT__STATUS_PARAM_INVALID, BAD_REQUEST_INCLUDE_PARAM_INVALID,
+    MISSING_IDENTIFIER, INVALID_IDENTIFIER
 )
-
 
 FHIR_MIMETYPE = "application/fhir+json"
 
@@ -24,32 +26,36 @@ def load_json_file(file_name: str) -> dict:
         return load(file)
 
 
-def check_for_errors(request: Request) -> Optional[tuple]:
+def check_for_errors(request: Request, identifier_key : str) -> Optional[tuple]:
     """Check for shared in the request headers and arguments
 
     Args:
         request (Request): Flask request object
+        identifier_key (str) : The key to get the identifier by (e.g. "identifier")
 
     Returns:
         Optional[tuple]: Tuple with response and status code if error is found
     """
-    identifier = request.args.get("identifier")
-    identifier_without_system = remove_system(request.args.get("identifier"))
+    identifier = request.args.get(identifier_key)
+    identifier_without_system = remove_system(request.args.get(identifier_key))
+
+    print(f"Identifier = {identifier}")
+    print(f"Identifier_without_system = {identifier_without_system}")
 
     if not identifier:
         return (
-            load_json_file(
-                "./api/responses/bad_request_identifier_missing.json"
-            ),
-            400,
+            generate_response_from_example(
+                "./api/examples/errors/missing-identifier.yaml"
+            ,
+            400)
         )
     elif identifier and len(identifier_without_system) != 10:
         # invalid identifier
         return (
-            load_json_file(
-                "./api/responses/bad_request_identifier_invalid.json"
-            ),
-            400,
+            generate_response_from_example(
+                "./api/examples/errors/invalid-identifier.yaml"
+            ,
+            400)
         )
     elif (
         isinstance(identifier, str)
@@ -58,10 +64,10 @@ def check_for_errors(request: Request) -> Optional[tuple]:
     ):
         # invalid identifier system
         return (
-            load_json_file(
-                "./api/responses/bad_request_identifier_invalid_system.json"
-            ),
-            400,
+            generate_response_from_example(
+                "./api/examples/errors/invalid-identifier-system.yaml"
+            ,
+            400)
         )
 
 
@@ -77,10 +83,10 @@ def check_for_empty(identifier: str, patient_identifier: str) -> Response:
     """
     if identifier and identifier not in PATIENT_IDENTIFIERS:
         # Request with identifier - but its not in a list of identifiers
-        return generate_response(load_json_file(NOT_FOUND), 404)
+        return generate_response_from_example(NOT_FOUND, 404)
     elif patient_identifier and (patient_identifier not in RELATED_IDENTIFIERS):
         # Request with patient:identifier - but its not in a list of identifiers
-        return generate_response(load_json_file(NOT_FOUND), 404)
+        return generate_response_from_example(NOT_FOUND, 404)
     elif identifier == "9000000033":
         # Request with identifier for empty record
         return generate_response(load_json_file(EMPTY_RESPONSE))
@@ -187,6 +193,7 @@ def generate_response_from_example(example_path: str, status_code: int) -> Respo
 
 def check_for_consent_include_params(
     _include : str,
+    logger: logging.Logger,
     include_none_response_yaml: str,
     include_both_response_yaml : str,
     include_patient_response_yaml: str = None,
@@ -196,6 +203,7 @@ def check_for_consent_include_params(
 
     Args:
         _include (str): The include parameter supplied to the request
+        logger (logging.Logger): Logger instance to use for error logging
         include_none_response_yaml (str): The file to return when include params are empty
         include_both_response_yaml (str): The file to return when include param matches with Consent:performer,Consent:patient
         include_patient_response_yaml (str): (optional) The file to return when include param matches with Consent:patient
@@ -204,14 +212,30 @@ def check_for_consent_include_params(
     Returns:
         response: Resultant Response object based on input.
     """
-    if (_include == CONSENT_PERFORMER):
-        return generate_response_from_example(include_performer_response_yaml, 200)
+    if (
+        _include != CONSENT_PERFORMER
+        and _include != CONSENT_PATIENT
+        and _include != f"{CONSENT_PATIENT},{CONSENT_PERFORMER}"
+        and _include != f"{CONSENT_PERFORMER},{CONSENT_PATIENT}"
+        and _include != None
+    ):
+        return generate_response_from_example(BAD_REQUEST_INCLUDE_PARAM_INVALID, 400)
+    elif (_include == CONSENT_PERFORMER):
+        if include_performer_response_yaml:
+            return generate_response_from_example(include_performer_response_yaml, 200)
+        else:
+            logger.error("No consent performer example provided")
+            return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)
     elif (_include == CONSENT_PATIENT):
-        return generate_response_from_example(include_patient_response_yaml, 200)
-    elif (_include == f"{CONSENT_PATIENT},{CONSENT_PERFORMER}" or f"{CONSENT_PERFORMER},{CONSENT_PATIENT}"):
+        if include_performer_response_yaml:
+            return generate_response_from_example(include_patient_response_yaml, 200)
+        else:
+            logger.error("No consent:patient example provided")
+            return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)
+    elif (_include == f"{CONSENT_PATIENT},{CONSENT_PERFORMER}" or _include == f"{CONSENT_PERFORMER},{CONSENT_PATIENT}"):
         return generate_response_from_example(include_both_response_yaml, 200)
     else:
-        return generate_response(load_json_file(include_none_response_yaml), 200)
+        return generate_response_from_example(include_none_response_yaml, 200)
 
 
 def check_for_consent_filtering_params(
@@ -232,10 +256,10 @@ def check_for_consent_filtering_params(
         response: Resultant Response object based on input.
     """
     if (status == "active"):
-        return generate_response_from_example( status_active_response_yaml, 200)
+        return generate_response_from_example(status_active_response_yaml, 200)
     elif (status == "inactive"):
         return generate_response_from_example(status_inactive_response_yaml, 200)
-    elif (status == "proposed,active" or status == "active,proposed"):
+    elif (status == "proposed,inactive" or status == "inactive,proposed"):
         return generate_response_from_example(status_proposed_and_inactive_response_yaml, 200)
     else:
-        return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)
+        return generate_response_from_example(CONSENT__STATUS_PARAM_INVALID, 400)
