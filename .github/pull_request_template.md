@@ -1,4 +1,12 @@
-# Pull Request Checklist
+# Pull Request
+
+<!--
+Stages to complete before opening the Pull Request:
+- PR title should be formatted in the following structure `NPA-XXXXX: title abc`
+- Added yourself/others as Assignees
+- Added the correct labels
+- Add Jira ticket link in the Ticket Link section below
+-->
 
 ## Ticket Link
 
