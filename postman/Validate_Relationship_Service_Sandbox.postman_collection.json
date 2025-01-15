@@ -1693,7 +1693,7 @@
 					"response": []
 				},
 				{
-					"name": "Filtered proxy relationships by 'proposed' and 'inactive' staus",
+					"name": "Filtered proxy relationships by 'proposed' and 'active' staus",
 					"event": [
 						{
 							"listen": "test",
@@ -1977,7 +1977,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000017&status=proposed,inactive",
+							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000017&status=proposed,active",
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -1991,7 +1991,7 @@
 								},
 								{
 									"key": "status",
-									"value": "proposed,inactive"
+									"value": "proposed,active"
 								}
 							]
 						}

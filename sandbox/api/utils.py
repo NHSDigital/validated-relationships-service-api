@@ -238,7 +238,7 @@ def check_for_consent_filtering_params(
     status: str,
     status_active_response_yaml: str,
     status_inactive_response_yaml: str,
-    status_proposed_and_inactive_response_yaml: str,
+    status_proposed_and_active_response_yaml: str,
 ) -> Response:
     """Checks the GET consent request status params and provides related response
 
@@ -246,7 +246,7 @@ def check_for_consent_filtering_params(
         status (str): The status parameter supplied to the request
         status_active_response_yaml (str): The file to return when status param matches with 'active'
         status_inactive_response_yaml (str): The response to return when status param matches with 'inactive'
-        status_proposed_and_inactive_response_yaml (str): The file to return when status param matches with 'proposed,inactive'
+        status_proposed_and_active_response_yaml (str): The file to return when status param matches with 'proposed,inactive'
 
     Returns:
         response: Resultant Response object based on input.
@@ -255,9 +255,9 @@ def check_for_consent_filtering_params(
         return generate_response_from_example(status_active_response_yaml, 200)
     elif status == "inactive":
         return generate_response_from_example(status_inactive_response_yaml, 200)
-    elif status == "proposed,inactive" or status == "inactive,proposed":
+    elif status == "proposed,active" or status == "active,proposed":
         return generate_response_from_example(
-            status_proposed_and_inactive_response_yaml, 200
+            status_proposed_and_active_response_yaml, 200
         )
     else:
         return generate_response_from_example(CONSENT__STATUS_PARAM_INVALID, 400)
