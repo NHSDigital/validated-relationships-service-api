@@ -16,7 +16,7 @@ from .constants import (
     CONSENT_PATIENT,
     INTERNAL_SERVER_ERROR_EXAMPLE,
     CONSENT__STATUS_PARAM_INVALID,
-    BAD_REQUEST_INCLUDE_PARAM_INVALID
+    BAD_REQUEST_INCLUDE_PARAM_INVALID,
 )
 
 FHIR_MIMETYPE = "application/fhir+json"
@@ -28,7 +28,7 @@ def load_json_file(file_name: str) -> dict:
         return load(file)
 
 
-def check_for_errors(request: Request, identifier_key : str) -> Optional[tuple]:
+def check_for_errors(request: Request, identifier_key: str) -> Optional[tuple]:
     """Check for shared in the request headers and arguments
 
     Args:
@@ -45,19 +45,13 @@ def check_for_errors(request: Request, identifier_key : str) -> Optional[tuple]:
     print(f"Identifier_without_system = {identifier_without_system}")
 
     if not identifier:
-        return (
-            generate_response_from_example(
-                "./api/examples/errors/missing-identifier.yaml"
-            ,
-            400)
+        return generate_response_from_example(
+            "./api/examples/errors/missing-identifier.yaml", 400
         )
     elif identifier and len(identifier_without_system) != 10:
         # invalid identifier
-        return (
-            generate_response_from_example(
-                "./api/examples/errors/invalid-identifier.yaml"
-            ,
-            400)
+        return generate_response_from_example(
+            "./api/examples/errors/invalid-identifier.yaml", 400
         )
     elif (
         isinstance(identifier, str)
@@ -65,11 +59,8 @@ def check_for_errors(request: Request, identifier_key : str) -> Optional[tuple]:
         and "https://fhir.nhs.uk/Id/nhs-number" != identifier.split("|", maxsplit=2)[0]
     ):
         # invalid identifier system
-        return (
-            generate_response_from_example(
-                "./api/examples/errors/invalid-identifier-system.yaml"
-            ,
-            400)
+        return generate_response_from_example(
+            "./api/examples/errors/invalid-identifier-system.yaml", 400
         )
 
 
@@ -194,12 +185,12 @@ def generate_response_from_example(example_path: str, status_code: int) -> Respo
 
 
 def check_for_consent_include_params(
-    _include : str,
+    _include: str,
     logger: logging.Logger,
     include_none_response_yaml: str,
-    include_both_response_yaml : str,
+    include_both_response_yaml: str,
     include_patient_response_yaml: str = None,
-    include_performer_response_yaml: str = None
+    include_performer_response_yaml: str = None,
 ) -> Response:
     """Checks the GET consent request include params and provides the related response
 
@@ -222,29 +213,32 @@ def check_for_consent_include_params(
         and _include != None
     ):
         return generate_response_from_example(BAD_REQUEST_INCLUDE_PARAM_INVALID, 400)
-    elif (_include == CONSENT_PERFORMER):
+    elif _include == CONSENT_PERFORMER:
         if include_performer_response_yaml:
             return generate_response_from_example(include_performer_response_yaml, 200)
         else:
             logger.error("No consent performer example provided")
             return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)
-    elif (_include == CONSENT_PATIENT):
+    elif _include == CONSENT_PATIENT:
         if include_performer_response_yaml:
             return generate_response_from_example(include_patient_response_yaml, 200)
         else:
             logger.error("No consent:patient example provided")
             return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)
-    elif (_include == f"{CONSENT_PATIENT},{CONSENT_PERFORMER}" or _include == f"{CONSENT_PERFORMER},{CONSENT_PATIENT}"):
+    elif (
+        _include == f"{CONSENT_PATIENT},{CONSENT_PERFORMER}"
+        or _include == f"{CONSENT_PERFORMER},{CONSENT_PATIENT}"
+    ):
         return generate_response_from_example(include_both_response_yaml, 200)
     else:
         return generate_response_from_example(include_none_response_yaml, 200)
 
 
 def check_for_consent_filtering_params(
-    status : str,
-    status_active_response_yaml : str,
-    status_inactive_response_yaml : str,
-    status_proposed_and_inactive_response_yaml : str
+    status: str,
+    status_active_response_yaml: str,
+    status_inactive_response_yaml: str,
+    status_proposed_and_inactive_response_yaml: str,
 ) -> Response:
     """Checks the GET consent request status params and provides related response
 
@@ -257,11 +251,13 @@ def check_for_consent_filtering_params(
     Returns:
         response: Resultant Response object based on input.
     """
-    if (status == "active"):
+    if status == "active":
         return generate_response_from_example(status_active_response_yaml, 200)
-    elif (status == "inactive"):
+    elif status == "inactive":
         return generate_response_from_example(status_inactive_response_yaml, 200)
-    elif (status == "proposed,inactive" or status == "inactive,proposed"):
-        return generate_response_from_example(status_proposed_and_inactive_response_yaml, 200)
+    elif status == "proposed,inactive" or status == "inactive,proposed":
+        return generate_response_from_example(
+            status_proposed_and_inactive_response_yaml, 200
+        )
     else:
         return generate_response_from_example(CONSENT__STATUS_PARAM_INVALID, 400)
