@@ -182,7 +182,7 @@ def get_consent() -> Union[dict, tuple]:
         elif (performer_identifier == "9000000025"):
             return generate_response_from_example(CONSENT__NO_RELATIONSHIPS, 200)
         else:
-            logger.error(f"Performer identifier {performer_identifier} not does not match examples")
+            logger.error(f"Performer identifier does not match examples")
             return generate_response_from_example(NOT_FOUND, 404)
 
     except Exception as e:
