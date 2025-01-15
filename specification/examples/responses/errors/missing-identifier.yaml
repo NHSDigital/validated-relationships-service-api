@@ -1,4 +1,4 @@
-ConsentIdentifierMissingBundle:
+IdentifierMissingBundle:
   summary: Bad request identifier missing
   description: 400 error response bundle for a missing identifier
   value:

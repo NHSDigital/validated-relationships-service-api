@@ -1,4 +1,4 @@
-ConsentNotFoundBundle:
+NotFoundBundle:
   summary: Bad request not found
   description: 400 error response bundle for record not found
   value:

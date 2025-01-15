@@ -1,6 +1,6 @@
-RelatedPersonInvalidIdentifierError:
-  summary: Invalid RelatedPerson identifier
-  description: Error raised due to an invalid RelatedPerson identifier request parameter being specified.
+InvalidIdentifierError:
+  summary: Bad request invalid identifier
+  description: Error raised due to an invalid identifier request parameter being specified.
   value:
     resourceType: "OperationOutcome"
     issue:
