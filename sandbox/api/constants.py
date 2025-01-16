@@ -75,4 +75,4 @@ CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP = (
 CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH = (
     consent_dir + "single-mother-child-relationship-include-performer-patient.yaml"
 )
-CONSENT__STATUS_PARAM_INVALID = consent_dir + "/errors/invalid-status-parameter.yaml"
+CONSENT__STATUS_PARAM_INVALID = consent_dir + "errors/invalid-status-parameter.yaml"
