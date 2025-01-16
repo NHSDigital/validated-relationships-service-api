@@ -108,12 +108,12 @@ def test_related_person__not_found(
             200,
         ),
         (
-            "performer:identifier=9000000017&status=test", #Invalid status parameter error
+            "performer:identifier=9000000017&status=test",  # Invalid status parameter error
             "./api/examples/GET_Consent/errors/invalid-status-parameter.yaml",
             400,
         ),
         (
-            "performer:identifier=9000000019&_include=test", #Invalid include parameter error
+            "performer:identifier=9000000019&_include=test",  # Invalid include parameter error
             "./api/examples/errors/invalid-include-parameter.yaml",
             400,
         ),
@@ -159,7 +159,7 @@ def test_get_response(mock_open: MagicMock) -> None:
     "endpoint,request_args,response_file_name,status_code",
     [
         (
-            RELATED_PERSON_API_ENDPOINT, # Related person - identifier is missing
+            RELATED_PERSON_API_ENDPOINT,  # Related person - identifier is missing
             "",
             "./api/examples/errors/missing-identifier.yaml",
             400,
@@ -171,7 +171,7 @@ def test_get_response(mock_open: MagicMock) -> None:
             400,
         ),
         (
-            RELATED_PERSON_API_ENDPOINT, # Related person  - identifier system invalid
+            RELATED_PERSON_API_ENDPOINT,  # Related person  - identifier system invalid
             "identifier=https://fhir.nhs.uk/Id/nhs-number|A730675929",
             "./api/examples/errors/invalid-identifier-system.yaml",
             400,
@@ -183,7 +183,7 @@ def test_get_response(mock_open: MagicMock) -> None:
             400,
         ),
         (
-            CONSENT_API_ENDPOINT, # Consent - missing performer identifier
+            CONSENT_API_ENDPOINT,  # Consent - missing performer identifier
             "",
             "./api/examples/errors/missing-identifier.yaml",
             400,
@@ -199,7 +199,7 @@ def test_get_response(mock_open: MagicMock) -> None:
 @patch(f"{FILE_PATH}.generate_response_from_example")
 def test_check_for_errors(
     mock_generate_response_from_example: MagicMock,
-    endpoint : str,
+    endpoint: str,
     request_args: str,
     response_file_name: str,
     status_code: int,

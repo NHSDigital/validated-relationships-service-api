@@ -152,7 +152,7 @@ def test_consent_from_app(
     request_args: str,
     response_file_name: str,
     status_code: int,
-    client: object
+    client: object,
 ) -> None:
     """Test Consent endpoint."""
     mock_generate_response_from_example.return_value = mocked_response = Response(
