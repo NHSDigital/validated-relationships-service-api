@@ -194,10 +194,10 @@ def check_for_consent_include_params(
     Args:
         _include (str): The include parameter supplied to the request
         logger (logging.Logger): Logger instance to use for error logging
-        include_none_response_yaml (str): The file to return when include params are empty
-        include_both_response_yaml (str): The file to return when include param matches with Consent:performer,Consent:patient
-        include_patient_response_yaml (str): (optional) The file to return when include param matches with Consent:patient
-        include_performer_response_yaml (str): (optional) The response to return when include param matches with Consent:performer
+        include_none_response_yaml (str): Bundle to return when include params are empty
+        include_both_response_yaml (str): Bundle to return when include param is Consent:performer,Consent:patient
+        include_patient_response_yaml (str): (optional) Bundle to return when include param is Consent:patient
+        include_performer_response_yaml (str): (optional) Bundle to return when include param is Consent:performer
 
     Returns:
         response: Resultant Response object based on input.
@@ -207,7 +207,7 @@ def check_for_consent_include_params(
         and _include != CONSENT_PATIENT
         and _include != f"{CONSENT_PATIENT},{CONSENT_PERFORMER}"
         and _include != f"{CONSENT_PERFORMER},{CONSENT_PATIENT}"
-        and _include != None
+        and _include is not None
     ):
         return generate_response_from_example(BAD_REQUEST_INCLUDE_PARAM_INVALID, 400)
     elif _include == CONSENT_PERFORMER:
@@ -241,9 +241,9 @@ def check_for_consent_filtering_params(
 
     Args:
         status (str): The status parameter supplied to the request
-        status_active_response_yaml (str): The file to return when status param matches with 'active'
-        status_inactive_response_yaml (str): The response to return when status param matches with 'inactive'
-        status_proposed_and_active_response_yaml (str): The file to return when status param matches with 'proposed,inactive'
+        status_active_response_yaml (str): Bundle to return when status param is 'active'
+        status_inactive_response_yaml (str): Bundle to return when status param is 'inactive'
+        status_proposed_and_active_response_yaml (str): Bundle to return when status param is 'proposed,inactive'
 
     Returns:
         response: Resultant Response object based on input.

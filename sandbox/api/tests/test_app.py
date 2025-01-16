@@ -275,7 +275,7 @@ def test_consent__404_bad_request(
     client: object,
 ) -> None:
     """Test Consent endpoint."""
-    mock_generate_response_from_example.return_value = mocked_response = Response(
+    mock_generate_response_from_example.return_value = Response(
         dumps({"data": "mocked"}), status=404, content_type="application/json"
     )
     # Act

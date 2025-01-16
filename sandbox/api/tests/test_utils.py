@@ -52,7 +52,7 @@ def test_check_for_errors(
     status_code: int,
     client: object,
 ) -> None:
-    mock_generate_response_from_example.return_value = mocked_response = Response(
+    mock_generate_response_from_example.return_value = Response(
         dumps({"data": "mocked"}), status=status_code, content_type="application/json"
     )
     # Act
