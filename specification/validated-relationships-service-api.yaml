@@ -446,14 +446,16 @@ paths:
                     $ref: './examples/responses/errors/access-denied.yaml#/AccessDeniedError'
                   InvalidIdentifierError:
                     $ref: './examples/responses/errors/invalid-identifier.yaml#/InvalidIdentifierError'
-                  InvalidIncludeParameterBundle:
-                    $ref: './examples/responses/errors/invalid-include-parameter.yaml#/InvalidIncludeParameterBundle'
+                  InvalidIdentifierSystemBundle:
+                    $ref: './examples/responses/errors/invalid-identifier-system.yaml#/InvalidIdentifierSystemBundle'
                   IdentifierMissingBundle:
                     $ref: './examples/responses/errors/missing-identifier.yaml#/IdentifierMissingBundle'
                   NotFoundBundle:
                     $ref: './examples/responses/errors/not-found.yaml#/NotFoundBundle'
                   ConsentInvalidStatusParameterBundle:
                     $ref: './examples/responses/GET_Consent/errors/invalid-status-parameter.yaml#/ConsentInvalidStatusParameterBundle'
+                  InvalidIncludeParameterBundle:
+                    $ref: './examples/responses/errors/invalid-include-parameter.yaml#/InvalidIncludeParameterBundle'
           "500":
             description: Internal server error
             content:

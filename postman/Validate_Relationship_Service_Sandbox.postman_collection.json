@@ -992,18 +992,12 @@
 							}
 						],
 						"url": {
-							"raw": "{{api_base_url}}/RelatedPerson?patient:identifier=9000000009",
+							"raw": "{{api_base_url}}/RelatedPerson",
 							"host": [
 								"{{api_base_url}}"
 							],
 							"path": [
 								"RelatedPerson"
-							],
-							"query": [
-								{
-									"key": "patient:identifier",
-									"value": "9000000009"
-								}
 							]
 						},
 						"description": "Example of an error response when the NHS number is missing"
@@ -1098,26 +1092,25 @@
 							"script": {
 								"exec": [
 									"var expectedResponseBody = {",
-									"    \"resourceType\": \"OperationOutcome\",",
-									"    \"issue\": [",
-									"        {",
-									"            \"severity\": \"error\",",
-									"            \"code\": \"invalid\",",
-									"            \"diagnostics\": \"Not a valid NHS Number provided for the 'identifier' parameter\",",
-									"            \"expression\": \"RelatedPerson.identifier\",",
-									"            \"details\": {",
-									"                \"coding\": [",
-									"                    {",
-									"                        \"system\": \"https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode\",",
-									"                        \"version\": \"1\",",
-									"                        \"code\": \"INVALID_IDENTIFIER_VALUE\",",
-									"                        \"display\": \"Provided value is invalid\"",
-									"                    }",
-									"                ]",
-									"            }",
-									"        }",
-									"    ]",
-									"};",
+									"  \"issue\": [",
+									"    {",
+									"      \"code\": \"invalid\",",
+									"      \"details\": {",
+									"        \"coding\": [",
+									"          {",
+									"            \"code\": \"INVALID_IDENTIFIER_SYSTEM\",",
+									"            \"display\": \"Invalid identifier system.\",",
+									"            \"system\": \"https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode\",",
+									"            \"version\": \"1\"",
+									"          }",
+									"        ]",
+									"      },",
+									"      \"diagnostics\": \"The identifier system is not valid.\",",
+									"      \"severity\": \"error\"",
+									"    }",
+									"  ],",
+									"  \"resourceType\": \"OperationOutcome\"",
+									"}",
 									"",
 									"const responseJson = pm.response.json();",
 									"",
@@ -1126,7 +1119,7 @@
 									"});",
 									"",
 									"pm.test(\"Should have correct error response\", () => {",
-									"    pm.expect(responseJson.issue[0].details.coding[0].code).to.eql(\"INVALID_IDENTIFIER_VALUE\");",
+									"    pm.expect(responseJson.issue[0].details.coding[0].code).to.eql(\"INVALID_IDENTIFIER_SYSTEM\");",
 									"});",
 									"",
 									"pm.test(\"Should have correct response body\", () => {",
@@ -1152,7 +1145,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{api_base_url}}/RelatedPerson?identifier=https://fhir.nhs.uk/Id/nhs-number/A730675929",
+							"raw": "{{api_base_url}}/RelatedPerson?identifier=https://fhir.nhs.uk/Id/nhs-number|A730675929",
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -1162,7 +1155,7 @@
 							"query": [
 								{
 									"key": "identifier",
-									"value": "https://fhir.nhs.uk/Id/nhs-number/A730675929"
+									"value": "https://fhir.nhs.uk/Id/nhs-number|A730675929"
 								}
 							]
 						},
@@ -4442,25 +4435,24 @@
 							"script": {
 								"exec": [
 									"const expectedResponseBody = {",
-									"  \"resourceType\": \"OperationOutcome\",",
 									"  \"issue\": [",
 									"    {",
-									"      \"severity\": \"error\",",
 									"      \"code\": \"invalid\",",
-									"      \"diagnostics\": \"Not a valid NHS Number provided for the 'identifier' parameter\",",
-									"      \"expression\": \"RelatedPerson.identifier\",",
 									"      \"details\": {",
 									"        \"coding\": [",
 									"          {",
+									"            \"code\": \"INVALID_IDENTIFIER_SYSTEM\",",
+									"            \"display\": \"Invalid identifier system.\",",
 									"            \"system\": \"https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode\",",
-									"            \"version\": \"1\",",
-									"            \"code\": \"INVALID_IDENTIFIER_VALUE\",",
-									"            \"display\": \"Provided value is invalid\"",
+									"            \"version\": \"1\"",
 									"          }",
 									"        ]",
-									"      }",
+									"      },",
+									"      \"diagnostics\": \"The identifier system is not valid.\",",
+									"      \"severity\": \"error\"",
 									"    }",
-									"  ]",
+									"  ],",
+									"  \"resourceType\": \"OperationOutcome\"",
 									"}",
 									"",
 									"const responseJson = pm.response.json();",
@@ -4470,7 +4462,7 @@
 									"});",
 									"",
 									"pm.test(\"Should have correct error response\", () => {",
-									"    pm.expect(responseJson.issue[0].details.coding[0].code).to.eql(\"INVALID_IDENTIFIER_VALUE\");",
+									"    pm.expect(responseJson.issue[0].details.coding[0].code).to.eql(\"INVALID_IDENTIFIER_SYSTEM\");",
 									"});",
 									"",
 									"pm.test(\"Should have correct response body\", () => {",
@@ -4485,7 +4477,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api_base_url}}/Consent?performer:identifier=90000000011",
+							"raw": "{{api_base_url}}/Consent?performer:identifier=https://fhir.nhs.uk/Id/nhs-number|1234567890",
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -4495,7 +4487,7 @@
 							"query": [
 								{
 									"key": "performer:identifier",
-									"value": "90000000011"
+									"value": "https://fhir.nhs.uk/Id/nhs-number|1234567890"
 								}
 							]
 						}
