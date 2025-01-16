@@ -130,8 +130,8 @@ def test_related_person__not_found(
     mock_generate_response_from_example.return_value = mocked_response = (
         Response(
             dumps({"data": "mocked"}),
-            status=status_code,
-            content_type="application/json"
+            status = status_code,
+            content_type = "application/json"
         )
     )
     # Act
@@ -210,11 +210,6 @@ def test_questionnaire_response(
             200,
         ),
         (
-            "performer:identifier=9000000025",
-            "./api/examples/GET_Consent/no-relationships.yaml",
-            200,
-        ),
-        (
             "performer:identifier=9000000010",
             "./api/examples/GET_Consent/single-consenting-adult-relationship.yaml",
             200,
@@ -236,7 +231,7 @@ def test_questionnaire_response(
         )
     ]
 )
-@patch(f"{APP_FILE_PATH}.generate_response_from_example")
+@patch(f"{UTILS_FILE_PATH}.generate_response_from_example")
 def test_consent(
     mock_generate_response_from_example: MagicMock,
     request_args: str,
@@ -248,8 +243,8 @@ def test_consent(
     mock_generate_response_from_example.return_value = mocked_response = (
         Response(
             dumps({"data": "mocked"}),
-            status=status_code,
-            content_type="application/json"
+            status = status_code,
+            content_type = "application/json"
         )
     )
     # Act
@@ -261,19 +256,46 @@ def test_consent(
 
 
 @patch(f"{APP_FILE_PATH}.generate_response_from_example")
-def test_consent__400_bad_request(
+def test_consent_no_relationships(
+    mock_generate_response_from_example: MagicMock,
+    client: object
+) -> None:
+    """Test Consent endpoint."""
+    mock_generate_response_from_example.return_value = mocked_response = (
+        Response(
+            dumps({"data": "mocked"}),
+            status = 200,
+            content_type = "application/json"
+        )
+    )
+    # Act
+    response = client.get(f"{CONSENT_API_ENDPOINT}?performer:identifier=9000000025")
+    # Assert
+    mock_generate_response_from_example.assert_called_once_with("./api/examples/GET_Consent/no-relationships.yaml", 200)
+    assert response.status_code == 200
+    assert response.json == json.loads(mocked_response.get_data(as_text=True))
+
+
+@patch(f"{APP_FILE_PATH}.generate_response_from_example")
+def test_consent__404_bad_request(
     mock_generate_response_from_example: MagicMock,
     client: object,
 ) -> None:
     """Test Consent endpoint."""
-    mock_generate_response_from_example.return_value = {"data": "mocked"}
+    mock_generate_response_from_example.return_value = mocked_response = (
+        Response(
+            dumps({"data": "mocked"}),
+            status = 404,
+            content_type = "application/json"
+        )
+    )
     # Act
     client.get(
         f"{CONSENT_API_ENDPOINT}?performer:identifier=9000000999"
     )
     # Assert
     mock_generate_response_from_example.assert_called_once_with(
-        "./api/examples/errors/not-found.yaml"
+        "./api/examples/errors/not-found.yaml", 404
     )
 
 
