@@ -52,15 +52,13 @@ def test_check_for_errors(
     status_code: int,
     client: object,
 ) -> None:
-    mock_generate_response_from_example.return_value = mocked_response = (
-        Response(
-            dumps({"data": "mocked"}),
-            status=status_code,
-            content_type="application/json"
-        )
+    mock_generate_response_from_example.return_value = mocked_response = Response(
+        dumps({"data": "mocked"}), status=status_code, content_type="application/json"
     )
     # Act
     response = client.get(f"{RELATED_PERSON_API_ENDPOINT}?{request_args}")
     # Assert
-    mock_generate_response_from_example.assert_called_once_with(response_file_name, status_code)
+    mock_generate_response_from_example.assert_called_once_with(
+        response_file_name, status_code
+    )
     assert response.status_code == status_code

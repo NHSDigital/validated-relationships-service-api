@@ -114,7 +114,7 @@ def test_related_person(
             "identifier=9000000017&patient:identifier=9000000041",
             "./api/examples/errors/not-found.yaml",
             404,
-        )
+        ),
     ],
 )
 @patch(f"{UTILS_FILE_PATH}.generate_response_from_example")
@@ -123,21 +123,19 @@ def test_related_person__not_found(
     request_args: str,
     response_file_name: str,
     status_code: int,
-    client: object
+    client: object,
 ) -> None:
     """Test related_persons endpoint."""
     # Arrange
-    mock_generate_response_from_example.return_value = mocked_response = (
-        Response(
-            dumps({"data": "mocked"}),
-            status = status_code,
-            content_type = "application/json"
-        )
+    mock_generate_response_from_example.return_value = mocked_response = Response(
+        dumps({"data": "mocked"}), status=status_code, content_type="application/json"
     )
     # Act
     response = client.get(f"{RELATED_PERSON_API_ENDPOINT}?{request_args}")
     # Assert
-    mock_generate_response_from_example.assert_called_once_with(response_file_name, status_code)
+    mock_generate_response_from_example.assert_called_once_with(
+        response_file_name, status_code
+    )
     assert response.status_code == status_code
     assert response.json == json.loads(mocked_response.get_data(as_text=True))
 
@@ -227,9 +225,9 @@ def test_questionnaire_response(
         (
             "performer:identifier=9000000019&_include=Consent:performer,Consent:patient",
             "./api/examples/GET_Consent/single-mother-child-relationship-include-performer-patient.yaml",
-            200
-        )
-    ]
+            200,
+        ),
+    ],
 )
 @patch(f"{UTILS_FILE_PATH}.generate_response_from_example")
 def test_consent(
@@ -237,41 +235,36 @@ def test_consent(
     request_args: str,
     response_file_name: str,
     status_code: int,
-    client: object
+    client: object,
 ) -> None:
     """Test Consent endpoint."""
-    mock_generate_response_from_example.return_value = mocked_response = (
-        Response(
-            dumps({"data": "mocked"}),
-            status = status_code,
-            content_type = "application/json"
-        )
+    mock_generate_response_from_example.return_value = mocked_response = Response(
+        dumps({"data": "mocked"}), status=status_code, content_type="application/json"
     )
     # Act
     response = client.get(f"{CONSENT_API_ENDPOINT}?{request_args}")
     # Assert
-    mock_generate_response_from_example.assert_called_once_with(response_file_name, status_code)
+    mock_generate_response_from_example.assert_called_once_with(
+        response_file_name, status_code
+    )
     assert response.status_code == status_code
     assert response.json == json.loads(mocked_response.get_data(as_text=True))
 
 
 @patch(f"{APP_FILE_PATH}.generate_response_from_example")
 def test_consent_no_relationships(
-    mock_generate_response_from_example: MagicMock,
-    client: object
+    mock_generate_response_from_example: MagicMock, client: object
 ) -> None:
     """Test Consent endpoint."""
-    mock_generate_response_from_example.return_value = mocked_response = (
-        Response(
-            dumps({"data": "mocked"}),
-            status = 200,
-            content_type = "application/json"
-        )
+    mock_generate_response_from_example.return_value = mocked_response = Response(
+        dumps({"data": "mocked"}), status=200, content_type="application/json"
     )
     # Act
     response = client.get(f"{CONSENT_API_ENDPOINT}?performer:identifier=9000000025")
     # Assert
-    mock_generate_response_from_example.assert_called_once_with("./api/examples/GET_Consent/no-relationships.yaml", 200)
+    mock_generate_response_from_example.assert_called_once_with(
+        "./api/examples/GET_Consent/no-relationships.yaml", 200
+    )
     assert response.status_code == 200
     assert response.json == json.loads(mocked_response.get_data(as_text=True))
 
@@ -282,17 +275,11 @@ def test_consent__404_bad_request(
     client: object,
 ) -> None:
     """Test Consent endpoint."""
-    mock_generate_response_from_example.return_value = mocked_response = (
-        Response(
-            dumps({"data": "mocked"}),
-            status = 404,
-            content_type = "application/json"
-        )
+    mock_generate_response_from_example.return_value = mocked_response = Response(
+        dumps({"data": "mocked"}), status=404, content_type="application/json"
     )
     # Act
-    client.get(
-        f"{CONSENT_API_ENDPOINT}?performer:identifier=9000000999"
-    )
+    client.get(f"{CONSENT_API_ENDPOINT}?performer:identifier=9000000999")
     # Assert
     mock_generate_response_from_example.assert_called_once_with(
         "./api/examples/errors/not-found.yaml", 404
