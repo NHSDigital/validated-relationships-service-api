@@ -41,9 +41,6 @@ def check_for_errors(request: Request, identifier_key: str) -> Optional[tuple]:
     identifier = request.args.get(identifier_key)
     identifier_without_system = remove_system(request.args.get(identifier_key))
 
-    print(f"Identifier = {identifier}")
-    print(f"Identifier_without_system = {identifier_without_system}")
-
     if not identifier:
         return generate_response_from_example(
             "./api/examples/errors/missing-identifier.yaml", 400
