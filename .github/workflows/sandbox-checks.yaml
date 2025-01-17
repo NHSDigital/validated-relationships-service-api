@@ -24,3 +24,14 @@ jobs:
       - name: Run Sandbox Unit Tests
         run: make test
         working-directory: ./sandbox
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Newman
+        run: npm install -g newman
+      - name: Start dev sandbox
+        run: make start-dev
+        working-directory: ./sandbox
+      - name: Run Postman Collection
+        run: newman run ./postman/Validate_Relationship_Service_Sandbox.postman_collection.json -d ./postman/dev-variables.json
