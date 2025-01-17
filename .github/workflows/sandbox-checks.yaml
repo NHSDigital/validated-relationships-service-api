@@ -31,7 +31,11 @@ jobs:
       - name: Install Newman
         run: npm install -g newman
       - name: Start dev sandbox
-        run: make start-dev
+        run: |
+          make start-dev &
+          sleep 5
         working-directory: ./sandbox
       - name: Run Postman Collection
         run: newman run ./postman/Validate_Relationship_Service_Sandbox.postman_collection.json -d ./postman/dev-variables.json
+      - name: Stop sandbox
+        run: pkill -f "poetry run flask"
