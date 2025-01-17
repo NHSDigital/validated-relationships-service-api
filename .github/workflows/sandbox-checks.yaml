@@ -32,7 +32,7 @@ jobs:
         run: npm install -g newman
       - name: Start dev sandbox
         run: |
-          make start-dev &
+          make start &
           sleep 5
         working-directory: ./sandbox
       - name: Run Postman Collection
