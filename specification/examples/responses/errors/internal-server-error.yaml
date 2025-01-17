@@ -1,15 +1,15 @@
-InternalServerError:
+InternalServerErrorBundle:
   summary: Internal Server Error
   description: An unexpected condition was encountered preventing the server from fulfilling the request.
   value:
-    resourceType: "OperationOutcome"
     issue:
-      - severity: error
-        code: invalid
+      - code: invalid
         diagnostics: "Internal Server Error - Failed to generate response is present in the response"
         details:
           coding:
-            - system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
-              version: "1"
-              code: "SERVER_ERROR"
+            - code: "SERVER_ERROR"
               display: "Failed to generate response"
+              system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
+              version: "1"
+        severity: error
+    resourceType: "OperationOutcome"

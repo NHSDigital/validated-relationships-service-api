@@ -1,0 +1,15 @@
+ConsentInvalidIdentifierSystemErrorBundle:
+  summary: Bad request identifier system invalid
+  description: 400 error response bundle for an invalid system of the identifier
+  value:
+    issue:
+      - code: invalid
+        diagnostics: "Invalid request with error - performer:identifier system parameter is invalid."
+        details:
+          coding:
+            - code: "INVALID_IDENTIFIER_SYSTEM"
+              display: "Required parameter(s) are invalid."
+              system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
+              version: '1'
+        severity: error
+    resourceType: "OperationOutcome"

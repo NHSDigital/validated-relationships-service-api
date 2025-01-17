@@ -1,14 +1,14 @@
-NotFoundBundle:
-  summary: Bad request not found
-  description: 400 error response bundle for record not found
+InvalidatedResourceErrorBundle:
+  summary:  Invalidated resource
+  description: 404 error response bundle for invalidated resource
   value:
-    resourceType: "OperationOutcome"
     issue:
-      - severity: error
-        code: processing
+      - code: processing
         details:
           coding:
             - system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
               version: "1"
               code: "INVALIDATED_RESOURCE"
               display: "Resource that has been marked as invalid was requested - invalid resources cannot be retrieved"
+        severity: error
+    resourceType: "OperationOutcome"
