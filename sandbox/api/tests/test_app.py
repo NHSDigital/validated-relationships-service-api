@@ -1,5 +1,4 @@
-import json
-from json import dumps
+from json import dumps, loads
 from unittest.mock import MagicMock, patch
 
 import pytest
@@ -141,13 +140,13 @@ def test_questionnaire_response(
         ),
         (
             "performer:identifier=9000000999",  # No performer record found error
-            "./api/examples/errors/not-found.yaml",
+            "./api/examples/errors/invalidated-resource.yaml",
             404,
         ),
     ],
 )
 @patch(f"{APP_FILE_PATH}.generate_response_from_example")
-def test_consent_from_app(
+def test_consent(
     mock_generate_response_from_example: MagicMock,
     request_args: str,
     response_file_name: str,
@@ -165,7 +164,7 @@ def test_consent_from_app(
         response_file_name, status_code
     )
     assert response.status_code == status_code
-    assert response.json == json.loads(mocked_response.get_data(as_text=True))
+    assert response.json == loads(mocked_response.get_data(as_text=True))
 
 
 @patch(f"{APP_FILE_PATH}.remove_system")

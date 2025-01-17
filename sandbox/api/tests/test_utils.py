@@ -1,5 +1,4 @@
-import json
-from json import dumps
+from json import dumps, loads
 from unittest.mock import MagicMock, patch
 
 import pytest
@@ -16,12 +15,12 @@ FILE_PATH = "sandbox.api.utils"
     [
         (
             "identifier=9000000041",
-            "./api/examples/errors/not-found.yaml",
+            "./api/examples/errors/invalidated-resource.yaml",
             404,
         ),
         (
             "identifier=9000000017&patient:identifier=9000000041",
-            "./api/examples/errors/not-found.yaml",
+            "./api/examples/errors/invalidated-resource.yaml",
             404,
         ),
     ],
@@ -46,7 +45,7 @@ def test_related_person__not_found(
         response_file_name, status_code
     )
     assert response.status_code == status_code
-    assert response.json == json.loads(mocked_response.get_data(as_text=True))
+    assert response.json == loads(mocked_response.get_data(as_text=True))
 
 
 @pytest.mark.parametrize(
@@ -138,7 +137,7 @@ def test_consent(
         response_file_name, status_code
     )
     assert response.status_code == status_code
-    assert response.json == json.loads(mocked_response.get_data(as_text=True))
+    assert response.json == loads(mocked_response.get_data(as_text=True))
 
 
 @patch(f"{FILE_PATH}.open")
@@ -156,50 +155,61 @@ def test_get_response(mock_open: MagicMock) -> None:
 
 
 @pytest.mark.parametrize(
-    "endpoint,request_args,response_file_name,status_code",
+    "request_args,response_file_name",
     [
         (
-            RELATED_PERSON_API_ENDPOINT,  # Related person - identifier is missing
-            "",
-            "./api/examples/errors/missing-identifier.yaml",
-            400,
+            "", # identifier is missing
+            "./api/responses/GET_RelatedPerson/bad_request_identifier_missing.json",
         ),
         (
-            RELATED_PERSON_API_ENDPOINT,  # Related person - identifier length is less than 10
-            "identifier=123456789",
-            "./api/examples/errors/invalid-identifier.yaml",
-            400,
+            "identifier=123456789", # identifier length is less than 10
+            "./api/responses/GET_RelatedPerson/bad_request_identifier_invalid.json",
         ),
         (
-            RELATED_PERSON_API_ENDPOINT,  # Related person  - identifier system invalid
-            "identifier=https://fhir.nhs.uk/Id/nhs-number|A730675929",
-            "./api/examples/errors/invalid-identifier-system.yaml",
-            400,
-        ),
-        (
-            CONSENT_API_ENDPOINT,  # Consent - Invalid performer identifier
-            "performer:identifier=90000009990",
-            "./api/examples/errors/invalid-identifier.yaml",
-            400,
-        ),
-        (
-            CONSENT_API_ENDPOINT,  # Consent - missing performer identifier
-            "",
-            "./api/examples/errors/missing-identifier.yaml",
-            400,
-        ),
-        (
-            CONSENT_API_ENDPOINT,  # Related person  - identifier system invalid
-            "performer:identifier=https://fhir.nhs.uk/Id/nhs-number|A730675929",
-            "./api/examples/errors/invalid-identifier-system.yaml",
-            400,
-        ),
+            "identifier=https://fhir.nhs.uk/Id/nhs-number|A730675929",  # identifier system invalid
+            "./api/responses/GET_RelatedPerson/bad_request_identifier_invalid_system.json",
+        )
     ],
 )
+@patch(f"{FILE_PATH}.load_json_file")
+def test_check_for_related_person_errors(
+    mock_load_json_file: MagicMock,
+    request_args: str,
+    response_file_name: str,
+    client: object,
+) -> None:
+    mock_load_json_file.return_value = Response(
+        dumps({"data": "mocked"}), content_type="application/json"
+    )
+    # Act
+    response = client.get(f"{RELATED_PERSON_API_ENDPOINT}?{request_args}")
+    # Assert
+    mock_load_json_file.assert_called_once_with(response_file_name)
+
+
+@pytest.mark.parametrize(
+    "request_args,response_file_name,status_code",
+    [
+        (
+            "performer:identifier=90000009990", # Invalid performer identifier
+            "./api/examples/GET_Consent/errors/invalid-identifier.yaml",
+            400,
+        ),
+        (
+            "", # missing performer identifier
+            "./api/examples/GET_Consent/errors/missing-identifier.yaml",
+            400,
+        ),
+        (
+            "performer:identifier=https://fhir.nhs.uk/Id/nhs-number|A730675929", # identifier system invalid
+            "./api/examples/GET_Consent/errors/invalid-identifier-system.yaml",
+            400,
+        ),
+    ]
+)
 @patch(f"{FILE_PATH}.generate_response_from_example")
-def test_check_for_errors(
+def test_check_for_consent_errors(
     mock_generate_response_from_example: MagicMock,
-    endpoint: str,
     request_args: str,
     response_file_name: str,
     status_code: int,
@@ -209,7 +219,7 @@ def test_check_for_errors(
         dumps({"data": "mocked"}), status=status_code, content_type="application/json"
     )
     # Act
-    response = client.get(f"{endpoint}?{request_args}")
+    response = client.get(f"{CONSENT_API_ENDPOINT}?{request_args}")
     # Assert
     mock_generate_response_from_example.assert_called_once_with(
         response_file_name, status_code

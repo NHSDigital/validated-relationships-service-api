@@ -1,4 +1,4 @@
-import logging
+from logging import getLogger
 from json import dumps, load
 from typing import Any, Optional
 
@@ -9,7 +9,7 @@ from yaml import load as yaml_load
 from .constants import (
     EMPTY_RESPONSE,
     PATIENT_IDENTIFIERS,
-    NOT_FOUND,
+    INVALIDATED_RESOURCE,
     INCLUDE_FLAG,
     RELATED_IDENTIFIERS,
     CONSENT_PERFORMER,
@@ -20,6 +20,7 @@ from .constants import (
 )
 
 FHIR_MIMETYPE = "application/fhir+json"
+logger = getLogger(__name__)
 
 
 def load_json_file(file_name: str) -> dict:
@@ -28,27 +29,68 @@ def load_json_file(file_name: str) -> dict:
         return load(file)
 
 
-def check_for_errors(request: Request, identifier_key: str) -> Optional[tuple]:
-    """Check for shared in the request headers and arguments
+def check_for_related_person_errors(request: Request) -> Optional[tuple]:
+    """Check for errors in the request headers and arguments for a Get /Related Person request
 
     Args:
         request (Request): Flask request object
-        identifier_key (str) : The key to get the identifier by (e.g. "identifier")
 
     Returns:
         Optional[tuple]: Tuple with response and status code if error is found
     """
+    identifier = request.args.get("identifier")
+    identifier_without_system = remove_system(request.args.get("identifier"))
+
+    if not identifier:
+        return (
+            generate_response(load_json_file(
+                "./api/responses/GET_RelatedPerson/bad_request_identifier_missing.json"
+            ),
+            400,
+        ))
+    elif identifier and len(identifier_without_system) != 10:
+        # invalid identifier
+        return (
+            generate_response(load_json_file(
+                "./api/responses/GET_RelatedPerson/bad_request_identifier_invalid.json"
+            ),
+            400,
+        ))
+    elif (
+        isinstance(identifier, str)
+        and "|" in identifier
+        and "https://fhir.nhs.uk/Id/nhs-number" == identifier.split("|", maxsplit=2)[0]
+    ):
+        # invalid identifier system
+        return (
+            generate_response(load_json_file(
+                "./api/responses/GET_RelatedPerson/bad_request_identifier_invalid_system.json"
+            ),
+            400,
+        ))
+
+
+def check_for_consent_errors(request: Request) -> Optional[tuple]:
+    """Check for errors in the request headers and arguments for a Get /Consent
+
+    Args:
+        request (Request): Flask request object
+
+    Returns:
+        Optional[tuple]: Tuple with response and status code if error is found
+    """
+    identifier_key = "performer:identifier"
     identifier = request.args.get(identifier_key)
     identifier_without_system = remove_system(request.args.get(identifier_key))
 
     if not identifier:
         return generate_response_from_example(
-            "./api/examples/errors/missing-identifier.yaml", 400
+            "./api/examples/GET_Consent/errors/missing-identifier.yaml", 400
         )
     elif identifier and len(identifier_without_system) != 10:
         # invalid identifier
         return generate_response_from_example(
-            "./api/examples/errors/invalid-identifier.yaml", 400
+            "./api/examples/GET_Consent/errors/invalid-identifier.yaml", 400
         )
     elif (
         isinstance(identifier, str)
@@ -57,7 +99,7 @@ def check_for_errors(request: Request, identifier_key: str) -> Optional[tuple]:
     ):
         # invalid identifier system
         return generate_response_from_example(
-            "./api/examples/errors/invalid-identifier-system.yaml", 400
+            "./api/examples/GET_Consent/errors/invalid-identifier-system.yaml", 400
         )
 
 
@@ -73,10 +115,10 @@ def check_for_empty(identifier: str, patient_identifier: str) -> Response:
     """
     if identifier and identifier not in PATIENT_IDENTIFIERS:
         # Request with identifier - but its not in a list of identifiers
-        return generate_response_from_example(NOT_FOUND, 404)
+        return generate_response_from_example(INVALIDATED_RESOURCE, 404)
     elif patient_identifier and (patient_identifier not in RELATED_IDENTIFIERS):
         # Request with patient:identifier - but its not in a list of identifiers
-        return generate_response_from_example(NOT_FOUND, 404)
+        return generate_response_from_example(INVALIDATED_RESOURCE, 404)
     elif identifier == "9000000033":
         # Request with identifier for empty record
         return generate_response(load_json_file(EMPTY_RESPONSE))
@@ -183,7 +225,6 @@ def generate_response_from_example(example_path: str, status_code: int) -> Respo
 
 def check_for_consent_include_params(
     _include: str,
-    logger: logging.Logger,
     include_none_response_yaml: str,
     include_both_response_yaml: str,
     include_patient_response_yaml: str = None,
@@ -193,7 +234,6 @@ def check_for_consent_include_params(
 
     Args:
         _include (str): The include parameter supplied to the request
-        logger (logging.Logger): Logger instance to use for error logging
         include_none_response_yaml (str): Bundle to return when include params are empty
         include_both_response_yaml (str): Bundle to return when include param is Consent:performer,Consent:patient
         include_patient_response_yaml (str): (optional) Bundle to return when include param is Consent:patient

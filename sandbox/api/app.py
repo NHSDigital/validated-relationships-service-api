@@ -8,7 +8,7 @@ from .constants import (
     INTERNAL_SERVER_ERROR_EXAMPLE,
     LIST_RELATIONSHIP,
     LIST_RELATIONSHIP_INCLUDE,
-    NOT_FOUND,
+    INVALIDATED_RESOURCE,
     QUESTIONNAIRE_RESPONSE_SUCCESS,
     VALIDATE_RELATIONSHIP_009,
     VALIDATE_RELATIONSHIP_025,
@@ -29,7 +29,8 @@ from .constants import (
 )
 from .utils import (
     check_for_empty,
-    check_for_errors,
+    check_for_consent_errors,
+    check_for_related_person_errors,
     check_for_list,
     check_for_validate,
     generate_response,
@@ -67,7 +68,7 @@ def get_related_persons() -> Union[dict, tuple]:
 
     try:
         # Check Headers
-        if errors := check_for_errors(request, "identifier"):
+        if errors := check_for_related_person_errors(request):
             return errors
 
         identifier = remove_system(request.args.get("identifier"))
@@ -138,7 +139,7 @@ def get_consent() -> Union[dict, tuple]:
     """
     try:
         # Check Headers
-        if errors := check_for_errors(request, "performer:identifier"):
+        if errors := check_for_consent_errors(request):
             return errors
 
         performer_identifier = remove_system(request.args.get("performer:identifier"))
@@ -149,7 +150,6 @@ def get_consent() -> Union[dict, tuple]:
         if performer_identifier == "9000000010":
             return check_for_consent_include_params(
                 _include,
-                logger,
                 CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP,
                 CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_BOTH,
             )
@@ -157,7 +157,6 @@ def get_consent() -> Union[dict, tuple]:
         elif performer_identifier == "9000000019":
             return check_for_consent_include_params(
                 _include,
-                logger,
                 CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP,
                 CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH,
             )
@@ -172,7 +171,6 @@ def get_consent() -> Union[dict, tuple]:
         elif performer_identifier == "9000000022":
             return check_for_consent_include_params(
                 _include,
-                logger,
                 CONSENT__MULTIPLE_RELATIONSHIPS,
                 CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_BOTH,
                 CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PATIENT,
@@ -183,7 +181,7 @@ def get_consent() -> Union[dict, tuple]:
             return generate_response_from_example(CONSENT__NO_RELATIONSHIPS, 200)
         else:
             logger.error("Performer identifier does not match examples")
-            return generate_response_from_example(NOT_FOUND, 404)
+            return generate_response_from_example(INVALIDATED_RESOURCE, 404)
 
     except Exception as e:
         logger.error(e)

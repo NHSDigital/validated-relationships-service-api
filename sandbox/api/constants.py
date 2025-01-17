@@ -37,42 +37,42 @@ INTERNAL_SERVER_ERROR_EXAMPLE = "./api/examples/errors/internal-server-error.yam
 BAD_REQUEST_INCLUDE_PARAM_INVALID = (
     "./api/examples/errors/invalid-include-parameter.yaml"
 )
-NOT_FOUND = "./api/examples/errors/not-found.yaml"
+INVALIDATED_RESOURCE = "./api/examples/errors/invalidated-resource.yaml"
 MISSING_IDENTIFIER = "./api/examples/errors/missing-identifier.yaml"
 INVALID_IDENTIFIER = "./api/examples/errors/invalid-identifier.yaml"
 
 # Consent examples
-consent_dir = "./api/examples/GET_Consent/"
+CONSENT__DIRECTORY = "./api/examples/GET_Consent/"
 CONSENT__FILTERED_RELATIONSHIPS_STATUS_ACTIVE = (
-    consent_dir + "filtered-relationships-status-active.yaml"
+    f"{CONSENT__DIRECTORY}filtered-relationships-status-active.yaml"
 )
 CONSENT__FILTERED_RELATIONSHIPS_STATUS_INACTIVE = (
-    consent_dir + "filtered-relationships-status-inactive.yaml"
+    f"{CONSENT__DIRECTORY}filtered-relationships-status-inactive.yaml"
 )
 CONSENT__FILTERED_RELATIONSHIPS_STATUS_PROPOSED_ACTIVE = (
-    consent_dir + "filtered-relationships-status-proposed-active.yaml"
+    f"{CONSENT__DIRECTORY}filtered-relationships-status-proposed-active.yaml"
 )
-CONSENT__MULTIPLE_RELATIONSHIPS = consent_dir + "multiple-relationships.yaml"
+CONSENT__MULTIPLE_RELATIONSHIPS = f"{CONSENT__DIRECTORY}multiple-relationships.yaml"
 CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_BOTH = (
-    consent_dir + "multiple-relationships-include-performer-patient.yaml"
+    f"{CONSENT__DIRECTORY}multiple-relationships-include-performer-patient.yaml"
 )
 CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PATIENT = (
-    consent_dir + "multiple-relationships-include-patient.yaml"
+    f"{CONSENT__DIRECTORY}multiple-relationships-include-patient.yaml"
 )
 CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PERFORMER = (
-    consent_dir + "multiple-relationships-include-performer.yaml"
+    f"{CONSENT__DIRECTORY}multiple-relationships-include-performer.yaml"
 )
-CONSENT__NO_RELATIONSHIPS = consent_dir + "no-relationships.yaml"
+CONSENT__NO_RELATIONSHIPS = f"{CONSENT__DIRECTORY}no-relationships.yaml"
 CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP = (
-    consent_dir + "single-consenting-adult-relationship.yaml"
+    f"{CONSENT__DIRECTORY}single-consenting-adult-relationship.yaml"
 )
 CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_BOTH = (
-    consent_dir + "single-consenting-adult-relationship-include-performer-patient.yaml"
+    f"{CONSENT__DIRECTORY}single-consenting-adult-relationship-include-performer-patient.yaml"
 )
 CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP = (
-    consent_dir + "single-mother-child-relationship.yaml"
+    f"{CONSENT__DIRECTORY}single-mother-child-relationship.yaml"
 )
 CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH = (
-    consent_dir + "single-mother-child-relationship-include-performer-patient.yaml"
+    f"{CONSENT__DIRECTORY}single-mother-child-relationship-include-performer-patient.yaml"
 )
-CONSENT__STATUS_PARAM_INVALID = consent_dir + "errors/invalid-status-parameter.yaml"
+CONSENT__STATUS_PARAM_INVALID = f"{CONSENT__DIRECTORY}errors/invalid-status-parameter.yaml"
