@@ -38,4 +38,5 @@ jobs:
       - name: Run Postman Collection
         run: newman run ./postman/Validate_Relationship_Service_Sandbox.postman_collection.json -d ./postman/dev-variables.json
       - name: Stop sandbox
+        if: success() || failure()
         run: pkill -f "poetry run flask"
