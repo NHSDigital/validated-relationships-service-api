@@ -143,8 +143,8 @@ def get_consent() -> Union[dict, tuple]:
             return errors
 
         performer_identifier = remove_system(request.args.get("performer:identifier"))
-        status = request.args.get("status")
-        _include = request.args.get("_include")
+        status = request.args.getlist("status")
+        _include = request.args.getlist("_include")
 
         # Single consenting adult relationship
         if performer_identifier == "9000000010":

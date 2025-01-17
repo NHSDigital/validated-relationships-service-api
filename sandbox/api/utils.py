@@ -224,7 +224,7 @@ def generate_response_from_example(example_path: str, status_code: int) -> Respo
 
 
 def check_for_consent_include_params(
-    _include: str,
+    _include: list[str],
     include_none_response_yaml: str,
     include_both_response_yaml: str,
     include_patient_response_yaml: str = None,
@@ -233,7 +233,7 @@ def check_for_consent_include_params(
     """Checks the GET consent request include params and provides the related response
 
     Args:
-        _include (str): The include parameter supplied to the request
+        _include (list[str]): The include parameters supplied to the request
         include_none_response_yaml (str): Bundle to return when include params are empty
         include_both_response_yaml (str): Bundle to return when include param is Consent:performer,Consent:patient
         include_patient_response_yaml (str): (optional) Bundle to return when include param is Consent:patient
@@ -243,36 +243,38 @@ def check_for_consent_include_params(
         response: Resultant Response object based on input.
     """
     if (
-        _include != CONSENT_PERFORMER
-        and _include != CONSENT_PATIENT
-        and _include != f"{CONSENT_PATIENT},{CONSENT_PERFORMER}"
-        and _include != f"{CONSENT_PERFORMER},{CONSENT_PATIENT}"
+        CONSENT_PERFORMER not in _include
+        and CONSENT_PATIENT not in _include
         and _include is not None
     ):
         return generate_response_from_example(BAD_REQUEST_INCLUDE_PARAM_INVALID, 400)
-    elif _include == CONSENT_PERFORMER:
-        if include_performer_response_yaml:
-            return generate_response_from_example(include_performer_response_yaml, 200)
-        else:
-            logger.error("No consent performer example provided")
-            return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)
-    elif _include == CONSENT_PATIENT:
-        if include_performer_response_yaml:
-            return generate_response_from_example(include_patient_response_yaml, 200)
-        else:
-            logger.error("No consent:patient example provided")
-            return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)
+    elif len(_include) == 1:
+        if _include == CONSENT_PERFORMER:
+            if include_performer_response_yaml:
+                return generate_response_from_example(include_performer_response_yaml, 200)
+            else:
+                logger.error("No consent performer example provided")
+                return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)
+        elif _include == CONSENT_PATIENT:
+            if include_performer_response_yaml:
+                return generate_response_from_example(include_patient_response_yaml, 200)
+            else:
+                logger.error("No consent:patient example provided")
+                return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)
     elif (
-        _include == f"{CONSENT_PATIENT},{CONSENT_PERFORMER}"
-        or _include == f"{CONSENT_PERFORMER},{CONSENT_PATIENT}"
+        len(_include) == 2
+        and CONSENT_PATIENT in _include
+        and CONSENT_PERFORMER in _include
     ):
         return generate_response_from_example(include_both_response_yaml, 200)
+    elif _include > 2:
+        return generate_response_from_example(BAD_REQUEST_INCLUDE_PARAM_INVALID, 400)
     else:
         return generate_response_from_example(include_none_response_yaml, 200)
 
 
 def check_for_consent_filtering_params(
-    status: str,
+    status: list[str],
     status_active_response_yaml: str,
     status_inactive_response_yaml: str,
     status_proposed_and_active_response_yaml: str,
@@ -280,7 +282,7 @@ def check_for_consent_filtering_params(
     """Checks the GET consent request status params and provides related response
 
     Args:
-        status (str): The status parameter supplied to the request
+        status (list[str]): The status parameters supplied to the request
         status_active_response_yaml (str): Bundle to return when status param is 'active'
         status_inactive_response_yaml (str): Bundle to return when status param is 'inactive'
         status_proposed_and_active_response_yaml (str): Bundle to return when status param is 'proposed,inactive'
@@ -288,11 +290,12 @@ def check_for_consent_filtering_params(
     Returns:
         response: Resultant Response object based on input.
     """
-    if status == "active":
-        return generate_response_from_example(status_active_response_yaml, 200)
-    elif status == "inactive":
-        return generate_response_from_example(status_inactive_response_yaml, 200)
-    elif status == "proposed,active" or status == "active,proposed":
+    if len(status) == 1:
+        if  status == "active":
+            return generate_response_from_example(status_active_response_yaml, 200)
+        elif status == "inactive":
+            return generate_response_from_example(status_inactive_response_yaml, 200)
+    elif status == ["active","proposed"] or status == ["proposed","active"]:
         return generate_response_from_example(
             status_proposed_and_active_response_yaml, 200
         )
