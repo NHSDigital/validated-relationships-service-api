@@ -38,7 +38,7 @@ from .utils import (
     load_json_file,
     remove_system,
     check_for_consent_include_params,
-    check_for_consent_filtering_params,
+    check_for_consent_filtering,
 )
 
 app = Flask(__name__)
@@ -162,8 +162,9 @@ def get_consent() -> Union[dict, tuple]:
             )
         # Filtering
         elif performer_identifier == "9000000017":
-            return check_for_consent_filtering_params(
+            return check_for_consent_filtering(
                 status,
+                _include,
                 CONSENT__FILTERED_RELATIONSHIPS_STATUS_ACTIVE,
                 CONSENT__FILTERED_RELATIONSHIPS_STATUS_INACTIVE,
                 CONSENT__FILTERED_RELATIONSHIPS_STATUS_PROPOSED_ACTIVE,

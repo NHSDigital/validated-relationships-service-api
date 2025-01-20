@@ -44,7 +44,7 @@ INVALID_IDENTIFIER = "./api/examples/errors/invalid-identifier.yaml"
 # Consent examples
 CONSENT__DIRECTORY = "./api/examples/GET_Consent/"
 CONSENT__FILTERED_RELATIONSHIPS_STATUS_ACTIVE = (
-    f"{CONSENT__DIRECTORY}filtered-relationships-status-active.yaml"
+    f"{CONSENT__DIRECTORY}filtered-relationships-status-active-include-details.yaml"
 )
 CONSENT__FILTERED_RELATIONSHIPS_STATUS_INACTIVE = (
     f"{CONSENT__DIRECTORY}filtered-relationships-status-inactive.yaml"

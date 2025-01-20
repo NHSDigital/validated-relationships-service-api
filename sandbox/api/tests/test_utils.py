@@ -52,9 +52,14 @@ def test_related_person__not_found(
     ("request_args,response_file_name,status_code"),
     [
         (
-            "performer:identifier=9000000017&status=active",
-            "./api/examples/GET_Consent/filtered-relationships-status-active.yaml",
+            "performer:identifier=9000000017&status=active&_include=Consent:performer&_include=Consent:patient",
+            "./api/examples/GET_Consent/filtered-relationships-status-active-include-details.yaml",
             200,
+        ),
+        (
+            "performer:identifier=9000000017&status=active",
+            "./api/examples/errors/invalidated-resource.yaml",
+            404,
         ),
         (
             "performer:identifier=9000000017&status=inactive",
@@ -62,7 +67,7 @@ def test_related_person__not_found(
             200,
         ),
         (
-            "performer:identifier=9000000017&status=proposed,active",
+            "performer:identifier=9000000017&status=proposed&status=active",
             "./api/examples/GET_Consent/filtered-relationships-status-proposed-active.yaml",
             200,
         ),
@@ -82,7 +87,7 @@ def test_related_person__not_found(
             200,
         ),
         (
-            "performer:identifier=9000000022&_include=Consent:performer,Consent:patient",
+            "performer:identifier=9000000022&_include=Consent:performer&_include=Consent:patient",
             "./api/examples/GET_Consent/multiple-relationships-include-performer-patient.yaml",
             200,
         ),
@@ -92,7 +97,7 @@ def test_related_person__not_found(
             200,
         ),
         (
-            "performer:identifier=9000000010&_include=Consent:performer,Consent:patient",
+            "performer:identifier=9000000010&_include=Consent:performer&_include=Consent:patient",
             "./api/examples/GET_Consent/single-consenting-adult-relationship-include-performer-patient.yaml",
             200,
         ),
@@ -102,7 +107,7 @@ def test_related_person__not_found(
             200,
         ),
         (
-            "performer:identifier=9000000019&_include=Consent:performer,Consent:patient",
+            "performer:identifier=9000000019&_include=Consent:performer&_include=Consent:patient",
             "./api/examples/GET_Consent/single-mother-child-relationship-include-performer-patient.yaml",
             200,
         ),
