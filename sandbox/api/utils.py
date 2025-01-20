@@ -1,6 +1,6 @@
 from logging import getLogger
 from json import dumps, load
-from typing import Any, Optional
+from typing import Any, Optional, List
 
 from flask import Response, Request
 from yaml import CLoader as Loader
@@ -224,7 +224,7 @@ def generate_response_from_example(example_path: str, status_code: int) -> Respo
 
 
 def check_for_consent_include_params(
-    _include: list[str],
+    _include: List[str],
     include_none_response_yaml: str,
     include_both_response_yaml: str,
     include_patient_response_yaml: str = None,
@@ -233,7 +233,7 @@ def check_for_consent_include_params(
     """Checks the GET consent request include params and provides the related response
 
     Args:
-        _include (str): The include parameters supplied to the request
+        _include (List[str]): The include parameters supplied to the request
         include_none_response_yaml (str): Bundle to return when include params are empty
         include_both_response_yaml (str): Bundle to return when include param is Consent:performer,Consent:patient
         include_patient_response_yaml (str): (optional) Bundle to return when include param is Consent:patient
@@ -267,8 +267,8 @@ def check_for_consent_include_params(
 
 
 def check_for_consent_filtering(
-    status: list[str],
-    _include: list[str],
+    status: List[str],
+    _include: List[str],
     status_active_with_details_response_yaml: str,
     status_inactive_response_yaml: str,
     status_proposed_and_active_response_yaml: str,
@@ -276,8 +276,8 @@ def check_for_consent_filtering(
     """Checks the GET consent request status params and provides related response
 
     Args:
-        status (list[str]): The status parameters supplied to the request
-        status_none_response_yaml (str): Bundle to return when no status param is provided
+        status (List[str]): The status parameters supplied to the request
+        _include (List[str]): The include parameters supplied to the request
         status_active_with_details_response_yaml (str): Bundle to return when status param is 'active'
         status_inactive_response_yaml (str): Bundle to return when status param is 'inactive'
         status_proposed_and_active_response_yaml (str): Bundle to return when status param is 'proposed,inactive'
