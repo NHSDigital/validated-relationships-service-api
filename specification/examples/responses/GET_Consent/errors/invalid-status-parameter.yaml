@@ -1,4 +1,4 @@
-ConsentInvalidStatusParameterErrorBundle:
+ConsentInvalidStatusParameterError:
   summary: Bad request status param invalid
   description: 400 error response bundle for an invalid status parameter
   value:

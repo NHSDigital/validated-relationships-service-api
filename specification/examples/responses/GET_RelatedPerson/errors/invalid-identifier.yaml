@@ -1,4 +1,4 @@
-RelatedPersonInvalidIdentifierErrorBundle:
+RelatedPersonInvalidIdentifierError:
   summary: Invalid RelatedPerson identifier
   description: Error raised due to an invalid RelatedPerson identifier request parameter being specified.
   value:

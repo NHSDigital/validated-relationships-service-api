@@ -1,4 +1,4 @@
-InternalServerErrorBundle:
+InternalServerError:
   summary: Internal Server Error
   description: An unexpected condition was encountered preventing the server from fulfilling the request.
   value:

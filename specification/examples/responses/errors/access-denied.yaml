@@ -1,4 +1,4 @@
-AccessDeniedErrorBundle:
+AccessDeniedError:
   summary: Access Denied
   description: The request was unsuccessful due to invalid authentication credentials being provided.
   value:

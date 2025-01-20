@@ -325,10 +325,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/OperationOutcome'
               examples:
-                AccessDeniedErrorBundle:
-                  $ref: './examples/responses/errors/access-denied.yaml#/AccessDeniedErrorBundle'
-                RelatedPersonInvalidIdentifierErrorBundle:
-                  $ref: './examples/responses/GET_RelatedPerson/errors/invalid-identifier.yaml#/RelatedPersonInvalidIdentifierErrorBundle'
+                AccessDeniedError:
+                  $ref: './examples/responses/errors/access-denied.yaml#/AccessDeniedError'
+                RelatedPersonInvalidIdentifierError:
+                  $ref: './examples/responses/GET_RelatedPerson/errors/invalid-identifier.yaml#/RelatedPersonInvalidIdentifierError'
 
         "500":
           description: Internal server error
@@ -337,8 +337,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/OperationOutcome'
               examples:
-                InternalServerErrorBundle:
-                  $ref: './examples/responses/errors/internal-server-error.yaml#/InternalServerErrorBundle'
+                InternalServerError:
+                  $ref: './examples/responses/errors/internal-server-error.yaml#/InternalServerError'
 
   /Consent:
     get:
@@ -442,20 +442,20 @@ paths:
                 schema:
                   $ref: '#/components/schemas/OperationOutcome'
                 examples:
-                  accessDeniedError:
-                    $ref: './examples/responses/errors/access-denied.yaml#/AccessDeniedErrorBundle'
-                  InvalidIdentifierError:
-                    $ref: './examples/responses/GET_Consent/errors/invalid-identifier.yaml#/ConsentInvalidIdentifierErrorBundle'
-                  InvalidIdentifierSystemBundle:
-                    $ref: './examples/responses/GET_Consent/errors/invalid-identifier-system.yaml#/ConsentInvalidIdentifierSystemErrorBundle'
-                  IdentifierMissingBundle:
-                    $ref: './examples/responses/GET_Consent/errors/missing-identifier.yaml#/ConsentIdentifierMissingErrorBundle'
-                  NotFoundBundle:
-                    $ref: './examples/responses/errors/invalidated-resource.yaml#/InvalidatedResourceErrorBundle'
-                  ConsentInvalidStatusParameterBundle:
-                    $ref: './examples/responses/GET_Consent/errors/invalid-status-parameter.yaml#/ConsentInvalidStatusParameterErrorBundle'
-                  InvalidIncludeParameterBundle:
-                    $ref: './examples/responses/errors/invalid-include-parameter.yaml#/InvalidIncludeParameterErrorBundle'
+                  AccessDeniedError:
+                    $ref: './examples/responses/errors/access-denied.yaml#/AccessDeniedError'
+                  ConsentInvalidIdentifierError:
+                    $ref: './examples/responses/GET_Consent/errors/invalid-identifier.yaml#/ConsentInvalidIdentifierError'
+                  ConsentInvalidIdentifierSystemError:
+                    $ref: './examples/responses/GET_Consent/errors/invalid-identifier-system.yaml#/ConsentInvalidIdentifierSystemError'
+                  ConsentIdentifierMissingError:
+                    $ref: './examples/responses/GET_Consent/errors/missing-identifier.yaml#/ConsentIdentifierMissingError'
+                  InvalidatedResourceError:
+                    $ref: './examples/responses/errors/invalidated-resource.yaml#/InvalidatedResourceError'
+                  ConsentInvalidStatusParameterError:
+                    $ref: './examples/responses/GET_Consent/errors/invalid-status-parameter.yaml#/ConsentInvalidStatusParameterError'
+                  InvalidIncludeParameterError:
+                    $ref: './examples/responses/errors/invalid-include-parameter.yaml#/InvalidIncludeParameterError'
           "500":
             description: Internal server error
             content:
@@ -463,8 +463,8 @@ paths:
                 schema:
                   $ref: '#/components/schemas/OperationOutcome'
                 examples:
-                  internalServerError:
-                    $ref: './examples/responses/errors/internal-server-error.yaml#/InternalServerErrorBundle'
+                  InternalServerError:
+                    $ref: './examples/responses/errors/internal-server-error.yaml#/InternalServerError'
 
 
 components:

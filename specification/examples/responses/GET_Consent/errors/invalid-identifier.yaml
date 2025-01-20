@@ -1,4 +1,4 @@
-ConsentInvalidIdentifierErrorBundle:
+ConsentInvalidIdentifierError:
   summary: Bad request invalid identifier
   description: Error raised due to an invalid identifier request parameter being specified.
   value:
