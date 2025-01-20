@@ -42,32 +42,32 @@ def check_for_related_person_errors(request: Request) -> Optional[tuple]:
     identifier_without_system = remove_system(request.args.get("identifier"))
 
     if not identifier:
-        return (
-            generate_response(load_json_file(
+        return generate_response(
+            load_json_file(
                 "./api/responses/GET_RelatedPerson/bad_request_identifier_missing.json"
             ),
             400,
-        ))
+        )
     elif identifier and len(identifier_without_system) != 10:
         # invalid identifier
-        return (
-            generate_response(load_json_file(
+        return generate_response(
+            load_json_file(
                 "./api/responses/GET_RelatedPerson/bad_request_identifier_invalid.json"
             ),
             400,
-        ))
+        )
     elif (
         isinstance(identifier, str)
         and "|" in identifier
         and "https://fhir.nhs.uk/Id/nhs-number" == identifier.split("|", maxsplit=2)[0]
     ):
         # invalid identifier system
-        return (
-            generate_response(load_json_file(
+        return generate_response(
+            load_json_file(
                 "./api/responses/GET_RelatedPerson/bad_request_identifier_invalid_system.json"
             ),
             400,
-        ))
+        )
 
 
 def check_for_consent_errors(request: Request) -> Optional[tuple]:
@@ -287,22 +287,20 @@ def check_for_consent_filtering(
     """
     if status == [] or status is None:
         return generate_response_from_example(INVALIDATED_RESOURCE, 404)
-    if  status == ["active"]:
+    if status == ["active"]:
         if (
             len(_include) == 2
             and CONSENT_PERFORMER in _include
             and CONSENT_PERFORMER in _include
         ):
-            return generate_response_from_example(status_active_with_details_response_yaml, 200)
+            return generate_response_from_example(
+                status_active_with_details_response_yaml, 200
+            )
         else:
             return generate_response_from_example(INVALIDATED_RESOURCE, 404)
     elif status == ["inactive"]:
         return generate_response_from_example(status_inactive_response_yaml, 200)
-    elif (
-        len(status) == 2
-        and "active" in status
-        and "proposed" in status
-    ):
+    elif len(status) == 2 and "active" in status and "proposed" in status:
         return generate_response_from_example(
             status_proposed_and_active_response_yaml, 200
         )

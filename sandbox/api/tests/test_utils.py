@@ -163,17 +163,17 @@ def test_get_response(mock_open: MagicMock) -> None:
     "request_args,response_file_name",
     [
         (
-            "", # identifier is missing
+            "",  # identifier is missing
             "./api/responses/GET_RelatedPerson/bad_request_identifier_missing.json",
         ),
         (
-            "identifier=123456789", # identifier length is less than 10
+            "identifier=123456789",  # identifier length is less than 10
             "./api/responses/GET_RelatedPerson/bad_request_identifier_invalid.json",
         ),
         (
             "identifier=https://fhir.nhs.uk/Id/nhs-number|A730675929",  # identifier system invalid
             "./api/responses/GET_RelatedPerson/bad_request_identifier_invalid_system.json",
-        )
+        ),
     ],
 )
 @patch(f"{FILE_PATH}.load_json_file")
@@ -196,21 +196,21 @@ def test_check_for_related_person_errors(
     "request_args,response_file_name,status_code",
     [
         (
-            "performer:identifier=90000009990", # Invalid performer identifier
+            "performer:identifier=90000009990",  # Invalid performer identifier
             "./api/examples/GET_Consent/errors/invalid-identifier.yaml",
             400,
         ),
         (
-            "", # missing performer identifier
+            "",  # missing performer identifier
             "./api/examples/GET_Consent/errors/missing-identifier.yaml",
             400,
         ),
         (
-            "performer:identifier=https://fhir.nhs.uk/Id/nhs-number|A730675929", # identifier system invalid
+            "performer:identifier=https://fhir.nhs.uk/Id/nhs-number|A730675929",  # identifier system invalid
             "./api/examples/GET_Consent/errors/invalid-identifier-system.yaml",
             400,
         ),
-    ]
+    ],
 )
 @patch(f"{FILE_PATH}.generate_response_from_example")
 def test_check_for_consent_errors(
