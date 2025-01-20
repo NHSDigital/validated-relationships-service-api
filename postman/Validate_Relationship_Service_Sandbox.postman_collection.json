@@ -1325,7 +1325,7 @@
 			"name": "Get proxy relationships (Consent)",
 			"item": [
 				{
-					"name": "Filtered proxy relationships by 'active' status",
+					"name": "Filtered proxy relationships by 'active' status include details",
 					"event": [
 						{
 							"listen": "test",
@@ -1337,6 +1337,100 @@
 									"  \"total\": 2,",
 									"  \"type\": \"searchset\",",
 									"  \"entry\": [",
+									"    {",
+									"      \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742\",",
+									"      \"resource\": {",
+									"        \"resourceType\": \"RelatedPerson\",",
+									"        \"id\": \"BE974742\",",
+									"        \"identifier\": [",
+									"          {",
+									"            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"            \"value\": \"9000000017\"",
+									"          },",
+									"          {",
+									"            \"system\": \"https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier\",",
+									"            \"value\": \"ABC0000003\"",
+									"          }",
+									"        ],",
+									"        \"patient\": {",
+									"          \"type\": \"Patient\",",
+									"          \"identifier\": {",
+									"            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"            \"value\": \"9000000017\"",
+									"          }",
+									"        },",
+									"        \"relationship\": [",
+									"          {",
+									"            \"coding\": [",
+									"              {",
+									"                \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",",
+									"                \"code\": \"PRN\",",
+									"                \"display\": \"Parent\"",
+									"              },",
+									"              {",
+									"                \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",",
+									"                \"code\": \"MTH\",",
+									"                \"display\": \"mother\"",
+									"              }",
+									"            ]",
+									"          }",
+									"        ]",
+									"      },",
+									"      \"search\": {",
+									"        \"mode\": \"include\"",
+									"      }",
+									"    },",
+									"    {",
+									"      \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/A3CC67E2\",",
+									"      \"resource\": {",
+									"        \"resourceType\": \"Patient\",",
+									"        \"id\": \"A3CC67E2\",",
+									"        \"identifier\": [",
+									"          {",
+									"            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"            \"value\": \"9000000009\"",
+									"          },",
+									"          {",
+									"            \"system\": \"https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier\",",
+									"            \"value\": \"ABC1234567\"",
+									"          }",
+									"        ],",
+									"        \"name\": [",
+									"          {",
+									"            \"id\": \"123456\",",
+									"            \"use\": \"usual\",",
+									"            \"period\": {",
+									"              \"start\": \"2020-01-01\",",
+									"              \"end\": \"2021-12-31\"",
+									"            },",
+									"            \"given\": [",
+									"              \"Jane Marie Anne\"",
+									"            ],",
+									"            \"family\": \"Smith\",",
+									"            \"prefix\": [",
+									"              \"Mrs\"",
+									"            ],",
+									"            \"suffix\": [",
+									"              \"MBE\",",
+									"              \"PhD\"",
+									"            ]",
+									"          }",
+									"        ],",
+									"        \"birthDate\": \"2022-10-22\",",
+									"        \"generalPractitioner\": [",
+									"          {",
+									"            \"type\": \"Organization\",",
+									"            \"identifier\": {",
+									"              \"value\": \"ODS12345\",",
+									"              \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\"",
+									"            }",
+									"          }",
+									"        ]",
+									"      },",
+									"      \"search\": {",
+									"        \"mode\": \"include\"",
+									"      }",
+									"    },",
 									"    {",
 									"      \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/BBCC67E9\",",
 									"      \"resource\": {",
@@ -1389,6 +1483,91 @@
 									"      },",
 									"      \"search\": {",
 									"        \"mode\": \"match\"",
+									"      }",
+									"    },",
+									"    {",
+									"      \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/RP974720\",",
+									"      \"resource\": {",
+									"        \"resourceType\": \"RelatedPerson\",",
+									"        \"id\": \"RP974720\",",
+									"        \"identifier\": [",
+									"          {",
+									"            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"            \"value\": \"9000000017\"",
+									"          },",
+									"          {",
+									"            \"system\": \"https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier\",",
+									"            \"value\": \"ABC0000003\"",
+									"          }",
+									"        ],",
+									"        \"patient\": {",
+									"          \"type\": \"Patient\",",
+									"          \"identifier\": {",
+									"            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"            \"value\": \"9000000005\"",
+									"          }",
+									"        },",
+									"        \"relationship\": [",
+									"          {",
+									"            \"coding\": [",
+									"              {",
+									"                \"system\": \"https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole\",",
+									"                \"code\": \"Personal\",",
+									"                \"display\": \"Personal relationship with the patient\"",
+									"              }",
+									"            ]",
+									"          }",
+									"        ]",
+									"      },",
+									"      \"search\": {",
+									"        \"mode\": \"include\"",
+									"      }",
+									"    },",
+									"    {",
+									"      \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/DFCC67F5\",",
+									"      \"resource\": {",
+									"        \"resourceType\": \"Patient\",",
+									"        \"id\": \"DFCC67F5\",",
+									"        \"identifier\": [",
+									"          {",
+									"            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"            \"value\": \"9000000005\"",
+									"          },",
+									"          {",
+									"            \"system\": \"https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier\",",
+									"            \"value\": \"ABC9999999\"",
+									"          }",
+									"        ],",
+									"        \"name\": [",
+									"          {",
+									"            \"id\": \"123456\",",
+									"            \"use\": \"usual\",",
+									"            \"period\": {",
+									"              \"start\": \"2020-01-01\",",
+									"              \"end\": \"2021-12-31\"",
+									"            },",
+									"            \"given\": [",
+									"              \"Sally\"",
+									"            ],",
+									"            \"family\": \"Evans\",",
+									"            \"prefix\": [",
+									"              \"Mrs\"",
+									"            ]",
+									"          }",
+									"        ],",
+									"        \"birthDate\": \"1995-10-22\",",
+									"        \"generalPractitioner\": [",
+									"          {",
+									"            \"type\": \"Organization\",",
+									"            \"identifier\": {",
+									"              \"value\": \"ODS12345\",",
+									"              \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\"",
+									"            }",
+									"          }",
+									"        ]",
+									"      },",
+									"      \"search\": {",
+									"        \"mode\": \"include\"",
 									"      }",
 									"    },",
 									"    {",
@@ -1477,7 +1656,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000017&status=active",
+							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000017&status=active&_include=Consent:performer&_include=Consent:patient",
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -1492,6 +1671,14 @@
 								{
 									"key": "status",
 									"value": "active"
+								},
+								{
+									"key": "_include",
+									"value": "Consent:performer"
+								},
+								{
+									"key": "_include",
+									"value": "Consent:patient"
 								}
 							]
 						}
@@ -1969,7 +2156,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000017&status=proposed,active",
+							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000017&status=proposed&status=active&_include=Consent:patient",
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -1983,7 +2170,15 @@
 								},
 								{
 									"key": "status",
-									"value": "proposed,active"
+									"value": "proposed"
+								},
+								{
+									"key": "status",
+									"value": "active"
+								},
+								{
+									"key": "_include",
+									"value": "Consent:patient"
 								}
 							]
 						}
@@ -3453,7 +3648,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000022&_include=Consent:performer,Consent:patient",
+							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000022&_include=Consent:performer&_include=Consent:patient",
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -3467,7 +3662,11 @@
 								},
 								{
 									"key": "_include",
-									"value": "Consent:performer,Consent:patient"
+									"value": "Consent:performer"
+								},
+								{
+									"key": "_include",
+									"value": "Consent:patient"
 								}
 							]
 						}
@@ -3823,7 +4022,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000010&_include=Consent:performer,Consent:patient",
+							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000010&_include=Consent:performer&_include=Consent:patient",
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -3837,7 +4036,11 @@
 								},
 								{
 									"key": "_include",
-									"value": "Consent:performer,Consent:patient"
+									"value": "Consent:performer"
+								},
+								{
+									"key": "_include",
+									"value": "Consent:patient"
 								}
 							]
 						}
@@ -4129,7 +4332,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000019&_include=Consent:performer,Consent:patient",
+							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000019&_include=Consent:performer&_include=Consent:patient",
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -4143,7 +4346,11 @@
 								},
 								{
 									"key": "_include",
-									"value": "Consent:performer,Consent:patient"
+									"value": "Consent:performer"
+								},
+								{
+									"key": "_include",
+									"value": "Consent:patient"
 								}
 							]
 						}
@@ -4293,7 +4500,7 @@
 					"response": []
 				},
 				{
-					"name": "Not performer record found",
+					"name": "No performer record found",
 					"event": [
 						{
 							"listen": "test",
