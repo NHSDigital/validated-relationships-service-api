@@ -190,6 +190,7 @@ def test_check_for_related_person_errors(
     response = client.get(f"{RELATED_PERSON_API_ENDPOINT}?{request_args}")
     # Assert
     mock_load_json_file.assert_called_once_with(response_file_name)
+    assert response.status_code == 500
 
 
 @pytest.mark.parametrize(

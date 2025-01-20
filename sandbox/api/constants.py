@@ -66,11 +66,15 @@ CONSENT__NO_RELATIONSHIPS = f"{CONSENT__DIRECTORY}no-relationships.yaml"
 CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP = (
     f"{CONSENT__DIRECTORY}single-consenting-adult-relationship.yaml"
 )
-CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_BOTH = f"{CONSENT__DIRECTORY}single-consenting-adult-relationship-include-performer-patient.yaml"
+CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_BOTH = (
+    f"{CONSENT__DIRECTORY}single-consenting-adult-relationship-include-performer-patient.yaml"
+)
 CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP = (
     f"{CONSENT__DIRECTORY}single-mother-child-relationship.yaml"
 )
-CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH = f"{CONSENT__DIRECTORY}single-mother-child-relationship-include-performer-patient.yaml"
+CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH = (
+    f"{CONSENT__DIRECTORY}single-mother-child-relationship-include-performer-patient.yaml"
+)
 CONSENT__STATUS_PARAM_INVALID = (
     f"{CONSENT__DIRECTORY}errors/invalid-status-parameter.yaml"
 )
