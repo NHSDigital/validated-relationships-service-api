@@ -90,9 +90,6 @@ ConsentMultipleRelationshipsStatusActiveIncludeDetailsBundle:
             - identifier:
                 system: "https://fhir.nhs.uk/Id/nhs-number"
                 value: "9000000017"
-          policy:
-            - authority: "https://www.england.nhs.uk"
-              uri: "<REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD>"
         search:
           mode: match
       - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/RP974720"
@@ -170,9 +167,6 @@ ConsentMultipleRelationshipsStatusActiveIncludeDetailsBundle:
             - identifier:
                 system: "https://fhir.nhs.uk/Id/nhs-number"
                 value: "9000000017"
-          policy:
-            - authority: "https://www.england.nhs.uk"
-              uri: "<REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD>"
           verification:
             - verified: true
               verifiedWith:

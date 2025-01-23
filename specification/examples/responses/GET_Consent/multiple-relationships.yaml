@@ -33,9 +33,6 @@ ConsentMultipleRelationshipsBundle:
             - identifier:
                 system: 'https://fhir.nhs.uk/Id/nhs-number'
                 value: '9000000022'
-          policy:
-            - authority: 'https://www.england.nhs.uk'
-              uri: <REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD>
         search:
           mode: match
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/WWCC67T1
@@ -64,9 +61,6 @@ ConsentMultipleRelationshipsBundle:
             - identifier:
                 system: 'https://fhir.nhs.uk/Id/nhs-number'
                 value: '9000000022'
-          policy:
-            - authority: 'https://www.england.nhs.uk'
-              uri: <REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD>
           verification:
             - verified: true
               verifiedWith:
@@ -102,9 +96,6 @@ ConsentMultipleRelationshipsBundle:
             - identifier:
                 system: 'https://fhir.nhs.uk/Id/nhs-number'
                 value: '9000000022'
-          policy:
-            - authority: 'https://www.england.nhs.uk'
-              uri: <REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD>
           verification:
             - verified: true
               verifiedWith:
