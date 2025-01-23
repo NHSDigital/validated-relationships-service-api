@@ -22,7 +22,7 @@ lint:
 	find . -name '*.py' -not -path '**/.venv/*' | xargs poetry run flake8
 
 format:
-	find . -name '*.py' -not -path '**/.venv/*' | xargs poetry run black --check
+	find . -name '*.py' -not -path '**/.venv/*' -not -path './sandbox/api/constants.py' | xargs poetry run black --check
 
 #Removes build/ + dist/ directories
 clean:

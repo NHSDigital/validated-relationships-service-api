@@ -1,0 +1,15 @@
+InvalidIncludeParameterError:
+  summary: Bad request include param invalid
+  description: 400 error response bundle for an invalid include parameter
+  value:
+    resourceType: "OperationOutcome"
+    issue:
+      - code: invalid
+        details:
+          coding:
+            - system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
+              version: "1"
+              code: "INVALID_VALUE"
+              display: "Required parameter(s) are invalid."
+        severity: error
+    diagnostics: "Invalid request with error - _include parameter is invalid."

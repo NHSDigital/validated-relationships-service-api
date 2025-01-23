@@ -124,7 +124,7 @@ info:
     * is open access, so does not allow you to test authorisation
 
 
-    [![Run in Postman](https://run.pstmn.io/button.svg)](https://god.gw.postman.com/run-collection/34042403-24814c29-3493-40de-bb74-57e98eadaf1d?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D34042403-24814c29-3493-40de-bb74-57e98eadaf1d%26entityType%3Dcollection%26workspaceId%3Dc2d4b94e-3492-48f4-ae19-e26bd5514da9)
+    [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/18067099-d6d93fa6-55b2-4d98-9f82-d3d01638f262?action=collection%2Ffork&collection-url=entityId%3D18067099-d6d93fa6-55b2-4d98-9f82-d3d01638f262%26entityType%3Dcollection%26workspaceId%3Dd68c8af0-0a36-4e0a-b612-fe0ec8e284ca)
 
     ### Integration testing
 
@@ -325,9 +325,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/OperationOutcome'
               examples:
-                accessDeniedError:
+                AccessDeniedError:
                   $ref: './examples/responses/errors/access-denied.yaml#/AccessDeniedError'
-                relatedPersonInvalidIdentifierError:
+                RelatedPersonInvalidIdentifierError:
                   $ref: './examples/responses/GET_RelatedPerson/errors/invalid-identifier.yaml#/RelatedPersonInvalidIdentifierError'
 
         "500":
@@ -337,7 +337,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/OperationOutcome'
               examples:
-                internalServerError:
+                InternalServerError:
                   $ref: './examples/responses/errors/internal-server-error.yaml#/InternalServerError'
 
   /Consent:
@@ -355,11 +355,26 @@ paths:
 
           ## Sandbox test scenarios
 
-          | Scenario                                                                   | Request                                                                                      | Response                                                                                                     |
-          | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-          | A single active proxy relationship for two consenting adults with capacity | `performer:identifier`=`9000000010` and `status`=`active` and `_include`=`Consent:performer` | HTTP Status 200 Bundle containing a single active proxy relationship for two consenting adults with capacity |
-          | Multiple active proxy relationships with varying legal basis'              | `performer:identifier`=`9000000017` and `status`=`active` and `_include`=`Consent:performer` | HTTP Status 200 A Bundle containing multiple active proxy relationships with varying legal basis'            |
-          | A single active proxy relationship for a birth mother & child              | `performer:identifier`=`9000000019` and `status`=`active` and `_include`=`Consent:performer` | HTTP Status 200 Bundle containing a single active proxy relationship for a birth mother & child              |
+          | Scenario                                                                   | Request                                                                                                                         | Response                                                                                                          |
+          | -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------| ------------------------------------------------------------------------------------------------------------------|
+          | Multiple proxy relationships filtered by 'active' status including details | `performer:identifier`=`9000000017` and `_include` = `Consent:patient` and `_include` = `Consent:proxy` and `status`=`active`   | HTTP Status 200 Bundle containing a multiple active proxy relationships including performer and patient details   |
+          | Multiple proxy relationships filtered by 'inactive' status                 | `performer:identifier`=`9000000017` and `status`=`inactive`                                                                     | HTTP Status 200 Bundle containing a multiple inactive proxy relationships                                         |
+          | Multiple proxy relationships filtered by 'proposed' and 'active' status    | `performer:identifier`=`9000000017` and `status`=`proposed,active`                                                              | HTTP Status 200 Bundle containing a multiple proposed and active proxy relationships                              |
+          | Multiple proxy relationships without filtering and details                 | `performer:identifier`=`9000000022`                                                                                             | HTTP Status 200 Bundle containing a multiple proxy relationships without details                                  |
+          | Multiple proxy relationships including performer details                   | `performer:identifier`=`9000000022` and `_include` = `Consent:performer`                                                        | HTTP Status 200 Bundle containing a multiple proxy relationships including performer details                      |
+          | Multiple proxy relationships including patient details                     | `performer:identifier`=`9000000022` and `_include` = `Consent:patient`                                                          | HTTP Status 200 Bundle containing a multiple proxy relationships including patient details                        |
+          | Multiple proxy relationships including performer and patient details       | `performer:identifier`=`9000000022` and `_include` = `Consent:patient` and `_include` = `Consent:proxy`                         | HTTP Status 200 Bundle containing a multiple proxy relationships including performer and patient details          |
+          | No proxy relationships                                                     | `performer:identifier`=`9000000025` and `_include` = `Consent:patient` and `_include` = `Consent:proxy` and `status` = `active` | HTTP Status 200 empty bundle                                                                                      |
+          | A single proxy relationship between consenting adults                      | `performer:identifier`=`9000000010`                                                                                             | HTTP Status 200 Bundle containing a single proxy relationship                                                     |
+          | A single proxy relationship between consenting adults including details    | `performer:identifier`=`9000000010` and `_include` = `Consent:patient` and `_include` = `Consent:proxy`                         | HTTP Status 200 Bundle containing a single proxy relationship including performer and patient details             |
+          | A single proxy relationship between a mother and child                     | `performer:identifier`=`9000000019`                                                                                             | HTTP Status 200 Bundle containing a single proxy relationship                                                     |
+          | A single proxy relationship between a mother and child including details   | `performer:identifier`=`9000000019` and `_include` = `Consent:patient` and `_include` = `Consent:proxy`                         | HTTP Status 200 Bundle containing a single proxy relationship including performer and patient details             |
+          | Invalid status parameter                                                   | `performer:identifier`=`9000000019` and `status` = `test`                                                                       | HTTP Status 400 and INVALID_VALUE error response                                                                  |
+          | Invalid include parameter                                                  | `performer:identifier`=`9000000019` and `_include` = `test`                                                                     | HTTP Status 400 and INVALID_VALUE error response                                                                  |
+          | Missing identifier                                                         | `patient:identifier`=`9000000009`                                                                                               | HTTP Status 400 and MISSING_IDENTIFIER_VALUE error response                                                       |
+          | Invalid identifier                                                         | `identifier`=`900000000` Note: This identifier is 9 characters long, too short to be NHS Number                                 | HTTP Status 400 and INVALID_IDENTIFIER_VALUE error response                                                       |
+          | Invalid identifier system                                                  | `identifier`=`https://fhir.nhs.uk/Id/nhs-number/9730675929`                                                                     | HTTP Status 400 and INVALID_IDENTIFIER_SYSTEM error response                                                      |
+          | No performer record found                                                  | `identifier`=`9000000999`                                                                                                       | HTTP Status 404 and INVALIDATED_RESOURCE error response                                                           |
 
         operationId: get-consent
         parameters:
@@ -378,12 +393,30 @@ paths:
                 schema:
                   $ref: "#/components/schemas/ConsentBundle"
                 examples:
-                  consentMotherChildBundle:
-                    $ref: "./examples/responses/GET_Consent/mother-child.yaml#/ConsentMotherChildBundle"
-                  consentAdultsConsentingBundle:
-                    $ref: "./examples/responses/GET_Consent/adults-consenting.yaml#/ConsentAdultsConsentingBundle"
-                  consentMultipleBundle:
-                    $ref: "./examples/responses/GET_Consent/mixed.yaml#/ConsentMixedBundle"
+                  ConsentMultipleRelationshipsStatusActiveBundle:
+                    $ref: "./examples/responses/GET_Consent/filtered-relationships-status-active-include-details.yaml#/ConsentMultipleRelationshipsStatusActiveIncludeDetailsBundle"
+                  ConsentMultipleRelationshipsStatusInactiveBundle:
+                    $ref: "./examples/responses/GET_Consent/filtered-relationships-status-inactive.yaml#/ConsentMultipleRelationshipsStatusInactiveBundle"
+                  ConsentMultipleRelationshipsStatusProposedActiveBundle:
+                    $ref: "./examples/responses/GET_Consent/filtered-relationships-status-proposed-active.yaml#/ConsentMultipleRelationshipsStatusProposedActiveBundle"
+                  ConsentMultipleRelationshipsBundle:
+                    $ref: "./examples/responses/GET_Consent/multiple-relationships.yaml#/ConsentMultipleRelationshipsBundle"
+                  ConsentMultipleRelationshipsIncludePatientBundle:
+                    $ref: "./examples/responses/GET_Consent/multiple-relationships-include-patient.yaml#/ConsentMultipleRelationshipsIncludePatientBundle"
+                  ConsentMultipleRelationshipsIncludePerformerBundle:
+                    $ref: "./examples/responses/GET_Consent/multiple-relationships-include-performer.yaml#/ConsentMultipleRelationshipsIncludePerformerBundle"
+                  ConsentMultipleRelationshipsIncludePerformerPatientBundle:
+                    $ref: "./examples/responses/GET_Consent/multiple-relationships-include-performer-patient.yaml#/ConsentMultipleRelationshipsIncludePerformerPatientBundle"
+                  ConsentNoRelationshipsEmptyBundle:
+                    $ref: "./examples/responses/GET_Consent/no-relationships.yaml#/ConsentNoRelationshipsEmptyBundle"
+                  ConsentSingleConsentingAdultRelationshipBundle:
+                    $ref: "./examples/responses/GET_Consent/single-consenting-adult-relationship.yaml#/ConsentSingleConsentingAdultRelationshipBundle"
+                  ConsentSingleConsentingAdultRelationshipIncludePerformerPatientBundle:
+                    $ref: "./examples/responses/GET_Consent/single-consenting-adult-relationship-include-performer-patient.yaml#/ConsentSingleConsentingAdultRelationshipIncludePerformerPatientBundle"
+                  ConsentSingleAdultChildRelationshipBundle:
+                    $ref: "./examples/responses/GET_Consent/single-mother-child-relationship.yaml#/ConsentSingleAdultChildRelationshipBundle"
+                  ConsentSingleAdultChildRelationshipIncludePerformerPatientBundle:
+                    $ref: "./examples/responses/GET_Consent/single-mother-child-relationship-include-performer-patient.yaml#/ConsentSingleAdultChildRelationshipIncludePerformerPatientBundle"
 
           "4XX":
             description: |
@@ -409,8 +442,20 @@ paths:
                 schema:
                   $ref: '#/components/schemas/OperationOutcome'
                 examples:
-                  accessDeniedError:
+                  AccessDeniedError:
                     $ref: './examples/responses/errors/access-denied.yaml#/AccessDeniedError'
+                  ConsentInvalidIdentifierError:
+                    $ref: './examples/responses/GET_Consent/errors/invalid-identifier.yaml#/ConsentInvalidIdentifierError'
+                  ConsentInvalidIdentifierSystemError:
+                    $ref: './examples/responses/GET_Consent/errors/invalid-identifier-system.yaml#/ConsentInvalidIdentifierSystemError'
+                  ConsentIdentifierMissingError:
+                    $ref: './examples/responses/GET_Consent/errors/missing-identifier.yaml#/ConsentIdentifierMissingError'
+                  InvalidatedResourceError:
+                    $ref: './examples/responses/errors/invalidated-resource.yaml#/InvalidatedResourceError'
+                  ConsentInvalidStatusParameterError:
+                    $ref: './examples/responses/GET_Consent/errors/invalid-status-parameter.yaml#/ConsentInvalidStatusParameterError'
+                  InvalidIncludeParameterError:
+                    $ref: './examples/responses/errors/invalid-include-parameter.yaml#/InvalidIncludeParameterError'
           "500":
             description: Internal server error
             content:
@@ -418,7 +463,7 @@ paths:
                 schema:
                   $ref: '#/components/schemas/OperationOutcome'
                 examples:
-                  internalServerError:
+                  InternalServerError:
                     $ref: './examples/responses/errors/internal-server-error.yaml#/InternalServerError'
 
 

@@ -1,10 +1,12 @@
-ConsentMixedBundle:
-  summary: Mixed Bundle
-  description: A Bundle containing multiple active proxy relationships with varying legal basis'.
+ConsentMultipleRelationshipsStatusActiveIncludeDetailsBundle:
+  summary: Multiple active relationships including performer and patient details
+  description:
+    A Bundle containing multiple active proxy relationships with varying legal basis' including the details
+    of the performer and patient.
   value:
     resourceType: Bundle
     timestamp: "2020-08-26T14:00:00+00:00"
-    total: 1
+    total: 6
     type: searchset
     entry:
       - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742"
@@ -20,7 +22,7 @@ ConsentMixedBundle:
             type: Patient
             identifier:
               system: "https://fhir.nhs.uk/Id/nhs-number"
-              value: "9000000009"
+              value: "9000000017"
           relationship:
             - coding:
                 - system: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
@@ -88,9 +90,6 @@ ConsentMixedBundle:
             - identifier:
                 system: "https://fhir.nhs.uk/Id/nhs-number"
                 value: "9000000017"
-          policy:
-            - authority: "https://www.england.nhs.uk"
-              uri: "<REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD>"
         search:
           mode: match
       - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/RP974720"
@@ -99,9 +98,9 @@ ConsentMixedBundle:
           id: RP974720
           identifier:
             - system: "https://fhir.nhs.uk/Id/nhs-number"
-              value: "9000000010"
+              value: "9000000017"
             - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
-              value: "ABC00000234"
+              value: "ABC0000003"
           patient:
             type: Patient
             identifier:
@@ -167,10 +166,7 @@ ConsentMixedBundle:
           performer:
             - identifier:
                 system: "https://fhir.nhs.uk/Id/nhs-number"
-                value: "9000000010"
-          policy:
-            - authority: "https://www.england.nhs.uk"
-              uri: "<REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD>"
+                value: "9000000017"
           verification:
             - verified: true
               verifiedWith:

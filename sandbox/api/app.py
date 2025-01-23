@@ -4,30 +4,41 @@ from typing import Union
 from flask import Flask, request
 
 from .constants import (
-    CONSENT__ADULT_CONSENTING_EXAMPLE,
-    CONSENT__MIXED_EXAMPLE,
-    CONSENT__MOTHER_CHILD_EXAMPLE,
-    CONSENT_PERFORMER,
     INTERNAL_ERROR_RESPONSE,
     INTERNAL_SERVER_ERROR_EXAMPLE,
     LIST_RELATIONSHIP,
     LIST_RELATIONSHIP_INCLUDE,
-    NOT_FOUND,
+    INVALIDATED_RESOURCE,
     QUESTIONNAIRE_RESPONSE_SUCCESS,
     VALIDATE_RELATIONSHIP_009,
     VALIDATE_RELATIONSHIP_025,
     VALIDATE_RELATIONSHIP_INCLUDE_009,
     VALIDATE_RELATIONSHIP_INCLUDE_025,
+    CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP,
+    CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_BOTH,
+    CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP,
+    CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH,
+    CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_BOTH,
+    CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PERFORMER,
+    CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PATIENT,
+    CONSENT__MULTIPLE_RELATIONSHIPS,
+    CONSENT__NO_RELATIONSHIPS,
+    CONSENT__FILTERED_RELATIONSHIPS_STATUS_ACTIVE,
+    CONSENT__FILTERED_RELATIONSHIPS_STATUS_INACTIVE,
+    CONSENT__FILTERED_RELATIONSHIPS_STATUS_PROPOSED_ACTIVE,
 )
 from .utils import (
     check_for_empty,
-    check_for_errors,
+    check_for_consent_errors,
+    check_for_related_person_errors,
     check_for_list,
     check_for_validate,
     generate_response,
     generate_response_from_example,
     load_json_file,
     remove_system,
+    check_for_consent_include_params,
+    check_for_consent_filtering,
 )
 
 app = Flask(__name__)
@@ -57,7 +68,7 @@ def get_related_persons() -> Union[dict, tuple]:
 
     try:
         # Check Headers
-        if errors := check_for_errors(request):
+        if errors := check_for_related_person_errors(request):
             return errors
 
         identifier = remove_system(request.args.get("identifier"))
@@ -127,32 +138,52 @@ def get_consent() -> Union[dict, tuple]:
         Union[dict, tuple]: Response for GET /Consent
     """
     try:
-        performer_identifier = remove_system(request.args.get("performer:identifier"))
-        status = request.args.get("status")
-        _include = request.args.get("_include")
+        # Check Headers
+        if errors := check_for_consent_errors(request):
+            return errors
 
-        if (
-            performer_identifier == "9000000010"
-            and status == "active"
-            and _include == CONSENT_PERFORMER
-        ):
-            return generate_response_from_example(
-                CONSENT__ADULT_CONSENTING_EXAMPLE, 200
+        performer_identifier = remove_system(request.args.get("performer:identifier"))
+        status = request.args.getlist("status")
+        _include = request.args.getlist("_include")
+
+        # Single consenting adult relationship
+        if performer_identifier == "9000000010":
+            return check_for_consent_include_params(
+                _include,
+                CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP,
+                CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_BOTH,
             )
-        elif (
-            performer_identifier == "9000000017"
-            and status == "active"
-            and _include == CONSENT_PERFORMER
-        ):
-            return generate_response_from_example(CONSENT__MIXED_EXAMPLE, 200)
-        elif (
-            performer_identifier == "9000000019"
-            and status == "active"
-            and _include == CONSENT_PERFORMER
-        ):
-            return generate_response_from_example(CONSENT__MOTHER_CHILD_EXAMPLE, 200)
+        # Single mother child relationship
+        elif performer_identifier == "9000000019":
+            return check_for_consent_include_params(
+                _include,
+                CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP,
+                CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH,
+            )
+        # Filtering
+        elif performer_identifier == "9000000017":
+            return check_for_consent_filtering(
+                status,
+                _include,
+                CONSENT__FILTERED_RELATIONSHIPS_STATUS_ACTIVE,
+                CONSENT__FILTERED_RELATIONSHIPS_STATUS_INACTIVE,
+                CONSENT__FILTERED_RELATIONSHIPS_STATUS_PROPOSED_ACTIVE,
+            )
+        elif performer_identifier == "9000000022":
+            return check_for_consent_include_params(
+                _include,
+                CONSENT__MULTIPLE_RELATIONSHIPS,
+                CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_BOTH,
+                CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PATIENT,
+                CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PERFORMER,
+            )
+        # No relationships
+        elif performer_identifier == "9000000025":
+            return generate_response_from_example(CONSENT__NO_RELATIONSHIPS, 200)
         else:
-            return generate_response(load_json_file(NOT_FOUND), 400)
+            logger.error("Performer identifier does not match examples")
+            return generate_response_from_example(INVALIDATED_RESOURCE, 404)
+
     except Exception as e:
         logger.error(e)
         return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)

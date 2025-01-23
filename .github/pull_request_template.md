@@ -1,4 +1,4 @@
-## Pull Request Checklist
+# Pull Request Checklist
 
 ## Ticket Link
 
@@ -14,7 +14,7 @@ https://nhsd-jira.digital.nhs.uk/browse/NPA-XXXX
 -
 -
 
-# How to test?
+## How to test?
 
 <!--- Describe in detail how you tested your changes -->
 <!--- Include details of your testing environment and the tests you ran to see how your change affects other areas of the code etc. -->
@@ -37,3 +37,9 @@ Stages to complete before opening the Pull Request:
 -   [ ] I have reviewed the changes in this PR and they fill all or part of the acceptance criteria of the ticket, and the code is in a mergeable state.
 -   [ ] If there were infrastructure, operational, or build changes, I have made sure there is sufficient evidence that the changes will work.
 -   [ ] I have ensured the changelog has been updated by the submitter, if necessary.
+
+## Post-merge
+
+After merging and deploying changes to the sandbox, Postman collection or spec examples please run the `Run Postman collection` workflow.
+
+This will run the tests within the collection to check that the sandbox is working as expected once deployed.

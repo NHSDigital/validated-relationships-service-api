@@ -1,0 +1,16 @@
+ConsentInvalidIdentifierError:
+  summary: Bad request invalid identifier
+  description: Error raised due to an invalid identifier request parameter being specified.
+  value:
+    issue:
+      - code: invalid
+        diagnostics: 'Invalid request with error - performer:identifier parameter is invalid.'
+        details:
+          coding:
+            - code: "INVALID_IDENTIFIER_VALUE"
+              display: "Required parameter(s) are invalid."
+              system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
+              version: '1'
+        severity: error
+    resourceType: "OperationOutcome"
+

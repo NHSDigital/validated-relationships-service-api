@@ -1,4 +1,3 @@
-NOT_FOUND = "./api/responses/not_found.json"
 EMPTY_RESPONSE = "./api/responses/GET_RelatedPerson/empty_response_9000000033.json"
 LIST_RELATIONSHIP = (
     "./api/responses/GET_RelatedPerson/list_relationship_9000000017.json"
@@ -29,12 +28,53 @@ PATIENT_IDENTIFIERS = ["9000000017", "9000000033"]
 RELATED_IDENTIFIERS = ["9000000009", "9000000025"]
 
 CONSENT_PERFORMER = "Consent:performer"
+CONSENT_PATIENT = "Consent:patient"
 
 # Example files
 
 # Common examples
 INTERNAL_SERVER_ERROR_EXAMPLE = "./api/examples/errors/internal-server-error.yaml"
+BAD_REQUEST_INCLUDE_PARAM_INVALID = (
+    "./api/examples/errors/invalid-include-parameter.yaml"
+)
+INVALIDATED_RESOURCE = "./api/examples/errors/invalidated-resource.yaml"
+MISSING_IDENTIFIER = "./api/examples/errors/missing-identifier.yaml"
+INVALID_IDENTIFIER = "./api/examples/errors/invalid-identifier.yaml"
+
 # Consent examples
-CONSENT__ADULT_CONSENTING_EXAMPLE = "./api/examples/GET_Consent/adults-consenting.yaml"
-CONSENT__MIXED_EXAMPLE = "./api/examples/GET_Consent/mixed.yaml"
-CONSENT__MOTHER_CHILD_EXAMPLE = "./api/examples/GET_Consent/mother-child.yaml"
+CONSENT__DIRECTORY = "./api/examples/GET_Consent/"
+CONSENT__FILTERED_RELATIONSHIPS_STATUS_ACTIVE = (
+    f"{CONSENT__DIRECTORY}filtered-relationships-status-active-include-details.yaml"
+)
+CONSENT__FILTERED_RELATIONSHIPS_STATUS_INACTIVE = (
+    f"{CONSENT__DIRECTORY}filtered-relationships-status-inactive.yaml"
+)
+CONSENT__FILTERED_RELATIONSHIPS_STATUS_PROPOSED_ACTIVE = (
+    f"{CONSENT__DIRECTORY}filtered-relationships-status-proposed-active.yaml"
+)
+CONSENT__MULTIPLE_RELATIONSHIPS = f"{CONSENT__DIRECTORY}multiple-relationships.yaml"
+CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_BOTH = (
+    f"{CONSENT__DIRECTORY}multiple-relationships-include-performer-patient.yaml"
+)
+CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PATIENT = (
+    f"{CONSENT__DIRECTORY}multiple-relationships-include-patient.yaml"
+)
+CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PERFORMER = (
+    f"{CONSENT__DIRECTORY}multiple-relationships-include-performer.yaml"
+)
+CONSENT__NO_RELATIONSHIPS = f"{CONSENT__DIRECTORY}no-relationships.yaml"
+CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP = (
+    f"{CONSENT__DIRECTORY}single-consenting-adult-relationship.yaml"
+)
+CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_BOTH = (
+    f"{CONSENT__DIRECTORY}single-consenting-adult-relationship-include-performer-patient.yaml"
+)
+CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP = (
+    f"{CONSENT__DIRECTORY}single-mother-child-relationship.yaml"
+)
+CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH = (
+    f"{CONSENT__DIRECTORY}single-mother-child-relationship-include-performer-patient.yaml"
+)
+CONSENT__STATUS_PARAM_INVALID = (
+    f"{CONSENT__DIRECTORY}errors/invalid-status-parameter.yaml"
+)

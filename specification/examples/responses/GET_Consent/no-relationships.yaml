@@ -1,0 +1,9 @@
+ConsentNoRelationshipsEmptyBundle:
+  summary: No relationships
+  description: An empty bundle resulting from the performer having no proxy relationships
+  value:
+    resourceType: Bundle
+    timestamp: '2020-08-26T14:00:00+00:00'
+    total: 0
+    type: searchset
+    entry: []

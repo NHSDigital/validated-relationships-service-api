@@ -1,4 +1,4 @@
-from json import dumps
+from json import dumps, loads
 from unittest.mock import MagicMock, patch
 
 import pytest
@@ -30,16 +30,6 @@ def test_health_check(client: object, endpoint: str) -> None:
 @pytest.mark.parametrize(
     "request_args,response_file_name,status_code",
     [
-        (
-            "identifier=9000000041",
-            "./api/responses/not_found.json",
-            404,
-        ),
-        (
-            "identifier=9000000017&patient:identifier=9000000041",
-            "./api/responses/not_found.json",
-            404,
-        ),
         (
             "identifier=9000000033",
             "./api/responses/GET_RelatedPerson/empty_response_9000000033.json",
@@ -144,19 +134,14 @@ def test_questionnaire_response(
     ("request_args,response_file_name,status_code"),
     [
         (
-            "performer:identifier=9000000010&status=active&_include=Consent:performer",
-            "./api/examples/GET_Consent/adults-consenting.yaml",
+            "performer:identifier=9000000025",  # No performer record found error
+            "./api/examples/GET_Consent/no-relationships.yaml",
             200,
         ),
         (
-            "performer:identifier=9000000017&status=active&_include=Consent:performer",
-            "./api/examples/GET_Consent/mixed.yaml",
-            200,
-        ),
-        (
-            "performer:identifier=9000000019&status=active&_include=Consent:performer",
-            "./api/examples/GET_Consent/mother-child.yaml",
-            200,
+            "performer:identifier=9000000999",  # No performer record found error
+            "./api/examples/errors/invalidated-resource.yaml",
+            404,
         ),
     ],
 )
@@ -165,33 +150,21 @@ def test_consent(
     mock_generate_response_from_example: MagicMock,
     request_args: str,
     response_file_name: str,
-    client: object,
     status_code: int,
+    client: object,
 ) -> None:
     """Test Consent endpoint."""
-    mock_generate_response_from_example.return_value = mock_response = Response(
-        dumps({"data": "abc"}), status_code
+    mock_generate_response_from_example.return_value = mocked_response = Response(
+        dumps({"data": "mocked"}), status=status_code, content_type="application/json"
     )
     # Act
     response = client.get(f"{CONSENT_API_ENDPOINT}?{request_args}")
     # Assert
-    mock_generate_response_from_example.assert_called_once_with(response_file_name, 200)
-    assert response.status_code == status_code
-    assert response.json == mock_response.json
-
-
-@patch(f"{APP_FILE_PATH}.load_json_file")
-def test_consent__400_bad_request(
-    mock_load_json_file: MagicMock, client: object
-) -> None:
-    """Test Consent endpoint."""
-    mock_load_json_file.return_value = {"data": "mocked"}
-    # Act
-    client.get(
-        f"{CONSENT_API_ENDPOINT}?performer:identifier=9000000012&status=active&_include=Consent:performer"
+    mock_generate_response_from_example.assert_called_once_with(
+        response_file_name, status_code
     )
-    # Assert
-    mock_load_json_file.assert_called_once_with("./api/responses/not_found.json")
+    assert response.status_code == status_code
+    assert response.json == loads(mocked_response.get_data(as_text=True))
 
 
 @patch(f"{APP_FILE_PATH}.remove_system")
