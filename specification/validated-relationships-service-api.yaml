@@ -297,6 +297,16 @@ paths:
               schema:
                 $ref: "#/components/schemas/RelatedPersonBundle"
               examples:
+                listRelationship:
+                  $ref: './examples/responses/GET_RelatedPerson/list-relationship.yaml#/ListRelationship'
+                listRelationshipIncludePatient:
+                  $ref: './examples/responses/GET_RelatedPerson/list-relationship-include-patient.yaml#/ListRelationshipIncludePatient'
+                listRelationshipNoRecordsReturned:
+                  $ref: './examples/responses/GET_RelatedPerson/list-relationship-no-records-returned.yaml#/ListRelationshipNoRecordsReturned'
+                verifyRelationshipPatientProxy:
+                  $ref: './examples/responses/GET_RelatedPerson/verify-relationship-patient-proxy.yaml#/VerifyRelationshipPatientProxy'
+                verifyRelationshipPatientProxyWithInclude:
+                  $ref: './examples/responses/GET_RelatedPerson/verify-relationship-patient-proxy-with-include.yaml#/VerifyRelationshipPatientProxyWithInclude'
                 relatedPersonWithoutPatients:
                   $ref: './examples/responses/GET_RelatedPerson/without-patients.yaml#/RelatedPersonWithoutPatients'
                 relatedPersonIncludePatients:
