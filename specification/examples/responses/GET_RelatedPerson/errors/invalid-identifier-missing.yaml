@@ -1,0 +1,15 @@
+RelatedPersonInvalidIdentifierMissing:
+  summary: Invalid Identifier Missing
+  description: The request was unsuccessful due to missing system identifier.
+  value:
+    issue:
+      - code: invalid
+        details:
+          coding:
+          - code: MISSING_IDENTIFIER_VALUE
+            display: Missing RelatedPerson NHS number.
+            system: https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode
+            version: '1'
+        diagnostics: The 'identifier' parameter is required
+        severity: error
+    resourceType: OperationOutcome

@@ -1,0 +1,57 @@
+VerifyRelationship9000000009Include:
+  summary: Verify relationship response for 9000000009 with include
+  description: |
+    Example response containing the details of a single matched candidate proxy relationship between a birth mother and her child.
+
+    The FHIR Bundle contains a `RelatedPerson` resource for the relationship verified against authoritative sources.
+
+    `Patient` resources are included in the bundle when the `_include=RelatedPerson:patient` query parameter is specified.
+  value:
+    resourceType: Bundle
+    timestamp: '2024-01-01T00:00:00+00:00'
+    total: 2
+    type: searchset
+    link:
+      - relation: self
+        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson?patient:identifier=9000000009&identifier=9000000017&_include=RelatedPerson:patient
+    entry:
+      - fullUrl: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/9000000009
+        resource:
+          birthDate: '2017-09-23'
+          id: '9000000009'
+          identifier:
+          - system: https://fhir.nhs.uk/Id/nhs-number
+            value: '9000000009'
+          name:
+          - family: MOGAJI
+            given:
+            - GADIL
+            id: BLnbA
+            period:
+              start: '2021-07-08'
+            prefix:
+            - MR
+            use: usual
+          resourceType: Patient
+        search:
+          mode: include
+      - fullUrl: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742
+        resource:
+          id: BE974742
+          identifier:
+          - system: https://fhir.nhs.uk/Id/nhs-number
+            value: '9000000017'
+          patient:
+            identifier:
+              system: https://fhir.nhs.uk/Id/nhs-number
+              value: '9000000009'
+            type: Patient
+          relationship:
+          - coding:
+            - code: MTH
+              display: mother
+              system: http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype
+          resourceType: RelatedPerson
+        search:
+          mode: match
+

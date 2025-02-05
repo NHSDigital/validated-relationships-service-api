@@ -4,16 +4,15 @@ from typing import Union
 from flask import Flask, request
 
 from .constants import (
-    INTERNAL_ERROR_RESPONSE,
     INTERNAL_SERVER_ERROR_EXAMPLE,
-    LIST_RELATIONSHIP,
-    LIST_RELATIONSHIP_INCLUDE,
+    RELATED__LIST_RELATIONSHIP,
+    RELATED__LIST_RELATIONSHIP_WITH_INCLUDE,
     INVALIDATED_RESOURCE,
-    QUESTIONNAIRE_RESPONSE_SUCCESS,
-    VALIDATE_RELATIONSHIP_009,
-    VALIDATE_RELATIONSHIP_025,
-    VALIDATE_RELATIONSHIP_INCLUDE_009,
-    VALIDATE_RELATIONSHIP_INCLUDE_025,
+    QUESTIONNAIRE_RESPONSE__SUCCESS,
+    RELATED__VERIFY_RELATIONSHIP_09,
+    RELATED__VERIFY_RELATIONSHIP_25,
+    RELATED__VERIFY_RELATIONSHIP_09_WITH_INCLUDE,
+    RELATED__VERIFY_RELATIONSHIP_25_WITH_INCLUDE,
     CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP,
     CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_BOTH,
     CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP,
@@ -33,9 +32,7 @@ from .utils import (
     check_for_related_person_errors,
     check_for_list,
     check_for_validate,
-    generate_response,
     generate_response_from_example,
-    load_json_file,
     remove_system,
     check_for_consent_include_params,
     check_for_consent_filtering,
@@ -84,8 +81,8 @@ def get_related_persons() -> Union[dict, tuple]:
             identifier,
             patient_identifier,
             include,
-            VALIDATE_RELATIONSHIP_009,
-            VALIDATE_RELATIONSHIP_INCLUDE_009,
+            RELATED__VERIFY_RELATIONSHIP_09,
+            RELATED__VERIFY_RELATIONSHIP_09_WITH_INCLUDE,
         ):
             return zero_nine
 
@@ -94,8 +91,8 @@ def get_related_persons() -> Union[dict, tuple]:
             identifier,
             patient_identifier,
             include,
-            VALIDATE_RELATIONSHIP_025,
-            VALIDATE_RELATIONSHIP_INCLUDE_025,
+            RELATED__VERIFY_RELATIONSHIP_25,
+            RELATED__VERIFY_RELATIONSHIP_25_WITH_INCLUDE,
         ):
             return two_five
 
@@ -103,8 +100,8 @@ def get_related_persons() -> Union[dict, tuple]:
             "9000000017",
             identifier,
             include,
-            LIST_RELATIONSHIP,
-            LIST_RELATIONSHIP_INCLUDE,
+            RELATED__LIST_RELATIONSHIP,
+            RELATED__LIST_RELATIONSHIP_WITH_INCLUDE,
         ):
             return one_seven
 
@@ -112,7 +109,7 @@ def get_related_persons() -> Union[dict, tuple]:
 
     except Exception as e:
         logger.error(e)
-        return generate_response(load_json_file(INTERNAL_ERROR_RESPONSE), 500)
+        return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)
 
 
 @app.route(f"/{COMMON_PATH}/QuestionnaireResponse", methods=["POST"])
@@ -124,10 +121,10 @@ def post_questionnaire_response() -> Union[dict, tuple]:
     """
 
     try:
-        return generate_response(load_json_file(QUESTIONNAIRE_RESPONSE_SUCCESS), 200)
+        return generate_response_from_example(QUESTIONNAIRE_RESPONSE__SUCCESS, 200)
     except Exception as e:
         logger.error(e)
-        return generate_response(load_json_file(INTERNAL_ERROR_RESPONSE), 500)
+        return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)
 
 
 @app.route(f"/{COMMON_PATH}/Consent", methods=["GET"])
