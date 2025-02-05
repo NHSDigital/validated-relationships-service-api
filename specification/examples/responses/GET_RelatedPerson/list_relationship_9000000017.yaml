@@ -1,0 +1,54 @@
+ListRelationship9000000017:
+  summary: List relationship response for 9000000017
+  description: |
+    Example response containing the details of a list of matched candidate proxy relationship between a birth mother and her children.
+
+    The FHIR Bundle contains a `RelatedPerson` resource for each of the relationships verified against authoritative sources.
+
+  value:
+    entry:
+    - fullUrl: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742
+      resource:
+        id: BE974742
+        identifier:
+        - system: https://fhir.nhs.uk/Id/nhs-number
+          value: '9000000017'
+        patient:
+          identifier:
+            system: https://fhir.nhs.uk/Id/nhs-number
+            value: '9000000009'
+          type: Patient
+        relationship:
+        - coding:
+          - code: MTH
+            display: mother
+            system: http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype
+        resourceType: RelatedPerson
+      search:
+        mode: match
+    - fullUrl: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/A3CC67E2
+      resource:
+        id: A3CC67E2
+        identifier:
+        - system: https://fhir.nhs.uk/Id/nhs-number
+          value: '9000000017'
+        patient:
+          identifier:
+            system: https://fhir.nhs.uk/Id/nhs-number
+            value: '9000000025'
+          type: Patient
+        relationship:
+        - coding:
+          - code: MTH
+            display: mother
+            system: http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype
+        resourceType: RelatedPerson
+      search:
+        mode: match
+    link:
+    - relation: self
+      url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson?identifier=9000000017
+    resourceType: Bundle
+    timestamp: '2024-01-01T00:00:00+00:00'
+    total: 2
+    type: searchset

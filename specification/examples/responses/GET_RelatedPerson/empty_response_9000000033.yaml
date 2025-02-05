@@ -1,4 +1,4 @@
-ListRelationshipNoRecordsReturned:
+RelatedEmptyResponse:
   summary: Without additional records.
   description: |
     Example response containing no details of any matched candidate proxy relationships.
