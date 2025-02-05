@@ -32,73 +32,78 @@ def test_health_check(client: object, endpoint: str) -> None:
     [
         (
             "identifier=9000000033",
-            "./api/responses/GET_RelatedPerson/empty_response_9000000033.json",
+            "./api/examples/GET_RelatedPerson/empty_response_9000000033.yaml",
             200,
         ),
         (
             "identifier=9000000017",
-            "./api/responses/GET_RelatedPerson/list_relationship_9000000017.json",
+            "./api/examples/GET_RelatedPerson/list_relationship_9000000017.yaml",
             200,
         ),
         (
             "identifier=9000000017&_include=RelatedPerson:patient",
-            "./api/responses/GET_RelatedPerson/list_relationship_include_9000000017.json",
+            "./api/examples/GET_RelatedPerson/list_relationship_9000000017_include.yaml",
             200,
         ),
         (
             "identifier=9000000017&_include=any",
-            "./api/responses/GET_RelatedPerson/list_relationship_9000000017.json",
+            "./api/examples/GET_RelatedPerson/list_relationship_9000000017.yaml",
             200,
         ),
         (
             "identifier=9000000017&patient:identifier=9000000009",
-            "./api/responses/GET_RelatedPerson/verify_relationship_9000000009.json",
+            "./api/examples/GET_RelatedPerson/verify_relationship_9000000009.yaml",
             200,
         ),
         (
             "identifier=9000000017&patient:identifier=9000000009&_include=RelatedPerson:patient",
-            "./api/responses/GET_RelatedPerson/verify_relationship_include_9000000009.json",
+            "./api/examples/GET_RelatedPerson/verify_relationship_9000000009_include.yaml",
             200,
         ),
         (
             "identifier=9000000017&patient:identifier=9000000009&_include=any",
-            "./api/responses/GET_RelatedPerson/verify_relationship_9000000009.json",
+            "./api/examples/GET_RelatedPerson/verify_relationship_9000000009.yaml",
             200,
         ),
         (
             "identifier=9000000017&patient:identifier=9000000025",
-            "./api/responses/GET_RelatedPerson/verify_relationship_9000000025.json",
+            "./api/examples/GET_RelatedPerson/verify_relationship_9000000025.yaml",
             200,
         ),
         (
             "identifier=9000000017&patient:identifier=9000000025&_include=RelatedPerson:patient",
-            "./api/responses/GET_RelatedPerson/verify_relationship_include_9000000025.json",
+            "./api/examples/GET_RelatedPerson/verify_relationship_9000000025_include.yaml",
             200,
         ),
         (
             "identifier=9000000017&patient:identifier=9000000025&_include=any",
-            "./api/responses/GET_RelatedPerson/verify_relationship_9000000025.json",
+            "./api/examples/GET_RelatedPerson/verify_relationship_9000000025.yaml",
             200,
         ),
     ],
 )
-@patch(f"{UTILS_FILE_PATH}.load_json_file")
+@patch("sandbox.api.utils.generate_response_from_example")
 def test_related_person(
-    mock_load_json_file: MagicMock,
+    mock_generate_response_from_example: MagicMock,
     request_args: str,
     response_file_name: str,
-    client: object,
     status_code: int,
+    client: object,
 ) -> None:
     """Test related_persons endpoint."""
+
     # Arrange
-    mock_load_json_file.return_value = expected_body = {"data": "mocked"}
+    mock_generate_response_from_example.return_value = mocked_response = Response(
+        dumps({"data": "mocked"}), status=status_code, content_type="application/json"
+    )
     # Act
     response = client.get(f"{RELATED_PERSON_API_ENDPOINT}?{request_args}")
     # Assert
-    mock_load_json_file.assert_called_once_with(response_file_name)
+    mock_generate_response_from_example.assert_called_once_with(
+        response_file_name, status_code
+    )
     assert response.status_code == status_code
-    assert response.json == expected_body
+    assert response.json == loads(mocked_response.get_data(as_text=True))
 
 
 @pytest.mark.parametrize(
@@ -106,14 +111,14 @@ def test_related_person(
     [
         (
             QUESTIONNAIRE_RESPONSE_API_ENDPOINT,
-            "./api/responses/POST_QuestionnaireResponse/questionnaire_response_success.json",
+            "./api/examples/POST_QuestionnaireResponse/success.yaml",
             200,
         ),
     ],
 )
-@patch(f"{APP_FILE_PATH}.load_json_file")
+@patch(f"{APP_FILE_PATH}.generate_response_from_example")
 def test_questionnaire_response(
-    mock_load_json_file: MagicMock,
+    mock_generate_response_from_example: MagicMock,
     url_path: str,
     response_file_name: str,
     client: object,
@@ -121,13 +126,17 @@ def test_questionnaire_response(
 ) -> None:
     """Test related_persons endpoint with identifier only."""
     # Arrange
-    mock_load_json_file.return_value = expected_body = {"data": "mocked"}
+    mock_generate_response_from_example.return_value = mocked_response = Response(
+        dumps({"data": "mocked"}), status=status_code, content_type="application/json"
+    )
     # Act
     response = client.post(url_path, json={"data": "mocked"})
     # Assert
-    mock_load_json_file.assert_called_once_with(response_file_name)
+    mock_generate_response_from_example.assert_called_once_with(
+        response_file_name, status_code
+    )
     assert response.status_code == status_code
-    assert response.json == expected_body
+    assert response.json == loads(mocked_response.get_data(as_text=True))
 
 
 @pytest.mark.parametrize(

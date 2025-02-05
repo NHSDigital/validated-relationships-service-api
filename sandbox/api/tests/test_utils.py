@@ -160,37 +160,45 @@ def test_get_response(mock_open: MagicMock) -> None:
 
 
 @pytest.mark.parametrize(
-    "request_args,response_file_name",
+    "request_args,response_file_name,status_code",
     [
         (
             "",  # identifier is missing
-            "./api/responses/GET_RelatedPerson/bad_request_identifier_missing.json",
+            "./api/examples/GET_RelatedPerson/errors/invalid-identifier-missing.yaml",
+            400,
         ),
         (
             "identifier=123456789",  # identifier length is less than 10
-            "./api/responses/GET_RelatedPerson/bad_request_identifier_invalid.json",
+            "./api/examples/GET_RelatedPerson/errors/invalid-identifier.yaml",
+            400,
         ),
         (
             "identifier=https://fhir.nhs.uk/Id/nhs-number|A730675929",  # identifier system invalid
-            "./api/responses/GET_RelatedPerson/bad_request_identifier_invalid_system.json",
+            "./api/examples/GET_RelatedPerson/errors/invalid-identifier-system.yaml",
+            400,
         ),
     ],
 )
-@patch(f"{FILE_PATH}.load_json_file")
+@patch("sandbox.api.utils.generate_response_from_example")
 def test_check_for_related_person_errors(
-    mock_load_json_file: MagicMock,
+    mock_generate_response_from_example: MagicMock,
     request_args: str,
     response_file_name: str,
+    status_code: int,
     client: object,
 ) -> None:
-    mock_load_json_file.return_value = Response(
-        dumps({"data": "mocked"}), content_type="application/json"
+    # Arrange
+    mock_generate_response_from_example.return_value = mocked_response = Response(
+        dumps({"data": "mocked"}), status=status_code, content_type="application/json"
     )
     # Act
     response = client.get(f"{RELATED_PERSON_API_ENDPOINT}?{request_args}")
     # Assert
-    mock_load_json_file.assert_called_once_with(response_file_name)
-    assert response.status_code == 500
+    mock_generate_response_from_example.assert_called_once_with(
+        response_file_name, status_code
+    )
+    assert response.status_code == status_code
+    assert response.json == loads(mocked_response.get_data(as_text=True))
 
 
 @pytest.mark.parametrize(
