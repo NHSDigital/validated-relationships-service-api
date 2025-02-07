@@ -7,7 +7,10 @@ from yaml import CLoader as Loader
 from yaml import load as yaml_load
 
 from .constants import (
-    EMPTY_RESPONSE,
+    RELATED__EMPTY_RESPONSE,
+    RELATED__ERROR_IDENTIFIER_MISSING,
+    RELATED__ERROR_IDENTIFIER,
+    RELATED__ERROR_IDENTIFIER_SYSTEM,
     PATIENT_IDENTIFIERS,
     INVALIDATED_RESOURCE,
     INCLUDE_FLAG,
@@ -42,32 +45,17 @@ def check_for_related_person_errors(request: Request) -> Optional[tuple]:
     identifier_without_system = remove_system(request.args.get("identifier"))
 
     if not identifier:
-        return generate_response(
-            load_json_file(
-                "./api/responses/GET_RelatedPerson/bad_request_identifier_missing.json"
-            ),
-            400,
-        )
+        return generate_response_from_example(RELATED__ERROR_IDENTIFIER_MISSING, 400)
     elif identifier and len(identifier_without_system) != 10:
         # invalid identifier
-        return generate_response(
-            load_json_file(
-                "./api/responses/GET_RelatedPerson/bad_request_identifier_invalid.json"
-            ),
-            400,
-        )
+        return generate_response_from_example(RELATED__ERROR_IDENTIFIER, 400)
     elif (
         isinstance(identifier, str)
         and "|" in identifier
         and "https://fhir.nhs.uk/Id/nhs-number" == identifier.split("|", maxsplit=2)[0]
     ):
         # invalid identifier system
-        return generate_response(
-            load_json_file(
-                "./api/responses/GET_RelatedPerson/bad_request_identifier_invalid_system.json"
-            ),
-            400,
-        )
+        return generate_response_from_example(RELATED__ERROR_IDENTIFIER_SYSTEM, 400)
 
 
 def check_for_consent_errors(request: Request) -> Optional[tuple]:
@@ -121,7 +109,7 @@ def check_for_empty(identifier: str, patient_identifier: str) -> Response:
         return generate_response_from_example(INVALIDATED_RESOURCE, 404)
     elif identifier == "9000000033":
         # Request with identifier for empty record
-        return generate_response(load_json_file(EMPTY_RESPONSE))
+        return generate_response_from_example(RELATED__EMPTY_RESPONSE, 200)
 
 
 def check_for_validate(
@@ -147,10 +135,10 @@ def check_for_validate(
     """
     if identifier and patient_identifier == value and include == INCLUDE_FLAG:
         # Request with identifier, patient and _include=patient
-        return generate_response(load_json_file(inc_file))
+        return generate_response_from_example(inc_file, 200)
     elif identifier and patient_identifier == value:
         # Request with identifier and patient
-        return generate_response(load_json_file(base_file))
+        return generate_response_from_example(base_file, 200)
 
 
 def check_for_list(
@@ -170,10 +158,10 @@ def check_for_list(
     """
     if identifier == value and include == INCLUDE_FLAG:
         # Request with identifier and _include=patient
-        return generate_response(load_json_file(inc_file))
+        return generate_response_from_example(inc_file, 200)
     elif identifier:
         # Request with identifier
-        return generate_response(load_json_file(base_file))
+        return generate_response_from_example(base_file, 200)
 
 
 def generate_response(content: str, status: int = 200):

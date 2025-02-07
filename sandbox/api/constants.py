@@ -1,28 +1,4 @@
-EMPTY_RESPONSE = "./api/responses/GET_RelatedPerson/empty_response_9000000033.json"
-LIST_RELATIONSHIP = (
-    "./api/responses/GET_RelatedPerson/list_relationship_9000000017.json"
-)
-LIST_RELATIONSHIP_INCLUDE = (
-    "./api/responses/GET_RelatedPerson/list_relationship_include_9000000017.json"
-)
-VALIDATE_RELATIONSHIP_009 = (
-    "./api/responses/GET_RelatedPerson/verify_relationship_9000000009.json"
-)
-VALIDATE_RELATIONSHIP_INCLUDE_009 = (
-    "./api/responses/GET_RelatedPerson/verify_relationship_include_9000000009.json"
-)
-VALIDATE_RELATIONSHIP_025 = (
-    "./api/responses/GET_RelatedPerson/verify_relationship_9000000025.json"
-)
-VALIDATE_RELATIONSHIP_INCLUDE_025 = (
-    "./api/responses/GET_RelatedPerson/verify_relationship_include_9000000025.json"
-)
-INTERNAL_ERROR_RESPONSE = "./api/responses/internal_server_error.json"
 INCLUDE_FLAG = "RelatedPerson:patient"
-
-QUESTIONNAIRE_RESPONSE_SUCCESS = (
-    "./api/responses/POST_QuestionnaireResponse/questionnaire_response_success.json"
-)
 
 PATIENT_IDENTIFIERS = ["9000000017", "9000000033"]
 RELATED_IDENTIFIERS = ["9000000009", "9000000025"]
@@ -78,3 +54,33 @@ CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH = (
 CONSENT__STATUS_PARAM_INVALID = (
     f"{CONSENT__DIRECTORY}errors/invalid-status-parameter.yaml"
 )
+
+QR_DIRECTORY = "./api/examples/POST_QuestionnaireResponse/"
+QUESTIONNAIRE_RESPONSE__SUCCESS = f"{QR_DIRECTORY}success.yaml"
+
+RELATED_DIRECTORY = "./api/examples/GET_RelatedPerson/"
+RELATED__ERROR_IDENTIFIER_MISSING = (
+    f"{RELATED_DIRECTORY}errors/invalid-identifier-missing.yaml"
+)
+RELATED__ERROR_IDENTIFIER_SYSTEM = (
+    f"{RELATED_DIRECTORY}errors/invalid-identifier-system.yaml"
+)
+RELATED__ERROR_IDENTIFIER = f"{RELATED_DIRECTORY}errors/invalid-identifier.yaml"
+RELATED__EMPTY_RESPONSE = f"{RELATED_DIRECTORY}empty_response.yaml"
+RELATED__LIST_RELATIONSHIP = f"{RELATED_DIRECTORY}list_relationship_9000000017.yaml"
+RELATED__LIST_RELATIONSHIP_WITH_INCLUDE = (
+    f"{RELATED_DIRECTORY}list_relationship_9000000017_include.yaml"
+)
+RELATED__VERIFY_RELATIONSHIP_09 = (
+    f"{RELATED_DIRECTORY}verify_relationship_9000000009.yaml"
+)
+RELATED__VERIFY_RELATIONSHIP_09_WITH_INCLUDE = (
+    f"{RELATED_DIRECTORY}verify_relationship_9000000009_include.yaml"
+)
+RELATED__VERIFY_RELATIONSHIP_25 = (
+    f"{RELATED_DIRECTORY}verify_relationship_9000000025.yaml"
+)
+RELATED__VERIFY_RELATIONSHIP_25_WITH_INCLUDE = (
+    f"{RELATED_DIRECTORY}verify_relationship_9000000025_include.yaml"
+)
+RELATED__EMPTY_RESPONSE = f"{RELATED_DIRECTORY}empty_response_9000000033.yaml"

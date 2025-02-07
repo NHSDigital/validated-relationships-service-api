@@ -1,0 +1,35 @@
+VerifyRelationship9000000025:
+  summary: Verify relationship response for 9000000025
+  description: |
+    Example response containing the details of a single matched candidate proxy relationship between a birth mother and her child.
+
+    The FHIR Bundle contains a `RelatedPerson` resource for the relationship verified against authoritative sources.
+
+  value:
+    entry:
+    - fullUrl: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/A3CC67E2
+      resource:
+        id: A3CC67E2
+        identifier:
+        - system: https://fhir.nhs.uk/Id/nhs-number
+          value: '9000000017'
+        patient:
+          identifier:
+            system: https://fhir.nhs.uk/Id/nhs-number
+            value: '9000000025'
+          type: Patient
+        relationship:
+        - coding:
+          - code: MTH
+            display: mother
+            system: http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype
+        resourceType: RelatedPerson
+      search:
+        mode: match
+    link:
+    - relation: self
+      url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson?patient:identifier=9000000025&identifier=9000000017
+    resourceType: Bundle
+    timestamp: '2024-01-01T00:00:00+00:00'
+    total: 1
+    type: searchset
