@@ -1407,7 +1407,11 @@ components:
               system:
                 type: string
                 description: Codesystem URL for the proxy's NHS number.
-                enum: ["https://fhir.nhs.uk/Id/nhs-number"]
+                enum:
+                  [
+                    "https://fhir.nhs.uk/Id/nhs-number",
+                    "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
+                  ]
               value:
                 type: string
                 description: The proxy's NHS number.
@@ -1456,11 +1460,15 @@ components:
                       description: FHIR relationship type code.
                       enum:
                         - "MTH"
+                        - "PRN"
+                        - "Personal"
                     display:
                       type: string
                       description: FHIR relationship type.
                       enum:
                         - "mother"
+                        - "parent"
+                        - "Personal relationship with the patient"
 
     Patient:
       type: object
@@ -1483,7 +1491,11 @@ components:
               system:
                 type: string
                 description: Codesystem URL for the NHS number.
-                enum: ["https://fhir.nhs.uk/Id/nhs-number"]
+                enum:
+                  [
+                    "https://fhir.nhs.uk/Id/nhs-number",
+                    "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
+                  ]
               value:
                 type: string
                 description: The NHS number.
