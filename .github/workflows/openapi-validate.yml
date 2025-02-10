@@ -29,7 +29,4 @@ jobs:
 
       - name: Run Python script for all files
         run: |
-          cd scripts
-          for file in ../specification/examples/response/GET_Consent/*; do
-            poetry run python validate_schema.py Consent "$file"
-          done
+          make schema-consent
