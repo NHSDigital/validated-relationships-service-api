@@ -31,5 +31,5 @@ jobs:
         run: |
           cd scripts
           for file in ../specification/examples/response/GET_Consent/*; do
-            python validate_schema.py Consent "$file"
+            poetry run python validate_schema.py Consent "$file"
           done
