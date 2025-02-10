@@ -20,9 +20,6 @@ openapi_schema = {}
 def main(openapi_schema: dict):
     """Main entrypoint"""
     args = sys.argv
-    print("args:")
-    print(args)
-    print("******")
     if len(args) != 3:
         print("Require schema reference and file to validate")
         exit()
@@ -35,28 +32,38 @@ def main(openapi_schema: dict):
 
 
 def schema_lookup(schema: str) -> str:
+    """Returns the schema reference to use
+
+    Args:
+        schema (str): The type of record being validated
+
+    Returns:
+        str: The schema reference
+    """
     schema = schema.lower()
     if schema == "consent":
         return "#/components/schemas/ConsentBundle"
     if schema == "relatedperson":
         return "#/components/schemas/RelatedPersonBundle"
-
-    print("")
+    if schema == "operationoutcome":
+        return "#/components/schemas/OperationOutcome"
 
 
 def validate_consent(schema: dict, schema_ref: str, file: str) -> None:
     schema["$ref"] = schema_ref
-    # openapi_schema["$ref"] = [
-    #     "#/components/schemas/ConsentBundle",
-    #     "#/components/schemas/Consent",
-    #     "#/components/schemas/CodeableConcept"
-    # ]
-    json_contents = load_example_file(file)
+    json_contents = load_yaml_file_as_json(file)
     OAS30Validator(schema).validate(json_contents)
 
 
-def load_example_file(file: str) -> dict:
+def load_yaml_file_as_json(file: str) -> dict:
+    """Loads the specified yaml file
 
+    Args:
+        file (str): Path to the file
+
+    Returns:
+        dict: File converted as json dict
+    """
     patch = path.join(path.dirname(path.realpath(__file__)), file)
     yamlfile = safe_load(load_file(patch))
     jsonstr = json.dumps(
