@@ -85,36 +85,41 @@ test-prod:
 	--junitxml=test-report.xml \
 
 # Run schema validation check
+GREEN  := \033[32m
+RESET  := \033[0m
+
+
+
+schema-all:
+	make schema-consent \
+	schema-related-person \
+	schema-questionnaire \
+	schema-errors
 
 schema-consent:
-
 	@for file in specification/examples/responses/GET_Consent/*.yaml; do \
-		if [ "$$file" = "specification/examples/responses/GET_Consent/filtered-relationships-status-active-include-details.yaml" ]; then \
-			continue; \
-		fi; \
-		if [ "$$file" = "specification/examples/responses/GET_Consent/multiple-relationships-include-patient.yaml" ]; then \
-			continue; \
-		fi; \
-		if [ "$$file" = "specification/examples/responses/GET_Consent/multiple-relationships-include-performer-patient.yaml" ]; then \
-			continue; \
-		fi; \
-		if [ "$$file" = "specification/examples/responses/GET_Consent/multiple-relationships-include-performer.yaml" ]; then \
-			continue; \
-		fi; \
-		if [ "$$file" = "specification/examples/responses/GET_Consent/single-consenting-adult-relationship-include-performer-patient.yaml" ]; then \
-			continue; \
-		fi; \
-		if [ "$$file" = "specification/examples/responses/GET_Consent/single-mother-child-relationship-include-performer-patient.yaml" ]; then \
-			continue; \
-		fi; \
 		echo "Processing $$file"; \
 		poetry run python scripts/validate_schema.py consent "$$(realpath $$file)"; \
+		echo -e "$(GREEN)Success!$(RESET)"; \
 	done
 
+schema-related-person:
+	@for file in specification/examples/responses/GET_RelatedPerson/*.yaml; do \
+		echo "Processing $$file"; \
+		poetry run python scripts/validate_schema.py relatedperson "$$(realpath $$file)"; \
+		echo -e "$(GREEN)Success!$(RESET)"; \
+	done
 
-	# cd scripts
+schema-questionnaire:
+	@for file in specification/examples/responses/POST_Questionnaireresponse/*.yaml; do \
+		echo "Processing $$file"; \
+		poetry run python scripts/validate_schema.py operationoutcome "$$(realpath $$file)"; \
+		echo -e "$(GREEN)Success!$(RESET)"; \
+	done
 
-	# $(foreach file, $(FILES), poetry run python scripts/validate_schema.py consent $(file)";)
-	#
-	# @for file in ../specification/examples/responses/GET_Consent/*.yaml; do echo  $$file; done
-	# @for file in ../specification/examples/responses/GET_Consent/*.yaml; do poetry run python scripts/validate_schema.py consent $$file; done
+schema-errors:
+	@for file in specification/examples/responses/errors/*.yaml; do \
+		echo "Processing $$file"; \
+		poetry run python scripts/validate_schema.py operationoutcome "$$(realpath $$file)"; \
+		echo -e "$(GREEN)Success!$(RESET)"; \
+	done
