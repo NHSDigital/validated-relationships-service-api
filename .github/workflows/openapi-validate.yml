@@ -1,0 +1,29 @@
+name: Open API Validate
+"on":
+  pull_request:
+    branches: [master]
+permissions:
+  contents: read
+jobs:
+  GET_Consent:
+    name: GET Consent test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.9
+
+    #   - name: Install dependencies
+    #     run: |
+    #       pip install -r requirements.txt  # If you have dependencies
+
+      - name: Run Python script for all files
+        run: |
+          cd scripts
+          for file in ../specification/examples/response/GET_Consent/*; do
+            python validate_schema.py Consent "$file"
+          done
