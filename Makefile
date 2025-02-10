@@ -111,7 +111,7 @@ schema-related-person:
 	done
 
 schema-questionnaire:
-	@for file in specification/examples/responses/POST_Questionnaireresponse/*.yaml; do \
+	@for file in specification/examples/responses/POST_QuestionnaireResponse/*.yaml; do \
 		echo "Processing $$file"; \
 		poetry run python scripts/validate_schema.py operationoutcome "$$(realpath $$file)"; \
 		echo -e "$(GREEN)Success!$(RESET)"; \
