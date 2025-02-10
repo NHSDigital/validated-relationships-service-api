@@ -17,6 +17,11 @@ jobs:
         with:
           python-version: 3.9
 
+      - name: Install Poetry
+        shell: bash
+        run: |
+          pipx install poetry==1.8.5
+
       - name: Install Script Packages with Poetry
         shell: bash
         run: |
