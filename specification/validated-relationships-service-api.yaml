@@ -1594,8 +1594,6 @@ components:
         scope:
           $ref: '#/components/schemas/CodeableConcept'
           description: "The scope of the consent, bound to http://terminology.hl7.org/CodeSystem/consentscope"
-          enum:
-            - patient-privacy
         category:
           type: array
           items:

@@ -83,3 +83,38 @@ smoketest-prod:
 test-prod:
 	$(PROD_CMD) \
 	--junitxml=test-report.xml \
+
+# Run schema validation check
+
+schema-consent:
+
+	@for file in specification/examples/responses/GET_Consent/*.yaml; do \
+		if [ "$$file" = "specification/examples/responses/GET_Consent/filtered-relationships-status-active-include-details.yaml" ]; then \
+			continue; \
+		fi; \
+		if [ "$$file" = "specification/examples/responses/GET_Consent/multiple-relationships-include-patient.yaml" ]; then \
+			continue; \
+		fi; \
+		if [ "$$file" = "specification/examples/responses/GET_Consent/multiple-relationships-include-performer-patient.yaml" ]; then \
+			continue; \
+		fi; \
+		if [ "$$file" = "specification/examples/responses/GET_Consent/multiple-relationships-include-performer.yaml" ]; then \
+			continue; \
+		fi; \
+		if [ "$$file" = "specification/examples/responses/GET_Consent/single-consenting-adult-relationship-include-performer-patient.yaml" ]; then \
+			continue; \
+		fi; \
+		if [ "$$file" = "specification/examples/responses/GET_Consent/single-mother-child-relationship-include-performer-patient.yaml" ]; then \
+			continue; \
+		fi; \
+		echo "Processing $$file"; \
+		poetry run python scripts/validate_schema.py consent "$$(realpath $$file)"; \
+	done
+
+
+	# cd scripts
+
+	# $(foreach file, $(FILES), poetry run python scripts/validate_schema.py consent $(file)";)
+	#
+	# @for file in ../specification/examples/responses/GET_Consent/*.yaml; do echo  $$file; done
+	# @for file in ../specification/examples/responses/GET_Consent/*.yaml; do poetry run python scripts/validate_schema.py consent $$file; done

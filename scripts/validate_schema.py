@@ -11,6 +11,7 @@ import json
 import datetime
 import sys
 
+EXAMPLES_PATH = "../"
 SCHEMA_FILE_PATH = "../specification/validated-relationships-service-api.yaml"
 SCHEMA_FILE = path.join(path.dirname(path.realpath(__file__)), SCHEMA_FILE_PATH)
 openapi_schema = {}
@@ -19,6 +20,9 @@ openapi_schema = {}
 def main(openapi_schema: dict):
     """Main entrypoint"""
     args = sys.argv
+    print("args:")
+    print(args)
+    print("******")
     if len(args) != 3:
         print("Require schema reference and file to validate")
         exit()
