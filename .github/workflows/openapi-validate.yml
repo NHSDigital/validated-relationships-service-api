@@ -17,9 +17,10 @@ jobs:
         with:
           python-version: 3.9
 
-    #   - name: Install dependencies
-    #     run: |
-    #       pip install -r requirements.txt  # If you have dependencies
+      - name: Install Script Packages with Poetry
+        shell: bash
+        run: |
+          poetry install
 
       - name: Run Python script for all files
         run: |
