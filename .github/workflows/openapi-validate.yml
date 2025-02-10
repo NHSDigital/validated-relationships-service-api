@@ -25,7 +25,7 @@ jobs:
       - name: Install Script Packages with Poetry
         shell: bash
         run: |
-          poetry install
+          poetry install --all-extras
 
       - name: Run Python script for all files
         run: |
