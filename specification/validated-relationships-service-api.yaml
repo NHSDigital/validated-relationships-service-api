@@ -1453,7 +1453,6 @@ components:
                       enum:
                         [
                           "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
-                          "http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype",
                           "https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole"
                         ]
                     code:
