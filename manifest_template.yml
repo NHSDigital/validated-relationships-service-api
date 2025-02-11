@@ -11,7 +11,7 @@ APIGEE_ENVIRONMENTS:
   - name: internal-qa
     display_name: Internal QA
     has_mock_auth: true
-    rate_limit: 300
+    rate_limit: 600
     spike_rate_limit: 600pm # 10 requests per second
     approval_type: auto
   - name: internal-dev-sandbox
@@ -24,7 +24,7 @@ APIGEE_ENVIRONMENTS:
     display_name: Internal QA
     has_mock_auth: true
     portal_visibility: false
-    rate_limit: 300
+    rate_limit: 600
     spike_rate_limit: 600pm # 10 requests per second
     approval_type: auto
   - name: internal-qa-sandbox
