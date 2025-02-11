@@ -1,0 +1,8 @@
+PatchConsentSuccess:
+  summary: Success
+  description: A sample of the payload returned when a proxy role has been successfully updated
+  value:
+    resourceType: "OperationOutcome"
+    issue:
+      - severity: information
+        code: informational
