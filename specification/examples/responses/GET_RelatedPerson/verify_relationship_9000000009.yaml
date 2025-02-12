@@ -25,7 +25,7 @@ VerifyRelationship9000000009:
             - coding:
               - code: MTH
                 display: mother
-                system: http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype
+                system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
           resourceType: RelatedPerson
         search:
           mode: match

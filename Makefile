@@ -83,3 +83,43 @@ smoketest-prod:
 test-prod:
 	$(PROD_CMD) \
 	--junitxml=test-report.xml \
+
+# Run schema validation check
+GREEN  := \033[32m
+RESET  := \033[0m
+
+
+
+schema-all:
+	make schema-consent \
+	schema-related-person \
+	schema-questionnaire \
+	schema-errors
+
+schema-consent:
+	@for file in specification/examples/responses/GET_Consent/*.yaml; do \
+		echo "Processing $$file"; \
+		poetry run python scripts/validate_schema.py consent "$$(realpath $$file)"; \
+		echo -e "$(GREEN)Success!$(RESET)"; \
+	done
+
+schema-related-person:
+	@for file in specification/examples/responses/GET_RelatedPerson/*.yaml; do \
+		echo "Processing $$file"; \
+		poetry run python scripts/validate_schema.py relatedperson "$$(realpath $$file)"; \
+		echo -e "$(GREEN)Success!$(RESET)"; \
+	done
+
+schema-questionnaire:
+	@for file in specification/examples/responses/POST_QuestionnaireResponse/*.yaml; do \
+		echo "Processing $$file"; \
+		poetry run python scripts/validate_schema.py operationoutcome "$$(realpath $$file)"; \
+		echo -e "$(GREEN)Success!$(RESET)"; \
+	done
+
+schema-errors:
+	@for file in specification/examples/responses/errors/*.yaml; do \
+		echo "Processing $$file"; \
+		poetry run python scripts/validate_schema.py operationoutcome "$$(realpath $$file)"; \
+		echo -e "$(GREEN)Success!$(RESET)"; \
+	done
