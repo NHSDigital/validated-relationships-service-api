@@ -18,7 +18,7 @@ info:
 
     - get verified relationships (to support decision making when granting proxy access)
     - create a new proxy access request
-    - get proxy relationships
+    - get proxy roles
 
     In the future you will be able to:
 
@@ -352,7 +352,7 @@ paths:
 
   /Consent:
     get:
-      summary: Get proxy relationships
+      summary: Get proxy roles
       description: |
         ## Overview
         Use this endpoint to get the details about proxy relationships, including current status, based on a provided proxy's NHS Number.
@@ -477,18 +477,10 @@ paths:
                   $ref: "./examples/responses/errors/internal-server-error.yaml#/InternalServerError"
 
     post:
-      summary: Create a new FHIR Consent resource
+      summary: Create a proxy role
       description: |
         ## Overview
-        Use this endpoint to create a new proxy relationship between a patient and a related person (proxy). The request must include the necessary details about the relationship, evidence of responsibility, and requested access level.
-
-        ## Request Requirements
-        * The performer must be specified using a valid NHS Number
-        * The patient must be specified using a valid NHS Number
-        * Evidence of responsibility must be provided (e.g., birth certificate for parental relationships)
-        * The requested access level must be specified
-        * For child proxy requests, the child's age must be under 16
-        * For adult proxy requests, evidence of capacity assessment may be required
+        Use this endpoint to create a new proxy relationship between a patient and a related person (proxy).
 
         ## Sandbox test scenarios
         | Scenario | Request | Response |
@@ -511,7 +503,7 @@ paths:
                 summary: Parent requesting access to child's record
                 value:
                   resourceType: Consent
-                  status: draft
+                  status: active
                   scope:
                     coding:
                       - system: http://terminology.hl7.org/CodeSystem/consentscope
@@ -523,42 +515,25 @@ paths:
                           code: proxy
                           display: Proxy Consent
                   patient:
-                    reference: Patient/child123
                     type: Patient
+                    identifier:
+                      system: https://fhir.nhs.uk/Id/nhs-number
+                      value: "9000000017"
                   dateTime: "2025-02-11T14:30:00Z"
                   performer:
-                    - reference: RelatedPerson/parent456
-                      type: RelatedPerson
+                    type: RelatedPerson
+                    identifier:
+                      system: https://fhir.nhs.uk/Id/nhs-number
+                      value: "9000000012"
                   provision:
                     period:
                       start: "2025-02-11"
                       end: "2026-02-11"
-                    actor:
-                      - role:
-                          coding:
-                            - system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
-                              code: PRN
-                              display: Parent
-                        reference:
-                          reference: RelatedPerson/parent456
-                    provision:
-                      - actor:
-                          - role:
-                              coding:
-                                - system: https://fhir.nhs.uk/CodeSystem/proxy-access-level
-                                  code: FULL
-                                  display: Full Access
-                  verification:
-                    - verified: true
-                      verifiedWith:
-                        reference: DocumentReference/birthCert789
-                      verificationDate: "2025-02-11T14:30:00Z"
-
               guardianConsentRequest:
                 summary: Legal guardian requesting access
                 value:
                   resourceType: Consent
-                  status: draft
+                  status: active
                   scope:
                     coding:
                       - system: http://terminology.hl7.org/CodeSystem/consentscope
@@ -599,7 +574,7 @@ paths:
                 summary: Limited access for appointment booking only
                 value:
                   resourceType: Consent
-                  status: draft
+                  status: active
                   scope:
                     coding:
                       - system: http://terminology.hl7.org/CodeSystem/consentscope
@@ -656,29 +631,32 @@ paths:
               schema:
                 $ref: "#/components/schemas/OperationOutcome"
 
+  /Consent/{id}:
     patch:
-      summary: Update an existing Consent resource
-      description: | ## Overview
-        Use this endpoint to update an existing proxy relationship. This can be used to modify the status, access levels, or other attributes of the relationship. The update is performed using JSON Patch operations.
+      summary: Update a proxy role
+      description: |
+        ## Overview
+        Use this endpoint to update an existing proxy role.
 
         Common update scenarios include:
-        * Changing the status of a relationship
-        * Modifying access levels
-        * Adding or updating verification information
-        * Updating the validity period
-        * Adding or removing specific provisions
+        * Revocation of the role (status change from "active" to inactive 
+        * Changing the legal basis of the role (which property this will be is TBC with IOPS)
+        * Updating the end date for timebound access
+
+        NOTE:
+        we will also need to record a coded reason, but this is with IOPS to confirm where the reasonCode is stored.
+
 
         ## Request Requirements
-        * The Consent resource must exist and be identified by a valid identifier
+        * The proxy role must exist and be identified by a valid identifier
         * JSON Patch operations must be valid according to RFC 6902
         * Status changes must use valid status codes from http://hl7.org/fhir/consent-state-codes
-        * Access level changes must use valid codes from the NHS proxy access level system
 
         ## Sandbox test scenarios
         | Scenario | Request | Response |
         | -------- | ------- | -------- |
-        | Successful status update | Valid patch changing status to 'active' | HTTP Status 200 and updated Bundle |
-        | Successful access level update | Valid patch modifying access provisions | HTTP Status 200 and updated Bundle |
+        | Successful status update | Valid patch changing status to 'active' | HTTP Status 200 and OperationOutcome|
+        | Successful access level update | Valid patch modifying access provisions | HTTP Status 200 and OperationOutcome |
         | Multiple valid changes | Valid patch with multiple operations | HTTP Status 200 and updated Bundle |
         | Invalid patch format | Malformed JSON patch document | HTTP Status 400 and INVALID_PATCH_FORMAT error response |
         | Invalid path | Patch targeting non-existent element | HTTP Status 400 and INVALID_PATCH_PATH error response |
@@ -686,10 +664,10 @@ paths:
         | Resource not found | Patch for non-existent Consent | HTTP Status 404 and RESOURCE_NOT_FOUND error response |
         | Invalid state transition | Patch attempting invalid status change | HTTP Status 422 and INVALID_STATE_TRANSITION error response |
       parameters:
-        - name: identifier
-          in: query
+        - name: id
+          in: path
           required: true
-          description: The identifier of the Consent resource to update
+          description: The logical id of the Consent resource to update
           schema:
             type: string
       requestBody:
@@ -750,7 +728,7 @@ paths:
           content:
             application/fhir+json:
               schema:
-                $ref: "#/components/schemas/ConsentBundle"
+                $ref: "#/components/schemas/OperationOutcome"
         "400":
           description: Invalid patch
           content:
