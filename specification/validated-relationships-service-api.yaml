@@ -617,7 +617,7 @@ paths:
           content:
             application/fhir+json:
               schema:
-                $ref: "#/components/schemas/ConsentBundle"
+                $ref: "#/components/schemas/OperationOutcome"
         "400":
           description: Invalid request
           content:
