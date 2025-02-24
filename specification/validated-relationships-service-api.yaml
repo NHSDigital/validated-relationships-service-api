@@ -542,6 +542,13 @@ paths:
                           identifier:
                             system: https://fhir.nhs.uk/Id/nhs-number
                             value: "9000000012"
+                  extension:
+                    - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
+                      valueCodeableConcept:
+                        coding: 
+                          - system: http://terminology.hl7.org/CodeSystem/consent-reason
+                            code: TBC
+                            display: TBC
               guardianConsentRequest:
                 summary: Create a proxy role with court appointed deputy basis
                 value:
@@ -584,6 +591,13 @@ paths:
                           identifier:
                             system: https://fhir.nhs.uk/Id/nhs-number
                             value: "9000000012"
+                  extension:
+                    - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
+                      valueCodeableConcept:
+                        coding: 
+                          - system: http://terminology.hl7.org/CodeSystem/consent-reason
+                            code: TBC
+                            display: TBC
       responses:
         "201":
           description: Consent resource successfully created
@@ -1976,6 +1990,23 @@ components:
                 type: string
                 description: The date and time when consent was collected.
                 format: date-time
+        extension:
+          type: array
+          description: Model the status reason.
+          items:
+            $ref: "#/components/schemas/Extension"
+    
+    Extension:
+      type: object
+      properties:
+        url:
+          type: string
+        valueCodeableConcept:
+          type: array
+          description: Classification of the status of consent, bound to http://terminology.hl7.org/CodeSystem/consent-reason.
+          items:
+            $ref: "#/components/schemas/CodeableConcept"
+
 
     OperationOutcome:
       type: object

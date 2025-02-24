@@ -52,7 +52,7 @@ PostConsentInvalidPatientAgeError:
         diagnostics: "Patient age failed business validation."
         details:
           coding:
-            - code: "MISSING_EVIDENCE"
+            - code: "INVALID_PATIENT_AGE"
               display: "Patient age is invalid."
               system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
               version: '1'
