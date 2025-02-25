@@ -5,13 +5,13 @@ APIGEE_ENVIRONMENTS:
   - name: internal-dev
     display_name: Internal Development
     has_mock_auth: true
-    rate_limit: 300
+    rate_limit: 600 # 10 requests per second (calculated per minute)
     spike_rate_limit: 600pm # 10 requests per second
     approval_type: auto
   - name: internal-qa
     display_name: Internal QA
     has_mock_auth: true
-    rate_limit: 600
+    rate_limit: 600 # 10 requests per second (calculated per minute)
     spike_rate_limit: 600pm # 10 requests per second
     approval_type: auto
   - name: internal-dev-sandbox
@@ -29,19 +29,19 @@ APIGEE_ENVIRONMENTS:
   - name: sandbox
     display_name: Sandbox
     portal_visibility: false
-    rate_limit: 120
+    rate_limit: 120 # 2 requests per second
     spike_rate_limit: 300pm # 5 requests per second
     approval_type: auto
   - name: int
     display_name: Integration Testing
     has_mock_auth: true
-    rate_limit: 300
+    rate_limit: 600 # 10 requests per second (calculated per minute)
     spike_rate_limit: 600pm # 10 requests per second
     approval_type: auto
   - name: prod
     display_name: Production
     has_mock_auth: false
-    rate_limit: 300
+    rate_limit: 600 # 10 requests per second (calculated per minute)
     spike_rate_limit: 600pm # 10 requests per second
     approval_type: manual
 ---
