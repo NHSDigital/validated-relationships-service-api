@@ -355,7 +355,7 @@ paths:
       summary: Get proxy roles
       description: |
         ## Overview
-        Use this endpoint to get the details about proxy relationships, including current status, based on a provided proxy's NHS Number.
+        Use this endpoint to get the details about proxy role, including current status, based on a provided proxy's NHS Number.
 
         You can (optionally) include `status={status}` request parameter to filter the limit the response to records with a given status bound to the http://hl7.org/fhir/consent-state-codes CodeSystem e.g. `status=active`.
 
@@ -523,10 +523,10 @@ paths:
                       value: "9000000017"
                   dateTime: "2025-02-11T14:30:00Z"
                   performer:
-                    type: RelatedPerson
-                    identifier:
-                      system: https://fhir.nhs.uk/Id/nhs-number
-                      value: "9000000012"
+                    - type: RelatedPerson
+                      identifier:
+                        system: https://fhir.nhs.uk/Id/nhs-number
+                        value: "9000000012"
                   provision:
                     period:
                       start: "2025-02-11"
@@ -573,10 +573,10 @@ paths:
                       value: "9000000017"
                   dateTime: "2025-02-11T14:30:00Z"
                   performer:
-                    type: RelatedPerson
-                    identifier:
-                      system: https://fhir.nhs.uk/Id/nhs-number
-                      value: "9000000012"
+                    - type: RelatedPerson
+                      identifier:
+                        system: https://fhir.nhs.uk/Id/nhs-number
+                        value: "9000000012"
                   provision:
                     period:
                       start: "2025-02-11"
@@ -601,6 +601,12 @@ paths:
       responses:
         "201":
           description: Consent resource successfully created
+          headers:
+            location:
+              schema:
+                type: string
+                example: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/dfsdfsfsdfsdf
+              description: URL for the newly created proxy role
           content:
             application/fhir+json:
               schema:
