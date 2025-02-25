@@ -355,7 +355,7 @@ paths:
       summary: Get proxy roles
       description: |
         ## Overview
-        Use this endpoint to get the details about proxy role, including current status, based on a provided proxy's NHS Number.
+        Use this endpoint to get the details about proxy roles, including current status, based on a provided proxy's NHS Number.
 
         You can (optionally) include `status={status}` request parameter to filter the limit the response to records with a given status bound to the http://hl7.org/fhir/consent-state-codes CodeSystem e.g. `status=active`.
 
