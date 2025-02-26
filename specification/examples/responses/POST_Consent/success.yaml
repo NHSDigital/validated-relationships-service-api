@@ -1,0 +1,8 @@
+PostConsentSuccess:
+  summary: Success
+  description: A sample of the payload returned when a proxy role has been successfully created
+  value:
+    resourceType: "OperationOutcome"
+    issue:
+      - severity: information
+        code: informational

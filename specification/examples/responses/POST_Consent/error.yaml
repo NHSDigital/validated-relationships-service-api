@@ -1,0 +1,75 @@
+PostConsentInvalidPerformerIdentifierError:
+  summary: Bad request performer identifier invalid
+  description: 400 error response bundle for an invalid performer NHS number
+  value:
+    issue:
+      - code: invalid
+        diagnostics: "Performer identifier is not a valid NHS number."
+        details:
+          coding:
+            - code: "INVALID_NHS_NUMBER"
+              display: "Performer identifier is invalid."
+              system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
+              version: '1'
+        severity: error
+    resourceType: "OperationOutcome"
+PostConsentInvalidAccessLevelError:
+  summary: Bad request access level code invalid
+  description: 400 error response bundle for an invalid access level code
+  value:
+    issue:
+      - code: invalid
+        diagnostics: "Access Level Code is not a valid."
+        details:
+          coding:
+            - code: "INVALID_ACCESS_LEVEL"
+              display: "Access Level is invalid."
+              system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
+              version: '1'
+        severity: error
+    resourceType: "OperationOutcome"
+PostConsentInvalidEvidenceError:
+  summary: Bad request missing evidence of responsibility
+  description: 422 error response bundle for a request without evidence of responsibility
+  value:
+    issue:
+      - code: invalid
+        diagnostics: "Missing evidence of responsibility."
+        details:
+          coding:
+            - code: "MISSING_EVIDENCE"
+              display: "Evidence of Responsibility is required."
+              system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
+              version: '1'
+        severity: error
+    resourceType: "OperationOutcome"
+PostConsentInvalidPatientAgeError:
+  summary: Bad request invalid patient age
+  description: 422 error response bundle for a request with an invalid patient age
+  value:
+    issue:
+      - code: invalid
+        diagnostics: "Patient age failed business validation."
+        details:
+          coding:
+            - code: "INVALID_PATIENT_AGE"
+              display: "Patient age is invalid."
+              system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
+              version: '1'
+        severity: error
+    resourceType: "OperationOutcome"
+PostConsentDuplicateRelationshipError:
+  summary: Bad request for proxy role that already exists
+  description: 409 error response bundle for a duplicate proxy role
+  value:
+    issue:
+      - code: invalid
+        diagnostics: "Proxy role already exists."
+        details:
+          coding:
+            - code: "DUPLICATE_RELATIONSHIP"
+              display: "Request must be for a new proxy role."
+              system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
+              version: '1'
+        severity: error
+    resourceType: "OperationOutcome"

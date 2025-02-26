@@ -1,9 +1,9 @@
 # This is an OpenAPI Specification (https://swagger.io/specification/)
 # for validated-relationships owned by NHS Digital (https://digital.nhs.uk/)
-openapi: '3.0.0'
+openapi: "3.0.0"
 info:
-  title: 'Validated Relationships Service API'
-  version: '1.3.1'
+  title: "Validated Relationships Service API"
+  version: "1.3.2"
   description: |
     ## Overview
     Use this API to access the Validated Relationships Service - the national electronic database of relationships
@@ -18,7 +18,7 @@ info:
 
     - get verified relationships (to support decision making when granting proxy access)
     - create a new proxy access request
-    - get proxy relationships
+    - get proxy roles
 
     In the future you will be able to:
 
@@ -139,15 +139,15 @@ info:
     For more details, contact us at [england.vrs-team@nhs.net](mailto:england.vrs-team@nhs.net).
 
   contact:
-    name: 'Validated Relationships Service API Support'
-    url: 'https://digital.nhs.uk/developer/help-and-support'
+    name: "Validated Relationships Service API Support"
+    url: "https://digital.nhs.uk/developer/help-and-support"
     email: api.management@nhs.net
 servers:
-  - url: 'https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4'
+  - url: "https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4"
     description: Sandbox environment.
-  - url: 'https://int.api.service.nhs.uk/validated-relationships/FHIR/R4'
+  - url: "https://int.api.service.nhs.uk/validated-relationships/FHIR/R4"
     description: Integration test environment.
-  - url: 'https://api.service.nhs.uk/validated-relationships/FHIR/R4'
+  - url: "https://api.service.nhs.uk/validated-relationships/FHIR/R4"
     description: Production environment.
 paths:
   /QuestionnaireResponse:
@@ -183,38 +183,38 @@ paths:
         content:
           application/fhir+json:
             schema:
-              $ref: '#/components/schemas/QuestionnaireResponse'
+              $ref: "#/components/schemas/QuestionnaireResponse"
             examples:
               questionnaireResponseMotherChildRequest:
-                $ref: './examples/requests/POST_QuestionnaireResponse/mother-child.yaml#/QuestionnaireResponseMotherChildRequest'
+                $ref: "./examples/requests/POST_QuestionnaireResponse/mother-child.yaml#/QuestionnaireResponseMotherChildRequest"
               questionnaireResponseAdultToAdultWithoutCapacityRequest:
-                $ref: './examples/requests/POST_QuestionnaireResponse/adult-to-adult-without-capacity.yaml#/QuestionnaireResponseAdultToAdultWithoutCapacityRequest'
+                $ref: "./examples/requests/POST_QuestionnaireResponse/adult-to-adult-without-capacity.yaml#/QuestionnaireResponseAdultToAdultWithoutCapacityRequest"
               questionnaireResponseAdultToAdultWithCapacityRequest:
-                $ref: './examples/requests/POST_QuestionnaireResponse/adult-to-adult-with-capacity.yaml#/QuestionnaireResponseAdultToAdultWithCapacityRequest'
+                $ref: "./examples/requests/POST_QuestionnaireResponse/adult-to-adult-with-capacity.yaml#/QuestionnaireResponseAdultToAdultWithCapacityRequest"
               questionnaireResponseAdultNominatesAdultRequest:
-                $ref: './examples/requests/POST_QuestionnaireResponse/adult-nominates-adult.yaml#/QuestionnaireResponseAdultNominatesAdultRequest'
+                $ref: "./examples/requests/POST_QuestionnaireResponse/adult-nominates-adult.yaml#/QuestionnaireResponseAdultNominatesAdultRequest"
           application/fhir+json; charset=utf-8:
             schema:
-              $ref: '#/components/schemas/QuestionnaireResponse'
+              $ref: "#/components/schemas/QuestionnaireResponse"
             examples:
               questionnaireResponseMotherChildRequest:
-                $ref: './examples/requests/POST_QuestionnaireResponse/mother-child.yaml#/QuestionnaireResponseMotherChildRequest'
+                $ref: "./examples/requests/POST_QuestionnaireResponse/mother-child.yaml#/QuestionnaireResponseMotherChildRequest"
               questionnaireResponseAdultToAdultWithoutCapacityRequest:
-                $ref: './examples/requests/POST_QuestionnaireResponse/adult-to-adult-without-capacity.yaml#/QuestionnaireResponseAdultToAdultWithoutCapacityRequest'
+                $ref: "./examples/requests/POST_QuestionnaireResponse/adult-to-adult-without-capacity.yaml#/QuestionnaireResponseAdultToAdultWithoutCapacityRequest"
               questionnaireResponseAdultToAdultWithCapacityRequest:
-                $ref: './examples/requests/POST_QuestionnaireResponse/adult-to-adult-with-capacity.yaml#/QuestionnaireResponseAdultToAdultWithCapacityRequest'
+                $ref: "./examples/requests/POST_QuestionnaireResponse/adult-to-adult-with-capacity.yaml#/QuestionnaireResponseAdultToAdultWithCapacityRequest"
               questionnaireResponseAdultNominatesAdultRequest:
-                $ref: './examples/requests/POST_QuestionnaireResponse/adult-nominates-adult.yaml#/QuestionnaireResponseAdultNominatesAdultRequest'
+                $ref: "./examples/requests/POST_QuestionnaireResponse/adult-nominates-adult.yaml#/QuestionnaireResponseAdultNominatesAdultRequest"
       responses:
-        '200':
+        "200":
           description: Request was received successfully for processing
           content:
             application/fhir+json:
               schema:
-                $ref: '#/components/schemas/OperationOutcome'
+                $ref: "#/components/schemas/OperationOutcome"
               examples:
                 postQuestionnaireResponseSuccess:
-                  $ref: './examples/responses/POST_QuestionnaireResponse/success.yaml#/PostQuestionnaireResponseSuccess'
+                  $ref: "./examples/responses/POST_QuestionnaireResponse/success.yaml#/PostQuestionnaireResponseSuccess"
         "4XX":
           description: |
             Errors will be returned for the first error encountered in the request. An error occurred as follows:
@@ -234,19 +234,19 @@ paths:
           content:
             application/fhir+json:
               schema:
-                $ref: '#/components/schemas/OperationOutcome'
+                $ref: "#/components/schemas/OperationOutcome"
               examples:
                 accessDeniedError:
-                  $ref: './examples/responses/errors/access-denied.yaml#/AccessDeniedError'
+                  $ref: "./examples/responses/errors/access-denied.yaml#/AccessDeniedError"
         "500":
           description: Internal server error
           content:
             application/fhir+json:
               schema:
-                $ref: '#/components/schemas/OperationOutcome'
+                $ref: "#/components/schemas/OperationOutcome"
               examples:
                 internalServerError:
-                  $ref: './examples/responses/errors/internal-server-error.yaml#/InternalServerError'
+                  $ref: "./examples/responses/errors/internal-server-error.yaml#/InternalServerError"
 
   /RelatedPerson:
     get:
@@ -298,19 +298,19 @@ paths:
                 $ref: "#/components/schemas/RelatedPersonBundle"
               examples:
                 listRelationship:
-                  $ref: './examples/responses/GET_RelatedPerson/list_relationship_9000000017.yaml#/ListRelationship9000000017'
+                  $ref: "./examples/responses/GET_RelatedPerson/list_relationship_9000000017.yaml#/ListRelationship9000000017"
                 listRelationshipIncludePatient:
-                  $ref: './examples/responses/GET_RelatedPerson/list_relationship_9000000017_include.yaml#/ListRelationship9000000017Include'
+                  $ref: "./examples/responses/GET_RelatedPerson/list_relationship_9000000017_include.yaml#/ListRelationship9000000017Include"
                 verifyRelationshipExample1:
-                  $ref: './examples/responses/GET_RelatedPerson/verify_relationship_9000000009.yaml#/VerifyRelationship9000000009'
+                  $ref: "./examples/responses/GET_RelatedPerson/verify_relationship_9000000009.yaml#/VerifyRelationship9000000009"
                 verifyRelationshipExample1Include:
-                  $ref: './examples/responses/GET_RelatedPerson/verify_relationship_9000000009_include.yaml#/VerifyRelationship9000000009Include'
+                  $ref: "./examples/responses/GET_RelatedPerson/verify_relationship_9000000009_include.yaml#/VerifyRelationship9000000009Include"
                 verifyRelationshipExample2:
-                  $ref: './examples/responses/GET_RelatedPerson/verify_relationship_9000000025.yaml#/VerifyRelationship9000000025'
+                  $ref: "./examples/responses/GET_RelatedPerson/verify_relationship_9000000025.yaml#/VerifyRelationship9000000025"
                 verifyRelationshipExample2Include:
-                  $ref: './examples/responses/GET_RelatedPerson/verify_relationship_9000000025_include.yaml#/VerifyRelationship9000000025Include'
+                  $ref: "./examples/responses/GET_RelatedPerson/verify_relationship_9000000025_include.yaml#/VerifyRelationship9000000025Include"
                 relatedEmptyResponse:
-                  $ref: './examples/responses/GET_RelatedPerson/empty_response_9000000033.yaml#/RelatedEmptyResponse'
+                  $ref: "./examples/responses/GET_RelatedPerson/empty_response_9000000033.yaml#/RelatedEmptyResponse"
 
         "4XX":
           description: |
@@ -333,148 +333,430 @@ paths:
           content:
             application/fhir+json:
               schema:
-                $ref: '#/components/schemas/OperationOutcome'
+                $ref: "#/components/schemas/OperationOutcome"
               examples:
                 AccessDeniedError:
-                  $ref: './examples/responses/errors/access-denied.yaml#/AccessDeniedError'
+                  $ref: "./examples/responses/errors/access-denied.yaml#/AccessDeniedError"
                 RelatedPersonInvalidIdentifierError:
-                  $ref: './examples/responses/GET_RelatedPerson/errors/invalid-identifier.yaml#/RelatedPersonInvalidIdentifierError'
+                  $ref: "./examples/responses/GET_RelatedPerson/errors/invalid-identifier.yaml#/RelatedPersonInvalidIdentifierError"
 
         "500":
           description: Internal server error
           content:
             application/fhir+json:
               schema:
-                $ref: '#/components/schemas/OperationOutcome'
+                $ref: "#/components/schemas/OperationOutcome"
               examples:
                 InternalServerError:
-                  $ref: './examples/responses/errors/internal-server-error.yaml#/InternalServerError'
+                  $ref: "./examples/responses/errors/internal-server-error.yaml#/InternalServerError"
 
   /Consent:
     get:
-        summary: Get proxy relationships
-        description: |
-          ## Overview
-          Use this endpoint to get the details about proxy relationships, including current status, based on a provided proxy's NHS Number.
+      summary: Get proxy roles
+      description: |
+        ## Overview
+        Use this endpoint to get the details about proxy roles, including current status, based on a provided proxy's NHS Number.
 
-          You can (optionally) include `status={status}` request parameter to filter the limit the response to records with a given status bound to the http://hl7.org/fhir/consent-state-codes CodeSystem e.g. `status=active`.
+        You can (optionally) include `status={status}` request parameter to filter the limit the response to records with a given status bound to the http://hl7.org/fhir/consent-state-codes CodeSystem e.g. `status=active`.
 
-          You can (optionally) include the `_include=Consent:performer` request parameter to include the proxy's details in the response.
+        You can (optionally) include the `_include=Consent:performer` request parameter to include the proxy's details in the response.
 
-          You can (optionally) include the `_include=Consent:patient` request parameter to include the patient's details in the response.
+        You can (optionally) include the `_include=Consent:patient` request parameter to include the patient's details in the response.
 
-          ## Sandbox test scenarios
+        ## Sandbox test scenarios
 
-          | Scenario                                                                   | Request                                                                                                                         | Response                                                                                                          |
-          | -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------| ------------------------------------------------------------------------------------------------------------------|
-          | Multiple proxy relationships filtered by 'active' status including details | `performer:identifier`=`9000000017` and `_include` = `Consent:patient` and `_include` = `Consent:proxy` and `status`=`active`   | HTTP Status 200 Bundle containing a multiple active proxy relationships including performer and patient details   |
-          | Multiple proxy relationships filtered by 'inactive' status                 | `performer:identifier`=`9000000017` and `status`=`inactive`                                                                     | HTTP Status 200 Bundle containing a multiple inactive proxy relationships                                         |
-          | Multiple proxy relationships filtered by 'proposed' and 'active' status    | `performer:identifier`=`9000000017` and `status`=`proposed,active`                                                              | HTTP Status 200 Bundle containing a multiple proposed and active proxy relationships                              |
-          | Multiple proxy relationships without filtering and details                 | `performer:identifier`=`9000000022`                                                                                             | HTTP Status 200 Bundle containing a multiple proxy relationships without details                                  |
-          | Multiple proxy relationships including performer details                   | `performer:identifier`=`9000000022` and `_include` = `Consent:performer`                                                        | HTTP Status 200 Bundle containing a multiple proxy relationships including performer details                      |
-          | Multiple proxy relationships including patient details                     | `performer:identifier`=`9000000022` and `_include` = `Consent:patient`                                                          | HTTP Status 200 Bundle containing a multiple proxy relationships including patient details                        |
-          | Multiple proxy relationships including performer and patient details       | `performer:identifier`=`9000000022` and `_include` = `Consent:patient` and `_include` = `Consent:proxy`                         | HTTP Status 200 Bundle containing a multiple proxy relationships including performer and patient details          |
-          | No proxy relationships                                                     | `performer:identifier`=`9000000025` and `_include` = `Consent:patient` and `_include` = `Consent:proxy` and `status` = `active` | HTTP Status 200 empty bundle                                                                                      |
-          | A single proxy relationship between consenting adults                      | `performer:identifier`=`9000000010`                                                                                             | HTTP Status 200 Bundle containing a single proxy relationship                                                     |
-          | A single proxy relationship between consenting adults including details    | `performer:identifier`=`9000000010` and `_include` = `Consent:patient` and `_include` = `Consent:proxy`                         | HTTP Status 200 Bundle containing a single proxy relationship including performer and patient details             |
-          | A single proxy relationship between a mother and child                     | `performer:identifier`=`9000000019`                                                                                             | HTTP Status 200 Bundle containing a single proxy relationship                                                     |
-          | A single proxy relationship between a mother and child including details   | `performer:identifier`=`9000000019` and `_include` = `Consent:patient` and `_include` = `Consent:proxy`                         | HTTP Status 200 Bundle containing a single proxy relationship including performer and patient details             |
-          | Invalid status parameter                                                   | `performer:identifier`=`9000000019` and `status` = `test`                                                                       | HTTP Status 400 and INVALID_VALUE error response                                                                  |
-          | Invalid include parameter                                                  | `performer:identifier`=`9000000019` and `_include` = `test`                                                                     | HTTP Status 400 and INVALID_VALUE error response                                                                  |
-          | Missing identifier                                                         | `patient:identifier`=`9000000009`                                                                                               | HTTP Status 400 and MISSING_IDENTIFIER_VALUE error response                                                       |
-          | Invalid identifier                                                         | `identifier`=`900000000` Note: This identifier is 9 characters long, too short to be NHS Number                                 | HTTP Status 400 and INVALID_IDENTIFIER_VALUE error response                                                       |
-          | Invalid identifier system                                                  | `identifier`=`https://fhir.nhs.uk/Id/nhs-number/9730675929`                                                                     | HTTP Status 400 and INVALID_IDENTIFIER_SYSTEM error response                                                      |
-          | No performer record found                                                  | `identifier`=`9000000999`                                                                                                       | HTTP Status 404 and INVALIDATED_RESOURCE error response                                                           |
+        | Scenario                                                                   | Request                                                                                                                         | Response                                                                                                          |
+        | -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------| ------------------------------------------------------------------------------------------------------------------|
+        | Multiple proxy relationships filtered by 'active' status including details | `performer:identifier`=`9000000017` and `_include` = `Consent:patient` and `_include` = `Consent:proxy` and `status`=`active`   | HTTP Status 200 Bundle containing a multiple active proxy relationships including performer and patient details   |
+        | Multiple proxy relationships filtered by 'inactive' status                 | `performer:identifier`=`9000000017` and `status`=`inactive`                                                                     | HTTP Status 200 Bundle containing a multiple inactive proxy relationships                                         |
+        | Multiple proxy relationships filtered by 'proposed' and 'active' status    | `performer:identifier`=`9000000017` and `status`=`proposed,active`                                                              | HTTP Status 200 Bundle containing a multiple proposed and active proxy relationships                              |
+        | Multiple proxy relationships without filtering and details                 | `performer:identifier`=`9000000022`                                                                                             | HTTP Status 200 Bundle containing a multiple proxy relationships without details                                  |
+        | Multiple proxy relationships including performer details                   | `performer:identifier`=`9000000022` and `_include` = `Consent:performer`                                                        | HTTP Status 200 Bundle containing a multiple proxy relationships including performer details                      |
+        | Multiple proxy relationships including patient details                     | `performer:identifier`=`9000000022` and `_include` = `Consent:patient`                                                          | HTTP Status 200 Bundle containing a multiple proxy relationships including patient details                        |
+        | Multiple proxy relationships including performer and patient details       | `performer:identifier`=`9000000022` and `_include` = `Consent:patient` and `_include` = `Consent:proxy`                         | HTTP Status 200 Bundle containing a multiple proxy relationships including performer and patient details          |
+        | No proxy relationships                                                     | `performer:identifier`=`9000000025` and `_include` = `Consent:patient` and `_include` = `Consent:proxy` and `status` = `active` | HTTP Status 200 empty bundle                                                                                      |
+        | A single proxy relationship between consenting adults                      | `performer:identifier`=`9000000010`                                                                                             | HTTP Status 200 Bundle containing a single proxy relationship                                                     |
+        | A single proxy relationship between consenting adults including details    | `performer:identifier`=`9000000010` and `_include` = `Consent:patient` and `_include` = `Consent:proxy`                         | HTTP Status 200 Bundle containing a single proxy relationship including performer and patient details             |
+        | A single proxy relationship between a mother and child                     | `performer:identifier`=`9000000019`                                                                                             | HTTP Status 200 Bundle containing a single proxy relationship                                                     |
+        | A single proxy relationship between a mother and child including details   | `performer:identifier`=`9000000019` and `_include` = `Consent:patient` and `_include` = `Consent:proxy`                         | HTTP Status 200 Bundle containing a single proxy relationship including performer and patient details             |
+        | Invalid status parameter                                                   | `performer:identifier`=`9000000019` and `status` = `test`                                                                       | HTTP Status 400 and INVALID_VALUE error response                                                                  |
+        | Invalid include parameter                                                  | `performer:identifier`=`9000000019` and `_include` = `test`                                                                     | HTTP Status 400 and INVALID_VALUE error response                                                                  |
+        | Missing identifier                                                         | `patient:identifier`=`9000000009`                                                                                               | HTTP Status 400 and MISSING_IDENTIFIER_VALUE error response                                                       |
+        | Invalid identifier                                                         | `identifier`=`900000000` Note: This identifier is 9 characters long, too short to be NHS Number                                 | HTTP Status 400 and INVALID_IDENTIFIER_VALUE error response                                                       |
+        | Invalid identifier system                                                  | `identifier`=`https://fhir.nhs.uk/Id/nhs-number/9730675929`                                                                     | HTTP Status 400 and INVALID_IDENTIFIER_SYSTEM error response                                                      |
+        | No performer record found                                                  | `identifier`=`9000000999`                                                                                                       | HTTP Status 404 and INVALIDATED_RESOURCE error response                                                           |
 
-        operationId: get-consent
-        parameters:
-          - $ref: "#/components/parameters/BearerAuthorization"
-          - $ref: "#/components/parameters/ConsentBundlePerformerIdentifier"
-          - $ref: "#/components/parameters/ConsentStatus"
-          - $ref: "#/components/parameters/ConsentBundleIncludes"
-          - $ref: "#/components/parameters/RequestID"
-          - $ref: "#/components/parameters/CorrelationID"
-          - $ref: "#/components/parameters/Im1ConnectionParams"
-        responses:
-          "200":
-            description: Information successfully returned.
-            content:
-              application/fhir+json:
-                schema:
-                  $ref: "#/components/schemas/ConsentBundle"
-                examples:
-                  ConsentMultipleRelationshipsStatusActiveBundle:
-                    $ref: "./examples/responses/GET_Consent/filtered-relationships-status-active-include-details.yaml#/ConsentMultipleRelationshipsStatusActiveIncludeDetailsBundle"
-                  ConsentMultipleRelationshipsStatusInactiveBundle:
-                    $ref: "./examples/responses/GET_Consent/filtered-relationships-status-inactive.yaml#/ConsentMultipleRelationshipsStatusInactiveBundle"
-                  ConsentMultipleRelationshipsStatusProposedActiveBundle:
-                    $ref: "./examples/responses/GET_Consent/filtered-relationships-status-proposed-active.yaml#/ConsentMultipleRelationshipsStatusProposedActiveBundle"
-                  ConsentMultipleRelationshipsBundle:
-                    $ref: "./examples/responses/GET_Consent/multiple-relationships.yaml#/ConsentMultipleRelationshipsBundle"
-                  ConsentMultipleRelationshipsIncludePatientBundle:
-                    $ref: "./examples/responses/GET_Consent/multiple-relationships-include-patient.yaml#/ConsentMultipleRelationshipsIncludePatientBundle"
-                  ConsentMultipleRelationshipsIncludePerformerBundle:
-                    $ref: "./examples/responses/GET_Consent/multiple-relationships-include-performer.yaml#/ConsentMultipleRelationshipsIncludePerformerBundle"
-                  ConsentMultipleRelationshipsIncludePerformerPatientBundle:
-                    $ref: "./examples/responses/GET_Consent/multiple-relationships-include-performer-patient.yaml#/ConsentMultipleRelationshipsIncludePerformerPatientBundle"
-                  ConsentNoRelationshipsEmptyBundle:
-                    $ref: "./examples/responses/GET_Consent/no-relationships.yaml#/ConsentNoRelationshipsEmptyBundle"
-                  ConsentSingleConsentingAdultRelationshipBundle:
-                    $ref: "./examples/responses/GET_Consent/single-consenting-adult-relationship.yaml#/ConsentSingleConsentingAdultRelationshipBundle"
-                  ConsentSingleConsentingAdultRelationshipIncludePerformerPatientBundle:
-                    $ref: "./examples/responses/GET_Consent/single-consenting-adult-relationship-include-performer-patient.yaml#/ConsentSingleConsentingAdultRelationshipIncludePerformerPatientBundle"
-                  ConsentSingleAdultChildRelationshipBundle:
-                    $ref: "./examples/responses/GET_Consent/single-mother-child-relationship.yaml#/ConsentSingleAdultChildRelationshipBundle"
-                  ConsentSingleAdultChildRelationshipIncludePerformerPatientBundle:
-                    $ref: "./examples/responses/GET_Consent/single-mother-child-relationship-include-performer-patient.yaml#/ConsentSingleAdultChildRelationshipIncludePerformerPatientBundle"
+      operationId: get-consent
+      parameters:
+        - $ref: "#/components/parameters/BearerAuthorization"
+        - $ref: "#/components/parameters/ConsentBundlePerformerIdentifier"
+        - $ref: "#/components/parameters/ConsentStatus"
+        - $ref: "#/components/parameters/ConsentBundleIncludes"
+        - $ref: "#/components/parameters/RequestID"
+        - $ref: "#/components/parameters/CorrelationID"
+        - $ref: "#/components/parameters/Im1ConnectionParams"
+      responses:
+        "200":
+          description: Information successfully returned.
+          content:
+            application/fhir+json:
+              schema:
+                $ref: "#/components/schemas/ConsentBundle"
+              examples:
+                ConsentMultipleRelationshipsStatusActiveBundle:
+                  $ref: "./examples/responses/GET_Consent/filtered-relationships-status-active-include-details.yaml#/ConsentMultipleRelationshipsStatusActiveIncludeDetailsBundle"
+                ConsentMultipleRelationshipsStatusInactiveBundle:
+                  $ref: "./examples/responses/GET_Consent/filtered-relationships-status-inactive.yaml#/ConsentMultipleRelationshipsStatusInactiveBundle"
+                ConsentMultipleRelationshipsStatusProposedActiveBundle:
+                  $ref: "./examples/responses/GET_Consent/filtered-relationships-status-proposed-active.yaml#/ConsentMultipleRelationshipsStatusProposedActiveBundle"
+                ConsentMultipleRelationshipsBundle:
+                  $ref: "./examples/responses/GET_Consent/multiple-relationships.yaml#/ConsentMultipleRelationshipsBundle"
+                ConsentMultipleRelationshipsIncludePatientBundle:
+                  $ref: "./examples/responses/GET_Consent/multiple-relationships-include-patient.yaml#/ConsentMultipleRelationshipsIncludePatientBundle"
+                ConsentMultipleRelationshipsIncludePerformerBundle:
+                  $ref: "./examples/responses/GET_Consent/multiple-relationships-include-performer.yaml#/ConsentMultipleRelationshipsIncludePerformerBundle"
+                ConsentMultipleRelationshipsIncludePerformerPatientBundle:
+                  $ref: "./examples/responses/GET_Consent/multiple-relationships-include-performer-patient.yaml#/ConsentMultipleRelationshipsIncludePerformerPatientBundle"
+                ConsentNoRelationshipsEmptyBundle:
+                  $ref: "./examples/responses/GET_Consent/no-relationships.yaml#/ConsentNoRelationshipsEmptyBundle"
+                ConsentSingleConsentingAdultRelationshipBundle:
+                  $ref: "./examples/responses/GET_Consent/single-consenting-adult-relationship.yaml#/ConsentSingleConsentingAdultRelationshipBundle"
+                ConsentSingleConsentingAdultRelationshipIncludePerformerPatientBundle:
+                  $ref: "./examples/responses/GET_Consent/single-consenting-adult-relationship-include-performer-patient.yaml#/ConsentSingleConsentingAdultRelationshipIncludePerformerPatientBundle"
+                ConsentSingleAdultChildRelationshipBundle:
+                  $ref: "./examples/responses/GET_Consent/single-mother-child-relationship.yaml#/ConsentSingleAdultChildRelationshipBundle"
+                ConsentSingleAdultChildRelationshipIncludePerformerPatientBundle:
+                  $ref: "./examples/responses/GET_Consent/single-mother-child-relationship-include-performer-patient.yaml#/ConsentSingleAdultChildRelationshipIncludePerformerPatientBundle"
 
-          "4XX":
-            description: |
-              Errors will be returned for the first error encountered in the request. An error occurred as follows:
+        "4XX":
+          description: |
+            Errors will be returned for the first error encountered in the request. An error occurred as follows:
 
-              | HTTP status | Error code                         | Description                                                                                                                               |
-              | ----------- | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-              | 400         | `MISSING_VALUE`                    | Missing header parameter. For details, see the `diagnostics` field.                                                                       |
-              | 400         | `INVALID_VALUE`                    | Invalid header parameter. For details, see the `diagnostics` field.                                                                       |
-              | 400         | `INVALID_IDENTIFIER_SYSTEM`        | Invalid identifier system.                                                                                                                |
-              | 400         | `MISSING_IDENTIFIER_VALUE`         | Missing performer NHS number.                                                                                                             |
-              | 400         | `INVALID_IDENTIFIER_VALUE`         | Malformed performer NHS number.                                                                                                           |
-              | 400         | `NOT_SUPPORTED`                    | The request is not currently supported.                                                                                                   |
-              | 401         | `ACCESS_DENIED`                    | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
-              | 403         | `FORBIDDEN`                        | Access denied to resource.                                                                                                                |
-              | 404         | `INVALIDATED_RESOURCE`             | Resource that has been marked as invalid was requested - invalid resources cannot be retrieved                                            |
-              | 405         | `METHOD_NOT_ALLOWED`               | The method is not allowed.                                                                                                                |
-              | 408         | `TIMEOUT`                          | Request timed out.                                                                                                                        |
-              | 429         | `THROTTLED`                        | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
+            | HTTP status | Error code                         | Description                                                                                                                               |
+            | ----------- | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+            | 400         | `MISSING_VALUE`                    | Missing header parameter. For details, see the `diagnostics` field.                                                                       |
+            | 400         | `INVALID_VALUE`                    | Invalid header parameter. For details, see the `diagnostics` field.                                                                       |
+            | 400         | `INVALID_IDENTIFIER_SYSTEM`        | Invalid identifier system.                                                                                                                |
+            | 400         | `MISSING_IDENTIFIER_VALUE`         | Missing performer NHS number.                                                                                                             |
+            | 400         | `INVALID_IDENTIFIER_VALUE`         | Malformed performer NHS number.                                                                                                           |
+            | 400         | `NOT_SUPPORTED`                    | The request is not currently supported.                                                                                                   |
+            | 401         | `ACCESS_DENIED`                    | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
+            | 403         | `FORBIDDEN`                        | Access denied to resource.                                                                                                                |
+            | 404         | `INVALIDATED_RESOURCE`             | Resource that has been marked as invalid was requested - invalid resources cannot be retrieved                                            |
+            | 405         | `METHOD_NOT_ALLOWED`               | The method is not allowed.                                                                                                                |
+            | 408         | `TIMEOUT`                          | Request timed out.                                                                                                                        |
+            | 429         | `THROTTLED`                        | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
 
-            content:
-              application/fhir+json:
-                schema:
-                  $ref: '#/components/schemas/OperationOutcome'
-                examples:
-                  AccessDeniedError:
-                    $ref: './examples/responses/errors/access-denied.yaml#/AccessDeniedError'
-                  ConsentInvalidIdentifierError:
-                    $ref: './examples/responses/GET_Consent/errors/invalid-identifier.yaml#/ConsentInvalidIdentifierError'
-                  ConsentInvalidIdentifierSystemError:
-                    $ref: './examples/responses/GET_Consent/errors/invalid-identifier-system.yaml#/ConsentInvalidIdentifierSystemError'
-                  ConsentIdentifierMissingError:
-                    $ref: './examples/responses/GET_Consent/errors/missing-identifier.yaml#/ConsentIdentifierMissingError'
-                  InvalidatedResourceError:
-                    $ref: './examples/responses/errors/invalidated-resource.yaml#/InvalidatedResourceError'
-                  ConsentInvalidStatusParameterError:
-                    $ref: './examples/responses/GET_Consent/errors/invalid-status-parameter.yaml#/ConsentInvalidStatusParameterError'
-                  InvalidIncludeParameterError:
-                    $ref: './examples/responses/errors/invalid-include-parameter.yaml#/InvalidIncludeParameterError'
-          "500":
-            description: Internal server error
-            content:
-              application/fhir+json:
-                schema:
-                  $ref: '#/components/schemas/OperationOutcome'
-                examples:
-                  InternalServerError:
-                    $ref: './examples/responses/errors/internal-server-error.yaml#/InternalServerError'
+          content:
+            application/fhir+json:
+              schema:
+                $ref: "#/components/schemas/OperationOutcome"
+              examples:
+                AccessDeniedError:
+                  $ref: "./examples/responses/errors/access-denied.yaml#/AccessDeniedError"
+                ConsentInvalidIdentifierError:
+                  $ref: "./examples/responses/GET_Consent/errors/invalid-identifier.yaml#/ConsentInvalidIdentifierError"
+                ConsentInvalidIdentifierSystemError:
+                  $ref: "./examples/responses/GET_Consent/errors/invalid-identifier-system.yaml#/ConsentInvalidIdentifierSystemError"
+                ConsentIdentifierMissingError:
+                  $ref: "./examples/responses/GET_Consent/errors/missing-identifier.yaml#/ConsentIdentifierMissingError"
+                InvalidatedResourceError:
+                  $ref: "./examples/responses/errors/invalidated-resource.yaml#/InvalidatedResourceError"
+                ConsentInvalidStatusParameterError:
+                  $ref: "./examples/responses/GET_Consent/errors/invalid-status-parameter.yaml#/ConsentInvalidStatusParameterError"
+                InvalidIncludeParameterError:
+                  $ref: "./examples/responses/errors/invalid-include-parameter.yaml#/InvalidIncludeParameterError"
+        "500":
+          description: Internal server error
+          content:
+            application/fhir+json:
+              schema:
+                $ref: "#/components/schemas/OperationOutcome"
+              examples:
+                InternalServerError:
+                  $ref: "./examples/responses/errors/internal-server-error.yaml#/InternalServerError"
+
+    post:
+      summary: Create a proxy role
+      description: |
+        ## Overview
+        Use this endpoint to create a new proxy role between a patient and a related person (proxy).
+
+        ## Sandbox test scenarios
+        | Scenario | Request | Response |
+        | -------- | ------- | -------- |
+        | Successful parent-child proxy creation | Valid request with a legal basis of parental responsibility | HTTP Status 201 and OperationOutcome response |
+        | Successful adult-adult proxy creation | Valid request with legal basis of consent | HTTP Status 201 and OperationOutcome response |
+        | Invalid performer NHS number | Request with invalid NHS number format | HTTP Status 400 and INVALID_NHS_NUMBER error response |
+        | Missing required evidence | Request without evidence of responsibility | HTTP Status 422 and MISSING_EVIDENCE error response |
+        | Invalid access level | Request with undefined access level code | HTTP Status 400 and INVALID_ACCESS_LEVEL error response |
+        | Patient age validation failure | Request for child proxy where child is over 16 | HTTP Status 422 and INVALID_PATIENT_AGE error response |
+        | Duplicate relationship | Request for relationship that already exists | HTTP Status 409 and DUPLICATE_RELATIONSHIP error response |
+      requestBody:
+        required: true
+        content:
+          application/fhir+json:
+            schema:
+              $ref: "#/components/schemas/Consent"
+            examples:
+              parentConsentRequest:
+                summary: Create a proxy role with parental responsibility basis
+                value:
+                  resourceType: Consent
+                  status: active
+                  scope:
+                    coding:
+                      - system: "http://terminology.hl7.org/CodeSystem/consentscope"
+                        code: patient-privacy
+                        display: "Privacy Consent"
+                    text: "Patient Privacy Consent"
+                  category:
+                    - coding:
+                        - system: "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+                          code: INFA
+                          display: "Information Access"
+                      text: "Information Access Consent"
+                  patient:
+                    type: Patient
+                    identifier:
+                      system: https://fhir.nhs.uk/Id/nhs-number
+                      value: "9000000017"
+                  dateTime: "2025-02-11T14:30:00Z"
+                  performer:
+                    - type: RelatedPerson
+                      identifier:
+                        system: https://fhir.nhs.uk/Id/nhs-number
+                        value: "9000000012"
+                  provision:
+                    period:
+                      start: "2025-02-11"
+                      end: "2026-02-11"
+                    actor:
+                      - role:
+                          coding:
+                            - system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
+                              code: PRN
+                              display: Parent
+                        reference:
+                          type: RelatedPerson
+                          identifier:
+                            system: https://fhir.nhs.uk/Id/nhs-number
+                            value: "9000000012"
+                  extension:
+                    - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
+                      valueCodeableConcept:
+                        coding: 
+                          - system: http://terminology.hl7.org/CodeSystem/consent-reason
+                            code: TBC
+                            display: TBC
+              guardianConsentRequest:
+                summary: Create a proxy role with court appointed deputy basis
+                value:
+                  resourceType: Consent
+                  status: active
+                  scope:
+                    coding:
+                      - system: "http://terminology.hl7.org/CodeSystem/consentscope"
+                        code: patient-privacy
+                        display: "Privacy Consent"
+                    text: "Patient Privacy Consent"
+                  category:
+                    - coding:
+                        - system: "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+                          code: INFA
+                          display: "Information Access"
+                      text: "Information Access Consent"
+                  patient:
+                    type: Patient
+                    identifier:
+                      system: https://fhir.nhs.uk/Id/nhs-number
+                      value: "9000000017"
+                  dateTime: "2025-02-11T14:30:00Z"
+                  performer:
+                    - type: RelatedPerson
+                      identifier:
+                        system: https://fhir.nhs.uk/Id/nhs-number
+                        value: "9000000012"
+                  provision:
+                    period:
+                      start: "2025-02-11"
+                    actor:
+                      - role:
+                          coding:
+                            - system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
+                              code: GUARD
+                              display: Guardian
+                        reference:
+                          type: RelatedPerson
+                          identifier:
+                            system: https://fhir.nhs.uk/Id/nhs-number
+                            value: "9000000012"
+                  extension:
+                    - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
+                      valueCodeableConcept:
+                        coding: 
+                          - system: http://terminology.hl7.org/CodeSystem/consent-reason
+                            code: TBC
+                            display: TBC
+      responses:
+        "201":
+          description: Consent resource successfully created
+          headers:
+            location:
+              schema:
+                type: string
+                example: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/dfsdfsfsdfsdf
+              description: URL for the newly created proxy role
+          content:
+            application/fhir+json:
+              schema:
+                $ref: "#/components/schemas/OperationOutcome"
+              examples:
+                postConsentSuccess:
+                  $ref: "./examples/responses/POST_Consent/success.yaml#/PostConsentSuccess"
+        "400":
+          description: Invalid request
+          content:
+            application/fhir+json:
+              schema:
+                $ref: "#/components/schemas/OperationOutcome"
+              examples: 
+                postConsentInvalidPerformerIdentifier:
+                  $ref: "./examples/responses/POST_Consent/error.yaml#/PostConsentInvalidPerformerIdentifierError"
+                postConsentInvalidAccessLevel:
+                  $ref: "./examples/responses/POST_Consent/error.yaml#/PostConsentInvalidAccessLevelError"
+        "422":
+          description: Business rule validation failed
+          content:
+            application/fhir+json:
+              schema:
+                $ref: "#/components/schemas/OperationOutcome"
+              examples:
+                postConsentMissingEvidence:
+                  $ref: "./examples/responses/POST_Consent/error.yaml#/PostConsentInvalidEvidenceError"
+                postConsentInvalidPatientAge:
+                  $ref: "./examples/responses/POST_Consent/error.yaml#/PostConsentInvalidPatientAgeError"
+        "409":
+          description: "Conflict with requested proxy role"
+          content:
+            application/fhir+json:
+              schema:
+                $ref: "#/components/schemas/OperationOutcome"
+              examples:
+                postConsentDuplicateRelationship:
+                  $ref: "./examples/responses/POST_Consent/error.yaml#/PostConsentDuplicateRelationshipError"
+
+
+  /Consent/{id}:
+    patch:
+      summary: Update a proxy role
+      description: |
+        ## Overview
+        Use this endpoint to update an existing proxy role.
+
+        Common update scenarios include:
+        * Revocation of the role (status change from "active" to "inactive")
+        * Changing the legal basis of the role (TBC)
+        * Updating the end date for timebound access
+
+        ## Request Requirements
+        * The proxy role must exist and be identified by a valid identifier
+        * JSON Patch operations must be valid according to RFC 6902
+        * Status changes must use valid status codes from <http://hl7.org/fhir/consent-state-codes>
+
+        ## Sandbox test scenarios
+        | Scenario | Request | Response |
+        | -------- | ------- | -------- |
+        | Successful status update | Valid patch changing status to 'active' | HTTP Status 200 and OperationOutcome|
+        | Successful access level update | Valid patch modifying the role end date | HTTP Status 200 and OperationOutcome |
+        | Multiple valid changes | Valid patch with multiple operations | HTTP Status 200 and OperationOutcome |
+        | Invalid patch format | Malformed JSON patch document | HTTP Status 400 and INVALID_PATCH_FORMAT error response |
+        | Invalid path | Patch targeting non-existent element | HTTP Status 400 and INVALID_PATCH_PATH error response |
+        | Invalid status code | Patch with invalid status value | HTTP Status 422 and INVALID_STATUS_CODE error response |
+        | Resource not found | Patch for non-existent Consent | HTTP Status 404 and RESOURCE_NOT_FOUND error response |
+        | Invalid state transition | Patch attempting invalid status change | HTTP Status 422 and INVALID_STATE_TRANSITION error response |
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The logical id of the Consent resource to update
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/PatchOperation"
+            examples:
+              statusUpdate:
+                summary: Update consent status
+                value:
+                  - op: replace
+                    path: /status
+                    value: inactive
+              updateProvision:
+                summary: Set an end date for a role
+                value:
+                  - op: replace
+                    path: /provision/period/end
+                    value: "2026-12-31"
+              multipleUpdates:
+                summary: Set status to active with an end date
+                value:
+                  - op: replace
+                    path: /status
+                    value: active
+                  - op: replace
+                    path: /provision/period/end
+                    value: "2026-12-31"
+
+      responses:
+        "200":
+          description: Consent resource successfully updated
+          content:
+            application/fhir+json:
+              schema:
+                $ref: "#/components/schemas/OperationOutcome"
+              examples:
+                patchConsentSuccess:
+                  $ref: "./examples/responses/PATCH_Consent/success.yaml#/PatchConsentSuccess"
+
+        "400":
+          description: Invalid patch
+          content:
+            application/fhir+json:
+              schema:
+                $ref: "#/components/schemas/OperationOutcome"
+              examples:
+                patchConsentInvalidPatchFormatError:
+                  $ref: "./examples/responses/PATCH_Consent/error.yaml#/PatchConsentInvalidPatchFormatError"
+                patchConsentInvalidPathError:
+                  $ref: "./examples/responses/PATCH_Consent/error.yaml#/PatchConsentInvalidPathError"
+
+        "404":
+          description: Resource not found
+          content:
+            application/fhir+json:
+              schema:
+                $ref: "#/components/schemas/OperationOutcome"
+              examples:
+                patchConsentRelationshipNotFoundError:
+                  $ref: "./examples/responses/PATCH_Consent/error.yaml#/PatchConsentRelationshipNotFoundError"
+
+        "422":
+          description: Business rule validation failed
+          content:
+            application/fhir+json:
+              schema:
+                $ref: "#/components/schemas/OperationOutcome"
+              examples:
+                patchConsentInvalidStatusCodeError:
+                  $ref: "./examples/responses/PATCH_Consent/error.yaml#/PatchConsentInvalidStatusCodeError"
+                patchConsentInvalidStateTransitionError:
+                  $ref: "./examples/responses/PATCH_Consent/error.yaml#/PatchConsentInvalidStateTransitionError"
 
 
 components:
@@ -547,10 +829,10 @@ components:
           description: A group or question item from the original questionnaire for which answers are provided.
           items:
             oneOf:
-              - $ref: '#/components/schemas/QuestionnaireResponseItem_RelatedPerson'
-              - $ref: '#/components/schemas/QuestionnaireResponseItem_ParentalApplicationSupplementaryDetails'
-              - $ref: '#/components/schemas/QuestionnaireResponseItem_Patient'
-              - $ref: '#/components/schemas/QuestionnaireResponseItem_RequestedAccess'
+              - $ref: "#/components/schemas/QuestionnaireResponseItem_RelatedPerson"
+              - $ref: "#/components/schemas/QuestionnaireResponseItem_ParentalApplicationSupplementaryDetails"
+              - $ref: "#/components/schemas/QuestionnaireResponseItem_Patient"
+              - $ref: "#/components/schemas/QuestionnaireResponseItem_RequestedAccess"
 
     QuestionnaireResponseItem_RelatedPerson:
       type: object
@@ -694,15 +976,20 @@ components:
                                     [
                                       "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
                                       "https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole",
-                                      "https://fhir.nhs.uk/STU3/CodeSystem/RARecord-ProxyRole-1"
+                                      "https://fhir.nhs.uk/STU3/CodeSystem/RARecord-ProxyRole-1",
                                     ]
                                 code:
                                   type: string
-                                  enum: ['PRN', 'Personal', '002']
+                                  enum: ["PRN", "Personal", "002"]
                                 display:
                                   type: string
                                   description: FHIR relationship type.
-                                  enum: ['Parent', 'Personal relationship with the patient', 'Best interest decision made on behalf of the patient (Mental Capacity Act 2005)']
+                                  enum:
+                                    [
+                                      "Parent",
+                                      "Personal relationship with the patient",
+                                      "Best interest decision made on behalf of the patient (Mental Capacity Act 2005)",
+                                    ]
 
               - type: object
                 required:
@@ -733,15 +1020,33 @@ components:
                                     [
                                       "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
                                       "http://terminology.hl7.org/CodeSystem/v3-RoleClass",
-                                      "https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole"
+                                      "https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole",
                                     ]
                                 code:
                                   type: string
-                                  enum: ['PRN', 'CHILD', 'SPS', 'FAMMEMB', 'FRND', 'CAREGIVER', 'SIGOTHR']
+                                  enum:
+                                    [
+                                      "PRN",
+                                      "CHILD",
+                                      "SPS",
+                                      "FAMMEMB",
+                                      "FRND",
+                                      "CAREGIVER",
+                                      "SIGOTHR",
+                                    ]
                                 display:
                                   type: string
                                   description: FHIR relationship type.
-                                  enum: ['Parent', 'Child', 'Partner, wife or husband', 'Other family member', 'Friend, neighbour or housemate', 'Paid carer or support worker', 'Other']
+                                  enum:
+                                    [
+                                      "Parent",
+                                      "Child",
+                                      "Partner, wife or husband",
+                                      "Other family member",
+                                      "Friend, neighbour or housemate",
+                                      "Paid carer or support worker",
+                                      "Other",
+                                    ]
 
               - type: object
                 properties:
@@ -780,7 +1085,10 @@ components:
                 properties:
                   linkId:
                     type: string
-                    enum: ["parentalApplicationSupplementaryDetails_evidenceOfResponsibility"]
+                    enum:
+                      [
+                        "parentalApplicationSupplementaryDetails_evidenceOfResponsibility",
+                      ]
                   text:
                     type: string
                   answer:
@@ -796,10 +1104,23 @@ components:
                               properties:
                                 system:
                                   type: string
-                                  enum: ["https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-EvidenceOfResponsibility"]
+                                  enum:
+                                    [
+                                      "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-EvidenceOfResponsibility",
+                                    ]
                                 code:
                                   type: string
-                                  enum: ['BRTH', 'ADPT', 'PRNA', 'SPRNA', 'PORD', 'SGORD', 'OTHCOURT', 'OTHR' ]
+                                  enum:
+                                    [
+                                      "BRTH",
+                                      "ADPT",
+                                      "PRNA",
+                                      "SPRNA",
+                                      "PORD",
+                                      "SGORD",
+                                      "OTHCOURT",
+                                      "OTHR",
+                                    ]
                                 display:
                                   type: string
                                   description: Evidence of responsibility type.
@@ -809,7 +1130,10 @@ components:
                 properties:
                   linkId:
                     type: string
-                    enum: ["parentalApplicationSupplementaryDetails_evidenceOfResponsibilityMoreinfo"]
+                    enum:
+                      [
+                        "parentalApplicationSupplementaryDetails_evidenceOfResponsibilityMoreinfo",
+                      ]
                   text:
                     type: string
                   answer:
@@ -828,7 +1152,10 @@ components:
                 properties:
                   linkId:
                     type: string
-                    enum: ["parentalApplicationSupplementaryDetails_isCurrentAddressConfirmed"]
+                    enum:
+                      [
+                        "parentalApplicationSupplementaryDetails_isCurrentAddressConfirmed",
+                      ]
                   text:
                     type: string
                   answer:
@@ -855,7 +1182,10 @@ components:
                           properties:
                             linkId:
                               type: string
-                              enum: ["parentalApplicationSupplementaryDetails_line1"]
+                              enum:
+                                [
+                                  "parentalApplicationSupplementaryDetails_line1",
+                                ]
                             text:
                               type: string
                             answer:
@@ -870,7 +1200,10 @@ components:
                           properties:
                             linkId:
                               type: string
-                              enum: ["parentalApplicationSupplementaryDetails_line2"]
+                              enum:
+                                [
+                                  "parentalApplicationSupplementaryDetails_line2",
+                                ]
                             text:
                               type: string
                             answer:
@@ -885,7 +1218,10 @@ components:
                           properties:
                             linkId:
                               type: string
-                              enum: ["parentalApplicationSupplementaryDetails_line3"]
+                              enum:
+                                [
+                                  "parentalApplicationSupplementaryDetails_line3",
+                                ]
                             text:
                               type: string
                             answer:
@@ -901,7 +1237,8 @@ components:
                           properties:
                             linkId:
                               type: string
-                              enum: ["parentalApplicationSupplementaryDetails_city"]
+                              enum:
+                                ["parentalApplicationSupplementaryDetails_city"]
                             text:
                               type: string
                             answer:
@@ -916,7 +1253,10 @@ components:
                           properties:
                             linkId:
                               type: string
-                              enum: ["parentalApplicationSupplementaryDetails_district"]
+                              enum:
+                                [
+                                  "parentalApplicationSupplementaryDetails_district",
+                                ]
                             text:
                               type: string
                             answer:
@@ -931,7 +1271,10 @@ components:
                           properties:
                             linkId:
                               type: string
-                              enum: ["parentalApplicationSupplementaryDetails_postalCode"]
+                              enum:
+                                [
+                                  "parentalApplicationSupplementaryDetails_postalCode",
+                                ]
                             text:
                               type: string
                             answer:
@@ -951,7 +1294,10 @@ components:
                 properties:
                   linkId:
                     type: string
-                    enum: ["parentalApplicationSupplementaryDetails_liveAtSameAddress"]
+                    enum:
+                      [
+                        "parentalApplicationSupplementaryDetails_liveAtSameAddress",
+                      ]
                   text:
                     type: string
                   answer:
@@ -971,7 +1317,10 @@ components:
                 properties:
                   linkId:
                     type: string
-                    enum: ["parentalApplicationSupplementaryDetails_canChildConsent"]
+                    enum:
+                      [
+                        "parentalApplicationSupplementaryDetails_canChildConsent",
+                      ]
                   text:
                     type: string
                   answer:
@@ -986,7 +1335,10 @@ components:
                 properties:
                   linkId:
                     type: string
-                    enum: ["parentalApplicationSupplementaryDetails_reasonNoChildConsent"]
+                    enum:
+                      [
+                        "parentalApplicationSupplementaryDetails_reasonNoChildConsent",
+                      ]
                   text:
                     type: string
                   answer:
@@ -1152,26 +1504,29 @@ components:
                               properties:
                                 system:
                                   type: string
-                                  enum: ["https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"]
+                                  enum:
+                                    [
+                                      "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess",
+                                    ]
                                 code:
                                   type: string
                                   enum:
-                                    - 'APPT'
-                                    - 'CNTCT'
-                                    - 'RECRD'
-                                    - 'TEST'
-                                    - 'VACC'
-                                    - 'PRESCR'
+                                    - "APPT"
+                                    - "CNTCT"
+                                    - "RECRD"
+                                    - "TEST"
+                                    - "VACC"
+                                    - "PRESCR"
                                 display:
                                   type: string
                                   description: FHIR Requested access level.
                                   enum:
-                                    - 'Appointment Booking'
-                                    - 'Contacting Surgery'
-                                    - 'Medical Records Access'
-                                    - 'Test Results'
-                                    - 'Vaccination Records'
-                                    - 'Request and manage repeat prescriptions'
+                                    - "Appointment Booking"
+                                    - "Contacting Surgery"
+                                    - "Medical Records Access"
+                                    - "Test Results"
+                                    - "Vaccination Records"
+                                    - "Request and manage repeat prescriptions"
 
               - type: object
                 properties:
@@ -1213,32 +1568,35 @@ components:
                               properties:
                                 system:
                                   type: string
-                                  enum: ["https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-ReasonForAccess"]
+                                  enum:
+                                    [
+                                      "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-ReasonForAccess",
+                                    ]
                                 code:
                                   type: string
                                   enum:
-                                    - 'COMB'
-                                    - 'MHEA'
-                                    - 'PHYS'
-                                    - 'PRAC'
-                                    - 'TECH'
-                                    - 'NEUR'
-                                    - 'LRN'
-                                    - 'OTHR'
-                                    - 'NotSpecified'
+                                    - "COMB"
+                                    - "MHEA"
+                                    - "PHYS"
+                                    - "PRAC"
+                                    - "TECH"
+                                    - "NEUR"
+                                    - "LRN"
+                                    - "OTHR"
+                                    - "NotSpecified"
                                 display:
                                   type: string
                                   description: FHIR Reason for access.
                                   enum:
-                                    - 'Communication Barriers'
-                                    - 'Mental Health Condition'
-                                    - 'Physical Condition'
-                                    - 'Practical Reasons'
-                                    - 'Technical Barriers'
-                                    - 'Neurodiverse'
-                                    - 'Learning Disability'
-                                    - 'Other'
-                                    - 'Prefer not to say'
+                                    - "Communication Barriers"
+                                    - "Mental Health Condition"
+                                    - "Physical Condition"
+                                    - "Practical Reasons"
+                                    - "Technical Barriers"
+                                    - "Neurodiverse"
+                                    - "Learning Disability"
+                                    - "Other"
+                                    - "Prefer not to say"
 
               - type: object
                 properties:
@@ -1275,13 +1633,13 @@ components:
 
     Searchset:
       allOf:
-          - $ref: "#/components/schemas/BaseBundle"
-          - type: object
-            properties:
-              type:
-                  type: string
-                  description: Denotes that the Bundle is a collection of resources returned as a result of a search.
-                  enum: [searchset]
+        - $ref: "#/components/schemas/BaseBundle"
+        - type: object
+          properties:
+            type:
+              type: string
+              description: Denotes that the Bundle is a collection of resources returned as a result of a search.
+              enum: [searchset]
 
     RelatedPersonBundle:
       allOf:
@@ -1453,7 +1811,7 @@ components:
                       enum:
                         [
                           "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
-                          "https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole"
+                          "https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole",
                         ]
                     code:
                       type: string
@@ -1578,7 +1936,7 @@ components:
           type: array
           description: Patient's nominated primary care provider, each a Reference(Organization | Practitioner | PractitionerRole).
           items:
-            $ref: '#/components/schemas/Reference'
+            $ref: "#/components/schemas/Reference"
 
     Consent:
       type: object
@@ -1604,15 +1962,15 @@ components:
             - inactive
             - entered-in-error
         scope:
-          $ref: '#/components/schemas/CodeableConcept'
+          $ref: "#/components/schemas/CodeableConcept"
           description: "The scope of the consent, bound to http://terminology.hl7.org/CodeSystem/consentscope"
         category:
           type: array
           items:
-            $ref: '#/components/schemas/CodeableConcept'
+            $ref: "#/components/schemas/CodeableConcept"
           description: "Classification of the type of consent, bound to http://terminology.hl7.org/CodeSystem/v3-ActCode."
         patient:
-          $ref: '#/components/schemas/Reference'
+          $ref: "#/components/schemas/Reference"
           description: "The patient who is the subject of the consent."
         dateTime:
           type: string
@@ -1621,7 +1979,7 @@ components:
         performer:
           type: array
           items:
-            $ref: '#/components/schemas/Reference'
+            $ref: "#/components/schemas/Reference"
           description: "Individuals or organizations that agreed to the consent."
         verification:
           type: array
@@ -1633,11 +1991,28 @@ components:
                 type: boolean
                 description: Whether the consent has been verified
               verifiedWith:
-                $ref: '#/components/schemas/Reference'
+                $ref: "#/components/schemas/Reference"
               verificationDate:
                 type: string
                 description: The date and time when consent was collected.
                 format: date-time
+        extension:
+          type: array
+          description: Model the status reason.
+          items:
+            $ref: "#/components/schemas/Extension"
+    
+    Extension:
+      type: object
+      properties:
+        url:
+          type: string
+        valueCodeableConcept:
+          type: array
+          description: Classification of the status of consent, bound to http://terminology.hl7.org/CodeSystem/consent-reason.
+          items:
+            $ref: "#/components/schemas/CodeableConcept"
+
 
     OperationOutcome:
       type: object
@@ -1733,7 +2108,7 @@ components:
           type: string
           description: The resource type that the reference refers to
         identifier:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
 
     Identifier:
       type: object
@@ -1751,7 +2126,7 @@ components:
         coding:
           type: array
           items:
-            $ref: '#/components/schemas/Coding'
+            $ref: "#/components/schemas/Coding"
         text:
           type: string
           description: "Plain text representation of the concept."
@@ -1768,6 +2143,20 @@ components:
         display:
           type: string
           description: "A human-readable representation of the code."
+
+    PatchOperation:
+      type: object
+      required:
+        - op
+        - path
+      properties:
+        op:
+          type: string
+          enum: [add, remove, replace, move, copy, test]
+        path:
+          type: string
+        value:
+          type: object
 
   parameters:
     RelatedPersonIdentifier:
