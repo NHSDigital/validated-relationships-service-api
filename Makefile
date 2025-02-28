@@ -91,15 +91,31 @@ RESET  := \033[0m
 
 
 schema-all:
-	make schema-consent \
+	make schema-get-consent \
+	schema-post-consent \
+	schema-patch-consent \
 	schema-related-person \
 	schema-questionnaire \
 	schema-errors
 
-schema-consent:
+schema-get-consent:
 	@for file in specification/examples/responses/GET_Consent/*.yaml; do \
 		echo "Processing $$file"; \
 		poetry run python scripts/validate_schema.py consent "$$(realpath $$file)"; \
+		echo -e "$(GREEN)Success!$(RESET)"; \
+	done
+
+schema-post-consent:
+	@for file in specification/examples/responses/POST_Consent/*.yaml; do \
+		echo "Processing $$file"; \
+		poetry run python scripts/validate_schema.py operationoutcome "$$(realpath $$file)"; \
+		echo -e "$(GREEN)Success!$(RESET)"; \
+	done
+
+schema-patch-consent:
+	@for file in specification/examples/responses/PATCH_Consent/*.yaml; do \
+		echo "Processing $$file"; \
+		poetry run python scripts/validate_schema.py operationoutcome "$$(realpath $$file)"; \
 		echo -e "$(GREEN)Success!$(RESET)"; \
 	done
 
