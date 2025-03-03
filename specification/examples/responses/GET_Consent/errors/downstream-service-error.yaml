@@ -1,0 +1,15 @@
+DownstreamServiceError:
+  summary: Downstream Service Error
+  description: An unexpected condition was encountered in a downstream service preventing the server from fulfilling the request.
+  value:
+    issue:
+      - code: invalid
+        diagnostics: "Downstream Service Error - Failed to generate response is present in the response"
+        details:
+          coding:
+            - code: "DOWNSTREAM_SERVICE_ERROR"
+              display: "Failed to generate response"
+              system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
+              version: "1"
+        severity: error
+    resourceType: "OperationOutcome"

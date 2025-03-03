@@ -58,6 +58,9 @@ def check_for_related_person_errors(request: Request) -> Optional[tuple]:
         return generate_response_from_example(RELATED__ERROR_IDENTIFIER_SYSTEM, 400)
 
 
+GET_CONSENT_ERRORS = "./api/examples/GET_Consent/errors"
+
+
 def check_for_consent_errors(request: Request) -> Optional[tuple]:
     """Check for errors in the request headers and arguments for a Get /Consent
 

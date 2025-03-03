@@ -379,11 +379,11 @@ paths:
         | A single proxy relationship between consenting adults including details    | `performer:identifier`=`9000000010` and `_include` = `Consent:patient` and `_include` = `Consent:proxy`                         | HTTP Status 200 Bundle containing a single proxy relationship including performer and patient details             |
         | A single proxy relationship between a mother and child                     | `performer:identifier`=`9000000019`                                                                                             | HTTP Status 200 Bundle containing a single proxy relationship                                                     |
         | A single proxy relationship between a mother and child including details   | `performer:identifier`=`9000000019` and `_include` = `Consent:patient` and `_include` = `Consent:proxy`                         | HTTP Status 200 Bundle containing a single proxy relationship including performer and patient details             |
-        | Invalid status parameter                                                   | `performer:identifier`=`9000000019` and `status` = `test`                                                                       | HTTP Status 400 and INVALID_VALUE error response                                                                  |
-        | Invalid include parameter                                                  | `performer:identifier`=`9000000019` and `_include` = `test`                                                                     | HTTP Status 400 and INVALID_VALUE error response                                                                  |
+        | Invalid status parameter                                                   | `performer:identifier`=`9000000019` and `status` = `test`                                                                       | HTTP Status 422 and INVALID_VALUE error response                                                                  |
+        | Invalid include parameter                                                  | `performer:identifier`=`9000000019` and `_include` = `test`                                                                     | HTTP Status 422 and INVALID_VALUE error response                                                                  |
         | Missing identifier                                                         | `patient:identifier`=`9000000009`                                                                                               | HTTP Status 400 and MISSING_IDENTIFIER_VALUE error response                                                       |
-        | Invalid identifier                                                         | `identifier`=`900000000` Note: This identifier is 9 characters long, too short to be NHS Number                                 | HTTP Status 400 and INVALID_IDENTIFIER_VALUE error response                                                       |
-        | Invalid identifier system                                                  | `identifier`=`https://fhir.nhs.uk/Id/nhs-number/9730675929`                                                                     | HTTP Status 400 and INVALID_IDENTIFIER_SYSTEM error response                                                      |
+        | Invalid identifier                                                         | `identifier`=`900000000` Note: This identifier is 9 characters long, too short to be NHS Number                                 | HTTP Status 422 and INVALID_IDENTIFIER_VALUE error response                                                       |
+        | Invalid identifier system                                                  | `identifier`=`https://fhir.nhs.uk/Id/nhs-number/9730675929`                                                                     | HTTP Status 422 and INVALID_IDENTIFIER_SYSTEM error response                                                      |
         | No performer record found                                                  | `identifier`=`9000000999`                                                                                                       | HTTP Status 404 and INVALIDATED_RESOURCE error response                                                           |
 
       operationId: get-consent
@@ -465,13 +465,15 @@ paths:
                   $ref: "./examples/responses/errors/invalidated-resource.yaml#/InvalidatedResourceError"
                 ConsentInvalidStatusParameterError:
                   $ref: "./examples/responses/GET_Consent/errors/invalid-status-parameter.yaml#/ConsentInvalidStatusParameterError"
+                GPPracticeNotFoundError:
+                  $ref: "./examples/responses/GET_Consent/errors/gp-practice-not-found.yaml#/GPPracticeNotFoundError"
                 InvalidIncludeParameterError:
                   $ref: "./examples/responses/errors/invalid-include-parameter.yaml#/InvalidIncludeParameterError"
         "5XX":
           description: |
             Errors will be returned for the first error encountered in the request. An error occurred as follows:
 
-            | HTTP status | Error code                         | Description                                                                                                                               |
+            | HTTP status | Error code                         | Description                                                  |
             | ----------- | ---------------------------------- | ------------------------------------------------------------ |
             | 500         | `SERVER_ERROR`                     | An unexpected internal server error has occurred.            |
             | 503         | `DOWNSTREAM_SERVICE_ERROR`         | A downsteam service has failed, request cannot be completed. |
@@ -483,7 +485,8 @@ paths:
               examples:
                 InternalServerError:
                   $ref: "./examples/responses/errors/internal-server-error.yaml#/InternalServerError"
-
+                DownstreamServiceError:
+                  $ref: "./examples/responses/GET_Consent/errors/downstream-service-error.yaml#/DownstreamServiceError"
     post:
       summary: Create a proxy role
       description: |
