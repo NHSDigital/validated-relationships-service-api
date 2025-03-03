@@ -8,7 +8,6 @@ from ..utils import load_json_file
 from .conftest import CONSENT_API_ENDPOINT, RELATED_PERSON_API_ENDPOINT
 
 FILE_PATH = "sandbox.api.utils"
-GET_CONSENT_FILE_PATH = "sandbox.api.get_consent"
 
 @pytest.mark.parametrize(
     "request_args,response_file_name,status_code",
@@ -219,7 +218,7 @@ def test_check_for_related_person_errors(
         ),
     ],
 )
-@patch(f"{GET_CONSENT_FILE_PATH}.generate_response_from_example")
+@patch(f"{FILE_PATH}.generate_response_from_example")
 def test_check_for_consent_errors(
     mock_generate_response_from_example: MagicMock,
     request_args: str,
