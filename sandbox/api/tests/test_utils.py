@@ -9,6 +9,7 @@ from .conftest import CONSENT_API_ENDPOINT, RELATED_PERSON_API_ENDPOINT
 
 FILE_PATH = "sandbox.api.utils"
 
+
 @pytest.mark.parametrize(
     "request_args,response_file_name,status_code",
     [

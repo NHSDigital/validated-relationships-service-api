@@ -23,6 +23,7 @@ UTILS_FILE_PATH = "sandbox.api.utils"
 APP_FILE_PATH = "sandbox.api.app"
 CONSENT_FILE_PATH = "sandbox.api.get_consent"
 
+
 @pytest.mark.parametrize("endpoint", ["/_status", "/_ping", "/health"])
 def test_health_check(client: object, endpoint: str) -> None:
     """Test health check endpoints."""

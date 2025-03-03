@@ -79,7 +79,7 @@ def check_for_consent_errors(request: Request) -> Optional[tuple]:
         return generate_response_from_example("./api/examples/GET_Consent/errors/missing-identifier.yaml", 400)
     elif identifier and len(identifier_without_system) != 10:
         # invalid identifier
-        return generate_response_from_example("./api/examples/GET_Consent/errors/invalid-identifier.yaml", 400)
+        return generate_response_from_example("./api/examples/GET_Consent/errors/invalid-identifier.yaml", 422)
     elif (
         isinstance(identifier, str)
         and "|" in identifier
@@ -88,13 +88,11 @@ def check_for_consent_errors(request: Request) -> Optional[tuple]:
         # invalid identifier system
         return generate_response_from_example(
             "./api/examples/GET_Consent/errors/invalid-identifier-system.yaml",
-            400,
+            422,
         )
     elif identifier_without_system == "9000000012":
         # invalid status
-        return generate_response_from_example(
-            f"{GET_CONSENT_ERRORS}/gp-practice-not-found.yaml", 404
-        )
+        return generate_response_from_example(f"{GET_CONSENT_ERRORS}/gp-practice-not-found.yaml", 404)
 
 
 def check_for_empty(identifier: str, patient_identifier: str) -> Response:
