@@ -1,5 +1,5 @@
 ConsentInvalidIdentifierSystemError:
-  summary: Bad request identifier system invalid
+  summary: Identifier system invalid
   description: 422 error response bundle for an invalid system of the identifier
   value:
     issue:

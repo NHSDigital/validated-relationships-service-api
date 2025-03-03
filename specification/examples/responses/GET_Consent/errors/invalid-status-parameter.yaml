@@ -1,5 +1,5 @@
 ConsentInvalidStatusParameterError:
-  summary: Bad request status param invalid
+  summary: status parameter invalid
   description: 422 error response bundle for an invalid status parameter
   value:
     issue:
@@ -7,7 +7,7 @@ ConsentInvalidStatusParameterError:
         diagnostics: "Invalid request with error - status parameter is invalid."
         details:
           coding:
-            - code: "INVALID_VALUE"
+            - code: "INVALID_PARAMETER"
               display: "Required parameter(s) are invalid."
               system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
               version: "1"

@@ -4,26 +4,13 @@ from flask import Flask, request
 
 from .constants import (
     INTERNAL_SERVER_ERROR_EXAMPLE,
+    QUESTIONNAIRE_RESPONSE__SUCCESS,
     RELATED__LIST_RELATIONSHIP,
     RELATED__LIST_RELATIONSHIP_WITH_INCLUDE,
-    INVALIDATED_RESOURCE,
-    QUESTIONNAIRE_RESPONSE__SUCCESS,
     RELATED__VERIFY_RELATIONSHIP_09,
-    RELATED__VERIFY_RELATIONSHIP_25,
     RELATED__VERIFY_RELATIONSHIP_09_WITH_INCLUDE,
+    RELATED__VERIFY_RELATIONSHIP_25,
     RELATED__VERIFY_RELATIONSHIP_25_WITH_INCLUDE,
-    GET_CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP,
-    GET_CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_BOTH,
-    GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP,
-    GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH,
-    GET_CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_BOTH,
-    GET_CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PERFORMER,
-    GET_CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PATIENT,
-    GET_CONSENT__MULTIPLE_RELATIONSHIPS,
-    GET_CONSENT__NO_RELATIONSHIPS,
-    GET_CONSENT__FILTERED_RELATIONSHIPS_STATUS_ACTIVE,
-    GET_CONSENT__FILTERED_RELATIONSHIPS_STATUS_INACTIVE,
-    GET_CONSENT__FILTERED_RELATIONSHIPS_STATUS_PROPOSED_ACTIVE,
     POST_CONSENT__SUCCESS,
     POST_CONSENT__DUPLICATE_RELATIONSHIP_ERROR,
     POST_CONSENT__INVALID_ACCESS_LEVEL_ERROR,
@@ -31,16 +18,14 @@ from .constants import (
     POST_CONSENT__INVALID_PATIENT_AGE_ERROR,
     POST_CONSENT__PERFORMER_IDENTIFIER_ERROR,
 )
+from .get_consent import get_consent_response
 from .utils import (
     check_for_empty,
-    check_for_consent_errors,
-    check_for_related_person_errors,
     check_for_list,
+    check_for_related_person_errors,
     check_for_validate,
     generate_response_from_example,
     remove_system,
-    check_for_consent_include_params,
-    check_for_consent_filtering,
 )
 
 app = Flask(__name__)
@@ -140,57 +125,7 @@ def get_consent() -> Union[dict, tuple]:
     Returns:
         Union[dict, tuple]: Response for GET /Consent
     """
-    try:
-        # Check Headers
-        if errors := check_for_consent_errors(request):
-            return errors
-
-        performer_identifier = remove_system(request.args.get("performer:identifier"))
-        status = request.args.getlist("status")
-        _include = request.args.getlist("_include")
-
-        # Single consenting adult relationship
-        if performer_identifier == "9000000010":
-            return check_for_consent_include_params(
-                _include,
-                GET_CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP,
-                GET_CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_BOTH,
-            )
-        # Single mother child relationship
-        elif performer_identifier == "9000000019":
-            return check_for_consent_include_params(
-                _include,
-                GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP,
-                GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH,
-            )
-        # Filtering
-        elif performer_identifier == "9000000017":
-            return check_for_consent_filtering(
-                status,
-                _include,
-                GET_CONSENT__FILTERED_RELATIONSHIPS_STATUS_ACTIVE,
-                GET_CONSENT__FILTERED_RELATIONSHIPS_STATUS_INACTIVE,
-                GET_CONSENT__FILTERED_RELATIONSHIPS_STATUS_PROPOSED_ACTIVE,
-            )
-        elif performer_identifier == "9000000022":
-            return check_for_consent_include_params(
-                _include,
-                GET_CONSENT__MULTIPLE_RELATIONSHIPS,
-                GET_CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_BOTH,
-                GET_CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PATIENT,
-                GET_CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PERFORMER,
-            )
-        # No relationships
-        elif performer_identifier == "9000000025":
-            return generate_response_from_example(GET_CONSENT__NO_RELATIONSHIPS, 200)
-        else:
-            logger.error("Performer identifier does not match examples")
-            return generate_response_from_example(INVALIDATED_RESOURCE, 404)
-
-    except Exception:
-        logger.exception("GET Consent failed")
-        return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)
-
+    get_consent_response()
 
 @app.route(f"/{COMMON_PATH}/Consent", methods=["POST"])
 def post_consent() -> Union[dict, tuple]:

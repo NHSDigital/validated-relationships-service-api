@@ -1,8 +1,8 @@
-from logging import getLogger
 from json import dumps, load
-from typing import Any, Optional, List
+from logging import getLogger
+from typing import Any, List, Optional
 
-from flask import Response, Request
+from flask import Request, Response
 from yaml import CLoader as Loader
 from yaml import load as yaml_load
 
@@ -20,6 +20,7 @@ from .constants import (
     INTERNAL_SERVER_ERROR_EXAMPLE,
     GET_CONSENT__STATUS_PARAM_INVALID,
     BAD_REQUEST_INCLUDE_PARAM_INVALID,
+    CONSENT__STATUS_PARAM_INVALID,
 )
 
 FHIR_MIMETYPE = "application/fhir+json"
@@ -88,6 +89,11 @@ def check_for_consent_errors(request: Request) -> Optional[tuple]:
         return generate_response_from_example(
             "./api/examples/GET_Consent/errors/invalid-identifier-system.yaml",
             400,
+        )
+    elif identifier_without_system == "9000000012":
+        # invalid status
+        return generate_response_from_example(
+            f"{GET_CONSENT_ERRORS}/gp-practice-not-found.yaml", 404
         )
 
 
@@ -250,7 +256,7 @@ def check_for_consent_include_params(
     elif len(_include) == 2 and CONSENT_PATIENT in _include and CONSENT_PERFORMER in _include:
         return generate_response_from_example(include_both_response_yaml, 200)
     else:
-        return generate_response_from_example(BAD_REQUEST_INCLUDE_PARAM_INVALID, 400)
+        return generate_response_from_example(BAD_REQUEST_INCLUDE_PARAM_INVALID, 422)
 
 
 def check_for_consent_filtering(
@@ -284,4 +290,4 @@ def check_for_consent_filtering(
     elif len(status) == 2 and "active" in status and "proposed" in status:
         return generate_response_from_example(status_proposed_and_active_response_yaml, 200)
     else:
-        return generate_response_from_example(GET_CONSENT__STATUS_PARAM_INVALID, 400)
+        return generate_response_from_example(GET_CONSENT__STATUS_PARAM_INVALID, 422)
