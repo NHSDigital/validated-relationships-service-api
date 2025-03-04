@@ -4,6 +4,15 @@ from unittest.mock import MagicMock, patch
 import pytest
 from flask import Response
 
+from sandbox.api.constants import (
+    POST_CONSENT__SUCCESS,
+    POST_CONSENT__DUPLICATE_RELATIONSHIP_ERROR,
+    POST_CONSENT__INVALID_ACCESS_LEVEL_ERROR,
+    POST_CONSENT__INVALID_EVIDENCE_ERROR,
+    POST_CONSENT__INVALID_PATIENT_AGE_ERROR,
+    POST_CONSENT__PERFORMER_IDENTIFIER_ERROR,
+)
+
 from .conftest import (
     CONSENT_API_ENDPOINT,
     QUESTIONNAIRE_RESPONSE_API_ENDPOINT,
@@ -94,14 +103,14 @@ def test_related_person(
 
     # Arrange
     mock_generate_response_from_example.return_value = mocked_response = Response(
-        dumps({"data": "mocked"}), status=status_code, content_type="application/json"
+        dumps({"data": "mocked"}),
+        status=status_code,
+        content_type="application/json",
     )
     # Act
     response = client.get(f"{RELATED_PERSON_API_ENDPOINT}?{request_args}")
     # Assert
-    mock_generate_response_from_example.assert_called_once_with(
-        response_file_name, status_code
-    )
+    mock_generate_response_from_example.assert_called_once_with(response_file_name, status_code)
     assert response.status_code == status_code
     assert response.json == loads(mocked_response.get_data(as_text=True))
 
@@ -127,14 +136,14 @@ def test_questionnaire_response(
     """Test related_persons endpoint with identifier only."""
     # Arrange
     mock_generate_response_from_example.return_value = mocked_response = Response(
-        dumps({"data": "mocked"}), status=status_code, content_type="application/json"
+        dumps({"data": "mocked"}),
+        status=status_code,
+        content_type="application/json",
     )
     # Act
     response = client.post(url_path, json={"data": "mocked"})
     # Assert
-    mock_generate_response_from_example.assert_called_once_with(
-        response_file_name, status_code
-    )
+    mock_generate_response_from_example.assert_called_once_with(response_file_name, status_code)
     assert response.status_code == status_code
     assert response.json == loads(mocked_response.get_data(as_text=True))
 
@@ -155,7 +164,7 @@ def test_questionnaire_response(
     ],
 )
 @patch(f"{APP_FILE_PATH}.generate_response_from_example")
-def test_consent(
+def test_get_consent(
     mock_generate_response_from_example: MagicMock,
     request_args: str,
     response_file_name: str,
@@ -164,14 +173,70 @@ def test_consent(
 ) -> None:
     """Test Consent endpoint."""
     mock_generate_response_from_example.return_value = mocked_response = Response(
-        dumps({"data": "mocked"}), status=status_code, content_type="application/json"
+        dumps({"data": "mocked"}),
+        status=status_code,
+        content_type="application/json",
     )
     # Act
     response = client.get(f"{CONSENT_API_ENDPOINT}?{request_args}")
     # Assert
-    mock_generate_response_from_example.assert_called_once_with(
-        response_file_name, status_code
+    mock_generate_response_from_example.assert_called_once_with(response_file_name, status_code)
+    assert response.status_code == status_code
+    assert response.json == loads(mocked_response.get_data(as_text=True))
+
+
+@pytest.mark.parametrize(
+    "nhs_num,response_file_name,status_code,location",
+    [
+        (
+            "9000000009",
+            POST_CONSENT__SUCCESS,
+            201,
+            "https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/9000000009",
+        ),
+        (
+            "9000000017",
+            POST_CONSENT__SUCCESS,
+            201,
+            "https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/9000000017",
+        ),
+        ("9000000000", POST_CONSENT__PERFORMER_IDENTIFIER_ERROR, 400, None),
+        ("9000000049", POST_CONSENT__DUPLICATE_RELATIONSHIP_ERROR, 409, None),
+        ("9000000041", POST_CONSENT__INVALID_PATIENT_AGE_ERROR, 422, None),
+        ("9000000033", POST_CONSENT__INVALID_EVIDENCE_ERROR, 422, None),
+        ("9000000025", POST_CONSENT__INVALID_ACCESS_LEVEL_ERROR, 400, None),
+    ],
+)
+@patch(f"{APP_FILE_PATH}.generate_response_from_example")
+def test_post_consent_when_valid_returns_success(
+    mock_generate_response_from_example: MagicMock,
+    response_file_name: str,
+    nhs_num: str,
+    location: str,
+    client: object,
+    status_code: int,
+) -> None:
+    """
+    Function: app.post_consent
+    Scenario: Valid consent is POSTed to /consent
+    Expected Behavior: Request is accepted and 201 response returned
+    """
+    # Arrange
+    mock_generate_response_from_example.return_value = mocked_response = Response(
+        dumps({"data": "mocked"}),
+        status=status_code,
+        content_type="application/json",
     )
+    # Act
+    json = {"performer": [{"identifier": {"value": nhs_num}}]}
+    response = client.post(CONSENT_API_ENDPOINT, json=json)
+    # Assert
+    if location is not None:
+        mock_generate_response_from_example.assert_called_once_with(
+            response_file_name, status_code, headers={"location": location}
+        )
+    else:
+        mock_generate_response_from_example.assert_called_once_with(response_file_name, status_code)
     assert response.status_code == status_code
     assert response.json == loads(mocked_response.get_data(as_text=True))
 
@@ -186,10 +251,6 @@ def test_consent__500_internal_server_error(
     """Test Consent endpoint."""
     mock_remove_system.side_effect = Exception("Test exception")
     # Act
-    client.get(
-        f"{CONSENT_API_ENDPOINT}?performer:identifier=9000000015&status=active&_include=Consent:performer"
-    )
+    client.get(f"{CONSENT_API_ENDPOINT}?performer:identifier=9000000015&status=active&_include=Consent:performer")
     # Assert
-    mock_generate_response_from_example.assert_called_once_with(
-        "./api/examples/errors/internal-server-error.yaml", 500
-    )
+    mock_generate_response_from_example.assert_called_once_with("./api/examples/errors/internal-server-error.yaml", 500)

@@ -18,7 +18,7 @@ from .constants import (
     CONSENT_PERFORMER,
     CONSENT_PATIENT,
     INTERNAL_SERVER_ERROR_EXAMPLE,
-    CONSENT__STATUS_PARAM_INVALID,
+    GET_CONSENT__STATUS_PARAM_INVALID,
     BAD_REQUEST_INCLUDE_PARAM_INVALID,
 )
 
@@ -72,14 +72,10 @@ def check_for_consent_errors(request: Request) -> Optional[tuple]:
     identifier_without_system = remove_system(request.args.get(identifier_key))
 
     if not identifier:
-        return generate_response_from_example(
-            "./api/examples/GET_Consent/errors/missing-identifier.yaml", 400
-        )
+        return generate_response_from_example("./api/examples/GET_Consent/errors/missing-identifier.yaml", 400)
     elif identifier and len(identifier_without_system) != 10:
         # invalid identifier
-        return generate_response_from_example(
-            "./api/examples/GET_Consent/errors/invalid-identifier.yaml", 400
-        )
+        return generate_response_from_example("./api/examples/GET_Consent/errors/invalid-identifier.yaml", 400)
     elif (
         isinstance(identifier, str)
         and "|" in identifier
@@ -87,7 +83,8 @@ def check_for_consent_errors(request: Request) -> Optional[tuple]:
     ):
         # invalid identifier system
         return generate_response_from_example(
-            "./api/examples/GET_Consent/errors/invalid-identifier-system.yaml", 400
+            "./api/examples/GET_Consent/errors/invalid-identifier-system.yaml",
+            400,
         )
 
 
@@ -141,9 +138,7 @@ def check_for_validate(
         return generate_response_from_example(base_file, 200)
 
 
-def check_for_list(
-    value: str, identifier: str, include: str, base_file: str, inc_file: str
-) -> Response:
+def check_for_list(value: str, identifier: str, include: str, base_file: str, inc_file: str) -> Response:
     """Check for a list relationship response for a given NHS number
 
     Args:
@@ -194,7 +189,7 @@ def remove_system(identifier: Any) -> str:
     return ""
 
 
-def generate_response_from_example(example_path: str, status_code: int) -> Response:
+def generate_response_from_example(example_path: str, status_code: int, headers: dict = None) -> Response:
     """Converts an example file (yaml) to a response
 
     Args:
@@ -208,7 +203,12 @@ def generate_response_from_example(example_path: str, status_code: int) -> Respo
         content = yaml_load(file, Loader)
     # Value of response is always in the first key, then within value
     content = content[list(content.keys())[0]]["value"]
-    return Response(dumps(content), status=status_code, mimetype=FHIR_MIMETYPE)
+    return Response(
+        dumps(content),
+        status=status_code,
+        mimetype=FHIR_MIMETYPE,
+        headers=headers,
+    )
 
 
 def check_for_consent_include_params(
@@ -244,11 +244,7 @@ def check_for_consent_include_params(
         else:
             logger.error("No consent:patient example provided")
             return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)
-    elif (
-        len(_include) == 2
-        and CONSENT_PATIENT in _include
-        and CONSENT_PERFORMER in _include
-    ):
+    elif len(_include) == 2 and CONSENT_PATIENT in _include and CONSENT_PERFORMER in _include:
         return generate_response_from_example(include_both_response_yaml, 200)
     else:
         return generate_response_from_example(BAD_REQUEST_INCLUDE_PARAM_INVALID, 400)
@@ -276,21 +272,13 @@ def check_for_consent_filtering(
     if status == [] or status is None:
         return generate_response_from_example(INVALIDATED_RESOURCE, 404)
     if status == ["active"]:
-        if (
-            len(_include) == 2
-            and CONSENT_PERFORMER in _include
-            and CONSENT_PERFORMER in _include
-        ):
-            return generate_response_from_example(
-                status_active_with_details_response_yaml, 200
-            )
+        if len(_include) == 2 and CONSENT_PERFORMER in _include and CONSENT_PERFORMER in _include:
+            return generate_response_from_example(status_active_with_details_response_yaml, 200)
         else:
             return generate_response_from_example(INVALIDATED_RESOURCE, 404)
     elif status == ["inactive"]:
         return generate_response_from_example(status_inactive_response_yaml, 200)
     elif len(status) == 2 and "active" in status and "proposed" in status:
-        return generate_response_from_example(
-            status_proposed_and_active_response_yaml, 200
-        )
+        return generate_response_from_example(status_proposed_and_active_response_yaml, 200)
     else:
-        return generate_response_from_example(CONSENT__STATUS_PARAM_INVALID, 400)
+        return generate_response_from_example(GET_CONSENT__STATUS_PARAM_INVALID, 400)

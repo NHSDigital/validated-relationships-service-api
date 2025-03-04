@@ -1,6 +1,5 @@
 from logging import INFO, basicConfig, getLogger
 from typing import Union
-
 from flask import Flask, request
 
 from .constants import (
@@ -13,18 +12,24 @@ from .constants import (
     RELATED__VERIFY_RELATIONSHIP_25,
     RELATED__VERIFY_RELATIONSHIP_09_WITH_INCLUDE,
     RELATED__VERIFY_RELATIONSHIP_25_WITH_INCLUDE,
-    CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP,
-    CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_BOTH,
-    CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP,
-    CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH,
-    CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_BOTH,
-    CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PERFORMER,
-    CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PATIENT,
-    CONSENT__MULTIPLE_RELATIONSHIPS,
-    CONSENT__NO_RELATIONSHIPS,
-    CONSENT__FILTERED_RELATIONSHIPS_STATUS_ACTIVE,
-    CONSENT__FILTERED_RELATIONSHIPS_STATUS_INACTIVE,
-    CONSENT__FILTERED_RELATIONSHIPS_STATUS_PROPOSED_ACTIVE,
+    GET_CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP,
+    GET_CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_BOTH,
+    GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP,
+    GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH,
+    GET_CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_BOTH,
+    GET_CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PERFORMER,
+    GET_CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PATIENT,
+    GET_CONSENT__MULTIPLE_RELATIONSHIPS,
+    GET_CONSENT__NO_RELATIONSHIPS,
+    GET_CONSENT__FILTERED_RELATIONSHIPS_STATUS_ACTIVE,
+    GET_CONSENT__FILTERED_RELATIONSHIPS_STATUS_INACTIVE,
+    GET_CONSENT__FILTERED_RELATIONSHIPS_STATUS_PROPOSED_ACTIVE,
+    POST_CONSENT__SUCCESS,
+    POST_CONSENT__DUPLICATE_RELATIONSHIP_ERROR,
+    POST_CONSENT__INVALID_ACCESS_LEVEL_ERROR,
+    POST_CONSENT__INVALID_EVIDENCE_ERROR,
+    POST_CONSENT__INVALID_PATIENT_AGE_ERROR,
+    POST_CONSENT__PERFORMER_IDENTIFIER_ERROR,
 )
 from .utils import (
     check_for_empty,
@@ -41,6 +46,7 @@ from .utils import (
 app = Flask(__name__)
 basicConfig(level=INFO, format="%(asctime)s - %(message)s")
 logger = getLogger(__name__)
+APP_BASE_PATH = "https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent"
 COMMON_PATH = "FHIR/R4"
 
 
@@ -107,8 +113,8 @@ def get_related_persons() -> Union[dict, tuple]:
 
         raise ValueError("Invalid request")
 
-    except Exception as e:
-        logger.error(e)
+    except Exception:
+        logger.exception("GET related person failed")
         return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)
 
 
@@ -122,8 +128,8 @@ def post_questionnaire_response() -> Union[dict, tuple]:
 
     try:
         return generate_response_from_example(QUESTIONNAIRE_RESPONSE__SUCCESS, 200)
-    except Exception as e:
-        logger.error(e)
+    except Exception:
+        logger.exception("POST questionnaire response failed")
         return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)
 
 
@@ -147,40 +153,92 @@ def get_consent() -> Union[dict, tuple]:
         if performer_identifier == "9000000010":
             return check_for_consent_include_params(
                 _include,
-                CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP,
-                CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_BOTH,
+                GET_CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP,
+                GET_CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_BOTH,
             )
         # Single mother child relationship
         elif performer_identifier == "9000000019":
             return check_for_consent_include_params(
                 _include,
-                CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP,
-                CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH,
+                GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP,
+                GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH,
             )
         # Filtering
         elif performer_identifier == "9000000017":
             return check_for_consent_filtering(
                 status,
                 _include,
-                CONSENT__FILTERED_RELATIONSHIPS_STATUS_ACTIVE,
-                CONSENT__FILTERED_RELATIONSHIPS_STATUS_INACTIVE,
-                CONSENT__FILTERED_RELATIONSHIPS_STATUS_PROPOSED_ACTIVE,
+                GET_CONSENT__FILTERED_RELATIONSHIPS_STATUS_ACTIVE,
+                GET_CONSENT__FILTERED_RELATIONSHIPS_STATUS_INACTIVE,
+                GET_CONSENT__FILTERED_RELATIONSHIPS_STATUS_PROPOSED_ACTIVE,
             )
         elif performer_identifier == "9000000022":
             return check_for_consent_include_params(
                 _include,
-                CONSENT__MULTIPLE_RELATIONSHIPS,
-                CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_BOTH,
-                CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PATIENT,
-                CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PERFORMER,
+                GET_CONSENT__MULTIPLE_RELATIONSHIPS,
+                GET_CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_BOTH,
+                GET_CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PATIENT,
+                GET_CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PERFORMER,
             )
         # No relationships
         elif performer_identifier == "9000000025":
-            return generate_response_from_example(CONSENT__NO_RELATIONSHIPS, 200)
+            return generate_response_from_example(GET_CONSENT__NO_RELATIONSHIPS, 200)
         else:
             logger.error("Performer identifier does not match examples")
             return generate_response_from_example(INVALIDATED_RESOURCE, 404)
 
-    except Exception as e:
-        logger.error(e)
+    except Exception:
+        logger.exception("GET Consent failed")
+        return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)
+
+
+@app.route(f"/{COMMON_PATH}/Consent", methods=["POST"])
+def post_consent() -> Union[dict, tuple]:
+    """Sandbox API for POST /Consent
+
+    Returns:
+        Union[dict, tuple]: Response for POST /Consent
+    """
+    try:
+        logger.debug("Received request to POST consent")
+        # Validate body - beyond the scope of sandbox - assume body is valid for scenario
+        json = request.get_json()
+        patient_identifier = json["performer"][0]["identifier"]["value"]
+        response = None
+
+        # Successful parent-child proxy creation
+        # Successful adult-adult proxy creation
+        if patient_identifier == "9000000009" or patient_identifier == "9000000017":
+            header = {"location": f"{APP_BASE_PATH}/{patient_identifier}"}
+            response = generate_response_from_example(POST_CONSENT__SUCCESS, 201, headers=header)
+
+        # Invalid access level
+        elif patient_identifier == "9000000025":
+            response = generate_response_from_example(POST_CONSENT__INVALID_ACCESS_LEVEL_ERROR, 400)
+
+        # Missing required evidence
+        elif patient_identifier == "9000000033":
+            response = generate_response_from_example(POST_CONSENT__INVALID_EVIDENCE_ERROR, 422)
+
+        # Patient age validation failure
+        elif patient_identifier == "9000000041":
+            response = generate_response_from_example(POST_CONSENT__INVALID_PATIENT_AGE_ERROR, 422)
+
+        # Duplicate relationship
+        elif patient_identifier == "9000000049":
+            response = generate_response_from_example(POST_CONSENT__DUPLICATE_RELATIONSHIP_ERROR, 409)
+
+        # Invalid performer NHS number
+        elif patient_identifier == "9000000000":
+            response = generate_response_from_example(POST_CONSENT__PERFORMER_IDENTIFIER_ERROR, 400)
+
+        else:
+            # Out of scope errors
+            raise ValueError("Invalid Request")
+
+        return response
+
+    except Exception:
+        # Handle any general error
+        logger.exception("POST Consent failed")
         return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)

@@ -483,15 +483,20 @@ paths:
         Use this endpoint to create a new proxy role between a patient and a related person (proxy).
 
         ## Sandbox test scenarios
-        | Scenario | Request | Response |
-        | -------- | ------- | -------- |
-        | Successful parent-child proxy creation | Valid request with a legal basis of parental responsibility | HTTP Status 201 and OperationOutcome response |
-        | Successful adult-adult proxy creation | Valid request with legal basis of consent | HTTP Status 201 and OperationOutcome response |
-        | Invalid performer NHS number | Request with invalid NHS number format | HTTP Status 400 and INVALID_NHS_NUMBER error response |
-        | Missing required evidence | Request without evidence of responsibility | HTTP Status 422 and MISSING_EVIDENCE error response |
-        | Invalid access level | Request with undefined access level code | HTTP Status 400 and INVALID_ACCESS_LEVEL error response |
-        | Patient age validation failure | Request for child proxy where child is over 16 | HTTP Status 422 and INVALID_PATIENT_AGE error response |
-        | Duplicate relationship | Request for relationship that already exists | HTTP Status 409 and DUPLICATE_RELATIONSHIP error response |
+
+        The sandbox supports a limited number of scenarios, and does not attempt to validate requests.  The returned result is dependant on the `performer.identifier.value`.
+
+        See the postman collection for an example request body.
+        | Scenario                                | Request                                                                                                    | Response                                                  |
+        | --------------------------------------- | ---------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+        | Successful parent-child proxy creation  | Valid request with a legal basis of parental responsibility, with performer identifier value of 9000000009 | HTTP Status 201 and OperationOutcome response             |
+        | Successful adult-adult proxy creation   | Valid request with legal basis of consent, with performer identifier value of 9000000017                   | HTTP Status 201 and OperationOutcome response             |
+        | Invalid performer NHS number            | Request with invalid NHS number format, with performer identifier value of 9000000000                      | HTTP Status 400 and INVALID_NHS_NUMBER error response     |
+        | Invalid access level                    | Request with undefined access level code, with performer identifier value of 9000000025                    | HTTP Status 400 and INVALID_ACCESS_LEVEL error response   |
+        | Missing required evidence               | Request without evidence of responsibility, with performer identifier value of 9000000033                  | HTTP Status 422 and MISSING_EVIDENCE error response       |
+        | Patient age validation failure          | Request for child proxy where child is over 16, with performer identifier value of 9000000041              | HTTP Status 422 and INVALID_PATIENT_AGE error response    |
+        | Duplicate relationship                  | Request for relationship that already exists, with performer identifier value of 9000000049                | HTTP Status 409 and DUPLICATE_RELATIONSHIP error response |
+
       requestBody:
         required: true
         content:
@@ -500,104 +505,9 @@ paths:
               $ref: "#/components/schemas/Consent"
             examples:
               parentConsentRequest:
-                summary: Create a proxy role with parental responsibility basis
-                value:
-                  resourceType: Consent
-                  status: active
-                  scope:
-                    coding:
-                      - system: "http://terminology.hl7.org/CodeSystem/consentscope"
-                        code: patient-privacy
-                        display: "Privacy Consent"
-                    text: "Patient Privacy Consent"
-                  category:
-                    - coding:
-                        - system: "http://terminology.hl7.org/CodeSystem/v3-ActCode"
-                          code: INFA
-                          display: "Information Access"
-                      text: "Information Access Consent"
-                  patient:
-                    type: Patient
-                    identifier:
-                      system: https://fhir.nhs.uk/Id/nhs-number
-                      value: "9000000017"
-                  dateTime: "2025-02-11T14:30:00Z"
-                  performer:
-                    - type: RelatedPerson
-                      identifier:
-                        system: https://fhir.nhs.uk/Id/nhs-number
-                        value: "9000000012"
-                  provision:
-                    period:
-                      start: "2025-02-11"
-                      end: "2026-02-11"
-                    actor:
-                      - role:
-                          coding:
-                            - system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
-                              code: PRN
-                              display: Parent
-                        reference:
-                          type: RelatedPerson
-                          identifier:
-                            system: https://fhir.nhs.uk/Id/nhs-number
-                            value: "9000000012"
-                  extension:
-                    - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
-                      valueCodeableConcept:
-                        coding: 
-                          - system: http://terminology.hl7.org/CodeSystem/consent-reason
-                            code: TBC
-                            display: TBC
+                $ref: "./examples/requests/POST_Consent/parent_child_proxy_creation.yaml#/ConsentParentChildProxyCreationRequest"
               guardianConsentRequest:
-                summary: Create a proxy role with court appointed deputy basis
-                value:
-                  resourceType: Consent
-                  status: active
-                  scope:
-                    coding:
-                      - system: "http://terminology.hl7.org/CodeSystem/consentscope"
-                        code: patient-privacy
-                        display: "Privacy Consent"
-                    text: "Patient Privacy Consent"
-                  category:
-                    - coding:
-                        - system: "http://terminology.hl7.org/CodeSystem/v3-ActCode"
-                          code: INFA
-                          display: "Information Access"
-                      text: "Information Access Consent"
-                  patient:
-                    type: Patient
-                    identifier:
-                      system: https://fhir.nhs.uk/Id/nhs-number
-                      value: "9000000017"
-                  dateTime: "2025-02-11T14:30:00Z"
-                  performer:
-                    - type: RelatedPerson
-                      identifier:
-                        system: https://fhir.nhs.uk/Id/nhs-number
-                        value: "9000000012"
-                  provision:
-                    period:
-                      start: "2025-02-11"
-                    actor:
-                      - role:
-                          coding:
-                            - system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
-                              code: GUARD
-                              display: Guardian
-                        reference:
-                          type: RelatedPerson
-                          identifier:
-                            system: https://fhir.nhs.uk/Id/nhs-number
-                            value: "9000000012"
-                  extension:
-                    - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
-                      valueCodeableConcept:
-                        coding: 
-                          - system: http://terminology.hl7.org/CodeSystem/consent-reason
-                            code: TBC
-                            display: TBC
+                $ref: "./examples/requests/POST_Consent/adult_to_adult_proxy_creation.yaml#/ConsentAdultToAdultGuardianRequest"
       responses:
         "201":
           description: Consent resource successfully created
@@ -605,7 +515,7 @@ paths:
             location:
               schema:
                 type: string
-                example: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/dfsdfsfsdfsdf
+                example: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/9000000009
               description: URL for the newly created proxy role
           content:
             application/fhir+json:
@@ -620,11 +530,11 @@ paths:
             application/fhir+json:
               schema:
                 $ref: "#/components/schemas/OperationOutcome"
-              examples: 
+              examples:
                 postConsentInvalidPerformerIdentifier:
-                  $ref: "./examples/responses/POST_Consent/error.yaml#/PostConsentInvalidPerformerIdentifierError"
+                  $ref: "./examples/responses/POST_Consent/errors/invalid_performer_identifier_error.yaml#/PostConsentInvalidPerformerIdentifierError"
                 postConsentInvalidAccessLevel:
-                  $ref: "./examples/responses/POST_Consent/error.yaml#/PostConsentInvalidAccessLevelError"
+                  $ref: "./examples/responses/POST_Consent/errors/invalid_access_level_error.yaml#/PostConsentInvalidAccessLevelError"
         "422":
           description: Business rule validation failed
           content:
@@ -633,9 +543,9 @@ paths:
                 $ref: "#/components/schemas/OperationOutcome"
               examples:
                 postConsentMissingEvidence:
-                  $ref: "./examples/responses/POST_Consent/error.yaml#/PostConsentInvalidEvidenceError"
+                  $ref: "./examples/responses/POST_Consent/errors/invalid_evidence_error.yaml#/PostConsentInvalidEvidenceError"
                 postConsentInvalidPatientAge:
-                  $ref: "./examples/responses/POST_Consent/error.yaml#/PostConsentInvalidPatientAgeError"
+                  $ref: "./examples/responses/POST_Consent/errors/invalid_patient_age_error.yaml#/PostConsentInvalidPatientAgeError"
         "409":
           description: "Conflict with requested proxy role"
           content:
@@ -644,7 +554,7 @@ paths:
                 $ref: "#/components/schemas/OperationOutcome"
               examples:
                 postConsentDuplicateRelationship:
-                  $ref: "./examples/responses/POST_Consent/error.yaml#/PostConsentDuplicateRelationshipError"
+                  $ref: "./examples/responses/POST_Consent/errors/duplicate_relationship_error.yaml#/PostConsentDuplicateRelationshipError"
 
 
   /Consent/{id}:
@@ -657,7 +567,7 @@ paths:
         Common update scenarios include:
         * Revocation of the role (status change from "active" to "inactive")
         * Changing the legal basis of the role (TBC)
-        * Updating the end date for timebound access
+        * Updating the end date for time-bound access
 
         ## Request Requirements
         * The proxy role must exist and be identified by a valid identifier
@@ -665,16 +575,16 @@ paths:
         * Status changes must use valid status codes from <http://hl7.org/fhir/consent-state-codes>
 
         ## Sandbox test scenarios
-        | Scenario | Request | Response |
-        | -------- | ------- | -------- |
-        | Successful status update | Valid patch changing status to 'active' | HTTP Status 200 and OperationOutcome|
-        | Successful access level update | Valid patch modifying the role end date | HTTP Status 200 and OperationOutcome |
-        | Multiple valid changes | Valid patch with multiple operations | HTTP Status 200 and OperationOutcome |
-        | Invalid patch format | Malformed JSON patch document | HTTP Status 400 and INVALID_PATCH_FORMAT error response |
-        | Invalid path | Patch targeting non-existent element | HTTP Status 400 and INVALID_PATCH_PATH error response |
-        | Invalid status code | Patch with invalid status value | HTTP Status 422 and INVALID_STATUS_CODE error response |
-        | Resource not found | Patch for non-existent Consent | HTTP Status 404 and RESOURCE_NOT_FOUND error response |
-        | Invalid state transition | Patch attempting invalid status change | HTTP Status 422 and INVALID_STATE_TRANSITION error response |
+        | Scenario                        | Request                                   | Response                                                      |
+        | ------------------------------- | ----------------------------------------- | ------------------------------------------------------------- |
+        | Successful status update        | Valid patch changing status to 'active'   | HTTP Status 200 and OperationOutcome                          |
+        | Successful access level update  | Valid patch modifying the role end date   | HTTP Status 200 and OperationOutcome                          |
+        | Multiple valid changes          | Valid patch with multiple operations      | HTTP Status 200 and OperationOutcome                          |
+        | Invalid patch format            | Malformed JSON patch document             | HTTP Status 400 and INVALID_PATCH_FORMAT error response       |
+        | Invalid path                    | Patch targeting non-existent element      | HTTP Status 400 and INVALID_PATCH_PATH error response         |
+        | Invalid status code             | Patch with invalid status value           | HTTP Status 422 and INVALID_STATUS_CODE error response        |
+        | Resource not found              | Patch for non-existent Consent            | HTTP Status 404 and RESOURCE_NOT_FOUND error response         |
+        | Invalid state transition        | Patch attempting invalid status change    | HTTP Status 422 and INVALID_STATE_TRANSITION error response   |
       parameters:
         - name: id
           in: path
@@ -2001,7 +1911,7 @@ components:
           description: Model the status reason.
           items:
             $ref: "#/components/schemas/Extension"
-    
+
     Extension:
       type: object
       properties:

@@ -29,7 +29,33 @@ jobs:
 
       - name: Run Python script for all files
         run: |
-          make schema-consent
+          make schema-get-consent
+
+  POST_Consent:
+    name: POST Consent test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.9
+
+      - name: Install Poetry
+        shell: bash
+        run: |
+          pipx install poetry==1.8.5
+
+      - name: Install Script Packages with Poetry
+        shell: bash
+        run: |
+          poetry install --all-extras
+
+      - name: Run Python script for all files
+        run: |
+          make schema-post-consent
 
   GET_RelatedPerson:
     name: GET Related Person test
@@ -82,7 +108,6 @@ jobs:
       - name: Run Python script for all files
         run: |
           make schema-questionnaire
-
 
   Errors:
     name: Error schema test

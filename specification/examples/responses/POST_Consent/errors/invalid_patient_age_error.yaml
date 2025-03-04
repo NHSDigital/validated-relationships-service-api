@@ -1,0 +1,15 @@
+PostConsentInvalidPatientAgeError:
+  summary: Invalid patient age
+  description: 422 error response bundle for a request with an invalid patient age
+  value:
+    issue:
+      - code: invalid
+        diagnostics: "Patient age failed business validation."
+        details:
+          coding:
+            - code: "INVALID_PATIENT_AGE"
+              display: "Patient age is invalid."
+              system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
+              version: '1'
+        severity: error
+    resourceType: "OperationOutcome"

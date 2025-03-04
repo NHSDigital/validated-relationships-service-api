@@ -1,0 +1,15 @@
+PostConsentInvalidPerformerIdentifierError:
+  summary: Bad request performer identifier invalid
+  description: 400 error response bundle for an invalid performer NHS number
+  value:
+    issue:
+      - code: invalid
+        diagnostics: "Performer identifier is not a valid NHS number."
+        details:
+          coding:
+            - code: "INVALID_NHS_NUMBER"
+              display: "Performer identifier is invalid."
+              system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
+              version: '1'
+        severity: error
+    resourceType: "OperationOutcome"
