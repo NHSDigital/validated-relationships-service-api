@@ -1,5 +1,5 @@
 PostConsentInvalidPatientAgeError:
-  summary: Bad request invalid patient age
+  summary: Invalid patient age
   description: 422 error response bundle for a request with an invalid patient age
   value:
     issue:

@@ -1,5 +1,5 @@
 PostConsentDuplicateRelationshipError:
-  summary: Bad request for proxy role that already exists
+  summary: Duplicate request for proxy role that already exists
   description: 409 error response bundle for a duplicate proxy role
   value:
     issue:

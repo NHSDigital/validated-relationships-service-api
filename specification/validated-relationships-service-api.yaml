@@ -483,15 +483,19 @@ paths:
         Use this endpoint to create a new proxy role between a patient and a related person (proxy).
 
         ## Sandbox test scenarios
-        | Scenario                                | Request                                                       | Response                                                  |
-        | --------------------------------------- | ------------------------------------------------------------- | --------------------------------------------------------- |
-        | Successful parent-child proxy creation  | Valid request with a legal basis of parental responsibility   | HTTP Status 201 and OperationOutcome response             |
-        | Successful adult-adult proxy creation   | Valid request with legal basis of consent                     | HTTP Status 201 and OperationOutcome response             |
-        | Invalid performer NHS number            | Request with invalid NHS number format                        | HTTP Status 400 and INVALID_NHS_NUMBER error response     |
-        | Missing required evidence               | Request without evidence of responsibility                    | HTTP Status 422 and MISSING_EVIDENCE error response       |
-        | Invalid access level                    | Request with undefined access level code                      | HTTP Status 400 and INVALID_ACCESS_LEVEL error response   |
-        | Patient age validation failure          | Request for child proxy where child is over 16                | HTTP Status 422 and INVALID_PATIENT_AGE error response    |
-        | Duplicate relationship                  | Request for relationship that already exists                  | HTTP Status 409 and DUPLICATE_RELATIONSHIP error response |
+
+        The sandbox supports a limited number of scenarios, and does not attempt to validate requests.  The expected results is dependant up the `performer.identifier.value`performer.identifier.value
+
+        See the postman collection for the full JSON.
+        | Scenario                                | Request                                                                                                    | Response                                                  |
+        | --------------------------------------- | ---------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+        | Successful parent-child proxy creation  | Valid request with a legal basis of parental responsibility, with performer identifier value of 9000000009 | HTTP Status 201 and OperationOutcome response             |
+        | Successful adult-adult proxy creation   | Valid request with legal basis of consent, with performer identifier value of 9000000017                   | HTTP Status 201 and OperationOutcome response             |
+        | Invalid performer NHS number            | Request with invalid NHS number format, with performer identifier value of 9000000000                      | HTTP Status 400 and INVALID_NHS_NUMBER error response     |
+        | Invalid access level                    | Request with undefined access level code, with performer identifier value of 9000000025                    | HTTP Status 400 and INVALID_ACCESS_LEVEL error response   |
+        | Missing required evidence               | Request without evidence of responsibility, with performer identifier value of 9000000033                  | HTTP Status 422 and MISSING_EVIDENCE error response       |
+        | Patient age validation failure          | Request for child proxy where child is over 16, with performer identifier value of 9000000041              | HTTP Status 422 and INVALID_PATIENT_AGE error response    |
+        | Duplicate relationship                  | Request for relationship that already exists, with performer identifier value of 9000000049                | HTTP Status 409 and DUPLICATE_RELATIONSHIP error response |
       requestBody:
         required: true
         content:

@@ -114,7 +114,7 @@ def get_related_persons() -> Union[dict, tuple]:
         raise ValueError("Invalid request")
 
     except Exception as e:
-        logger.error(e)
+        logger.exception("GET related person failed")
         return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)
 
 
@@ -129,7 +129,7 @@ def post_questionnaire_response() -> Union[dict, tuple]:
     try:
         return generate_response_from_example(QUESTIONNAIRE_RESPONSE__SUCCESS, 200)
     except Exception as e:
-        logger.error(e)
+        logger.exception("POST questionnaire response failed")
         return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)
 
 
@@ -187,8 +187,8 @@ def get_consent() -> Union[dict, tuple]:
             logger.error("Performer identifier does not match examples")
             return generate_response_from_example(INVALIDATED_RESOURCE, 404)
 
-    except Exception as e:
-        logger.error(e)
+    except Exception:
+        logger.exception("GET Consent failed")
         return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)
 
 
@@ -238,7 +238,7 @@ def post_consent() -> Union[dict, tuple]:
 
         return response
 
-    except Exception as e:
+    except Exception:
         # Handle any general error
-        logger.error(e)
+        logger.exception("POST Consent failed")
         return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)
