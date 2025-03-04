@@ -529,7 +529,7 @@ paths:
                 postConsentInvalidPerformerIdentifier:
                   $ref: "./examples/responses/POST_Consent/errors/invalid_performer_identifier_error.yaml#/PostConsentInvalidPerformerIdentifierError"
                 postConsentInvalidAccessLevel:
-                  $ref: "./examples/responses/POST_Consent/invalid_access_level_error.yaml#/PostConsentInvalidAccessLevelError"
+                  $ref: "./examples/responses/POST_Consent/errors/invalid_access_level_error.yaml#/PostConsentInvalidAccessLevelError"
         "422":
           description: Business rule validation failed
           content:
@@ -538,9 +538,9 @@ paths:
                 $ref: "#/components/schemas/OperationOutcome"
               examples:
                 postConsentMissingEvidence:
-                  $ref: "./examples/responses/POST_Consent/invalid_evidence_error.yaml#/PostConsentInvalidEvidenceError"
+                  $ref: "./examples/responses/POST_Consent/errors/invalid_evidence_error.yaml#/PostConsentInvalidEvidenceError"
                 postConsentInvalidPatientAge:
-                  $ref: "./examples/responses/POST_Consent/invalid_patient_age_error.yaml#/PostConsentInvalidPatientAgeError"
+                  $ref: "./examples/responses/POST_Consent/errors/invalid_patient_age_error.yaml#/PostConsentInvalidPatientAgeError"
         "409":
           description: "Conflict with requested proxy role"
           content:
