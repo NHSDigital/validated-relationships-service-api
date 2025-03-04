@@ -19,13 +19,13 @@ ConsentParentChildProxyCreationRequest:
       type: Patient
       identifier:
         system: https://fhir.nhs.uk/Id/nhs-number
-        value: "9000000017"
+        value: "9000000012"
     dateTime: "2025-02-11T14:30:00Z"
     performer:
       - type: RelatedPerson
         identifier:
           system: https://fhir.nhs.uk/Id/nhs-number
-          value: "9000000012"
+          value: "9000000009"
     provision:
       period:
         start: "2025-02-11"
@@ -40,7 +40,7 @@ ConsentParentChildProxyCreationRequest:
             type: RelatedPerson
             identifier:
               system: https://fhir.nhs.uk/Id/nhs-number
-              value: "9000000012"
+              value: "9000000009"
     extension:
       - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
         valueCodeableConcept:
