@@ -189,7 +189,7 @@ def remove_system(identifier: Any) -> str:
     return ""
 
 
-def generate_response_from_example(example_path: str, status_code: int, headers: dict[str, str] = None) -> Response:
+def generate_response_from_example(example_path: str, status_code: int, headers: dict = None) -> Response:
     """Converts an example file (yaml) to a response
 
     Args:
