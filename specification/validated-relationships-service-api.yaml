@@ -484,9 +484,9 @@ paths:
 
         ## Sandbox test scenarios
 
-        The sandbox supports a limited number of scenarios, and does not attempt to validate requests.  The expected results is dependant up the `performer.identifier.value`performer.identifier.value
+        The sandbox supports a limited number of scenarios, and does not attempt to validate requests.  The returned result is dependant on the `performer.identifier.value`.
 
-        See the postman collection for the full JSON.
+        See the postman collection for an example request body.
         | Scenario                                | Request                                                                                                    | Response                                                  |
         | --------------------------------------- | ---------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
         | Successful parent-child proxy creation  | Valid request with a legal basis of parental responsibility, with performer identifier value of 9000000009 | HTTP Status 201 and OperationOutcome response             |
@@ -496,6 +496,7 @@ paths:
         | Missing required evidence               | Request without evidence of responsibility, with performer identifier value of 9000000033                  | HTTP Status 422 and MISSING_EVIDENCE error response       |
         | Patient age validation failure          | Request for child proxy where child is over 16, with performer identifier value of 9000000041              | HTTP Status 422 and INVALID_PATIENT_AGE error response    |
         | Duplicate relationship                  | Request for relationship that already exists, with performer identifier value of 9000000049                | HTTP Status 409 and DUPLICATE_RELATIONSHIP error response |
+
       requestBody:
         required: true
         content:
