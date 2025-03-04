@@ -113,7 +113,7 @@ def get_related_persons() -> Union[dict, tuple]:
 
         raise ValueError("Invalid request")
 
-    except Exception as e:
+    except Exception:
         logger.exception("GET related person failed")
         return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)
 
@@ -128,7 +128,7 @@ def post_questionnaire_response() -> Union[dict, tuple]:
 
     try:
         return generate_response_from_example(QUESTIONNAIRE_RESPONSE__SUCCESS, 200)
-    except Exception as e:
+    except Exception:
         logger.exception("POST questionnaire response failed")
         return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)
 
