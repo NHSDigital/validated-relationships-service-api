@@ -14,7 +14,7 @@ load-examples: # Load the examples from the specification (for local development
 	cp -r ../specification/examples/responses/ ./api/examples
 
 format: # Formats the code using black
-	poetry run black . --exclude ./api/constants.py
+	poetry run black . --line-length 120
 
 start: load-examples # Starts the Flask app (Don't use this in production)
 	poetry run flask --app api.app:app run -p 9000

@@ -1,0 +1,15 @@
+PostConsentDuplicateRelationshipError:
+  summary: Bad request for proxy role that already exists
+  description: 409 error response bundle for a duplicate proxy role
+  value:
+    issue:
+      - code: invalid
+        diagnostics: "Proxy role already exists."
+        details:
+          coding:
+            - code: "DUPLICATE_RELATIONSHIP"
+              display: "Request must be for a new proxy role."
+              system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
+              version: '1'
+        severity: error
+    resourceType: "OperationOutcome"

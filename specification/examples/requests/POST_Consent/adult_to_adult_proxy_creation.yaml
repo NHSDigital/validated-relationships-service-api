@@ -1,0 +1,49 @@
+ConsentAdultToAdultGuardianRequest:
+  summary: Create a proxy role with court appointed deputy basis
+  value:
+    resourceType: Consent
+    status: active
+    scope:
+      coding:
+        - system: "http://terminology.hl7.org/CodeSystem/consentscope"
+          code: patient-privacy
+          display: "Privacy Consent"
+      text: "Patient Privacy Consent"
+    category:
+      - coding:
+          - system: "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+            code: INFA
+            display: "Information Access"
+        text: "Information Access Consent"
+    patient:
+      type: Patient
+      identifier:
+        system: https://fhir.nhs.uk/Id/nhs-number
+        value: "9000000017"
+    dateTime: "2025-02-11T14:30:00Z"
+    performer:
+      - type: RelatedPerson
+        identifier:
+          system: https://fhir.nhs.uk/Id/nhs-number
+          value: "9000000012"
+    provision:
+      period:
+        start: "2025-02-11"
+      actor:
+        - role:
+            coding:
+              - system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
+                code: GUARD
+                display: Guardian
+          reference:
+            type: RelatedPerson
+            identifier:
+              system: https://fhir.nhs.uk/Id/nhs-number
+              value: "9000000012"
+    extension:
+      - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
+        valueCodeableConcept:
+          coding:
+            - system: http://terminology.hl7.org/CodeSystem/consent-reason
+              code: TBC
+              display: TBC
