@@ -2,7 +2,7 @@ SHELL := /bin/bash
 dirname := $(notdir $(patsubst %/,%,$(CURDIR)))
 
 install: # Installs dependencies using poetry.
-	poetry install --no-root
+	poetry install
 
 list: # List of make targets
 	@grep '^[^#[:space:]].*:' Makefile

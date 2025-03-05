@@ -127,6 +127,7 @@ def get_consent() -> Union[dict, tuple]:
     """
     return get_consent_response()
 
+
 @app.route(f"/{COMMON_PATH}/Consent", methods=["POST"])
 def post_consent() -> Union[dict, tuple]:
     """Sandbox API for POST /Consent
