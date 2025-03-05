@@ -125,7 +125,7 @@ def get_consent() -> Union[dict, tuple]:
     Returns:
         Union[dict, tuple]: Response for GET /Consent
     """
-    get_consent_response()
+    return get_consent_response()
 
 @app.route(f"/{COMMON_PATH}/Consent", methods=["POST"])
 def post_consent() -> Union[dict, tuple]:

@@ -21,7 +21,7 @@ from .conftest import (
 
 UTILS_FILE_PATH = "sandbox.api.utils"
 APP_FILE_PATH = "sandbox.api.app"
-CONSENT_FILE_PATH = "sandbox.api.get_consent"
+GET_CONSENT_FILE_PATH = "sandbox.api.get_consent"
 
 
 @pytest.mark.parametrize("endpoint", ["/_status", "/_ping", "/health"])
@@ -164,7 +164,7 @@ def test_questionnaire_response(
         ),
     ],
 )
-@patch(f"{APP_FILE_PATH}.generate_response_from_example")
+@patch(f"{GET_CONSENT_FILE_PATH}.generate_response_from_example")
 def test_get_consent(
     mock_generate_response_from_example: MagicMock,
     request_args: str,
@@ -242,8 +242,8 @@ def test_post_consent_when_valid_returns_success(
     assert response.json == loads(mocked_response.get_data(as_text=True))
 
 
-@patch(f"{CONSENT_FILE_PATH}.remove_system")
-@patch(f"{CONSENT_FILE_PATH}.generate_response_from_example")
+@patch(f"{GET_CONSENT_FILE_PATH}.remove_system")
+@patch(f"{GET_CONSENT_FILE_PATH}.generate_response_from_example")
 def test_consent__500_internal_server_error(
     mock_generate_response_from_example: MagicMock,
     mock_remove_system: MagicMock,

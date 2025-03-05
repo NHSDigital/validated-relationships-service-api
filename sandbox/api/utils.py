@@ -20,7 +20,6 @@ from .constants import (
     INTERNAL_SERVER_ERROR_EXAMPLE,
     GET_CONSENT__STATUS_PARAM_INVALID,
     BAD_REQUEST_INCLUDE_PARAM_INVALID,
-    CONSENT__STATUS_PARAM_INVALID,
 )
 
 FHIR_MIMETYPE = "application/fhir+json"
@@ -63,7 +62,7 @@ GET_CONSENT_ERRORS = "./api/examples/GET_Consent/errors"
 
 
 def check_for_consent_errors(request: Request) -> Optional[tuple]:
-    """Check for errors in the request headers and arguments for a Get /Consent
+    """Check for errors in the request headers and arguments for a GET /Consent request
 
     Args:
         request (Request): Flask request object
