@@ -3,7 +3,7 @@ DownstreamServiceError:
   description: An unexpected condition was encountered in a downstream service preventing the server from fulfilling the request.
   value:
     issue:
-      - code: invalid
+      - code: processing
         diagnostics: "Downstream Service Error - Failed to generate response is present in the response"
         details:
           coding:
