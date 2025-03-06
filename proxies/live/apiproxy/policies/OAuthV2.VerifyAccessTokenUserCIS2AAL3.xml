@@ -1,0 +1,5 @@
+<!--Step 2: Adding VerifyAccessToken policy to your proxy-->
+<OAuthV2 async="false" continueOnError="false" enabled="true" name="VerifyAccessTokenUserCIS2AAL3">
+  <Operation>VerifyAccessToken</Operation>
+  <Scopes>urn:nhsd:apim:user-nhs-id:aal3:validated-relationships-service-api</Scopes>
+</OAuthV2>
