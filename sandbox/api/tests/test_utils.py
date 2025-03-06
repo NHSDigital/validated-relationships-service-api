@@ -5,7 +5,7 @@ import pytest
 from flask import Response
 
 from ..utils import load_json_file
-from .conftest import RELATED_PERSON_API_ENDPOINT, CONSENT_API_ENDPOINT
+from .conftest import CONSENT_API_ENDPOINT, RELATED_PERSON_API_ENDPOINT
 
 FILE_PATH = "sandbox.api.utils"
 
@@ -114,12 +114,12 @@ def test_related_person__not_found(
         (
             "performer:identifier=9000000017&status=test",  # Invalid status parameter error
             "./api/examples/GET_Consent/errors/invalid-status-parameter.yaml",
-            400,
+            422,
         ),
         (
             "performer:identifier=9000000019&_include=test",  # Invalid include parameter error
             "./api/examples/errors/invalid-include-parameter.yaml",
-            400,
+            422,
         ),
     ],
 )
@@ -205,7 +205,7 @@ def test_check_for_related_person_errors(
         (
             "performer:identifier=90000009990",  # Invalid performer identifier
             "./api/examples/GET_Consent/errors/invalid-identifier.yaml",
-            400,
+            422,
         ),
         (
             "",  # missing performer identifier
@@ -215,7 +215,7 @@ def test_check_for_related_person_errors(
         (
             "performer:identifier=https://fhir.nhs.uk/Id/nhs-number|A730675929",  # identifier system invalid
             "./api/examples/GET_Consent/errors/invalid-identifier-system.yaml",
-            400,
+            422,
         ),
     ],
 )

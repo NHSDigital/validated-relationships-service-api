@@ -1,5 +1,5 @@
 ConsentInvalidIdentifierError:
-  summary: Bad request invalid identifier
+  summary: Invalid identifier
   description: Error raised due to an invalid identifier request parameter being specified.
   value:
     issue:

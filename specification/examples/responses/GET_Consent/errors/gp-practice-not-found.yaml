@@ -1,0 +1,14 @@
+GPPracticeNotFoundError:
+  summary: GP Practice not found
+  description: 404 GP Practice not found error response bundle
+  value:
+    issue:
+      - code: processing
+        details:
+          coding:
+            - system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
+              version: "1"
+              code: "GP_PRACTICE_NOT_FOUND"
+              display: "GP Practice could not be found - invalid resources cannot be retrieved"
+        severity: error
+    resourceType: "OperationOutcome"
