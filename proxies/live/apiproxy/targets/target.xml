@@ -2,14 +2,8 @@
 <TargetEndpoint name="validated-relationships-service-api-target">
     <PreFlow>
         <Request>
-        <!--Step 3: Configuring the VerifyAccessToken policy to restrict access-->
             <Step>
-                <Condition>(proxy.pathsuffix MatchesPath "/Consent") and (request.verb = "POST")</Condition>
-                <Name>VerifyAccessTokenUserCIS2AAL3</Name>
-            </Step>
-            <Step>
-                <Condition>(proxy.pathsuffix != "/Consent") or (request.verb != "POST")</Condition>
-                <Name>VerifyAccessTokenUserNhsLoginP9</Name>
+                <Name>VerifyAccessTokenUser</Name>
             </Step>
             <Step>
                 <Name>FlowCallout.ApplyRateLimiting</Name>
@@ -25,6 +19,14 @@
             </Step>
             <Step>
                 <Name>AddUserAuthHeaders</Name>
+            </Step>
+            <Step>
+                <Name>RaiseFault.401Unauthorized</Name>
+                <Condition>accesstoken.auth_level != "aal3" and proxy.pathsuffix = "/FHIR/R4/Consent" and request.verb = "POST"</Condition>
+            </Step>
+            <Step>
+                <Name>RaiseFault.401Unauthorized</Name>
+                <Condition>accesstoken.auth_level != "p9" and (proxy.pathsuffix != "/FHIR/R4/Consent" or request.verb != "POST")</Condition>
             </Step>
             <Step>
                 <Name>RaiseFault.415UnsupportedMediaType</Name>

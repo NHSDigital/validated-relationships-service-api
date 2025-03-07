@@ -1,4 +1,0 @@
-<OAuthV2 async="false" continueOnError="false" enabled="true" name="VerifyAccessTokenUserNhsLoginP9">
-  <Operation>VerifyAccessToken</Operation>
-  <Scopes>urn:nhsd:apim:user-nhs-login:P9:validated-relationships-service-api</Scopes>
-</OAuthV2>
