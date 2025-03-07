@@ -513,6 +513,10 @@ paths:
         | Patient age validation failure          | Request for child proxy where child is over 16, with performer identifier value of 9000000041              | HTTP Status 422 and INVALID_PATIENT_AGE error response    |
         | Duplicate relationship                  | Request for relationship that already exists, with performer identifier value of 9000000049                | HTTP Status 409 and DUPLICATE_RELATIONSHIP error response |
 
+      operationId: create-proxy-role
+      parameters:
+        - $ref: "#/components/parameters/RequestID"
+        - $ref: "#/components/parameters/CorrelationID"
       requestBody:
         required: true
         content:
