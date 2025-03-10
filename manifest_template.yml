@@ -91,8 +91,9 @@ apigee:
 {% if ENV.has_mock_auth | default(false) %}
           - identity-service-mock-{{ ENV.name }}
 {% endif %}
-        scopes:
+        scopes: # Step 1: Configured product to include scopes
           - 'urn:nhsd:apim:user-nhs-login:P9:{{ SERVICE_NAME }}'
+          - 'urn:nhsd:apim:user-nhs-id:aal3:{{ SERVICE_NAME }}'
     specs:
       - name: {{ NAME }}
         path: {{ SERVICE_NAME }}.json
