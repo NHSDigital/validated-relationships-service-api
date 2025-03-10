@@ -515,6 +515,7 @@ paths:
 
       operationId: create-proxy-role
       parameters:
+        - $ref: "#/components/parameters/BearerAuthorization"
         - $ref: "#/components/parameters/RequestID"
         - $ref: "#/components/parameters/CorrelationID"
       requestBody:
