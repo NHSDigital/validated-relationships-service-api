@@ -205,7 +205,7 @@ def test_get_consent(
         ("9000000049", POST_CONSENT__DUPLICATE_RELATIONSHIP_ERROR, 409, None),
         ("9000000041", POST_CONSENT__INVALID_PATIENT_AGE_ERROR, 422, None),
         ("9000000033", POST_CONSENT__INVALID_EVIDENCE_ERROR, 422, None),
-        ("9000000025", POST_CONSENT__INVALID_ACCESS_LEVEL_ERROR, 403, None),
+
     ],
 )
 @patch(f"{APP_FILE_PATH}.generate_response_from_example")

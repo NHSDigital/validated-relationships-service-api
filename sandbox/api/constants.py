@@ -51,9 +51,6 @@ GET_CONSENT__STATUS_PARAM_INVALID = f"{GET_CONSENT__DIRECTORY}errors/invalid-sta
 POST_CONSENT__DIRECTORY = "./api/examples/POST_Consent/"
 POST_CONSENT__SUCCESS = f"{POST_CONSENT__DIRECTORY}success.yaml"
 POST_CONSENT__DUPLICATE_RELATIONSHIP_ERROR = f"{POST_CONSENT__DIRECTORY}errors/duplicate_relationship_error.yaml"
-POST_CONSENT__INVALID_ACCESS_LEVEL_ERROR = f"{POST_CONSENT__DIRECTORY}errors/invalid_access_level_error.yaml"
-POST_CONSENT__INVALID_EVIDENCE_ERROR = f"{POST_CONSENT__DIRECTORY}errors/invalid_evidence_error.yaml"
-POST_CONSENT__INVALID_PATIENT_AGE_ERROR = f"{POST_CONSENT__DIRECTORY}errors/invalid_patient_age_error.yaml"
 POST_CONSENT__PERFORMER_IDENTIFIER_ERROR = f"{POST_CONSENT__DIRECTORY}errors/invalid_performer_identifier_error.yaml"
 
 QR_DIRECTORY = "./api/examples/POST_QuestionnaireResponse/"

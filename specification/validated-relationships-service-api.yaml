@@ -507,10 +507,7 @@ paths:
         | --------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
         | Successful parent-child proxy creation  | Valid request with a legal basis of parental responsibility, with performer identifier value of 9000000009 | HTTP Status 201 and OperationOutcome response               |
         | Successful adult-adult proxy creation   | Valid request with legal basis of consent, with performer identifier value of 9000000017                   | HTTP Status 201 and OperationOutcome response               |
-        | Invalid access level                    | Request with undefined access level code, with performer identifier value of 9000000025                    | HTTP Status 403 and INVALID_ACCESS_LEVEL error response     |
         | Invalid performer NHS number            | Request with invalid NHS number format, with performer identifier value of 9000000000                      | HTTP Status 422 and INVALID_IDENTIFIER_VALUE error response |
-        | Missing required evidence               | Request without evidence of responsibility, with performer identifier value of 9000000033                  | HTTP Status 422 and MISSING_EVIDENCE error response         |
-        | Patient age validation failure          | Request for child proxy where child is over 16, with performer identifier value of 9000000041              | HTTP Status 422 and INVALID_PATIENT_AGE error response      |
         | Duplicate relationship                  | Request for relationship that already exists, with performer identifier value of 9000000049                | HTTP Status 409 and DUPLICATE_RELATIONSHIP error response   |
 
       operationId: create-proxy-role
@@ -577,12 +574,6 @@ paths:
               examples:
                 postConsentInvalidPerformerIdentifier:
                   $ref: "./examples/responses/POST_Consent/errors/invalid_performer_identifier_error.yaml#/PostConsentInvalidPerformerIdentifierError"
-                postConsentInvalidAccessLevel:
-                  $ref: "./examples/responses/POST_Consent/errors/invalid_access_level_error.yaml#/PostConsentInvalidAccessLevelError"
-                postConsentMissingEvidence:
-                  $ref: "./examples/responses/POST_Consent/errors/invalid_evidence_error.yaml#/PostConsentInvalidEvidenceError"
-                postConsentInvalidPatientAge:
-                  $ref: "./examples/responses/POST_Consent/errors/invalid_patient_age_error.yaml#/PostConsentInvalidPatientAgeError"
                 postConsentDuplicateRelationship:
                   $ref: "./examples/responses/POST_Consent/errors/duplicate_relationship_error.yaml#/PostConsentDuplicateRelationshipError"
         "5XX":
