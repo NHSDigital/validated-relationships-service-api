@@ -166,7 +166,7 @@ def post_consent() -> Union[dict, tuple]:
 
         # Invalid performer NHS number
         elif patient_identifier == "9000000000":
-            response = generate_response_from_example(POST_CONSENT__PERFORMER_IDENTIFIER_ERROR, 400)
+            response = generate_response_from_example(POST_CONSENT__PERFORMER_IDENTIFIER_ERROR, 422)
 
         else:
             # Out of scope errors
