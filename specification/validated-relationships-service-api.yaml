@@ -3,7 +3,7 @@
 openapi: "3.0.0"
 info:
   title: "Validated Relationships Service API"
-  version: "1.3.2"
+  version: "1.3.3"
   description: |
     ## Overview
     Use this API to access the Validated Relationships Service - the national electronic database of relationships
@@ -503,15 +503,12 @@ paths:
         The sandbox supports a limited number of scenarios, and does not attempt to validate requests.  The returned result is dependant on the `performer.identifier.value`.
 
         See the postman collection for an example request body.
-        | Scenario                                | Request                                                                                                    | Response                                                  |
-        | --------------------------------------- | ---------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
-        | Successful parent-child proxy creation  | Valid request with a legal basis of parental responsibility, with performer identifier value of 9000000009 | HTTP Status 201 and OperationOutcome response             |
-        | Successful adult-adult proxy creation   | Valid request with legal basis of consent, with performer identifier value of 9000000017                   | HTTP Status 201 and OperationOutcome response             |
-        | Invalid access level                    | Request with undefined access level code, with performer identifier value of 9000000025                    | HTTP Status 403 and INVALID_ACCESS_LEVEL error response   |
-        | Invalid performer NHS number            | Request with invalid NHS number format, with performer identifier value of 9000000000                      | HTTP Status 422 and INVALID_NHS_NUMBER error response     |
-        | Missing required evidence               | Request without evidence of responsibility, with performer identifier value of 9000000033                  | HTTP Status 422 and MISSING_EVIDENCE error response       |
-        | Patient age validation failure          | Request for child proxy where child is over 16, with performer identifier value of 9000000041              | HTTP Status 422 and INVALID_PATIENT_AGE error response    |
-        | Duplicate relationship                  | Request for relationship that already exists, with performer identifier value of 9000000049                | HTTP Status 409 and DUPLICATE_RELATIONSHIP error response |
+        | Scenario                                | Request                                                                                                    | Response                                                    |
+        | --------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+        | Successful parent-child proxy creation  | Valid request with a legal basis of parental responsibility, with performer identifier value of 9000000009 | HTTP Status 201 and OperationOutcome response               |
+        | Successful adult-adult proxy creation   | Valid request with legal basis of consent, with performer identifier value of 9000000017                   | HTTP Status 201 and OperationOutcome response               |
+        | Invalid performer NHS number            | Request with invalid NHS number format, with performer identifier value of 9000000000                      | HTTP Status 422 and INVALID_IDENTIFIER_VALUE error response |
+        | Duplicate relationship                  | Request for relationship that already exists, with performer identifier value of 9000000049                | HTTP Status 409 and DUPLICATE_RELATIONSHIP error response   |
 
       operationId: create-proxy-role
       parameters:
@@ -551,15 +548,23 @@ paths:
 
             | HTTP status | Error code                  | Description                                                                                                                               |
             | ----------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+            | 400         | `MISSING_IDENTIFIER`        | Missing performer or patient identifier. For details, see the `diagnostics` field.                                                        |
+            | 400         | `MISSING_STATUS`            | Missing status.                                                                                                                           |
+            | 400         | `MISSING_SCOPE`             | Missing scope.                                                                                                                            |
+            | 400         | `MISSING_CATEGORY`          | Missing category.                                                                                                                         |
+            | 400         | `MISSING_DATETIME`          | Missing datetime.                                                                                                                         |
             | 401         | `ACCESS_DENIED`             | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
             | 403         | `FORBIDDEN`                 | Access denied to resource.                                                                                                                |
-            | 403         | `INVALID_ACCESS_LEVEL`      | Invalid authorisation access level                                                                                                        |
             | 404         | `INVALIDATED_RESOURCE`      | Resource that has been marked as invalid was requested - invalid resources cannot be retrieved                                            |
+            | 405         | `METHOD_NOT_ALLOWED`        | The method is not allowed.                                                                                                                |
             | 408         | `TIMEOUT`                   | Request timed out.                                                                                                                        |
             | 409         | `DUPLICATE_RELATIONSHIP`    | Conflict with requested proxy role.                                                                                                       |
-            | 422         | `INVALID_NHS_NUMBER`        | Invalid NHS number.                                                                                                                |
-            | 422         | `INVALID_PATIENT_AGE`       | Patient age is invalid.                                                                                                                   |
-            | 422         | `MISSING_EVIDENCE`          | Evidence of responsibility is missing.                                                                                                    |
+            | 422         | `INVALID_IDENTIFIER`        | Invalid performer or patient identifier. For details, see the `diagnostics` field.                                                        |
+            | 422         | `INVALID_STATUS`            | Invalid status.                                                                                                                           |
+            | 422         | `INVALID_SCOPE`             | Invalid scope.                                                                                                                            |
+            | 422         | `INVALID_CATEGORY`          | Invalid category.                                                                                                                         |
+            | 422         | `INVALID_DATETIME`          | Invalid datetime.                                                                                                                         |
+            | 422         | `INVALID_PROVISION`         | Invalid provision.                                                                                                                        |
             | 429         | `THROTTLED`                 | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
 
           content:
@@ -569,12 +574,6 @@ paths:
               examples:
                 postConsentInvalidPerformerIdentifier:
                   $ref: "./examples/responses/POST_Consent/errors/invalid_performer_identifier_error.yaml#/PostConsentInvalidPerformerIdentifierError"
-                postConsentInvalidAccessLevel:
-                  $ref: "./examples/responses/POST_Consent/errors/invalid_access_level_error.yaml#/PostConsentInvalidAccessLevelError"
-                postConsentMissingEvidence:
-                  $ref: "./examples/responses/POST_Consent/errors/invalid_evidence_error.yaml#/PostConsentInvalidEvidenceError"
-                postConsentInvalidPatientAge:
-                  $ref: "./examples/responses/POST_Consent/errors/invalid_patient_age_error.yaml#/PostConsentInvalidPatientAgeError"
                 postConsentDuplicateRelationship:
                   $ref: "./examples/responses/POST_Consent/errors/duplicate_relationship_error.yaml#/PostConsentDuplicateRelationshipError"
         "5XX":
@@ -706,7 +705,6 @@ paths:
                   $ref: "./examples/responses/PATCH_Consent/error.yaml#/PatchConsentInvalidStatusCodeError"
                 patchConsentInvalidStateTransitionError:
                   $ref: "./examples/responses/PATCH_Consent/error.yaml#/PatchConsentInvalidStateTransitionError"
-
 
 components:
   schemas:
@@ -1073,7 +1071,17 @@ components:
                                 display:
                                   type: string
                                   description: Evidence of responsibility type.
-                                  enum: ['Birth certificate', 'Adoption certificate', 'Court-witnessed parental responsibility agreement','Court-witnessed step-parent parental responsibility agreement', 'Parental order', 'Special guardianship order', 'Other court order', 'Other' ]
+                                  enum:
+                                    [
+                                      "Birth certificate",
+                                      "Adoption certificate",
+                                      "Court-witnessed parental responsibility agreement",
+                                      "Court-witnessed step-parent parental responsibility agreement",
+                                      "Parental order",
+                                      "Special guardianship order",
+                                      "Other court order",
+                                      "Other",
+                                    ]
 
               - type: object
                 properties:
@@ -1717,7 +1725,7 @@ components:
                 enum:
                   [
                     "https://fhir.nhs.uk/Id/nhs-number",
-                    "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
+                    "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier",
                   ]
               value:
                 type: string
@@ -1801,7 +1809,7 @@ components:
                 enum:
                   [
                     "https://fhir.nhs.uk/Id/nhs-number",
-                    "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
+                    "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier",
                   ]
               value:
                 type: string
@@ -1930,26 +1938,32 @@ components:
           items:
             $ref: "#/components/schemas/Reference"
           description: "Individuals or organizations that agreed to the consent."
-        verification:
+        provision:
           type: array
-          description: Whether consent was verified with the patient, or another authorized person.
+          maxItems: 1
           items:
-            type: object
-            properties:
-              verified:
-                type: boolean
-                description: Whether the consent has been verified
-              verifiedWith:
-                $ref: "#/components/schemas/Reference"
-              verificationDate:
-                type: string
-                description: The date and time when consent was collected.
-                format: date-time
+            $ref: "#/components/schemas/Provision"
         extension:
           type: array
           description: Model the status reason.
           items:
             $ref: "#/components/schemas/Extension"
+
+    Provision:
+      type: object
+      properties:
+        period:
+          type: object
+          description: "Timeframe for this provision."
+          properties:
+            start:
+              type: string
+              description: "Starting time with inclusive boundary"
+              format: date-time
+            end:
+              type: string
+              description: "End time with inclusive boundary, if not ongoing"
+              format: date-time
 
     Extension:
       type: object
@@ -1961,7 +1975,6 @@ components:
           description: Classification of the status of consent, bound to http://terminology.hl7.org/CodeSystem/consent-reason.
           items:
             $ref: "#/components/schemas/CodeableConcept"
-
 
     OperationOutcome:
       type: object
