@@ -551,7 +551,7 @@ paths:
 
             | HTTP status | Error code                  | Description                                                                                                                               |
             | ----------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-            | 400         | `MISSING_IDENTIFIER`        | Missing  performer or patient identifier. For details, see the `diagnostics` field.                                                       |
+            | 400         | `MISSING_IDENTIFIER`        | Missing performer or patient identifier. For details, see the `diagnostics` field.                                                        |
             | 400         | `MISSING_STATUS`            | Missing status.                                                                                                                           |
             | 400         | `MISSING_SCOPE`             | Missing scope.                                                                                                                            |
             | 400         | `MISSING_CATEGORY`          | Missing category.                                                                                                                         |
@@ -559,6 +559,7 @@ paths:
             | 401         | `ACCESS_DENIED`             | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
             | 403         | `FORBIDDEN`                 | Access denied to resource.                                                                                                                |
             | 404         | `INVALIDATED_RESOURCE`      | Resource that has been marked as invalid was requested - invalid resources cannot be retrieved                                            |
+            | 405         | `METHOD_NOT_ALLOWED`        | The method is not allowed.                                                                                                                |
             | 408         | `TIMEOUT`                   | Request timed out.                                                                                                                        |
             | 409         | `DUPLICATE_RELATIONSHIP`    | Conflict with requested proxy role.                                                                                                       |
             | 422         | `INVALID_IDENTIFIER`        | Invalid performer or patient identifier. For details, see the `diagnostics` field.                                                        |
@@ -566,7 +567,7 @@ paths:
             | 422         | `INVALID_SCOPE`             | Invalid scope.                                                                                                                            |
             | 422         | `INVALID_CATEGORY`          | Invalid category.                                                                                                                         |
             | 422         | `INVALID_DATETIME`          | Invalid datetime.                                                                                                                         |
-            | 422         | `INVALID_VERIFICATION`      | Invalid verification. For details, see the `diagnostics` field.                                                                           |
+            | 422         | `INVALID_PROVISION`         | Invalid provision.                                                                                                                        |
             | 429         | `THROTTLED`                 | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
 
           content:
@@ -713,7 +714,6 @@ paths:
                   $ref: "./examples/responses/PATCH_Consent/error.yaml#/PatchConsentInvalidStatusCodeError"
                 patchConsentInvalidStateTransitionError:
                   $ref: "./examples/responses/PATCH_Consent/error.yaml#/PatchConsentInvalidStateTransitionError"
-
 
 components:
   schemas:
@@ -1080,7 +1080,17 @@ components:
                                 display:
                                   type: string
                                   description: Evidence of responsibility type.
-                                  enum: ['Birth certificate', 'Adoption certificate', 'Court-witnessed parental responsibility agreement','Court-witnessed step-parent parental responsibility agreement', 'Parental order', 'Special guardianship order', 'Other court order', 'Other' ]
+                                  enum:
+                                    [
+                                      "Birth certificate",
+                                      "Adoption certificate",
+                                      "Court-witnessed parental responsibility agreement",
+                                      "Court-witnessed step-parent parental responsibility agreement",
+                                      "Parental order",
+                                      "Special guardianship order",
+                                      "Other court order",
+                                      "Other",
+                                    ]
 
               - type: object
                 properties:
@@ -1724,7 +1734,7 @@ components:
                 enum:
                   [
                     "https://fhir.nhs.uk/Id/nhs-number",
-                    "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
+                    "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier",
                   ]
               value:
                 type: string
@@ -1808,7 +1818,7 @@ components:
                 enum:
                   [
                     "https://fhir.nhs.uk/Id/nhs-number",
-                    "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
+                    "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier",
                   ]
               value:
                 type: string
@@ -1937,26 +1947,32 @@ components:
           items:
             $ref: "#/components/schemas/Reference"
           description: "Individuals or organizations that agreed to the consent."
-        verification:
-          type: array
-          description: Whether consent was verified with the patient, or another authorized person.
+        provision:
+          type: object
+          maxItems: 1
           items:
-            type: object
-            properties:
-              verified:
-                type: boolean
-                description: Whether the consent has been verified
-              verifiedWith:
-                $ref: "#/components/schemas/Reference"
-              verificationDate:
-                type: string
-                description: The date and time when consent was collected.
-                format: date-time
+            $ref: "#/components/schemas/Provision"
         extension:
           type: array
           description: Model the status reason.
           items:
             $ref: "#/components/schemas/Extension"
+
+    Provision:
+      type: object
+      properties:
+        period:
+          type: object
+          description: "Timeframe for this provision."
+          properties:
+            start:
+              type: string
+              description: "Starting time with inclusive boundary"
+              format: date-time
+            end:
+              type: string
+              description: "End time with inclusive boundary, if not ongoing"
+              format: date-time
 
     Extension:
       type: object
@@ -1968,7 +1984,6 @@ components:
           description: Classification of the status of consent, bound to http://terminology.hl7.org/CodeSystem/consent-reason.
           items:
             $ref: "#/components/schemas/CodeableConcept"
-
 
     OperationOutcome:
       type: object
