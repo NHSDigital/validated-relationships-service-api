@@ -438,8 +438,8 @@ paths:
 
             | HTTP status | Error code                  | Description                                                                                                                               |
             | ----------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-            | 400         | `MISSING_VALUE`             | Missing header or parameter. For details, see the `diagnostics` field.                                                                       |
-            | 400         | `INVALID_VALUE`             | Invalid header. For details, see the `diagnostics` field.                                                                       |
+            | 400         | `MISSING_VALUE`             | Missing header or parameter. For details, see the `diagnostics` field.                                                                    |
+            | 400         | `INVALID_VALUE`             | Invalid header. For details, see the `diagnostics` field.                                                                                 |
             | 400         | `MISSING_IDENTIFIER_VALUE`  | Missing performer NHS number.                                                                                                             |
             | 400         | `NOT_SUPPORTED`             | The request is not currently supported.                                                                                                   |
             | 401         | `ACCESS_DENIED`             | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
@@ -450,7 +450,7 @@ paths:
             | 408         | `TIMEOUT`                   | Request timed out.                                                                                                                        |
             | 422         | `INVALID_IDENTIFIER_SYSTEM` | Invalid identifier system.                                                                                                                |
             | 422         | `INVALID_IDENTIFIER_VALUE`  | Malformed performer NHS number.                                                                                                           |
-            | 422         | `INVALID_PARAMETER`         | Invalid parameter. For details, see the `diagnostics` field.                                                                                                                                                              |
+            | 422         | `INVALID_PARAMETER`         | Invalid parameter. For details, see the `diagnostics` field.                                                                              |
             | 429         | `THROTTLED`                 | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
 
           content:
@@ -545,8 +545,23 @@ paths:
               examples:
                 postConsentSuccess:
                   $ref: "./examples/responses/POST_Consent/success.yaml#/PostConsentSuccess"
-        "400":
-          description: Invalid request
+        "4XX":
+          description: |
+            Errors will be returned for the first error encountered in the request. An error occurred as follows:
+
+            | HTTP status | Error code                  | Description                                                                                                                               |
+            | ----------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+            | 401         | `ACCESS_DENIED`             | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
+            | 403         | `FORBIDDEN`                 | Access denied to resource.                                                                                                                |
+            | 403         | `INVALID_ACCESS_LEVEL`      | Invalid authorisation access level                                                                                                        |
+            | 404         | `INVALIDATED_RESOURCE`      | Resource that has been marked as invalid was requested - invalid resources cannot be retrieved                                            |
+            | 408         | `TIMEOUT`                   | Request timed out.                                                                                                                        |
+            | 409         | `DUPLICATE_RELATIONSHIP`    | Conflict with requested proxy role.                                                                                                       |
+            | 422         | `INVALID_NHS_NUMBER`        | Invalid NHS number.                                                                                                                |
+            | 422         | `INVALID_PATIENT_AGE`       | Patient age is invalid.                                                                                                                   |
+            | 422         | `MISSING_EVIDENCE`          | Evidence of responsibility is missing.                                                                                                    |
+            | 429         | `THROTTLED`                 | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
+
           content:
             application/fhir+json:
               schema:
@@ -556,24 +571,10 @@ paths:
                   $ref: "./examples/responses/POST_Consent/errors/invalid_performer_identifier_error.yaml#/PostConsentInvalidPerformerIdentifierError"
                 postConsentInvalidAccessLevel:
                   $ref: "./examples/responses/POST_Consent/errors/invalid_access_level_error.yaml#/PostConsentInvalidAccessLevelError"
-        "422":
-          description: Business rule validation failed
-          content:
-            application/fhir+json:
-              schema:
-                $ref: "#/components/schemas/OperationOutcome"
-              examples:
                 postConsentMissingEvidence:
                   $ref: "./examples/responses/POST_Consent/errors/invalid_evidence_error.yaml#/PostConsentInvalidEvidenceError"
                 postConsentInvalidPatientAge:
                   $ref: "./examples/responses/POST_Consent/errors/invalid_patient_age_error.yaml#/PostConsentInvalidPatientAgeError"
-        "409":
-          description: "Conflict with requested proxy role"
-          content:
-            application/fhir+json:
-              schema:
-                $ref: "#/components/schemas/OperationOutcome"
-              examples:
                 postConsentDuplicateRelationship:
                   $ref: "./examples/responses/POST_Consent/errors/duplicate_relationship_error.yaml#/PostConsentDuplicateRelationshipError"
 
