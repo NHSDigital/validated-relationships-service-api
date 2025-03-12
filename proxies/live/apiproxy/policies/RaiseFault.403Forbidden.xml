@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ This policy raises a 401 error response for an invalid or missing access token.
+
+ Raisefault policies stop the execution of the current flow and move to the error flow, which returns the error response defined here to the requesting application.
+
+ For more information on RaiseFault policies within Apigee see the following resource:
+    * https://docs.apigee.com/api-platform/reference/policies/raise-fault-policy
+-->
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RaiseFault.403Forbidden">
+    <DisplayName>RaiseFault.403Forbidden</DisplayName>
+    <Properties/>
+    <FaultResponse>
+        <Set>
+            <Headers>
+              <Header name="Content-Type">application/fhir+json</Header>
+            </Headers>
+            <StatusCode>403</StatusCode>
+            <ReasonPhrase>Forbidden</ReasonPhrase>
+            <Payload>
+                {
+                  "issue": [
+                      {
+                          "code": "forbidden",
+                          "details": {
+                              "coding": [
+                                  {
+                                      "code": "FORBIDDEN",
+                                      "display": "Access Denied",
+                                      "system": "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode",
+                                      "version": "1",
+                                  }
+                              ]
+                          },
+                          "diagnostics": "Access denied to resource.",
+                          "severity": "error",
+                      }
+                  ],
+                  "resourceType": "OperationOutcome",
+              }
+            </Payload>
+        </Set>
+    </FaultResponse>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>
