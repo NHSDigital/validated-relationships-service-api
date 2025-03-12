@@ -201,7 +201,7 @@ def test_get_consent(
             201,
             "https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/9000000017",
         ),
-        ("9000000000", POST_CONSENT__PERFORMER_IDENTIFIER_ERROR, 400, None),
+        ("9000000000", POST_CONSENT__PERFORMER_IDENTIFIER_ERROR, 422, None),
         ("9000000049", POST_CONSENT__DUPLICATE_RELATIONSHIP_ERROR, 409, None),
         ("9000000041", POST_CONSENT__INVALID_PATIENT_AGE_ERROR, 422, None),
         ("9000000033", POST_CONSENT__INVALID_EVIDENCE_ERROR, 422, None),

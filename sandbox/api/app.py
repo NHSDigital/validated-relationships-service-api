@@ -150,7 +150,7 @@ def post_consent() -> Union[dict, tuple]:
 
         # Invalid access level
         elif patient_identifier == "9000000025":
-            response = generate_response_from_example(POST_CONSENT__INVALID_ACCESS_LEVEL_ERROR, 400)
+            response = generate_response_from_example(POST_CONSENT__INVALID_ACCESS_LEVEL_ERROR, 403)
 
         # Missing required evidence
         elif patient_identifier == "9000000033":
