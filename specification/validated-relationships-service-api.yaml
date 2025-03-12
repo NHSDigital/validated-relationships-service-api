@@ -3,7 +3,7 @@
 openapi: "3.0.0"
 info:
   title: "Validated Relationships Service API"
-  version: "1.3.2"
+  version: "1.3.3"
   description: |
     ## Overview
     Use this API to access the Validated Relationships Service - the national electronic database of relationships
@@ -1948,7 +1948,7 @@ components:
             $ref: "#/components/schemas/Reference"
           description: "Individuals or organizations that agreed to the consent."
         provision:
-          type: object
+          type: array
           maxItems: 1
           items:
             $ref: "#/components/schemas/Provision"
