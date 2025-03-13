@@ -1,0 +1,16 @@
+PostConsentMissingIdentifierSystemError:
+  summary: Missing Identifier System Error
+  description: Error response for missing identifier system
+  value:
+    issue:
+      - code: invalid
+        details:
+          coding:
+            - code: MISSING_IDENTIFIER_SYSTEM
+              display: Required values are missing.
+              system: https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode
+              version: "1"
+        diagnostics: Unable to determine the patient identifier system
+        expression: patient.identifier.system
+        severity: error
+    resourceType: OperationOutcome

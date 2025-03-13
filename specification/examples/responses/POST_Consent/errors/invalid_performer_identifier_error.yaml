@@ -1,6 +1,6 @@
 PostConsentInvalidPerformerIdentifierError:
   summary: Bad request performer identifier invalid
-  description: Error response bundle for an invalid performer NHS number
+  description: Error response for an invalid performer NHS number
   value:
     issue:
       - code: invalid
