@@ -547,7 +547,8 @@ paths:
 
             | HTTP status | Error code                  | Description                                                                                                                               |
             | ----------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-            | 400         | `MISSING_IDENTIFIER`        | Missing performer or patient identifier. For details, see the `diagnostics` field.                                                        |
+            | 400         | `MISSING_IDENTIFIER_VALUE`  | Missing performer or patient identifier. For details, see the `diagnostics` field.                                                        |
+            | 400         | `MISSING_IDENTIFIER_SYSTEM` | Missing performer or patient identifier system. For details, see the `diagnostics` field.                                                 |
             | 400         | `MISSING_STATUS`            | Missing status.                                                                                                                           |
             | 400         | `MISSING_SCOPE`             | Missing scope.                                                                                                                            |
             | 400         | `MISSING_CATEGORY`          | Missing category.                                                                                                                         |
@@ -558,7 +559,8 @@ paths:
             | 405         | `METHOD_NOT_ALLOWED`        | The method is not allowed.                                                                                                                |
             | 408         | `TIMEOUT`                   | Request timed out.                                                                                                                        |
             | 409         | `DUPLICATE_RELATIONSHIP`    | Conflict with requested proxy role.                                                                                                       |
-            | 422         | `INVALID_IDENTIFIER`        | Invalid performer or patient identifier. For details, see the `diagnostics` field.                                                        |
+            | 422         | `INVALID_IDENTIFIER_VALUE`  | Invalid performer or patient identifier value. For details, see the `diagnostics` field.                                                  |
+            | 422         | `INVALID_IDENTIFIER_SYSTEM` | Invalid performer or patient identifier system. For details, see the `diagnostics` field.                                                 |
             | 422         | `INVALID_STATUS`            | Invalid status.                                                                                                                           |
             | 422         | `INVALID_SCOPE`             | Invalid scope.                                                                                                                            |
             | 422         | `INVALID_CATEGORY`          | Invalid category.                                                                                                                         |
