@@ -1,11 +1,11 @@
 {
 	"info": {
-		"_postman_id": "9dfa49f0-cd05-4c28-ab69-c098e2121954",
+		"_postman_id": "069081b1-ce6b-422e-b620-90bc47c47c04",
 		"name": "Validate Relationship Service Sandbox 07/03/25",
 		"description": "Example usage of the Validate Relationship Service (VRS) sandbox.\n\nFull specification is available at [https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "21394218",
-		"_collection_link": "https://www.postman.com/kamran-bjss/workspace/nhs-validate-relationship-service/collection/21394218-9dfa49f0-cd05-4c28-ab69-c098e2121954?action=share&source=collection_link&creator=21394218"
+		"_exporter_id": "34042403",
+		"_collection_link": "https://www.postman.com/jackplowman2/validate-relationship-service-sandbox-12-03-25/collection/xdqd3jw/validate-relationship-service-sandbox-07-03-25?action=share&source=collection_link&creator=34042403"
 	},
 	"item": [
 		{
@@ -4829,14 +4829,14 @@
 									"    \"issue\": [",
 									"        {",
 									"            \"code\": \"invalid\",",
-									"            \"diagnostics\": \"Performer identifier is not a valid NHS number.\",",
+									"            \"diagnostics\": \"Not a valid NHS Number provided for the Performer identifier parameter\",",
 									"            \"details\": {",
 									"                \"coding\": [",
 									"                    {",
-									"                        \"code\": \"INVALID_NHS_NUMBER\",",
-									"                        \"display\": \"Performer identifier is invalid.\",",
 									"                        \"system\": \"https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode\",",
-									"                        \"version\": \"1\"",
+									"                        \"version\": \"1\",",
+									"                        \"code\": \"INVALID_IDENTIFIER\",",
+									"                        \"display\": \"Provided value is invalid\"",
 									"                    }",
 									"                ]",
 									"            },",
@@ -4846,8 +4846,8 @@
 									"    \"resourceType\": \"OperationOutcome\"",
 									"}",
 									"",
-									"pm.test(\"Status code is 400\", function () {",
-									"    pm.response.to.have.status(400);",
+									"pm.test(\"Status code is 422\", function () {",
+									"    pm.response.to.have.status(422);",
 									"});",
 									"",
 									"pm.test(\"Should have correct response body\", () => {",
@@ -4867,207 +4867,6 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"resourceType\": \"Consent\",\n    \"status\": \"active\",\n    \"scope\": {\n        \"coding\": [\n            {\n                \"system\": \"http://terminology.hl7.org/CodeSystem/consentscope\",\n                \"code\": \"patient-privacy\",\n                \"display\": \"Privacy Consent\"\n            }\n        ],\n        \"text\": \"Patient Privacy Consent\"\n    },\n    \"category\": [\n        {\n            \"coding\": [\n                {\n                    \"system\": \"http://terminology.hl7.org/CodeSystem/v3-ActCode\",\n                    \"code\": \"INFA\",\n                    \"display\": \"Information Access\"\n                }\n            ],\n            \"text\": \"Information Access Consent\"\n        }\n    ],\n    \"patient\": {\n        \"type\": \"Patient\",\n        \"identifier\": {\n            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n            \"value\": \"9000000012\"\n        }\n    },\n    \"dateTime\": \"2025-02-11T14:30:00Z\",\n    \"performer\": [\n        {\n            \"type\": \"RelatedPerson\",\n            \"identifier\": {\n                \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                \"value\": \"9000000000\"\n            }\n        }\n    ],\n    \"provision\": {\n        \"period\": {\n            \"start\": \"2025-02-11\"\n        },\n        \"actor\": [\n            {\n                \"role\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",\n                            \"code\": \"GUARD\",\n                            \"display\": \"Guardian\"\n                        }\n                    ]\n                },\n                \"reference\": {\n                    \"type\": \"RelatedPerson\",\n                    \"identifier\": {\n                        \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                        \"value\": \"9000000000\"\n                    }\n                }\n            }\n        ]\n    },\n    \"extension\": [\n        {\n            \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n            \"valueCodeableConcept\": {\n                \"coding\": [\n                    {\n                        \"system\": \"http://terminology.hl7.org/CodeSystem/consent-reason\",\n                        \"code\": \"TBC\",\n                        \"display\": \"TBC\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{api_base_url}}/Consent",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"Consent"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Missing required evidence",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"const expectedResponseBody = {",
-									"    \"issue\": [",
-									"        {",
-									"            \"code\": \"invalid\",",
-									"            \"diagnostics\": \"Missing evidence of responsibility.\",",
-									"            \"details\": {",
-									"                \"coding\": [",
-									"                    {",
-									"                        \"code\": \"MISSING_EVIDENCE\",",
-									"                        \"display\": \"Evidence of Responsibility is required.\",",
-									"                        \"system\": \"https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode\",",
-									"                        \"version\": \"1\"",
-									"                    }",
-									"                ]",
-									"            },",
-									"            \"severity\": \"error\"",
-									"        }",
-									"    ],",
-									"    \"resourceType\": \"OperationOutcome\"",
-									"}",
-									"",
-									"pm.test(\"Status code is 422\", function () {",
-									"    pm.response.to.have.status(422);",
-									"});",
-									"",
-									"pm.test(\"Should have correct response body\", () => {",
-									"    var responseJson = pm.response.json();",
-									"    pm.expect(responseJson).to.eql(expectedResponseBody);",
-									"});",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"resourceType\": \"Consent\",\n    \"status\": \"active\",\n    \"scope\": {\n        \"coding\": [\n            {\n                \"system\": \"http://terminology.hl7.org/CodeSystem/consentscope\",\n                \"code\": \"patient-privacy\",\n                \"display\": \"Privacy Consent\"\n            }\n        ],\n        \"text\": \"Patient Privacy Consent\"\n    },\n    \"category\": [\n        {\n            \"coding\": [\n                {\n                    \"system\": \"http://terminology.hl7.org/CodeSystem/v3-ActCode\",\n                    \"code\": \"INFA\",\n                    \"display\": \"Information Access\"\n                }\n            ],\n            \"text\": \"Information Access Consent\"\n        }\n    ],\n    \"patient\": {\n        \"type\": \"Patient\",\n        \"identifier\": {\n            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n            \"value\": \"9000000012\"\n        }\n    },\n    \"dateTime\": \"2025-02-11T14:30:00Z\",\n    \"performer\": [\n        {\n            \"type\": \"RelatedPerson\",\n            \"identifier\": {\n                \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                \"value\": \"9000000033\"\n            }\n        }\n    ],\n    \"provision\": {\n        \"period\": {\n            \"start\": \"2025-02-11\",\n            \"end\": \"2026-02-11\"\n        },\n        \"actor\": [\n            {\n                \"role\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",\n                            \"code\": \"PRN\",\n                            \"display\": \"Parent\"\n                        }\n                    ]\n                },\n                \"reference\": {\n                    \"type\": \"RelatedPerson\",\n                    \"identifier\": {\n                        \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                        \"value\": \"9000000033\"\n                    }\n                }\n            }\n        ]\n    },\n    \"extension\": [\n        {\n            \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n            \"valueCodeableConcept\": {\n                \"coding\": [\n                    {\n                        \"system\": \"http://terminology.hl7.org/CodeSystem/consent-reason\",\n                        \"code\": \"TBC\",\n                        \"display\": \"TBC\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{api_base_url}}/Consent",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"Consent"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Invalid access level",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"const expectedResponseBody = {",
-									"    \"issue\": [",
-									"        {",
-									"            \"code\": \"invalid\",",
-									"            \"diagnostics\": \"Access Level Code is not a valid.\",",
-									"            \"details\": {",
-									"                \"coding\": [",
-									"                    {",
-									"                        \"code\": \"INVALID_ACCESS_LEVEL\",",
-									"                        \"display\": \"Access Level is invalid.\",",
-									"                        \"system\": \"https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode\",",
-									"                        \"version\": \"1\"",
-									"                    }",
-									"                ]",
-									"            },",
-									"            \"severity\": \"error\"",
-									"        }",
-									"    ],",
-									"    \"resourceType\": \"OperationOutcome\"",
-									"}",
-									"",
-									"pm.test(\"Status code is 400\", function () {",
-									"    pm.response.to.have.status(400);",
-									"});",
-									"",
-									"pm.test(\"Should have correct response body\", () => {",
-									"    var responseJson = pm.response.json();",
-									"    pm.expect(responseJson).to.eql(expectedResponseBody);",
-									"});",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"resourceType\": \"Consent\",\n    \"status\": \"active\",\n    \"scope\": {\n        \"coding\": [\n            {\n                \"system\": \"http://terminology.hl7.org/CodeSystem/consentscope\",\n                \"code\": \"patient-privacy\",\n                \"display\": \"Privacy Consent\"\n            }\n        ],\n        \"text\": \"Patient Privacy Consent\"\n    },\n    \"category\": [\n        {\n            \"coding\": [\n                {\n                    \"system\": \"http://terminology.hl7.org/CodeSystem/v3-ActCode\",\n                    \"code\": \"INFA\",\n                    \"display\": \"Information Access\"\n                }\n            ],\n            \"text\": \"Information Access Consent\"\n        }\n    ],\n    \"patient\": {\n        \"type\": \"Patient\",\n        \"identifier\": {\n            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n            \"value\": \"9000000000\"\n        }\n    },\n    \"dateTime\": \"2025-02-11T14:30:00Z\",\n    \"performer\": [\n        {\n            \"type\": \"RelatedPerson\",\n            \"identifier\": {\n                \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                \"value\": \"9000000025\"\n            }\n        }\n    ],\n    \"provision\": {\n        \"period\": {\n            \"start\": \"2025-02-11\"\n        },\n        \"actor\": [\n            {\n                \"role\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",\n                            \"code\": \"GUARD\",\n                            \"display\": \"Guardian\"\n                        }\n                    ]\n                },\n                \"reference\": {\n                    \"type\": \"RelatedPerson\",\n                    \"identifier\": {\n                        \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                        \"value\": \"9000000025\"\n                    }\n                }\n            }\n        ]\n    },\n    \"extension\": [\n        {\n            \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n            \"valueCodeableConcept\": {\n                \"coding\": [\n                    {\n                        \"system\": \"http://terminology.hl7.org/CodeSystem/consent-reason\",\n                        \"code\": \"TBC\",\n                        \"display\": \"TBC\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{api_base_url}}/Consent",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"Consent"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Patient age validation failure",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"const expectedResponseBody = {",
-									"    \"issue\": [",
-									"        {",
-									"            \"code\": \"invalid\",",
-									"            \"diagnostics\": \"Patient age failed business validation.\",",
-									"            \"details\": {",
-									"                \"coding\": [",
-									"                    {",
-									"                        \"code\": \"INVALID_PATIENT_AGE\",",
-									"                        \"display\": \"Patient age is invalid.\",",
-									"                        \"system\": \"https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode\",",
-									"                        \"version\": \"1\"",
-									"                    }",
-									"                ]",
-									"            },",
-									"            \"severity\": \"error\"",
-									"        }",
-									"    ],",
-									"    \"resourceType\": \"OperationOutcome\"",
-									"}",
-									"",
-									"pm.test(\"Status code is 422\", function () {",
-									"    pm.response.to.have.status(422);",
-									"});",
-									"",
-									"pm.test(\"Should have correct response body\", () => {",
-									"    var responseJson = pm.response.json();",
-									"    pm.expect(responseJson).to.eql(expectedResponseBody);",
-									"});",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"resourceType\": \"Consent\",\n    \"status\": \"active\",\n    \"scope\": {\n        \"coding\": [\n            {\n                \"system\": \"http://terminology.hl7.org/CodeSystem/consentscope\",\n                \"code\": \"patient-privacy\",\n                \"display\": \"Privacy Consent\"\n            }\n        ],\n        \"text\": \"Patient Privacy Consent\"\n    },\n    \"category\": [\n        {\n            \"coding\": [\n                {\n                    \"system\": \"http://terminology.hl7.org/CodeSystem/v3-ActCode\",\n                    \"code\": \"INFA\",\n                    \"display\": \"Information Access\"\n                }\n            ],\n            \"text\": \"Information Access Consent\"\n        }\n    ],\n    \"patient\": {\n        \"type\": \"Patient\",\n        \"identifier\": {\n            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n            \"value\": \"9000000000\"\n        }\n    },\n    \"dateTime\": \"2025-02-11T14:30:00Z\",\n    \"performer\": [\n        {\n            \"type\": \"RelatedPerson\",\n            \"identifier\": {\n                \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                \"value\": \"9000000041\"\n            }\n        }\n    ],\n    \"provision\": {\n        \"period\": {\n            \"start\": \"2025-02-11\"\n        },\n        \"actor\": [\n            {\n                \"role\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",\n                            \"code\": \"GUARD\",\n                            \"display\": \"Guardian\"\n                        }\n                    ]\n                },\n                \"reference\": {\n                    \"type\": \"RelatedPerson\",\n                    \"identifier\": {\n                        \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                        \"value\": \"9000000041\"\n                    }\n                }\n            }\n        ]\n    },\n    \"extension\": [\n        {\n            \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n            \"valueCodeableConcept\": {\n                \"coding\": [\n                    {\n                        \"system\": \"http://terminology.hl7.org/CodeSystem/consent-reason\",\n                        \"code\": \"TBC\",\n                        \"display\": \"TBC\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
