@@ -11,6 +11,6 @@ PostConsentInvalidIdentifierValueError:
               system: https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode
               version: "1"
         diagnostics: Performer identifier value is invalid
-        expression: performer.identifier.value
+        expression: performer.[0].identifier.value
         severity: error
     resourceType: OperationOutcome
