@@ -1940,10 +1940,7 @@ components:
             $ref: "#/components/schemas/Reference"
           description: "Individuals or organizations that agreed to the consent."
         provision:
-          type: array
-          maxItems: 1
-          items:
-            $ref: "#/components/schemas/Provision"
+          $ref: "#/components/schemas/Provision"
         extension:
           type: array
           description: Model the status reason.
