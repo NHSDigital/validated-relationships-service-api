@@ -21,11 +21,11 @@
                 <Name>AddUserAuthHeaders</Name>
             </Step>
             <Step>
-                <Name>RaiseFault.401Unauthorized</Name>
+                <Name>RaiseFault.403Forbidden</Name>
                 <Condition>accesstoken.auth_level != "aal3" and proxy.pathsuffix = "/FHIR/R4/Consent" and request.verb = "POST"</Condition>
             </Step>
             <Step>
-                <Name>RaiseFault.401Unauthorized</Name>
+                <Name>RaiseFault.403Forbidden</Name>
                 <Condition>accesstoken.auth_level != "p9" and (proxy.pathsuffix != "/FHIR/R4/Consent" or request.verb != "POST")</Condition>
             </Step>
             <Step>
