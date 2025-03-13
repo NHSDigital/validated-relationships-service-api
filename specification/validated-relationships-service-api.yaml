@@ -547,6 +547,7 @@ paths:
 
             | HTTP status | Error code                  | Description                                                                                                                               |
             | ----------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+            | 400         | `BAD_REQUEST`               | Bad request.                                                                                                                              |
             | 400         | `MISSING_IDENTIFIER_VALUE`  | Missing performer or patient identifier. For details, see the `diagnostics` field.                                                        |
             | 400         | `MISSING_IDENTIFIER_SYSTEM` | Missing performer or patient identifier system. For details, see the `diagnostics` field.                                                 |
             | 400         | `MISSING_STATUS`            | Missing status.                                                                                                                           |
