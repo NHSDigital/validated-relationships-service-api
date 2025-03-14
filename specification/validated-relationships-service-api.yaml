@@ -550,6 +550,8 @@ paths:
             | 400         | `BAD_REQUEST`               | Bad request.                                                                                                                              |                                                                                                                             |
             | 400         | `MISSING_IDENTIFIER_VALUE`  | Missing performer or patient identifier.                                                                                                  |
             | 400         | `MISSING_IDENTIFIER_SYSTEM` | Missing performer or patient identifier system.                                                                                           |
+            | 400         | `MISSING_PATIENT`           | Missing patient.                                                                                                                          |
+            | 400         | `MISSING_PERFORMER`         | Missing performer.                                                                                                                        |
             | 400         | `MISSING_STATUS`            | Missing status.                                                                                                                           |
             | 400         | `MISSING_SCOPE`             | Missing scope.                                                                                                                            |
             | 400         | `MISSING_CATEGORY`          | Missing category.                                                                                                                         |
@@ -562,6 +564,8 @@ paths:
             | 409         | `DUPLICATE_RELATIONSHIP`    | Conflict with requested proxy role.                                                                                                       |
             | 422         | `INVALID_IDENTIFIER_VALUE`  | Invalid performer or patient identifier value.                                                                                            |
             | 422         | `INVALID_IDENTIFIER_SYSTEM` | Invalid performer or patient identifier system.                                                                                           |
+            | 422         | `INVALID_PATIENT`           | Invalid patient.                                                                                                                          |
+            | 422         | `INVALID_PERFORMER`         | Invalid performer.                                                                                                                        |
             | 422         | `INVALID_STATUS`            | Invalid status.                                                                                                                           |
             | 422         | `INVALID_SCOPE`             | Invalid scope.                                                                                                                            |
             | 422         | `INVALID_CATEGORY`          | Invalid category.                                                                                                                         |
