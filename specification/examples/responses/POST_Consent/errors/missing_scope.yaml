@@ -1,0 +1,16 @@
+PostConsentMissingScopeError:
+  summary: Missing Scope Error
+  description: Error response for missing scope
+  value:
+    issue:
+      - code: invalid
+        diagnostics: Unable to find scope
+        details:
+          coding:
+            - code: MISSING_SCOPE
+              display: Required values are missing.
+              system: https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode
+              version: "1"
+        expression: scope
+        severity: error
+    resourceType: OperationOutcome

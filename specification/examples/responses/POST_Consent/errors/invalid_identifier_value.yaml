@@ -1,0 +1,16 @@
+PostConsentInvalidIdentifierValueError:
+  summary: Invalid Identifier Value Error
+  description: Error response for invalid identifier value
+  value:
+    issue:
+      - code: invalid
+        details:
+          coding:
+            - code: INVALID_IDENTIFIER_VALUE
+              display: Invalid identifier value.
+              system: https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode
+              version: "1"
+        diagnostics: Performer identifier value is invalid
+        expression: performer[0].identifier.value
+        severity: error
+    resourceType: OperationOutcome
