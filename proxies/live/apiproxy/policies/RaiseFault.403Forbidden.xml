@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!--
- This policy raises a 401 error response for an invalid or missing access token.
+ This policy raises a 403 error response for invalid authentication level
 
  Raisefault policies stop the execution of the current flow and move to the error flow, which returns the error response defined here to the requesting application.
 
