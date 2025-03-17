@@ -28,15 +28,15 @@
                                       "code": "FORBIDDEN",
                                       "display": "Access Denied",
                                       "system": "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode",
-                                      "version": "1",
+                                      "version": "1"
                                   }
                               ]
                           },
                           "diagnostics": "Access denied to resource.",
-                          "severity": "error",
+                          "severity": "error"
                       }
                   ],
-                  "resourceType": "OperationOutcome",
+                  "resourceType": "OperationOutcome"
               }
             </Payload>
         </Set>
