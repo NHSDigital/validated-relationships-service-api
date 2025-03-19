@@ -1,0 +1,15 @@
+PatchConsentInvalidStatusCodeError:
+  summary: Bad request invalid status code
+  description: 422 error response bundle for a request with an invalid status code
+  value:
+    issue:
+      - code: invalid
+        diagnostics: "Invalid status code."
+        details:
+          coding:
+            - code: "INVALID_STATUS_CODE"
+              display: "Status code is invalid."
+              system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
+              version: '1'
+        severity: error
+    resourceType: "OperationOutcome"
