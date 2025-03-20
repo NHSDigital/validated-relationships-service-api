@@ -1,0 +1,15 @@
+PatchConsentInvalidStateTransitionError:
+  summary: Bad request invalid state transition
+  description: 422 error response for a request with an invalid state transition
+  value:
+    issue:
+      - code: invalid
+        diagnostics: "Patch attempting invalid status change."
+        details:
+          coding:
+            - code: "INVALID_STATE_TRANSITION"
+              display: "Status change is invalid."
+              system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
+              version: '1'
+        severity: error
+    resourceType: "OperationOutcome"

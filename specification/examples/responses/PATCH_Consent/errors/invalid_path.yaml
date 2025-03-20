@@ -1,0 +1,15 @@
+PatchConsentInvalidPathError:
+  summary: Bad request path is invalid
+  description: 400 error response for patch targeting non-existent element
+  value:
+    issue:
+      - code: invalid
+        diagnostics: "Patch targeting non-existent element."
+        details:
+          coding:
+            - code: "INVALID_PATCH_PATH"
+              display: "Patch target is invalid."
+              system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
+              version: '1'
+        severity: error
+    resourceType: "OperationOutcome"

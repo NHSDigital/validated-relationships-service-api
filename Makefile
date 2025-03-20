@@ -24,6 +24,9 @@ lint:
 format:
 	find . -name '*.py' -not -path '**/.venv/*' | xargs poetry run black --check --line-length 120
 
+format-apply:
+	find . -name '*.py' -not -path '**/.venv/*' | xargs poetry run black --line-length 120
+
 #Removes build/ + dist/ directories
 clean:
 	rm -rf build

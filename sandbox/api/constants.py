@@ -53,6 +53,15 @@ POST_CONSENT__SUCCESS = f"{POST_CONSENT__DIRECTORY}success.yaml"
 POST_CONSENT__DUPLICATE_RELATIONSHIP_ERROR = f"{POST_CONSENT__DIRECTORY}errors/duplicate_relationship_error.yaml"
 POST_CONSENT__PERFORMER_IDENTIFIER_ERROR = f"{POST_CONSENT__DIRECTORY}errors/invalid_performer_identifier_error.yaml"
 
+# PATCH Consent
+PATCH_CONSENT__DIRECTORY = "./api/examples/PATCH_Consent/"
+PATCH_CONSENT__SUCCESS = f"{PATCH_CONSENT__DIRECTORY}success.yaml"
+PATCH_CONSENT__INVALID_PATCH_FORMAT = f"{PATCH_CONSENT__DIRECTORY}errors/invalid_patch_format.yaml"
+PATCH_CONSENT__INVALID_PATH = f"{PATCH_CONSENT__DIRECTORY}errors/invalid_path.yaml"
+PATCH_CONSENT__INVALID_STATUS_CODE = f"{PATCH_CONSENT__DIRECTORY}errors/invalid_status_code.yaml"
+PATCH_CONSENT__RESOURCE_NOT_FOUND = f"{PATCH_CONSENT__DIRECTORY}errors/resource_not_found.yaml"
+PATCH_CONSENT__INVALID_STATE_TRANSITION = f"{PATCH_CONSENT__DIRECTORY}errors/invalid_state_transition.yaml"
+
 QR_DIRECTORY = "./api/examples/POST_QuestionnaireResponse/"
 QUESTIONNAIRE_RESPONSE__SUCCESS = f"{QR_DIRECTORY}success.yaml"
 

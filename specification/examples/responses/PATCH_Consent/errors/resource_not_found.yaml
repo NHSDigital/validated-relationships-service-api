@@ -1,0 +1,16 @@
+PatchConsentRelationshipNotFoundError:
+  summary: Bad request for proxy role that is not found
+  description: 404 error response for proxy role that is not found
+  value:
+    issue:
+      - code: invalid
+        diagnostics: "Proxy role not found."
+        details:
+          coding:
+            - code: "RESOURCE_NOT_FOUND"
+              display: "Request must be for a existing proxy role."
+              system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
+              version: '1'
+        severity: error
+    resourceType: "OperationOutcome"
+

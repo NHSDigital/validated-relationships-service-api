@@ -1,0 +1,15 @@
+PatchConsentInvalidPatchFormatError:
+  summary: Bad request format is invalid
+  description: 400 error response for a malformed JSON patch document
+  value:
+    issue:
+      - code: invalid
+        diagnostics: "Malformed JSON patch document."
+        details:
+          coding:
+            - code: "INVALID_PATCH_FORMAT"
+              display: "Request format is invalid."
+              system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
+              version: '1'
+        severity: error
+    resourceType: "OperationOutcome"
