@@ -123,7 +123,7 @@ info:
     * only covers a limited set of scenarios
     * is open access, so does not allow you to test authorisation
 
-    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://god.gw.postman.com/run-collection/34042403-069081b1-ce6b-422e-b620-90bc47c47c04?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D34042403-069081b1-ce6b-422e-b620-90bc47c47c04%26entityType%3Dcollection%26workspaceId%3Dee3037ff-56fa-4fa4-aa0d-beca02ce8ca7)
+    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/21394218-a23a7596-3e8f-4f87-8a47-0ecfb816b2a8?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D21394218-a23a7596-3e8f-4f87-8a47-0ecfb816b2a8%26entityType%3Dcollection%26workspaceId%3D2ac9d477-3fec-49f8-8628-329d811516c2)
 
     ### Integration testing
 
@@ -628,16 +628,22 @@ paths:
         * Status changes must use valid status codes from <http://hl7.org/fhir/consent-state-codes>
 
         ## Sandbox test scenarios
-        | Scenario                        | Request                                   | Response                                                      |
-        | ------------------------------- | ----------------------------------------- | ------------------------------------------------------------- |
-        | Successful status update        | Valid patch changing status to 'active'   | HTTP Status 200 and OperationOutcome                          |
-        | Successful access level update  | Valid patch modifying the role end date   | HTTP Status 200 and OperationOutcome                          |
-        | Multiple valid changes          | Valid patch with multiple operations      | HTTP Status 200 and OperationOutcome                          |
-        | Invalid patch format            | Malformed JSON patch document             | HTTP Status 400 and INVALID_PATCH_FORMAT error response       |
-        | Invalid path                    | Patch targeting non-existent element      | HTTP Status 400 and INVALID_PATCH_PATH error response         |
-        | Invalid status code             | Patch with invalid status value           | HTTP Status 422 and INVALID_STATUS_CODE error response        |
-        | Resource not found              | Patch for non-existent Consent            | HTTP Status 404 and RESOURCE_NOT_FOUND error response         |
-        | Invalid state transition        | Patch attempting invalid status change    | HTTP Status 422 and INVALID_STATE_TRANSITION error response   |
+        The sandbox supports a limited number of scenarios, and does not attempt to validate requests.  The returned response is dependant on the `id` parameters.
+
+        No changes are applied to any records.
+
+        See the postman collection for example requests.
+
+        | Scenario                        | Request                                                               | Response                                                      |
+        | ------------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------- |
+        | Successful status update        | Valid patch changing status to 'active', request with id 'c6f48e4d'   | HTTP Status 200 and OperationOutcome                          |
+        | Successful access level update  | Valid patch modifying the role end date, request with id '0c56a594'   | HTTP Status 200 and OperationOutcome                          |
+        | Multiple valid changes          | Valid patch with multiple operations, request with id 'b02ea26c'      | HTTP Status 200 and OperationOutcome                          |
+        | Invalid patch format            | Malformed JSON patch document, request with id '3a2679eb'             | HTTP Status 400 and INVALID_PATCH_FORMAT error response       |
+        | Invalid path                    | Patch targeting non-existent element, request with id '94df7c8f'      | HTTP Status 400 and INVALID_PATCH_PATH error response         |
+        | Invalid status code             | Patch with invalid status value, request with id '2a7b736d'           | HTTP Status 422 and INVALID_STATUS_CODE error response        |
+        | Resource not found              | Patch for non-existent Consent, request with an id not listed here    | HTTP Status 404 and RESOURCE_NOT_FOUND error response         |
+        | Invalid state transition        | Patch attempting invalid status change, request with id '6fb4361b'    | HTTP Status 422 and INVALID_STATE_TRANSITION error response   |
       parameters:
         - name: id
           in: path
@@ -645,6 +651,16 @@ paths:
           description: The logical id of the Consent resource to update
           schema:
             type: string
+          examples:
+            statusUpdate:
+              value: c6f48e4d
+              summary: Update consent status
+            updateProvision:
+              value: 0c56a594
+              summary: Set an end date for a role
+            multipleUpdates:
+              value: b02ea26c
+              summary: Set status to active with an end date
       requestBody:
         required: true
         content:
@@ -656,18 +672,27 @@ paths:
             examples:
               statusUpdate:
                 summary: Update consent status
+                description: |
+                  Example status change to inactive.
                 value:
                   - op: replace
                     path: /status
                     value: inactive
               updateProvision:
                 summary: Set an end date for a role
+                description: |
+                  Example apply end date to a relationship.
+                  The relationship will be considered as ended following this date.
                 value:
                   - op: replace
                     path: /provision/period/end
                     value: "2026-12-31"
               multipleUpdates:
                 summary: Set status to active with an end date
+                description: |
+                  Example of a combined update to a record.
+                  The status will be changed to inactive.
+                  The relationship will be considered as ended following this date.
                 value:
                   - op: replace
                     path: /status
@@ -695,9 +720,9 @@ paths:
                 $ref: "#/components/schemas/OperationOutcome"
               examples:
                 patchConsentInvalidPatchFormatError:
-                  $ref: "./examples/responses/PATCH_Consent/error.yaml#/PatchConsentInvalidPatchFormatError"
+                  $ref: "./examples/responses/PATCH_Consent/errors/invalid_patch_format.yaml#/PatchConsentInvalidPatchFormatError"
                 patchConsentInvalidPathError:
-                  $ref: "./examples/responses/PATCH_Consent/error.yaml#/PatchConsentInvalidPathError"
+                  $ref: "./examples/responses/PATCH_Consent/errors/invalid_path.yaml#/PatchConsentInvalidPathError"
 
         "404":
           description: Resource not found
@@ -707,7 +732,7 @@ paths:
                 $ref: "#/components/schemas/OperationOutcome"
               examples:
                 patchConsentRelationshipNotFoundError:
-                  $ref: "./examples/responses/PATCH_Consent/error.yaml#/PatchConsentRelationshipNotFoundError"
+                  $ref: "./examples/responses/PATCH_Consent/errors/resource_not_found.yaml#/PatchConsentRelationshipNotFoundError"
 
         "422":
           description: Business rule validation failed
@@ -717,9 +742,9 @@ paths:
                 $ref: "#/components/schemas/OperationOutcome"
               examples:
                 patchConsentInvalidStatusCodeError:
-                  $ref: "./examples/responses/PATCH_Consent/error.yaml#/PatchConsentInvalidStatusCodeError"
+                  $ref: "./examples/responses/PATCH_Consent/errors/invalid_status_code.yaml#/PatchConsentInvalidStatusCodeError"
                 patchConsentInvalidStateTransitionError:
-                  $ref: "./examples/responses/PATCH_Consent/error.yaml#/PatchConsentInvalidStateTransitionError"
+                  $ref: "./examples/responses/PATCH_Consent/errors/invalid_state_transition.yaml#/PatchConsentInvalidStateTransitionError"
 
 components:
   schemas:
