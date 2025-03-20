@@ -175,7 +175,6 @@ def patch_consent(identifier) -> Union[dict, tuple]:
         logger.debug("Received request to PATCH consent")
         # Validate body - validation is beyond the scope of the sandbox.
         # Assume all requests are valid
-        logger.debug(f"identifier {identifier}")
 
         if identifier == "c6f48e4d":
             # Successful status update
