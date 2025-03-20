@@ -1,6 +1,6 @@
 PatchConsentInvalidStateTransitionError:
   summary: Bad request invalid state transition
-  description: 422 error response bundle for a request with an invalid state transition
+  description: 422 error response for a request with an invalid state transition
   value:
     issue:
       - code: invalid

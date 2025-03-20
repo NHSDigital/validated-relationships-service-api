@@ -1,6 +1,6 @@
 PatchConsentInvalidStatusCodeError:
   summary: Bad request invalid status code
-  description: 422 error response bundle for a request with an invalid status code
+  description: 422 error response for a request with an invalid status code
   value:
     issue:
       - code: invalid

@@ -1,6 +1,6 @@
 PatchConsentRelationshipNotFoundError:
-  summary: Bad request for proxy role that ais not found
-  description: 404 error response bundle for proxy role that is not found
+  summary: Bad request for proxy role that is not found
+  description: 404 error response for proxy role that is not found
   value:
     issue:
       - code: invalid
