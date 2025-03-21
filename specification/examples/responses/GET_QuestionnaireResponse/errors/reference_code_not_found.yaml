@@ -1,0 +1,14 @@
+ReferenceCodeNotFound:
+  summary: Reference code not found
+  description: The provided reference code does not exist or was not found in the system.
+  value:
+    resourceType: "OperationOutcome"
+    issue:
+      - severity: "error"
+        code: "not-found"
+        details:
+          coding:
+            - system: "https://fhir.nhs.uk/CodeSystem/Spine-ErrorOrWarningCode"
+              code: "REFERENCE_CODE_NOT_FOUND"
+              display: "Reference code not found"
+        diagnostics: "The specified reference code was not found in the system."

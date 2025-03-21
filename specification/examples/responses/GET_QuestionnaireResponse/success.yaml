@@ -1,0 +1,47 @@
+GetQuestionnaireResponseSuccess:
+  summary: Successfully retrieved QuestionnaireResponse
+  description: A sample of the QuestionnaireResponse retrieved using a valid reference code.
+  value:
+    resourceType: "QuestionnaireResponse"
+    id: "HDJ2123F"
+    status: "completed"
+    authored: "2022-01-15T15:30:00+00:00"
+    subject:
+      identifier:
+        system: "https://fhir.nhs.uk/Id/nhs-number"
+        value: "9000000009"
+    source:
+      identifier:
+        system: "https://fhir.nhs.uk/Id/nhs-number"
+        value: "9000000017"
+    item:
+      - linkId: "proxy"
+        item:
+          - linkId: "proxy.nhsNumber"
+            answer:
+              - valueString: "9000000017"
+          - linkId: "proxy.relationship"
+            answer:
+              - valueString: "friend"
+      - linkId: "patient"
+        item:
+          - linkId: "patient.nhsNumber"
+            answer:
+              - valueString: "9000000009"
+          - linkId: "patient.firstName"
+            answer:
+              - valueString: "Jane"
+          - linkId: "patient.lastName"
+            answer:
+              - valueString: "Smith"
+          - linkId: "patient.dateOfBirth"
+            answer:
+              - valueDate: "1990-01-01"
+      - linkId: "accessRequest"
+        item:
+          - linkId: "accessRequest.type"
+            answer:
+              - valueString: "read"
+          - linkId: "accessRequest.reason"
+            answer:
+              - valueString: "I am helping Jane manage her healthcare"
