@@ -47,6 +47,8 @@ def schema_lookup(schema: str) -> str:
         return "#/components/schemas/RelatedPersonBundle"
     if schema == "operationoutcome":
         return "#/components/schemas/OperationOutcome"
+    if schema == "questionnaireresponse":
+        return "#/components/schemas/QuestionnaireResponse"
 
 
 def validate_consent(schema: dict, schema_ref: str, file: str) -> None:

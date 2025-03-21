@@ -142,3 +142,10 @@ schema-errors:
 		poetry run python scripts/validate_schema.py operationoutcome "$$(realpath $$file)"; \
 		echo -e "$(GREEN)Success!$(RESET)"; \
 	done
+
+schema-get-questionnaire:
+	@for file in specification/examples/responses/GET_QuestionnaireResponse/*.yaml; do \
+		echo "Processing $$file"; \
+		poetry run python scripts/validate_schema.py questionnaireresponse "$$(realpath $$file)"; \
+		echo -e "$(GREEN)Success!$(RESET)"; \
+	done

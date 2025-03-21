@@ -1,0 +1,14 @@
+QuestionnaireResponseNotFound:
+  summary: Questionnaire response not found
+  description: The Questionnaire response could not be found using the provided reference code.
+  value:
+    resourceType: "OperationOutcome"
+    issue:
+      - severity: "error"
+        code: "not-found"
+        details:
+          coding:
+            - system: "https://fhir.nhs.uk/CodeSystem/Spine-ErrorOrWarningCode"
+              code: "QUESTIONNAIRE_RESPONSE_NOT_FOUND"
+              display: "Questionnaire response not found"
+        diagnostics: "The Questionnaire response could not be found using the provided reference code."

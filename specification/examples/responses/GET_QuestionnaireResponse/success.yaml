@@ -1,0 +1,105 @@
+GetQuestionnaireResponseSuccess:
+  summary: Successfully retrieved QuestionnaireResponse
+  description: A sample of the QuestionnaireResponse retrieved using a valid reference code.
+  value:
+    resourceType: QuestionnaireResponse
+    status: "completed"
+    authored: "2024-07-15T09:43:03.280Z"
+    source:
+      type: "RelatedPerson"
+      identifier:
+        system: "https://fhir.nhs.uk/Id/nhs-number"
+        value: "9000000005"
+    subject:
+      type: "Patient"
+      identifier:
+        system: "https://fhir.nhs.uk/Id/nhs-number"
+        value: "9000000006"
+    questionnaire: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Questionnaire/01dc6813-3421-4d14-948d-a4888241add1"
+    item:
+      - linkId: "relatedPerson"
+        text: "Proxy details"
+        item:
+          - linkId: "relatedPerson_identifier"
+            text: "NHS number"
+            answer:
+              - valueString: "9000000005"
+
+          - linkId: "relatedPerson_name"
+            text: "Name"
+            item:
+              - linkId: "relatedPerson_name_first"
+                text: "First name"
+                answer:
+                  - valueString: "Jack"
+              - linkId: "relatedPerson_name_family"
+                text: "Last name"
+                answer:
+                  - valueString: "Jones"
+
+          - linkId: "relatedPerson_birthDate"
+            text: "Date of birth"
+            answer:
+              - valueDate: "1970-02-15"
+
+          - linkId: "relatedPerson_basisForAccess"
+            text: "Basis for Access"
+            answer:
+              - valueCoding:
+                  system: "https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole"
+                  code: "PRN"
+                  display: "Parent"
+
+          - linkId: "relatedPerson_relationship"
+            text: "Relationship"
+            answer:
+              - valueCoding:
+                  system: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+                  code: "PRN"
+                  display: "Parent"
+
+      - linkId: "patient"
+        text: "Patient details"
+        item:
+          - linkId: "patient_identifier"
+            text: "NHS number"
+            answer:
+              - valueString: "9000000006"
+          - linkId: "patient_name"
+            text: "Name"
+            item:
+              - linkId: "patient_name_first"
+                text: "First name"
+                answer:
+                  - valueString: "Jill"
+              - linkId: "patient_name_family"
+                text: "Last name"
+                answer:
+                  - valueString: "Jones"
+          - linkId: "patient_birthDate"
+            text: "Date of birth"
+            answer:
+              - valueDate: "1965-01-01"
+
+      - linkId: "requestedAccess"
+        text: "Requested access"
+        item:
+          - linkId: "requestedAccess_accessLevel"
+            text: "Requested access level"
+            answer:
+              - valueCoding:
+                  system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"
+                  code: "APPT"
+                  display: "Appointment Booking"
+              - valueCoding:
+                  system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"
+                  code: "VACC"
+                  display: "Vaccination Records"
+
+          - linkId: "requestedAccess_reasonsForAccess"
+            text: "Reason for access"
+            answer:
+              - valueCoding:
+                  system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-ReasonForAccess"
+                  code: "PRAC"
+                  display: "Practical Reasons"

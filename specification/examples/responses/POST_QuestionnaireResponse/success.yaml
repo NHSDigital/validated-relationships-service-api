@@ -8,5 +8,5 @@ PostQuestionnaireResponseSuccess:
         code: informational
         details:
           coding:
-            - code: "HDJ2123F"
-              display: "HDJ2123F"
+            - code: "19318ZGLAB"
+              display: "19318ZGLAB"
