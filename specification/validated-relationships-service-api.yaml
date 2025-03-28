@@ -532,7 +532,7 @@ paths:
             location:
               schema:
                 type: string
-                example: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/9000000009
+                example: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/1e58840b
               description: URL for the newly created proxy role
           content:
             application/fhir+json:
