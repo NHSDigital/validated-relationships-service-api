@@ -246,6 +246,87 @@ paths:
               examples:
                 internalServerError:
                   $ref: "./examples/responses/errors/internal-server-error.yaml#/InternalServerError"
+    get:
+      summary: Get a proxy access request
+      description: |
+        ## Overview
+        Retrieve a QuestionnaireResponse using its unique reference code. This endpoint returns the full 
+        QuestionnaireResponse document that was previously submitted.
+
+        ## Request Requirements
+        A valid reference code must be provided as a query parameter. This reference code is returned
+        when a QuestionnaireResponse is initially submitted via the POST endpoint.
+
+        ## Sandbox test scenarios
+
+        | Scenario                  | Request                          | Response                                      |
+        | ------------------------- | -------------------------------- | --------------------------------------------- |
+        | Valid reference code      | referenceCode=19318ZGLAB           | HTTP Status 200 with QuestionnaireResponse    |
+        | Invalid reference code    | referenceCode=INVALID            | HTTP Status 400 with error message            |
+        | Missing reference code    | No referenceCode parameter       | HTTP Status 400 with error message            |
+        | Non-existent reference    | referenceCode=ABC123XY           | HTTP Status 404 with error message            |
+
+      operationId: get-questionnaire-response
+      parameters:
+        - $ref: "#/components/parameters/BearerAuthorization"
+        - $ref: "#/components/parameters/RequestID"
+        - $ref: "#/components/parameters/CorrelationID"
+        - name: referenceCode
+          in: query
+          description: The unique reference code of the QuestionnaireResponse to retrieve
+          required: true
+          schema:
+            type: string
+            example: "19318ZGLAB"
+      responses:
+        "200":
+          description: QuestionnaireResponse successfully retrieved.
+          content:
+            application/fhir+json:
+              schema:
+                $ref: "#/components/schemas/QuestionnaireResponse"
+              examples:
+                getQuestionnaireResponseSuccess:
+                  $ref: "./examples/responses/GET_QuestionnaireResponse/success.yaml#/GetQuestionnaireResponseSuccess"
+        "4XX":
+          description: |
+            Errors will be returned for the first error encountered in the request. An error occurred as follows:
+
+            | HTTP status | Error code                         | Description                                                                                                                               |
+            | ----------- | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+            | 400         | `BAD_REQUEST`                      | Bad request.                                                                                                                              |
+            | 400         | `INVALID_REFERENCE_CODE`           | The reference code must be alphanumeric and exactly 10 characters long. |
+            | 400         | `MISSING_REFERENCE_CODE`           | The reference code is required but was not provided in the request. |
+            | 401         | `ACCESS_DENIED`                    | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
+            | 403         | `FORBIDDEN`                        | Access denied to resource.                                                                                                                |
+            | 404         | `QUESTIONNAIRE_RESPONSE_NOT_FOUND` | No questionnaire response was found for the provided reference code. |
+            | 404         | `INVALIDATED_RESOURCE`             | Resource that has been marked as invalid was requested - invalid resources cannot be retrieved                                            |
+            | 405         | `METHOD_NOT_ALLOWED`               | The method is not allowed.                                                                                                                |
+            | 408         | `TIMEOUT`                          | Request timed out.                                                                                                                        |
+            | 429         | `THROTTLED`                        | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
+
+          content:
+            application/fhir+json:
+              schema:
+                $ref: "#/components/schemas/OperationOutcome"
+              examples:
+                invalidReferenceCode:
+                  $ref: "./examples/responses/GET_QuestionnaireResponse/errors/invalid_reference_code.yaml#/InvalidReferenceCode"
+                missingReferenceCode:
+                  $ref: "./examples/responses/GET_QuestionnaireResponse/errors/missing_reference_code.yaml#/MissingReferenceCode"
+                referenceCodeNotFound:
+                  $ref: "./examples/responses/GET_QuestionnaireResponse/errors/questionnaire_response_not_found.yaml#/QuestionnaireResponseNotFound"
+        "5XX":
+          description: Server error
+          content:
+            application/fhir+json:
+              schema:
+                $ref: "#/components/schemas/OperationOutcome"
+              examples:
+                internalServerError:
+                  $ref: "./examples/responses/errors/internal-server-error.yaml#/InternalServerError"
+                downstreamServiceError:
+                  $ref: "./examples/responses/errors/downstream-service-error.yaml#/DownstreamServiceError"
 
   /RelatedPerson:
     get:

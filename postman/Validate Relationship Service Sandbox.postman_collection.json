@@ -17,9 +17,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"exec": [
-									""
-								],
+								"exec": [""],
 								"type": "text/javascript"
 							}
 						}
@@ -54,12 +52,8 @@
 						},
 						"url": {
 							"raw": "{{api_base_url}}/QuestionnaireResponse",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"QuestionnaireResponse"
-							]
+							"host": ["{{api_base_url}}"],
+							"path": ["QuestionnaireResponse"]
 						},
 						"description": "Example of an adult to child access request with the reference code returned"
 					},
@@ -71,9 +65,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"exec": [
-									""
-								],
+								"exec": [""],
 								"type": "text/javascript"
 							}
 						}
@@ -107,12 +99,8 @@
 						},
 						"url": {
 							"raw": "{{api_base_url}}/QuestionnaireResponse",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"QuestionnaireResponse"
-							]
+							"host": ["{{api_base_url}}"],
+							"path": ["QuestionnaireResponse"]
 						},
 						"description": "Example of an adult to adult access request where the patient can consent with the reference code returned"
 					},
@@ -124,9 +112,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"exec": [
-									""
-								],
+								"exec": [""],
 								"type": "text/javascript"
 							}
 						}
@@ -160,12 +146,8 @@
 						},
 						"url": {
 							"raw": "{{api_base_url}}/QuestionnaireResponse",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"QuestionnaireResponse"
-							]
+							"host": ["{{api_base_url}}"],
+							"path": ["QuestionnaireResponse"]
 						},
 						"description": "Example of an adult to adult access request where the patient cannot consent with the reference code returned"
 					},
@@ -177,9 +159,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"exec": [
-									""
-								],
+								"exec": [""],
 								"type": "text/javascript"
 							}
 						}
@@ -213,12 +193,8 @@
 						},
 						"url": {
 							"raw": "{{api_base_url}}/QuestionnaireResponse",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"QuestionnaireResponse"
-							]
+							"host": ["{{api_base_url}}"],
+							"path": ["QuestionnaireResponse"]
 						},
 						"description": "Example of an adult to adult access request where the patient is the applicant with the reference code returned"
 					},
@@ -230,9 +206,7 @@
 					"listen": "prerequest",
 					"script": {
 						"type": "text/javascript",
-						"exec": [
-							""
-						]
+						"exec": [""]
 					}
 				},
 				{
@@ -249,8 +223,8 @@
 							"            \"details\": {",
 							"                \"coding\": [",
 							"                    {",
-							"                        \"code\": \"HDJ2123F\",",
-							"                        \"display\": \"HDJ2123F\"",
+							"                        \"code\": \"19318ZGLAB\",",
+							"                        \"display\": \"19318ZGLAB\"",
 							"                    }",
 							"                ]",
 							"            }",
@@ -394,12 +368,8 @@
 						],
 						"url": {
 							"raw": "{{api_base_url}}/RelatedPerson?identifier=9000000017",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"RelatedPerson"
-							],
+							"host": ["{{api_base_url}}"],
+							"path": ["RelatedPerson"],
 							"query": [
 								{
 									"key": "identifier",
@@ -597,12 +567,8 @@
 						],
 						"url": {
 							"raw": "{{api_base_url}}/RelatedPerson?identifier=9000000017&_include=RelatedPerson:patient",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"RelatedPerson"
-							],
+							"host": ["{{api_base_url}}"],
+							"path": ["RelatedPerson"],
 							"query": [
 								{
 									"key": "identifier",
@@ -667,12 +633,8 @@
 						],
 						"url": {
 							"raw": "{{api_base_url}}/RelatedPerson?identifier=9000000033",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"RelatedPerson"
-							],
+							"host": ["{{api_base_url}}"],
+							"path": ["RelatedPerson"],
 							"query": [
 								{
 									"key": "identifier",
@@ -770,12 +732,8 @@
 						],
 						"url": {
 							"raw": "{{api_base_url}}/RelatedPerson?identifier=9000000017&patient:identifier=9000000009",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"RelatedPerson"
-							],
+							"host": ["{{api_base_url}}"],
+							"path": ["RelatedPerson"],
 							"query": [
 								{
 									"key": "identifier",
@@ -910,12 +868,8 @@
 						],
 						"url": {
 							"raw": "{{api_base_url}}/RelatedPerson?identifier=9000000017&patient:identifier=9000000009&_include=RelatedPerson:patient",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"RelatedPerson"
-							],
+							"host": ["{{api_base_url}}"],
+							"path": ["RelatedPerson"],
 							"query": [
 								{
 									"key": "identifier",
@@ -998,12 +952,8 @@
 						],
 						"url": {
 							"raw": "{{api_base_url}}/RelatedPerson",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"RelatedPerson"
-							]
+							"host": ["{{api_base_url}}"],
+							"path": ["RelatedPerson"]
 						},
 						"description": "Example of an error response when the NHS number is missing"
 					},
@@ -1073,12 +1023,8 @@
 						],
 						"url": {
 							"raw": "{{api_base_url}}/RelatedPerson?identifier=900000000",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"RelatedPerson"
-							],
+							"host": ["{{api_base_url}}"],
+							"path": ["RelatedPerson"],
 							"query": [
 								{
 									"key": "identifier",
@@ -1152,12 +1098,8 @@
 						],
 						"url": {
 							"raw": "{{api_base_url}}/RelatedPerson?identifier=https://fhir.nhs.uk/Id/nhs-number|A730675929",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"RelatedPerson"
-							],
+							"host": ["{{api_base_url}}"],
+							"path": ["RelatedPerson"],
 							"query": [
 								{
 									"key": "identifier",
@@ -1230,12 +1172,8 @@
 						],
 						"url": {
 							"raw": "{{api_base_url}}/RelatedPerson?identifier=1000000001",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"RelatedPerson"
-							],
+							"host": ["{{api_base_url}}"],
+							"path": ["RelatedPerson"],
 							"query": [
 								{
 									"key": "identifier",
@@ -1308,12 +1246,8 @@
 						],
 						"url": {
 							"raw": "{{api_base_url}}/RelatedPerson?identifier=9000000041",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"RelatedPerson"
-							],
+							"host": ["{{api_base_url}}"],
+							"path": ["RelatedPerson"],
 							"query": [
 								{
 									"key": "identifier",
@@ -1653,12 +1587,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000017&status=active&_include=Consent:performer&_include=Consent:patient",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"Consent"
-							],
+							"host": ["{{api_base_url}}"],
+							"path": ["Consent"],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -1835,12 +1765,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000017&status=inactive",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"Consent"
-							],
+							"host": ["{{api_base_url}}"],
+							"path": ["Consent"],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -2117,12 +2043,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000017&status=proposed&status=active&_include=Consent:patient",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"Consent"
-							],
+							"host": ["{{api_base_url}}"],
+							"path": ["Consent"],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -2347,12 +2269,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000022",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"Consent"
-							],
+							"host": ["{{api_base_url}}"],
+							"path": ["Consent"],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -2710,12 +2628,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000022&_include=Consent:patient",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"Consent"
-							],
+							"host": ["{{api_base_url}}"],
+							"path": ["Consent"],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -3052,12 +2966,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000022&_include=Consent:performer",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"Consent"
-							],
+							"host": ["{{api_base_url}}"],
+							"path": ["Consent"],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -3539,12 +3449,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000022&_include=Consent:performer&_include=Consent:patient",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"Consent"
-							],
+							"host": ["{{api_base_url}}"],
+							"path": ["Consent"],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -3596,12 +3502,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000025",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"Consent"
-							],
+							"host": ["{{api_base_url}}"],
+							"path": ["Consent"],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -3706,12 +3608,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000010",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"Consent"
-							],
+							"host": ["{{api_base_url}}"],
+							"path": ["Consent"],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -3901,12 +3799,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000010&_include=Consent:performer&_include=Consent:patient",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"Consent"
-							],
+							"host": ["{{api_base_url}}"],
+							"path": ["Consent"],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -4007,12 +3901,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000019",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"Consent"
-							],
+							"host": ["{{api_base_url}}"],
+							"path": ["Consent"],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -4200,12 +4090,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000019&_include=Consent:performer&_include=Consent:patient",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"Consent"
-							],
+							"host": ["{{api_base_url}}"],
+							"path": ["Consent"],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -4272,12 +4158,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000017&status=test",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"Consent"
-							],
+							"host": ["{{api_base_url}}"],
+							"path": ["Consent"],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -4344,12 +4226,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000019&_include=test",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"Consent"
-							],
+							"host": ["{{api_base_url}}"],
+							"path": ["Consent"],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -4414,12 +4292,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000999",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"Consent"
-							],
+							"host": ["{{api_base_url}}"],
+							"path": ["Consent"],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -4482,12 +4356,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=90000009990",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"Consent"
-							],
+							"host": ["{{api_base_url}}"],
+							"path": ["Consent"],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -4550,12 +4420,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=https://fhir.nhs.uk/Id/nhs-number|1234567890",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"Consent"
-							],
+							"host": ["{{api_base_url}}"],
+							"path": ["Consent"],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -4617,12 +4483,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"Consent"
-							]
+							"host": ["{{api_base_url}}"],
+							"path": ["Consent"]
 						}
 					},
 					"response": []
@@ -4678,12 +4540,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000012",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"Consent"
-							],
+							"host": ["{{api_base_url}}"],
+							"path": ["Consent"],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -4749,12 +4607,8 @@
 						},
 						"url": {
 							"raw": "{{api_base_url}}/Consent",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"Consent"
-							]
+							"host": ["{{api_base_url}}"],
+							"path": ["Consent"]
 						}
 					},
 					"response": []
@@ -4808,12 +4662,8 @@
 						},
 						"url": {
 							"raw": "{{api_base_url}}/Consent",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"Consent"
-							]
+							"host": ["{{api_base_url}}"],
+							"path": ["Consent"]
 						}
 					},
 					"response": []
@@ -4875,12 +4725,8 @@
 						},
 						"url": {
 							"raw": "{{api_base_url}}/Consent",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"Consent"
-							]
+							"host": ["{{api_base_url}}"],
+							"path": ["Consent"]
 						}
 					},
 					"response": []
@@ -4942,12 +4788,8 @@
 						},
 						"url": {
 							"raw": "{{api_base_url}}/Consent",
-							"host": [
-								"{{api_base_url}}"
-							],
-							"path": [
-								"Consent"
-							]
+							"host": ["{{api_base_url}}"],
+							"path": ["Consent"]
 						}
 					},
 					"response": []
@@ -5479,9 +5321,7 @@
 			"script": {
 				"type": "text/javascript",
 				"packages": {},
-				"exec": [
-					""
-				]
+				"exec": [""]
 			}
 		},
 		{
