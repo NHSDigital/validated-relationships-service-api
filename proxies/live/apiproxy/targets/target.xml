@@ -31,7 +31,7 @@
                 </Step>
                 <Step>
                     <Name>RaiseFault.403Forbidden</Name>
-                    <Condition>app_auth_permitted != true</Condition>
+                    <Condition>app_auth_forbidden = true</Condition>
                 </Step>
                 <Step>
                     <Name>AddUserAuthHeaders</Name>
@@ -46,7 +46,7 @@
                 </Step>
                 <Step>
                     <Name>RaiseFault.403Forbidden</Name>
-                    <Condition>user_auth_permitted != true</Condition>
+                    <Condition>user_auth_forbidden = true</Condition>
                 </Step>
                 <Step>
                     <Name>DecodeAccessTokenJWT</Name>
