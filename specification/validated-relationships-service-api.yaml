@@ -250,7 +250,7 @@ paths:
       summary: Get a proxy access request
       description: |
         ## Overview
-        Retrieve a QuestionnaireResponse using its unique reference code. This endpoint returns the full 
+        Retrieve a QuestionnaireResponse using its unique reference code. This endpoint returns the full
         QuestionnaireResponse document that was previously submitted.
 
         ## Request Requirements
@@ -826,7 +826,23 @@ paths:
                   $ref: "./examples/responses/PATCH_Consent/errors/invalid_status_code.yaml#/PatchConsentInvalidStatusCodeError"
                 patchConsentInvalidStateTransitionError:
                   $ref: "./examples/responses/PATCH_Consent/errors/invalid_state_transition.yaml#/PatchConsentInvalidStateTransitionError"
+        "5XX":
+          description: |
+            Errors will be returned for the first error encountered in the request. An error occurred as follows:
 
+            | HTTP status | Error code                 | Description                                                  |
+            | ----------- | -------------------------- | ------------------------------------------------------------ |
+            | 500         | `SERVER_ERROR`             | An unexpected internal server error has occurred.            |
+            | 503         | `DOWNSTREAM_SERVICE_ERROR` | A downsteam service has failed, request cannot be completed. |
+          content:
+            application/fhir+json:
+              schema:
+                $ref: "#/components/schemas/OperationOutcome"
+              examples:
+                InternalServerError:
+                  $ref: "./examples/responses/errors/internal-server-error.yaml#/InternalServerError"
+                DownstreamServiceError:
+                  $ref: "./examples/responses/errors/downstream-service-error.yaml#/DownstreamServiceError"
 components:
   schemas:
     QuestionnaireResponse:
