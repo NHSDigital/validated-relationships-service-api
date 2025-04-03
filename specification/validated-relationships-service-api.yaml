@@ -2248,7 +2248,7 @@ components:
       properties:
         op:
           type: string
-          enum: [add, remove, replace, move, copy, test]
+          enum: [add, remove, replace]
         path:
           type: string
         value:
