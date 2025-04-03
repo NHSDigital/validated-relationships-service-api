@@ -25,6 +25,7 @@
     </PreFlow>
     <Flows>
         <Flow name="App Restricted">
+            <Condition>accesstoken.auth_type = "app"</Condition>
             <Request>
                 <Step>
                     <Name>CheckAppEnabledEndpoint</Name>
@@ -34,12 +35,12 @@
                     <Condition>app_auth_forbidden = true</Condition>
                 </Step>
                 <Step>
-                    <Name>AddUserAuthHeaders</Name>
+                    <Name>AddAuthHeaders</Name>
                 </Step>
             </Request>
-            <Condition>accesstoken.auth_type = "app"</Condition>
         </Flow>
         <Flow name ="User Restricted">
+            <Condition>accesstoken.auth_type = "user"</Condition>
             <Request>
                 <Step>
                     <Name>CheckUserEnabledEndpoint</Name>
@@ -52,10 +53,9 @@
                     <Name>DecodeAccessTokenJWT</Name>
                 </Step>
                 <Step>
-                    <Name>AddUserAuthHeaders</Name>
+                    <Name>AddAuthHeaders</Name>
                 </Step>
             </Request>
-            <Condition>accesstoken.auth_type = "user"</Condition>
         </Flow>
     </Flows>
 
