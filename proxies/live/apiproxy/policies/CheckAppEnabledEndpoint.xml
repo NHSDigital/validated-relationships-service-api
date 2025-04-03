@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Script async="false" continueOnError="false" enabled="true" name="CheckAppEnabledEndpoint">
+    <DisplayName>CheckAppEnabledEndpoint</DisplayName>
+    <Properties/>
+    <ResourceURL>py://check-app-enabled-endpoint.py</ResourceURL>
+</Script>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<AssignMessage async="false" continueOnError="false" enabled="true" name="AddUserAuthHeaders">
-    <DisplayName>Add User Auth Headers</DisplayName>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AddAuthHeaders">
+    <DisplayName>AddAuthHeaders</DisplayName>
     <Add>
         <Headers>
             <Header name="accesstoken.auth_level">{toUpperCase(accesstoken.auth_level)}</Header>

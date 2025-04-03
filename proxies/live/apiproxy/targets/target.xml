@@ -15,20 +15,6 @@
                 <Name>AddProxyURL</Name>
             </Step>
             <Step>
-                <Name>DecodeAccessTokenJWT</Name>
-            </Step>
-            <Step>
-                <Name>AddUserAuthHeaders</Name>
-            </Step>
-            <Step>
-                <Name>RaiseFault.403Forbidden</Name>
-                <Condition>accesstoken.auth_level != "aal3" and proxy.pathsuffix = "/FHIR/R4/Consent" and request.verb = "POST"</Condition>
-            </Step>
-            <Step>
-                <Name>RaiseFault.403Forbidden</Name>
-                <Condition>accesstoken.auth_level != "p9" and (proxy.pathsuffix != "/FHIR/R4/Consent" or request.verb != "POST")</Condition>
-            </Step>
-            <Step>
                 <Name>RaiseFault.415UnsupportedMediaType</Name>
                 <Condition>request.verb = "POST" and request.header.Content-Type != "application/fhir+json" and request.header.Content-Type != "application/fhir+json; charset=utf-8"</Condition>
             </Step>
@@ -37,6 +23,42 @@
             </Step>
         </Request>
     </PreFlow>
+    <Flows>
+        <Flow name="App Restricted">
+            <Condition>accesstoken.auth_type = "app"</Condition>
+            <Request>
+                <Step>
+                    <Name>CheckAppEnabledEndpoint</Name>
+                </Step>
+                <Step>
+                    <Name>RaiseFault.403Forbidden</Name>
+                    <Condition>app_auth_forbidden = true</Condition>
+                </Step>
+                <Step>
+                    <Name>AddAuthHeaders</Name>
+                </Step>
+            </Request>
+        </Flow>
+        <Flow name ="User Restricted">
+            <Condition>accesstoken.auth_type = "user"</Condition>
+            <Request>
+                <Step>
+                    <Name>CheckUserEnabledEndpoint</Name>
+                </Step>
+                <Step>
+                    <Name>RaiseFault.403Forbidden</Name>
+                    <Condition>user_auth_forbidden = true</Condition>
+                </Step>
+                <Step>
+                    <Name>DecodeAccessTokenJWT</Name>
+                </Step>
+                <Step>
+                    <Name>AddAuthHeaders</Name>
+                </Step>
+            </Request>
+        </Flow>
+    </Flows>
+
     <PostFlow>
         <Response>
             <Step>
