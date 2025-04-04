@@ -2271,7 +2271,10 @@ components:
             - /provision/actor
             - /extension
         value:
-          type: object
+          oneOf:
+            - type: string
+            - type: array
+            - type: object
 
   parameters:
     RelatedPersonIdentifier:
