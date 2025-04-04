@@ -752,13 +752,7 @@ paths:
                 $ref: "#/components/schemas/PatchOperation"
             examples:
               statusUpdate:
-                summary: Update consent status
-                description: |
-                  Example status change to inactive.
-                value:
-                  - op: replace
-                    path: /status
-                    value: inactive
+                $ref: "./examples/requests/PATCH_Consent/replace_status.yaml#/StatusUpdate"
               updateProvision:
                 summary: Set an end date for a role
                 description: |
