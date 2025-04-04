@@ -815,6 +815,12 @@ paths:
                 patchConsentRelationshipNotFoundError:
                   $ref: "./examples/responses/PATCH_Consent/errors/resource_not_found.yaml#/PatchConsentRelationshipNotFoundError"
 
+        "415":
+          description: Unsupported media type
+          content:
+            application/fhir+json:
+              schema:
+                $ref: "#/components/schemas/OperationOutcome"
         "422":
           description: Business rule validation failed
           content:
