@@ -21,7 +21,7 @@
             </Step>
             <Step>
                 <Name>RaiseFault.415UnsupportedMediaType</Name>
-                <Condition>request.verb = "PATCH" and request.pathsuffix = "/FHIR/R4/Consent" and request.header.Content-Type != "application/json-patch+json"</Condition>
+                <Condition>request.verb = "PATCH" and request.path MatchesPath "/validated-relationships/FHIR/R4/Consent/*" and request.header.Content-Type != "application/json-patch+json"</Condition>
                 <!-- Catches PATCH /Consent Incorrect Content-Type -->
             </Step>
             <Step>
