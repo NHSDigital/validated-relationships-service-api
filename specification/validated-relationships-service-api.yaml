@@ -2034,6 +2034,14 @@ components:
 
     Consent:
       type: object
+      required:
+        - id
+        - status
+        - scope
+        - category
+        - patient
+        - dateTime
+        - performer
       description: The details of the consent including who the patient and care "performer" are, status of the relationship and whether consent was given by a patient with capacity.
       properties:
         resourceType:
@@ -2047,7 +2055,7 @@ components:
           description: Unique identifier of the Consent resource
         status:
           type: string
-          description: "The status of the consent, following the ConsentStateCodes value set ."
+          description: "The status of the consent, following the ConsentStateCodes value set."
           enum:
             - draft
             - proposed
@@ -2199,6 +2207,8 @@ components:
 
     Reference:
       type: object
+      required:
+        - identifier
       properties:
         type:
           type: string
@@ -2208,6 +2218,9 @@ components:
 
     Identifier:
       type: object
+      required:
+        - system
+        - value
       properties:
         system:
           type: string
