@@ -2265,6 +2265,11 @@ components:
           enum: [add, remove, replace]
         path:
           type: string
+          enum:
+            - /status
+            - /provision/period/end
+            - /provision/actor
+            - /extension
         value:
           type: object
 
