@@ -1,0 +1,17 @@
+ReplaceLegalBasisRequest:
+  summary: Replace legal basis
+  description: payload used to replace the legal basis of a consent resource
+  value:
+    - op: replace
+      path: /provision/actor
+      value:
+        - role:
+            coding:
+              - system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
+                code: GUARD
+                display: Guardian
+          reference:
+            type: RelatedPerson
+            identifier:
+              system: https://fhir.nhs.uk/Id/nhs-number
+              value: "9000000017"
