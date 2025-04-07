@@ -2115,10 +2115,10 @@ components:
             properties:
               reference:
                 $ref: "#/components/schemas/Reference"
-                description: "Reference to the actor (individual or organisation)"
+                description: "Individuals or organizations that agreed to the consent"
               role:
                 $ref: "#/components/schemas/CodeableConcept"
-                description: "The role of the actor in the consent provision"
+                description: "Classification of the role of consent, bound to http://terminology.hl7.org/CodeSystem/v3-RoleCode"
 
     Extension:
       type: object
