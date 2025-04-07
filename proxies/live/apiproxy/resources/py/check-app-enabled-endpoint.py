@@ -3,7 +3,11 @@ request_verb = flow.getVariable("request.verb").lower()
 
 blocked_resources = [
     ("/fhir/r4/relatedperson", "get"),
+    ("/fhir/r4/questionnaire", "get"),
     ("/fhir/r4/questionnaireresponse", "post"),
+    ("/fhir/r4/questionnaireresponse", "get"),
+    ("/fhir/r4/consent", "post"),
+    ("/fhir/r4/consent", "patch"),
 ]
 
 auth_forbidden = False

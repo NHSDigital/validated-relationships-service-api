@@ -3,7 +3,10 @@ path_suffix = flow.getVariable("proxy.pathsuffix").lower()
 request_verb = flow.getVariable("request.verb").lower()
 
 if auth_level == "p9":
-    blocked_resources = [("/fhir/r4/consent", "post"), ("/fhir/r4/consent", "patch")]
+    blocked_resources = [
+        ("/fhir/r4/questionnaire", "get"),
+        ("/fhir/r4/consent", "post"),
+    ]
 elif auth_level == "all3":
     blocked_resources = [("/fhir/r4/questionnaireresponse", "post")]
 else:
