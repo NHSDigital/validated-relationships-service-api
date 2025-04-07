@@ -2,6 +2,8 @@ auth_level = flow.getVariable("accesstoken.auth_level").lower()
 path_suffix = flow.getVariable("proxy.pathsuffix").lower()
 request_verb = flow.getVariable("request.verb").lower()
 
+requested_resource = (path_suffix, request_verb)
+
 if auth_level == "p9":
     blocked_resources = [
         ("/fhir/r4/questionnaire", "get"),
@@ -12,9 +14,6 @@ elif auth_level == "all3":
 else:
     blocked_resources = []
 
-auth_forbidden = False
-for blocked_resources in blocked_resources:
-    if blocked_resources[0] in path_suffix and blocked_resources[1] == request_verb:
-        auth_forbidden = True
+auth_forbidden = requested_resource in blocked_resources
 
 flow.setVariable("user_auth_forbidden", auth_forbidden)
