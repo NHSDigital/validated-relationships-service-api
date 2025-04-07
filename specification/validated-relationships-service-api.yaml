@@ -2107,6 +2107,18 @@ components:
               type: string
               description: "End time with inclusive boundary, if not ongoing"
               format: date-time
+        actor:
+          type: array
+          description: "Individuals or organisations involved in the provision"
+          items:
+            type: object
+            properties:
+              reference:
+                $ref: "#/components/schemas/Reference"
+                description: "Individuals or organizations that agreed to the consent"
+              role:
+                $ref: "#/components/schemas/CodeableConcept"
+                description: "Classification of the role of consent, bound to http://terminology.hl7.org/CodeSystem/v3-RoleCode"
 
     Extension:
       type: object
