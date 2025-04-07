@@ -2113,6 +2113,16 @@ components:
               type: string
               description: "End time with inclusive boundary, if not ongoing"
               format: date-time
+        actor:
+          type: array
+          description: "Who or what is controlled by this provision"
+          items:
+            type: object
+            properties:
+              reference:
+                $ref: "#/components/schemas/Reference"
+              role:
+                $ref: "#/components/schemas/CodeableConcept"
 
     Extension:
       type: object
