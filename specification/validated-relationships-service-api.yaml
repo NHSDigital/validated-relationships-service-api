@@ -2115,14 +2115,16 @@ components:
               format: date-time
         actor:
           type: array
-          description: "Who or what is controlled by this provision"
+          description: "Individuals or organisations involved in the provision"
           items:
             type: object
             properties:
               reference:
                 $ref: "#/components/schemas/Reference"
+                description: "Reference to the actor (individual or organisation)"
               role:
                 $ref: "#/components/schemas/CodeableConcept"
+                description: "The role of the actor in the consent provision"
 
     Extension:
       type: object
