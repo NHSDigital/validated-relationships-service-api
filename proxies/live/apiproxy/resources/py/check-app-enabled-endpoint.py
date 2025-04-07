@@ -6,6 +6,7 @@ blocked_resources = [
     ("/fhir/r4/questionnaireresponse", "post"),
 ]
 
+auth_forbidden = False
 for blocked_resources in blocked_resources:
     if blocked_resources[0] in path_suffix and blocked_resources[1] == request_verb:
         auth_forbidden = True
