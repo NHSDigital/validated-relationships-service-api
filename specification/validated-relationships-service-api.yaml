@@ -2274,7 +2274,8 @@ components:
           oneOf:
             - type: string
             - type: array
-            - type: object
+              items:
+                type: object
 
   parameters:
     RelatedPersonIdentifier:
