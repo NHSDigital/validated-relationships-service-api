@@ -39,7 +39,7 @@ This documentation is intended for developers to develop the schema, sandbox and
 -   GNU make
 -   nodejs 22+
     -   npm 10.8+
--   Python 3.8 +
+-   Python 3.9 +
     -   [poetry](https://github.com/python-poetry/poetry) 1.8+
 -   Java 8+
 
