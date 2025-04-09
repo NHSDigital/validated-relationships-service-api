@@ -6,7 +6,7 @@ authors = []
 package-mode = false
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.13"
 gunicorn = "^22.0.0"
 flask = "^3.0.2"
 pyyaml = "^6.0.2"
