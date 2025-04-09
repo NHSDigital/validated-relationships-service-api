@@ -13,7 +13,6 @@ keywords = ["healthcare", "uk", "nhs"] #TODO add additional keywords
 
 [tool.poetry.dependencies]
 python = "^3.12"
-flake8 = "^7.2.0"
 
 [tool.poetry.group.ci.dependencies]
 flake8 = "^7.2.0"
