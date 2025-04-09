@@ -15,12 +15,12 @@ jobs:
             - name: Set up Python
               uses: actions/setup-python@v5
               with:
-                  python-version: 3.9
+                  python-version: 3.12
 
             - name: Install Poetry
               shell: bash
               run: |
-                  pipx install poetry==1.8.5
+                  pipx install poetry==2.1.2
 
             - name: Install Script Packages with Poetry
               shell: bash
@@ -41,12 +41,12 @@ jobs:
             - name: Set up Python
               uses: actions/setup-python@v5
               with:
-                  python-version: 3.9
+                  python-version: 3.12
 
             - name: Install Poetry
               shell: bash
               run: |
-                  pipx install poetry==1.8.5
+                  pipx install poetry==2.1.2
 
             - name: Install Script Packages with Poetry
               shell: bash
@@ -67,12 +67,12 @@ jobs:
             - name: Set up Python
               uses: actions/setup-python@v5
               with:
-                  python-version: 3.9
+                  python-version: 3.12
 
             - name: Install Poetry
               shell: bash
               run: |
-                  pipx install poetry==1.8.5
+                  pipx install poetry==2.1.2
 
             - name: Install Script Packages with Poetry
               shell: bash
@@ -93,12 +93,12 @@ jobs:
             - name: Set up Python
               uses: actions/setup-python@v5
               with:
-                  python-version: 3.9
+                  python-version: 3.12
 
             - name: Install Poetry
               shell: bash
               run: |
-                  pipx install poetry==1.8.5
+                  pipx install poetry==2.1.2
 
             - name: Install Script Packages with Poetry
               shell: bash
@@ -119,12 +119,12 @@ jobs:
             - name: Set up Python
               uses: actions/setup-python@v5
               with:
-                  python-version: 3.9
+                  python-version: 3.12
 
             - name: Install Poetry
               shell: bash
               run: |
-                  pipx install poetry==1.8.5
+                  pipx install poetry==2.1.2
 
             - name: Install Script Packages with Poetry
               shell: bash
@@ -145,12 +145,12 @@ jobs:
             - name: Set up Python
               uses: actions/setup-python@v5
               with:
-                  python-version: 3.9
+                  python-version: 3.12
 
             - name: Install Poetry
               shell: bash
               run: |
-                  pipx install poetry==1.8.5
+                  pipx install poetry==2.1.2
             - name: Install Script Packages with Poetry
               shell: bash
               run: |
@@ -168,12 +168,12 @@ jobs:
             - name: Set up Python
               uses: actions/setup-python@v5
               with:
-                  python-version: 3.9
+                  python-version: 3.12
 
             - name: Install Poetry
               shell: bash
               run: |
-                  pipx install poetry==1.8.5
+                  pipx install poetry==2.1.2
 
             - name: Install Script Packages with Poetry
               shell: bash
