@@ -17,11 +17,6 @@ jobs:
               with:
                   python-version: 3.12
 
-            -   name: Install system dependencies (for lxml)
-                run: |
-                    sudo apt-get update
-                    sudo apt-get install -y libxml2-dev libxslt-dev
-
             - name: Install Poetry
               shell: bash
               run: |
