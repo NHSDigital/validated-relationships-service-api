@@ -21,7 +21,11 @@ def test_wait_for_ping(nhsd_apim_proxy_url):
     resp = requests.get(f"{nhsd_apim_proxy_url}/_ping")
     deployed_commitId = resp.json().get("commitId")
 
-    while deployed_commitId != getenv("SOURCE_COMMIT_ID") and retries <= 30 and resp.status_code == 200:
+    while (
+        deployed_commitId != getenv("SOURCE_COMMIT_ID")
+        and retries <= 30
+        and resp.status_code == 200
+    ):
         resp = requests.get(f"{nhsd_apim_proxy_url}/_ping")
         deployed_commitId = resp.json().get("commitId")
         retries += 1
@@ -36,7 +40,9 @@ def test_wait_for_ping(nhsd_apim_proxy_url):
 
 @pytest.mark.smoketest
 def test_status(nhsd_apim_proxy_url, status_endpoint_auth_headers):
-    resp = requests.get(f"{nhsd_apim_proxy_url}/_status", headers=status_endpoint_auth_headers)
+    resp = requests.get(
+        f"{nhsd_apim_proxy_url}/_status", headers=status_endpoint_auth_headers
+    )
     assert resp.status_code == 200
     # Make some additional assertions about your status response here!
 
@@ -44,7 +50,9 @@ def test_status(nhsd_apim_proxy_url, status_endpoint_auth_headers):
 @pytest.mark.smoketest
 def test_wait_for_status(nhsd_apim_proxy_url, status_endpoint_auth_headers):
     retries = 0
-    resp = requests.get(f"{nhsd_apim_proxy_url}/_status", headers=status_endpoint_auth_headers)
+    resp = requests.get(
+        f"{nhsd_apim_proxy_url}/_status", headers=status_endpoint_auth_headers
+    )
     deployed_commitId = resp.json().get("commitId")
 
     while (

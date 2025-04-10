@@ -68,7 +68,9 @@ def load_yaml_file_as_json(file: str) -> dict:
     """
     patch = path.join(path.dirname(path.realpath(__file__)), file)
     yamlfile = safe_load(load_file(patch))
-    jsonstr = json.dumps(yamlfile[next(iter(yamlfile))]["value"], default=date_converter)
+    jsonstr = json.dumps(
+        yamlfile[next(iter(yamlfile))]["value"], default=date_converter
+    )
     return json.loads(jsonstr)
 
 

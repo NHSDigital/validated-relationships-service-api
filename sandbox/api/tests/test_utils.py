@@ -43,7 +43,9 @@ def test_related_person__not_found(
     # Act
     response = client.get(f"{RELATED_PERSON_API_ENDPOINT}?{request_args}")
     # Assert
-    mock_generate_response_from_example.assert_called_once_with(response_file_name, status_code)
+    mock_generate_response_from_example.assert_called_once_with(
+        response_file_name, status_code
+    )
     assert response.status_code == status_code
     assert response.json == loads(mocked_response.get_data(as_text=True))
 
@@ -140,7 +142,9 @@ def test_consent(
     # Act
     response = client.get(f"{CONSENT_API_ENDPOINT}?{request_args}")
     # Assert
-    mock_generate_response_from_example.assert_called_once_with(response_file_name, status_code)
+    mock_generate_response_from_example.assert_called_once_with(
+        response_file_name, status_code
+    )
     assert response.status_code == status_code
     assert response.json == loads(mocked_response.get_data(as_text=True))
 
@@ -148,7 +152,9 @@ def test_consent(
 @patch(f"{FILE_PATH}.open")
 def test_get_response(mock_open: MagicMock) -> None:
     # Arrange
-    mock_open.return_value.__enter__.return_value.read.return_value = '{"data": "mocked"}'
+    mock_open.return_value.__enter__.return_value.read.return_value = (
+        '{"data": "mocked"}'
+    )
     file_name = "./api/responses/GET_RelatedPerson/identifier.json"
     # Act
     response = load_json_file(file_name)
@@ -194,7 +200,9 @@ def test_check_for_related_person_errors(
     # Act
     response = client.get(f"{RELATED_PERSON_API_ENDPOINT}?{request_args}")
     # Assert
-    mock_generate_response_from_example.assert_called_once_with(response_file_name, status_code)
+    mock_generate_response_from_example.assert_called_once_with(
+        response_file_name, status_code
+    )
     assert response.status_code == status_code
     assert response.json == loads(mocked_response.get_data(as_text=True))
 
@@ -235,5 +243,7 @@ def test_check_for_consent_errors(
     # Act
     response = client.get(f"{CONSENT_API_ENDPOINT}?{request_args}")
     # Assert
-    mock_generate_response_from_example.assert_called_once_with(response_file_name, status_code)
+    mock_generate_response_from_example.assert_called_once_with(
+        response_file_name, status_code
+    )
     assert response.status_code == status_code

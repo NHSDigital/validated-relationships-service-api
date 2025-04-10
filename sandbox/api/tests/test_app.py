@@ -5,15 +5,15 @@ import pytest
 from flask import Response
 
 from sandbox.api.constants import (
-    POST_CONSENT__SUCCESS,
-    POST_CONSENT__DUPLICATE_RELATIONSHIP_ERROR,
-    POST_CONSENT__PERFORMER_IDENTIFIER_ERROR,
-    PATCH_CONSENT__SUCCESS,
     PATCH_CONSENT__INVALID_PATCH_FORMAT,
     PATCH_CONSENT__INVALID_PATH,
+    PATCH_CONSENT__INVALID_STATE_TRANSITION,
     PATCH_CONSENT__INVALID_STATUS_CODE,
     PATCH_CONSENT__RESOURCE_NOT_FOUND,
-    PATCH_CONSENT__INVALID_STATE_TRANSITION,
+    PATCH_CONSENT__SUCCESS,
+    POST_CONSENT__DUPLICATE_RELATIONSHIP_ERROR,
+    POST_CONSENT__PERFORMER_IDENTIFIER_ERROR,
+    POST_CONSENT__SUCCESS,
 )
 
 from .conftest import (
@@ -114,7 +114,9 @@ def test_related_person(
     # Act
     response = client.get(f"{RELATED_PERSON_API_ENDPOINT}?{request_args}")
     # Assert
-    mock_generate_response_from_example.assert_called_once_with(response_file_name, status_code)
+    mock_generate_response_from_example.assert_called_once_with(
+        response_file_name, status_code
+    )
     assert response.status_code == status_code
     assert response.json == loads(mocked_response.get_data(as_text=True))
 
@@ -147,7 +149,9 @@ def test_questionnaire_response(
     # Act
     response = client.post(url_path, json={"data": "mocked"})
     # Assert
-    mock_generate_response_from_example.assert_called_once_with(response_file_name, status_code)
+    mock_generate_response_from_example.assert_called_once_with(
+        response_file_name, status_code
+    )
     assert response.status_code == status_code
     assert response.json == loads(mocked_response.get_data(as_text=True))
 
@@ -184,7 +188,9 @@ def test_get_consent(
     # Act
     response = client.get(f"{CONSENT_API_ENDPOINT}?{request_args}")
     # Assert
-    mock_generate_response_from_example.assert_called_once_with(response_file_name, status_code)
+    mock_generate_response_from_example.assert_called_once_with(
+        response_file_name, status_code
+    )
     assert response.status_code == status_code
     assert response.json == loads(mocked_response.get_data(as_text=True))
 
@@ -237,7 +243,9 @@ def test_post_consent_when_valid_returns_success(
             response_file_name, status_code, headers={"location": location}
         )
     else:
-        mock_generate_response_from_example.assert_called_once_with(response_file_name, status_code)
+        mock_generate_response_from_example.assert_called_once_with(
+            response_file_name, status_code
+        )
     assert response.status_code == status_code
     assert response.json == loads(mocked_response.get_data(as_text=True))
 
@@ -279,7 +287,9 @@ def test_patch_consent_on_request_returns_expected_response(
     json = [{"op": "replace", "path": "/status", "value": "inactive"}]
     response = client.patch(CONSENT_API_ENDPOINT + f"/{nhs_num}", json=json)
     # Assert
-    mock_generate_response_from_example.assert_called_once_with(response_file_name, status_code)
+    mock_generate_response_from_example.assert_called_once_with(
+        response_file_name, status_code
+    )
     assert response.status_code == status_code
     assert response.json == loads(mocked_response.get_data(as_text=True))
 
@@ -294,6 +304,10 @@ def test_consent__500_internal_server_error(
     """Test Consent endpoint."""
     mock_remove_system.side_effect = Exception("Test exception")
     # Act
-    client.get(f"{CONSENT_API_ENDPOINT}?performer:identifier=9000000015&status=active&_include=Consent:performer")
+    client.get(
+        f"{CONSENT_API_ENDPOINT}?performer:identifier=9000000015&status=active&_include=Consent:performer"
+    )
     # Assert
-    mock_generate_response_from_example.assert_called_once_with("./api/examples/errors/internal-server-error.yaml", 500)
+    mock_generate_response_from_example.assert_called_once_with(
+        "./api/examples/errors/internal-server-error.yaml", 500
+    )
