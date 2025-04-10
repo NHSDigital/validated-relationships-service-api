@@ -2,11 +2,6 @@ import pytest
 
 from ..app import app
 
-FHIR_PATH = "/FHIR/R4"
-RELATED_PERSON_API_ENDPOINT = f"{FHIR_PATH}/RelatedPerson"
-QUESTIONNAIRE_RESPONSE_API_ENDPOINT = f"{FHIR_PATH}/QuestionnaireResponse"
-CONSENT_API_ENDPOINT = f"{FHIR_PATH}/Consent"
-
 
 @pytest.fixture()
 def client() -> object:

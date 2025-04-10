@@ -33,9 +33,7 @@ def get_versionable_commits(repo):
     commits = [c for c in repo.iter_commits() if len(c.parents) == 1]
 
     # If there is a marker to start versioning from, use it. Else, start from the first commit
-    return list(
-        itertools.takewhile(lambda c: "+startversioning" not in c.message, commits)
-    )
+    return list(itertools.takewhile(lambda c: "+startversioning" not in c.message, commits))
 
 
 def is_status_set_command(commit):
@@ -83,9 +81,7 @@ def calculate_version(base_major=1, base_minor=0, base_revision=0, base_pre="alp
         most_recent_message = status_sets[0].message.strip()
 
         if most_recent_message.startswith("+setstatus "):
-            pre = most_recent_message.split(" ")[
-                1
-            ]  # Take the first string after the command
+            pre = most_recent_message.split(" ")[1]  # Take the first string after the command
 
         if most_recent_message == "+clearstatus":
             pre = None

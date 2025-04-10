@@ -44,9 +44,7 @@ def patch_consent_response(identifier: str) -> Union[dict, tuple]:
 
         elif identifier == "3a2679eb":
             # Invalid patch format
-            return generate_response_from_example(
-                PATCH_CONSENT__INVALID_PATCH_FORMAT, 400
-            )
+            return generate_response_from_example(PATCH_CONSENT__INVALID_PATCH_FORMAT, 400)
 
         elif identifier == "94df7c8f":
             # Invalid path
@@ -54,21 +52,15 @@ def patch_consent_response(identifier: str) -> Union[dict, tuple]:
 
         elif identifier == "2a7b736d":
             # Invalid status code
-            return generate_response_from_example(
-                PATCH_CONSENT__INVALID_STATUS_CODE, 422
-            )
+            return generate_response_from_example(PATCH_CONSENT__INVALID_STATUS_CODE, 422)
 
         elif identifier == "6fb4361b":
             # Invalid state transition
-            return generate_response_from_example(
-                PATCH_CONSENT__INVALID_STATE_TRANSITION, 422
-            )
+            return generate_response_from_example(PATCH_CONSENT__INVALID_STATE_TRANSITION, 422)
 
         else:
             # Resource not found
-            return generate_response_from_example(
-                PATCH_CONSENT__RESOURCE_NOT_FOUND, 404
-            )
+            return generate_response_from_example(PATCH_CONSENT__RESOURCE_NOT_FOUND, 404)
 
     except Exception:
         # Handle any general error

@@ -20,7 +20,7 @@ from .constants import (
     INVALIDATED_RESOURCE,
 )
 from .utils import (
-    check_for_consent_errors,
+    check_for_get_consent_errors,
     check_for_consent_filtering,
     check_for_consent_include_params,
     generate_response_from_example,
@@ -39,7 +39,7 @@ def get_consent_response() -> Union[dict, tuple]:
     """
     try:
         # Check Headers
-        if errors := check_for_consent_errors(request):
+        if errors := check_for_get_consent_errors(request):
             return errors
 
         performer_identifier = remove_system(request.args.get("performer:identifier"))
