@@ -20,9 +20,9 @@ from .constants import (
     INVALIDATED_RESOURCE,
 )
 from .utils import (
-    check_for_get_consent_errors,
     check_for_consent_filtering,
     check_for_consent_include_params,
+    check_for_get_consent_errors,
     generate_response_from_example,
     remove_system,
 )

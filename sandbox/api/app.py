@@ -4,6 +4,7 @@ from typing import Union
 from flask import Flask
 
 from .get_consent import get_consent_response
+from .get_questionnaire_response import get_questionnaire_response_response
 from .get_related_person import get_related_person_response
 from .patch_consent import patch_consent_response
 from .post_consent import post_consent_response
@@ -35,6 +36,16 @@ def get_related_persons() -> Union[dict, tuple]:
         Union[dict, tuple]: Response for GET /RelatedPerson
     """
     return get_related_person_response()
+
+
+@app.route(f"/{COMMON_PATH}/QuestionnaireResponse", methods=["GET"])
+def get_questionnaire_response() -> Union[dict, tuple]:
+    """Sandbox API for GET /QuestionnaireResponse
+
+    Returns:
+        Union[dict, tuple]: Response for GET /QuestionnaireResponse
+    """
+    return get_questionnaire_response_response()
 
 
 @app.route(f"/{COMMON_PATH}/QuestionnaireResponse", methods=["POST"])
