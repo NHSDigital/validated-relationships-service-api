@@ -1,11 +1,11 @@
 {
 	"info": {
-		"_postman_id": "a23a7596-3e8f-4f87-8a47-0ecfb816b2a8",
-		"name": "Validate Relationship Service Sandbox 20/03/25",
+		"_postman_id": "ab2b3bfb-f318-4111-b6c5-658952be5b85",
+		"name": "Validate Relationship Service Sandbox 11/04/25",
 		"description": "Example usage of the Validate Relationship Service (VRS) sandbox.\n\nFull specification is available at [https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "21394218",
-		"_collection_link": "https://www.postman.com/kamran-bjss/workspace/nhs-validated-relationship-service-20-03-25/collection/21394218-a23a7596-3e8f-4f87-8a47-0ecfb816b2a8?action=share&source=collection_link&creator=21394218"
+		"_exporter_id": "34042403",
+		"_collection_link": "https://www.postman.com/jackplowman2/workspace/validate-relationship-service-sandbox-11-04-25/collection/34042403-ab2b3bfb-f318-4111-b6c5-658952be5b85?action=share&source=collection_link&creator=34042403"
 	},
 	"item": [
 		{
@@ -17,7 +17,9 @@
 						{
 							"listen": "test",
 							"script": {
-								"exec": [""],
+								"exec": [
+									""
+								],
 								"type": "text/javascript"
 							}
 						}
@@ -52,8 +54,12 @@
 						},
 						"url": {
 							"raw": "{{api_base_url}}/QuestionnaireResponse",
-							"host": ["{{api_base_url}}"],
-							"path": ["QuestionnaireResponse"]
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"QuestionnaireResponse"
+							]
 						},
 						"description": "Example of an adult to child access request with the reference code returned"
 					},
@@ -65,7 +71,9 @@
 						{
 							"listen": "test",
 							"script": {
-								"exec": [""],
+								"exec": [
+									""
+								],
 								"type": "text/javascript"
 							}
 						}
@@ -99,8 +107,12 @@
 						},
 						"url": {
 							"raw": "{{api_base_url}}/QuestionnaireResponse",
-							"host": ["{{api_base_url}}"],
-							"path": ["QuestionnaireResponse"]
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"QuestionnaireResponse"
+							]
 						},
 						"description": "Example of an adult to adult access request where the patient can consent with the reference code returned"
 					},
@@ -112,7 +124,9 @@
 						{
 							"listen": "test",
 							"script": {
-								"exec": [""],
+								"exec": [
+									""
+								],
 								"type": "text/javascript"
 							}
 						}
@@ -146,8 +160,12 @@
 						},
 						"url": {
 							"raw": "{{api_base_url}}/QuestionnaireResponse",
-							"host": ["{{api_base_url}}"],
-							"path": ["QuestionnaireResponse"]
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"QuestionnaireResponse"
+							]
 						},
 						"description": "Example of an adult to adult access request where the patient cannot consent with the reference code returned"
 					},
@@ -159,7 +177,9 @@
 						{
 							"listen": "test",
 							"script": {
-								"exec": [""],
+								"exec": [
+									""
+								],
 								"type": "text/javascript"
 							}
 						}
@@ -193,8 +213,12 @@
 						},
 						"url": {
 							"raw": "{{api_base_url}}/QuestionnaireResponse",
-							"host": ["{{api_base_url}}"],
-							"path": ["QuestionnaireResponse"]
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"QuestionnaireResponse"
+							]
 						},
 						"description": "Example of an adult to adult access request where the patient is the applicant with the reference code returned"
 					},
@@ -206,7 +230,9 @@
 					"listen": "prerequest",
 					"script": {
 						"type": "text/javascript",
-						"exec": [""]
+						"exec": [
+							""
+						]
 					}
 				},
 				{
@@ -368,8 +394,12 @@
 						],
 						"url": {
 							"raw": "{{api_base_url}}/RelatedPerson?identifier=9000000017",
-							"host": ["{{api_base_url}}"],
-							"path": ["RelatedPerson"],
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"RelatedPerson"
+							],
 							"query": [
 								{
 									"key": "identifier",
@@ -567,8 +597,12 @@
 						],
 						"url": {
 							"raw": "{{api_base_url}}/RelatedPerson?identifier=9000000017&_include=RelatedPerson:patient",
-							"host": ["{{api_base_url}}"],
-							"path": ["RelatedPerson"],
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"RelatedPerson"
+							],
 							"query": [
 								{
 									"key": "identifier",
@@ -633,8 +667,12 @@
 						],
 						"url": {
 							"raw": "{{api_base_url}}/RelatedPerson?identifier=9000000033",
-							"host": ["{{api_base_url}}"],
-							"path": ["RelatedPerson"],
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"RelatedPerson"
+							],
 							"query": [
 								{
 									"key": "identifier",
@@ -732,8 +770,12 @@
 						],
 						"url": {
 							"raw": "{{api_base_url}}/RelatedPerson?identifier=9000000017&patient:identifier=9000000009",
-							"host": ["{{api_base_url}}"],
-							"path": ["RelatedPerson"],
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"RelatedPerson"
+							],
 							"query": [
 								{
 									"key": "identifier",
@@ -868,8 +910,12 @@
 						],
 						"url": {
 							"raw": "{{api_base_url}}/RelatedPerson?identifier=9000000017&patient:identifier=9000000009&_include=RelatedPerson:patient",
-							"host": ["{{api_base_url}}"],
-							"path": ["RelatedPerson"],
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"RelatedPerson"
+							],
 							"query": [
 								{
 									"key": "identifier",
@@ -952,8 +998,12 @@
 						],
 						"url": {
 							"raw": "{{api_base_url}}/RelatedPerson",
-							"host": ["{{api_base_url}}"],
-							"path": ["RelatedPerson"]
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"RelatedPerson"
+							]
 						},
 						"description": "Example of an error response when the NHS number is missing"
 					},
@@ -1023,8 +1073,12 @@
 						],
 						"url": {
 							"raw": "{{api_base_url}}/RelatedPerson?identifier=900000000",
-							"host": ["{{api_base_url}}"],
-							"path": ["RelatedPerson"],
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"RelatedPerson"
+							],
 							"query": [
 								{
 									"key": "identifier",
@@ -1098,8 +1152,12 @@
 						],
 						"url": {
 							"raw": "{{api_base_url}}/RelatedPerson?identifier=https://fhir.nhs.uk/Id/nhs-number|A730675929",
-							"host": ["{{api_base_url}}"],
-							"path": ["RelatedPerson"],
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"RelatedPerson"
+							],
 							"query": [
 								{
 									"key": "identifier",
@@ -1172,8 +1230,12 @@
 						],
 						"url": {
 							"raw": "{{api_base_url}}/RelatedPerson?identifier=1000000001",
-							"host": ["{{api_base_url}}"],
-							"path": ["RelatedPerson"],
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"RelatedPerson"
+							],
 							"query": [
 								{
 									"key": "identifier",
@@ -1246,8 +1308,12 @@
 						],
 						"url": {
 							"raw": "{{api_base_url}}/RelatedPerson?identifier=9000000041",
-							"host": ["{{api_base_url}}"],
-							"path": ["RelatedPerson"],
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"RelatedPerson"
+							],
 							"query": [
 								{
 									"key": "identifier",
@@ -1587,8 +1653,12 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000017&status=active&_include=Consent:performer&_include=Consent:patient",
-							"host": ["{{api_base_url}}"],
-							"path": ["Consent"],
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"Consent"
+							],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -1765,8 +1835,12 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000017&status=inactive",
-							"host": ["{{api_base_url}}"],
-							"path": ["Consent"],
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"Consent"
+							],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -2043,8 +2117,12 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000017&status=proposed&status=active&_include=Consent:patient",
-							"host": ["{{api_base_url}}"],
-							"path": ["Consent"],
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"Consent"
+							],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -2269,8 +2347,12 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000022",
-							"host": ["{{api_base_url}}"],
-							"path": ["Consent"],
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"Consent"
+							],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -2628,8 +2710,12 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000022&_include=Consent:patient",
-							"host": ["{{api_base_url}}"],
-							"path": ["Consent"],
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"Consent"
+							],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -2966,8 +3052,12 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000022&_include=Consent:performer",
-							"host": ["{{api_base_url}}"],
-							"path": ["Consent"],
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"Consent"
+							],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -3449,8 +3539,12 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000022&_include=Consent:performer&_include=Consent:patient",
-							"host": ["{{api_base_url}}"],
-							"path": ["Consent"],
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"Consent"
+							],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -3502,8 +3596,12 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000025",
-							"host": ["{{api_base_url}}"],
-							"path": ["Consent"],
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"Consent"
+							],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -3608,8 +3706,12 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000010",
-							"host": ["{{api_base_url}}"],
-							"path": ["Consent"],
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"Consent"
+							],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -3799,8 +3901,12 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000010&_include=Consent:performer&_include=Consent:patient",
-							"host": ["{{api_base_url}}"],
-							"path": ["Consent"],
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"Consent"
+							],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -3901,8 +4007,12 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000019",
-							"host": ["{{api_base_url}}"],
-							"path": ["Consent"],
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"Consent"
+							],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -4090,8 +4200,12 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000019&_include=Consent:performer&_include=Consent:patient",
-							"host": ["{{api_base_url}}"],
-							"path": ["Consent"],
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"Consent"
+							],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -4158,8 +4272,12 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000017&status=test",
-							"host": ["{{api_base_url}}"],
-							"path": ["Consent"],
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"Consent"
+							],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -4226,8 +4344,12 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000019&_include=test",
-							"host": ["{{api_base_url}}"],
-							"path": ["Consent"],
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"Consent"
+							],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -4292,8 +4414,12 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000999",
-							"host": ["{{api_base_url}}"],
-							"path": ["Consent"],
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"Consent"
+							],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -4356,8 +4482,12 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=90000009990",
-							"host": ["{{api_base_url}}"],
-							"path": ["Consent"],
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"Consent"
+							],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -4420,8 +4550,12 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=https://fhir.nhs.uk/Id/nhs-number|1234567890",
-							"host": ["{{api_base_url}}"],
-							"path": ["Consent"],
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"Consent"
+							],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -4483,8 +4617,12 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent",
-							"host": ["{{api_base_url}}"],
-							"path": ["Consent"]
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"Consent"
+							]
 						}
 					},
 					"response": []
@@ -4540,8 +4678,12 @@
 						"header": [],
 						"url": {
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000012",
-							"host": ["{{api_base_url}}"],
-							"path": ["Consent"],
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"Consent"
+							],
 							"query": [
 								{
 									"key": "performer:identifier",
@@ -4607,8 +4749,12 @@
 						},
 						"url": {
 							"raw": "{{api_base_url}}/Consent",
-							"host": ["{{api_base_url}}"],
-							"path": ["Consent"]
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"Consent"
+							]
 						}
 					},
 					"response": []
@@ -4662,8 +4808,12 @@
 						},
 						"url": {
 							"raw": "{{api_base_url}}/Consent",
-							"host": ["{{api_base_url}}"],
-							"path": ["Consent"]
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"Consent"
+							]
 						}
 					},
 					"response": []
@@ -4725,8 +4875,12 @@
 						},
 						"url": {
 							"raw": "{{api_base_url}}/Consent",
-							"host": ["{{api_base_url}}"],
-							"path": ["Consent"]
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"Consent"
+							]
 						}
 					},
 					"response": []
@@ -4788,8 +4942,12 @@
 						},
 						"url": {
 							"raw": "{{api_base_url}}/Consent",
-							"host": ["{{api_base_url}}"],
-							"path": ["Consent"]
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"Consent"
+							]
 						}
 					},
 					"response": []
@@ -5313,6 +5471,465 @@
 				}
 			],
 			"description": "Use this endpoint to update an existing proxy role.\n\nCommon update scenarios include:\n\n- Revocation of the role (status change from \"active\" to \"inactive\")\n    \n- Changing the legal basis of the role (TBC)\n    \n- Updating the end date for time-bound access"
+		},
+		{
+			"name": "Get a proxy access request (Questionnaire Response)",
+			"item": [
+				{
+					"name": "Adult to adult with capacity",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const expectedResponseBody = {",
+									"  \"resourceType\": \"QuestionnaireResponse\",",
+									"  \"status\": \"completed\",",
+									"  \"authored\": \"2024-07-15T09:43:03.280Z\",",
+									"  \"source\": {",
+									"    \"type\": \"RelatedPerson\",",
+									"    \"identifier\": {",
+									"      \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"      \"value\": \"9000000005\"",
+									"    }",
+									"  },",
+									"  \"subject\": {",
+									"    \"type\": \"Patient\",",
+									"    \"identifier\": {",
+									"      \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"      \"value\": \"9000000006\"",
+									"    }",
+									"  },",
+									"  \"questionnaire\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/Questionnaire/01dc6813-3421-4d14-948d-a4888241add1\",",
+									"  \"item\": [",
+									"    {",
+									"      \"linkId\": \"relatedPerson\",",
+									"      \"text\": \"Proxy details\",",
+									"      \"item\": [",
+									"        {",
+									"          \"linkId\": \"relatedPerson_identifier\",",
+									"          \"text\": \"NHS number\",",
+									"          \"answer\": [",
+									"            {",
+									"              \"valueString\": \"9000000005\"",
+									"            }",
+									"          ]",
+									"        },",
+									"        {",
+									"          \"linkId\": \"relatedPerson_name\",",
+									"          \"text\": \"Name\",",
+									"          \"item\": [",
+									"            {",
+									"              \"linkId\": \"relatedPerson_name_first\",",
+									"              \"text\": \"First name\",",
+									"              \"answer\": [",
+									"                {",
+									"                  \"valueString\": \"Jack\"",
+									"                }",
+									"              ]",
+									"            },",
+									"            {",
+									"              \"linkId\": \"relatedPerson_name_family\",",
+									"              \"text\": \"Last name\",",
+									"              \"answer\": [",
+									"                {",
+									"                  \"valueString\": \"Jones\"",
+									"                }",
+									"              ]",
+									"            }",
+									"          ]",
+									"        },",
+									"        {",
+									"          \"linkId\": \"relatedPerson_birthDate\",",
+									"          \"text\": \"Date of birth\",",
+									"          \"answer\": [",
+									"            {",
+									"              \"valueDate\": \"1970-02-15\"",
+									"            }",
+									"          ]",
+									"        },",
+									"        {",
+									"          \"linkId\": \"relatedPerson_basisForAccess\",",
+									"          \"text\": \"Basis for Access\",",
+									"          \"answer\": [",
+									"            {",
+									"              \"valueCoding\": {",
+									"                \"system\": \"https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole\",",
+									"                \"code\": \"PRN\",",
+									"                \"display\": \"Parent\"",
+									"              }",
+									"            }",
+									"          ]",
+									"        },",
+									"        {",
+									"          \"linkId\": \"relatedPerson_relationship\",",
+									"          \"text\": \"Relationship\",",
+									"          \"answer\": [",
+									"            {",
+									"              \"valueCoding\": {",
+									"                \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",",
+									"                \"code\": \"PRN\",",
+									"                \"display\": \"Parent\"",
+									"              }",
+									"            }",
+									"          ]",
+									"        }",
+									"      ]",
+									"    },",
+									"    {",
+									"      \"linkId\": \"patient\",",
+									"      \"text\": \"Patient details\",",
+									"      \"item\": [",
+									"        {",
+									"          \"linkId\": \"patient_identifier\",",
+									"          \"text\": \"NHS number\",",
+									"          \"answer\": [",
+									"            {",
+									"              \"valueString\": \"9000000006\"",
+									"            }",
+									"          ]",
+									"        },",
+									"        {",
+									"          \"linkId\": \"patient_name\",",
+									"          \"text\": \"Name\",",
+									"          \"item\": [",
+									"            {",
+									"              \"linkId\": \"patient_name_first\",",
+									"              \"text\": \"First name\",",
+									"              \"answer\": [",
+									"                {",
+									"                  \"valueString\": \"Jill\"",
+									"                }",
+									"              ]",
+									"            },",
+									"            {",
+									"              \"linkId\": \"patient_name_family\",",
+									"              \"text\": \"Last name\",",
+									"              \"answer\": [",
+									"                {",
+									"                  \"valueString\": \"Jones\"",
+									"                }",
+									"              ]",
+									"            }",
+									"          ]",
+									"        },",
+									"        {",
+									"          \"linkId\": \"patient_birthDate\",",
+									"          \"text\": \"Date of birth\",",
+									"          \"answer\": [",
+									"            {",
+									"              \"valueDate\": \"1965-01-01\"",
+									"            }",
+									"          ]",
+									"        }",
+									"      ]",
+									"    },",
+									"    {",
+									"      \"linkId\": \"requestedAccess\",",
+									"      \"text\": \"Requested access\",",
+									"      \"item\": [",
+									"        {",
+									"          \"linkId\": \"requestedAccess_accessLevel\",",
+									"          \"text\": \"Requested access level\",",
+									"          \"answer\": [",
+									"            {",
+									"              \"valueCoding\": {",
+									"                \"system\": \"https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess\",",
+									"                \"code\": \"APPT\",",
+									"                \"display\": \"Appointment Booking\"",
+									"              }",
+									"            },",
+									"            {",
+									"              \"valueCoding\": {",
+									"                \"system\": \"https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess\",",
+									"                \"code\": \"VACC\",",
+									"                \"display\": \"Vaccination Records\"",
+									"              }",
+									"            }",
+									"          ]",
+									"        },",
+									"        {",
+									"          \"linkId\": \"requestedAccess_reasonsForAccess\",",
+									"          \"text\": \"Reason for access\",",
+									"          \"answer\": [",
+									"            {",
+									"              \"valueCoding\": {",
+									"                \"system\": \"https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-ReasonForAccess\",",
+									"                \"code\": \"PRAC\",",
+									"                \"display\": \"Practical Reasons\"",
+									"              }",
+									"            }",
+									"          ]",
+									"        }",
+									"      ]",
+									"    }",
+									"  ]",
+									"};",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Should have correct response body\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson).to.eql(expectedResponseBody);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Request-ID",
+								"value": "d967f4c9-8e83-4930-97ab-ae4e122d8ca5",
+								"type": "text"
+							},
+							{
+								"key": "X-Correlation-ID",
+								"value": "8717c840-c222-4f84-a880-45bc129f8382",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_base_url}}/QuestionnaireResponse?referenceCode=19318ZGLAB",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"QuestionnaireResponse"
+							],
+							"query": [
+								{
+									"key": "referenceCode",
+									"value": "19318ZGLAB"
+								}
+							]
+						},
+						"description": "Example of Questionnaire Response that will be returned"
+					},
+					"response": []
+				},
+				{
+					"name": "Missing Reference Code",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const expectedResponseBody = {",
+									"  \"resourceType\": \"OperationOutcome\",",
+									"  \"issue\": [",
+									"    {",
+									"      \"severity\": \"error\",",
+									"      \"code\": \"required\",",
+									"      \"details\": {",
+									"        \"coding\": [",
+									"          {",
+									"            \"system\": \"https://fhir.nhs.uk/CodeSystem/Spine-ErrorOrWarningCode\",",
+									"            \"code\": \"MISSING_REFERENCE_CODE\",",
+									"            \"display\": \"Missing reference code\"",
+									"          }",
+									"        ]",
+									"      },",
+									"      \"diagnostics\": \"The reference code parameter is required but was not provided.\"",
+									"    }",
+									"  ]",
+									"};",
+									"",
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Should have correct response body\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson).to.eql(expectedResponseBody);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Request-ID",
+								"value": "d967f4c9-8e83-4930-97ab-ae4e122d8ca5",
+								"type": "text"
+							},
+							{
+								"key": "X-Correlation-ID",
+								"value": "8717c840-c222-4f84-a880-45bc129f8382",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_base_url}}/QuestionnaireResponse",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"QuestionnaireResponse"
+							]
+						},
+						"description": "Example of an error response when reference code is missing from request"
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid Reference Code",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const expectedResponseBody = {",
+									"  \"resourceType\": \"OperationOutcome\",",
+									"  \"issue\": [",
+									"    {",
+									"      \"severity\": \"error\",",
+									"      \"code\": \"invalid\",",
+									"      \"details\": {",
+									"        \"coding\": [",
+									"          {",
+									"            \"system\": \"https://fhir.nhs.uk/CodeSystem/Spine-ErrorOrWarningCode\",",
+									"            \"code\": \"INVALID_REFERENCE_CODE\",",
+									"            \"display\": \"Invalid reference code\"",
+									"          }",
+									"        ]",
+									"      },",
+									"      \"diagnostics\": \"The specified reference code format is invalid. Reference codes must be alphanumeric.\"",
+									"    }",
+									"  ]",
+									"};",
+									"",
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Should have correct response body\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson).to.eql(expectedResponseBody);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Request-ID",
+								"value": "d967f4c9-8e83-4930-97ab-ae4e122d8ca5",
+								"type": "text"
+							},
+							{
+								"key": "X-Correlation-ID",
+								"value": "8717c840-c222-4f84-a880-45bc129f8382",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_base_url}}/QuestionnaireResponse?referenceCode=INVALID",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"QuestionnaireResponse"
+							],
+							"query": [
+								{
+									"key": "referenceCode",
+									"value": "INVALID"
+								}
+							]
+						},
+						"description": "Example of an error response when reference code is invalid"
+					},
+					"response": []
+				},
+				{
+					"name": "Reference Code Not Found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const expectedResponseBody = {",
+									"  \"resourceType\": \"OperationOutcome\",",
+									"  \"issue\": [",
+									"    {",
+									"      \"severity\": \"error\",",
+									"      \"code\": \"not-found\",",
+									"      \"details\": {",
+									"        \"coding\": [",
+									"          {",
+									"            \"system\": \"https://fhir.nhs.uk/CodeSystem/Spine-ErrorOrWarningCode\",",
+									"            \"code\": \"QUESTIONNAIRE_RESPONSE_NOT_FOUND\",",
+									"            \"display\": \"Questionnaire response not found\"",
+									"          }",
+									"        ]",
+									"      },",
+									"      \"diagnostics\": \"The Questionnaire response could not be found using the provided reference code.\"",
+									"    }",
+									"  ]",
+									"};",
+									"",
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Should have correct response body\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson).to.eql(expectedResponseBody);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Request-ID",
+								"value": "d967f4c9-8e83-4930-97ab-ae4e122d8ca5",
+								"type": "text"
+							},
+							{
+								"key": "X-Correlation-ID",
+								"value": "8717c840-c222-4f84-a880-45bc129f8382",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_base_url}}/QuestionnaireResponse?referenceCode=ABC123XY",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"QuestionnaireResponse"
+							],
+							"query": [
+								{
+									"key": "referenceCode",
+									"value": "ABC123XY"
+								}
+							]
+						},
+						"description": "Example of an error response when reference code is not found in database"
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [
@@ -5321,7 +5938,9 @@
 			"script": {
 				"type": "text/javascript",
 				"packages": {},
-				"exec": [""]
+				"exec": [
+					""
+				]
 			}
 		},
 		{
