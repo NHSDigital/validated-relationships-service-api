@@ -7,19 +7,19 @@ from yaml import CLoader as Loader
 from yaml import load as yaml_load
 
 from .constants import (
-    RELATED__EMPTY_RESPONSE,
-    RELATED__ERROR_IDENTIFIER_MISSING,
-    RELATED__ERROR_IDENTIFIER,
-    RELATED__ERROR_IDENTIFIER_SYSTEM,
-    PATIENT_IDENTIFIERS,
-    INVALIDATED_RESOURCE,
-    INCLUDE_FLAG,
-    RELATED_IDENTIFIERS,
-    CONSENT_PERFORMER,
-    CONSENT_PATIENT,
-    INTERNAL_SERVER_ERROR_EXAMPLE,
-    GET_CONSENT__STATUS_PARAM_INVALID,
     BAD_REQUEST_INCLUDE_PARAM_INVALID,
+    CONSENT_PATIENT,
+    CONSENT_PERFORMER,
+    GET_CONSENT__STATUS_PARAM_INVALID,
+    INCLUDE_FLAG,
+    INTERNAL_SERVER_ERROR_EXAMPLE,
+    INVALIDATED_RESOURCE,
+    PATIENT_IDENTIFIERS,
+    RELATED__EMPTY_RESPONSE,
+    RELATED__ERROR_IDENTIFIER,
+    RELATED__ERROR_IDENTIFIER_MISSING,
+    RELATED__ERROR_IDENTIFIER_SYSTEM,
+    RELATED_IDENTIFIERS,
 )
 
 FHIR_MIMETYPE = "application/fhir+json"
@@ -32,7 +32,7 @@ def load_json_file(file_name: str) -> dict:
         return load(file)
 
 
-def check_for_related_person_errors(request: Request) -> Optional[tuple]:
+def check_for_get_related_person_errors(request: Request) -> Optional[tuple]:
     """Check for errors in the request headers and arguments for a Get /Related Person request
 
     Args:
@@ -61,7 +61,7 @@ def check_for_related_person_errors(request: Request) -> Optional[tuple]:
 GET_CONSENT_ERRORS = "./api/examples/GET_Consent/errors"
 
 
-def check_for_consent_errors(request: Request) -> Optional[tuple]:
+def check_for_get_consent_errors(request: Request) -> Optional[tuple]:
     """Check for errors in the request headers and arguments for a GET /Consent request
 
     Args:

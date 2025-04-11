@@ -4,8 +4,6 @@ from typing import Union
 from flask import request
 
 from .constants import (
-    INTERNAL_SERVER_ERROR_EXAMPLE,
-    INVALIDATED_RESOURCE,
     GET_CONSENT__FILTERED_RELATIONSHIPS_STATUS_ACTIVE,
     GET_CONSENT__FILTERED_RELATIONSHIPS_STATUS_INACTIVE,
     GET_CONSENT__FILTERED_RELATIONSHIPS_STATUS_PROPOSED_ACTIVE,
@@ -18,9 +16,11 @@ from .constants import (
     GET_CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_BOTH,
     GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP,
     GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH,
+    INTERNAL_SERVER_ERROR_EXAMPLE,
+    INVALIDATED_RESOURCE,
 )
 from .utils import (
-    check_for_consent_errors,
+    check_for_get_consent_errors,
     check_for_consent_filtering,
     check_for_consent_include_params,
     generate_response_from_example,
@@ -39,7 +39,7 @@ def get_consent_response() -> Union[dict, tuple]:
     """
     try:
         # Check Headers
-        if errors := check_for_consent_errors(request):
+        if errors := check_for_get_consent_errors(request):
             return errors
 
         performer_identifier = remove_system(request.args.get("performer:identifier"))
