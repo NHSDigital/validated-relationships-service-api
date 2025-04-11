@@ -29,7 +29,7 @@ def get_questionnaire_response_response() -> Union[dict, tuple]:
         elif reference_code == "INVALID":
             return generate_response_from_example(GET_QUESTIONNAIRE_RESPONSE__INVALID, 400)
         elif reference_code == "" or reference_code is None:
-            return generate_response_from_example(GET_QUESTIONNAIRE_RESPONSE__MISSING, 404)
+            return generate_response_from_example(GET_QUESTIONNAIRE_RESPONSE__MISSING, 400)
         elif reference_code == "ABC123XY":
             return generate_response_from_example(GET_QUESTIONNAIRE_RESPONSE__NOT_FOUND, 404)
         else:

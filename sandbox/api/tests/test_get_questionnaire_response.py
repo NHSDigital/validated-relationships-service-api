@@ -22,7 +22,7 @@ GET_QUESTIONNAIRE_RESPONSE_API_ENDPOINT = "/FHIR/R4/QuestionnaireResponse"
         (
             "referenceCode=",
             "./api/examples/GET_QuestionnaireResponse/errors/missing_reference_code.yaml",
-            404,
+            400,
         ),
         (
             "referenceCode=ABC123XY",
