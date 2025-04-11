@@ -16,12 +16,12 @@ GET_QUESTIONNAIRE_RESPONSE_API_ENDPOINT = "/FHIR/R4/QuestionnaireResponse"
         ),
         (
             "referenceCode=INVALID",
-            "./api/examples/GET_QuestionnaireResponse/errors/invalid-reference-code.yaml",
+            "./api/examples/GET_QuestionnaireResponse/errors/invalid_reference_code.yaml",
             400,
         ),
         (
             "referenceCode=",
-            "./api/examples/GET_QuestionnaireResponse/errors/missing-reference-code.yaml",
+            "./api/examples/GET_QuestionnaireResponse/errors/missing_reference_code.yaml",
             404,
         ),
         (
