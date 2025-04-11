@@ -10,8 +10,8 @@ jobs:
         run: pipx install poetry
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.8'
-          cache: 'poetry'
+          python-version: "3.8"
+          cache: "poetry"
       - name: Install Sandbox dependencies
         run: make install
         working-directory: ./sandbox

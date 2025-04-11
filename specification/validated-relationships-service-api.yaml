@@ -259,12 +259,12 @@ paths:
 
         ## Sandbox test scenarios
 
-        | Scenario                  | Request                          | Response                                      |
-        | ------------------------- | -------------------------------- | --------------------------------------------- |
-        | Valid reference code      | referenceCode=19318ZGLAB           | HTTP Status 200 with QuestionnaireResponse    |
-        | Invalid reference code    | referenceCode=INVALID            | HTTP Status 400 with error message            |
-        | Missing reference code    | No referenceCode parameter       | HTTP Status 400 with error message            |
-        | Non-existent reference    | referenceCode=ABC123XY           | HTTP Status 404 with error message            |
+        | Scenario                    | Request                    | Response                                                      |
+        | --------------------------- | -------------------------- | ------------------------------------------------------------- |
+        | Valid reference code        | referenceCode=19318ZGLAB   | HTTP Status 200 with QuestionnaireResponse                    |
+        | Invalid reference code      | referenceCode=INVALID      | HTTP Status 400 with INVALID_REFERENCE_CODE message           |
+        | Missing reference code      | No referenceCode parameter | HTTP Status 400 with MISSING_REFERENCE_CODE message           |
+        | Non-existent reference code | referenceCode=ABC123XY     | HTTP Status 404 with QUESTIONNAIRE_RESPONSE_NOT_FOUND message |
 
       operationId: get-questionnaire-response
       parameters:
@@ -295,11 +295,11 @@ paths:
             | HTTP status | Error code                         | Description                                                                                                                               |
             | ----------- | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
             | 400         | `BAD_REQUEST`                      | Bad request.                                                                                                                              |
-            | 400         | `INVALID_REFERENCE_CODE`           | The reference code must be alphanumeric and exactly 10 characters long. |
-            | 400         | `MISSING_REFERENCE_CODE`           | The reference code is required but was not provided in the request. |
+            | 400         | `INVALID_REFERENCE_CODE`           | The reference code must be alphanumeric and exactly 10 characters long.                                                                   |
+            | 400         | `MISSING_REFERENCE_CODE`           | The reference code is required but was not provided in the request.                                                                       |
             | 401         | `ACCESS_DENIED`                    | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
             | 403         | `FORBIDDEN`                        | Access denied to resource.                                                                                                                |
-            | 404         | `QUESTIONNAIRE_RESPONSE_NOT_FOUND` | No questionnaire response was found for the provided reference code. |
+            | 404         | `QUESTIONNAIRE_RESPONSE_NOT_FOUND` | No questionnaire response was found for the provided reference code.                                                                      |
             | 404         | `INVALIDATED_RESOURCE`             | Resource that has been marked as invalid was requested - invalid resources cannot be retrieved                                            |
             | 405         | `METHOD_NOT_ALLOWED`               | The method is not allowed.                                                                                                                |
             | 408         | `TIMEOUT`                          | Request timed out.                                                                                                                        |

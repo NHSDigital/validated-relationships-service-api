@@ -5,12 +5,46 @@ name: Open API Validate
 permissions:
     contents: read
 jobs:
-    GET_Consent:
-        name: GET Consent test
+    ExamplesSchemasChecks:
+        name: Examples Schemas Checks
         runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                endpoint:
+                    [
+                        {
+                            name: "GET /Consent",
+                            make_target: "schema-get-consent",
+                        },
+                        {
+                            name: "POST /Consent",
+                            make_target: "schema-post-consent",
+                        },
+                        {
+                            name: "PATCH /Consent",
+                            make_target: "schema-patch-consent",
+                        },
+                        {
+                            name: "GET /RelatedPerson",
+                            make_target: "schema-related-person",
+                        },
+                        {
+                            name: "POST /Questionnaire",
+                            make_target: "schema-questionnaire",
+                        },
+                        {
+                            name: "GET /Questionnaire",
+                            make_target: "schema-get-questionnaire",
+                        },
+                        { name: "Errors", make_target: "schema-errors" },
+                    ]
         steps:
             - name: Checkout repository
               uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+                  persist-credentials: false
 
             - name: Set up Python
               uses: actions/setup-python@v5
@@ -19,167 +53,11 @@ jobs:
 
             - name: Install Poetry
               shell: bash
-              run: |
-                  pipx install poetry==1.8.5
+              run: pipx install poetry==1.8.5
 
             - name: Install Script Packages with Poetry
               shell: bash
-              run: |
-                  poetry install --all-extras
+              run: poetry install --all-extras
 
-            - name: Run Python script for all files
-              run: |
-                  make schema-get-consent
-
-    POST_Consent:
-        name: POST Consent test
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout repository
-              uses: actions/checkout@v4
-
-            - name: Set up Python
-              uses: actions/setup-python@v5
-              with:
-                  python-version: 3.9
-
-            - name: Install Poetry
-              shell: bash
-              run: |
-                  pipx install poetry==1.8.5
-
-            - name: Install Script Packages with Poetry
-              shell: bash
-              run: |
-                  poetry install --all-extras
-
-            - name: Run Python script for all files
-              run: |
-                  make schema-post-consent
-
-    PATCH_Consent:
-        name: PATCH Consent test
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout repository
-              uses: actions/checkout@v4
-
-            - name: Set up Python
-              uses: actions/setup-python@v5
-              with:
-                  python-version: 3.9
-
-            - name: Install Poetry
-              shell: bash
-              run: |
-                  pipx install poetry==1.8.5
-
-            - name: Install Script Packages with Poetry
-              shell: bash
-              run: |
-                  poetry install --all-extras
-
-            - name: Run Python script for all files
-              run: |
-                  make schema-patch-consent
-
-    GET_RelatedPerson:
-        name: GET Related Person test
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout repository
-              uses: actions/checkout@v4
-
-            - name: Set up Python
-              uses: actions/setup-python@v5
-              with:
-                  python-version: 3.9
-
-            - name: Install Poetry
-              shell: bash
-              run: |
-                  pipx install poetry==1.8.5
-
-            - name: Install Script Packages with Poetry
-              shell: bash
-              run: |
-                  poetry install --all-extras
-
-            - name: Run Python script for all files
-              run: |
-                  make schema-related-person
-
-    POST_Questionnaire:
-        name: POST questionnaire test
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout repository
-              uses: actions/checkout@v4
-
-            - name: Set up Python
-              uses: actions/setup-python@v5
-              with:
-                  python-version: 3.9
-
-            - name: Install Poetry
-              shell: bash
-              run: |
-                  pipx install poetry==1.8.5
-
-            - name: Install Script Packages with Poetry
-              shell: bash
-              run: |
-                  poetry install --all-extras
-
-            - name: Run Python script for all files
-              run: |
-                  make schema-questionnaire
-
-    GET_Questionnaire:
-        name: GET questionnaire test
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout repository
-              uses: actions/checkout@v4
-
-            - name: Set up Python
-              uses: actions/setup-python@v5
-              with:
-                  python-version: 3.9
-
-            - name: Install Poetry
-              shell: bash
-              run: |
-                  pipx install poetry==1.8.5
-            - name: Install Script Packages with Poetry
-              shell: bash
-              run: |
-                  poetry install --all-extras
-            - name: Run Python script for all files
-              run: |
-                  make schema-get-questionnaire
-    Errors:
-        name: Error schema test
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout repository
-              uses: actions/checkout@v4
-
-            - name: Set up Python
-              uses: actions/setup-python@v5
-              with:
-                  python-version: 3.9
-
-            - name: Install Poetry
-              shell: bash
-              run: |
-                  pipx install poetry==1.8.5
-
-            - name: Install Script Packages with Poetry
-              shell: bash
-              run: |
-                  poetry install --all-extras
-
-            - name: Run Python script for all files
-              run: |
-                  make schema-errors
+            - name: Check Examples against Endpoint Schemas
+              run: make ${{ matrix.endpoint.make_target }}

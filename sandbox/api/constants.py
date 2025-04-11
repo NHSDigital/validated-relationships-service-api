@@ -62,9 +62,20 @@ PATCH_CONSENT__INVALID_STATUS_CODE = f"{PATCH_CONSENT__DIRECTORY}errors/invalid_
 PATCH_CONSENT__RESOURCE_NOT_FOUND = f"{PATCH_CONSENT__DIRECTORY}errors/resource_not_found.yaml"
 PATCH_CONSENT__INVALID_STATE_TRANSITION = f"{PATCH_CONSENT__DIRECTORY}errors/invalid_state_transition.yaml"
 
-QR_DIRECTORY = "./api/examples/POST_QuestionnaireResponse/"
-QUESTIONNAIRE_RESPONSE__SUCCESS = f"{QR_DIRECTORY}success.yaml"
+# POST QuestionnaireResponse
+POST_QUESTIONNAIRE_RESPONSE_DIRECTORY = "./api/examples/POST_QuestionnaireResponse/"
+POST_QUESTIONNAIRE_RESPONSE__SUCCESS = f"{POST_QUESTIONNAIRE_RESPONSE_DIRECTORY}success.yaml"
 
+# GET QuestionnaireResponse
+GET_QUESTIONNAIRE_RESPONSE_DIRECTORY = "./api/examples/GET_QuestionnaireResponse/"
+GET_QUESTIONNAIRE_RESPONSE__SUCCESS = f"{GET_QUESTIONNAIRE_RESPONSE_DIRECTORY}success.yaml"
+GET_QUESTIONNAIRE_RESPONSE__INVALID = f"{GET_QUESTIONNAIRE_RESPONSE_DIRECTORY}errors/invalid-reference-code.yaml"
+GET_QUESTIONNAIRE_RESPONSE__MISSING = f"{GET_QUESTIONNAIRE_RESPONSE_DIRECTORY}errors/missing-reference-code.yaml"
+GET_QUESTIONNAIRE_RESPONSE__NOT_FOUND = (
+    f"{GET_QUESTIONNAIRE_RESPONSE_DIRECTORY}errors/questionnaire_response_not_found.yaml"
+)
+
+# GET RelatedPerson
 RELATED_DIRECTORY = "./api/examples/GET_RelatedPerson/"
 RELATED__ERROR_IDENTIFIER_MISSING = f"{RELATED_DIRECTORY}errors/invalid-identifier-missing.yaml"
 RELATED__ERROR_IDENTIFIER_SYSTEM = f"{RELATED_DIRECTORY}errors/invalid-identifier-system.yaml"

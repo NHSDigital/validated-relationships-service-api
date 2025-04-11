@@ -5,13 +5,13 @@ jobs:
     run-postman-collection:
         runs-on: ubuntu-latest
         steps:
-            -   name: Check out the repository
-                uses: actions/checkout@v4
-            -   name: Set up Node.js
-                uses: actions/setup-node@v4
-                with:
-                    node-version: '22'
-            -   name: Install Newman
-                run: npm install -g newman
-            -   name: Run Postman Collection
-                run: newman run ./postman/Validate\ Relationship\ Service\ Sandbox.postman_collection.json
+            - name: Check out the repository
+              uses: actions/checkout@v4
+            - name: Set up Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: "22"
+            - name: Install Newman
+              run: npm install -g newman
+            - name: Run Postman Collection
+              run: newman run ./postman/Validate\ Relationship\ Service\ Sandbox.postman_collection.json
