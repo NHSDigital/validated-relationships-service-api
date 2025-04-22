@@ -11,6 +11,7 @@ from sandbox.api.constants import (
     PATCH_CONSENT__INVALID_STATUS_CODE,
     PATCH_CONSENT__RESOURCE_NOT_FOUND,
     PATCH_CONSENT__SUCCESS,
+    PATCH_CONSENT__INVALID_STATUS_REASON,
 )
 
 CONSENT_API_ENDPOINT = "/FHIR/R4/Consent"
@@ -25,6 +26,7 @@ CONSENT_API_ENDPOINT = "/FHIR/R4/Consent"
         ("3a2679eb", PATCH_CONSENT__INVALID_PATCH_FORMAT, 400),
         ("94df7c8f", PATCH_CONSENT__INVALID_PATH, 400),
         ("2a7b736d", PATCH_CONSENT__INVALID_STATUS_CODE, 422),
+        ("2a7b736d", PATCH_CONSENT__INVALID_STATUS_REASON, 422),
         ("6fb4361b", PATCH_CONSENT__INVALID_STATE_TRANSITION, 422),
         ("xxxxxxxx", PATCH_CONSENT__RESOURCE_NOT_FOUND, 404),
         ("12345678", PATCH_CONSENT__RESOURCE_NOT_FOUND, 404),
@@ -53,6 +55,8 @@ def test_patch_consent_on_request_returns_expected_response(
     json = [{"op": "replace", "path": "/status", "value": "inactive"}]
     response = client.patch(CONSENT_API_ENDPOINT + f"/{nhs_num}", json=json)
     # Assert
-    mock_generate_response_from_example.assert_called_once_with(response_file_name, status_code)
+    mock_generate_response_from_example.assert_called_once_with(
+        response_file_name, status_code
+    )
     assert response.status_code == status_code
     assert response.json == loads(mocked_response.get_data(as_text=True))

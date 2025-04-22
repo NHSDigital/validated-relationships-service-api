@@ -723,6 +723,7 @@ paths:
         | Invalid patch format            | Malformed JSON patch document, request with id '3a2679eb'             | HTTP Status 400 and INVALID_PATCH_FORMAT error response       |
         | Invalid path                    | Patch targeting non-existent element, request with id '94df7c8f'      | HTTP Status 400 and INVALID_PATCH_PATH error response         |
         | Invalid status code             | Patch with invalid status value, request with id '2a7b736d'           | HTTP Status 422 and INVALID_STATUS_CODE error response        |
+        | Invalid status reason             | Patch with invalid status reason value, request with id '4b6792be'           | HTTP Status 422 and INVALID_STATUS_REASON error response        |
         | Resource not found              | Patch for non-existent Consent, request with an id not listed here    | HTTP Status 404 and RESOURCE_NOT_FOUND error response         |
         | Invalid state transition        | Patch attempting invalid status change, request with id '6fb4361b'    | HTTP Status 422 and INVALID_STATE_TRANSITION error response   |
       parameters:
@@ -806,6 +807,7 @@ paths:
             | 415         | `UNSUPPORTED_MEDIA`         | Unsupported media type.                                                                                                                   |
             | 422         | `INVALID_PATCH_PATH`        | Invalid patch path.                                                                                                                       |
             | 422         | `INVALID_STATUS_CODE`       | Invalid status code.                                                                                                                      |
+            | 422         | `INVALID_STATUS_REASON`       | Invalid status reason.                                                                                                                      |
             | 422         | `INVALID_STATE_TRANSITION`  | Invalid state transition.                                                                                                                 |
             | 422         | `INVALID_LEGAL_BASIS_CODE`  | Invalid legal basis code.                                                                                                                 |
             | 422         | `INVALID_END_DATE`          | End date is invalid.                                                                                                                      |
@@ -823,6 +825,8 @@ paths:
                   $ref: "./examples/responses/PATCH_Consent/errors/invalid_path.yaml#/PatchConsentInvalidPathError"
                 patchConsentInvalidStatusCodeError:
                   $ref: "./examples/responses/PATCH_Consent/errors/invalid_status_code.yaml#/PatchConsentInvalidStatusCodeError"
+                PatchConsentInvalidStatusReasonError:
+                  $ref: "./examples/responses/PATCH_Consent/errors/invalid_status_reason.yaml#/PatchConsentInvalidStatusReasonError"
                 patchConsentInvalidStateTransitionError:
                   $ref: "./examples/responses/PATCH_Consent/errors/invalid_state_transition.yaml#/PatchConsentInvalidStateTransitionError"
         "5XX":
