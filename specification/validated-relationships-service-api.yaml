@@ -227,7 +227,7 @@ paths:
             | 404         | `INVALIDATED_RESOURCE` | Resource that has been marked as invalid was requested - invalid resources cannot be retrieved                                            |
             | 405         | `METHOD_NOT_ALLOWED`   | The method is not allowed.                                                                                                                |
             | 408         | `TIMEOUT`              | Request timed out.                                                                                                                        |
-            | 415         | `UNSUPPORTED_MEDIA`    | Unsupported media type.                                                                                                                    |
+            | 415         | `UNSUPPORTED_MEDIA`    | Unsupported media type.                                                                                                                   |
             | 429         | `THROTTLED`            | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
 
           content:
@@ -788,8 +788,30 @@ paths:
                 patchConsentSuccess:
                   $ref: "./examples/responses/PATCH_Consent/success.yaml#/PatchConsentSuccess"
 
-        "400":
-          description: Invalid patch
+        "4XX":
+          description: |
+            Errors will be returned for the first error encountered in the request. For details, see the `diagnostics` field of error. An error occurred as follows:
+
+            | HTTP status | Error code                  | Description                                                                                                                               |
+            | ----------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+            | 400         | `BAD_REQUEST`               | Bad request.                                                                                                                              |
+            | 400         | `INVALID_VALUE`             | Invalid Parameter or Invalid operation.                                                                                                   |
+            | 400         | `INVALID_PATCH_FORMAT`      | Invalid patch format.                                                                                                                     |
+            | 400         | `INVALID_PATCH`             | Invalid patch.                                                                                                                            |
+            | 401         | `ACCESS_DENIED`             | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
+            | 403         | `FORBIDDEN`                 | Access denied to resource.                                                                                                                |
+            | 404         | `INVALIDATED_RESOURCE`      | Resource that has been marked as invalid was requested - invalid resources cannot be retrieved                                            |
+            | 405         | `METHOD_NOT_ALLOWED`        | The method is not allowed.                                                                                                                |
+            | 408         | `TIMEOUT`                   | Request timed out.                                                                                                                        |
+            | 415         | `UNSUPPORTED_MEDIA`         | Unsupported media type.                                                                                                                   |
+            | 422         | `INVALID_PATCH_PATH`        | Invalid patch path.                                                                                                                       |
+            | 422         | `INVALID_STATUS_CODE`       | Invalid status code.                                                                                                                      |
+            | 422         | `INVALID_STATE_TRANSITION`  | Invalid state transition.                                                                                                                 |
+            | 422         | `INVALID_LEGAL_BASIS_CODE`  | Invalid legal basis code.                                                                                                                 |
+            | 422         | `INVALID_END_DATE`          | End date is invalid.                                                                                                                      |
+            | 422         | `DUPLICATE_PATCHES`         | Two or more patches use same path.                                                                                                        |
+            | 429         | `THROTTLED`                 | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
+
           content:
             application/fhir+json:
               schema:
@@ -799,30 +821,6 @@ paths:
                   $ref: "./examples/responses/PATCH_Consent/errors/invalid_patch_format.yaml#/PatchConsentInvalidPatchFormatError"
                 patchConsentInvalidPathError:
                   $ref: "./examples/responses/PATCH_Consent/errors/invalid_path.yaml#/PatchConsentInvalidPathError"
-
-        "404":
-          description: Resource not found
-          content:
-            application/fhir+json:
-              schema:
-                $ref: "#/components/schemas/OperationOutcome"
-              examples:
-                patchConsentRelationshipNotFoundError:
-                  $ref: "./examples/responses/PATCH_Consent/errors/resource_not_found.yaml#/PatchConsentRelationshipNotFoundError"
-
-        "415":
-          description: Unsupported media type
-          content:
-            application/fhir+json:
-              schema:
-                $ref: "#/components/schemas/OperationOutcome"
-        "422":
-          description: Business rule validation failed
-          content:
-            application/fhir+json:
-              schema:
-                $ref: "#/components/schemas/OperationOutcome"
-              examples:
                 patchConsentInvalidStatusCodeError:
                   $ref: "./examples/responses/PATCH_Consent/errors/invalid_status_code.yaml#/PatchConsentInvalidStatusCodeError"
                 patchConsentInvalidStateTransitionError:
