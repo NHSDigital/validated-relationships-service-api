@@ -55,8 +55,6 @@ def test_patch_consent_on_request_returns_expected_response(
     json = [{"op": "replace", "path": "/status", "value": "inactive"}]
     response = client.patch(CONSENT_API_ENDPOINT + f"/{nhs_num}", json=json)
     # Assert
-    mock_generate_response_from_example.assert_called_once_with(
-        response_file_name, status_code
-    )
+    mock_generate_response_from_example.assert_called_once_with(response_file_name, status_code)
     assert response.status_code == status_code
     assert response.json == loads(mocked_response.get_data(as_text=True))
