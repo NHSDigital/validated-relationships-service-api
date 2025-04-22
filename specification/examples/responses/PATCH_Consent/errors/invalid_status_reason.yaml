@@ -1,0 +1,15 @@
+PatchConsentInvalidStatusReasonError:
+  summary: Bad request invalid status reason
+  description: 422 error response for a request with an invalid status reason
+  value:
+    issue:
+      - code: invalid
+        diagnostics: "Invalid status reason."
+        details:
+          coding:
+            - code: "INVALID_STATUS_REASON"
+              display: "Status reason is invalid."
+              system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
+              version: '1'
+        severity: error
+    resourceType: "OperationOutcome"

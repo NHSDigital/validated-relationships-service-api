@@ -9,6 +9,7 @@ from .constants import (
     PATCH_CONSENT__INVALID_STATUS_CODE,
     PATCH_CONSENT__RESOURCE_NOT_FOUND,
     PATCH_CONSENT__SUCCESS,
+    PATCH_CONSENT__INVALID_STATUS_REASON,
 )
 from .utils import generate_response_from_example
 
@@ -57,6 +58,10 @@ def patch_consent_response(identifier: str) -> Union[dict, tuple]:
         elif identifier == "6fb4361b":
             # Invalid state transition
             return generate_response_from_example(PATCH_CONSENT__INVALID_STATE_TRANSITION, 422)
+
+        elif identifier == "4b6792be":
+            # Invalid status reason
+            return generate_response_from_example(PATCH_CONSENT__INVALID_STATUS_REASON, 422)
 
         else:
             # Resource not found
