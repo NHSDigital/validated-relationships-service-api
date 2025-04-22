@@ -651,7 +651,8 @@ paths:
             | 422         | `INVALID_SCOPE`             | Invalid scope.                                                                                                                            |
             | 422         | `INVALID_CATEGORY`          | Invalid category.                                                                                                                         |
             | 422         | `INVALID_DATETIME`          | Invalid datetime.                                                                                                                         |
-            | 422         | `INVALID_PROVISION`         | Invalid provision.                                                                                                                        |
+            | 422         | `INVALID_PROVISION`         | Invalid provision. 
+            | 422         | `INVALID_EXTENSION`         | Invalid extension.                                                                                                                       |
             | 429         | `THROTTLED`                 | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
 
           content:
