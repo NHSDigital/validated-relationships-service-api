@@ -521,7 +521,7 @@ paths:
             | ----------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
             | 400         | `MISSING_VALUE`             | Missing header or parameter. For details, see the `diagnostics` field.                                                                    |
             | 400         | `INVALID_VALUE`             | Invalid header. For details, see the `diagnostics` field.                                                                                 |
-            | 400         | `MISSING_IDENTIFIER_VALUE`  | Missing NHS number.                                                                                                             |
+            | 400         | `MISSING_IDENTIFIER_VALUE`  | Missing performer:identifier or patient:identifier value.                                                                                                             |
             | 400         | `NOT_SUPPORTED`             | The request is not currently supported.                                                                                                   |
             | 401         | `ACCESS_DENIED`             | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
             | 403         | `FORBIDDEN`                 | Access denied to resource.                                                                                                                |
@@ -529,8 +529,8 @@ paths:
             | 404         | `GP_PRACTICE_NOT_FOUND`     | GP Practice not found.                                                                                                                    |
             | 405         | `METHOD_NOT_ALLOWED`        | The method is not allowed.                                                                                                                |
             | 408         | `TIMEOUT`                   | Request timed out.                                                                                                                        |
-            | 422         | `INVALID_IDENTIFIER_SYSTEM` | Invalid identifier system.                                                                                                                |
-            | 422         | `INVALID_IDENTIFIER_VALUE`  | Malformed NHS number.                                                                                                           |
+            | 422         | `INVALID_IDENTIFIER_SYSTEM` | Invalid performer:identifier or patient:identifier identifier system.                                                                                                                |
+            | 422         | `INVALID_IDENTIFIER_VALUE`  | Malformed performer:identifier or patient:identifier NHS number.                                                                                                           |
             | 422         | `INVALID_PARAMETER`         | Invalid parameter. For details, see the `diagnostics` field.                                                                              |
             | 429         | `THROTTLED`                 | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
 

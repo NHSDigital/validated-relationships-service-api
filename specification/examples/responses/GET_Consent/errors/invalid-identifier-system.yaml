@@ -4,7 +4,7 @@ ConsentInvalidIdentifierSystemError:
   value:
     issue:
       - code: invalid
-        diagnostics: "Invalid request with error - performer:identifier system parameter is invalid."
+        diagnostics: "Invalid request with error - performer:identifier or patient:identifier system parameter is invalid."
         details:
           coding:
             - code: "INVALID_IDENTIFIER_SYSTEM"
