@@ -1,0 +1,15 @@
+GetConsentMultipleIdentifierParametersError:
+  summary: Multiple identifier parameters error
+  description: 422 error response for a request with multiple identifier parameters
+  value:
+    issue:
+      - code: invalid
+        diagnostics: "Both 'performer:identifier' and 'patient:identifier' parameters cannot be used together."
+        details:
+          coding:
+            - code: "MULTIPLE_IDENTIFIER_PARAMETERS"
+              display:  "Multiple identifiers provided."
+              system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
+              version: '1'
+        severity: error
+    resourceType: "OperationOutcome"
