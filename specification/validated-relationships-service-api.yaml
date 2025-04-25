@@ -2084,6 +2084,7 @@ components:
           description: "Date and time when the consent was created."
         performer:
           type: array
+          maxItems: 1
           items:
             $ref: "#/components/schemas/Reference"
           description: "Individuals or organizations that agreed to the consent."
