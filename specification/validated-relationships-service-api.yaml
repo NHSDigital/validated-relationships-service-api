@@ -435,7 +435,9 @@ paths:
       summary: Get proxy roles
       description: |
         ## Overview
-        Use this endpoint to get the details about proxy roles, including current status, based on a provided proxy's NHS Number.
+        Use this endpoint to get the details about proxy roles, including current status, based on a provided NHS Number.
+
+        Either `performer:identifier` or `patient:identifier` request parameters must be provided. `performer:identifier` and `patient:identifier` can be used together.
 
         You can (optionally) include `status={status}` request parameter to filter the limit the response to records with a given status bound to the http://hl7.org/fhir/consent-state-codes CodeSystem e.g. `status=active`.
 
@@ -474,6 +476,7 @@ paths:
       parameters:
         - $ref: "#/components/parameters/BearerAuthorization"
         - $ref: "#/components/parameters/ConsentBundlePerformerIdentifier"
+        - $ref: "#/components/parameters/ConsentBundlePatientIdentifier"
         - $ref: "#/components/parameters/ConsentStatus"
         - $ref: "#/components/parameters/ConsentBundleIncludes"
         - $ref: "#/components/parameters/RequestID"
@@ -516,22 +519,22 @@ paths:
           description: |
             Errors will be returned for the first error encountered in the request. An error occurred as follows:
 
-            | HTTP status | Error code                  | Description                                                                                                                               |
-            | ----------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-            | 400         | `MISSING_VALUE`             | Missing header or parameter. For details, see the `diagnostics` field.                                                                    |
-            | 400         | `INVALID_VALUE`             | Invalid header. For details, see the `diagnostics` field.                                                                                 |
-            | 400         | `MISSING_IDENTIFIER_VALUE`  | Missing performer NHS number.                                                                                                             |
-            | 400         | `NOT_SUPPORTED`             | The request is not currently supported.                                                                                                   |
-            | 401         | `ACCESS_DENIED`             | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
-            | 403         | `FORBIDDEN`                 | Access denied to resource.                                                                                                                |
-            | 404         | `INVALIDATED_RESOURCE`      | Resource that has been marked as invalid was requested - invalid resources cannot be retrieved                                            |
-            | 404         | `GP_PRACTICE_NOT_FOUND`     | GP Practice not found.                                                                                                                    |
-            | 405         | `METHOD_NOT_ALLOWED`        | The method is not allowed.                                                                                                                |
-            | 408         | `TIMEOUT`                   | Request timed out.                                                                                                                        |
-            | 422         | `INVALID_IDENTIFIER_SYSTEM` | Invalid identifier system.                                                                                                                |
-            | 422         | `INVALID_IDENTIFIER_VALUE`  | Malformed performer NHS number.                                                                                                           |
-            | 422         | `INVALID_PARAMETER`         | Invalid parameter. For details, see the `diagnostics` field.                                                                              |
-            | 429         | `THROTTLED`                 | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
+            | HTTP status | Error code                       | Description                                                                                                                               |
+            | ----------- | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+            | 400         | `MISSING_VALUE`                  | Missing header or parameter. For details, see the `diagnostics` field.                                                                    |
+            | 400         | `INVALID_VALUE`                  | Invalid header. For details, see the `diagnostics` field.                                                                                 |
+            | 400         | `MISSING_IDENTIFIER_VALUE`       | Missing performer:identifier or patient:identifier value.                                                                                 |
+            | 400         | `NOT_SUPPORTED`                  | The request is not currently supported.                                                                                                   |
+            | 401         | `ACCESS_DENIED`                  | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
+            | 403         | `FORBIDDEN`                      | Access denied to resource.                                                                                                                |
+            | 404         | `INVALIDATED_RESOURCE`           | Resource that has been marked as invalid was requested - invalid resources cannot be retrieved                                            |
+            | 404         | `GP_PRACTICE_NOT_FOUND`          | GP Practice not found.                                                                                                                    |
+            | 405         | `METHOD_NOT_ALLOWED`             | The method is not allowed.                                                                                                                |
+            | 408         | `TIMEOUT`                        | Request timed out.                                                                                                                        |
+            | 422         | `INVALID_IDENTIFIER_SYSTEM`      | Invalid performer:identifier or patient:identifier identifier system.                                                                     |
+            | 422         | `INVALID_IDENTIFIER_VALUE`       | Malformed performer:identifier or patient:identifier NHS number.                                                                          |
+            | 422         | `INVALID_PARAMETER`              | Invalid parameter. For details, see the `diagnostics` field.                                                                              |
+            | 429         | `THROTTLED`                      | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
 
           content:
             application/fhir+json:
@@ -2333,7 +2336,24 @@ components:
       name: performer:identifier
       description: |
         The performer's (Proxy) NHS number. For more information on FHIR tokens in general, [see here](https://build.fhir.org/search.html#token).
-      required: true
+      required: false
+      schema:
+        type: string
+        format: token
+      examples:
+        withoutSystem:
+          value: 9000000017
+          summary: NHS number specified without system
+        withSystem:
+          value: https://fhir.nhs.uk/Id/nhs-number|9000000017
+          summary: System and NHS number specified
+
+    ConsentBundlePatientIdentifier:
+      in: query
+      name: patient:identifier
+      description: |
+        The patient's NHS number. For more information on FHIR tokens in general, [see here](https://build.fhir.org/search.html#token).
+      required: false
       schema:
         type: string
         format: token

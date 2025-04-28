@@ -4,7 +4,7 @@ ConsentIdentifierMissingError:
   value:
     issue:
       - code: invalid
-        diagnostics: "Invalid request with error - performer:identifier parameter not found."
+        diagnostics: "Invalid request with error - performer:identifier or patient:identifier parameter not found."
         details:
           coding:
             - code: "MISSING_IDENTIFIER_VALUE"

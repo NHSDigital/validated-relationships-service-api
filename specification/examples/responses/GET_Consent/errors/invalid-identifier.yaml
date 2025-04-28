@@ -4,7 +4,7 @@ ConsentInvalidIdentifierError:
   value:
     issue:
       - code: invalid
-        diagnostics: 'Invalid request with error - performer:identifier parameter is invalid.'
+        diagnostics: 'Invalid request with error - performer:identifier or patient:identifier parameter is invalid.'
         details:
           coding:
             - code: "INVALID_IDENTIFIER_VALUE"
