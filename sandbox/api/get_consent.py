@@ -43,23 +43,25 @@ def get_consent_response() -> Union[dict, tuple]:
             return errors
 
         performer_identifier = remove_system(request.args.get("performer:identifier"))
+        patient_identifier = remove_system(request.args.get("patient:identifier"))
         status = request.args.getlist("status")
         _include = request.args.getlist("_include")
 
         # Single consenting adult relationship
-        if performer_identifier == "9000000010":
+        if performer_identifier == "9000000010" or patient_identifier == "9000000005":
             return check_for_consent_include_params(
                 _include,
                 GET_CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP,
                 GET_CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_BOTH,
             )
         # Single mother child relationship
-        elif performer_identifier == "9000000019":
+        elif performer_identifier == "9000000019" or patient_identifier == "9000000009":
             return check_for_consent_include_params(
                 _include,
                 GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP,
                 GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH,
             )
+        # TODO: for patient identifier
         # Filtering
         elif performer_identifier == "9000000017":
             return check_for_consent_filtering(
