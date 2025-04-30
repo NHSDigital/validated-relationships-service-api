@@ -21,6 +21,11 @@ GET_CONSENT_FILE_PATH = "sandbox.api.get_consent"
             "./api/examples/errors/invalidated-resource.yaml",
             404,
         ),
+        (
+            "patient:identifier=9000000100",  # Multiple relationships single patient
+            "./api/examples/GET_Consent/multiple-relationships-single-patient.yaml",
+            200,
+        ),
     ],
 )
 @patch("sandbox.api.get_consent.generate_response_from_example")

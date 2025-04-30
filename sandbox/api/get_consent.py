@@ -7,6 +7,7 @@ from .constants import (
     GET_CONSENT__FILTERED_RELATIONSHIPS_STATUS_ACTIVE,
     GET_CONSENT__FILTERED_RELATIONSHIPS_STATUS_INACTIVE,
     GET_CONSENT__FILTERED_RELATIONSHIPS_STATUS_PROPOSED_ACTIVE,
+    GET_CONSENT__MULTIPLE_RELATIONSHIPS_SINGLE_PATIENT,
     GET_CONSENT__MULTIPLE_RELATIONSHIPS,
     GET_CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_BOTH,
     GET_CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PATIENT,
@@ -61,7 +62,8 @@ def get_consent_response() -> Union[dict, tuple]:
                 GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP,
                 GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH,
             )
-        # TODO: for patient identifier
+        elif patient_identifier == "9000000100":
+            return generate_response_from_example(GET_CONSENT__MULTIPLE_RELATIONSHIPS_SINGLE_PATIENT, 200)
         # Filtering
         elif performer_identifier == "9000000017":
             return check_for_consent_filtering(
@@ -71,6 +73,7 @@ def get_consent_response() -> Union[dict, tuple]:
                 GET_CONSENT__FILTERED_RELATIONSHIPS_STATUS_INACTIVE,
                 GET_CONSENT__FILTERED_RELATIONSHIPS_STATUS_PROPOSED_ACTIVE,
             )
+
         elif performer_identifier == "9000000022":
             return check_for_consent_include_params(
                 _include,
