@@ -119,7 +119,7 @@ def test_get_consent_returns_expected_responses__mocked_get_consent(
             200,
         ),
         (
-            "performer:identifier=9000000010&patient:identifier=9000000005&_include=Consent:performer&_include=Consent:patient",
+            "performer:identifier=9000000010&patient:identifier=9000000005&_include=Consent:performer&_include=Consent:patient",  # noqa: E501
             "./api/examples/GET_Consent/single-consenting-adult-relationship-include-performer-patient.yaml",
             200,
         ),
@@ -149,7 +149,7 @@ def test_get_consent_returns_expected_responses__mocked_get_consent(
             200,
         ),
         (
-            "performer:identifier=9000000019&patient:identifier=9000000009&_include=Consent:performer&_include=Consent:patient",
+            "performer:identifier=9000000019&patient:identifier=9000000009&_include=Consent:performer&_include=Consent:patient",  # noqa: E501
             "./api/examples/GET_Consent/single-mother-child-relationship-include-performer-patient.yaml",
             200,
         ),
