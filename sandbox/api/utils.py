@@ -248,7 +248,7 @@ def check_for_consent_include_params(
             logger.error("No consent performer example provided")
             return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)
     elif _include == [CONSENT_PATIENT]:
-        if include_performer_response_yaml:
+        if include_patient_response_yaml:
             return generate_response_from_example(include_patient_response_yaml, 200)
         else:
             logger.error("No consent:patient example provided")
