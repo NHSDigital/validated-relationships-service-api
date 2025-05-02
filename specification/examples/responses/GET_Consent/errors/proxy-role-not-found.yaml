@@ -1,0 +1,13 @@
+ProxyRoleNoteFoundError:
+  summary: Proxy role not found
+  description: 404 Proxy role not found error response bundle
+  value:
+    issue:
+      - code: processing
+        details:
+          coding:
+            - system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
+              version: "1"
+              code: "PROXY_ROLE_NOT_FOUND"
+              display: "Proxy role could not be found"
+        severity: error

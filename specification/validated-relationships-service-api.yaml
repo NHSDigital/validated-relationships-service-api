@@ -528,6 +528,7 @@ paths:
             | 401         | `ACCESS_DENIED`                  | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
             | 403         | `FORBIDDEN`                      | Access denied to resource.                                                                                                                |
             | 404         | `INVALIDATED_RESOURCE`           | Resource that has been marked as invalid was requested - invalid resources cannot be retrieved                                            |
+            | 404         | `PROXY_ROLE_NOT_FOUND`           | Proxy role not found.                                                                                                                    |
             | 404         | `GP_PRACTICE_NOT_FOUND`          | GP Practice not found.                                                                                                                    |
             | 405         | `METHOD_NOT_ALLOWED`             | The method is not allowed.                                                                                                                |
             | 408         | `TIMEOUT`                        | Request timed out.                                                                                                                        |
