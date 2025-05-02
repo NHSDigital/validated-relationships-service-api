@@ -5,7 +5,7 @@
 		"description": "Example usage of the Validate Relationship Service (VRS) sandbox.\n\nFull specification is available at [https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "34042403",
-		"_collection_link": "https://www.postman.com/jackplowman2/validate-relationship-service-sandbox-01-05-25/collection/jcpiqj2/validate-relationship-service-sandbox-01-05-25?action=share&source=collection_link&creator=34042403"
+		"_collection_link": "https://www.postman.com/jackplowman2/workspace/validate-relationship-service-sandbox-01-05-25/collection/34042403-a5dcb0b1-ad72-4665-942e-2041cc61e26d?action=share&source=collection_link&creator=34042403"
 	},
 	"item": [
 		{
@@ -4660,7 +4660,7 @@
 									"  \"issue\": [",
 									"    {",
 									"      \"code\": \"invalid\",",
-									"      \"diagnostics\": \"Invalid request with error - performer:identifier parameter is invalid.\",",
+									"      \"diagnostics\": \"Invalid request with error - performer:identifier or patient:identifier parameter is invalid.\",",
 									"      \"details\": {",
 									"        \"coding\": [",
 									"          {",
@@ -4728,7 +4728,7 @@
 									"  \"issue\": [",
 									"    {",
 									"      \"code\": \"invalid\",",
-									"      \"diagnostics\": \"Invalid request with error - performer:identifier system parameter is invalid.\",",
+									"      \"diagnostics\": \"Invalid request with error - performer:identifier or patient:identifier system parameter is invalid.\",",
 									"      \"details\": {",
 									"        \"coding\": [",
 									"          {",
@@ -4796,7 +4796,7 @@
 									"  \"issue\": [",
 									"    {",
 									"      \"code\": \"invalid\",",
-									"      \"diagnostics\": \"Invalid request with error - performer:identifier parameter not found.\",",
+									"      \"diagnostics\": \"Invalid request with error - performer:identifier or patient:identifier parameter not found.\",",
 									"      \"details\": {",
 									"        \"coding\": [",
 									"          {",
@@ -4827,7 +4827,8 @@
 									"    pm.expect(responseJson).to.eql(expectedResponseBody);",
 									"});"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
