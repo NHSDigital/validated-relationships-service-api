@@ -1,0 +1,135 @@
+ConsentMultipleRelationshipsSinglePatientIncludePatientBundle:
+  summary: Multiple relationships (multiple proxy relationships with single patient)
+  description: A Bundle containing multiple proxy relationships with single patient, including patient details.
+  value:
+    resourceType: Bundle
+    timestamp: '2020-08-26T14:00:00+00:00'
+    total: 3
+    type: searchset
+    entry:
+      - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/A3CC67E2
+        resource:
+          resourceType: Patient
+          id: A3CC67E2
+          identifier:
+            - system: 'https://fhir.nhs.uk/Id/nhs-number'
+              value: '9000000100'
+            - system: 'https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier'
+              value: ABC1234567
+          name:
+            - id: '123456'
+              use: usual
+              period:
+                start: '2020-01-01'
+                end: '2021-12-31'
+              given:
+                - Samantha
+              family: Adams
+              prefix:
+                - Miss
+          birthDate: '1963-11-02'
+          generalPractitioner:
+            - type: Organization
+              identifier:
+                value: ODS12345
+                system: 'https://fhir.nhs.uk/Id/ods-organization-code'
+        search:
+          mode: include
+      - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/BBCC67E9
+        resource:
+          resourceType: Consent
+          id: BBCC67E9
+          status: active
+          scope:
+            coding:
+              - system: 'http://terminology.hl7.org/CodeSystem/consentscope'
+                code: patient-privacy
+                display: Privacy Consent
+            text: Patient Privacy Consent
+          category:
+            - coding:
+                - system: 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
+                  code: INFA
+                  display: Information Access
+              text: Information Access Consent
+          patient:
+            identifier:
+              system: 'https://fhir.nhs.uk/Id/nhs-number'
+              value: '9000000100'
+          dateTime: '2024-07-21T17:32:28Z'
+          performer:
+            - identifier:
+                system: 'https://fhir.nhs.uk/Id/nhs-number'
+                value: '9000000020'
+        search:
+          mode: match
+      - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/WWCC67T1
+        resource:
+          resourceType: Consent
+          id: WWCC67T1
+          status: active
+          scope:
+            coding:
+              - system: 'http://terminology.hl7.org/CodeSystem/consentscope'
+                code: patient-privacy
+                display: Privacy Consent
+            text: Patient Privacy Consent
+          category:
+            - coding:
+                - system: 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
+                  code: INFA
+                  display: Information Access
+              text: Information Access Consent
+          patient:
+            identifier:
+              system: 'https://fhir.nhs.uk/Id/nhs-number'
+              value: '9000000100'
+          dateTime: '2024-07-21T17:32:28Z'
+          performer:
+            - identifier:
+                system: 'https://fhir.nhs.uk/Id/nhs-number'
+                value: '9000000021'
+          verification:
+            - verified: true
+              verifiedWith:
+                identifier:
+                  system: 'https://fhir.nhs.uk/Id/nhs-number'
+                  value: '9000000021'
+              verificationDate: '2024-07-21T17:32:28Z'
+        search:
+          mode: match
+      - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/AATD11A1
+        resource:
+          resourceType: Consent
+          id: AATD11A1
+          status: inactive
+          scope:
+            coding:
+              - system: 'http://terminology.hl7.org/CodeSystem/consentscope'
+                code: patient-privacy
+                display: Privacy Consent
+            text: Patient Privacy Consent
+          category:
+            - coding:
+                - system: 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
+                  code: INFA
+                  display: Information Access
+              text: Information Access Consent
+          patient:
+            identifier:
+              system: 'https://fhir.nhs.uk/Id/nhs-number'
+              value: '9000000100'
+          dateTime: '2024-07-21T17:32:28Z'
+          performer:
+            - identifier:
+                system: 'https://fhir.nhs.uk/Id/nhs-number'
+                value: '9000000022'
+          verification:
+            - verified: true
+              verifiedWith:
+                identifier:
+                  system: 'https://fhir.nhs.uk/Id/nhs-number'
+                  value: '9000000022'
+              verificationDate: '2024-07-21T17:32:28Z'
+        search:
+          mode: match
