@@ -49,6 +49,9 @@ GET_CONSENT__STATUS_PARAM_INVALID = f"{GET_CONSENT__DIRECTORY}errors/invalid-sta
 GET_CONSENT__MULTIPLE_RELATIONSHIPS_SINGLE_PATIENT = (
     f"{GET_CONSENT__DIRECTORY}multiple-relationships-single-patient.yaml"
 )
+GET_CONSENT__MULTIPLE_RELATIONSHIPS_SINGLE_PATIENT_INCLUDE_PERFORMER = (
+    f"{GET_CONSENT__DIRECTORY}multiple-relationships-single-patient-include-performer.yaml"
+)
 GET_CONSENT__MULTIPLE_RELATIONSHIPS_SINGLE_PATIENT_INCLUDE_PATIENT = (
     f"{GET_CONSENT__DIRECTORY}multiple-relationships-single-patient-include-patient.yaml"
 )

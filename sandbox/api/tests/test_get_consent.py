@@ -154,6 +154,11 @@ def test_get_consent_returns_expected_responses__mocked_get_consent(
             200,
         ),
         (
+            "patient:identifier=9000000100&_include=Consent:performer",
+            "./api/examples/GET_Consent/multiple-relationships-single-patient-include-performer.yaml",
+            200,
+        ),
+        (
             "patient:identifier=9000000100&_include=Consent:patient",
             "./api/examples/GET_Consent/multiple-relationships-single-patient-include-patient.yaml",
             200,
