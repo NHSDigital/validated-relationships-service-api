@@ -46,7 +46,9 @@ GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH = (
     f"{GET_CONSENT__DIRECTORY}single-mother-child-relationship-include-performer-patient.yaml"
 )
 GET_CONSENT__STATUS_PARAM_INVALID = f"{GET_CONSENT__DIRECTORY}errors/invalid-status-parameter.yaml"
-
+GET_CONSENT__MULTIPLE_RELATIONSHIPS_SINGLE_PATIENT = (
+    f"{GET_CONSENT__DIRECTORY}multiple-relationships-single-patient.yaml"
+)
 # POST Consent
 POST_CONSENT__DIRECTORY = "./api/examples/POST_Consent/"
 POST_CONSENT__SUCCESS = f"{POST_CONSENT__DIRECTORY}success.yaml"

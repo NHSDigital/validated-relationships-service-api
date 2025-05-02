@@ -21,6 +21,11 @@ GET_CONSENT_FILE_PATH = "sandbox.api.get_consent"
             "./api/examples/errors/invalidated-resource.yaml",
             404,
         ),
+        (
+            "patient:identifier=9000000100",  # Multiple relationships single patient
+            "./api/examples/GET_Consent/multiple-relationships-single-patient.yaml",
+            200,
+        ),
     ],
 )
 @patch("sandbox.api.get_consent.generate_response_from_example")
@@ -89,7 +94,17 @@ def test_get_consent_returns_expected_responses__mocked_get_consent(
             200,
         ),
         (
-            "performer:identifier=9000000010",
+            "performer:identifier=9000000010",  # performer:identifier resulting in single adult relationship
+            "./api/examples/GET_Consent/single-consenting-adult-relationship.yaml",
+            200,
+        ),
+        (
+            "patient:identifier=9000000005",
+            "./api/examples/GET_Consent/single-consenting-adult-relationship.yaml",
+            200,
+        ),
+        (
+            "performer:identifier=9000000010&patient:identifier=9000000005",
             "./api/examples/GET_Consent/single-consenting-adult-relationship.yaml",
             200,
         ),
@@ -99,12 +114,42 @@ def test_get_consent_returns_expected_responses__mocked_get_consent(
             200,
         ),
         (
+            "patient:identifier=9000000005&_include=Consent:performer&_include=Consent:patient",
+            "./api/examples/GET_Consent/single-consenting-adult-relationship-include-performer-patient.yaml",
+            200,
+        ),
+        (
+            "performer:identifier=9000000010&patient:identifier=9000000005&_include=Consent:performer&_include=Consent:patient",  # noqa: E501
+            "./api/examples/GET_Consent/single-consenting-adult-relationship-include-performer-patient.yaml",
+            200,
+        ),
+        (
             "performer:identifier=9000000019",
             "./api/examples/GET_Consent/single-mother-child-relationship.yaml",
             200,
         ),
         (
+            "patient:identifier=9000000009",
+            "./api/examples/GET_Consent/single-mother-child-relationship.yaml",
+            200,
+        ),
+        (
+            "performer:identifier=9000000019&patient:identifier=9000000009",
+            "./api/examples/GET_Consent/single-mother-child-relationship.yaml",
+            200,
+        ),
+        (
             "performer:identifier=9000000019&_include=Consent:performer&_include=Consent:patient",
+            "./api/examples/GET_Consent/single-mother-child-relationship-include-performer-patient.yaml",
+            200,
+        ),
+        (
+            "patient:identifier=9000000009&_include=Consent:performer&_include=Consent:patient",
+            "./api/examples/GET_Consent/single-mother-child-relationship-include-performer-patient.yaml",
+            200,
+        ),
+        (
+            "performer:identifier=9000000019&patient:identifier=9000000009&_include=Consent:performer&_include=Consent:patient",  # noqa: E501
             "./api/examples/GET_Consent/single-mother-child-relationship-include-performer-patient.yaml",
             200,
         ),

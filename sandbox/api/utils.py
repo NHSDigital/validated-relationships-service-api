@@ -70,28 +70,31 @@ def check_for_get_consent_errors(request: Request) -> Optional[tuple]:
     Returns:
         Optional[tuple]: Tuple with response and status code if error is found
     """
-    identifier_key = "performer:identifier"
-    identifier = request.args.get(identifier_key)
-    identifier_without_system = remove_system(request.args.get(identifier_key))
+    performer_identifier = request.args.get("performer:identifier")
+    patient_identifier = request.args.get("patient:identifier")
 
-    if not identifier:
+    if not performer_identifier and not patient_identifier:
         return generate_response_from_example("./api/examples/GET_Consent/errors/missing-identifier.yaml", 400)
-    elif identifier and len(identifier_without_system) != 10:
-        # invalid identifier
-        return generate_response_from_example("./api/examples/GET_Consent/errors/invalid-identifier.yaml", 422)
-    elif (
-        isinstance(identifier, str)
-        and "|" in identifier
-        and "https://fhir.nhs.uk/Id/nhs-number" == identifier.split("|", maxsplit=2)[0]
-    ):
-        # invalid identifier system
-        return generate_response_from_example(
-            "./api/examples/GET_Consent/errors/invalid-identifier-system.yaml",
-            422,
-        )
-    elif identifier_without_system == "9000000012":
-        # invalid status
-        return generate_response_from_example(f"{GET_CONSENT_ERRORS}/gp-practice-not-found.yaml", 404)
+
+    for identifier in [performer_identifier, patient_identifier]:
+        identifier_without_system = remove_system(identifier)
+
+        if identifier and len(identifier_without_system) != 10:
+            # invalid identifier
+            return generate_response_from_example("./api/examples/GET_Consent/errors/invalid-identifier.yaml", 422)
+        elif (
+            isinstance(identifier, str)
+            and "|" in identifier
+            and "https://fhir.nhs.uk/Id/nhs-number" == identifier.split("|", maxsplit=2)[0]
+        ):
+            # invalid identifier system
+            return generate_response_from_example(
+                "./api/examples/GET_Consent/errors/invalid-identifier-system.yaml",
+                422,
+            )
+        elif identifier_without_system == "9000000012":
+            # invalid status
+            return generate_response_from_example(f"{GET_CONSENT_ERRORS}/gp-practice-not-found.yaml", 404)
 
 
 def check_for_empty(identifier: str, patient_identifier: str) -> Response:
