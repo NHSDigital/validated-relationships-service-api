@@ -1,6 +1,8 @@
 name: Run postman collection
 on:
     workflow_dispatch:
+    schedule:
+        - cron: "0 0 * * *" # Runs every day at midnight UTC
 jobs:
     run-postman-collection:
         runs-on: ubuntu-latest
