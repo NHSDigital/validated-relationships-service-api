@@ -237,8 +237,15 @@ paths:
               examples:
                 accessDeniedError:
                   $ref: "./examples/responses/errors/access-denied.yaml#/AccessDeniedError"
-        "500":
-          description: Internal server error
+        "5XX":
+          description: |
+            Errors will be returned for the first error encountered in the request. An error occurred as follows:
+
+            | HTTP status | Error code                 | Description                                                  |
+            | ----------- | -------------------------- | ------------------------------------------------------------ |
+            | 500         | `SERVER_ERROR`             | An unexpected internal server error has occurred.            |
+            | 502         | `GATEWAY_ERROR`            | Connection to the backend service failed.                    |
+
           content:
             application/fhir+json:
               schema:
@@ -317,7 +324,14 @@ paths:
                 referenceCodeNotFound:
                   $ref: "./examples/responses/GET_QuestionnaireResponse/errors/questionnaire_response_not_found.yaml#/QuestionnaireResponseNotFound"
         "5XX":
-          description: Server error
+          description: |
+            Errors will be returned for the first error encountered in the request. An error occurred as follows:
+
+            | HTTP status | Error code                 | Description                                                  |
+            | ----------- | -------------------------- | ------------------------------------------------------------ |
+            | 500         | `SERVER_ERROR`             | An unexpected internal server error has occurred.            |
+            | 502         | `GATEWAY_ERROR`            | Connection to the backend service failed.                    |
+
           content:
             application/fhir+json:
               schema:
@@ -420,8 +434,15 @@ paths:
                 RelatedPersonInvalidIdentifierError:
                   $ref: "./examples/responses/GET_RelatedPerson/errors/invalid-identifier.yaml#/RelatedPersonInvalidIdentifierError"
 
-        "500":
-          description: Internal server error
+        "5XX":
+          description: |
+            Errors will be returned for the first error encountered in the request. An error occurred as follows:
+
+            | HTTP status | Error code                 | Description                                                  |
+            | ----------- | -------------------------- | ------------------------------------------------------------ |
+            | 500         | `SERVER_ERROR`             | An unexpected internal server error has occurred.            |
+            | 502         | `GATEWAY_ERROR`            | Connection to the backend service failed.                    |
+
           content:
             application/fhir+json:
               schema:
@@ -570,6 +591,7 @@ paths:
             | HTTP status | Error code                 | Description                                                  |
             | ----------- | -------------------------- | ------------------------------------------------------------ |
             | 500         | `SERVER_ERROR`             | An unexpected internal server error has occurred.            |
+            | 502         | `GATEWAY_ERROR`            | Connection to the backend service failed.                    |
             | 503         | `DOWNSTREAM_SERVICE_ERROR` | A downsteam service has failed, request cannot be completed. |
 
           content:
@@ -689,6 +711,7 @@ paths:
             | HTTP status | Error code                 | Description                                                  |
             | ----------- | -------------------------- | ------------------------------------------------------------ |
             | 500         | `SERVER_ERROR`             | An unexpected internal server error has occurred.            |
+            | 502         | `GATEWAY_ERROR`            | Connection to the backend service failed.                    |
             | 503         | `DOWNSTREAM_SERVICE_ERROR` | A downsteam service has failed, request cannot be completed. |
 
           content:
@@ -846,7 +869,9 @@ paths:
             | HTTP status | Error code                 | Description                                                  |
             | ----------- | -------------------------- | ------------------------------------------------------------ |
             | 500         | `SERVER_ERROR`             | An unexpected internal server error has occurred.            |
+            | 502         | `GATEWAY_ERROR`            | Connection to the backend service failed.                    |
             | 503         | `DOWNSTREAM_SERVICE_ERROR` | A downsteam service has failed, request cannot be completed. |
+
           content:
             application/fhir+json:
               schema:
