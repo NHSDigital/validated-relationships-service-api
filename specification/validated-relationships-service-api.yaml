@@ -1952,6 +1952,7 @@ components:
                         - "MTH"
                         - "PRN"
                         - "Personal"
+                        - "CHILD"
                     display:
                       type: string
                       description: FHIR relationship type.
@@ -1959,6 +1960,7 @@ components:
                         - "mother"
                         - "parent"
                         - "Personal relationship with the patient"
+                        - "Child"
 
     Patient:
       type: object
