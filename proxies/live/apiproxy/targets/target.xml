@@ -67,15 +67,22 @@
             </Request>
         </Flow>
     </Flows>
-
     <PostFlow>
         <Response>
             <Step>
                 <Name>SetMimeType</Name>
             </Step>
+            <Step>
+                <Name>MirrorRequestHeaders</Name>
+            </Step>
         </Response>
     </PostFlow>
     <FaultRules>
+        <FaultRule name="default">
+            <Step>
+                <Name>MirrorRequestHeaders</Name>
+            </Step>
+        </FaultRule>
         <FaultRule name="401_Unauthorized">
             <Step>
                 <Name>RaiseFault.401Unauthorized</Name>
