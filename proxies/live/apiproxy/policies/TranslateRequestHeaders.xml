@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Script async="false" continueOnError="false" enabled="true" name="TranslateRequestHeaders">
+    <DisplayName>TranslateRequestHeaders</DisplayName>
+    <Properties/>
+    <ResourceURL>py://translate-request-headers.py</ResourceURL>
+</Script>

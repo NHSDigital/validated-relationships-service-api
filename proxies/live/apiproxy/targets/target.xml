@@ -9,6 +9,9 @@
                 <Name>FlowCallout.ApplyRateLimiting</Name>
             </Step>
             <Step>
+                <Name>TranslateRequestHeaders</Name>
+            </Step>
+            <Step>
                 <Name>AddDeveloperAppData</Name>
             </Step>
             <Step>
