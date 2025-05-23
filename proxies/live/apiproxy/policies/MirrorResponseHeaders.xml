@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Script async="false" continueOnError="true" enabled="true" name="MirrorResponseHeaders">
+    <DisplayName>MirrorResponseHeaders</DisplayName>
+    <Properties/>
+    <ResourceURL>py://mirror-response-headers.py</ResourceURL>
+</Script>

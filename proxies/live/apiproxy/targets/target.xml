@@ -73,6 +73,9 @@
             <Step>
                 <Name>SetMimeType</Name>
             </Step>
+            <Step>
+                <Name>MirrorResponseHeaders</Name>
+            </Step>
         </Response>
     </PostFlow>
     <FaultRules>

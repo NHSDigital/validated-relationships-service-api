@@ -1,6 +1,9 @@
 # Access request headers dictionary
 request_headers = request.headers
 
+# Store copy of original request headers
+flow.setVariable("original.headers", request_headers)
+
 # Map of lowercase header name to desired parcel case header name
 request_header_translation = {"x-request-id": "X-Request-ID", "x-correlation-id": "X-Correlation-ID"}
 
