@@ -78,12 +78,15 @@
         </Response>
     </PostFlow>
     <FaultRules>
-        <FaultRule name="default">
+        <DefaultFaultRule name="default">
             <Step>
                 <Name>MirrorRequestHeaders</Name>
             </Step>
-        </FaultRule>
+        </DefaultFaultRule>
         <FaultRule name="401_Unauthorized">
+            <Step>
+                <Name>MirrorRequestHeaders</Name>
+            </Step>
             <Step>
                 <Name>RaiseFault.401Unauthorized</Name>
             </Step>
@@ -91,11 +94,17 @@
         </FaultRule>
         <FaultRule name="404_Not_Found">
             <Step>
+                <Name>MirrorRequestHeaders</Name>
+            </Step>
+            <Step>
                 <Name>RaiseFault.404NotFound</Name>
             </Step>
             <Condition>response.header.x-amzn-ErrorType = "IncompleteSignatureException"</Condition>
         </FaultRule>
         <FaultRule name="ApplicationOperationOutcome">
+            <Step>
+                <Name>MirrorRequestHeaders</Name>
+            </Step>
             <Step>
                 <Name>RaiseFault.ApplicationOperationOutcome</Name>
                 <Condition>response.header.x-amzn-RequestId != null</Condition>
