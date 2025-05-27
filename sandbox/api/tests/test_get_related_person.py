@@ -26,6 +26,16 @@ RELATED_PERSON_API_ENDPOINT = "/FHIR/R4/RelatedPerson"
             200,
         ),
         (
+            "patient:identifier=9000000042",
+            "./api/examples/GET_RelatedPerson/list_relationship_9000000042.yaml",
+            200,
+        ),
+        (
+            "patient:identifier=9000000042&_include=RelatedPerson:patient",
+            "./api/examples/GET_RelatedPerson/list_relationship_9000000042_include.yaml",
+            200,
+        ),
+        (
             "identifier=9000000017&_include=any",
             "./api/examples/GET_RelatedPerson/list_relationship_9000000017.yaml",
             200,

@@ -73,6 +73,15 @@ def get_related_person_response() -> Union[dict, tuple]:
         ):
             return one_seven
 
+        if four_two := check_for_list(
+            "9000000042",
+            patient_identifier,
+            include,
+            RELATED__LIST_RELATIONSHIP,
+            RELATED__LIST_RELATIONSHIP_WITH_INCLUDE,
+        ):
+            return four_two
+
         raise ValueError("Invalid request")
 
     except Exception:
