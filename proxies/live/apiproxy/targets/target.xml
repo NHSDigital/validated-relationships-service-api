@@ -48,7 +48,7 @@
                 </Step>
             </Request>
         </Flow>
-        <Flow name ="User Restricted">
+        <Flow name="User Restricted">
             <Condition>accesstoken.auth_type = "user"</Condition>
             <Request>
                 <Step>
