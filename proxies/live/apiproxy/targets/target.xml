@@ -9,6 +9,9 @@
                 <Name>FlowCallout.ApplyRateLimiting</Name>
             </Step>
             <Step>
+                <Name>TranslateRequestHeaders</Name>
+            </Step>
+            <Step>
                 <Name>AddDeveloperAppData</Name>
             </Step>
             <Step>
@@ -45,7 +48,7 @@
                 </Step>
             </Request>
         </Flow>
-        <Flow name ="User Restricted">
+        <Flow name="User Restricted">
             <Condition>accesstoken.auth_type = "user"</Condition>
             <Request>
                 <Step>
@@ -64,16 +67,26 @@
             </Request>
         </Flow>
     </Flows>
-
     <PostFlow>
         <Response>
             <Step>
                 <Name>SetMimeType</Name>
             </Step>
+            <Step>
+                <Name>MirrorRequestHeaders</Name>
+            </Step>
         </Response>
     </PostFlow>
     <FaultRules>
+        <DefaultFaultRule name="default">
+            <Step>
+                <Name>MirrorRequestHeaders</Name>
+            </Step>
+        </DefaultFaultRule>
         <FaultRule name="401_Unauthorized">
+            <Step>
+                <Name>MirrorRequestHeaders</Name>
+            </Step>
             <Step>
                 <Name>RaiseFault.401Unauthorized</Name>
             </Step>
@@ -81,11 +94,17 @@
         </FaultRule>
         <FaultRule name="404_Not_Found">
             <Step>
+                <Name>MirrorRequestHeaders</Name>
+            </Step>
+            <Step>
                 <Name>RaiseFault.404NotFound</Name>
             </Step>
             <Condition>response.header.x-amzn-ErrorType = "IncompleteSignatureException"</Condition>
         </FaultRule>
         <FaultRule name="ApplicationOperationOutcome">
+            <Step>
+                <Name>MirrorRequestHeaders</Name>
+            </Step>
             <Step>
                 <Name>RaiseFault.ApplicationOperationOutcome</Name>
                 <Condition>response.header.x-amzn-RequestId != null</Condition>
