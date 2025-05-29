@@ -1986,7 +1986,7 @@ components:
                         - "mother"
                         - "parent"
                         - "Personal relationship with the patient"
-                        - "Child"
+                        - "child"
 
     Patient:
       type: object
