@@ -1823,14 +1823,18 @@ components:
                   - $ref: "#/components/schemas/ConsentBundleEntry"
 
     RelatedPersonPatientDetailsBundleEntry:
+      $ref: "#/components/schemas/RelatedPersonBundleEntry"
       type: object
       description: A RelatedPerson bundle entry with patient name and birthDate.
-      $ref: "#/components/schemas/RelatedPersonBundleEntry"
       properties:
-        name:
-          $ref: "#/components/schemas/PDSName"
-        birthDate:
-          $ref: "#/components/schemas/PDSBirthDate"
+        resource:
+          $ref: "#/components/schemas/RelatedPerson"
+          properties:
+            properties:
+              name:
+                $ref: "#/components/schemas/PDSName"
+              birthDate:
+                $ref: "#/components/schemas/PDSBirthDate"
 
     RelatedPersonBundleEntry:
       type: object
