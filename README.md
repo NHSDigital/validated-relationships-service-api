@@ -8,21 +8,21 @@ This repository does _not_ include the Validated Relationship Service FHIR API b
 
 ## Table of Contents
 
--   [Validated Relationship Service API](#validated-relationship-service-api)
-    -   [Table of Contents](#table-of-contents)
-    -   [Repository Structure](#repository-structure)
-    -   [Contributing](#contributing)
-    -   [Development \& Testing](#development--testing)
-        -   [Licensing](#licensing)
+- [Validated Relationship Service API](#validated-relationship-service-api)
+    - [Table of Contents](#table-of-contents)
+    - [Repository Structure](#repository-structure)
+    - [Contributing](#contributing)
+    - [Development \& Testing](#development--testing)
+        - [Licensing](#licensing)
 
 ## Repository Structure
 
 This repository includes:
 
--   [specification/validated-relationships-service-api.yaml](./specification/validated-relationships-service-api.yaml) - The [Open API Specification](https://swagger.io/docs/specification/about/) describes the endpoints, methods and messages exchanged by the API. Used to generate interactive documentation for the NHS API Catalogue; the contract between the API and its consumers.
--   `sandbox/` - A flask (Python) API that implements a mock implementation of the service. It's to be used as interactive documentation to illustrate interactions and concepts. It is not intended to provide an exhaustive/faithful environment suitable for full development and testing.
--   `scripts/` - Utilities helpful to developers for the development and release of the specification.
--   `proxies/` - Live and sandbox Apigee API Proxy definitions.
+- [specification/validated-relationships-service-api.yaml](./specification/validated-relationships-service-api.yaml) - The [Open API Specification](https://swagger.io/docs/specification/about/) describes the endpoints, methods and messages exchanged by the API. Used to generate interactive documentation for the NHS API Catalogue; the contract between the API and its consumers.
+- `sandbox/` - A flask (Python) API that implements a mock implementation of the service. It's to be used as interactive documentation to illustrate interactions and concepts. It is not intended to provide an exhaustive/faithful environment suitable for full development and testing.
+- `scripts/` - Utilities helpful to developers for the development and release of the specification.
+- `proxies/` - Live and sandbox Apigee API Proxy definitions.
 
 ## Contributing
 

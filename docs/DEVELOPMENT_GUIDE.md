@@ -7,27 +7,27 @@ This documentation is intended for developers to develop the schema, sandbox and
 
 ## Table of Contents
 
--   [Development Guide](#development-guide)
-    -   [Table of Contents](#table-of-contents)
-    -   [Development](#development)
-        -   [Requirements](#requirements)
-        -   [Make commands](#make-commands)
-        -   [Testing](#testing)
-        -   [Platform setup](#platform-setup)
-        -   [Detailed folder walk through](#detailed-folder-walk-through)
-            -   [`/.github`:](#github)
-            -   [`/azure`:](#azure)
-            -   [`/proxies`:](#proxies)
-            -   [`/scripts`:](#scripts)
-            -   [`/specification`:](#specification)
-            -   [`/tests`:](#tests)
-            -   [`Makefile`:](#makefile)
-            -   [`ecs-proxies-containers.yml ` and `ecs-proxies-deploy.yml`:](#ecs-proxies-containersyml--and-ecs-proxies-deployyml)
-            -   [`manifest_template.yml`:](#manifest_templateyml)
-    -   [Releasing a new schema version](#releasing-a-new-schema-version)
-        -   [Caveats](#caveats)
-            -   [Swagger UI](#swagger-ui)
-            -   [Apigee Portal](#apigee-portal)
+- [Development Guide](#development-guide)
+    - [Table of Contents](#table-of-contents)
+    - [Development](#development)
+        - [Requirements](#requirements)
+        - [Make commands](#make-commands)
+        - [Testing](#testing)
+        - [Platform setup](#platform-setup)
+        - [Detailed folder walk through](#detailed-folder-walk-through)
+            - [`/.github`:](#github)
+            - [`/azure`:](#azure)
+            - [`/proxies`:](#proxies)
+            - [`/scripts`:](#scripts)
+            - [`/specification`:](#specification)
+            - [`/tests`:](#tests)
+            - [`Makefile`:](#makefile)
+            - [`ecs-proxies-containers.yml ` and `ecs-proxies-deploy.yml`:](#ecs-proxies-containersyml--and-ecs-proxies-deployyml)
+            - [`manifest_template.yml`:](#manifest_templateyml)
+    - [Releasing a new schema version](#releasing-a-new-schema-version)
+        - [Caveats](#caveats)
+            - [Swagger UI](#swagger-ui)
+            - [Apigee Portal](#apigee-portal)
 
 ## Development
 
@@ -36,12 +36,12 @@ This documentation is intended for developers to develop the schema, sandbox and
 
 ### Requirements
 
--   GNU make
--   nodejs 22+
-    -   npm 10.8+
--   Python 3.8 +
-    -   [poetry](https://github.com/python-poetry/poetry) 1.8+
--   Java 8+
+- GNU make
+- nodejs 22+
+    - npm 10.8+
+- Python 3.8 +
+    - [poetry](https://github.com/python-poetry/poetry) 1.8+
+- Java 8+
 
 ### Make commands
 
@@ -49,9 +49,9 @@ To run the below make targets you will first need to run `make install-node`
 
 There are `make` commands that alias scripts in the `package.json`
 
--   `lint` -- Lints the spec and code
--   `publish` -- Outputs the specification as a **single file** into the `build/` directory
--   `serve` -- Serves a preview of the specification in human-readable format
+- `lint` -- Lints the spec and code
+- `publish` -- Outputs the specification as a **single file** into the `build/` directory
+- `serve` -- Serves a preview of the specification in human-readable format
 
 ### Testing
 
@@ -77,19 +77,19 @@ For further information about Apigee and APIM see [API Producer Zone confluence]
 
 `/.github/workflows`: This folder contains GitHub workflows, these workflow are mainly used to check pull requests and publish releases.
 
--   `pr-lint.yaml`: This workflow links Pull Request's to Jira tickets and runs when a pull request is opened/updated.
--   `continuous-integration.yml`: This workflow publishes a Github release when pushing to master.
--   `sandbox-checks.yaml`: This workflow checks the sandbox meets the formatting and linting rules (Black + Flake8). Also it runs the sandbox unit tests (Pytest)
--   `dependency-review.yml`: This workflow checks for any vulnerabilities in dependencies to be added to the project.
--   `codeql-analysis.yml`: This workflow checks for any code vulnerabilities in the project.
+- `pr-lint.yaml`: This workflow links Pull Request's to Jira tickets and runs when a pull request is opened/updated.
+- `continuous-integration.yml`: This workflow publishes a Github release when pushing to master.
+- `sandbox-checks.yaml`: This workflow checks the sandbox meets the formatting and linting rules (Black + Flake8). Also it runs the sandbox unit tests (Pytest)
+- `dependency-review.yml`: This workflow checks for any vulnerabilities in dependencies to be added to the project.
+- `codeql-analysis.yml`: This workflow checks for any code vulnerabilities in the project.
 
 #### `/azure`:
 
 Contains Azure Devops pipelines for building and deploying to Apigee:
 
--   `azure-build-pipeline.yml`: Assembles the contents of your repository into a single file ("artifact") on Azure Devops and pushes any containers to our Docker registry. This pipeline is enabled for all branches.
--   `azure-pr-pipeline.yml`: Deploys ephemeral versions of your proxy/spec to Apigee (and docker containers on AWS) to internal environments. This will deploy a internal-dev environment and internal-dev-sandbox for each pull request.
--   `azure-release-pipeline.yml`: Deploys the long-lived version of your pipeline to internal and external environments, when you merge to master.
+- `azure-build-pipeline.yml`: Assembles the contents of your repository into a single file ("artifact") on Azure Devops and pushes any containers to our Docker registry. This pipeline is enabled for all branches.
+- `azure-pr-pipeline.yml`: Deploys ephemeral versions of your proxy/spec to Apigee (and docker containers on AWS) to internal environments. This will deploy a internal-dev environment and internal-dev-sandbox for each pull request.
+- `azure-release-pipeline.yml`: Deploys the long-lived version of your pipeline to internal and external environments, when you merge to master.
 
 `/azure/templates`: Here you can define reusable actions, such as running tests, and call these actions during Azure Devops pipelines.
 
