@@ -89,7 +89,7 @@ info:
 
     ## Headers
     This API is case-insensitive when processing request headers, meaning it will accept headers regardless of the letter casing used. (e.g. X-Request-Id, x-request-id are treated the same). When sending headers back in the response, we preserve the exact casing as received in the original request.
-    
+
     ## Errors
     We use standard HTTP status codes to show whether an API request succeeded or not. They are usually in the range:
 
@@ -1802,7 +1802,7 @@ components:
                 An empty bundle suggests that no candidate proxy/patient links were identified.
               items:
                 anyOf:
-                  - $ref: "#/components/schemas/RelatedPersonBundleEntry"
+                  - $ref: "#/components/schemas/RelatedPersonPatientDetailsBundleEntry"
                   - $ref: "#/components/schemas/PatientBundleEntry"
 
     ConsentBundle:
@@ -1821,6 +1821,16 @@ components:
                   - $ref: "#/components/schemas/RelatedPersonBundleEntry"
                   - $ref: "#/components/schemas/PatientBundleEntry"
                   - $ref: "#/components/schemas/ConsentBundleEntry"
+
+    RelatedPersonPatientDetailsBundleEntry:
+      type: object
+      description: A RelatedPerson bundle entry with patient name and birthDate.
+      $ref: "#/components/schemas/RelatedPersonBundleEntry"
+      properties:
+        name:
+          $ref: "#/components/schemas/PDSName"
+        birthDate:
+          $ref: "#/components/schemas/PDSBirthDate"
 
     RelatedPersonBundleEntry:
       type: object
@@ -2329,6 +2339,83 @@ components:
             - type: array
               items:
                 type: object
+
+    PDSName:
+      type: array
+      description: List of names associated with the patient.
+      items:
+        type: object
+        required:
+          - use
+          - family
+        additionalProperties: false
+        properties:
+          id:
+            type: string
+            description: Unique object identifier for this name.
+          use:
+            type: string
+            description: |
+              How this name should be used.
+              * usual - Known as, conventional or the one patient normally uses. A patient always has a usual name.
+              * temp - An alias or temporary name. This may also be used for temporary names assigned at birth or in emergency situations.
+              * nickname - A name that the patient prefers to be addressed by, but is not part of their usual name.
+              * old - This name is no longer in use (or was never correct, but retained for records).
+              * maiden - Name changed for Marriage. A name used prior to changing name because of marriage. This term is not gender specific. The use of this term does not imply any particular history for a person's name.
+
+              The following use codes are included in the [name-use](https://www.hl7.org/fhir/valueset-name-use.html) value set, but should not be used and is not be returned as part of a retrieval.
+              * official - The formal name as registered in an official (government) registry, but which name might not be commonly used. May be called "legal name".
+              * anonymous - Anonymous assigned name, alias, or pseudonym (used to protect a person's identity for privacy reasons).
+            enum: [usual, temp, nickname, old, maiden]
+          period:
+            type: object
+            description: |
+              Business effective period when the name was, is, or will be in use.
+            required:
+              - start
+            properties:
+              start:
+                type: string
+                format: date
+                description: Start date of time period, if known, in format `yyyy-mm-dd`. Can be a future date.
+              end:
+                type: string
+                format: date
+                description: End date of time period, if known and if not ongoing, in format `yyyy-mm-dd`. Can be a future date.
+          given:
+            type: array
+            maxItems: 5
+            description: |
+              Given names, including any middle names.
+
+              Each name(s) should be a separate item in the list. The first given name may include multiple names, separated by a space.
+              Subsequent names must be broken down into list items. For example, the input `[Jane Marie Anne, Jo Adele]` returns `[Jane Marie Anne, Jo, Adele]`.
+
+            items:
+              type: string
+              maxLength: 35
+          family:
+            type: string
+            maxLength: 35
+            description: Family name (often called Surname).
+          prefix:
+            type: array
+            description: Name prefixes, titles, and prenominals.
+            items:
+              type: string
+          suffix:
+            type: array
+            description: Name suffices and postnominals.
+            items:
+              type: string
+
+    PDSBirthDate:
+      description: |
+        The date on which the patient was born or is officially deemed to have been born.
+
+        It is a date in the format `yyyy-mm-dd`. Due to data quality issues on a small number of patients `yyyy-mm` and `yyyy` format may also be returned.
+      type: string
+      format: date
 
   parameters:
     RelatedPersonIdentifier:
