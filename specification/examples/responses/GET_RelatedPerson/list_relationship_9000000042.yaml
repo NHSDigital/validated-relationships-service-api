@@ -1,7 +1,7 @@
 ListRelationship9000000042:
   summary: List relationship response for 9000000042
   description: |
-    Example response containing the details of a list of matched candidate proxy relationship between a child and their birth mother.
+    Example response containing the details of a list of matched relationship between a child and their birth mother.
 
     The FHIR Bundle contains a `RelatedPerson` resource for each of the relationships verified against authoritative sources.
 
@@ -9,10 +9,21 @@ ListRelationship9000000042:
     entry:
     - fullUrl: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742
       resource:
+        birthDate: '2017-09-23'
         id: BE974742
         identifier:
         - system: https://fhir.nhs.uk/Id/nhs-number
           value: '9000000042'
+        name:
+        - family: MOGAJI
+          given:
+          - GADIL
+          id: BLnbA
+          period:
+            start: '2021-07-08'
+          prefix:
+          - MR
+          use: usual
         patient:
           identifier:
             system: https://fhir.nhs.uk/Id/nhs-number

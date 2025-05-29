@@ -42,9 +42,11 @@ def check_for_get_related_person_errors(request: Request) -> Optional[tuple]:
         Optional[tuple]: Tuple with response and status code if error is found
     """
     identifier = request.args.get("identifier")
+    patient = request.args.get("patient:identifier")
     identifier_without_system = remove_system(request.args.get("identifier"))
+    patient_without_system = remove_system(request.args.get("patient:identifier"))
 
-    if not identifier:
+    if not identifier and not patient:
         return generate_response_from_example(RELATED__ERROR_IDENTIFIER_MISSING, 400)
     elif identifier and len(identifier_without_system) != 10:
         # invalid identifier

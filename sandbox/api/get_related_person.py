@@ -11,6 +11,8 @@ from .constants import (
     RELATED__VERIFY_RELATIONSHIP_09_WITH_INCLUDE,
     RELATED__VERIFY_RELATIONSHIP_25,
     RELATED__VERIFY_RELATIONSHIP_25_WITH_INCLUDE,
+    RELATED__LIST_CHILD_RELATIONSHIP,
+    RELATED__LIST_CHILD_RELATIONSHIP_WITH_INCLUDE,
 )
 from .utils import (
     check_for_empty,
@@ -34,8 +36,10 @@ def get_related_person_response() -> Union[dict, tuple]:
     try:
         # Check Headers
         if errors := check_for_get_related_person_errors(request):
+
             return errors
 
+        print("******** ERROR**** ")
         identifier = remove_system(request.args.get("identifier"))
         patient_identifier = remove_system(request.args.get("patient:identifier"))
         include = request.args.get("_include")
@@ -72,13 +76,13 @@ def get_related_person_response() -> Union[dict, tuple]:
             RELATED__LIST_RELATIONSHIP_WITH_INCLUDE,
         ):
             return one_seven
-
+        print("four2")
         if four_two := check_for_list(
             "9000000042",
             patient_identifier,
             include,
-            RELATED__LIST_RELATIONSHIP,
-            RELATED__LIST_RELATIONSHIP_WITH_INCLUDE,
+            RELATED__LIST_CHILD_RELATIONSHIP,
+            RELATED__LIST_CHILD_RELATIONSHIP_WITH_INCLUDE,
         ):
             return four_two
 
