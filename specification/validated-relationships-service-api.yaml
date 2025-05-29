@@ -1835,13 +1835,14 @@ components:
           description: A RelatedPerson bundle entry with patient name and birthDate.
           properties:
             resource:
-              $ref: "#/components/schemas/RelatedPerson"
-              properties:
-                properties:
-                  name:
-                    $ref: "#/components/schemas/PDSName"
-                  birthDate:
-                    $ref: "#/components/schemas/PDSBirthDate"
+              allOf:
+                - $ref: "#/components/schemas/RelatedPerson"
+                - type: object
+                  properties:
+                    name:
+                      $ref: "#/components/schemas/PDSName"
+                    birthDate:
+                      $ref: "#/components/schemas/PDSBirthDate"
 
     RelatedPersonBundleEntry:
       type: object
