@@ -1829,13 +1829,13 @@ components:
                   - $ref: "#/components/schemas/ConsentBundleEntry"
 
     RelatedPersonPatientDetailsBundleEntry:
+      type: object
       allOf:
         - $ref: "#/components/schemas/RelatedPersonBundleEntry"
         - type: object
           description: A RelatedPerson bundle entry with patient name and birthDate.
           properties:
             resource:
-              additionalProperties: false
               allOf:
                 - $ref: "#/components/schemas/RelatedPerson"
                 - type: object
