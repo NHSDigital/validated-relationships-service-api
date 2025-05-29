@@ -1,0 +1,15 @@
+InvalidIdentifierPatientError:
+  summary: Invalid Patient identifier
+  description: Error raised due to an invalid Patient identifier request parameter being specified.
+  value:
+    issue:
+      - code: invalid
+        diagnostics: "Not a valid NHS Number provided for the 'patient:identifier' parameter"
+        details:
+          coding:
+            - "system": "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
+              version: "1"
+              code: "INVALID_PATIENT_IDENTIFIER_VALUE"
+              display: "Provided value is invalid"
+        severity: error
+    resourceType: "OperationOutcome"

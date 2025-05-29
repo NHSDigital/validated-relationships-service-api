@@ -1,5 +1,5 @@
 ListRelationship9000000017Include:
-  summary: List relationship response for 9000000017
+  summary: List relationship response for 9000000017 with include
   description: |
     Example response containing the details of a list of matched candidate proxy relationship between a birth mother and her children.
 
