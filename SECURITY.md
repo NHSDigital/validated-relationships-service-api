@@ -19,8 +19,8 @@ reproduce it.
 
 You can reach us at:
 
--   cybersecurity@nhs.net
--   api.management@nhs.net
+- cybersecurity@nhs.net
+- api.management@nhs.net
 
 ### HackerOne
 

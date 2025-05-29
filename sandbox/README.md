@@ -7,17 +7,17 @@ For more information about building sandbox APIs see the [API Producer Zone conf
 ## Table of Contents
 
 - [Sandbox](#sandbox)
-  - [Table of Contents](#table-of-contents)
-  - [Architecture](#architecture)
-  - [Prerequisites](#prerequisites)
-  - [Quick Start](#quick-start)
-    - [Installing dependencies](#installing-dependencies)
-    - [Starting the API](#starting-the-api)
-  - [Development](#development)
-    - [Starting the API with Hot Reloading](#starting-the-api-with-hot-reloading)
-    - [Testing](#testing)
-      - [Unit Tests](#unit-tests)
-    - [Useful commands](#useful-commands)
+    - [Table of Contents](#table-of-contents)
+    - [Architecture](#architecture)
+    - [Prerequisites](#prerequisites)
+    - [Quick Start](#quick-start)
+        - [Installing dependencies](#installing-dependencies)
+        - [Starting the API](#starting-the-api)
+    - [Development](#development)
+        - [Starting the API with Hot Reloading](#starting-the-api-with-hot-reloading)
+        - [Testing](#testing)
+            - [Unit Tests](#unit-tests)
+        - [Useful commands](#useful-commands)
 
 ## Architecture
 
@@ -31,9 +31,9 @@ The [Postman Collection](./postman/Validate_Relationship_Service_Sandbox.postman
 
 ## Prerequisites
 
--   Python 3.8
--   [Poetry](https://python-poetry.org/docs/)
--   [Docker](https://docs.docker.com/get-docker/)
+- Python 3.8
+- [Poetry](https://python-poetry.org/docs/)
+- [Docker](https://docs.docker.com/get-docker/)
 
 ## Quick Start
 
