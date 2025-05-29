@@ -1808,7 +1808,7 @@ components:
                 An empty bundle suggests that no candidate proxy/patient links were identified.
               items:
                 anyOf:
-                  - $ref: "#/components/schemas/RelatedPersonPatientDetailsBundleEntry"
+                  - $ref: "#/components/schemas/RelatedPersonWithDetailsBundleEntry"
                   - $ref: "#/components/schemas/PatientBundleEntry"
 
     ConsentBundle:
@@ -1828,7 +1828,7 @@ components:
                   - $ref: "#/components/schemas/PatientBundleEntry"
                   - $ref: "#/components/schemas/ConsentBundleEntry"
 
-    RelatedPersonPatientDetailsBundleEntry:
+    RelatedPersonWithDetailsBundleEntry:
       type: object
       allOf:
         - $ref: "#/components/schemas/RelatedPersonBundleEntry"
