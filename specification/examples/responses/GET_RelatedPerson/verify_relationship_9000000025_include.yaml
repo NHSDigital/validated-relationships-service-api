@@ -31,6 +31,7 @@ VerifyRelationship9000000025Include:
     - fullUrl: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/A3CC67E2
       resource:
         id: A3CC67E2
+        birthDate: '2018-04-27'
         identifier:
         - system: https://fhir.nhs.uk/Id/nhs-number
           value: '9000000017'
@@ -39,6 +40,16 @@ VerifyRelationship9000000025Include:
             system: https://fhir.nhs.uk/Id/nhs-number
             value: '9000000025'
           type: Patient
+        name:
+        - family: FEARON
+          given:
+          - Daren
+          id: vitjN
+          period:
+            start: '2018-09-21'
+          prefix:
+          - MR
+          use: usual
         relationship:
         - coding:
           - code: MTH
