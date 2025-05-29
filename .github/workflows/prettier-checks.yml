@@ -1,0 +1,28 @@
+name: Prettier Checks
+on:
+    pull_request:
+        branches: [master]
+permissions:
+    contents: read
+jobs:
+    PrettierChecks:
+        name: Prettier Checks
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+                  persist-credentials: false
+            - name: Setup Node
+              uses: actions/setup-node@v4
+              with:
+                node-version: 22
+
+            - name: Install dependencies
+              shell: bash
+              run: npm install
+
+            - name: Run Prettier
+              shell: bash
+              run: npx prettier --check .
