@@ -20,6 +20,7 @@ from .constants import (
     RELATED__ERROR_IDENTIFIER_MISSING,
     RELATED__ERROR_IDENTIFIER_SYSTEM,
     RELATED_IDENTIFIERS,
+    RELATED__ERROR_PATIENT_IDENTIFIER,
 )
 
 FHIR_MIMETYPE = "application/fhir+json"
@@ -51,6 +52,9 @@ def check_for_get_related_person_errors(request: Request) -> Optional[tuple]:
     elif identifier and len(identifier_without_system) != 10:
         # invalid identifier
         return generate_response_from_example(RELATED__ERROR_IDENTIFIER, 400)
+    elif patient and len(patient_without_system) != 10:
+        # invalid patient identifier
+        return generate_response_from_example(RELATED__ERROR_PATIENT_IDENTIFIER, 400)
     elif (
         isinstance(identifier, str)
         and "|" in identifier
