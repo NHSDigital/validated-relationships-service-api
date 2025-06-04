@@ -734,6 +734,80 @@ paths:
                   $ref: "./examples/responses/errors/downstream-service-error.yaml#/DownstreamServiceError"
 
   /Consent/{id}:
+    get:
+      summary: Get proxy roles
+      description: |
+        ## Overview
+        Use this endpoint to get the details of a proxy role, including current status, based on a provided id.
+
+        You can (optionally) include the `_include=Consent:performer` request parameter to include the proxy's details in the response.
+
+        You can (optionally) include the `_include=Consent:patient` request parameter to include the patient's details in the response.
+
+      operationId: get-consent-by-id
+      parameters:
+        - $ref: "#/components/parameters/BearerAuthorization"
+        - $ref: "#/components/parameters/ConsentID"
+        - $ref: "#/components/parameters/ConsentBundleIncludes"
+        - $ref: "#/components/parameters/RequestID"
+        - $ref: "#/components/parameters/CorrelationID"
+      responses:
+        "200":
+          description: Information successfully returned.
+          content:
+            application/fhir+json:
+              schema:
+                $ref: "#/components/schemas/ConsentBundle"
+              examples:
+                ConsentMultipleRelationshipsStatusActiveBundle:
+                  $ref: "./examples/responses/GET_Consent/filtered-relationships-status-active-include-details.yaml#/ConsentMultipleRelationshipsStatusActiveIncludeDetailsBundle"
+
+        "4XX":
+          description: |
+            Errors will be returned for the first error encountered in the request. An error occurred as follows:
+
+            | HTTP status | Error code                       | Description                                                                                                                               |
+            | ----------- | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+            | 400         | `MISSING_VALUE`                  | Missing header or parameter. For details, see the `diagnostics` field.                                                                    |
+            | 400         | `INVALID_VALUE`                  | Invalid header. For details, see the `diagnostics` field.                                                                                 |
+            | 400         | `MISSING_ID_VALUE`               | Missing id.                                                                                                                               |
+            | 400         | `NOT_SUPPORTED`                  | The request is not currently supported.                                                                                                   |
+            | 401         | `ACCESS_DENIED`                  | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
+            | 403         | `FORBIDDEN`                      | Access denied to resource.                                                                                                                |
+            | 404         | `INVALIDATED_RESOURCE`           | Resource that has been marked as invalid was requested - invalid resources cannot be retrieved                                            |
+            | 405         | `METHOD_NOT_ALLOWED`             | The method is not allowed.                                                                                                                |
+            | 408         | `TIMEOUT`                        | Request timed out.                                                                                                                        |
+            | 422         | `INVALID_ID_SYSTEM`              | Invalid id.                                                                                                                               |
+            | 429         | `THROTTLED`                      | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
+
+          content:
+            application/fhir+json:
+              schema:
+                $ref: "#/components/schemas/OperationOutcome"
+              examples:
+                AccessDeniedError:
+                  $ref: "./examples/responses/errors/access-denied.yaml#/AccessDeniedError"
+                InvalidatedResourceError:
+                  $ref: "./examples/responses/errors/invalidated-resource.yaml#/InvalidatedResourceError"
+        "5XX":
+          description: |
+            Errors will be returned for the first error encountered in the request. An error occurred as follows:
+
+            | HTTP status | Error code                 | Description                                                  |
+            | ----------- | -------------------------- | ------------------------------------------------------------ |
+            | 500         | `SERVER_ERROR`             | An unexpected internal server error has occurred.            |
+            | 502         | `GATEWAY_ERROR`            | Connection to the backend service failed.                    |
+            | 503         | `DOWNSTREAM_SERVICE_ERROR` | A downsteam service has failed, request cannot be completed. |
+
+          content:
+            application/fhir+json:
+              schema:
+                $ref: "#/components/schemas/OperationOutcome"
+              examples:
+                InternalServerError:
+                  $ref: "./examples/responses/errors/internal-server-error.yaml#/InternalServerError"
+                DownstreamServiceError:
+                  $ref: "./examples/responses/errors/downstream-service-error.yaml#/DownstreamServiceError"
     patch:
       summary: Update a proxy role
       description: |
@@ -769,6 +843,7 @@ paths:
         | Resource not found              | Patch for non-existent Consent, request with an id not listed here    | HTTP Status 404 and RESOURCE_NOT_FOUND error response         |
         | Invalid state transition        | Patch attempting invalid status change, request with id '6fb4361b'    | HTTP Status 422 and INVALID_STATE_TRANSITION error response   |
       parameters:
+        # Change id parameter to Component ConsentID when NPA-5088 is complete
         - name: id
           in: path
           required: true
@@ -890,6 +965,7 @@ paths:
                   $ref: "./examples/responses/errors/internal-server-error.yaml#/InternalServerError"
                 DownstreamServiceError:
                   $ref: "./examples/responses/errors/downstream-service-error.yaml#/DownstreamServiceError"
+
 components:
   schemas:
     QuestionnaireResponse:
@@ -2560,3 +2636,14 @@ components:
         type: string
         pattern: "^[^;]+;[^;]+$"
         example: NiV3CyMJH3xYV26ghlVpbbjT7pDVEA8HpFczAjRLTs1VezC4CYzupZ3XxXAWM7ELuseqrV8r0Ill7EL7G2tXUaVHCPWgg4q10+MxFjnRPrjDvckBRSZazqZcp0K2VBdUV0rZ7RUYJNJsjVAeefWhiK/Y4R+GFO86QDpt41JS9xA=;G123456
+
+    ConsentID:
+      in: query
+      name: id
+      required: true
+      description: The logical id of the Consent resource to update
+      schema:
+        type: string
+        format: uuid
+        pattern: "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+        example: 11C46F5F-CDEF-4865-94B2-0EE0EDCC26DA
