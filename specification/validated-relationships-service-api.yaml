@@ -2651,7 +2651,7 @@ components:
       in: query
       name: id
       required: true
-      description: The logical id of the Consent resource to update
+      description: The logical id of the Consent resource
       schema:
         type: string
         format: uuid
