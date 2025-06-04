@@ -759,8 +759,14 @@ paths:
               schema:
                 $ref: "#/components/schemas/ConsentBundle"
               examples:
-                ConsentMultipleRelationshipsStatusActiveBundle:
-                  $ref: "./examples/responses/GET_Consent/filtered-relationships-status-active-include-details.yaml#/ConsentMultipleRelationshipsStatusActiveIncludeDetailsBundle"
+                ConsentSingleConsentingAdultRelationshipBundle:
+                  $ref: "./examples/responses/GET_Consent/single-consenting-adult-relationship.yaml#/ConsentSingleConsentingAdultRelationshipBundle"
+                ConsentSingleConsentingAdultRelationshipIncludePerformerPatientBundle:
+                  $ref: "./examples/responses/GET_Consent/single-consenting-adult-relationship-include-performer-patient.yaml#/ConsentSingleConsentingAdultRelationshipIncludePerformerPatientBundle"
+                ConsentSingleAdultChildRelationshipBundle:
+                  $ref: "./examples/responses/GET_Consent/single-mother-child-relationship.yaml#/ConsentSingleAdultChildRelationshipBundle"
+                ConsentSingleAdultChildRelationshipIncludePerformerPatientBundle:
+                  $ref: "./examples/responses/GET_Consent/single-mother-child-relationship-include-performer-patient.yaml#/ConsentSingleAdultChildRelationshipIncludePerformerPatientBundle"
 
         "4XX":
           description: |
