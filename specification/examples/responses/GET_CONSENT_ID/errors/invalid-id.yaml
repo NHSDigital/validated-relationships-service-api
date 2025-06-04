@@ -4,12 +4,12 @@ ConsentInvalidIDError:
   value:
     issue:
       - code: invalid
-        diagnostics: 'Invalid request with error - ID must be a valid UUID.'
+        diagnostics: "Invalid request with error - ID must be a valid UUID."
         details:
           coding:
             - code: "INVALID_ID_VALUE"
               display: "Required parameter(s) are invalid."
               system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
-              version: '1'
+              version: "1"
         severity: error
     resourceType: "OperationOutcome"

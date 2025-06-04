@@ -796,7 +796,7 @@ paths:
                 InvalidatedResourceError:
                   $ref: "./examples/responses/errors/invalidated-resource.yaml#/InvalidatedResourceError"
                 MissingIdError:
-                  $ref: "./examples/responses/GET_Consent_ID/errors/missing-id.yaml#/ConsentMissingIDError"
+                  $ref: "./examples/responses/GET_CONSENT_ID/errors/missing-id.yaml#/ConsentMissingIDError"
                 InvalidIdError:
                   $ref: "./examples/responses/GET_CONSENT_ID/errors/invalid-id.yaml#/ConsentInvalidIDError"
         "5XX":
