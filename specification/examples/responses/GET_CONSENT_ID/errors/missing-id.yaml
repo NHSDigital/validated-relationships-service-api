@@ -1,0 +1,15 @@
+ConsentMissingIDError:
+  summary: Missing ID
+  description: Error raised due to an missing ID in the request path.
+  value:
+    issue:
+      - code: invalid
+        diagnostics: "Invalid request with error - ID must be specified in the request path."
+        details:
+          coding:
+            - code: "MISSING_ID_VALUE"
+              display: "Required parameter(s) are missing."
+              system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
+              version: '1'
+        severity: error
+    resourceType: "OperationOutcome"

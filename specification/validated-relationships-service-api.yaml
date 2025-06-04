@@ -789,6 +789,10 @@ paths:
                   $ref: "./examples/responses/errors/access-denied.yaml#/AccessDeniedError"
                 InvalidatedResourceError:
                   $ref: "./examples/responses/errors/invalidated-resource.yaml#/InvalidatedResourceError"
+                MissingIdError:
+                  $ref: "./examples/responses/GET_Consent_ID/errors/missing-id.yaml#/ConsentMissingIDError"
+                InvalidIdError:
+                  $ref: "./examples/responses/GET_CONSENT_ID/errors/invalid-id.yaml#/ConsentInvalidIDError"
         "5XX":
           description: |
             Errors will be returned for the first error encountered in the request. An error occurred as follows:
