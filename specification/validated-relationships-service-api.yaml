@@ -853,24 +853,7 @@ paths:
         | Resource not found              | Patch for non-existent Consent, request with an id not listed here                              | HTTP Status 404 and RESOURCE_NOT_FOUND error response         |
         | Invalid state transition        | Patch attempting invalid status change, request with id '7b7f47b8-96e5-43eb-b733-283bf1449f2c'  | HTTP Status 422 and INVALID_STATE_TRANSITION error response   |
       parameters:
-        # Change id parameter to Component ConsentID when NPA-5088 is complete
-        - name: id
-          in: path
-          required: true
-          description: The UUID of the Consent resource to update
-          schema:
-            type: string
-            format: uuid
-          examples:
-            statusUpdate:
-              value: c512b0db-6702-43ee-8c21-bbded2552da9
-              summary: Update consent status
-            updateProvision:
-              value: 6b71ac92-baa3-4b76-b0f5-a601257e2722
-              summary: Set an end date for a role
-            multipleUpdates:
-              value: 43003db8-ffcd-4bd6-ab2f-b49b9656f9e5
-              summary: Set status to active with an end date
+        - $ref: "#/components/parameters/ConsentID"
       requestBody:
         required: true
         content:
