@@ -81,12 +81,12 @@ ConsentMultipleRelationshipsIncludePatientBundle:
               end: '2026-02-11'
               start: '2025-02-11'
           extension:
-          - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
-            valueCodeableConcept:
-              coding:
-              - code: TBC
-                display: TBC
-                system: http://terminology.hl7.org/CodeSystem/consent-reason
+            - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
+              valueCodeableConcept:
+                - coding:
+                  - code: TBC
+                    display: TBC
+                    system: http://terminology.hl7.org/CodeSystem/consent-reason
         search:
           mode: match
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/DFCC67F5
@@ -166,12 +166,12 @@ ConsentMultipleRelationshipsIncludePatientBundle:
               end: '2026-02-11'
               start: '2025-02-11'
           extension:
-          - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
-            valueCodeableConcept:
-              coding:
-              - code: TBC
-                display: TBC
-                system: http://terminology.hl7.org/CodeSystem/consent-reason
+            - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
+              valueCodeableConcept:
+                - coding:
+                  - code: TBC
+                    display: TBC
+                    system: http://terminology.hl7.org/CodeSystem/consent-reason
         search:
           mode: match
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/ZPTT32T3
@@ -251,12 +251,12 @@ ConsentMultipleRelationshipsIncludePatientBundle:
               end: '2026-02-11'
               start: '2025-02-11'
           extension:
-          - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
-            valueCodeableConcept:
-              coding:
-              - code: TBC
-                display: TBC
-                system: http://terminology.hl7.org/CodeSystem/consent-reason
+            - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
+              valueCodeableConcept:
+                - coding:
+                  - code: TBC
+                    display: TBC
+                    system: http://terminology.hl7.org/CodeSystem/consent-reason
         search:
           mode: match
 
