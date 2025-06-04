@@ -40,7 +40,7 @@ jobs:
                             name: "GET /Questionnaire",
                             make_target: "schema-get-questionnaire",
                         },
-                        { name: "Errors", make_target: "schema-errors" },
+                        { name: "Errors", make_target: "schema-errors" }
                     ]
         steps:
             - name: Checkout repository

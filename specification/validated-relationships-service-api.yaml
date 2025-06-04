@@ -796,9 +796,9 @@ paths:
                 InvalidatedResourceError:
                   $ref: "./examples/responses/errors/invalidated-resource.yaml#/InvalidatedResourceError"
                 MissingIdError:
-                  $ref: "./examples/responses/GET_CONSENT_ID/errors/missing-id.yaml#/ConsentMissingIDError"
+                  $ref: "./examples/responses/GET_Consent/ID/errors/missing-id.yaml#/ConsentMissingIDError"
                 InvalidIdError:
-                  $ref: "./examples/responses/GET_CONSENT_ID/errors/invalid-id.yaml#/ConsentInvalidIDError"
+                  $ref: "./examples/responses/GET_Consent/ID/errors/invalid-id.yaml#/ConsentInvalidIDError"
         "5XX":
           description: |
             Errors will be returned for the first error encountered in the request. An error occurred as follows:
