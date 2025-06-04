@@ -653,7 +653,7 @@ paths:
             location:
               schema:
                 type: string
-                example: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/9000000009
+                example: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/90b9863e-e33c-4895-a333-fd0ea0e23205
               description: URL for the newly created proxy role
           content:
             application/fhir+json:
@@ -841,35 +841,19 @@ paths:
 
         See the postman collection for example requests.
 
-        | Scenario                        | Request                                                               | Response                                                      |
-        | ------------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------- |
-        | Successful status update        | Valid patch changing status to 'active', request with id 'c6f48e4d'   | HTTP Status 200 and OperationOutcome                          |
-        | Successful access level update  | Valid patch modifying the role end date, request with id '0c56a594'   | HTTP Status 200 and OperationOutcome                          |
-        | Multiple valid changes          | Valid patch with multiple operations, request with id 'b02ea26c'      | HTTP Status 200 and OperationOutcome                          |
-        | Invalid patch format            | Malformed JSON patch document, request with id '3a2679eb'             | HTTP Status 400 and INVALID_PATCH_FORMAT error response       |
-        | Invalid path                    | Patch targeting non-existent element, request with id '94df7c8f'      | HTTP Status 400 and INVALID_PATCH_PATH error response         |
-        | Invalid status code             | Patch with invalid status value, request with id '2a7b736d'           | HTTP Status 422 and INVALID_STATUS_CODE error response        |
-        | Invalid status reason           | Patch with invalid status reason value, request with id '4b6792be'    | HTTP Status 422 and INVALID_STATUS_REASON error response      |
-        | Resource not found              | Patch for non-existent Consent, request with an id not listed here    | HTTP Status 404 and RESOURCE_NOT_FOUND error response         |
-        | Invalid state transition        | Patch attempting invalid status change, request with id '6fb4361b'    | HTTP Status 422 and INVALID_STATE_TRANSITION error response   |
+        | Scenario                        | Request                                                                                         | Response                                                      |
+        | ------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+        | Successful status update        | Valid patch changing status to 'active', request with id 'c512b0db-6702-43ee-8c21-bbded2552da9' | HTTP Status 200 and OperationOutcome                          |
+        | Successful access level update  | Valid patch modifying the role end date, request with id '6b71ac92-baa3-4b76-b0f5-a601257e2722' | HTTP Status 200 and OperationOutcome                          |
+        | Multiple valid changes          | Valid patch with multiple operations, request with id '43003db8-ffcd-4bd6-ab2f-b49b9656f9e5'    | HTTP Status 200 and OperationOutcome                          |
+        | Invalid patch format            | Malformed JSON patch document, request with id '849ea584-2318-471b-a24c-cee1b5ad0137'           | HTTP Status 400 and INVALID_PATCH_FORMAT error response       |
+        | Invalid path                    | Patch targeting non-existent element, request with id '01abb0c5-b1ac-499d-9655-9cd0b8d3588f'    | HTTP Status 400 and INVALID_PATCH_PATH error response         |
+        | Invalid status code             | Patch with invalid status value, request with id '78c35330-fa2f-4934-a5dd-fff847f38de5'         | HTTP Status 422 and INVALID_STATUS_CODE error response        |
+        | Invalid status reason           | Patch with invalid status reason value, request with id '51fb4df5-815a-45cd-8427-04d6558336b7'  | HTTP Status 422 and INVALID_STATUS_REASON error response      |
+        | Resource not found              | Patch for non-existent Consent, request with an id not listed here                              | HTTP Status 404 and RESOURCE_NOT_FOUND error response         |
+        | Invalid state transition        | Patch attempting invalid status change, request with id '7b7f47b8-96e5-43eb-b733-283bf1449f2c'  | HTTP Status 422 and INVALID_STATE_TRANSITION error response   |
       parameters:
-        # Change id parameter to Component ConsentID when NPA-5088 is complete
-        - name: id
-          in: path
-          required: true
-          description: The logical id of the Consent resource to update
-          schema:
-            type: string
-          examples:
-            statusUpdate:
-              value: c6f48e4d
-              summary: Update consent status
-            updateProvision:
-              value: 0c56a594
-              summary: Set an end date for a role
-            multipleUpdates:
-              value: b02ea26c
-              summary: Set status to active with an end date
+        - $ref: "#/components/parameters/ConsentID"
       requestBody:
         required: true
         content:
