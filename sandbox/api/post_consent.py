@@ -32,7 +32,7 @@ def post_consent_response() -> Union[dict, tuple]:
         # Successful parent-child proxy creation
         # Successful adult-adult proxy creation
         if patient_identifier == "9000000009" or patient_identifier == "9000000017":
-            header = {"location": f"{CONSENT_APP_BASE_PATH}/{patient_identifier}"}
+            header = {"location": f"{CONSENT_APP_BASE_PATH}/90b9863e-e33c-4895-a333-fd0ea0e23205"}
             response = generate_response_from_example(POST_CONSENT__SUCCESS, 201, headers=header)
 
         # Duplicate relationship
