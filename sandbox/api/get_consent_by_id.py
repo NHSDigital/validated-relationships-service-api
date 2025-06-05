@@ -48,10 +48,10 @@ def get_consent_by_id_response(identifier: str) -> Union[dict, tuple]:
                 GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_PATIENT,
                 GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_PERFORMER
             )
-        elif identifier == "" or identifier is None:
-            return generate_response_from_example(GET_CONSENT_BY_ID__MISSING_ID_ERROR)
+        elif identifier == " " or identifier is None:
+            return generate_response_from_example(GET_CONSENT_BY_ID__MISSING_ID_ERROR, 400)
         else:
-            return generate_response_from_example(GET_CONSENT_BY_ID__INVALID_ID_ERROR)
+            return generate_response_from_example(GET_CONSENT_BY_ID__INVALID_ID_ERROR, 400)
 
     except Exception:
         logger.exception("An error occurred while processing the request")
