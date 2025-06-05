@@ -735,7 +735,7 @@ paths:
 
   /Consent/{id}:
     get:
-      summary: Get proxy roles
+      summary: Get proxy role
       description: |
         ## Overview
         Use this endpoint to get the details of a proxy role, including current status, based on a provided id.
