@@ -41,9 +41,17 @@ GET_CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP = f"{GET_CONSENT__DIRECTORY}si
 GET_CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_BOTH = (
     f"{GET_CONSENT__DIRECTORY}single-consenting-adult-relationship-include-performer-patient.yaml"
 )
+GET_CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_PATIENT = f"{GET_CONSENT__DIRECTORY}single-consenting-adult-relationship-include-patient.yaml"
+GET_CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_PERFORMER = (
+    f"{GET_CONSENT__DIRECTORY}single-consenting-adult-relationship-include-performer.yaml"
+)
 GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP = f"{GET_CONSENT__DIRECTORY}single-mother-child-relationship.yaml"
 GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH = (
     f"{GET_CONSENT__DIRECTORY}single-mother-child-relationship-include-performer-patient.yaml"
+)
+GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_PATIENT = f"{GET_CONSENT__DIRECTORY}single-mother-child-relationship-include-patient.yaml"
+GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_PERFORMER = (
+    f"{GET_CONSENT__DIRECTORY}single-mother-child-relationship-include-performer.yaml"
 )
 GET_CONSENT__STATUS_PARAM_INVALID = f"{GET_CONSENT__DIRECTORY}errors/invalid-status-parameter.yaml"
 GET_CONSENT__MULTIPLE_RELATIONSHIPS_SINGLE_PATIENT = (
@@ -58,6 +66,11 @@ GET_CONSENT__MULTIPLE_RELATIONSHIPS_SINGLE_PATIENT_INCLUDE_PATIENT = (
 GET_CONSENT__MULTIPLE_RELATIONSHIPS_SINGLE_PATIENT_INCLUDE_BOTH = (
     f"{GET_CONSENT__DIRECTORY}multiple-relationships-single-patient-include-performer-patient.yaml"
 )
+
+# GET Consent by ID
+GET_CONSENT_BY_ID__INVALID_ID_ERROR = f"{GET_CONSENT__DIRECTORY}/ID/errors/invalid-id.yaml"
+GET_CONSENT_BY_ID__MISSING_ID_ERROR = f"{GET_CONSENT__DIRECTORY}/ID/errors/missing-id.yaml"
+
 # POST Consent
 POST_CONSENT__DIRECTORY = "./api/examples/POST_Consent/"
 POST_CONSENT__SUCCESS = f"{POST_CONSENT__DIRECTORY}success.yaml"

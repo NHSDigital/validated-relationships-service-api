@@ -744,6 +744,22 @@ paths:
 
         You can (optionally) include the `_include=Consent:patient` request parameter to include the patient's details in the response.
 
+        ## Sandbox test scenarios
+
+        The sandbox supports a limited number of scenarios, and does not attempt to validate requests.  The returned result is dependant on the `ID` for the consent resource.
+
+        See the postman collection for an example request body.
+        | Scenario                                                                         | Request                                                                                                                                  | Response                                                                                                         |
+        | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+        | Retrieve single consenting adult relationship                                    | Valid request with ID `74eed847-ca25-4e76-8cf2-f2c2d7842a7a`                                                                             | HTTP Status 200 Bundle containing a single active proxy relationship                                             |
+        | Retrieve single consenting adult relationship with patient details               | Valid request with ID `74eed847-ca25-4e76-8cf2-f2c2d7842a7a` with parameter `_include=Consent:patient`                                   | HTTP Status 200 Bundle containing a single active proxy relationship with patient details                        |
+        | Retrieve single consenting adult relationship with performer details             | Valid request with ID `74eed847-ca25-4e76-8cf2-f2c2d7842a7a` with parameter `_include=Consent:performer`                                 | HTTP Status 200 Bundle containing a single active proxy relationship with performer details                      |
+        | Retrieve single consenting adult relationship with performer and patient details | Valid request with ID `74eed847-ca25-4e76-8cf2-f2c2d7842a7a` with parameters `_include=Consent:performer` and `_include=Consent:patient` | HTTP Status 200 Bundle containing a single active proxy relationship with performer details and patient details  |
+        | Retrieve single mother-child relationship                                        | Valid request with ID `39df03a2-1b14-4d19-b1dc-d5d8cbf96948`                                                                             | HTTP Status 200 Bundle containing a single active proxy relationship                                             |
+        | Retrieve single mother-child relationship with patient details                   | Valid request with ID `39df03a2-1b14-4d19-b1dc-d5d8cbf96948` with parameter `_include=Consent:patient`                                   | HTTP Status 200 Bundle containing a single active proxy relationship with patient details                        |
+        | Retrieve single mother-child relationship with performer details                 | Valid request with ID `39df03a2-1b14-4d19-b1dc-d5d8cbf96948` with parameter `_include=Consent:performer`                                 | HTTP Status 200 Bundle containing a single active proxy relationship with performer details                      |
+        | Retrieve single mother-child relationship with performer and patient details     | Valid request with ID `39df03a2-1b14-4d19-b1dc-d5d8cbf96948` with parameters `_include=Consent:performer` and `_include=Consent:patient` | HTTP Status 200 Bundle containing a single active proxy relationship with performer details and patient details  |
+
       operationId: get-consent-by-id
       parameters:
         - $ref: "#/components/parameters/BearerAuthorization"
