@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "e3d42c87-bf68-4cae-b08d-e1fd0dba1f80",
-		"name": "Validate Relationship Service Sandbox 29/05/25",
+		"_postman_id": "de538326-5564-4efd-9ed2-d1c64142fcfe",
+		"name": "Validate Relationship Service Sandbox 04/06/25",
 		"description": "Example usage of the Validate Relationship Service (VRS) sandbox.\n\nFull specification is available at [https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "34042403"
+		"_exporter_id": "44536620"
 	},
 	"item": [
 		{
@@ -6053,7 +6053,7 @@
 									"});",
 									"",
 									"pm.test(\"Location header is returned\", () => {",
-									"    pm.response.to.have.header(\"Location\", \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/9000000009\")",
+									"    pm.response.to.have.header(\"Location\", \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/90b9863e-e33c-4895-a333-fd0ea0e23205\")",
 									"})"
 								],
 								"type": "text/javascript",
@@ -6112,7 +6112,7 @@
 									"});",
 									"",
 									"pm.test(\"Location header is returned\", () => {",
-									"    pm.response.to.have.header(\"Location\", \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/9000000017\")",
+									"    pm.response.to.have.header(\"Location\", \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/90b9863e-e33c-4895-a333-fd0ea0e23205\")",
 									"})"
 								],
 								"type": "text/javascript",
@@ -6328,13 +6328,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{api_base_url}}/Consent/c6f48e4d",
+							"raw": "{{api_base_url}}/Consent/c512b0db-6702-43ee-8c21-bbded2552da9",
 							"host": [
 								"{{api_base_url}}"
 							],
 							"path": [
 								"Consent",
-								"c6f48e4d"
+								"c512b0db-6702-43ee-8c21-bbded2552da9"
 							]
 						},
 						"description": "Valid patch changing status to 'active'"
@@ -6385,13 +6385,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{api_base_url}}/Consent/0c56a594",
+							"raw": "{{api_base_url}}/Consent/6b71ac92-baa3-4b76-b0f5-a601257e2722",
 							"host": [
 								"{{api_base_url}}"
 							],
 							"path": [
 								"Consent",
-								"0c56a594"
+								"6b71ac92-baa3-4b76-b0f5-a601257e2722"
 							]
 						},
 						"description": "Valid patch modifying the role end date"
@@ -6442,13 +6442,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{api_base_url}}/Consent/b02ea26c",
+							"raw": "{{api_base_url}}/Consent/43003db8-ffcd-4bd6-ab2f-b49b9656f9e5",
 							"host": [
 								"{{api_base_url}}"
 							],
 							"path": [
 								"Consent",
-								"b02ea26c"
+								"43003db8-ffcd-4bd6-ab2f-b49b9656f9e5"
 							]
 						},
 						"description": "Valid patch modifying the role end date"
@@ -6466,12 +6466,12 @@
 									"    \"issue\": [",
 									"        {",
 									"            \"code\": \"invalid\",",
-									"            \"diagnostics\": \"Patch attempting invalid status change.\",",
+									"            \"diagnostics\": \"Invalid status code.\",",
 									"            \"details\": {",
 									"                \"coding\": [",
 									"                    {",
-									"                        \"code\": \"INVALID_STATE_TRANSITION\",",
-									"                        \"display\": \"Status change is invalid.\",",
+									"                        \"code\": \"INVALID_STATUS_CODE\",",
+									"                        \"display\": \"Status code is invalid.\",",
 									"                        \"system\": \"https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode\",",
 									"                        \"version\": \"1\"",
 									"                    }",
@@ -6483,7 +6483,7 @@
 									"    \"resourceType\": \"OperationOutcome\"",
 									"}",
 									"",
-									"pm.test(\"Status code is 201\", function () {",
+									"pm.test(\"Status code is 422\", function () {",
 									"    pm.response.to.have.status(422);",
 									"});",
 									"",
@@ -6510,13 +6510,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{api_base_url}}/Consent/6fb4361b",
+							"raw": "{{api_base_url}}/Consent/78c35330-fa2f-4934-a5dd-fff847f38de5",
 							"host": [
 								"{{api_base_url}}"
 							],
 							"path": [
 								"Consent",
-								"6fb4361b"
+								"78c35330-fa2f-4934-a5dd-fff847f38de5"
 							]
 						},
 						"description": "Patch with invalid status value"
@@ -6578,13 +6578,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{api_base_url}}/Consent/94df7c8f",
+							"raw": "{{api_base_url}}/Consent/01abb0c5-b1ac-499d-9655-9cd0b8d3588f",
 							"host": [
 								"{{api_base_url}}"
 							],
 							"path": [
 								"Consent",
-								"94df7c8f"
+								"01abb0c5-b1ac-499d-9655-9cd0b8d3588f"
 							]
 						},
 						"description": "Patch targeting non-existent element"
@@ -6714,13 +6714,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{api_base_url}}/Consent/3a2679eb",
+							"raw": "{{api_base_url}}/Consent/849ea584-2318-471b-a24c-cee1b5ad0137",
 							"host": [
 								"{{api_base_url}}"
 							],
 							"path": [
 								"Consent",
-								"3a2679eb"
+								"849ea584-2318-471b-a24c-cee1b5ad0137"
 							]
 						},
 						"description": "Malformed JSON patch document"
@@ -6738,12 +6738,12 @@
 									"    \"issue\": [",
 									"        {",
 									"            \"code\": \"invalid\",",
-									"            \"diagnostics\": \"Malformed JSON patch document.\",",
+									"            \"diagnostics\": \"Patch attempting invalid status change.\",",
 									"            \"details\": {",
 									"                \"coding\": [",
 									"                    {",
-									"                        \"code\": \"INVALID_PATCH_FORMAT\",",
-									"                        \"display\": \"Request format is invalid.\",",
+									"                        \"code\": \"INVALID_STATE_TRANSITION\",",
+									"                        \"display\": \"Status change is invalid.\",",
 									"                        \"system\": \"https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode\",",
 									"                        \"version\": \"1\"",
 									"                    }",
@@ -6755,8 +6755,8 @@
 									"    \"resourceType\": \"OperationOutcome\"",
 									"}",
 									"",
-									"pm.test(\"Status code is 400\", function () {",
-									"    pm.response.to.have.status(400);",
+									"pm.test(\"Status code is 422\", function () {",
+									"    pm.response.to.have.status(422);",
 									"});",
 									"",
 									"pm.test(\"Should have correct response body\", () => {",
@@ -6774,7 +6774,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"active\"\n  }\n]",
+							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"someinvalidcode\"\n  }\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -6782,16 +6782,82 @@
 							}
 						},
 						"url": {
-							"raw": "{{api_base_url}}/Consent/3a2679eb",
+							"raw": "{{api_base_url}}/Consent/7b7f47b8-96e5-43eb-b733-283bf1449f2c",
 							"host": [
 								"{{api_base_url}}"
 							],
 							"path": [
 								"Consent",
-								"3a2679eb"
+								"7b7f47b8-96e5-43eb-b733-283bf1449f2c"
 							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid Status Reason",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const expectedResponseBody = {",
+									"    \"issue\": [",
+									"        {",
+									"            \"code\": \"invalid\",",
+									"            \"diagnostics\": \"Invalid status reason.\",",
+									"            \"details\": {",
+									"                \"coding\": [",
+									"                    {",
+									"                        \"code\": \"INVALID_STATUS_REASON\",",
+									"                        \"display\": \"Status reason is invalid.\",",
+									"                        \"system\": \"https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode\",",
+									"                        \"version\": \"1\"",
+									"                    }",
+									"                ]",
+									"            },",
+									"            \"severity\": \"error\"",
+									"        }",
+									"    ],",
+									"    \"resourceType\": \"OperationOutcome\"",
+									"}",
+									"",
+									"pm.test(\"Status code is 422\", function () {",
+									"    pm.response.to.have.status(422);",
+									"});",
+									"",
+									"pm.test(\"Should have correct response body\", () => {",
+									"    var responseJson = pm.response.json();",
+									"    pm.expect(responseJson).to.eql(expectedResponseBody);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"someinvalidcode\"\n  }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
-						"description": "Malformed JSON patch document"
+						"url": {
+							"raw": "{{api_base_url}}/Consent/51fb4df5-815a-45cd-8427-04d6558336b7",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"Consent",
+								"51fb4df5-815a-45cd-8427-04d6558336b7"
+							]
+						}
 					},
 					"response": []
 				}
