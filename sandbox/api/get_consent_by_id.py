@@ -3,8 +3,6 @@ from typing import Union
 
 from flask import request
 
-logger = getLogger(__name__)
-
 from .constants import (
     INTERNAL_SERVER_ERROR_EXAMPLE,
     GET_CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP,
@@ -22,6 +20,8 @@ from .constants import (
 )
 from .utils import generate_response_from_example, check_for_consent_include_params
 
+logger = getLogger(__name__)
+
 
 def get_consent_by_id_response(identifier: str) -> Union[dict, tuple]:
     """Sandbox API for GET /Consent/{id}
@@ -31,7 +31,7 @@ def get_consent_by_id_response(identifier: str) -> Union[dict, tuple]:
     """
     try:
         params = request.args.to_dict()
-        if not "_include" in params and len(params) > 0:
+        if "_include" not in params and len(params) > 0:
             return generate_response_from_example(BAD_REQUEST_INCLUDE_PARAM_INVALID, 422)
         else:
             _include = request.args.getlist("_include")
