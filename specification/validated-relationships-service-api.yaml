@@ -126,7 +126,7 @@ info:
     * only covers a limited set of scenarios
     * is open access, so does not allow you to test authorisation
 
-    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://god.gw.postman.com/run-collection/44536620-de538326-5564-4efd-9ed2-d1c64142fcfe?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D44536620-de538326-5564-4efd-9ed2-d1c64142fcfe%26entityType%3Dcollection%26workspaceId%3Dd553b6fe-6915-4ada-a926-d96af988d3cc)
+    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/18067099-110252c4-5fa1-46ca-a08d-b5ce96e28fde?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D18067099-110252c4-5fa1-46ca-a08d-b5ce96e28fde%26entityType%3Dcollection%26workspaceId%3D8870ed4a-d599-42a7-ab17-cee80095ffab)
 
     ### Integration testing
 
@@ -777,10 +777,18 @@ paths:
               examples:
                 ConsentSingleConsentingAdultRelationshipBundle:
                   $ref: "./examples/responses/GET_Consent/single-consenting-adult-relationship.yaml#/ConsentSingleConsentingAdultRelationshipBundle"
+                ConsentSingleConsentingAdultRelationshipIncludePatientBundle:
+                  $ref: "./examples/responses/GET_Consent/single-consenting-adult-relationship-include-patient.yaml#/ConsentSingleConsentingAdultRelationshipIncludePatientBundle"
+                ConsentSingleConsentingAdultRelationshipIncludePerformerBundle:
+                  $ref: "./examples/responses/GET_Consent/single-consenting-adult-relationship-include-performer.yaml#/ConsentSingleConsentingAdultRelationshipIncludePerformerBundle"
                 ConsentSingleConsentingAdultRelationshipIncludePerformerPatientBundle:
                   $ref: "./examples/responses/GET_Consent/single-consenting-adult-relationship-include-performer-patient.yaml#/ConsentSingleConsentingAdultRelationshipIncludePerformerPatientBundle"
                 ConsentSingleAdultChildRelationshipBundle:
                   $ref: "./examples/responses/GET_Consent/single-mother-child-relationship.yaml#/ConsentSingleAdultChildRelationshipBundle"
+                ConsentSingleAdultChildRelationshipIncludePatientBundle:
+                  $ref: "./examples/responses/GET_Consent/single-mother-child-relationship-include-patient.yaml#/ConsentSingleAdultChildRelationshipIncludePatientBundle"
+                ConsentSingleAdultChildRelationshipIncludePerformerBundle:
+                  $ref: "./examples/responses/GET_Consent/single-mother-child-relationship-include-performer.yaml#/ConsentSingleAdultChildRelationshipIncludePerformerBundle"
                 ConsentSingleAdultChildRelationshipIncludePerformerPatientBundle:
                   $ref: "./examples/responses/GET_Consent/single-mother-child-relationship-include-performer-patient.yaml#/ConsentSingleAdultChildRelationshipIncludePerformerPatientBundle"
 
@@ -799,7 +807,7 @@ paths:
             | 404         | `INVALIDATED_RESOURCE`           | Resource that has been marked as invalid was requested - invalid resources cannot be retrieved                                            |
             | 405         | `METHOD_NOT_ALLOWED`             | The method is not allowed.                                                                                                                |
             | 408         | `TIMEOUT`                        | Request timed out.                                                                                                                        |
-            | 422         | `INVALID_ID_SYSTEM`              | Invalid id.                                                                                                                               |
+            | 422         | `INVALID_ID_VALUE`               | Invalid id.                                                                                                                               |
             | 429         | `THROTTLED`                      | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
 
           content:
@@ -815,6 +823,8 @@ paths:
                   $ref: "./examples/responses/GET_Consent/ID/errors/missing-id.yaml#/ConsentMissingIDError"
                 InvalidIdError:
                   $ref: "./examples/responses/GET_Consent/ID/errors/invalid-id.yaml#/ConsentInvalidIDError"
+                InvalidIncludeParameterError:
+                  $ref: "./examples/responses/errors/invalid-include-parameter.yaml#/InvalidIncludeParameterError"
         "5XX":
           description: |
             Errors will be returned for the first error encountered in the request. An error occurred as follows:
