@@ -1,4 +1,4 @@
-from logging import INFO, basicConfig, getLogger
+from logging import getLogger
 from typing import Union
 
 from flask import request
@@ -16,12 +16,15 @@ from .constants import (
     GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_PATIENT,
     GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_PERFORMER,
     GET_CONSENT_BY_ID__INVALID_ID_ERROR,
-    GET_CONSENT_BY_ID__MISSING_ID_ERROR
+    GET_CONSENT_BY_ID__MISSING_ID_ERROR,
+    BAD_REQUEST_INCLUDE_PARAM_INVALID,
+    INVALIDATED_RESOURCE
 )
 from .utils import (
     generate_response_from_example,
     check_for_consent_include_params
 )
+
 
 def get_consent_by_id_response(identifier: str) -> Union[dict, tuple]:
     """Sandbox API for GET /Consent/{id}
@@ -30,7 +33,11 @@ def get_consent_by_id_response(identifier: str) -> Union[dict, tuple]:
         Union[dict, tuple]: Response for GET /Consent/{id}
     """
     try:
-        _include = request.args.getlist("_include")
+        params = request.args.to_dict()
+        if not "_include" in params and len(params) > 0:
+            return generate_response_from_example(BAD_REQUEST_INCLUDE_PARAM_INVALID, 422)
+        else:
+            _include = request.args.getlist("_include")
 
         if identifier == "74eed847-ca25-4e76-8cf2-f2c2d7842a7a":
             return check_for_consent_include_params(
@@ -48,6 +55,8 @@ def get_consent_by_id_response(identifier: str) -> Union[dict, tuple]:
                 GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_PATIENT,
                 GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_PERFORMER
             )
+        elif identifier == "a0922245-1072-40c3-8f4e-a7490c10d365":
+            return generate_response_from_example(INVALIDATED_RESOURCE, 404)
         elif identifier == " " or identifier is None:
             return generate_response_from_example(GET_CONSENT_BY_ID__MISSING_ID_ERROR, 400)
         else:

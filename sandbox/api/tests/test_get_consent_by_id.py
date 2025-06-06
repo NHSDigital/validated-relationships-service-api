@@ -37,7 +37,7 @@ GET_CONSENT_BY_ID_FILE_PATH = "sandbox.api.get_consent_by_id"
         ),
     ],
 )
-@patch("sandbox.api.get_consent_by_id.generate_response_from_example")
+@patch(f"{GET_CONSENT_BY_ID_FILE_PATH}.generate_response_from_example")
 def test_get_consent_by_id_returns_expected_responses__mocked_get_consent_by_id(
     mock_generate_response_from_example: MagicMock,
     consent_id: str,
