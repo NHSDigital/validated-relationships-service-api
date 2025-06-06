@@ -18,13 +18,13 @@ GET_CONSENT_BY_ID_FILE_PATH = "sandbox.api.get_consent_by_id"
             422,
         ),
         (
-            "a0922245-1072-40c3-8f4e-a7490c10d365", # No proxy-role record found error
+            "a0922245-1072-40c3-8f4e-a7490c10d365",  # No proxy-role record found error
             "",
             "./api/examples/errors/invalidated-resource.yaml",
             404,
         ),
         (
-            " ", # Missing consent ID
+            " ",  # Missing consent ID
             "",
             "./api/examples/GET_Consent/ID/errors/missing-id.yaml",
             400,

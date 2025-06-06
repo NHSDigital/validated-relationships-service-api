@@ -18,12 +18,9 @@ from .constants import (
     GET_CONSENT_BY_ID__INVALID_ID_ERROR,
     GET_CONSENT_BY_ID__MISSING_ID_ERROR,
     BAD_REQUEST_INCLUDE_PARAM_INVALID,
-    INVALIDATED_RESOURCE
+    INVALIDATED_RESOURCE,
 )
-from .utils import (
-    generate_response_from_example,
-    check_for_consent_include_params
-)
+from .utils import generate_response_from_example, check_for_consent_include_params
 
 
 def get_consent_by_id_response(identifier: str) -> Union[dict, tuple]:
@@ -45,7 +42,7 @@ def get_consent_by_id_response(identifier: str) -> Union[dict, tuple]:
                 GET_CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP,
                 GET_CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_BOTH,
                 GET_CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_PATIENT,
-                GET_CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_PERFORMER
+                GET_CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_PERFORMER,
             )
         elif identifier == "39df03a2-1b14-4d19-b1dc-d5d8cbf96948":
             return check_for_consent_include_params(
@@ -53,7 +50,7 @@ def get_consent_by_id_response(identifier: str) -> Union[dict, tuple]:
                 GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP,
                 GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH,
                 GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_PATIENT,
-                GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_PERFORMER
+                GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_PERFORMER,
             )
         elif identifier == "a0922245-1072-40c3-8f4e-a7490c10d365":
             return generate_response_from_example(INVALIDATED_RESOURCE, 404)
