@@ -83,7 +83,7 @@ def test_get_consent_by_id_returns_expected_responses__mocked_get_consent_by_id(
             200,
         ),
         (
-            "74eed847-ca25-4e76-8cf2-f2c2d7842a7a",  # Single consenting adult relationship with include performer and patient
+            "74eed847-ca25-4e76-8cf2-f2c2d7842a7a",  # Single consenting adult relationship with include both
             "_include=Consent:performer&_include=Consent:patient",
             "./api/examples/GET_Consent/single-consenting-adult-relationship-include-performer-patient.yaml",
             200,
@@ -107,7 +107,7 @@ def test_get_consent_by_id_returns_expected_responses__mocked_get_consent_by_id(
             200,
         ),
         (
-            "39df03a2-1b14-4d19-b1dc-d5d8cbf96948",  # Single adult-child relationship with include performer and patient
+            "39df03a2-1b14-4d19-b1dc-d5d8cbf96948",  # Single adult-child relationship with include both
             "_include=Consent:performer&_include=Consent:patient",
             "./api/examples/GET_Consent/single-mother-child-relationship-include-performer-patient.yaml",
             200,
