@@ -21,7 +21,7 @@ black = "^24.3.0"
 [tool.poetry.group.test.dependencies]
 pytest-nhsd-apim = "^5.0.0"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 flake8 = "^3.7.9"
 black = "^24.3.0"
 pip-licenses = "^4.4.0"
