@@ -9,7 +9,7 @@ InvalidIncludeParameterError:
           coding:
             - system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
               version: "1"
-              code: "INVALID_VALUE"
+              code: "INVALID_PARAMETER"
               display: "Required parameter(s) are invalid."
         severity: error
     diagnostics: "Invalid request with error - _include parameter is invalid."
