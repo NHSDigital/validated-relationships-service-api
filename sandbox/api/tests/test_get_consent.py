@@ -174,11 +174,6 @@ def test_get_consent_returns_expected_responses__mocked_get_consent(
             422,
         ),
         (
-            "performer:identifier=9000000019&_include=test",  # Invalid include parameter error
-            "./api/examples/errors/invalid-include-parameter.yaml",
-            422,
-        ),
-        (
             "performer:identifier=90000009990",  # Invalid performer identifier
             "./api/examples/GET_Consent/errors/invalid-identifier.yaml",
             422,

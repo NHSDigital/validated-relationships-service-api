@@ -262,7 +262,7 @@ def check_for_consent_include_params(
     elif len(_include) == 2 and CONSENT_PATIENT in _include and CONSENT_PERFORMER in _include:
         return generate_response_from_example(include_both_response_yaml, 200)
     else:
-        return generate_response_from_example(BAD_REQUEST_INCLUDE_PARAM_INVALID, 422)
+        return generate_response_from_example(include_none_response_yaml, 200)
 
 
 def check_for_consent_filtering(

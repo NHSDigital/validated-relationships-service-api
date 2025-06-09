@@ -126,7 +126,7 @@ info:
     * only covers a limited set of scenarios
     * is open access, so does not allow you to test authorisation
 
-    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/18067099-110252c4-5fa1-46ca-a08d-b5ce96e28fde?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D18067099-110252c4-5fa1-46ca-a08d-b5ce96e28fde%26entityType%3Dcollection%26workspaceId%3D8870ed4a-d599-42a7-ab17-cee80095ffab)
+    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://god.gw.postman.com/run-collection/34042403-5b4ac95f-34fe-400e-ac8f-714d7cb9cb76?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D34042403-5b4ac95f-34fe-400e-ac8f-714d7cb9cb76%26entityType%3Dcollection%26workspaceId%3D14593107-f7bc-4334-8749-648b96205c76)
 
     ### Integration testing
 
@@ -591,8 +591,6 @@ paths:
                   $ref: "./examples/responses/GET_Consent/errors/invalid-status-parameter.yaml#/ConsentInvalidStatusParameterError"
                 GPPracticeNotFoundError:
                   $ref: "./examples/responses/GET_Consent/errors/gp-practice-not-found.yaml#/GPPracticeNotFoundError"
-                InvalidIncludeParameterError:
-                  $ref: "./examples/responses/errors/invalid-include-parameter.yaml#/InvalidIncludeParameterError"
         "5XX":
           description: |
             Errors will be returned for the first error encountered in the request. An error occurred as follows:
@@ -800,7 +798,6 @@ paths:
             | ----------- | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
             | 400         | `MISSING_VALUE`                  | Missing header or parameter. For details, see the `diagnostics` field.                                                                    |
             | 400         | `INVALID_VALUE`                  | Invalid header. For details, see the `diagnostics` field.                                                                                 |
-            | 400         | `MISSING_ID_VALUE`               | Missing id.                                                                                                                               |
             | 400         | `NOT_SUPPORTED`                  | The request is not currently supported.                                                                                                   |
             | 401         | `ACCESS_DENIED`                  | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
             | 403         | `FORBIDDEN`                      | Access denied to resource.                                                                                                                |
@@ -808,6 +805,7 @@ paths:
             | 405         | `METHOD_NOT_ALLOWED`             | The method is not allowed.                                                                                                                |
             | 408         | `TIMEOUT`                        | Request timed out.                                                                                                                        |
             | 422         | `INVALID_ID_VALUE`               | Invalid id.                                                                                                                               |
+            | 422         | `INVALID_PARAMETER`              | Invalid parameter. For details, see the `diagnostics` field.                                                                              |
             | 429         | `THROTTLED`                      | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
 
           content:
@@ -819,12 +817,8 @@ paths:
                   $ref: "./examples/responses/errors/access-denied.yaml#/AccessDeniedError"
                 InvalidatedResourceError:
                   $ref: "./examples/responses/errors/invalidated-resource.yaml#/InvalidatedResourceError"
-                MissingIdError:
-                  $ref: "./examples/responses/GET_Consent/ID/errors/missing-id.yaml#/ConsentMissingIDError"
                 InvalidIdError:
                   $ref: "./examples/responses/GET_Consent/ID/errors/invalid-id.yaml#/ConsentInvalidIDError"
-                InvalidIncludeParameterError:
-                  $ref: "./examples/responses/errors/invalid-include-parameter.yaml#/InvalidIncludeParameterError"
         "5XX":
           description: |
             Errors will be returned for the first error encountered in the request. An error occurred as follows:
