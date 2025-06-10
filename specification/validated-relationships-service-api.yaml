@@ -126,7 +126,7 @@ info:
     * only covers a limited set of scenarios
     * is open access, so does not allow you to test authorisation
 
-    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/18067099-110252c4-5fa1-46ca-a08d-b5ce96e28fde?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D18067099-110252c4-5fa1-46ca-a08d-b5ce96e28fde%26entityType%3Dcollection%26workspaceId%3D8870ed4a-d599-42a7-ab17-cee80095ffab)
+    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://god.gw.postman.com/run-collection/34042403-4442b3f9-8d89-4aae-a5a9-8a5eda755ead?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D34042403-4442b3f9-8d89-4aae-a5a9-8a5eda755ead%26entityType%3Dcollection%26workspaceId%3D14593107-f7bc-4334-8749-648b96205c76)
 
     ### Integration testing
 
@@ -496,7 +496,7 @@ paths:
         | A single proxy relationship between a mother and child                            | `performer:identifier`=`9000000019` and/or `patient:identifier`=`9000000009`                                                                     | HTTP Status 200 Bundle containing a single proxy relationship                                                     |
         | A single proxy relationship between a mother and child including details          | `performer:identifier`=`9000000019` and/or `patient:identifier`=`9000000009` and `_include` = `Consent:patient` and `_include` = `Consent:proxy` | HTTP Status 200 Bundle containing a single proxy relationship including performer and patient details             |
         | Invalid status parameter                                                          | `performer:identifier`=`9000000019` and/or `patient:identifier`=`9000000009` and `status` = `test`                                               | HTTP Status 422 and INVALID_VALUE error response                                                                  |
-        | Invalid include parameter                                                         | `performer:identifier`=`9000000019` and/or `patient:identifier`=`9000000009` and `_include` = `test`                                             | HTTP Status 422 and INVALID_VALUE error response                                                                  |
+        | Invalid include parameter                                                         | `performer:identifier`=`9000000019` and/or `patient:identifier`=`9000000009` and `_include` = `test`                                             | HTTP Status 422 and INVALID_PARAMETER error response                                                                  |
         | Missing identifier                                                                | `patient:identifier`=`9000000009`                                                                                                                | HTTP Status 400 and MISSING_IDENTIFIER_VALUE error response                                                       |
         | Invalid identifier                                                                | `identifier`=`900000000` Note: This identifier is 9 characters long, too short to be NHS Number                                                  | HTTP Status 422 and INVALID_IDENTIFIER_VALUE error response                                                       |
         | Invalid identifier system                                                         | `identifier`=`https://fhir.nhs.uk/Id/nhs-number/9730675929`                                                                                      | HTTP Status 422 and INVALID_IDENTIFIER_SYSTEM error response                                                      |
@@ -798,9 +798,7 @@ paths:
 
             | HTTP status | Error code                       | Description                                                                                                                               |
             | ----------- | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-            | 400         | `MISSING_VALUE`                  | Missing header or parameter. For details, see the `diagnostics` field.                                                                    |
-            | 400         | `INVALID_VALUE`                  | Invalid header. For details, see the `diagnostics` field.                                                                                 |
-            | 400         | `MISSING_ID_VALUE`               | Missing id.                                                                                                                               |
+            | 400         | `BAD_REQUEST`                    | Missing header or parameter. For details, see the `diagnostics` field.                                                                    |
             | 400         | `NOT_SUPPORTED`                  | The request is not currently supported.                                                                                                   |
             | 401         | `ACCESS_DENIED`                  | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
             | 403         | `FORBIDDEN`                      | Access denied to resource.                                                                                                                |
@@ -808,6 +806,7 @@ paths:
             | 405         | `METHOD_NOT_ALLOWED`             | The method is not allowed.                                                                                                                |
             | 408         | `TIMEOUT`                        | Request timed out.                                                                                                                        |
             | 422         | `INVALID_ID_VALUE`               | Invalid id.                                                                                                                               |
+            | 422         | `INVALID_PARAMETER`              | Invalid parameter. For details, see the `diagnostics` field.                                                                              |
             | 429         | `THROTTLED`                      | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
 
           content:
@@ -819,8 +818,6 @@ paths:
                   $ref: "./examples/responses/errors/access-denied.yaml#/AccessDeniedError"
                 InvalidatedResourceError:
                   $ref: "./examples/responses/errors/invalidated-resource.yaml#/InvalidatedResourceError"
-                MissingIdError:
-                  $ref: "./examples/responses/GET_Consent/ID/errors/missing-id.yaml#/ConsentMissingIDError"
                 InvalidIdError:
                   $ref: "./examples/responses/GET_Consent/ID/errors/invalid-id.yaml#/ConsentInvalidIDError"
                 InvalidIncludeParameterError:

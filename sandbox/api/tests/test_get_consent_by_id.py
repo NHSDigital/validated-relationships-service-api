@@ -26,7 +26,7 @@ GET_CONSENT_BY_ID_FILE_PATH = "sandbox.api.get_consent_by_id"
         (
             " ",  # Missing consent ID
             "",
-            "./api/examples/GET_Consent/ID/errors/missing-id.yaml",
+            "./api/examples/GET_Consent/ID/errors/invalid-id.yaml",
             400,
         ),
         (

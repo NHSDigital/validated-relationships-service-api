@@ -14,7 +14,6 @@ from .constants import (
     GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_PATIENT,
     GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_PERFORMER,
     GET_CONSENT_BY_ID__INVALID_ID_ERROR,
-    GET_CONSENT_BY_ID__MISSING_ID_ERROR,
     BAD_REQUEST_INCLUDE_PARAM_INVALID,
     INVALIDATED_RESOURCE,
 )
@@ -54,8 +53,6 @@ def get_consent_by_id_response(identifier: str) -> Union[dict, tuple]:
             )
         elif identifier == "a0922245-1072-40c3-8f4e-a7490c10d365":
             return generate_response_from_example(INVALIDATED_RESOURCE, 404)
-        elif identifier == " " or identifier is None:
-            return generate_response_from_example(GET_CONSENT_BY_ID__MISSING_ID_ERROR, 400)
         else:
             return generate_response_from_example(GET_CONSENT_BY_ID__INVALID_ID_ERROR, 400)
 
