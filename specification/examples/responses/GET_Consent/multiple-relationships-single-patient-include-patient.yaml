@@ -111,13 +111,6 @@ ConsentMultipleRelationshipsSinglePatientIncludePatientBundle:
             - identifier:
                 system: 'https://fhir.nhs.uk/Id/nhs-number'
                 value: '9000000021'
-          verification:
-            - verified: true
-              verifiedWith:
-                identifier:
-                  system: 'https://fhir.nhs.uk/Id/nhs-number'
-                  value: '9000000021'
-              verificationDate: '2024-07-21T17:32:28Z'
           provision:
             actor:
             - reference:

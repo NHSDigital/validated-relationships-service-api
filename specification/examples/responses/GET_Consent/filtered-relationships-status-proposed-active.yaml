@@ -136,13 +136,6 @@ ConsentMultipleRelationshipsStatusProposedActiveBundle:
             - identifier:
                 system: 'https://fhir.nhs.uk/Id/nhs-number'
                 value: '9000000017'
-          verification:
-            - verified: true
-              verifiedWith:
-                identifier:
-                  system: 'https://fhir.nhs.uk/Id/nhs-number'
-                  value: '9000000020'
-              verificationDate: '2024-07-21T17:32:28Z'
           provision:
             actor:
             - reference:
@@ -194,13 +187,6 @@ ConsentMultipleRelationshipsStatusProposedActiveBundle:
             - identifier:
                 system: 'https://fhir.nhs.uk/Id/nhs-number'
                 value: '9000000017'
-          verification:
-            - verified: true
-              verifiedWith:
-                identifier:
-                  system: 'https://fhir.nhs.uk/Id/nhs-number'
-                  value: '9000000021'
-              verificationDate: '2024-07-21T17:32:28Z'
           provision:
             actor:
             - reference:
