@@ -60,6 +60,28 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
             - identifier:
                 system: 'https://fhir.nhs.uk/Id/nhs-number'
                 value: '9000000022'
+          provision:
+            actor:
+            - reference:
+                identifier:
+                  system: https://fhir.nhs.uk/Id/nhs-number
+                  value: '9000000022'
+                type: RelatedPerson
+              role:
+                coding:
+                - code: PRN
+                  display: Parent
+                  system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
+            period:
+              end: '2026-02-11'
+              start: '2025-02-11'
+          extension:
+            - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
+              valueCodeableConcept:
+                - coding:
+                  - code: TBC
+                    display: TBC
+                    system: http://terminology.hl7.org/CodeSystem/consent-reason
         search:
           mode: match
       - fullUrl: >-
@@ -112,13 +134,28 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
             - identifier:
                 system: 'https://fhir.nhs.uk/Id/nhs-number'
                 value: '9000000022'
-          verification:
-            - verified: true
-              verifiedWith:
+          provision:
+            actor:
+            - reference:
                 identifier:
-                  system: 'https://fhir.nhs.uk/Id/nhs-number'
-                  value: '9000000005'
-              verificationDate: '2024-07-21T17:32:28Z'
+                  system: https://fhir.nhs.uk/Id/nhs-number
+                  value: '9000000022'
+                type: RelatedPerson
+              role:
+                coding:
+                - code: Personal
+                  display: Personal
+                  system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
+            period:
+              end: '2026-02-11'
+              start: '2025-02-11'
+          extension:
+            - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
+              valueCodeableConcept:
+                - coding:
+                  - code: TBC
+                    display: TBC
+                    system: http://terminology.hl7.org/CodeSystem/consent-reason
         search:
           mode: match
       - fullUrl: >-
@@ -171,13 +208,28 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
             - identifier:
                 system: 'https://fhir.nhs.uk/Id/nhs-number'
                 value: '9000000022'
-          verification:
-            - verified: true
-              verifiedWith:
+          provision:
+            actor:
+            - reference:
                 identifier:
-                  system: 'https://fhir.nhs.uk/Id/nhs-number'
-                  value: '9000000006'
-              verificationDate: '2024-07-21T17:32:28Z'
+                  system: https://fhir.nhs.uk/Id/nhs-number
+                  value: '9000000022'
+                type: RelatedPerson
+              role:
+                coding:
+                - code: Personal
+                  display: Personal
+                  system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
+            period:
+              end: '2026-02-11'
+              start: '2025-02-11'
+          extension:
+            - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
+              valueCodeableConcept:
+                - coding:
+                  - code: TBC
+                    display: TBC
+                    system: http://terminology.hl7.org/CodeSystem/consent-reason
         search:
           mode: match
 
