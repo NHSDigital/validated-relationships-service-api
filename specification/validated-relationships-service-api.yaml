@@ -90,7 +90,7 @@ info:
 
     [Review all patient access modes](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#patient-access-mode)
 
-    Validated Relationships Service checks the patient is P9 verified and has a high [vector of trust](https://nhsconnect.github.io/nhslogin/vectors-of-trust/) (VOT).
+    Validated Relationships Service API checks the patient is P9 verified and has a high [vector of trust](https://nhsconnect.github.io/nhslogin/vectors-of-trust/) (VOT).
 
     Allowed vectors of trust are:
     - `P9.Cp.Cd`
