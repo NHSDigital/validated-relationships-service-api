@@ -183,6 +183,11 @@ paths:
 
         For the most part demographics information doesn't need to be provided in the access request since it can be pulled from PDS.
 
+        ## Access modes
+
+        This endpoint supports the following access modes:
+        - Patient access
+
         ## Sandbox test scenarios
 
         | Scenario        | Request                                         | Response                         |
@@ -288,6 +293,12 @@ paths:
         A valid reference code must be provided as a query parameter. This reference code is returned
         when a QuestionnaireResponse is initially submitted via the POST endpoint.
 
+        ## Access modes
+
+        This endpoint supports the following access modes:
+        - Patient access
+        - Healthcare worker access
+
         ## Sandbox test scenarios
 
         | Scenario                    | Request                    | Response                                                      |
@@ -376,6 +387,12 @@ paths:
         You can (optionally) include `patient:identifier={nhsNumber}` request parameter with the patient's NHS number to get a specific verified relationship for the proxy.
 
         You can (optionally) include the `_include=RelatedPerson:patient` request parameter to include the patient's details in the response.
+
+        ## Access modes
+
+        This endpoint supports the following access modes:
+        - Patient access
+        - Healthcare worker access
 
         ## Sandbox test scenarios
 
@@ -495,6 +512,13 @@ paths:
         You can (optionally) include the `_include=Consent:performer` request parameter to include the proxy's details in the response.
 
         You can (optionally) include the `_include=Consent:patient` request parameter to include the patient's details in the response.
+
+        ## Access modes
+
+        This endpoint supports the following access modes:
+        - Patient access
+        - Healthcare worker access
+        - Application-restricted access
 
         ## Sandbox test scenarios
 
@@ -639,6 +663,11 @@ paths:
         ## Overview
         Use this endpoint to create a new proxy role between a patient and a related person (proxy).
 
+        ## Access modes
+
+        This endpoint supports the following access modes:
+        - Healthcare worker access
+
         ## Sandbox test scenarios
 
         The sandbox supports a limited number of scenarios, and does not attempt to validate requests.  The returned result is dependant on the `performer.identifier.value`.
@@ -765,6 +794,11 @@ paths:
 
         You can (optionally) include the `_include=Consent:patient` request parameter to include the patient's details in the response.
 
+        ## Access modes
+
+        This endpoint supports the following access modes:
+        - Healthcare worker access
+
         ## Sandbox test scenarios
 
         The sandbox supports a limited number of scenarios, and does not attempt to validate requests.  The returned result is dependant on the `ID` for the consent resource.
@@ -877,6 +911,12 @@ paths:
         * The proxy role must exist and be identified by a valid identifier
         * JSON Patch operations must be valid according to RFC 6902
         * Status changes must use valid status codes from <http://hl7.org/fhir/consent-state-codes>
+
+        ## Access modes
+
+        This endpoint supports the following access modes:
+        - Patient access
+        - Healthcare worker access
 
         ## Sandbox test scenarios
         The sandbox supports a limited number of scenarios, and does not attempt to validate requests.  The returned response is dependant on the `id` parameters.
