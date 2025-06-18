@@ -72,12 +72,12 @@ info:
 
     For more details see [Network access for APIs](https://digital.nhs.uk/developer/guides-and-documentation/network-access-for-apis).
 
-    ## Access Modes
+    ## Security and authorisation
 
     This API supports both [user-restricted](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#user-restricted-apis) and [application-restricted](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#application-restricted-apis) access modes.
 
-    - [User-restricted access](#user-restricted-access) meaning an end user must be present, authenticated and authorised.
-    - [Application-restricted access](#application-restricted-access) meaning we authenticate the calling application but not the end user
+    - [User-restricted access](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#user-restricted-apis)
+    - [Application-restricted access](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#application-restricted-apis)
 
     For more information on access modes and how to use them, see the developer [security and authorisation guide](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation).
 
