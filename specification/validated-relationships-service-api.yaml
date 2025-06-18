@@ -74,10 +74,13 @@ info:
 
     ## Security and authorisation
 
-    This API supports both [user-restricted](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#user-restricted-apis) and [application-restricted](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#application-restricted-apis) access modes.
+    This API supports both [user-restricted](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#user-restricted-apis) and [application-restricted](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#application-restricted-apis) access types with the following access modes:
 
-    - [User-restricted access](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#user-restricted-apis)
-    - [Application-restricted access](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#application-restricted-apis)
+    | Access mode                   | Access type            |
+    |-------------------------------|------------------------|
+    | Patient access                | User-restricted        |
+    | Healthcare worker access      | User-restricted        |
+    | Application-restricted access | Application-restricted |
 
     For more information on access modes and how to use them, see the developer [security and authorisation guide](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation).
 
