@@ -9402,7 +9402,7 @@
 									"            \"severity\": \"error\"",
 									"        }",
 									"    ],",
-									"    \"diagnostics\": \"Invalid request with error - status parameter is invalid.\"",
+									"    \"diagnostics\": \"Invalid request with error - _include parameter is invalid.\"",
 									"}",
 									"",
 									"const responseJson = pm.response.json();",
