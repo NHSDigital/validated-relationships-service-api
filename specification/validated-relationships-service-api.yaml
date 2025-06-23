@@ -1809,39 +1809,26 @@ components:
                                 code:
                                   type: string
                                   enum:
+                                    - "PRESCR"
                                     - "APPT"
-                                    - "CNTCT"
                                     - "RECRD"
                                     - "TEST"
                                     - "VACC"
-                                    - "PRESCR"
+                                    - "COND"
+                                    - "CONSULT"
+                                    - "DOCS"
                                 display:
                                   type: string
                                   description: FHIR Requested access level.
                                   enum:
+                                    - "Request and manage repeat prescriptions"
                                     - "Appointment Booking"
-                                    - "Contacting Surgery"
-                                    - "Medical Records Access"
+                                    - "GP Health Records Access"
                                     - "Test Results"
                                     - "Vaccination Records"
-                                    - "Request and manage repeat prescriptions"
-
-              - type: object
-                properties:
-                  linkId:
-                    type: string
-                    enum: ["requestedAccess_accessLevelMoreinfo"]
-                  text:
-                    type: string
-                  answer:
-                    type: array
-                    items:
-                      oneOf:
-                        - type: object
-                          properties:
-                            valueString:
-                              type: string
-
+                                    - "Health Conditions"
+                                    - "Consultations and Events"
+                                    - "Documents"
               - type: object
                 required:
                   - linkId
