@@ -57,8 +57,9 @@ Must follow format: `NPA-XXXX: Short Description of the Change`
 -   [ ] Commit messages follow the template: `NPA-XXXX: <short-description>`
 -   [ ] All acceptance criteria from the Jira ticket are addressed
 -   [ ] Automated tests (unit/integration/API/infrastructure etc. tests) are added or updated
--   [ ] The [traceability matrix](https://nhsd-confluence.digital.nhs.uk/display/NPA/Traceability+matrix) is updated with
-        new tests or requirements
+-   [ ] The [traceability matrix](https://nhsd-confluence.digital.nhs.uk/display/NPA/Traceability+matrix) is updated
+    with
+    new tests or requirements
 -   [ ] Assignees and appropriate labels (e.g. `terraform`, `documentation`) are added
 
 ---
