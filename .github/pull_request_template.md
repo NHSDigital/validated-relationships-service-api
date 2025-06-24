@@ -24,13 +24,23 @@ Must follow format: `NPA-XXXX: Short Description of the Change`
 
 ---
 
-## 🧪 How to Test
+## 🧪 What Has Been Tested (from the POV of the PR owner)
 
-<!-- Describe how to test the changes. Include: -->
+<!-- Describe what tests (automated/unit/manual etc.) have been done for the ticket. Include: -->
+<!-- - Any tests added/updated -->
+<!-- - Evidence that each acceptance criterion from the Jira ticket is met -->
+
+-   <!-- Add bullet points for testing instructions -->
+-   <!-- Add bullet points for testing instructions -->
+-   <!-- Add bullet points for testing instructions -->
+
+---
+
+## 🧪 How to Test (from the POV of the reviewer)
+
+<!-- Describe how to test the changes that have been made in the ticket. Include: -->
 <!-- - Testing environment details (e.g. sandbox/local setup) -->
 <!-- - Steps to verify the changes -->
-<!-- - Any automated tests added or updated (with links to test cases if applicable) -->
-<!-- - Evidence that each acceptance criterion from the Jira ticket is met -->
 
 -   <!-- Add bullet points for testing instructions -->
 -   <!-- Add bullet points for testing instructions -->
