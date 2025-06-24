@@ -1,53 +1,73 @@
-# Pull Request
+# Pull Request Template
 
-<!--
-Stages to complete before opening the Pull Request:
-- PR title should be formatted in the following structure `NPA-XXXXX: title abc`
-- Added yourself/others as Assignees
-- Added the correct labels
-- Add Jira ticket link in the Ticket Link section below
--->
-
-## Ticket Link
+## 🧾 Ticket Link
 
 <!-- Add the Jira ticket link here -->
 
 https://nhsd-jira.digital.nhs.uk/browse/NPA-XXXX
 
-## Description/Change Summary
+---
 
-<!-- Describe the changes made in this PR -->
+## 📝 PR Title Format
 
--
--
--
+Must follow format: `NPA-XXXX: Short Description of the Change`
 
-## How to test?
+---
 
-<!--- Describe in detail how you tested your changes -->
-<!--- Include details of your testing environment and the tests you ran to see how your change affects other areas of the code etc. -->
-<!--- Are there any automated tests that mean changes don't need to be manually changed? -->
+## 📄 Description/Summary of Changes
 
--
--
--
+<!-- Describe the changes made in this PR. Include the purpose/scope/impact of the changes -->
 
-<!--
-Stages to complete before opening the Pull Request:
-- PR title should be formatted in the following structure `NPA-XXXXX: title abc`
-- Added yourself/others as Assignees
--->
+- <!-- Add bullet points summarising key changes -->
+- <!-- Add bullet points summarising key changes -->
+- <!-- Add bullet points summarising key changes -->
 
-## Review Checklist
+---
 
-:information_source: This section is to be filled in by the **reviewer**.
+## 🧪 How to Test
 
-- [ ] I have reviewed the changes in this PR and they fill all or part of the acceptance criteria of the ticket, and the code is in a mergeable state.
-- [ ] If there were infrastructure, operational, or build changes, I have made sure there is sufficient evidence that the changes will work.
-- [ ] I have ensured the changelog has been updated by the submitter, if necessary.
+<!-- Describe how to test the changes. Include: -->
+<!-- - Testing environment details (e.g. sandbox/local setup) -->
+<!-- - Steps to verify the changes -->
+<!-- - Any automated tests added or updated (with links to test cases if applicable) -->
+<!-- - Evidence that each acceptance criterion from the Jira ticket is met -->
 
-## Post-merge
+- <!-- Add bullet points for testing instructions -->
+- <!-- Add bullet points for testing instructions -->
+- <!-- Add bullet points for testing instructions -->
 
-After merging and deploying changes to the sandbox, Postman collection or spec examples please run the `Run Postman collection` workflow.
+---
+
+## ✅ Developer Checklist
+
+<!-- Complete before submitting the PR -->
+
+- [ ] PR title follows the format: `NPA-XXXX: <short-description>`
+- [ ] Branch name follows the convention: `<type>/NPA-XXXX-<short-description>`
+- [ ] Commit messages follow the template: `NPA-XXXX: <short-description>`
+- [ ] All acceptance criteria from the Jira ticket are addressed
+- [ ] Automated tests (unit/integration/API/infrastructure etc. tests) are added or updated
+- [ ] The [traceability matrix](https://nhsd-confluence.digital.nhs.uk/display/NPA/Traceability+matrix) is updated with
+      new tests or requirements
+- [ ] Assignees and appropriate labels (e.g. `terraform`, `documentation`) are added
+
+---
+
+## 👀 Reviewer Checklist
+
+<!-- To be completed by the reviewer -->
+
+- [ ] Changes meet the acceptance criteria of the Jira ticket
+- [ ] Code is able to be merged (no conflicts and adheres to coding standards)
+- [ ] Sufficient test evidence is provided (manual and/or automated)
+- [ ] Infrastructure/operational/build changes are validated (if applicable)
+
+---
+
+## 🚀 Post-merge
+
+<!-- Actions to complete after merging -->
+After merging and deploying changes to the sandbox, Postman collection or spec examples please run the Run Postman
+collection workflow.
 
 This will run the tests within the collection to check that the sandbox is working as expected once deployed.
