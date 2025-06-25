@@ -24,7 +24,7 @@ Must follow format: `NPA-XXXX: Short Description of the Change`
 
 ---
 
-## 🧪 What Has Been Tested (from the POV of the PR owner)
+## 🧪 Developer Testing Carried Out
 
 <!-- Describe what tests (automated/unit/manual etc.) have been done for the ticket. Include: -->
 <!-- - Any tests added/updated -->
@@ -36,7 +36,7 @@ Must follow format: `NPA-XXXX: Short Description of the Change`
 
 ---
 
-## 🧪 How to Test (from the POV of the reviewer)
+## 🧪 Reviewer Testing Required
 
 <!-- Describe how to test the changes that have been made in the ticket. Include: -->
 <!-- - Testing environment details (e.g. sandbox/local setup) -->
