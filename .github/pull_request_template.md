@@ -1,4 +1,4 @@
-# Pull Request Template
+# Pull Request
 
 ## 🧾 Ticket Link
 
@@ -30,9 +30,9 @@ Must follow format: `NPA-XXXX: Short Description of the Change`
 <!-- - Any tests added/updated -->
 <!-- - Evidence that each acceptance criterion from the Jira ticket is met -->
 
-- <!-- Add bullet points for testing instructions -->
-- <!-- Add bullet points for testing instructions -->
-- <!-- Add bullet points for testing instructions -->
+- [ ] <!-- Add bullet points for testing instructions -->
+- [ ] <!-- Add bullet points for testing instructions -->
+- [ ] <!-- Add bullet points for testing instructions -->
 
 ---
 
@@ -42,9 +42,9 @@ Must follow format: `NPA-XXXX: Short Description of the Change`
 <!-- - Testing environment details (e.g. sandbox/local setup) -->
 <!-- - Steps to verify the changes -->
 
-- <!-- Add bullet points for testing instructions -->
-- <!-- Add bullet points for testing instructions -->
-- <!-- Add bullet points for testing instructions -->
+- [ ] <!-- Add bullet points for testing instructions -->
+- [ ] <!-- Add bullet points for testing instructions -->
+- [ ] <!-- Add bullet points for testing instructions -->
 
 ---
 
