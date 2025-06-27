@@ -1,6 +1,6 @@
 ConsentInvalidStatusParameterError:
   summary: status parameter invalid
-  description: 422 error response bundle for an invalid status parameter
+  description: 400 error response bundle for an invalid status parameter
   value:
     issue:
       - code: invalid

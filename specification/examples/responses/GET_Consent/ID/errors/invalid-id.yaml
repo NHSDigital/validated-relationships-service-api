@@ -1,14 +1,14 @@
 ConsentInvalidIDError:
   summary: Invalid ID
-  description: Error raised due to an invalid ID request path being specified.
+  description: 400 error raised due to an invalid ID request path being specified.
   value:
     issue:
       - code: invalid
-        diagnostics: "Invalid request with error - ID must be a valid UUID."
+        diagnostics: "Invalid request with error - X-Request-ID header invalid"
         details:
           coding:
-            - code: "INVALID_ID_VALUE"
-              display: "Required parameter(s) are invalid."
+            - code: "INVALID_VALUE"
+              display: "Required header parameter(s) are invalid."
               system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
               version: "1"
         severity: error
