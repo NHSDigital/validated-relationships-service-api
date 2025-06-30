@@ -537,7 +537,7 @@ paths:
         | A single proxy relationship between consenting adults including details           | `performer:identifier`=`9000000010` and/or `patient:identifier`=`9000000005` and `_include` = `Consent:patient` and `_include` = `Consent:proxy` | HTTP Status 200 Bundle containing a single proxy relationship including performer and patient details             |
         | A single proxy relationship between a mother and child                            | `performer:identifier`=`9000000019` and/or `patient:identifier`=`9000000009`                                                                     | HTTP Status 200 Bundle containing a single proxy relationship                                                     |
         | A single proxy relationship between a mother and child including details          | `performer:identifier`=`9000000019` and/or `patient:identifier`=`9000000009` and `_include` = `Consent:patient` and `_include` = `Consent:proxy` | HTTP Status 200 Bundle containing a single proxy relationship including performer and patient details             |
-        | Invalid status parameter                                                          | `performer:identifier`=`9000000019` and/or `patient:identifier`=`9000000009` and `status` = `test`                                               | HTTP Status 400 and INVALID_PARAMETER error response                                                                  |
+        | Invalid status parameter                                                          | `performer:identifier`=`9000000019` and/or `patient:identifier`=`9000000009` and `status` = `test`                                               | HTTP Status 422 and INVALID_PARAMETER error response                                                                  |
         | Invalid include parameter                                                         | `performer:identifier`=`9000000019` and/or `patient:identifier`=`9000000009` and `_include` = `test`                                             | HTTP Status 422 and INVALID_PARAMETER error response                                                                  |        | Missing identifier                                                                | `patient:identifier`=`9000000009`                                                                                                                | HTTP Status 400 and MISSING_IDENTIFIER_VALUE error response                                                       |
         | Invalid identifier                                                                | `identifier`=`900000000` Note: This identifier is 9 characters long, too short to be NHS Number                                                  | HTTP Status 422 and INVALID_IDENTIFIER_VALUE error response                                                       |
         | Invalid identifier system                                                         | `identifier`=`https://fhir.nhs.uk/Id/nhs-number/9730675929`                                                                                      | HTTP Status 422 and INVALID_IDENTIFIER_SYSTEM error response                                                      |
@@ -600,7 +600,6 @@ paths:
             | ----------- | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
             | 400         | `MISSING_VALUE`                  | Missing header or parameter. For details, see the `diagnostics` field.                                                                    |
             | 400         | `INVALID_VALUE`                  | Invalid header. For details, see the `diagnostics` field.                                                                                 |
-            | 400         | `INVALID_PARAMETER`              | Invalid parameter. For details, see the `diagnostics` field.                                                                              |
             | 400         | `MISSING_IDENTIFIER_VALUE`       | Missing performer:identifier or patient:identifier value.                                                                                 |
             | 400         | `NOT_SUPPORTED`                  | The request is not currently supported.                                                                                                   |
             | 401         | `ACCESS_DENIED`                  | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
@@ -611,6 +610,7 @@ paths:
             | 408         | `TIMEOUT`                        | Request timed out.                                                                                                                        |
             | 422         | `INVALID_IDENTIFIER_SYSTEM`      | Invalid performer:identifier or patient:identifier identifier system.                                                                     |
             | 422         | `INVALID_IDENTIFIER_VALUE`       | Malformed performer:identifier or patient:identifier NHS number.                                                                          |
+            | 422         | `INVALID_PARAMETER`              | Invalid parameter. For details, see the `diagnostics` field.                                                                              |
             | 429         | `THROTTLED`                      | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
 
           content:
@@ -723,7 +723,6 @@ paths:
             | 400         | `MISSING_SCOPE`             | Missing scope.                                                                                                                            |
             | 400         | `MISSING_CATEGORY`          | Missing category.                                                                                                                         |
             | 400         | `MISSING_DATETIME`          | Missing datetime.                                                                                                                         |
-            | 400         | `INVALID_PARAMETER`         | Invalid status parameter.                                                                                                                 |
             | 401         | `ACCESS_DENIED`             | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
             | 403         | `FORBIDDEN`                 | Access denied to resource.                                                                                                                |
             | 404         | `INVALIDATED_RESOURCE`      | Resource that has been marked as invalid was requested - invalid resources cannot be retrieved                                            |
@@ -740,6 +739,7 @@ paths:
             | 422         | `INVALID_DATETIME`          | Invalid datetime.                                                                                                                         |
             | 422         | `INVALID_PROVISION`         | Invalid provision.                                                                                                                        |
             | 422         | `INVALID_EXTENSION`         | Invalid extension.                                                                                                                        |
+            | 422         | `INVALID_PARAMETER`         | Invalid status parameter.                                                                                                                 |
             | 429         | `THROTTLED`                 | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
 
           content:
@@ -852,13 +852,13 @@ paths:
             | ----------- | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
             | 400         | `BAD_REQUEST`                    | Missing header or parameter. For details, see the `diagnostics` field.                                                                    |
             | 400         | `NOT_SUPPORTED`                  | The request is not currently supported.                                                                                                   |
-            | 400         | `INVALID_VALUE`                  | Invalid request id.                                                                                                                       |
-            | 400         | `INVALID_PARAMETER`              | Invalid parameter. For details, see the `diagnostics` field.                                                                              |
             | 401         | `ACCESS_DENIED`                  | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
             | 403         | `FORBIDDEN`                      | Access denied to resource.                                                                                                                |
             | 404         | `INVALIDATED_RESOURCE`           | Resource that has been marked as invalid was requested - invalid resources cannot be retrieved                                            |
             | 405         | `METHOD_NOT_ALLOWED`             | The method is not allowed.                                                                                                                |
             | 408         | `TIMEOUT`                        | Request timed out.                                                                                                                        |
+            | 422         | `INVALID_ID_VALUE`               | Invalid id.                                                                                                                               |
+            | 422         | `INVALID_PARAMETER`              | Invalid parameter. For details, see the `diagnostics` field.                                                                              |
             | 429         | `THROTTLED`                      | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
 
           content:
