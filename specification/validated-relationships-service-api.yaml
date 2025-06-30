@@ -333,7 +333,6 @@ paths:
 
             | HTTP status | Error code                         | Description                                                                                                                               |
             | ----------- | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-            | 400         | `BAD_REQUEST`                      | Bad request.                                                                                                                              |
             | 400         | `INVALID_REFERENCE_CODE`           | The reference code must be alphanumeric and exactly 10 characters long.                                                                   |
             | 400         | `MISSING_REFERENCE_CODE`           | The reference code is required but was not provided in the request.                                                                       |
             | 401         | `ACCESS_DENIED`                    | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
@@ -714,7 +713,6 @@ paths:
 
             | HTTP status | Error code                  | Description                                                                                                                               |
             | ----------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-            | 400         | `BAD_REQUEST`               | Bad request.                                                                                                                              |                                                                                                                             |
             | 400         | `MISSING_IDENTIFIER_VALUE`  | Missing performer or patient identifier.                                                                                                  |
             | 400         | `MISSING_IDENTIFIER_SYSTEM` | Missing performer or patient identifier system.                                                                                           |
             | 400         | `MISSING_PATIENT`           | Missing patient.                                                                                                                          |
@@ -739,7 +737,7 @@ paths:
             | 422         | `INVALID_DATETIME`          | Invalid datetime.                                                                                                                         |
             | 422         | `INVALID_PROVISION`         | Invalid provision.                                                                                                                        |
             | 422         | `INVALID_EXTENSION`         | Invalid extension.                                                                                                                        |
-            | 422         | `INVALID_PARAMETER`         | Invalid status parameter.                                                                                                                 |
+            | 422         | `INVALID_PARAMETER`         | Invalid request parameter. For details, see the diagnostics field.                                                                        |
             | 429         | `THROTTLED`                 | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
 
           content:
@@ -850,7 +848,6 @@ paths:
 
             | HTTP status | Error code                       | Description                                                                                                                               |
             | ----------- | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-            | 400         | `BAD_REQUEST`                    | Missing header or parameter. For details, see the `diagnostics` field.                                                                    |
             | 400         | `NOT_SUPPORTED`                  | The request is not currently supported.                                                                                                   |
             | 401         | `ACCESS_DENIED`                  | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
             | 403         | `FORBIDDEN`                      | Access denied to resource.                                                                                                                |
@@ -987,7 +984,6 @@ paths:
 
             | HTTP status | Error code                  | Description                                                                                                                               |
             | ----------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-            | 400         | `BAD_REQUEST`               | Bad request.                                                                                                                              |
             | 400         | `INVALID_VALUE`             | Invalid Parameter or Invalid operation.                                                                                                   |
             | 400         | `INVALID_PATCH_FORMAT`      | Invalid patch format.                                                                                                                     |
             | 400         | `INVALID_PATCH`             | Invalid patch.                                                                                                                            |

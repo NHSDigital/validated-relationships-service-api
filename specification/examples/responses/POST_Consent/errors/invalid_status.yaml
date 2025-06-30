@@ -1,16 +1,16 @@
 PostConsentInvalidStatusError:
   summary: Invalid Status Error
-  description: 422 error response for invalid status
+  description: Error response for invalid status
   value:
     issue:
       - code: invalid
         details:
           coding:
-            - code: INVALID_PARAMETER
-              display: Required parameter(s) are invalid.
+            - code: INVALID_STATUS
+              display: Invalid status.
               system: https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode
               version: "1"
-        diagnostics: Invalid request with error - status parameter is invalid.
+        diagnostics: Status is invalid
         expression: status
         severity: error
     resourceType: OperationOutcome
