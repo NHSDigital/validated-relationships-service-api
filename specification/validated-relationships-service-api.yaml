@@ -119,15 +119,16 @@ info:
     ## Open source
     You might find the following [open source](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#open-source) resources useful:
 
-    | Resource                  | Description                                                          | Links                                                                          |
-    |---------------------------|----------------------------------------------------------------------|--------------------------------------------------------------------------------|
-    | Validated Relationships FHIR API              | Source code for the API proxy, sandbox and specification.            | [GitHub repo](https://github.com/NHSDigital/validated-relationships-service-api) |
-    | FHIR libraries and SDKs   | Various open source libraries for integrating with FHIR APIs.        | [FHIR libraries and SDKs](https://digital.nhs.uk/developer/guides-and-documentation/api-technologies-at-nhs-digital#fhir-libraries-and-sdks) |
-    | nhs-number                | Python package containing utilities for NHS numbers including validity checks, normalisation and generation. | [GitHub repo](https://github.com/uk-fci/nhs-number) \| [Python Package index](https://pypi.org/project/nhs-number/) \| [Docs](https://nhs-number.uk-fci.tech/) |
+    | Resource                         | Description                                                                                                  | Links                                                                                                                                                          |
+    | -------------------------------- | ------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | Validated Relationships FHIR API | Source code for the API proxy, sandbox and specification.                                                    | [GitHub repo](https://github.com/NHSDigital/validated-relationships-service-api)                                                                               |
+    | FHIR libraries and SDKs          | Various open source libraries for integrating with FHIR APIs.                                                | [FHIR libraries and SDKs](https://digital.nhs.uk/developer/guides-and-documentation/api-technologies-at-nhs-digital#fhir-libraries-and-sdks)                   |
+    | nhs-number                       | Python package containing utilities for NHS numbers including validity checks, normalisation and generation. | [GitHub repo](https://github.com/uk-fci/nhs-number) \| [Python Package index](https://pypi.org/project/nhs-number/) \| [Docs](https://nhs-number.uk-fci.tech/) |
 
     We currently don't have any open source client libraries or sample code for this API and the source code for the PDS FHIR back end (the Core Spine source code) is not currently in the open. If you think this would be useful, [contact us](https://digital.nhs.uk/developer/help-and-support).
 
     ## Environments and testing
+
     | Environment       | Base URL                                                                             |
     | ----------------- | ------------------------------------------------------------------------------------ |
     | Sandbox           | `https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/`                |
@@ -246,8 +247,7 @@ paths:
 
             | HTTP status | Error code             | Description                                                                                                                               |
             | ----------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-            | 400         | `BAD_REQUEST`          | Bad request.                                                                                                                              |
-            | 400         | `NOT_SUPPORTED`        | The request is not currently supported.                                                                                                   |
+            | 400         | `BAD_REQUEST`          | Bad request. For details, see the `diagnostics`                                                                                           |
             | 401         | `ACCESS_DENIED`        | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
             | 403         | `FORBIDDEN`            | Access denied to resource.                                                                                                                |
             | 404         | `INVALIDATED_RESOURCE` | Resource that has been marked as invalid was requested - invalid resources cannot be retrieved                                            |
@@ -270,7 +270,7 @@ paths:
             | HTTP status | Error code                 | Description                                                  |
             | ----------- | -------------------------- | ------------------------------------------------------------ |
             | 500         | `SERVER_ERROR`             | An unexpected internal server error has occurred.            |
-            | 502         | `GATEWAY_ERROR`            | Connection to the backend service failed.                    |
+            | 502         | `BAD_GATEWAY`              | Connection to the backend service failed.                    |
 
           content:
             application/fhir+json:
@@ -362,7 +362,7 @@ paths:
             | HTTP status | Error code                 | Description                                                  |
             | ----------- | -------------------------- | ------------------------------------------------------------ |
             | 500         | `SERVER_ERROR`             | An unexpected internal server error has occurred.            |
-            | 502         | `GATEWAY_ERROR`            | Connection to the backend service failed.                    |
+            | 502         | `BAD_GATEWAY`              | Connection to the backend service failed.                    |
 
           content:
             application/fhir+json:
@@ -485,7 +485,7 @@ paths:
             | HTTP status | Error code                 | Description                                                  |
             | ----------- | -------------------------- | ------------------------------------------------------------ |
             | 500         | `SERVER_ERROR`             | An unexpected internal server error has occurred.            |
-            | 502         | `GATEWAY_ERROR`            | Connection to the backend service failed.                    |
+            | 502         | `BAD_GATEWAY`              | Connection to the backend service failed.                    |
 
           content:
             application/fhir+json:
@@ -602,7 +602,6 @@ paths:
             | 400         | `MISSING_VALUE`                  | Missing header or parameter. For details, see the `diagnostics` field.                                                                    |
             | 400         | `INVALID_VALUE`                  | Invalid header. For details, see the `diagnostics` field.                                                                                 |
             | 400         | `MISSING_IDENTIFIER_VALUE`       | Missing performer:identifier or patient:identifier value.                                                                                 |
-            | 400         | `NOT_SUPPORTED`                  | The request is not currently supported.                                                                                                   |
             | 401         | `ACCESS_DENIED`                  | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
             | 403         | `FORBIDDEN`                      | Access denied to resource.                                                                                                                |
             | 404         | `INVALIDATED_RESOURCE`           | Resource that has been marked as invalid was requested - invalid resources cannot be retrieved                                            |
@@ -642,7 +641,7 @@ paths:
             | HTTP status | Error code                 | Description                                                  |
             | ----------- | -------------------------- | ------------------------------------------------------------ |
             | 500         | `SERVER_ERROR`             | An unexpected internal server error has occurred.            |
-            | 502         | `GATEWAY_ERROR`            | Connection to the backend service failed.                    |
+            | 502         | `BAD_GATEWAY`              | Connection to the backend service failed.                    |
             | 503         | `DOWNSTREAM_SERVICE_ERROR` | A downsteam service has failed, request cannot be completed. |
 
           content:
@@ -767,7 +766,7 @@ paths:
             | HTTP status | Error code                 | Description                                                  |
             | ----------- | -------------------------- | ------------------------------------------------------------ |
             | 500         | `SERVER_ERROR`             | An unexpected internal server error has occurred.            |
-            | 502         | `GATEWAY_ERROR`            | Connection to the backend service failed.                    |
+            | 502         | `BAD_GATEWAY`              | Connection to the backend service failed.                    |
             | 503         | `DOWNSTREAM_SERVICE_ERROR` | A downsteam service has failed, request cannot be completed. |
 
           content:
@@ -881,7 +880,7 @@ paths:
             | HTTP status | Error code                 | Description                                                  |
             | ----------- | -------------------------- | ------------------------------------------------------------ |
             | 500         | `SERVER_ERROR`             | An unexpected internal server error has occurred.            |
-            | 502         | `GATEWAY_ERROR`            | Connection to the backend service failed.                    |
+            | 502         | `BAD_GATEWAY`              | Connection to the backend service failed.                    |
             | 503         | `DOWNSTREAM_SERVICE_ERROR` | A downsteam service has failed, request cannot be completed. |
 
           content:
@@ -1028,7 +1027,7 @@ paths:
             | HTTP status | Error code                 | Description                                                  |
             | ----------- | -------------------------- | ------------------------------------------------------------ |
             | 500         | `SERVER_ERROR`             | An unexpected internal server error has occurred.            |
-            | 502         | `GATEWAY_ERROR`            | Connection to the backend service failed.                    |
+            | 502         | `BAD_GATEWAY`              | Connection to the backend service failed.                    |
             | 503         | `DOWNSTREAM_SERVICE_ERROR` | A downsteam service has failed, request cannot be completed. |
 
           content:
