@@ -8,12 +8,6 @@ https://nhsd-jira.digital.nhs.uk/browse/NPA-XXXX
 
 ---
 
-## 📝 PR Title Format
-
-Must follow format: `NPA-XXXX: Short Description of the Change`
-
----
-
 ## 📄 Description/Summary of Changes
 
 <!-- Describe the changes made in this PR. Include the purpose/scope/impact of the changes -->
