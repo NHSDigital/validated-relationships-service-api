@@ -119,11 +119,11 @@ info:
     ## Open source
     You might find the following [open source](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#open-source) resources useful:
 
-    | Resource                  | Description                                                          | Links                                                                          |
-    |---------------------------|----------------------------------------------------------------------|--------------------------------------------------------------------------------|
-    | Validated Relationships FHIR API              | Source code for the API proxy, sandbox and specification.            | [GitHub repo](https://github.com/NHSDigital/validated-relationships-service-api) |
-    | FHIR libraries and SDKs   | Various open source libraries for integrating with FHIR APIs.        | [FHIR libraries and SDKs](https://digital.nhs.uk/developer/guides-and-documentation/api-technologies-at-nhs-digital#fhir-libraries-and-sdks) |
-    | nhs-number                | Python package containing utilities for NHS numbers including validity checks, normalisation and generation. | [GitHub repo](https://github.com/uk-fci/nhs-number) \| [Python Package index](https://pypi.org/project/nhs-number/) \| [Docs](https://nhs-number.uk-fci.tech/) |
+    | Resource                         | Description                                                                                                  | Links                                                                                                                                                          |
+    | -------------------------------- | ------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | Validated Relationships FHIR API | Source code for the API proxy, sandbox and specification.                                                    | [GitHub repo](https://github.com/NHSDigital/validated-relationships-service-api)                                                                               |
+    | FHIR libraries and SDKs          | Various open source libraries for integrating with FHIR APIs.                                                | [FHIR libraries and SDKs](https://digital.nhs.uk/developer/guides-and-documentation/api-technologies-at-nhs-digital#fhir-libraries-and-sdks)                   |
+    | nhs-number                       | Python package containing utilities for NHS numbers including validity checks, normalisation and generation. | [GitHub repo](https://github.com/uk-fci/nhs-number) \| [Python Package index](https://pypi.org/project/nhs-number/) \| [Docs](https://nhs-number.uk-fci.tech/) |
 
     We currently don't have any open source client libraries or sample code for this API and the source code for the PDS FHIR back end (the Core Spine source code) is not currently in the open. If you think this would be useful, [contact us](https://digital.nhs.uk/developer/help-and-support).
 
