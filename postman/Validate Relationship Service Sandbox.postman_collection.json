@@ -579,6 +579,73 @@
 					"response": []
 				},
 				{
+					"name": "Duplicate relationship",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const expectedResponseBody = {",
+									"    \"issue\": [",
+									"        {",
+									"            \"code\": \"invalid\",",
+									"            \"diagnostics\": \"Proxy role already exists.\",",
+									"            \"details\": {",
+									"                \"coding\": [",
+									"                    {",
+									"                        \"code\": \"DUPLICATE_RELATIONSHIP\",",
+									"                        \"display\": \"Request must be for a new proxy role.\",",
+									"                        \"system\": \"https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode\",",
+									"                        \"version\": \"1\"",
+									"                    }",
+									"                ]",
+									"            },",
+									"            \"severity\": \"error\"",
+									"        }",
+									"    ],",
+									"    \"resourceType\": \"OperationOutcome\"",
+									"}",
+									"",
+									"pm.test(\"Status code is 409\", function () {",
+									"    pm.response.to.have.status(409);",
+									"});",
+									"",
+									"pm.test(\"Should have correct response body\", () => {",
+									"    var responseJson = pm.response.json();",
+									"    pm.expect(responseJson).to.eql(expectedResponseBody);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"resourceType\": \"QuestionnaireResponse\",\n  \"status\": \"completed\",\n  \"authored\": \"2024-07-15T09:43:03.280Z\",\n  \"source\": {\n    \"type\": \"RelatedPerson\",\n    \"identifier\": {\n      \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n      \"value\": \"9000000049\"\n    }\n  },\n  \"subject\": {\n    \"type\": \"Patient\",\n    \"identifier\": {\n      \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n      \"value\": \"9000000006\"\n    }\n  },\n  \"questionnaire\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/Questionnaire/01dc6813-3421-4d14-948d-a4888241add1\",\n  \"item\": [\n    {\n      \"linkId\": \"relatedPerson\",\n      \"text\": \"Proxy details\",\n      \"item\": [\n        {\n          \"linkId\": \"relatedPerson_identifier\",\n          \"text\": \"NHS number\",\n          \"answer\": [\n            {\n              \"valueString\": \"9000000049\"\n            }\n          ]\n        },\n        {\n          \"linkId\": \"relatedPerson_basisForAccess\",\n          \"text\": \"Basis for Access\",\n          \"answer\": [\n            {\n              \"valueCoding\": {\n                \"system\": \"https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole\",\n                \"code\": \"Personal\",\n                \"display\": \"Personal relationship with the patient\"\n              }\n            }\n          ]\n        },\n        {\n          \"linkId\": \"relatedPerson_relationship\",\n          \"text\": \"Relationship\",\n          \"answer\": [\n            {\n              \"valueCoding\": {\n                \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",\n                \"code\": \"SPS\",\n                \"display\": \"Spouse\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"linkId\": \"patient\",\n      \"text\": \"Patient details\",\n      \"item\": [\n        {\n          \"linkId\": \"patient_identifier\",\n          \"text\": \"NHS number\",\n          \"answer\": [\n            {\n              \"valueString\": \"9000000006\"\n            }\n          ]\n        },\n        {\n          \"linkId\": \"patient_name\",\n          \"text\": \"Name\",\n          \"item\": [\n            {\n              \"linkId\": \"patient_name_first\",\n              \"text\": \"First name\",\n              \"answer\": [\n                {\n                  \"valueString\": \"Jill\"\n                }\n              ]\n            },\n            {\n              \"linkId\": \"patient_name_family\",\n              \"text\": \"Last name\",\n              \"answer\": [\n                {\n                  \"valueString\": \"Jones\"\n                }\n              ]\n            }\n          ]\n        },\n        {\n          \"linkId\": \"patient_birthDate\",\n          \"text\": \"Date of birth\",\n          \"answer\": [\n            {\n              \"valueDate\": \"1965-01-01\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"linkId\": \"requestedAccess\",\n      \"text\": \"Requested access\",\n      \"item\": [\n        {\n          \"linkId\": \"requestedAccess_accessLevel\",\n          \"text\": \"Requested access level\",\n          \"answer\": [\n            {\n              \"valueCoding\": {\n                \"system\": \"https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess\",\n                \"code\": \"APPT\",\n                \"display\": \"Appointment Booking\"\n              }\n            },\n            {\n              \"valueCoding\": {\n                \"system\": \"https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess\",\n                \"code\": \"VACC\",\n                \"display\": \"Vaccination Records\"\n              }\n            }\n          ]\n        },\n        {\n          \"linkId\": \"requestedAccess_reasonsForAccess\",\n          \"text\": \"Reason for access\",\n          \"answer\": [\n            {\n              \"valueCoding\": {\n                \"system\": \"https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-ReasonForAccess\",\n                \"code\": \"PRAC\",\n                \"display\": \"Practical Reasons\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_base_url}}/QuestionnaireResponse",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"QuestionnaireResponse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Adult to adult without ability to consent access request",
 					"event": [
 						{

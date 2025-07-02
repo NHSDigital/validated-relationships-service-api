@@ -187,9 +187,11 @@ paths:
 
         ## Sandbox test scenarios
 
-        | Scenario        | Request                                         | Response                         |
-        | --------------- | ----------------------------------------------- | -------------------------------- |
-        | Example request | Example questionnaire response from try it now  | HTTP Status 200 Success response |
+        | Scenario               | Request                                                                                     | Response                                                    |
+        | ---------------------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+        | Example request        | Example questionnaire response from try it now                                              | HTTP Status 200 Success response                            |
+        | Duplicate relationship | Request for relationship that already exists, with performer identifier value of 9000000049 | HTTP Status 409 and DUPLICATE_RELATIONSHIP error response   |
+
 
         ### Sandbox constraints
           - Questionnaire Response is not validated.
@@ -244,17 +246,18 @@ paths:
           description: |
             Errors will be returned for the first error encountered in the request. An error occurred as follows:
 
-            | HTTP status | Error code             | Description                                                                                                                               |
-            | ----------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-            | 400         | `MISSING_VALUE`        | Missing header or parameter. For details, see the `diagnostics` field.                                                                    |
-            | 400         | `INVALID_VALUE`        | Invalid Parameter or Invalid operation.                                                                                                   |
-            | 401         | `ACCESS_DENIED`        | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
-            | 403         | `FORBIDDEN`            | Access denied to resource.                                                                                                                |
-            | 404         | `INVALIDATED_RESOURCE` | Resource that has been marked as invalid was requested - invalid resources cannot be retrieved                                            |
-            | 405         | `METHOD_NOT_ALLOWED`   | The method is not allowed.                                                                                                                |
-            | 408         | `TIMEOUT`              | Request timed out.                                                                                                                        |
-            | 415         | `UNSUPPORTED_MEDIA`    | Unsupported media type.                                                                                                                   |
-            | 429         | `THROTTLED`            | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
+            | HTTP status | Error code               | Description                                                                                                                               |
+            | ----------- | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
+            | 400         | `MISSING_VALUE`          | Missing header or parameter. For details, see the `diagnostics` field.                                                                    |
+            | 400         | `INVALID_VALUE`          | Invalid Parameter or Invalid operation.                                                                                                   |
+            | 401         | `ACCESS_DENIED`          | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
+            | 403         | `FORBIDDEN`              | Access denied to resource.                                                                                                                |
+            | 404         | `INVALIDATED_RESOURCE`   | Resource that has been marked as invalid was requested - invalid resources cannot be retrieved                                            |
+            | 405         | `METHOD_NOT_ALLOWED`     | The method is not allowed.                                                                                                                |
+            | 408         | `TIMEOUT`                | Request timed out.                                                                                                                        |
+            | 409         | `DUPLICATE_RELATIONSHIP` | A proposed proxy role already exists for this proxy/patient relationship.                                                               |
+            | 415         | `UNSUPPORTED_MEDIA`      | Unsupported media type.                                                                                                                   |
+            | 429         | `THROTTLED`              | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
 
           content:
             application/fhir+json:
@@ -263,6 +266,8 @@ paths:
               examples:
                 accessDeniedError:
                   $ref: "./examples/responses/errors/access-denied.yaml#/AccessDeniedError"
+                postQuestionnaireResponseDuplicateRelationshipError:
+                  $ref: "./examples/responses/POST_QuestionnaireResponse/errors/duplicate_relationship_error.yaml#/PostQuestionnaireResponseDuplicateRelationshipError"
         "5XX":
           description: |
             Errors will be returned for the first error encountered in the request. An error occurred as follows:
