@@ -189,7 +189,7 @@ paths:
 
         | Scenario               | Request                                                                                     | Response                                                    |
         | ---------------------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-        | Example request        | Example questionnaire response from try it now                                              | HTTP Status 200 Success response                            |
+        | Successful request     | Valid request with performer identifier value of 9000000009 or 9000000017                   | HTTP Status 200 Success response                            |
         | Duplicate relationship | Request for relationship that already exists, with performer identifier value of 9000000049 | HTTP Status 409 and DUPLICATE_RELATIONSHIP error response   |
 
 
@@ -220,6 +220,8 @@ paths:
                 $ref: "./examples/requests/POST_QuestionnaireResponse/adult-to-adult-with-capacity.yaml#/QuestionnaireResponseAdultToAdultWithCapacityRequest"
               questionnaireResponseAdultNominatesAdultRequest:
                 $ref: "./examples/requests/POST_QuestionnaireResponse/adult-nominates-adult.yaml#/QuestionnaireResponseAdultNominatesAdultRequest"
+              questionnaireResponseDuplicateRelationship:
+                $ref: "./examples/requests/POST_QuestionnaireResponse/duplicate_relationship.yaml#/QuestionnaireResponseDuplicateRelationship"
           application/fhir+json; charset=utf-8:
             schema:
               $ref: "#/components/schemas/QuestionnaireResponse"
@@ -232,6 +234,8 @@ paths:
                 $ref: "./examples/requests/POST_QuestionnaireResponse/adult-to-adult-with-capacity.yaml#/QuestionnaireResponseAdultToAdultWithCapacityRequest"
               questionnaireResponseAdultNominatesAdultRequest:
                 $ref: "./examples/requests/POST_QuestionnaireResponse/adult-nominates-adult.yaml#/QuestionnaireResponseAdultNominatesAdultRequest"
+              questionnaireResponseDuplicateRelationship:
+                $ref: "./examples/requests/POST_QuestionnaireResponse/duplicate_relationship.yaml#/QuestionnaireResponseDuplicateRelationship"
       responses:
         "200":
           description: Request was received successfully for processing

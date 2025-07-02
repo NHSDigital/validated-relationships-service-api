@@ -28,7 +28,7 @@ def post_questionnaire_response_response() -> Union[dict, tuple]:
         response = None
 
         # Successful questionnaire response
-        if source_identifier in ["9000000009", "9000000017"]:  # Example NHS numbers for success
+        if source_identifier in ["9000000009", "9000000017"]:
             response = generate_response_from_example(POST_QUESTIONNAIRE_RESPONSE__SUCCESS, 200)
         # Duplicate relationship
         elif source_identifier == "9000000049":

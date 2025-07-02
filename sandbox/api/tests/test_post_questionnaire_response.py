@@ -7,6 +7,7 @@ from flask import Response
 from sandbox.api.constants import (
     POST_QUESTIONNAIRE_RESPONSE__SUCCESS,
     POST_QUESTIONNAIRE_RESPONSE__DUPLICATE_RELATIONSHIP_ERROR,
+    INTERNAL_SERVER_ERROR_EXAMPLE
 )
 
 QUESTIONNAIRE_RESPONSE_API_ENDPOINT = "/FHIR/R4/QuestionnaireResponse"
@@ -21,9 +22,19 @@ QUESTIONNAIRE_RESPONSE_API_ENDPOINT = "/FHIR/R4/QuestionnaireResponse"
             200,
         ),
         (
+            "9000000017",
+            POST_QUESTIONNAIRE_RESPONSE__SUCCESS,
+            200,
+        ),
+        (
             "9000000049",
             POST_QUESTIONNAIRE_RESPONSE__DUPLICATE_RELATIONSHIP_ERROR,
             409,
+        ),
+        (
+            "INVALID_NHS_NUMBER",
+            INTERNAL_SERVER_ERROR_EXAMPLE,
+            500,
         ),
     ],
 )
