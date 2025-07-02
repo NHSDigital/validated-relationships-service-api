@@ -24,9 +24,9 @@ https://nhsd-jira.digital.nhs.uk/browse/NPA-XXXX
 <!-- - Any tests added/updated -->
 <!-- - Evidence that each acceptance criterion from the Jira ticket is met -->
 
-- [ ] <!-- Add bullet points for testing instructions -->
-- [ ] <!-- Add bullet points for testing instructions -->
-- [ ] <!-- Add bullet points for testing instructions -->
+- <!-- Add bullet points for testing instructions -->
+- <!-- Add bullet points for testing instructions -->
+- <!-- Add bullet points for testing instructions -->
 
 ---
 

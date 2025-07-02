@@ -42,14 +42,7 @@ def test_post_questionnaire_response(
         status=status_code,
         content_type="application/json",
     )
-    json = {
-        "resourceType": "QuestionnaireResponse",
-        "source": {
-            "identifier": {
-                "value": nhs_num
-            }
-        }
-    }
+    json = {"resourceType": "QuestionnaireResponse", "source": {"identifier": {"value": nhs_num}}}
     # Act
     response = client.post(QUESTIONNAIRE_RESPONSE_API_ENDPOINT, json=json)
     # Assert
