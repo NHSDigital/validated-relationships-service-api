@@ -2286,10 +2286,8 @@ components:
         url:
           type: string
         valueCodeableConcept:
-          type: array
+          $ref: "#/components/schemas/CodeableConcept"
           description: Classification of the status of consent, bound to http://terminology.hl7.org/CodeSystem/consent-reason.
-          items:
-            $ref: "#/components/schemas/CodeableConcept"
 
     OperationOutcome:
       type: object

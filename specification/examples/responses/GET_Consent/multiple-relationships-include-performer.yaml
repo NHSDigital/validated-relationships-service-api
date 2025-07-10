@@ -78,10 +78,11 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
           extension:
             - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
               valueCodeableConcept:
-                - coding:
+                coding:
                   - code: TBC
                     display: TBC
                     system: http://terminology.hl7.org/CodeSystem/consent-reason
+                text: "To be confirmed"
         search:
           mode: match
       - fullUrl: >-
@@ -152,10 +153,11 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
           extension:
             - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
               valueCodeableConcept:
-                - coding:
+                coding:
                   - code: TBC
                     display: TBC
                     system: http://terminology.hl7.org/CodeSystem/consent-reason
+                text: "To be confirmed"
         search:
           mode: match
       - fullUrl: >-
@@ -226,10 +228,11 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
           extension:
             - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
               valueCodeableConcept:
-                - coding:
+                coding:
                   - code: TBC
                     display: TBC
                     system: http://terminology.hl7.org/CodeSystem/consent-reason
+                text: "To be confirmed"
         search:
           mode: match
 
