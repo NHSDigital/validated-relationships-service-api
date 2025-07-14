@@ -9720,13 +9720,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{api_base_url}}/Consent/c512b0db-6702-43ee-8c21-bbded2552da9",
+							"raw": "{{api_base_url}}/Consent/74eed847-ca25-4e76-8cf2-f2c2d7842a7a",
 							"host": [
 								"{{api_base_url}}"
 							],
 							"path": [
 								"Consent",
-								"c512b0db-6702-43ee-8c21-bbded2552da9"
+								"74eed847-ca25-4e76-8cf2-f2c2d7842a7a"
 							]
 						},
 						"description": "Valid patch changing status to 'active'"

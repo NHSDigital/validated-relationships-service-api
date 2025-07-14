@@ -20,7 +20,7 @@ CONSENT_API_ENDPOINT = "/FHIR/R4/Consent"
 @pytest.mark.parametrize(
     ("nhs_num", "response_file_name", "status_code"),
     [
-        ("c512b0db-6702-43ee-8c21-bbded2552da9", PATCH_CONSENT__SUCCESS, 200),
+        ("74eed847-ca25-4e76-8cf2-f2c2d7842a7a", PATCH_CONSENT__SUCCESS, 200),
         ("6b71ac92-baa3-4b76-b0f5-a601257e2722", PATCH_CONSENT__SUCCESS, 200),
         ("43003db8-ffcd-4bd6-ab2f-b49b9656f9e5", PATCH_CONSENT__SUCCESS, 200),
         ("849ea584-2318-471b-a24c-cee1b5ad0137", PATCH_CONSENT__INVALID_PATCH_FORMAT, 400),
