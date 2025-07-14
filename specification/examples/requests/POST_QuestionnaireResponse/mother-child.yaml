@@ -1,7 +1,7 @@
 QuestionnaireResponseMotherChildRequest:
   summary: Mother > Child access request
   description: |
-    Example proxy access request from a mother (Martha) with NHS number `9000000001` requesting access to act on behalf of their child (Timmy) with NHS number `9000000002`.
+    Example proxy access request from a mother (Martha) with NHS number `9000000017` requesting access to act on behalf of their child (Timmy) with NHS number `9000000002`.
 
     Significant details to point out:
 
@@ -18,7 +18,7 @@ QuestionnaireResponseMotherChildRequest:
       type: "RelatedPerson"
       identifier:
         system: "https://fhir.nhs.uk/Id/nhs-number"
-        value: "9000000001"
+        value: "9000000017"
     subject:
       type: "Patient"
       identifier:
@@ -32,7 +32,7 @@ QuestionnaireResponseMotherChildRequest:
           - linkId: "relatedPerson_identifier"
             text: "NHS number"
             answer:
-              - valueString: "9000000001"
+              - valueString: "9000000017"
           - linkId: "relatedPerson_basisForAccess"
             text: "Basis for Access"
             answer:

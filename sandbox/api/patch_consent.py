@@ -31,7 +31,7 @@ def patch_consent_response(id: str) -> Union[dict, tuple]:
         # Validate body - validation is beyond the scope of the sandbox.
         # Assume all requests are valid
 
-        if id == "c512b0db-6702-43ee-8c21-bbded2552da9":
+        if id == "74eed847-ca25-4e76-8cf2-f2c2d7842a7a":
             # Successful status update
             return generate_response_from_example(PATCH_CONSENT__SUCCESS, 200)
 
