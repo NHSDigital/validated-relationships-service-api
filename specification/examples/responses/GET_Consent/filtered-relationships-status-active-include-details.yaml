@@ -6,7 +6,7 @@ ConsentMultipleRelationshipsStatusActiveIncludeDetailsBundle:
   value:
     resourceType: Bundle
     timestamp: "2020-08-26T14:00:00+00:00"
-    total: 6
+    total: 2
     type: searchset
     entry:
       - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742"

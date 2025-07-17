@@ -5,7 +5,7 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
   value:
     resourceType: Bundle
     timestamp: '2020-08-26T14:00:00+00:00'
-    total: 6
+    total: 3
     type: searchset
     entry:
       - fullUrl: >-

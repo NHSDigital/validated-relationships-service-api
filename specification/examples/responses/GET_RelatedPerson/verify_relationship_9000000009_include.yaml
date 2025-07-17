@@ -9,7 +9,7 @@ VerifyRelationship9000000009Include:
   value:
     resourceType: Bundle
     timestamp: '2024-01-01T00:00:00+00:00'
-    total: 2
+    total: 1
     type: searchset
     link:
       - relation: self
