@@ -6,7 +6,7 @@ ConsentMultipleRelationshipsIncludePerformerPatientBundle:
   value:
     resourceType: Bundle
     timestamp: '2020-08-26T14:00:00+00:00'
-    total: 9
+    total: 3
     type: searchset
     entry:
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742
