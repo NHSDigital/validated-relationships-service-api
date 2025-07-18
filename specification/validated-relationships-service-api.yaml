@@ -2056,7 +2056,9 @@ components:
           type: string
           description: The canonical URL of the resource in the entry
         resource:
-          $ref: "#/components/schemas/Consent"
+          oneOf:
+            - $ref: "#/components/schemas/Consent"
+            - $ref: "#/components/schemas/ProposedConsent"
         search:
           type: object
           properties:
@@ -2218,7 +2220,6 @@ components:
           description: "The status of the consent, following the ConsentStateCodes value set."
           enum:
             - draft
-            - proposed
             - active
             - rejected
             - inactive
@@ -2231,6 +2232,51 @@ components:
           items:
             $ref: "#/components/schemas/CodeableConcept"
           description: "Classification of the type of consent, bound to http://terminology.hl7.org/CodeSystem/v3-ActCode."
+        patient:
+          $ref: "#/components/schemas/Reference"
+          description: "The patient who is the subject of the consent."
+        dateTime:
+          type: string
+          format: date-time
+          description: "Date and time when the consent was created."
+        performer:
+          type: array
+          maxItems: 1
+          items:
+            $ref: "#/components/schemas/Reference"
+          description: "Individuals or organizations that agreed to the consent."
+        provision:
+          $ref: "#/components/schemas/Provision"
+        extension:
+          type: array
+          description: Model the status reason.
+          items:
+            $ref: "#/components/schemas/Extension"
+
+    ProposedConsent:
+      type: object
+      required:
+        - id
+        - status
+        - patient
+        - dateTime
+        - performer
+      description: The details of the proposed consent including who the patient and care "performer" are, status of the relationship and whether consent was given by a patient with capacity.
+      properties:
+        resourceType:
+          type: string
+          description: FHIR resource type.
+          enum:
+            - Consent
+          default: Consent
+        id:
+          type: string
+          description: Unique identifier of the Consent resource
+        status:
+          type: string
+          description: "The status of the consent, following the ConsentStateCodes value set."
+          enum:
+            - proposed
         patient:
           $ref: "#/components/schemas/Reference"
           description: "The patient who is the subject of the consent."
