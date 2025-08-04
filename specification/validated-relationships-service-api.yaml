@@ -1945,6 +1945,22 @@ components:
               type: string
               description: Denotes that the Bundle is a collection of resources returned as a result of a search.
               enum: [searchset]
+    
+    Link:
+      type: array
+      description: Links related to the entry
+      items:
+        type: object
+        properties:
+          relation:
+            type: string
+            description: |
+              A name which details the functional use for this link - see:
+              http://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1
+          url:
+            type: string
+            format: uri
+            description:  The reference details for the link.
 
     RelatedPersonBundle:
       allOf:
@@ -1978,6 +1994,7 @@ components:
     ConsentBundle:
       allOf:
         - $ref: "#/components/schemas/Searchset"
+        - $ref: "#/components/schemas/Link"
         - type: object
           properties:
             entry:

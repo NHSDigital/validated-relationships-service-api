@@ -6,6 +6,9 @@ ConsentMultipleRelationshipsSinglePatientIncludePatientBundle:
     timestamp: '2020-08-26T14:00:00+00:00'
     total: 3
     type: searchset
+    link:
+      - relation: self
+        uri: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?patient:identifier=9000000100&_include=Consent:patient
     entry:
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/A3CC67E2
         resource:
