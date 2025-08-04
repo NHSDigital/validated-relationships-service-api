@@ -751,7 +751,6 @@ paths:
             | 422         | `INVALID_CATEGORY`          | Invalid category.                                                                                                                         |
             | 422         | `INVALID_DATETIME`          | Invalid datetime.                                                                                                                         |
             | 422         | `INVALID_PROVISION`         | Invalid provision.                                                                                                                        |
-            | 422         | `INVALID_EXTENSION`         | Invalid extension.                                                                                                                        |
             | 422         | `INVALID_PARAMETER`         | Invalid request parameter. For details, see the diagnostics field.                                                                        |
             | 429         | `THROTTLED`                 | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
 
@@ -2246,11 +2245,6 @@ components:
           description: "Individuals or organizations that agreed to the consent."
         provision:
           $ref: "#/components/schemas/Provision"
-        extension:
-          type: array
-          description: Model the status reason.
-          items:
-            $ref: "#/components/schemas/Extension"
 
     Provision:
       type: object
@@ -2279,15 +2273,6 @@ components:
               role:
                 $ref: "#/components/schemas/CodeableConcept"
                 description: "Classification of the role of consent, bound to http://terminology.hl7.org/CodeSystem/v3-RoleCode"
-
-    Extension:
-      type: object
-      properties:
-        url:
-          type: string
-        valueCodeableConcept:
-          $ref: "#/components/schemas/CodeableConcept"
-          description: Classification of the status of consent, bound to http://terminology.hl7.org/CodeSystem/consent-reason.
 
     OperationOutcome:
       type: object
@@ -2439,7 +2424,6 @@ components:
             - /status
             - /provision/period/end
             - /provision/actor
-            - /extension
         value:
           oneOf:
             - type: string

@@ -72,14 +72,6 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
             period:
               end: '2026-02-11'
               start: '2025-02-11'
-          extension:
-            - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
-              valueCodeableConcept:
-                coding:
-                  - code: TBC
-                    display: TBC
-                    system: http://terminology.hl7.org/CodeSystem/consent-reason
-                text: "To be confirmed"
         search:
           mode: match
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742
@@ -144,14 +136,6 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
             period:
               end: '2026-02-11'
               start: '2025-02-11'
-          extension:
-            - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
-              valueCodeableConcept:
-                coding:
-                  - code: TBC
-                    display: TBC
-                    system: http://terminology.hl7.org/CodeSystem/consent-reason
-                text: "To be confirmed"
         search:
           mode: match
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742
@@ -216,13 +200,5 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
             period:
               end: '2026-02-11'
               start: '2025-02-11'
-          extension:
-            - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
-              valueCodeableConcept:
-                coding:
-                  - code: TBC
-                    display: TBC
-                    system: http://terminology.hl7.org/CodeSystem/consent-reason
-                text: "To be confirmed"
         search:
           mode: match
