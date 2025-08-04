@@ -1,7 +1,17 @@
 StatusUpdate:
   summary: Update consent status
-  description: Example status change to inactive.
+  description: Example status change to inactive. Along with reason for the status change.
   value:
     - op: replace
       path: /status
       value: inactive
+    - op: replace
+      path: /extension
+      value:
+      - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
+        valueCodeableConcept:
+          coding:
+          - system: http://terminology.hl7.org/CodeSystem/consent-reason
+            code: TBC
+            display: TBC
+
