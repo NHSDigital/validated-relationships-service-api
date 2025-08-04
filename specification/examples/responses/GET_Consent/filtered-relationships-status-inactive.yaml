@@ -8,7 +8,7 @@ ConsentMultipleRelationshipsStatusInactiveBundle:
     type: searchset
     link:
       - relation: self
-        uri: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000017&status=inactive
+        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000017&status=inactive
     entry:
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/AATD11A1
         resource:

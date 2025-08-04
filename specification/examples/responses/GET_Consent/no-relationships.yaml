@@ -8,5 +8,5 @@ ConsentNoRelationshipsEmptyBundle:
     type: searchset
     link:
       - relation: self
-        uri: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000025&_include=Consent:performer&_include=Consent:patient
+        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000025&_include=Consent:performer&_include=Consent:patient
     entry: []

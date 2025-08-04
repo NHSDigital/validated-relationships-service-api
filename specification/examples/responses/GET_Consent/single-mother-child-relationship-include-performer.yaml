@@ -9,7 +9,7 @@ ConsentSingleAdultChildRelationshipIncludePerformerBundle:
     type: searchset
     link:
       - relation: self
-        uri: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000019&_include=Consent:performer
+        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000019&_include=Consent:performer
     entry:
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742
         resource:

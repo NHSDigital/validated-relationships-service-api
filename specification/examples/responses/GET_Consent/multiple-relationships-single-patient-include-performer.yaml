@@ -8,7 +8,7 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
     type: searchset
     link:
       - relation: self
-        uri: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?patient:identifier=9000000100&_include=Consent:performer
+        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?patient:identifier=9000000100&_include=Consent:performer
     entry:
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742
         resource:
