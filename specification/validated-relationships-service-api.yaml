@@ -2243,8 +2243,24 @@ components:
           items:
             $ref: "#/components/schemas/Reference"
           description: "Individuals or organizations that agreed to the consent."
+        policy:
+          type: array
+          items:
+            $ref: "#/components/schemas/Policy"
         provision:
           $ref: "#/components/schemas/Provision"
+    
+    Policy:
+      type: object
+      properties:
+        authority:
+          type: string
+          description: "Entity or Organization having regulatory jurisdiction or accountability for enforcing policies pertaining to Consent Directives."
+          format: uri
+        uri:
+          type: string
+          description: "The references to the policies that are included in this consent scope. Policies may be organizational, but are often defined jurisdictionally, or in law."
+          format: uri
 
     Provision:
       type: object
