@@ -7,6 +7,9 @@ ConsentSingleConsentingAdultRelationshipIncludePatientBundle:
     timestamp: '2020-08-26T14:00:00+00:00'
     total: 1
     type: searchset
+    link:
+      - relation: self
+        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000010&_include=Consent:patient
     entry:
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/DFCC67F5
         resource:
@@ -62,5 +65,8 @@ ConsentSingleConsentingAdultRelationshipIncludePatientBundle:
             - identifier:
                 system: 'https://fhir.nhs.uk/Id/nhs-number'
                 value: '9000000010'
+          policy:
+            - authority: https://www.england.nhs.uk
+              uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
         search:
           mode: match
