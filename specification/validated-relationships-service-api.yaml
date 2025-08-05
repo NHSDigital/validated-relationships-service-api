@@ -1948,20 +1948,23 @@ components:
               enum: [searchset]
     
     Link:
-      type: array
-      description: Links related to the entry
-      items:
-        type: object
-        properties:
-          relation:
-            type: string
-            description: |
-              A name which details the functional use for this link - see:
-              http://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1
-          url:
-            type: string
-            format: uri
-            description:  The reference details for the link.
+      type: object
+      properties:
+        link:
+          type: array
+          description: Links related to the entry
+          items:
+            type: object
+            properties:
+              relation:
+                type: string
+                description: |
+                  A name which details the functional use for this link - see:
+                  http://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1
+              url:
+                type: string
+                format: uri
+                description:  The reference details for the link.
 
     RelatedPersonBundle:
       allOf:
