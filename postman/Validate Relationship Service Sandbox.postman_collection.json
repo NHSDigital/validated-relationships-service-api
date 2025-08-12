@@ -1,10 +1,11 @@
 {
 	"info": {
-		"_postman_id": "a676026f-cba5-4d4e-a36b-7c78a9382f49",
-		"name": "Validate Relationship Service Sandbox 10/07/25",
+		"_postman_id": "a6b9c818-8ca6-4702-97ed-c6336703f7fc",
+		"name": "Validate Relationship Service Sandbox 12/08/25",
 		"description": "This Postman collection includes example scenarios for each of the Validated Relationship Service (VRS) API endpoints, covering both valid and invalid request scenarios.\n\nThe collection is pointed towards the VRS sandbox environment, which will return a specific example response based on the request sent. All data shown in the requests or responses is test data.\n\nOur sandbox environment only covers the scenarios listed in the Postman collection and is open access. It does not allow you to test authorisation or any scenarios beyond the ones documented.\n\nFull specification is available at [https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "18067099"
+		"_exporter_id": "45653607",
+		"_collection_link": "https://www.postman.com/lukeelliott-8674106/workspace/validated-relationship-service-sandbox-12-08-2025/collection/45653607-a6b9c818-8ca6-4702-97ed-c6336703f7fc?action=share&source=collection_link&creator=45653607"
 	},
 	"item": [
 		{
@@ -230,7 +231,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{api_base_url}}/QuestionnaireResponse?referenceCode=19318ZGLAB",
+							"raw": "{{api_base_url}}/QuestionnaireResponse?accessRequestUUID=156e1560-e532-4e2a-85ad-5aeff03dc43e",
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -239,8 +240,8 @@
 							],
 							"query": [
 								{
-									"key": "referenceCode",
-									"value": "19318ZGLAB"
+									"key": "accessRequestUUID",
+									"value": "156e1560-e532-4e2a-85ad-5aeff03dc43e"
 								}
 							]
 						},
@@ -249,7 +250,7 @@
 					"response": []
 				},
 				{
-					"name": "Missing Reference Code",
+					"name": "Missing accessRequestUUID",
 					"event": [
 						{
 							"listen": "test",
@@ -264,13 +265,13 @@
 									"      \"details\": {",
 									"        \"coding\": [",
 									"          {",
-									"            \"system\": \"https://fhir.nhs.uk/CodeSystem/Spine-ErrorOrWarningCode\",",
-									"            \"code\": \"MISSING_REFERENCE_CODE\",",
-									"            \"display\": \"Missing reference code\"",
+									"            \"system\": \"https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1\",",
+									"            \"code\": \"BAD_REQUEST\",",
+									"            \"display\": \"Bad request\"",
 									"          }",
 									"        ]",
 									"      },",
-									"      \"diagnostics\": \"The reference code parameter is required but was not provided.\"",
+									"      \"diagnostics\": \"The access request UUID parameter is required but was not provided.\"",
 									"    }",
 									"  ]",
 									"};",
@@ -317,7 +318,7 @@
 					"response": []
 				},
 				{
-					"name": "Invalid Reference Code",
+					"name": "Invalid accessRequestUUID",
 					"event": [
 						{
 							"listen": "test",
@@ -332,13 +333,13 @@
 									"      \"details\": {",
 									"        \"coding\": [",
 									"          {",
-									"            \"system\": \"https://fhir.nhs.uk/CodeSystem/Spine-ErrorOrWarningCode\",",
-									"            \"code\": \"INVALID_REFERENCE_CODE\",",
-									"            \"display\": \"Invalid reference code\"",
+									"            \"system\": \"https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1\",",
+									"            \"code\": \"INVALID_IDENTIFIER_VALUE\",",
+									"            \"display\": \"Invalid identifier value\"",
 									"          }",
 									"        ]",
 									"      },",
-									"      \"diagnostics\": \"The specified reference code format is invalid. Reference codes must be alphanumeric.\"",
+									"      \"diagnostics\": \"The specified access request UUID is invalid. Access request UUIDs must be a valid UUID.\"",
 									"    }",
 									"  ]",
 									"};",
@@ -354,6 +355,13 @@
 								],
 								"type": "text/javascript",
 								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"packages": {},
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -372,7 +380,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{api_base_url}}/QuestionnaireResponse?referenceCode=INVALID",
+							"raw": "{{api_base_url}}/QuestionnaireResponse?accessRequestUUID=INVALID",
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -381,7 +389,7 @@
 							],
 							"query": [
 								{
-									"key": "referenceCode",
+									"key": "accessRequestUUID",
 									"value": "INVALID"
 								}
 							]
@@ -391,7 +399,7 @@
 					"response": []
 				},
 				{
-					"name": "Reference Code Not Found",
+					"name": "accessRequestUUID not found",
 					"event": [
 						{
 							"listen": "test",
@@ -406,13 +414,13 @@
 									"      \"details\": {",
 									"        \"coding\": [",
 									"          {",
-									"            \"system\": \"https://fhir.nhs.uk/CodeSystem/Spine-ErrorOrWarningCode\",",
+									"            \"system\": \"https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1\",",
 									"            \"code\": \"QUESTIONNAIRE_RESPONSE_NOT_FOUND\",",
 									"            \"display\": \"Questionnaire response not found\"",
 									"          }",
 									"        ]",
 									"      },",
-									"      \"diagnostics\": \"The Questionnaire response could not be found using the provided reference code.\"",
+									"      \"diagnostics\": \"The Questionnaire response could not be found using the provided access request UUID.\"",
 									"    }",
 									"  ]",
 									"};",
@@ -446,7 +454,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{api_base_url}}/QuestionnaireResponse?referenceCode=ABC123XY",
+							"raw": "{{api_base_url}}/QuestionnaireResponse?accessRequestUUID=60d09b82-f4bb-41f9-b41e-767999b4ac9b",
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -455,8 +463,8 @@
 							],
 							"query": [
 								{
-									"key": "referenceCode",
-									"value": "ABC123XY"
+									"key": "accessRequestUUID",
+									"value": "60d09b82-f4bb-41f9-b41e-767999b4ac9b"
 								}
 							]
 						},
@@ -486,8 +494,8 @@
 									"            \"details\": {",
 									"                \"coding\": [",
 									"                    {",
-									"                        \"code\": \"19318ZGLAB\",",
-									"                        \"display\": \"19318ZGLAB\"",
+									"                        \"code\": \"156e1560-e532-4e2a-85ad-5aeff03dc43e\",",
+									"                        \"display\": \"156e1560-e532-4e2a-85ad-5aeff03dc43e\"",
 									"                    }",
 									"                ]",
 									"            }",
@@ -566,8 +574,8 @@
 									"            \"details\": {",
 									"                \"coding\": [",
 									"                    {",
-									"                        \"code\": \"19318ZGLAB\",",
-									"                        \"display\": \"19318ZGLAB\"",
+									"                        \"code\": \"156e1560-e532-4e2a-85ad-5aeff03dc43e\",",
+									"                        \"display\": \"156e1560-e532-4e2a-85ad-5aeff03dc43e\"",
 									"                    }",
 									"                ]",
 									"            }",
@@ -712,8 +720,8 @@
 									"            \"details\": {",
 									"                \"coding\": [",
 									"                    {",
-									"                        \"code\": \"19318ZGLAB\",",
-									"                        \"display\": \"19318ZGLAB\"",
+									"                        \"code\": \"156e1560-e532-4e2a-85ad-5aeff03dc43e\",",
+									"                        \"display\": \"156e1560-e532-4e2a-85ad-5aeff03dc43e\"",
 									"                    }",
 									"                ]",
 									"            }",
@@ -791,8 +799,8 @@
 									"            \"details\": {",
 									"                \"coding\": [",
 									"                    {",
-									"                        \"code\": \"19318ZGLAB\",",
-									"                        \"display\": \"19318ZGLAB\"",
+									"                        \"code\": \"156e1560-e532-4e2a-85ad-5aeff03dc43e\",",
+									"                        \"display\": \"156e1560-e532-4e2a-85ad-5aeff03dc43e\"",
 									"                    }",
 									"                ]",
 									"            }",
