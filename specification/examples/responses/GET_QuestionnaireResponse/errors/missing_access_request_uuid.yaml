@@ -1,0 +1,14 @@
+missingAccessRequestUUID:
+  summary: Missing access request UUID
+  description: No access request UUID was provided in the request.
+  value:
+    resourceType: "OperationOutcome"
+    issue:
+      - severity: "error"
+        code: "required"
+        details:
+          coding:
+            - system: "https://fhir.nhs.uk/CodeSystem/Spine-ErrorOrWarningCode"
+              code: "BAD_REQUEST"
+              display: "Bad request"
+        diagnostics: "The access request UUID parameter is required but was not provided."

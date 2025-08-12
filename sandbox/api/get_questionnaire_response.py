@@ -23,17 +23,17 @@ def get_questionnaire_response_response() -> Union[dict, tuple]:
         Union[dict, tuple]: Response for GET /QuestionnaireResponse
     """
     try:
-        reference_code = request.args.get("referenceCode")
-        if reference_code == "19318ZGLAB":
+        access_request_uuid = request.args.get("accessRequestUUID")
+        if access_request_uuid == "156e1560-e532-4e2a-85ad-5aeff03dc43e":
             return generate_response_from_example(GET_QUESTIONNAIRE_RESPONSE__SUCCESS, 200)
-        elif reference_code == "INVALID":
+        elif access_request_uuid == "INVALID":
             return generate_response_from_example(GET_QUESTIONNAIRE_RESPONSE__INVALID, 400)
-        elif reference_code == "" or reference_code is None:
+        elif access_request_uuid == "" or access_request_uuid is None:
             return generate_response_from_example(GET_QUESTIONNAIRE_RESPONSE__MISSING, 400)
-        elif reference_code == "ABC123XY":
+        elif access_request_uuid == "60d09b82-f4bb-41f9-b41e-767999b4ac9b":
             return generate_response_from_example(GET_QUESTIONNAIRE_RESPONSE__NOT_FOUND, 404)
         else:
-            raise ValueError("Invalid reference code")
+            raise ValueError("Invalid access request UUID")
     except Exception:
         logger.exception("GET questionnaire response failed")
         return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)
