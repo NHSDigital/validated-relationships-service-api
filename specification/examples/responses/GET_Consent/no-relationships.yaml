@@ -6,4 +6,7 @@ ConsentNoRelationshipsEmptyBundle:
     timestamp: '2020-08-26T14:00:00+00:00'
     total: 0
     type: searchset
+    link:
+      - relation: self
+        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000025&_include=Consent:performer&_include=Consent:patient
     entry: []

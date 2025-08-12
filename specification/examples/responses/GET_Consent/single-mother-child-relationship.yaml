@@ -6,6 +6,9 @@ ConsentSingleAdultChildRelationshipBundle:
     timestamp: '2020-08-26T14:00:00+00:00'
     total: 1
     type: searchset
+    link:
+      - relation: self
+        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000019
     entry:
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/BBCC67E9
         resource:
@@ -33,6 +36,9 @@ ConsentSingleAdultChildRelationshipBundle:
             - identifier:
                 system: 'https://fhir.nhs.uk/Id/nhs-number'
                 value: '9000000019'
+          policy:
+            - authority: https://www.england.nhs.uk
+              uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
           provision:
             actor:
             - reference:
@@ -48,13 +54,5 @@ ConsentSingleAdultChildRelationshipBundle:
             period:
               end: '2026-02-11'
               start: '2025-02-11'
-          extension:
-            - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
-              valueCodeableConcept:
-                coding:
-                  - code: TBC
-                    display: TBC
-                    system: http://terminology.hl7.org/CodeSystem/consent-reason
-                text: "To be confirmed"
         search:
           mode: match

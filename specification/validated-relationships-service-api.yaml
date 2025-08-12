@@ -141,7 +141,7 @@ info:
     * only covers a limited set of scenarios
     * is open access, so does not allow you to test authorisation
 
-    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://god.gw.postman.com/run-collection/46399153-73a3846c-092a-44a1-940f-18736fb1f411?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D46399153-73a3846c-092a-44a1-940f-18736fb1f411%26entityType%3Dcollection%26workspaceId%3D34c06bc9-c5de-4206-b931-9ee51c810dbb))
+    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/44536620-35ed5c9e-f0bb-49c9-841e-3dbfcc85ddc5?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D44536620-35ed5c9e-f0bb-49c9-841e-3dbfcc85ddc5%26entityType%3Dcollection%26workspaceId%3Dad27765c-6ca7-4f03-9ef4-fd61fe46e357)
 
     ### Integration testing
 
@@ -1946,6 +1946,25 @@ components:
               type: string
               description: Denotes that the Bundle is a collection of resources returned as a result of a search.
               enum: [searchset]
+    
+    Link:
+      type: object
+      properties:
+        link:
+          type: array
+          description: Links related to the entry
+          items:
+            type: object
+            properties:
+              relation:
+                type: string
+                description: |
+                  A name which details the functional use for this link - see:
+                  http://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1
+              url:
+                type: string
+                format: uri
+                description:  The reference details for the link.
 
     RelatedPersonBundle:
       allOf:
@@ -1979,6 +1998,7 @@ components:
     ConsentBundle:
       allOf:
         - $ref: "#/components/schemas/Searchset"
+        - $ref: "#/components/schemas/Link"
         - type: object
           properties:
             entry:
@@ -2244,13 +2264,26 @@ components:
           items:
             $ref: "#/components/schemas/Reference"
           description: "Individuals or organizations that agreed to the consent."
+        policy:
+          type: array
+          items:
+            $ref: "#/components/schemas/Policy"
         provision:
           $ref: "#/components/schemas/Provision"
         extension:
-          type: array
-          description: Model the status reason.
-          items:
-            $ref: "#/components/schemas/Extension"
+          $ref: "#/components/schemas/Extension"
+    
+    Policy:
+      type: object
+      properties:
+        authority:
+          type: string
+          description: "Entity or Organization having regulatory jurisdiction or accountability for enforcing policies pertaining to Consent Directives."
+          format: uri
+        uri:
+          type: string
+          description: "The references to the policies that are included in this consent scope. Policies may be organizational, but are often defined jurisdictionally, or in law."
+          format: uri
 
     Provision:
       type: object
@@ -2279,7 +2312,7 @@ components:
               role:
                 $ref: "#/components/schemas/CodeableConcept"
                 description: "Classification of the role of consent, bound to http://terminology.hl7.org/CodeSystem/v3-RoleCode"
-
+    
     Extension:
       type: object
       properties:
