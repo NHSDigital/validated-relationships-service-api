@@ -8,7 +8,7 @@ InvalidAccessRequestUUID:
         code: "invalid"
         details:
           coding:
-            - system: "https://fhir.nhs.uk/CodeSystem/Spine-ErrorOrWarningCode"
+            - system: "https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1"
               code: "INVALID_IDENTIFIER_VALUE"
               display: "Invalid identifier value"
         diagnostics: "The specified access request UUID is invalid. Access request UUIDs must be a valid UUID."

@@ -1,6 +1,6 @@
 QuestionnaireResponseNotFound:
   summary: Questionnaire response not found
-  description: The Questionnaire response could not be found using the provided reference code.
+  description: The Questionnaire response could not be found using the provided access request UUID.
   value:
     resourceType: "OperationOutcome"
     issue:
@@ -8,7 +8,7 @@ QuestionnaireResponseNotFound:
         code: "not-found"
         details:
           coding:
-            - system: "https://fhir.nhs.uk/CodeSystem/Spine-ErrorOrWarningCode"
+            - system: "https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1"
               code: "QUESTIONNAIRE_RESPONSE_NOT_FOUND"
               display: "Questionnaire response not found"
-        diagnostics: "The Questionnaire response could not be found using the provided reference code."
+        diagnostics: "The Questionnaire response could not be found using the provided access request UUID."
