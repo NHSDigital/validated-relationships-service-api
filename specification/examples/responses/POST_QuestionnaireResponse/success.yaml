@@ -8,5 +8,5 @@ PostQuestionnaireResponseSuccess:
         code: informational
         details:
           coding:
-            - code: "19318ZGLAB"
-              display: "19318ZGLAB"
+            - code: "156e1560-e532-4e2a-85ad-5aeff03dc43e"
+              display: "156e1560-e532-4e2a-85ad-5aeff03dc43e"

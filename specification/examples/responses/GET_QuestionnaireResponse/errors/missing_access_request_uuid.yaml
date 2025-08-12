@@ -8,7 +8,7 @@ missingAccessRequestUUID:
         code: "required"
         details:
           coding:
-            - system: "https://fhir.nhs.uk/CodeSystem/Spine-ErrorOrWarningCode"
+            - system: "https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1"
               code: "BAD_REQUEST"
               display: "Bad request"
         diagnostics: "The access request UUID parameter is required but was not provided."
