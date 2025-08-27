@@ -40,6 +40,11 @@ ConsentMultipleRelationshipsStatusActiveIncludeDetailsBundle:
         resource:
           resourceType: Patient
           id: A3CC67E2
+          meta:
+            security:
+              - system: "https://fhir.nhs.uk/CodeSystem/NHSIdentityProofingLevel"
+                code: "P9"
+                display: "High level verification (P9)"
           identifier:
             - system: "https://fhir.nhs.uk/Id/nhs-number"
               value: "9000000009"
@@ -138,6 +143,11 @@ ConsentMultipleRelationshipsStatusActiveIncludeDetailsBundle:
         resource:
           resourceType: Patient
           id: DFCC67F5
+          meta:
+            security:
+              - system: "https://fhir.nhs.uk/CodeSystem/NHSIdentityProofingLevel"
+                code: "P9"
+                display: "High level verification (P9)"
           identifier:
             - system: "https://fhir.nhs.uk/Id/nhs-number"
               value: "9000000005"

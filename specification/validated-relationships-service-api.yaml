@@ -2185,6 +2185,8 @@ components:
         id:
           type: string
           description: Unique identifier of the Patient resource
+        meta:
+          $ref: "#/components/schemas/Meta"
         identifier:
           type: array
           description: The patient's NHS number. The primary identifier of a patient, unique within NHS England and Wales. Always 10 digits and must be a [valid NHS number](https://www.datadictionary.nhs.uk/attributes/nhs_number.html).
@@ -2432,6 +2434,16 @@ components:
         value:
           type: string
           description: "The value that is unique."
+
+    Meta:
+      type: object
+      description: Metadata about a resource
+      properties:
+        security:
+          type: array
+          description: Security Labels applied a resource
+          items:
+            $ref: "#/components/schemas/Coding"
 
     CodeableConcept:
       type: object
