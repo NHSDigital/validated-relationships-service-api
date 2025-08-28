@@ -95,16 +95,16 @@ QuestionnaireResponseMotherChildRequest:
             answer:
               - valueCoding:
                   system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"
+                  code: "PRESCR"
+                  display: "Request and manage repeat prescriptions"
+              - valueCoding:
+                  system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"
                   code: "APPT"
                   display: "Appointment Booking"
               - valueCoding:
                   system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"
-                  code: "CNTCT"
-                  display: "Contacting Surgery"
-              - valueCoding:
-                  system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"
                   code: "RECRD"
-                  display: "Medical Records Access"
+                  display: "GP Health Records Access"
               - valueCoding:
                   system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"
                   code: "TEST"
@@ -115,8 +115,16 @@ QuestionnaireResponseMotherChildRequest:
                   display: "Vaccination Records"
               - valueCoding:
                   system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"
-                  code: "PRESCR"
-                  display: "Repeat Prescription Requests"
+                  code: "COND"
+                  display: "Health Conditions"
+              - valueCoding:
+                  system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"
+                  code: "CONSULT"
+                  display: "Consultations and Events"
+              - valueCoding:
+                  system: "https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess"
+                  code: "DOCS"
+                  display: "Documents"
           - linkId: "requestedAccess_accessLevelMoreinfo"
             text: "Requested access level - further information"
             answer:
