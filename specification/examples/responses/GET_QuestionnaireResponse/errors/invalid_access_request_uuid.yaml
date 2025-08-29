@@ -1,4 +1,4 @@
-InvalidAccessRequestUUID:
+InvalidAccessRequestID:
   summary: Invalid access request UUID
   description: The provided access request UUID is invalid in format.
   value:

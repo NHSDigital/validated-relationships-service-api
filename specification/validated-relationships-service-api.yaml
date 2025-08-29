@@ -307,11 +307,11 @@ paths:
 
         ## Sandbox test scenarios
 
-        | Scenario                         | Request                                                | Response                                                      |
-        | -------------------------------- | ------------------------------------------------------ | ------------------------------------------------------------- |
+        | Scenario                         | Request                                 | Response                                                      |
+        | -------------------------------- | ----------------------------------------| ------------------------------------------------------------- |
         | Valid access request UUID        | id=156e1560-e532-4e2a-85ad-5aeff03dc43e | HTTP Status 200 with QuestionnaireResponse                    |
-        | Invalid access request UUID      | id=INVALID                              | HTTP Status 400 with INVALID_REFERENCE_CODE message           |
-        | Missing access request UUID      | No id parameter                         | HTTP Status 400 with MISSING_REFERENCE_CODE message           |
+        | Invalid access request UUID      | id=INVALID                              | HTTP Status 400 with INVALID_IDENTIFIER_VALUE message         |
+        | Missing access request UUID      | No id parameter                         | HTTP Status 400 with BAD_REQUEST message                      |
         | Non-existent access request UUID | id=60d09b82-f4bb-41f9-b41e-767999b4ac9b | HTTP Status 404 with QUESTIONNAIRE_RESPONSE_NOT_FOUND message |
 
       operationId: get-questionnaire-response

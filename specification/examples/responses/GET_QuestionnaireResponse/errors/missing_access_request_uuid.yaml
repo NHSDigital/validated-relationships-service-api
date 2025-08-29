@@ -1,4 +1,4 @@
-missingAccessRequestUUID:
+missingAccessRequestID:
   summary: Missing access request UUID
   description: No access request UUID was provided in the request.
   value:
