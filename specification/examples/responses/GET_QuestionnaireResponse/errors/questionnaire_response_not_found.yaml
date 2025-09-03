@@ -11,4 +11,4 @@ QuestionnaireResponseNotFound:
             - system: "https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1"
               code: "QUESTIONNAIRE_RESPONSE_NOT_FOUND"
               display: "Questionnaire response not found"
-        diagnostics: "The Questionnaire response could not be found using the provided access request UUID."
+        diagnostics: "The Questionnaire response could not be found using the provided access request ID."
