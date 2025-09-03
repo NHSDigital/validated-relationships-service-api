@@ -10,27 +10,27 @@ GET_QUESTIONNAIRE_RESPONSE_API_ENDPOINT = "/FHIR/R4/QuestionnaireResponse"
     ("request_args", "response_file_name", "status_code"),
     [
         (
-            "accessRequestUUID=156e1560-e532-4e2a-85ad-5aeff03dc43e",
+            "ID=156e1560-e532-4e2a-85ad-5aeff03dc43e",
             "./api/examples/GET_QuestionnaireResponse/success.yaml",
             200,
         ),
         (
-            "accessRequestUUID=INVALID",
-            "./api/examples/GET_QuestionnaireResponse/errors/invalid_access_request_uuid.yaml",
+            "ID=INVALID",
+            "./api/examples/GET_QuestionnaireResponse/errors/invalid_access_request_id.yaml",
             400,
         ),
         (
-            "accessRequestUUID=",
-            "./api/examples/GET_QuestionnaireResponse/errors/missing_access_request_uuid.yaml",
+            "ID=",
+            "./api/examples/GET_QuestionnaireResponse/errors/missing_access_request_id.yaml",
             400,
         ),
         (
-            "accessRequestUUID=60d09b82-f4bb-41f9-b41e-767999b4ac9b",
+            "ID=60d09b82-f4bb-41f9-b41e-767999b4ac9b",
             "./api/examples/GET_QuestionnaireResponse/errors/questionnaire_response_not_found.yaml",
             404,
         ),
         (
-            "accessRequestUUID=INVALID_CODE",
+            "ID=INVALID_CODE",
             "./api/examples/errors/internal-server-error.yaml",
             500,
         ),

@@ -141,7 +141,7 @@ info:
     * only covers a limited set of scenarios
     * is open access, so does not allow you to test authorisation
 
-    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/18067099-679cd3dc-8b52-4699-84e3-499fce3d7e15?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D18067099-679cd3dc-8b52-4699-84e3-499fce3d7e15%26entityType%3Dcollection%26workspaceId%3D8a8e66e5-71af-4830-9f29-9d98cbec443a)
+    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/34042403-298358e5-ad8f-4875-a8e3-acb4600712f0?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D34042403-298358e5-ad8f-4875-a8e3-acb4600712f0%26entityType%3Dcollection%26workspaceId%3D0e2260b3-ef5a-4ac7-a458-4fea08d8b726)
 
     ### Integration testing
 
@@ -344,7 +344,7 @@ paths:
             | ----------- | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
             | 400         | `INVALID_IDENTIFIER_VALUE`         | The access request ID must be a valid uuid.                                                                                             |
             | 400         | `INVALID_VALUE`                    | Invalid Parameter or Invalid operation.                                                                                                   |
-            | 400         | `BAD_REQUEST`.                     | The access request ID is required but was not provided in the request.                                                                  |
+            | 400         | `BAD_REQUEST`                      | The access request ID is required but was not provided in the request.                                                                  |
             | 400         | `MISSING_VALUE`                    | Missing header or parameter. For details, see the `diagnostics` field.                                                                    |
             | 401         | `ACCESS_DENIED`                    | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
             | 403         | `FORBIDDEN`                        | Access denied to resource.                                                                                                                |
