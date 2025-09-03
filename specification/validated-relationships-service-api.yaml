@@ -359,10 +359,10 @@ paths:
               schema:
                 $ref: "#/components/schemas/OperationOutcome"
               examples:
-                invalidAccessRequestUUID:
-                  $ref: "./examples/responses/GET_QuestionnaireResponse/errors/invalid_access_request_uuid.yaml#/InvalidAccessRequestUUID"
-                missingAccessRequestUUID:
-                  $ref: "./examples/responses/GET_QuestionnaireResponse/errors/missing_access_request_uuid.yaml#/MissingAccessRequestUUID"
+                invalidAccessRequestID:
+                  $ref: "./examples/responses/GET_QuestionnaireResponse/errors/invalid_access_request_id.yaml#/InvalidAccessRequestID"
+                missingAccessRequestID:
+                  $ref: "./examples/responses/GET_QuestionnaireResponse/errors/missing_access_request_id.yaml#/MissingAccessRequestID"
                 questionnaireResponseNotFound:
                   $ref: "./examples/responses/GET_QuestionnaireResponse/errors/questionnaire_response_not_found.yaml#/QuestionnaireResponseNotFound"
         "5XX":
