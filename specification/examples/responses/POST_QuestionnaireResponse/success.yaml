@@ -1,6 +1,6 @@
 PostQuestionnaireResponseSuccess:
   summary: Success
-  description: A sample of the payload returned when a QuestionnaireResponse (proxy access request) has been successfully submitted. It contains the unique id of the access request.
+  description: A sample of the payload returned when a QuestionnaireResponse (proxy access request) has been successfully submitted. It contains a unique alpha-numeric reference code to identify the request by.
   value:
     resourceType: "OperationOutcome"
     issue:
@@ -8,5 +8,5 @@ PostQuestionnaireResponseSuccess:
         code: informational
         details:
           coding:
-            - code: "156e1560-e532-4e2a-85ad-5aeff03dc43e"
-              display: "156e1560-e532-4e2a-85ad-5aeff03dc43e"
+            - code: "19318ZGLAB"
+              display: "19318ZGLAB"
