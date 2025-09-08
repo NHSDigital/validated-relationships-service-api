@@ -3,7 +3,7 @@
 openapi: "3.0.0"
 info:
   title: "Validated Relationships Service API"
-  version: "1.9.0"
+  version: "1.10.0"
   description: |
     ## Overview
     Use this API to access the Validated Relationships Service - the national electronic database of relationships
@@ -1946,7 +1946,7 @@ components:
               type: string
               description: Denotes that the Bundle is a collection of resources returned as a result of a search.
               enum: [searchset]
-    
+
     Link:
       type: object
       properties:
@@ -2274,7 +2274,7 @@ components:
           $ref: "#/components/schemas/Provision"
         extension:
           $ref: "#/components/schemas/Extension"
-    
+
     Policy:
       type: object
       properties:
@@ -2314,7 +2314,7 @@ components:
               role:
                 $ref: "#/components/schemas/CodeableConcept"
                 description: "Classification of the role of consent, bound to http://terminology.hl7.org/CodeSystem/v3-RoleCode"
-    
+
     Extension:
       type: object
       properties:
