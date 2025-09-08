@@ -238,7 +238,13 @@ paths:
                 $ref: "./examples/requests/POST_QuestionnaireResponse/duplicate_relationship.yaml#/QuestionnaireResponseDuplicateRelationship"
       responses:
         "200":
-          description: Request was received successfully for processing
+          description: Request was received successfully for processing          
+          headers:
+            location:
+              schema:
+                type: string
+                example: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/QuestionnaireResponse?ID=156e1560-e532-4e2a-85ad-5aeff03dc43e
+              description: URL for the newly created access request
           content:
             application/fhir+json:
               schema:
