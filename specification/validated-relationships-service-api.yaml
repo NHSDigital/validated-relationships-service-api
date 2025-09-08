@@ -141,7 +141,7 @@ info:
     * only covers a limited set of scenarios
     * is open access, so does not allow you to test authorisation
 
-    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/18067099-679cd3dc-8b52-4699-84e3-499fce3d7e15?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D18067099-679cd3dc-8b52-4699-84e3-499fce3d7e15%26entityType%3Dcollection%26workspaceId%3D8a8e66e5-71af-4830-9f29-9d98cbec443a)
+    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/44536620-35ed5c9e-f0bb-49c9-841e-3dbfcc85ddc5?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D44536620-35ed5c9e-f0bb-49c9-841e-3dbfcc85ddc5%26entityType%3Dcollection%26workspaceId%3Dad27765c-6ca7-4f03-9ef4-fd61fe46e357)
 
     ### Integration testing
 
@@ -1817,26 +1817,38 @@ components:
                                 code:
                                   type: string
                                   enum:
-                                    - "PRESCR"
                                     - "APPT"
+                                    - "CNTCT"
                                     - "RECRD"
                                     - "TEST"
                                     - "VACC"
-                                    - "COND"
-                                    - "CONSULT"
-                                    - "DOCS"
+                                    - "PRESCR"
                                 display:
                                   type: string
                                   description: FHIR Requested access level.
                                   enum:
-                                    - "Request and manage repeat prescriptions"
                                     - "Appointment Booking"
-                                    - "GP Health Records Access"
+                                    - "Contacting Surgery"
+                                    - "Medical Records Access"
                                     - "Test Results"
                                     - "Vaccination Records"
-                                    - "Health Conditions"
-                                    - "Consultations and Events"
-                                    - "Documents"
+                                    - "Request and manage repeat prescriptions"
+
+              - type: object
+                properties:
+                  linkId:
+                    type: string
+                    enum: ["requestedAccess_accessLevelMoreinfo"]
+                  text:
+                    type: string
+                  answer:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            valueString:
+                              type: string
 
               - type: object
                 required:
@@ -1934,7 +1946,7 @@ components:
               type: string
               description: Denotes that the Bundle is a collection of resources returned as a result of a search.
               enum: [searchset]
-
+    
     Link:
       type: object
       properties:
@@ -2262,7 +2274,7 @@ components:
           $ref: "#/components/schemas/Provision"
         extension:
           $ref: "#/components/schemas/Extension"
-
+    
     Policy:
       type: object
       properties:
@@ -2302,7 +2314,7 @@ components:
               role:
                 $ref: "#/components/schemas/CodeableConcept"
                 description: "Classification of the role of consent, bound to http://terminology.hl7.org/CodeSystem/v3-RoleCode"
-
+    
     Extension:
       type: object
       properties:
