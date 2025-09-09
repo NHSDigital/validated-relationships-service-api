@@ -10,7 +10,9 @@ from .constants import (
 )
 from .utils import generate_response_from_example
 
-QUESTIONNAIRE_RESPONSE_APP_BASE_PATH = "https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/QuestionnaireResponse"
+QUESTIONNAIRE_RESPONSE_APP_BASE_PATH = (
+    "https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/QuestionnaireResponse"
+)
 basicConfig(level=INFO, format="%(asctime)s - %(message)s")
 logger = getLogger(__name__)
 

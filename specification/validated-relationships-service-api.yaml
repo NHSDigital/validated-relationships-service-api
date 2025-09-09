@@ -298,11 +298,11 @@ paths:
       summary: Get a proxy access request
       description: |
         ## Overview
-        Retrieve a QuestionnaireResponse using its unique access request UUID. This endpoint returns the full
+        Retrieve a QuestionnaireResponse using its unique access request ID. This endpoint returns the full
         QuestionnaireResponse document that was previously submitted.
 
         ## Request Requirements
-        A valid access request UUID must be provided as a query parameter. This access request UUID is returned
+        A valid access request ID must be provided as a query parameter. This access request ID is returned
         when a QuestionnaireResponse is initially submitted via the POST endpoint.
 
         ## Access modes

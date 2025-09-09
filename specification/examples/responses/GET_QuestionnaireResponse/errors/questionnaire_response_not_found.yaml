@@ -1,6 +1,6 @@
 QuestionnaireResponseNotFound:
   summary: Questionnaire response not found
-  description: The Questionnaire response could not be found using the provided access request UUID.
+  description: The Questionnaire response could not be found using the provided access request ID.
   value:
     resourceType: "OperationOutcome"
     issue:
