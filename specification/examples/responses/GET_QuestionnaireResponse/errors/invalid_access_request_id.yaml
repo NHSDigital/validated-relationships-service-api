@@ -1,0 +1,14 @@
+InvalidAccessRequestID:
+  summary: Invalid access request ID
+  description: The provided access request ID is invalid in format.
+  value:
+    resourceType: "OperationOutcome"
+    issue:
+      - severity: "error"
+        code: "invalid"
+        details:
+          coding:
+            - system: "https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1"
+              code: "INVALID_IDENTIFIER_VALUE"
+              display: "Invalid identifier value"
+        diagnostics: "The specified access request ID is invalid. Access request IDs must be a valid UUID."

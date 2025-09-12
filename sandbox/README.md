@@ -63,6 +63,10 @@ Please note all commands are meant to be run from this directory `/sandbox`
 
 To run the API with hot reloading use `make start-dev`
 
+### Updating examples
+
+The examples held in `./api/examples/` are copied at sandbox startup from `../specification/examples/`. See [Makefile](./Makefile) `start` & `start-dev`.
+
 ### Testing
 
 #### Unit Tests

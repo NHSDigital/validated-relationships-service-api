@@ -10,31 +10,36 @@ from sandbox.api.constants import (
     INTERNAL_SERVER_ERROR_EXAMPLE,
 )
 
+SANDBOX_API_URL = "https://sandbox.api.service.nhs.uk/validated-relationships"
 QUESTIONNAIRE_RESPONSE_API_ENDPOINT = "/FHIR/R4/QuestionnaireResponse"
 
 
 @pytest.mark.parametrize(
-    ("nhs_num", "response_file_name", "status_code"),
+    ("nhs_num", "response_file_name", "status_code", "id"),
     [
         (
             "9000000009",
             POST_QUESTIONNAIRE_RESPONSE__SUCCESS,
             200,
+            "156e1560-e532-4e2a-85ad-5aeff03dc43e",
         ),
         (
             "9000000017",
             POST_QUESTIONNAIRE_RESPONSE__SUCCESS,
             200,
+            "156e1560-e532-4e2a-85ad-5aeff03dc43e",
         ),
         (
             "9000000049",
             POST_QUESTIONNAIRE_RESPONSE__DUPLICATE_RELATIONSHIP_ERROR,
             409,
+            None,
         ),
         (
             "INVALID_NHS_NUMBER",
             INTERNAL_SERVER_ERROR_EXAMPLE,
             500,
+            None,
         ),
     ],
 )
@@ -42,6 +47,7 @@ QUESTIONNAIRE_RESPONSE_API_ENDPOINT = "/FHIR/R4/QuestionnaireResponse"
 def test_post_questionnaire_response(
     mock_generate_response_from_example: MagicMock,
     nhs_num: str,
+    id: str,
     response_file_name: str,
     status_code: int,
     client: object,
@@ -57,6 +63,13 @@ def test_post_questionnaire_response(
     # Act
     response = client.post(QUESTIONNAIRE_RESPONSE_API_ENDPOINT, json=json)
     # Assert
-    mock_generate_response_from_example.assert_called_once_with(response_file_name, status_code)
+    if id is not None:
+        mock_generate_response_from_example.assert_called_once_with(
+            response_file_name,
+            status_code,
+            headers={"location": f"{SANDBOX_API_URL}{QUESTIONNAIRE_RESPONSE_API_ENDPOINT}?ID={id}"},
+        )
+    else:
+        mock_generate_response_from_example.assert_called_once_with(response_file_name, status_code)
     assert response.status_code == status_code
     assert response.json == loads(mocked_response.get_data(as_text=True))

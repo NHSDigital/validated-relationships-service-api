@@ -10,34 +10,34 @@ GET_QUESTIONNAIRE_RESPONSE_API_ENDPOINT = "/FHIR/R4/QuestionnaireResponse"
     ("request_args", "response_file_name", "status_code"),
     [
         (
-            "referenceCode=19318ZGLAB",
+            "ID=156e1560-e532-4e2a-85ad-5aeff03dc43e",
             "./api/examples/GET_QuestionnaireResponse/success.yaml",
             200,
         ),
         (
-            "referenceCode=INVALID",
-            "./api/examples/GET_QuestionnaireResponse/errors/invalid_reference_code.yaml",
+            "ID=INVALID",
+            "./api/examples/GET_QuestionnaireResponse/errors/invalid_access_request_id.yaml",
             400,
         ),
         (
-            "referenceCode=",
-            "./api/examples/GET_QuestionnaireResponse/errors/missing_reference_code.yaml",
+            "ID=",
+            "./api/examples/GET_QuestionnaireResponse/errors/missing_access_request_id.yaml",
             400,
         ),
         (
-            "referenceCode=ABC123XY",
+            "ID=60d09b82-f4bb-41f9-b41e-767999b4ac9b",
             "./api/examples/GET_QuestionnaireResponse/errors/questionnaire_response_not_found.yaml",
             404,
         ),
         (
-            "referenceCode=INVALID_CODE",
+            "ID=INVALID_CODE",
             "./api/examples/errors/internal-server-error.yaml",
             500,
         ),
     ],
 )
 @patch("sandbox.api.get_questionnaire_response.generate_response_from_example")
-def test_get_consent_returns_expected_responses__mocked_utils(
+def test_get_questionnaire_response_returns_expected_responses__mocked_utils(
     mock_generate_response_from_example: MagicMock,
     request_args: str,
     response_file_name: str,
