@@ -28,7 +28,6 @@ ListRelationship9000000042:
           identifier:
             system: https://fhir.nhs.uk/Id/nhs-number
             value: '9000000009'
-          type: Patient
         relationship:
         - coding:
           - code: CHILD

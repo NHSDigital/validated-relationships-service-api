@@ -21,7 +21,6 @@ VerifyRelationship9000000009:
             identifier:
               system: https://fhir.nhs.uk/Id/nhs-number
               value: '9000000017'
-            type: Patient
           name:
           - family: MOGAJI
             given:

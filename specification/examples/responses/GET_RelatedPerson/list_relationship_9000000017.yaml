@@ -18,7 +18,6 @@ ListRelationship9000000017:
           identifier:
             system: https://fhir.nhs.uk/Id/nhs-number
             value: '9000000009'
-          type: Patient
         name:
         - family: MOGAJI
           given:
@@ -48,7 +47,6 @@ ListRelationship9000000017:
           identifier:
             system: https://fhir.nhs.uk/Id/nhs-number
             value: '9000000025'
-          type: Patient
         name:
         - family: FEARON
           given:
