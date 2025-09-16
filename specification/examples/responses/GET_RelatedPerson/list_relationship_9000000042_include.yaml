@@ -20,7 +20,6 @@ ListRelationship9000000042Include:
         - family: MOGAJI
           given:
           - GADIL
-          id: BLnbA
           period:
             start: '2021-07-08'
           prefix:
@@ -49,7 +48,6 @@ ListRelationship9000000042Include:
         - family: MOGAJI
           given:
           - GADIL
-          id: BLnbA
           period:
             start: '2021-07-08'
           prefix:

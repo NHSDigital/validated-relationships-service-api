@@ -19,7 +19,6 @@ ListRelationship9000000017Include:
         - family: MOGAJI
           given:
           - GADIL
-          id: BLnbA
           period:
             start: '2021-07-08'
           prefix:
@@ -43,7 +42,6 @@ ListRelationship9000000017Include:
         - family: MOGAJI
           given:
           - GADIL
-          id: BLnbA
           period:
             start: '2021-07-08'
           prefix:
@@ -68,7 +66,6 @@ ListRelationship9000000017Include:
         - family: FEARON
           given:
           - Daren
-          id: vitjN
           period:
             start: '2018-09-21'
           prefix:
@@ -92,7 +89,6 @@ ListRelationship9000000017Include:
         - family: FEARON
           given:
           - Daren
-          id: vitjN
           period:
             start: '2018-09-21'
           prefix:
