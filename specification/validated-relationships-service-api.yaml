@@ -2120,10 +2120,6 @@ components:
           type: object
           description: A reference to a patient the proxy is related to.
           properties:
-            type:
-              type: string
-              description: FHIR resource type.
-              enum: ["Patient"]
             identifier:
               type: object
               description: The patient's NHS number. The primary identifier of a patient, unique within NHS England and Wales. Always 10 digits and must be a [valid NHS number](https://www.datadictionary.nhs.uk/attributes/nhs_number.html).
@@ -2502,9 +2498,6 @@ components:
           - family
         additionalProperties: false
         properties:
-          id:
-            type: string
-            description: Unique object identifier for this name.
           use:
             type: string
             description: |
