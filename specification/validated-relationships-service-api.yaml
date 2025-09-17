@@ -493,8 +493,14 @@ paths:
               examples:
                 AccessDeniedError:
                   $ref: "./examples/responses/errors/access-denied.yaml#/AccessDeniedError"
+                RelatedPersonInvalidIdentifierMissing:
+                  $ref: "./examples/responses/GET_RelatedPerson/errors/invalid-identifier-missing.yaml#/RelatedPersonInvalidIdentifierMissing"
                 RelatedPersonInvalidIdentifierError:
                   $ref: "./examples/responses/GET_RelatedPerson/errors/invalid-identifier.yaml#/RelatedPersonInvalidIdentifierError"
+                InvalidIdentifierPatientError:
+                  $ref: "./examples/responses/GET_RelatedPerson/errors/invalid-identifier-patient.yaml#/InvalidIdentifierPatientError"
+                RelatedPersonInvalidIdentifierSystem:
+                  $ref: "./examples/responses/GET_RelatedPerson/errors/invalid-identifier-system.yaml#/RelatedPersonInvalidIdentifierSystem"
 
         "5XX":
           description: |
