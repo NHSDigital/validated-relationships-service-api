@@ -10,5 +10,6 @@ GPPracticeNotFoundError:
               version: "1"
               code: "GP_PRACTICE_NOT_FOUND"
               display: "GP Practice could not be found - invalid resources cannot be retrieved"
+        diagnostics: "GP Practice could not be found"
         severity: error
     resourceType: "OperationOutcome"

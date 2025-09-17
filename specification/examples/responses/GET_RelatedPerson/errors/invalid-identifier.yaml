@@ -4,13 +4,14 @@ RelatedPersonInvalidIdentifierError:
   value:
     issue:
       - code: invalid
-        diagnostics: "Not a valid NHS Number provided for the 'identifier' parameter"
-        expression: "RelatedPerson.identifier"
         details:
           coding:
             - "system": "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
               version: "1"
               code: "INVALID_IDENTIFIER_VALUE"
               display: "Provided value is invalid"
+        diagnostics: "Not a valid NHS Number provided for the 'identifier' parameter"
+        expression: 
+          - "RelatedPerson.identifier"
         severity: error
     resourceType: "OperationOutcome"

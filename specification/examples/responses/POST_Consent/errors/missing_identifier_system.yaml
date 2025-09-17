@@ -11,6 +11,7 @@ PostConsentMissingIdentifierSystemError:
               system: https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode
               version: "1"
         diagnostics: Unable to determine the patient identifier system
-        expression: patient.identifier.system
+        expression: 
+          - "patient.identifier.system"
         severity: error
     resourceType: OperationOutcome

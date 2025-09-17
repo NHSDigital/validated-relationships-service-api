@@ -32,6 +32,7 @@
                     }
                 ]
             },
+            "diagnostics": "Resource that has been marked as invalid was requested - invalid resources cannot be retrieved",
             "severity": "error"
         }
     ],

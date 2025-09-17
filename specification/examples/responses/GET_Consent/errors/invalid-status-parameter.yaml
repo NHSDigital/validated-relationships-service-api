@@ -4,12 +4,12 @@ ConsentInvalidStatusParameterError:
   value:
     issue:
       - code: invalid
-        diagnostics: "Invalid request with error - status parameter is invalid."
         details:
           coding:
             - code: "INVALID_PARAMETER"
               display: "Required parameter(s) are invalid."
               system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
               version: "1"
+        diagnostics: "Invalid request with error - status parameter is invalid."
         severity: error
     resourceType: "OperationOutcome"
