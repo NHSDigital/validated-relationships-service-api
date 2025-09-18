@@ -10,5 +10,6 @@ InvalidatedResourceError:
               version: "1"
               code: "INVALIDATED_RESOURCE"
               display: "Resource that has been marked as invalid was requested - invalid resources cannot be retrieved"
+        diagnostics: "Resource that has been marked as invalid was requested - invalid resources cannot be retrieved"
         severity: error
     resourceType: "OperationOutcome"

@@ -3,12 +3,13 @@ AccessDeniedError:
   description: The request was unsuccessful due to invalid authentication credentials being provided.
   value:
     issue:
-      - code: invalid
+      - code: forbidden
         details:
           coding:
             - code: "ACCESS_DENIED"
               display: "Missing or invalid OAuth 2.0 bearer token in request."
               "system": "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
               version: "1"
+        diagnostics: "Missing or invalid OAuth 2.0 bearer token in request"
         severity: error
     resourceType: "OperationOutcome"

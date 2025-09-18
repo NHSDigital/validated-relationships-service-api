@@ -3,13 +3,13 @@ InternalServerError:
   description: An unexpected condition was encountered preventing the server from fulfilling the request.
   value:
     issue:
-      - code: invalid
-        diagnostics: "Internal Server Error - Failed to generate response is present in the response"
+      - code: exception
         details:
           coding:
             - code: "SERVER_ERROR"
               display: "Failed to generate response"
               system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
               version: "1"
+        diagnostics: "Internal Server Error - Failed to generate response is present in the response"
         severity: error
     resourceType: "OperationOutcome"
