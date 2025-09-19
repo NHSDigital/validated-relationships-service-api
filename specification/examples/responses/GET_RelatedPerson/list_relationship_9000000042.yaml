@@ -18,7 +18,6 @@ ListRelationship9000000042:
         - family: MOGAJI
           given:
           - GADIL
-          id: BLnbA
           period:
             start: '2021-07-08'
           prefix:
@@ -28,7 +27,6 @@ ListRelationship9000000042:
           identifier:
             system: https://fhir.nhs.uk/Id/nhs-number
             value: '9000000009'
-          type: Patient
         relationship:
         - coding:
           - code: CHILD

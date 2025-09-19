@@ -18,12 +18,10 @@ VerifyRelationship9000000025:
           identifier:
             system: https://fhir.nhs.uk/Id/nhs-number
             value: '9000000025'
-          type: Patient
         name:
         - family: FEARON
           given:
           - Daren
-          id: vitjN
           period:
             start: '2018-09-21'
           prefix:

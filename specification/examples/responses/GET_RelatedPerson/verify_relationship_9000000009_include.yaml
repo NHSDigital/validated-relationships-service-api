@@ -26,7 +26,6 @@ VerifyRelationship9000000009Include:
           - family: MOGAJI
             given:
             - GADIL
-            id: BLnbA
             period:
               start: '2021-07-08'
             prefix:
@@ -46,12 +45,10 @@ VerifyRelationship9000000009Include:
             identifier:
               system: https://fhir.nhs.uk/Id/nhs-number
               value: '9000000017'
-            type: Patient
           name:
           - family: MOGAJI
             given:
             - GADIL
-            id: BLnbA
             period:
               start: '2021-07-08'
             prefix:
