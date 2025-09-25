@@ -189,8 +189,8 @@ paths:
 
         | Scenario               | Request                                                                                     | Response                                                    |
         | ---------------------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-        | Successful request     | Valid request with performer identifier value of 9000000009 or 9000000017                   | HTTP Status 200 Success response                            |
-        | Duplicate relationship | Request for relationship that already exists, with performer identifier value of 9000000049 | HTTP Status 409 and DUPLICATE_RELATIONSHIP error response   |
+        | Successful request     | Valid request with performer identifier value of `9000000009` or `9000000017`                  | HTTP Status 200 Success response                            |
+        | Duplicate relationship | Request for relationship that already exists, with performer identifier value of `9000000049` | HTTP Status 409 and DUPLICATE_RELATIONSHIP error response   |
 
 
         ### Sandbox constraints
