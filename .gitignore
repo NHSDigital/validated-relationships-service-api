@@ -26,3 +26,5 @@ sandbox/output.json
 sandbox/pytest_html_report.html
 sandbox/archive/
 sandbox/.hypothesis/
+
+.tool-versions
