@@ -16,4 +16,4 @@ jobs:
             - name: Install Newman
               run: npm install -g newman
             - name: Run Postman Collection
-              run: newman run ./postman/Validate\ Relationship\ Service\ Sandbox.postman_collection.json
+              run: newman run "./postman/Validated Relationship Service Sandbox.postman_collection.json"
