@@ -25,7 +25,6 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
             - system: 'https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier'
               value: ABC1234567
           name:
-            - id: '123456'
               use: usual
               period:
                 start: '2020-01-01'
@@ -53,7 +52,6 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
             - system: 'https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier'
               value: ABC0000003
           patient:
-            type: Patient
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
               value: '9000000100'
@@ -123,7 +121,6 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
             - system: 'https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier'
               value: ABC0000003
           patient:
-            type: Patient
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
               value: '9000000100'
@@ -190,7 +187,6 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
             - system: 'https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier'
               value: ABC0000003
           patient:
-            type: Patient
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
               value: '9000000100'

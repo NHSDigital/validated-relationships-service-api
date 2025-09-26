@@ -22,7 +22,6 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
             - system: 'https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier'
               value: ABC0000003
           patient:
-            type: Patient
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
               value: '9000000009'
@@ -94,7 +93,6 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
             - system: 'https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier'
               value: ABC00000234
           patient:
-            type: Patient
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
               value: '9000000005'
@@ -164,7 +162,6 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
             - system: 'https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier'
               value: ABC0000001
           patient:
-            type: Patient
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
               value: '9000000006'

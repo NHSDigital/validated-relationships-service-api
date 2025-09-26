@@ -21,7 +21,6 @@ ConsentSingleAdultChildRelationshipIncludePerformerBundle:
             - system: 'https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier'
               value: ABC0000001
           patient:
-            type: Patient
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
               value: '9000000009'
