@@ -40,10 +40,9 @@ ConsentSingleAdultChildRelationshipIncludePatientBundle:
                 - PhD
           birthDate: '2022-10-22'
           generalPractitioner:
-            - type: Organization
-              identifier:
-                value: ODS12345
-                system: 'https://fhir.nhs.uk/Id/ods-organization-code'
+              - identifier:
+                  value: ODS12345
+                  system: 'https://fhir.nhs.uk/Id/ods-organization-code'
         search:
           mode: include
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/BBCC67E9

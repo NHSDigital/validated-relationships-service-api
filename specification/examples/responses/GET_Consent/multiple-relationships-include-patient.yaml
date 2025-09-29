@@ -40,10 +40,9 @@ ConsentMultipleRelationshipsIncludePatientBundle:
                 - PhD
           birthDate: '2022-10-22'
           generalPractitioner:
-            - type: Organization
-              identifier:
-                value: ODS12345
-                system: 'https://fhir.nhs.uk/Id/ods-organization-code'
+              - identifier:
+                  value: ODS12345
+                  system: 'https://fhir.nhs.uk/Id/ods-organization-code'
         search:
           mode: include
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/BBCC67E9
@@ -81,7 +80,6 @@ ConsentMultipleRelationshipsIncludePatientBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: '9000000022'
-                type: RelatedPerson
               role:
                 coding:
                 - code: PRN
@@ -118,10 +116,9 @@ ConsentMultipleRelationshipsIncludePatientBundle:
                 - Mrs
           birthDate: '1995-10-22'
           generalPractitioner:
-            - type: Organization
-              identifier:
-                value: ODS12345
-                system: 'https://fhir.nhs.uk/Id/ods-organization-code'
+              - identifier:
+                  value: ODS12345
+                  system: 'https://fhir.nhs.uk/Id/ods-organization-code'
         search:
           mode: include
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/WWCC67T1
@@ -159,7 +156,6 @@ ConsentMultipleRelationshipsIncludePatientBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: '9000000022'
-                type: RelatedPerson
               role:
                 coding:
                 - code: PRN
@@ -196,10 +192,9 @@ ConsentMultipleRelationshipsIncludePatientBundle:
                 - Mr
           birthDate: 1991-1-13
           generalPractitioner:
-            - type: Organization
-              identifier:
-                value: ODS12345
-                system: 'https://fhir.nhs.uk/Id/ods-organization-code'
+              - identifier:
+                  value: ODS12345
+                  system: 'https://fhir.nhs.uk/Id/ods-organization-code'
         search:
           mode: include
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/AATD11A1
@@ -237,7 +232,6 @@ ConsentMultipleRelationshipsIncludePatientBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: '9000000022'
-                type: RelatedPerson
               role:
                 coding:
                 - code: PRN

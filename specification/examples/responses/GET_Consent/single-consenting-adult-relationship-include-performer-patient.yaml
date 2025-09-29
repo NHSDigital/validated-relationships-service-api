@@ -59,8 +59,7 @@ ConsentSingleConsentingAdultRelationshipIncludePerformerPatientBundle:
                 - Mrs
           birthDate: '1995-10-22'
           generalPractitioner:
-            - type: Organization
-              identifier:
+            - identifier:
                 value: ODS12345
                 system: 'https://fhir.nhs.uk/Id/ods-organization-code'
         search:
@@ -100,7 +99,6 @@ ConsentSingleConsentingAdultRelationshipIncludePerformerPatientBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: '9000000010'
-                type: RelatedPerson
               role:
                 coding:
                 - code: PRN

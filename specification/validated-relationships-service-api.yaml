@@ -2422,9 +2422,6 @@ components:
       required:
         - identifier
       properties:
-        type:
-          type: string
-          description: The resource type that the reference refers to
         identifier:
           $ref: "#/components/schemas/Identifier"
 

@@ -29,6 +29,7 @@ ConsentSingleAdultChildRelationshipIncludePerformerBundle:
                 - system: 'http://terminology.hl7.org/CodeSystem/v3-RoleCode'
                   code: PRN
                   display: parent
+            - coding:
                 - system: 'http://terminology.hl7.org/CodeSystem/v3-RoleCode'
                   code: MTH
                   display: mother

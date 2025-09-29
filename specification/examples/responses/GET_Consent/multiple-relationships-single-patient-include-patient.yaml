@@ -36,10 +36,9 @@ ConsentMultipleRelationshipsSinglePatientIncludePatientBundle:
                 - Miss
           birthDate: '1963-11-02'
           generalPractitioner:
-            - type: Organization
-              identifier:
-                value: ODS12345
-                system: 'https://fhir.nhs.uk/Id/ods-organization-code'
+              - identifier:
+                  value: ODS12345
+                  system: 'https://fhir.nhs.uk/Id/ods-organization-code'
         search:
           mode: include
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/BBCC67E9
@@ -77,7 +76,6 @@ ConsentMultipleRelationshipsSinglePatientIncludePatientBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: '9000000020'
-                type: RelatedPerson
               role:
                 coding:
                 - code: CHILD
@@ -123,7 +121,6 @@ ConsentMultipleRelationshipsSinglePatientIncludePatientBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: '9000000021'
-                type: RelatedPerson
               role:
                 coding:
                 - code: GUARD
@@ -169,7 +166,6 @@ ConsentMultipleRelationshipsSinglePatientIncludePatientBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: '9000000022'
-                type: RelatedPerson
               role:
                 coding:
                 - code: PRN
