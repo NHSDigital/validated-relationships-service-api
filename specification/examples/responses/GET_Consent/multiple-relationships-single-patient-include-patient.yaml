@@ -25,7 +25,7 @@ ConsentMultipleRelationshipsSinglePatientIncludePatientBundle:
             - system: 'https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier'
               value: ABC1234567
           name:
-              use: usual
+            - use: usual
               period:
                 start: '2020-01-01'
                 end: '2021-12-31'
