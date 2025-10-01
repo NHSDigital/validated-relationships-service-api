@@ -36,9 +36,9 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
                 - Miss
           birthDate: '1963-11-02'
           generalPractitioner:
-              - identifier:
-                  value: ODS12345
-                  system: 'https://fhir.nhs.uk/Id/ods-organization-code'
+            - identifier:
+                value: ODS12345
+                system: 'https://fhir.nhs.uk/Id/ods-organization-code'
         search:
           mode: include
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742
