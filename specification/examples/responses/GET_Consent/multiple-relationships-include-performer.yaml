@@ -27,13 +27,13 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
               value: '9000000009'
           relationship:
             - coding:
-                - system: 'http://terminology.hl7.org/CodeSystem/v3-RoleCode'
-                  code: PRN
-                  display: parent
+              - system: 'http://terminology.hl7.org/CodeSystem/v3-RoleCode'
+                code: PRN
+                display: parent
             - coding:
-                - system: 'http://terminology.hl7.org/CodeSystem/v3-RoleCode'
-                  code: MTH
-                  display: mother
+              - system: 'http://terminology.hl7.org/CodeSystem/v3-RoleCode'
+                code: MTH
+                display: mother
         search:
           mode: include
       - fullUrl: >-
@@ -61,8 +61,8 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
           dateTime: '2024-07-21T17:32:28Z'
           performer:
             - identifier:
-                system: 'https://fhir.nhs.uk/Id/nhs-number'
-                value: '9000000022'
+              system: 'https://fhir.nhs.uk/Id/nhs-number'
+              value: '9000000022'
           policy:
             - authority: https://www.england.nhs.uk
               uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
@@ -74,9 +74,9 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
                   value: '9000000022'
               role:
                 coding:
-                - code: PRN
-                  display: Parent
-                  system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
+                  - code: PRN
+                    display: Parent
+                    system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
             period:
               end: '2026-02-11'
               start: '2025-02-11'
