@@ -15,6 +15,7 @@ For more information about building sandbox APIs see the [API Producer Zone conf
         - [Starting the API](#starting-the-api)
     - [Development](#development)
         - [Starting the API with Hot Reloading](#starting-the-api-with-hot-reloading)
+        - [Updating examples](#updating-examples)
         - [Testing](#testing)
             - [Unit Tests](#unit-tests)
         - [Useful commands](#useful-commands)
@@ -27,7 +28,7 @@ The API is able to be run locally on the host system for development and testing
 
 The Sandbox is deployed using Docker to AWS ECS; the Dockerfile is located in the root of the repository. This allows Docker to copy in responses from `specification/examples/responses`. The docker container is deployed to AWS ECS using Azure DevOps pipelines.
 
-The [Postman Collection](./postman/Validate_Relationship_Service_Sandbox.postman_collection.json) is used to test the Sandbox API. The tests embedded in the collection are run in GitHub Actions on each Pull Request.
+The [Postman Collection](./postman/Validated Relationship Service Sandbox.postman_collection.json) is used to test the Sandbox API. The tests embedded in the collection are run in GitHub Actions on each Pull Request.
 
 ## Prerequisites
 

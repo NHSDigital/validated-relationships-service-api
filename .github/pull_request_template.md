@@ -47,7 +47,7 @@ https://nhsd-jira.digital.nhs.uk/browse/NPA-XXXX
 <!-- Complete before submitting the PR -->
 
 - [ ] PR title follows the format: `NPA-XXXX: <short-description>`
-- [ ] Branch name follows the convention: `<type>/NPA-XXXX-<short-description>`
+- [ ] Branch name follows the convention: `<type>/NPA-XXXX/<short-description>`
 - [ ] Commit messages follow the template: `NPA-XXXX: <short-description>`
 - [ ] All acceptance criteria from the Jira ticket are addressed
 - [ ] Automated tests (unit/integration/API/infrastructure etc. tests) are added or updated
