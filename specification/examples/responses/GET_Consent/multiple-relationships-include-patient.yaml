@@ -1,9 +1,10 @@
 ConsentMultipleRelationshipsIncludePatientBundle:
   summary: Multiple relationships with patient details
-  description: A Bundle containing multiple proxy relationships with varying legal basis' including patient details
+  description:
+    A Bundle containing multiple proxy relationships with varying legal basis' including patient details
   value:
     resourceType: Bundle
-    timestamp: "2020-08-26T14:00:00+00:00"
+    timestamp: '2020-08-26T14:00:00+00:00'
     total: 3
     type: searchset
     link:
@@ -16,20 +17,20 @@ ConsentMultipleRelationshipsIncludePatientBundle:
           id: A3CC67E2
           meta:
             security:
-              - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSIdentityProofingLevel"
+              - system: "https://fhir.nhs.uk/CodeSystem/NHSIdentityProofingLevel"
                 code: "P9"
                 display: "High level verification (P9)"
           identifier:
-            - system: "https://fhir.nhs.uk/Id/nhs-number"
-              value: "9000000009"
-            - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
+            - system: 'https://fhir.nhs.uk/Id/nhs-number'
+              value: '9000000009'
+            - system: 'https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier'
               value: ABC1234567
           name:
-            - id: "123456"
+            - id: '123456'
               use: usual
               period:
-                start: "2020-01-01"
-                end: "2021-12-31"
+                start: '2020-01-01'
+                end: '2021-12-31'
               given:
                 - Jane Marie Anne
               family: Smith
@@ -38,12 +39,12 @@ ConsentMultipleRelationshipsIncludePatientBundle:
               suffix:
                 - MBE
                 - PhD
-          birthDate: "2022-10-22"
+          birthDate: '2022-10-22'
           generalPractitioner:
             - type: Organization
               identifier:
                 value: ODS12345
-                system: "https://fhir.nhs.uk/Id/ods-organization-code"
+                system: 'https://fhir.nhs.uk/Id/ods-organization-code'
         search:
           mode: include
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/BBCC67E9
@@ -53,43 +54,43 @@ ConsentMultipleRelationshipsIncludePatientBundle:
           status: active
           scope:
             coding:
-              - system: "http://terminology.hl7.org/CodeSystem/consentscope"
+              - system: 'http://terminology.hl7.org/CodeSystem/consentscope'
                 code: patient-privacy
                 display: Privacy Consent
             text: Patient Privacy Consent
           category:
             - coding:
-                - system: "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+                - system: 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
                   code: INFA
                   display: Information Access
               text: Information Access Consent
           patient:
             identifier:
-              system: "https://fhir.nhs.uk/Id/nhs-number"
-              value: "9000000009"
-          dateTime: "2024-07-21T17:32:28Z"
+              system: 'https://fhir.nhs.uk/Id/nhs-number'
+              value: '9000000009'
+          dateTime: '2024-07-21T17:32:28Z'
           performer:
             - identifier:
-                system: "https://fhir.nhs.uk/Id/nhs-number"
-                value: "9000000022"
+                system: 'https://fhir.nhs.uk/Id/nhs-number'
+                value: '9000000022'
           policy:
             - authority: https://www.england.nhs.uk
               uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
           provision:
             actor:
-              - reference:
-                  identifier:
-                    system: https://fhir.nhs.uk/Id/nhs-number
-                    value: "9000000022"
-                  type: RelatedPerson
-                role:
-                  coding:
-                    - code: PRN
-                      display: Parent
-                      system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
+            - reference:
+                identifier:
+                  system: https://fhir.nhs.uk/Id/nhs-number
+                  value: '9000000022'
+                type: RelatedPerson
+              role:
+                coding:
+                - code: PRN
+                  display: Parent
+                  system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
             period:
-              end: "2026-02-11"
-              start: "2025-02-11"
+              end: '2026-02-11'
+              start: '2025-02-11'
         search:
           mode: match
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/DFCC67F5
@@ -98,31 +99,31 @@ ConsentMultipleRelationshipsIncludePatientBundle:
           id: DFCC67F5
           meta:
             security:
-              - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSIdentityProofingLevel"
+              - system: "https://fhir.nhs.uk/CodeSystem/NHSIdentityProofingLevel"
                 code: "P9"
                 display: "High level verification (P9)"
           identifier:
-            - system: "https://fhir.nhs.uk/Id/nhs-number"
-              value: "9000000005"
-            - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
+            - system: 'https://fhir.nhs.uk/Id/nhs-number'
+              value: '9000000005'
+            - system: 'https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier'
               value: ABC9999999
           name:
-            - id: "123456"
+            - id: '123456'
               use: usual
               period:
-                start: "2020-01-01"
-                end: "2021-12-31"
+                start: '2020-01-01'
+                end: '2021-12-31'
               given:
                 - Sally
               family: Evans
               prefix:
                 - Mrs
-          birthDate: "1995-10-22"
+          birthDate: '1995-10-22'
           generalPractitioner:
             - type: Organization
               identifier:
                 value: ODS12345
-                system: "https://fhir.nhs.uk/Id/ods-organization-code"
+                system: 'https://fhir.nhs.uk/Id/ods-organization-code'
         search:
           mode: include
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/WWCC67T1
@@ -132,43 +133,43 @@ ConsentMultipleRelationshipsIncludePatientBundle:
           status: active
           scope:
             coding:
-              - system: "http://terminology.hl7.org/CodeSystem/consentscope"
+              - system: 'http://terminology.hl7.org/CodeSystem/consentscope'
                 code: patient-privacy
                 display: Privacy Consent
             text: Patient Privacy Consent
           category:
             - coding:
-                - system: "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+                - system: 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
                   code: INFA
                   display: Information Access
               text: Information Access Consent
           patient:
             identifier:
-              system: "https://fhir.nhs.uk/Id/nhs-number"
-              value: "9000000005"
-          dateTime: "2024-07-21T17:32:28Z"
+              system: 'https://fhir.nhs.uk/Id/nhs-number'
+              value: '9000000005'
+          dateTime: '2024-07-21T17:32:28Z'
           performer:
             - identifier:
-                system: "https://fhir.nhs.uk/Id/nhs-number"
-                value: "9000000022"
+                system: 'https://fhir.nhs.uk/Id/nhs-number'
+                value: '9000000022'
           policy:
             - authority: https://www.england.nhs.uk
               uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
           provision:
             actor:
-              - reference:
-                  identifier:
-                    system: https://fhir.nhs.uk/Id/nhs-number
-                    value: "9000000022"
-                  type: RelatedPerson
-                role:
-                  coding:
-                    - code: PRN
-                      display: Parent
-                      system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
+            - reference:
+                identifier:
+                  system: https://fhir.nhs.uk/Id/nhs-number
+                  value: '9000000022'
+                type: RelatedPerson
+              role:
+                coding:
+                - code: PRN
+                  display: Parent
+                  system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
             period:
-              end: "2026-02-11"
-              start: "2025-02-11"
+              end: '2026-02-11'
+              start: '2025-02-11'
         search:
           mode: match
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/ZPTT32T3
@@ -177,20 +178,20 @@ ConsentMultipleRelationshipsIncludePatientBundle:
           id: ZPTT32T3
           meta:
             security:
-              - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSIdentityProofingLevel"
+              - system: "https://fhir.nhs.uk/CodeSystem/NHSIdentityProofingLevel"
                 code: "P9"
                 display: "High level verification (P9)"
           identifier:
-            - system: "https://fhir.nhs.uk/Id/nhs-number"
-              value: "9000000006"
-            - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
+            - system: 'https://fhir.nhs.uk/Id/nhs-number'
+              value: '9000000006'
+            - system: 'https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier'
               value: ABC9999999
           name:
-            - id: "123456"
+            - id: '123456'
               use: usual
               period:
-                start: "2020-01-01"
-                end: "2021-12-31"
+                start: '2020-01-01'
+                end: '2021-12-31'
               given:
                 - Michael
               family: Percy
@@ -201,7 +202,7 @@ ConsentMultipleRelationshipsIncludePatientBundle:
             - type: Organization
               identifier:
                 value: ODS12345
-                system: "https://fhir.nhs.uk/Id/ods-organization-code"
+                system: 'https://fhir.nhs.uk/Id/ods-organization-code'
         search:
           mode: include
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/AATD11A1
@@ -211,42 +212,43 @@ ConsentMultipleRelationshipsIncludePatientBundle:
           status: inactive
           scope:
             coding:
-              - system: "http://terminology.hl7.org/CodeSystem/consentscope"
+              - system: 'http://terminology.hl7.org/CodeSystem/consentscope'
                 code: patient-privacy
                 display: Privacy Consent
             text: Patient Privacy Consent
           category:
             - coding:
-                - system: "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+                - system: 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
                   code: INFA
                   display: Information Access
               text: Information Access Consent
           patient:
             identifier:
-              system: "https://fhir.nhs.uk/Id/nhs-number"
-              value: "9000000006"
-          dateTime: "2024-07-21T17:32:28Z"
+              system: 'https://fhir.nhs.uk/Id/nhs-number'
+              value: '9000000006'
+          dateTime: '2024-07-21T17:32:28Z'
           performer:
             - identifier:
-                system: "https://fhir.nhs.uk/Id/nhs-number"
-                value: "9000000022"
+                system: 'https://fhir.nhs.uk/Id/nhs-number'
+                value: '9000000022'
           policy:
             - authority: https://www.england.nhs.uk
               uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
           provision:
             actor:
-              - reference:
-                  identifier:
-                    system: https://fhir.nhs.uk/Id/nhs-number
-                    value: "9000000022"
-                  type: RelatedPerson
-                role:
-                  coding:
-                    - code: PRN
-                      display: Parent
-                      system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
+            - reference:
+                identifier:
+                  system: https://fhir.nhs.uk/Id/nhs-number
+                  value: '9000000022'
+                type: RelatedPerson
+              role:
+                coding:
+                - code: PRN
+                  display: Parent
+                  system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
             period:
-              end: "2026-02-11"
-              start: "2025-02-11"
+              end: '2026-02-11'
+              start: '2025-02-11'
         search:
           mode: match
+
