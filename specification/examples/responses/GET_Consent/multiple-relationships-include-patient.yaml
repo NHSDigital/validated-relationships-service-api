@@ -192,9 +192,9 @@ ConsentMultipleRelationshipsIncludePatientBundle:
                 - Mr
           birthDate: 1991-1-13
           generalPractitioner:
-              - identifier:
-                  value: ODS12345
-                  system: 'https://fhir.nhs.uk/Id/ods-organization-code'
+            - identifier:
+                value: ODS12345
+                system: 'https://fhir.nhs.uk/Id/ods-organization-code'
         search:
           mode: include
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/AATD11A1
