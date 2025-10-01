@@ -26,8 +26,7 @@ ConsentMultipleRelationshipsIncludePatientBundle:
             - system: 'https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier'
               value: ABC1234567
           name:
-            - id: '123456'
-              use: usual
+            - use: usual
               period:
                 start: '2020-01-01'
                 end: '2021-12-31'
@@ -41,8 +40,7 @@ ConsentMultipleRelationshipsIncludePatientBundle:
                 - PhD
           birthDate: '2022-10-22'
           generalPractitioner:
-            - type: Organization
-              identifier:
+            - identifier:
                 value: ODS12345
                 system: 'https://fhir.nhs.uk/Id/ods-organization-code'
         search:
@@ -82,7 +80,6 @@ ConsentMultipleRelationshipsIncludePatientBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: '9000000022'
-                type: RelatedPerson
               role:
                 coding:
                 - code: PRN
@@ -108,8 +105,7 @@ ConsentMultipleRelationshipsIncludePatientBundle:
             - system: 'https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier'
               value: ABC9999999
           name:
-            - id: '123456'
-              use: usual
+            - use: usual
               period:
                 start: '2020-01-01'
                 end: '2021-12-31'
@@ -120,8 +116,7 @@ ConsentMultipleRelationshipsIncludePatientBundle:
                 - Mrs
           birthDate: '1995-10-22'
           generalPractitioner:
-            - type: Organization
-              identifier:
+            - identifier:
                 value: ODS12345
                 system: 'https://fhir.nhs.uk/Id/ods-organization-code'
         search:
@@ -161,7 +156,6 @@ ConsentMultipleRelationshipsIncludePatientBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: '9000000022'
-                type: RelatedPerson
               role:
                 coding:
                 - code: PRN
@@ -187,8 +181,7 @@ ConsentMultipleRelationshipsIncludePatientBundle:
             - system: 'https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier'
               value: ABC9999999
           name:
-            - id: '123456'
-              use: usual
+            - use: usual
               period:
                 start: '2020-01-01'
                 end: '2021-12-31'
@@ -199,8 +192,7 @@ ConsentMultipleRelationshipsIncludePatientBundle:
                 - Mr
           birthDate: 1991-1-13
           generalPractitioner:
-            - type: Organization
-              identifier:
+            - identifier:
                 value: ODS12345
                 system: 'https://fhir.nhs.uk/Id/ods-organization-code'
         search:
@@ -240,7 +232,6 @@ ConsentMultipleRelationshipsIncludePatientBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: '9000000022'
-                type: RelatedPerson
               role:
                 coding:
                 - code: PRN

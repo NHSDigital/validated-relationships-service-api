@@ -21,18 +21,18 @@ ConsentSingleAdultChildRelationshipIncludePerformerBundle:
             - system: 'https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier'
               value: ABC0000001
           patient:
-            type: Patient
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
               value: '9000000009'
           relationship:
             - coding:
-                - system: 'http://terminology.hl7.org/CodeSystem/v3-RoleCode'
-                  code: PRN
-                  display: parent
-                - system: 'http://terminology.hl7.org/CodeSystem/v3-RoleCode'
-                  code: MTH
-                  display: mother
+              - system: 'http://terminology.hl7.org/CodeSystem/v3-RoleCode'
+                code: PRN
+                display: parent
+            - coding:
+              - system: 'http://terminology.hl7.org/CodeSystem/v3-RoleCode'
+                code: MTH
+                display: mother
         search:
           mode: include
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/BBCC67E9

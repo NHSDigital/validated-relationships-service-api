@@ -45,7 +45,6 @@ ConsentMultipleRelationshipsStatusInactiveBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: '9000000017'
-                type: RelatedPerson
               role:
                 coding:
                 - code: PRN
@@ -91,7 +90,6 @@ ConsentMultipleRelationshipsStatusInactiveBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: '9000000017'
-                type: RelatedPerson
               role:
                 coding:
                 - code: PRN
