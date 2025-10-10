@@ -333,8 +333,8 @@ paths:
         - $ref: "#/components/parameters/BearerAuthorization"
         - $ref: "#/components/parameters/RequestID"
         - $ref: "#/components/parameters/CorrelationID"
-        - name: ID
-          in: query
+        - name: id
+          in: path
           description: The unique access request ID of the QuestionnaireResponse to retrieve
           required: true
           schema:
