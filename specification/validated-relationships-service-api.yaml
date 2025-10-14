@@ -325,7 +325,7 @@ paths:
         | -------------------------------- | ------------------------------------------------ | ------------------------------------------------------------- |
         | Valid access request ID          | ID value: `156e1560-e532-4e2a-85ad-5aeff03dc43e` | HTTP Status 200 with QuestionnaireResponse                    |
         | Invalid access request ID        | ID value:  `INVALID`                             | HTTP Status 400 with INVALID_IDENTIFIER_VALUE message         |
-        | Missing access request ID        | No ID path parameter                             | HTTP Status 400 with BAD_REQUEST message                      |
+        | Missing access request ID        | No ID path parameter                             | HTTP Status 405 with METHOD_NOT_ALLOWED message               |
         | Non-existent access request ID   | ID value: `60d09b82-f4bb-41f9-b41e-767999b4ac9b` | HTTP Status 404 with QUESTIONNAIRE_RESPONSE_NOT_FOUND message |
 
       operationId: get-questionnaire-response
@@ -333,13 +333,7 @@ paths:
         - $ref: "#/components/parameters/BearerAuthorization"
         - $ref: "#/components/parameters/RequestID"
         - $ref: "#/components/parameters/CorrelationID"
-        - name: id
-          in: path
-          description: The unique access request ID of the QuestionnaireResponse to retrieve
-          required: true
-          schema:
-            type: string
-            example: "156e1560-e532-4e2a-85ad-5aeff03dc43e"
+        - $ref: "#/components/parameters/AccessRequestID"
       responses:
         "200":
           description: QuestionnaireResponse successfully retrieved.
@@ -376,7 +370,7 @@ paths:
                 invalidAccessRequestID:
                   $ref: "./examples/responses/GET_QuestionnaireResponse/errors/invalid_access_request_id.yaml#/InvalidAccessRequestID"
                 missingAccessRequestID:
-                  $ref: "./examples/responses/GET_QuestionnaireResponse/errors/missing_access_request_id.yaml#/MissingAccessRequestID"
+                  $ref: "./examples/responses/errors/method_not_allowed.yaml#/MethodNotAllowedError"
                 questionnaireResponseNotFound:
                   $ref: "./examples/responses/GET_QuestionnaireResponse/errors/questionnaire_response_not_found.yaml#/QuestionnaireResponseNotFound"
         "5XX":
@@ -2790,3 +2784,14 @@ components:
         format: uuid
         pattern: "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
         example: 74eed847-ca25-4e76-8cf2-f2c2d7842a7a
+
+    AccessRequestID:
+      in: path
+      name: id
+      required: true
+      description: The unique access request ID of the QuestionnaireResponse to retrieve
+      schema:
+        type: string
+        format: uuid
+        pattern: "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+        example: "156e1560-e532-4e2a-85ad-5aeff03dc43e"
