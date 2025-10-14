@@ -70,13 +70,9 @@ def test_post_questionnaire_response(
         mock_generate_response_from_example.assert_called_once_with(
             response_file_name,
             status_code,
-            headers={
-                "location": f"{SANDBOX_API_URL}{QUESTIONNAIRE_RESPONSE_API_ENDPOINT}?ID={id}"
-            },
+            headers={"location": f"{SANDBOX_API_URL}{QUESTIONNAIRE_RESPONSE_API_ENDPOINT}?ID={id}"},
         )
     else:
-        mock_generate_response_from_example.assert_called_once_with(
-            response_file_name, status_code
-        )
+        mock_generate_response_from_example.assert_called_once_with(response_file_name, status_code)
     assert response.status_code == status_code
     assert response.json == loads(mocked_response.get_data(as_text=True))

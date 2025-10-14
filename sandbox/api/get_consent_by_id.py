@@ -31,9 +31,7 @@ def get_consent_by_id_response(identifier: str) -> Union[dict, tuple]:
     try:
         params = request.args.to_dict()
         if "_include" not in params and len(params) > 0:
-            return generate_response_from_example(
-                BAD_REQUEST_INCLUDE_PARAM_INVALID, 422
-            )
+            return generate_response_from_example(BAD_REQUEST_INCLUDE_PARAM_INVALID, 422)
         else:
             _include = request.args.getlist("_include")
 
@@ -56,9 +54,7 @@ def get_consent_by_id_response(identifier: str) -> Union[dict, tuple]:
         elif identifier == "a0922245-1072-40c3-8f4e-a7490c10d365":
             return generate_response_from_example(INVALIDATED_RESOURCE, 404)
         else:
-            return generate_response_from_example(
-                GET_CONSENT_BY_ID__INVALID_ID_ERROR, 400
-            )
+            return generate_response_from_example(GET_CONSENT_BY_ID__INVALID_ID_ERROR, 400)
 
     except Exception:
         logger.exception("An error occurred while processing the request")

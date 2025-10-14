@@ -24,19 +24,13 @@ def get_questionnaire_response_response(access_request_id: str) -> Union[dict, t
     """
     try:
         if access_request_id == "156e1560-e532-4e2a-85ad-5aeff03dc43e":
-            return generate_response_from_example(
-                GET_QUESTIONNAIRE_RESPONSE__SUCCESS, 200
-            )
+            return generate_response_from_example(GET_QUESTIONNAIRE_RESPONSE__SUCCESS, 200)
         elif access_request_id == "INVALID":
-            return generate_response_from_example(
-                GET_QUESTIONNAIRE_RESPONSE__INVALID, 400
-            )
+            return generate_response_from_example(GET_QUESTIONNAIRE_RESPONSE__INVALID, 400)
         elif access_request_id == "" or access_request_id is None:
             return generate_response_from_example(METHOD_NOT_ALLOWED, 405)
         elif access_request_id == "60d09b82-f4bb-41f9-b41e-767999b4ac9b":
-            return generate_response_from_example(
-                GET_QUESTIONNAIRE_RESPONSE__NOT_FOUND, 404
-            )
+            return generate_response_from_example(GET_QUESTIONNAIRE_RESPONSE__NOT_FOUND, 404)
         else:
             raise ValueError("Invalid access request ID")
     except Exception:
