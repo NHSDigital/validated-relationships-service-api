@@ -11,7 +11,9 @@ from .constants import (
 )
 from .utils import generate_response_from_example
 
-CONSENT_APP_BASE_PATH = "https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent"
+CONSENT_APP_BASE_PATH = (
+    "https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent"
+)
 basicConfig(level=INFO, format="%(asctime)s - %(message)s")
 logger = getLogger(__name__)
 
@@ -32,15 +34,23 @@ def post_consent_response() -> Union[dict, tuple]:
         # Successful parent-child proxy creation
         # Successful adult-adult proxy creation
         if patient_identifier == "9000000009" or patient_identifier == "9000000017":
-            header = {"location": f"{CONSENT_APP_BASE_PATH}/90b9863e-e33c-4895-a333-fd0ea0e23205"}
-            response = generate_response_from_example(POST_CONSENT__SUCCESS, 201, headers=header)
+            header = {
+                "location": f"{CONSENT_APP_BASE_PATH}/90b9863e-e33c-4895-a333-fd0ea0e23205"
+            }
+            response = generate_response_from_example(
+                POST_CONSENT__SUCCESS, 201, headers=header
+            )
 
         # Duplicate relationship
         elif patient_identifier == "9000000049":
-            response = generate_response_from_example(POST_CONSENT__DUPLICATE_RELATIONSHIP_ERROR, 409)
+            response = generate_response_from_example(
+                POST_CONSENT__DUPLICATE_RELATIONSHIP_ERROR, 409
+            )
         # Invalid performer NHS number
         elif patient_identifier == "9000000000":
-            response = generate_response_from_example(POST_CONSENT__PERFORMER_IDENTIFIER_ERROR, 422)
+            response = generate_response_from_example(
+                POST_CONSENT__PERFORMER_IDENTIFIER_ERROR, 422
+            )
         else:
             # Out of scope errors
             raise ValueError("Invalid Request")

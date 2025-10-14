@@ -50,12 +50,14 @@ def test_get_questionnaire_response_id_returns_expected_responses__mocked_utils(
     # Act
     response = client.get(f"{GET_QUESTIONNAIRE_RESPONSE_API_ENDPOINT}{path}")
     # Assert
-    mock_generate_response_from_example.assert_called_once_with(response_file_name, status_code)
+    mock_generate_response_from_example.assert_called_once_with(
+        response_file_name, status_code
+    )
     assert response.status_code == status_code
     assert response.json == loads(mocked_response.get_data(as_text=True))
 
 
-@pytest.mark.parametrize("path", ["/",""])
+@pytest.mark.parametrize("path", ["/", ""])
 @patch("sandbox.api.app.generate_response_from_example")
 def test_get_questionnaire_response_without_path_params_return_405_errors(
     mock_generate_response_from_example: MagicMock,
@@ -71,6 +73,8 @@ def test_get_questionnaire_response_without_path_params_return_405_errors(
     # Act
     response = client.get(f"{GET_QUESTIONNAIRE_RESPONSE_API_ENDPOINT}{path}")
     # Assert
-    mock_generate_response_from_example.assert_called_once_with("./api/examples/errors/method-not-allowed.yaml", 405)
+    mock_generate_response_from_example.assert_called_once_with(
+        "./api/examples/errors/method-not-allowed.yaml", 405
+    )
     assert response.status_code == 405
     assert response.json == loads(mocked_response.get_data(as_text=True))

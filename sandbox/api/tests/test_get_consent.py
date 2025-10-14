@@ -40,7 +40,9 @@ def test_get_consent_returns_expected_responses__mocked_get_consent(
     # Act
     response = client.get(f"{CONSENT_API_ENDPOINT}?{request_args}")
     # Assert
-    mock_generate_response_from_example.assert_called_once_with(response_file_name, status_code)
+    mock_generate_response_from_example.assert_called_once_with(
+        response_file_name, status_code
+    )
     assert response.status_code == status_code
     assert response.json == loads(mocked_response.get_data(as_text=True))
 
@@ -212,7 +214,9 @@ def test_get_consent_returns_expected_responses__mocked_utils(
     # Act
     response = client.get(f"{CONSENT_API_ENDPOINT}?{request_args}")
     # Assert
-    mock_generate_response_from_example.assert_called_once_with(response_file_name, status_code)
+    mock_generate_response_from_example.assert_called_once_with(
+        response_file_name, status_code
+    )
     assert response.status_code == status_code
     assert response.json == loads(mocked_response.get_data(as_text=True))
 
@@ -227,6 +231,10 @@ def test_get_consent__500_internal_server_error(
     """Test Consent endpoint."""
     mock_remove_system.side_effect = Exception("Test exception")
     # Act
-    client.get(f"{CONSENT_API_ENDPOINT}?performer:identifier=9000000015&status=active&_include=Consent:performer")
+    client.get(
+        f"{CONSENT_API_ENDPOINT}?performer:identifier=9000000015&status=active&_include=Consent:performer"
+    )
     # Assert
-    mock_generate_response_from_example.assert_called_once_with("./api/examples/errors/internal-server-error.yaml", 500)
+    mock_generate_response_from_example.assert_called_once_with(
+        "./api/examples/errors/internal-server-error.yaml", 500
+    )

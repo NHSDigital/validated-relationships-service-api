@@ -116,6 +116,8 @@ def test_related_person(
     # Act
     response = client.get(f"{RELATED_PERSON_API_ENDPOINT}?{request_args}")
     # Assert
-    mock_generate_response_from_example.assert_called_once_with(response_file_name, status_code)
+    mock_generate_response_from_example.assert_called_once_with(
+        response_file_name, status_code
+    )
     assert response.status_code == status_code
     assert response.json == loads(mocked_response.get_data(as_text=True))

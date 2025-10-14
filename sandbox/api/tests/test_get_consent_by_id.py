@@ -56,7 +56,9 @@ def test_get_consent_by_id_returns_expected_responses__mocked_get_consent_by_id(
     response = client.get(f"{CONSENT_API_ENDPOINT}/{consent_id}?{include_params}")
     # import pdb; pdb.set_trace()
     # Assert
-    mock_generate_response_from_example.assert_called_once_with(response_file_name, status_code)
+    mock_generate_response_from_example.assert_called_once_with(
+        response_file_name, status_code
+    )
     assert response.status_code == status_code
     assert response.json == loads(mocked_response.get_data(as_text=True))
 
@@ -133,7 +135,9 @@ def test_get_consent_by_id_returns_expected_responses__mocked_utils(
     response = client.get(f"{CONSENT_API_ENDPOINT}/{consent_id}?{include_params}")
     # import pdb; pdb.set_trace()
     # Assert
-    mock_generate_response_from_example.assert_called_once_with(response_file_name, status_code)
+    mock_generate_response_from_example.assert_called_once_with(
+        response_file_name, status_code
+    )
     assert response.status_code == status_code
     assert response.json == loads(mocked_response.get_data(as_text=True))
 
@@ -150,4 +154,6 @@ def test_get_consent_by_id__500_internal_server_error(
     # Act
     client.get(f"{CONSENT_API_ENDPOINT}/74eed847-ca25-4e76-8cf2-f2c2d7842a7a")
     # Assert
-    mock_generate_response_from_example.assert_called_once_with("./api/examples/errors/internal-server-error.yaml", 500)
+    mock_generate_response_from_example.assert_called_once_with(
+        "./api/examples/errors/internal-server-error.yaml", 500
+    )
