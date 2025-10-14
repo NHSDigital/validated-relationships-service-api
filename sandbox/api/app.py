@@ -10,6 +10,8 @@ from .get_related_person import get_related_person_response
 from .patch_consent import patch_consent_response
 from .post_consent import post_consent_response
 from .post_questionnaire_response import post_questionnaire_response_response
+from .utils import generate_response_from_example
+from .constants import METHOD_NOT_ALLOWED
 
 app = Flask(__name__)
 basicConfig(level=INFO, format="%(asctime)s - %(message)s")
@@ -40,13 +42,24 @@ def get_related_persons() -> Union[dict, tuple]:
 
 
 @app.route(f"/{COMMON_PATH}/QuestionnaireResponse", methods=["GET"])
+@app.route(f"/{COMMON_PATH}/QuestionnaireResponse/", methods=["GET"])
 def get_questionnaire_response() -> Union[dict, tuple]:
     """Sandbox API for GET /QuestionnaireResponse
 
     Returns:
         Union[dict, tuple]: Response for GET /QuestionnaireResponse
     """
-    return get_questionnaire_response_response()
+    return generate_response_from_example(METHOD_NOT_ALLOWED, 405)
+
+
+@app.route(f"/{COMMON_PATH}/QuestionnaireResponse/<identifier>", methods=["GET"])
+def get_questionnaire_response_id(identifier: str) -> Union[dict, tuple]:
+    """Sandbox API for GET /QuestionnaireResponse
+
+    Returns:
+        Union[dict, tuple]: Response for GET /QuestionnaireResponse
+    """
+    return get_questionnaire_response_response(identifier)
 
 
 @app.route(f"/{COMMON_PATH}/QuestionnaireResponse", methods=["POST"])

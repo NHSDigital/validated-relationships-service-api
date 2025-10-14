@@ -14,6 +14,7 @@ BAD_REQUEST_INCLUDE_PARAM_INVALID = "./api/examples/errors/invalid-include-param
 INVALIDATED_RESOURCE = "./api/examples/errors/invalidated-resource.yaml"
 MISSING_IDENTIFIER = "./api/examples/errors/missing-identifier.yaml"
 INVALID_IDENTIFIER = "./api/examples/errors/invalid-identifier.yaml"
+METHOD_NOT_ALLOWED = "./api/examples/errors/method-not-allowed.yaml"
 
 # GET Consent examples
 GET_CONSENT__DIRECTORY = "./api/examples/GET_Consent/"

@@ -370,7 +370,7 @@ paths:
                 invalidAccessRequestID:
                   $ref: "./examples/responses/GET_QuestionnaireResponse/errors/invalid_access_request_id.yaml#/InvalidAccessRequestID"
                 missingAccessRequestID:
-                  $ref: "./examples/responses/errors/method_not_allowed.yaml#/MethodNotAllowedError"
+                  $ref: "./examples/responses/errors/method-not-allowed.yaml#/MethodNotAllowedError"
                 questionnaireResponseNotFound:
                   $ref: "./examples/responses/GET_QuestionnaireResponse/errors/questionnaire_response_not_found.yaml#/QuestionnaireResponseNotFound"
         "5XX":
