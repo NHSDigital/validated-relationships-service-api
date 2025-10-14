@@ -1,8 +1,6 @@
 from logging import INFO, basicConfig, getLogger
 from typing import Union
 
-from flask import request
-
 from .constants import (
     GET_QUESTIONNAIRE_RESPONSE__INVALID,
     GET_QUESTIONNAIRE_RESPONSE__NOT_FOUND,

@@ -3,8 +3,6 @@ import pytest
 from flask import Response
 from json import dumps, loads
 
-from pycparser.plyparser import parameterized
-
 GET_QUESTIONNAIRE_RESPONSE_API_ENDPOINT = "/FHIR/R4/QuestionnaireResponse"
 
 
