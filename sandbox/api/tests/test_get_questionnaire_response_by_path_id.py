@@ -31,7 +31,7 @@ GET_QUESTIONNAIRE_RESPONSE_API_ENDPOINT = "/FHIR/R4/QuestionnaireResponse"
         ),
     ],
 )
-@patch("sandbox.api.get_questionnaire_response.generate_response_from_example")
+@patch("sandbox.api.get_questionnaire_response_by_path_id.generate_response_from_example")
 def test_get_questionnaire_response_id_returns_expected_responses__mocked_utils(
     mock_generate_response_from_example: MagicMock,
     path: str,

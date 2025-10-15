@@ -14,7 +14,7 @@ basicConfig(level=INFO, format="%(asctime)s - %(message)s")
 logger = getLogger(__name__)
 
 
-def get_questionnaire_response_response(access_request_id: str) -> Union[dict, tuple]:
+def get_questionnaire_response_by_path_id_response(access_request_id: str) -> Union[dict, tuple]:
     """Sandbox API for GET /QuestionnaireResponse/{id}
 
     Returns:
