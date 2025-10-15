@@ -1,0 +1,15 @@
+MethodNotAllowedError:
+  summary:  Method is not allowed
+  description: 405 error response bundle as HTTP method is not allowed
+  value:
+    resourceType: "OperationOutcome"
+    issue:
+      - code: "not-supported"
+        details:
+          coding:
+            - system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
+              version: "1"
+              code: "METHOD_NOT_ALLOWED"
+              display: "The method is not allowed."
+        diagnostics: "The method is not allowed for the requested resource."
+        severity: "error"
