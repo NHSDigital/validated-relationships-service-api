@@ -184,21 +184,6 @@ def test_get_consent_returns_expected_responses__mocked_get_consent(
             200,
         ),
         (
-            "performer:identifier=9000000999&_include=Consent:patient",
-            "./api/examples/GET_Consent/single-mother-child-relationship-unknown-legal-basis-include-patient.yaml",
-            200,
-        ),
-        (
-            "performer:identifier=9000000999&_include=Consent:performer",
-            "./api/examples/GET_Consent/single-mother-child-relationship-unknown-legal-basis-include-performer.yaml",
-            200,
-        ),
-        (
-            "performer:identifier=9000000999&_include=Consent:performer&_include=Consent:patient",
-            "./api/examples/GET_Consent/single-mother-child-relationship-unknown-legal-basis-include-performer-patient.yaml",  # noqa: E501
-            200,
-        ),
-        (
             "performer:identifier=9000000017&status=test",  # Invalid status parameter error
             "./api/examples/GET_Consent/errors/invalid-status-parameter.yaml",
             422,

@@ -74,15 +74,6 @@ GET_CONSENT__MULTIPLE_RELATIONSHIPS_SINGLE_PATIENT_INCLUDE_BOTH = (
 GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_UNKNOWN_LEGAL_BASIS = (
     f"{GET_CONSENT__DIRECTORY}single-mother-child-relationship-unknown-legal-basis.yaml"
 )
-GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_UNKNOWN_LEGAL_BASIS_INCLUDE_BOTH = (
-    f"{GET_CONSENT__DIRECTORY}single-mother-child-relationship-unknown-legal-basis-include-performer-patient.yaml"
-)
-GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_UNKNOWN_LEGAL_BASIS_INCLUDE_PATIENT = (
-    f"{GET_CONSENT__DIRECTORY}single-mother-child-relationship-unknown-legal-basis-include-patient.yaml"
-)
-GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_UNKNOWN_LEGAL_BASIS_INCLUDE_PERFORMER = (
-    f"{GET_CONSENT__DIRECTORY}single-mother-child-relationship-unknown-legal-basis-include-performer.yaml"
-)
 
 # GET Consent by ID
 GET_CONSENT_BY_ID__INVALID_ID_ERROR = f"{GET_CONSENT__DIRECTORY}ID/errors/invalid-id.yaml"
