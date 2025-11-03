@@ -3,7 +3,7 @@
 openapi: "3.0.0"
 info:
   title: "Validated Relationships Service API"
-  version: "1.13.0"
+  version: "1.14.0"
   description: |
     ## Overview
     Use this API to access the Validated Relationships Service - the national electronic database of relationships
@@ -141,7 +141,7 @@ info:
     * only covers a limited set of scenarios
     * is open access, so does not allow you to test authorisation
 
-    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/48873809-9c6dfa73-ac4f-4497-bca6-c2c4048f7c10?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D48873809-9c6dfa73-ac4f-4497-bca6-c2c4048f7c10%26entityType%3Dcollection%26workspaceId%3Dbb0b04fe-d822-4011-ab93-015fca3f4c01)
+    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/18067099-5c759d0a-d924-44ab-8668-3587dcaf27e1?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D18067099-5c759d0a-d924-44ab-8668-3587dcaf27e1%26entityType%3Dcollection%26workspaceId%3D1ee72d72-3355-4213-a165-a79aa2ab1de8)
 
     ### Integration testing
 
@@ -300,6 +300,8 @@ paths:
               examples:
                 internalServerError:
                   $ref: "./examples/responses/errors/internal-server-error.yaml#/InternalServerError"
+
+  /QuestionnaireResponse/{id}:
     get:
       summary: Get a proxy access request
       description: |
@@ -308,7 +310,7 @@ paths:
         QuestionnaireResponse document that was previously submitted.
 
         ## Request Requirements
-        A valid access request ID must be provided as a query parameter. This access request ID is returned
+        A valid access request ID must be provided as a path parameter. This access request ID is returned
         when a QuestionnaireResponse is initially submitted via the POST endpoint.
 
         ## Access modes
@@ -319,25 +321,19 @@ paths:
 
         ## Sandbox test scenarios
 
-        | Scenario                         | Request                                  | Response                                                      |
-        | -------------------------------- | -----------------------------------------| ------------------------------------------------------------- |
-        | Valid access request ID          | `ID=156e1560-e532-4e2a-85ad-5aeff03dc43e`| HTTP Status 200 with QuestionnaireResponse                    |
-        | Invalid access request ID        | `ID=INVALID`                             | HTTP Status 400 with INVALID_IDENTIFIER_VALUE message         |
-        | Missing access request ID        | No ID parameter                          | HTTP Status 400 with BAD_REQUEST message                      |
-        | Non-existent access request ID   | `ID=60d09b82-f4bb-41f9-b41e-767999b4ac9b`| HTTP Status 404 with QUESTIONNAIRE_RESPONSE_NOT_FOUND message |
+        | Scenario                         | Request                                          | Response                                                      |
+        | -------------------------------- | ------------------------------------------------ | ------------------------------------------------------------- |
+        | Valid access request ID          | ID value: `156e1560-e532-4e2a-85ad-5aeff03dc43e` | HTTP Status 200 with QuestionnaireResponse                    |
+        | Invalid access request ID        | ID value:  `INVALID`                             | HTTP Status 400 with INVALID_IDENTIFIER_VALUE message         |
+        | Missing access request ID        | No ID path parameter                             | HTTP Status 405 with METHOD_NOT_ALLOWED message               |
+        | Non-existent access request ID   | ID value: `60d09b82-f4bb-41f9-b41e-767999b4ac9b` | HTTP Status 404 with QUESTIONNAIRE_RESPONSE_NOT_FOUND message |
 
       operationId: get-questionnaire-response
       parameters:
         - $ref: "#/components/parameters/BearerAuthorization"
         - $ref: "#/components/parameters/RequestID"
         - $ref: "#/components/parameters/CorrelationID"
-        - name: ID
-          in: query
-          description: The unique access request ID of the QuestionnaireResponse to retrieve
-          required: true
-          schema:
-            type: string
-            example: "156e1560-e532-4e2a-85ad-5aeff03dc43e"
+        - $ref: "#/components/parameters/AccessRequestID"
       responses:
         "200":
           description: QuestionnaireResponse successfully retrieved.
@@ -374,7 +370,7 @@ paths:
                 invalidAccessRequestID:
                   $ref: "./examples/responses/GET_QuestionnaireResponse/errors/invalid_access_request_id.yaml#/InvalidAccessRequestID"
                 missingAccessRequestID:
-                  $ref: "./examples/responses/GET_QuestionnaireResponse/errors/missing_access_request_id.yaml#/MissingAccessRequestID"
+                  $ref: "./examples/responses/errors/method-not-allowed.yaml#/MethodNotAllowedError"
                 questionnaireResponseNotFound:
                   $ref: "./examples/responses/GET_QuestionnaireResponse/errors/questionnaire_response_not_found.yaml#/QuestionnaireResponseNotFound"
         "5XX":
@@ -2785,3 +2781,14 @@ components:
         format: uuid
         pattern: "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
         example: 74eed847-ca25-4e76-8cf2-f2c2d7842a7a
+
+    AccessRequestID:
+      in: path
+      name: id
+      required: true
+      description: The unique access request ID of the QuestionnaireResponse to retrieve
+      schema:
+        type: string
+        format: uuid
+        pattern: "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+        example: "156e1560-e532-4e2a-85ad-5aeff03dc43e"

@@ -42,7 +42,7 @@ ConsentMultipleRelationshipsStatusActiveIncludeDetailsBundle:
           id: A3CC67E2
           meta:
             security:
-              - system: "https://fhir.nhs.uk/CodeSystem/NHSIdentityProofingLevel"
+              - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSIdentityProofingLevel"
                 code: "P9"
                 display: "High level verification (P9)"
           identifier:
@@ -141,7 +141,7 @@ ConsentMultipleRelationshipsStatusActiveIncludeDetailsBundle:
           id: DFCC67F5
           meta:
             security:
-              - system: "https://fhir.nhs.uk/CodeSystem/NHSIdentityProofingLevel"
+              - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSIdentityProofingLevel"
                 code: "P9"
                 display: "High level verification (P9)"
           identifier:

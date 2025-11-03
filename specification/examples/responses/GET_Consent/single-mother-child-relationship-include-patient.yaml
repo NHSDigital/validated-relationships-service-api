@@ -1,10 +1,9 @@
 ConsentSingleAdultChildRelationshipIncludePatientBundle:
   summary: Single adult child proxy relationship with patient details
-  description:
-    A Bundle containing a single proxy relationship between an adult and child including the patient details.
+  description: A Bundle containing a single proxy relationship between an adult and child including the patient details.
   value:
     resourceType: Bundle
-    timestamp: '2020-08-26T14:00:00+00:00'
+    timestamp: "2020-08-26T14:00:00+00:00"
     total: 1
     type: searchset
     link:
@@ -17,19 +16,19 @@ ConsentSingleAdultChildRelationshipIncludePatientBundle:
           id: A3CC67E2
           meta:
             security:
-              - system: "https://fhir.nhs.uk/CodeSystem/NHSIdentityProofingLevel"
+              - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSIdentityProofingLevel"
                 code: "P9"
                 display: "High level verification (P9)"
           identifier:
-            - system: 'https://fhir.nhs.uk/Id/nhs-number'
-              value: '9000000009'
-            - system: 'https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier'
+            - system: "https://fhir.nhs.uk/Id/nhs-number"
+              value: "9000000009"
+            - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
               value: ABC1234556
           name:
             - use: usual
               period:
-                start: '2020-01-01'
-                end: '2021-12-31'
+                start: "2020-01-01"
+                end: "2021-12-31"
               given:
                 - Jane Marie Anne
               family: Smith
@@ -38,7 +37,7 @@ ConsentSingleAdultChildRelationshipIncludePatientBundle:
               suffix:
                 - MBE
                 - PhD
-          birthDate: '2022-10-22'
+          birthDate: "2022-10-22"
           generalPractitioner:
               - identifier:
                   value: ODS12345
@@ -52,25 +51,25 @@ ConsentSingleAdultChildRelationshipIncludePatientBundle:
           status: active
           scope:
             coding:
-              - system: 'http://terminology.hl7.org/CodeSystem/consentscope'
+              - system: "http://terminology.hl7.org/CodeSystem/consentscope"
                 code: patient-privacy
                 display: Privacy Consent
             text: Patient Privacy Consent
           category:
             - coding:
-                - system: 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
+                - system: "http://terminology.hl7.org/CodeSystem/v3-ActCode"
                   code: INFA
                   display: Information Access
               text: Information Access Consent
           patient:
             identifier:
-              system: 'https://fhir.nhs.uk/Id/nhs-number'
-              value: '9000000009'
-          dateTime: '2024-07-21T17:32:28Z'
+              system: "https://fhir.nhs.uk/Id/nhs-number"
+              value: "9000000009"
+          dateTime: "2024-07-21T17:32:28Z"
           performer:
             - identifier:
-                system: 'https://fhir.nhs.uk/Id/nhs-number'
-                value: '9000000019'
+                system: "https://fhir.nhs.uk/Id/nhs-number"
+                value: "9000000019"
           policy:
             - authority: https://www.england.nhs.uk
               uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
