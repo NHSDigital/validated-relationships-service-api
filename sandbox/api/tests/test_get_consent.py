@@ -195,7 +195,7 @@ def test_get_consent_returns_expected_responses__mocked_get_consent(
         ),
         (
             "performer:identifier=9000000999&_include=Consent:performer&_include=Consent:patient",
-            "./api/examples/GET_Consent/single-mother-child-relationship-unknown-legal-basis-include-performer-patient.yaml",
+            "./api/examples/GET_Consent/single-mother-child-relationship-unknown-legal-basis-include-performer-patient.yaml",  # noqa: E501
             200,
         ),
         (
