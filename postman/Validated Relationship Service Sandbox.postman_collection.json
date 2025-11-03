@@ -1,11 +1,10 @@
 {
 	"info": {
-		"_postman_id": "e45a02c2-af60-4d4c-b790-c6708ae0f214",
-		"name": "Validated Relationship Service Sandbox 03/11/25",
+		"_postman_id": "a8bd4249-4a47-46b9-9224-bc83d112b161",
+		"name": "Validated Relationship Service Sandbox 04/11/25",
 		"description": "This Postman collection includes example scenarios for each of the Validated Relationship Service (VRS) API endpoints, covering both valid and invalid request scenarios.\n\nThe collection is pointed towards the VRS sandbox environment, which will return a specific example response based on the request sent. All data shown in the requests or responses is test data.\n\nOur sandbox environment only covers the scenarios listed in the Postman collection and is open access. It does not allow you to test authorisation or any scenarios beyond the ones documented.\n\nFull specification is available at [https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "44536620",
-		"_collection_link": "https://l44444-2379.postman.co/workspace/aac72fed-09cc-4a02-a0b4-9429fb546dba/collection/44536620-e45a02c2-af60-4d4c-b790-c6708ae0f214?action=share&source=collection_link&creator=44536620"
+		"_exporter_id": "26376766"
 	},
 	"item": [
 		{
@@ -7352,50 +7351,119 @@
 					"response": []
 				},
 				{
-					"name": "No performer record found",
+					"name": "Single mother-child relationship unknown legal basis",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
 									"const expectedResponseBody = {",
-									"    \"resourceType\": \"OperationOutcome\",",
-									"    \"issue\": [",
-									"        {  ",
-									"            \"code\": \"processing\",",
-									"            \"details\": {",
-									"                \"coding\": [",
+									"    \"resourceType\": \"Bundle\",",
+									"    \"timestamp\": \"2020-08-26T14:00:00+00:00\",",
+									"    \"total\": 1,",
+									"    \"type\": \"searchset\",",
+									"    \"link\": [",
+									"        {",
+									"            \"relation\": \"self\",",
+									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000111\"",
+									"        }",
+									"    ],",
+									"    \"entry\": [",
+									"        {",
+									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/AF974742\",",
+									"            \"resource\": {",
+									"                \"resourceType\": \"Consent\",",
+									"                \"id\": \"AF974742\",",
+									"                \"status\": \"active\",",
+									"                \"scope\": {",
+									"                    \"coding\": [",
+									"                        {",
+									"                            \"system\": \"http://terminology.hl7.org/CodeSystem/consentscope\",",
+									"                            \"code\": \"patient-privacy\",",
+									"                            \"display\": \"Privacy Consent\"",
+									"                        }",
+									"                    ],",
+									"                    \"text\": \"Patient Privacy Consent\"",
+									"                },",
+									"                \"category\": [",
 									"                    {",
-									"                        \"system\": \"https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode\",",
-									"                        \"version\": \"1\",",
-									"                        \"code\": \"INVALIDATED_RESOURCE\",",
-									"                        \"display\": \"Resource that has been marked as invalid was requested - invalid resources cannot be retrieved\"",
+									"                        \"coding\": [",
+									"                            {",
+									"                                \"system\": \"http://terminology.hl7.org/CodeSystem/v3-ActCode\",",
+									"                                \"code\": \"INFA\",",
+									"                                \"display\": \"Information Access\"",
+									"                            }",
+									"                        ],",
+									"                        \"text\": \"Information Access Consent\"",
 									"                    }",
-									"                ]",
+									"                ],",
+									"                \"patient\": {",
+									"                    \"identifier\": {",
+									"                        \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"                        \"value\": \"9000000119\"",
+									"                    }",
+									"                },",
+									"                \"dateTime\": \"2024-07-21T17:32:28Z\",",
+									"                \"performer\": [",
+									"                    {",
+									"                        \"identifier\": {",
+									"                            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"                            \"value\": \"9000000111\"",
+									"                        }",
+									"                    }",
+									"                ],",
+									"                \"policy\": [",
+									"                    {",
+									"                        \"authority\": \"https://www.england.nhs.uk\",",
+									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\",",
+									"                        \"code\": \"unknown\",",
+									"                        \"display\": \"Unknown legal basis\"",
+									"                    }",
+									"                ],",
+									"                \"provision\": {",
+									"                    \"actor\": [",
+									"                        {",
+									"                            \"reference\": {",
+									"                                \"identifier\": {",
+									"                                    \"system\": \"https://fhir.nhs.uk/Id/nhs-number'\",",
+									"                                    \"value\": \"9000000111\"",
+									"                                },",
+									"                                \"type\": \"RelatedPerson\"",
+									"                            },",
+									"                            \"role\": {",
+									"                                \"coding\": [",
+									"                                    {",
+									"                                        \"code\": \"unknown\",",
+									"                                        \"display\": \"Unknown\",",
+									"                                        \"system\": \"https://fhir.nhs.uk/CodeSystem/proxy-legal-basis\"",
+									"                                    }",
+									"                                ]",
+									"                            }",
+									"                        }",
+									"                    ],",
+									"                    \"period\": {",
+									"                        \"start\": \"2025-02-11\",",
+									"                        \"end\": \"2026-02-11\"",
+									"                    }",
+									"                }",
 									"            },",
-									"            \"diagnostics\": \"Resource that has been marked as invalid was requested - invalid resources cannot be retrieved\",",
-									"            \"severity\": \"error\",",
-									"            ",
+									"            \"search\": {",
+									"                \"mode\": \"match\"",
+									"            }",
 									"        }",
 									"    ]",
 									"}",
 									"",
-									"const responseJson = pm.response.json();",
-									"",
-									"pm.test(\"Status code is 404\", function () {",
-									"    pm.response.to.have.status(404);",
-									"});",
-									"",
-									"pm.test(\"Should have correct error response\", () => {",
-									"    pm.expect(responseJson.issue[0].details.coding[0].code).to.eql(\"INVALIDATED_RESOURCE\");",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
 									"});",
 									"",
 									"pm.test(\"Should have correct response body\", () => {",
+									"    const responseJson = pm.response.json();",
 									"    pm.expect(responseJson).to.eql(expectedResponseBody);",
 									"});"
 								],
-								"type": "text/javascript",
-								"packages": {}
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -7403,7 +7471,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000999",
+							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000111",
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -7413,7 +7481,7 @@
 							"query": [
 								{
 									"key": "performer:identifier",
-									"value": "9000000999"
+									"value": "9000000111"
 								}
 							]
 						}
@@ -10166,7 +10234,6 @@
 			"listen": "prerequest",
 			"script": {
 				"type": "text/javascript",
-				"packages": {},
 				"exec": [
 					""
 				]
@@ -10176,7 +10243,6 @@
 			"listen": "test",
 			"script": {
 				"type": "text/javascript",
-				"packages": {},
 				"exec": [
 					"pm.test(\"Response has FHIR content type\", () => {",
 					"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/fhir+json');",
@@ -10189,6 +10255,11 @@
 		{
 			"key": "api_base_url",
 			"value": "https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4"
+		},
+		{
+			"value": "",
+			"type": "string",
+			"disabled": true
 		}
 	]
 }

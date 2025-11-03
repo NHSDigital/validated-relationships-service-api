@@ -67,7 +67,7 @@ def get_consent_response() -> Union[dict, tuple]:
                 GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH,
             )
         # Single mother-child relationship with unknown legal basis
-        elif performer_identifier == "9000000999" or patient_identifier == "9000000998":
+        elif performer_identifier == "9000000111" or patient_identifier == "9000000119":
             return check_for_consent_include_params(
                 _include,
                 GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_UNKNOWN_LEGAL_BASIS,

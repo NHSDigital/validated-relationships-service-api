@@ -8,12 +8,12 @@ ConsentSingleAdultChildRelationshipUnknownLegalBasisBundle:
     type: searchset
     link:
       - relation: self
-        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000999
+        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000111
     entry:
-      - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/UNKNOWN_LB_12345
+      - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/AF974742
         resource:
           resourceType: Consent
-          id: UNKNOWN_LB_12345
+          id: AF974742
           status: active
           scope:
             coding:
@@ -30,12 +30,12 @@ ConsentSingleAdultChildRelationshipUnknownLegalBasisBundle:
           patient:
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
-              value: '9000000998'
+              value: '9000000119'
           dateTime: '2024-07-21T17:32:28Z'
           performer:
             - identifier:
                 system: 'https://fhir.nhs.uk/Id/nhs-number'
-                value: '9000000999'
+                value: '9000000111'
           policy:
             - authority: https://www.england.nhs.uk
               uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
@@ -46,13 +46,10 @@ ConsentSingleAdultChildRelationshipUnknownLegalBasisBundle:
               - reference:
                   identifier:
                     system: https://fhir.nhs.uk/Id/nhs-number'
-                    value: '9000000999'
+                    value: '9000000111'
                   type: RelatedPerson
                 role:
                   coding:
-                    - code: PRN
-                      display: Parent
-                      system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
                     - code: unknown
                       display: Unknown
                       system: https://fhir.nhs.uk/CodeSystem/proxy-legal-basis

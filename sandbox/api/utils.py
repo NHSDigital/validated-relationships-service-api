@@ -229,7 +229,7 @@ def generate_response_from_example(example_path: str, status_code: int, headers:
 def check_for_consent_include_params(
     _include: List[str],
     include_none_response_yaml: str,
-    include_both_response_yaml: str,
+    include_both_response_yaml: str = None,
     include_patient_response_yaml: str = None,
     include_performer_response_yaml: str = None,
 ) -> Response:
