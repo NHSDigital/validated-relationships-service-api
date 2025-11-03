@@ -141,7 +141,7 @@ info:
     * only covers a limited set of scenarios
     * is open access, so does not allow you to test authorisation
 
-    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/18067099-5c759d0a-d924-44ab-8668-3587dcaf27e1?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D18067099-5c759d0a-d924-44ab-8668-3587dcaf27e1%26entityType%3Dcollection%26workspaceId%3D1ee72d72-3355-4213-a165-a79aa2ab1de8)
+    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/44536620-e45a02c2-af60-4d4c-b790-c6708ae0f214?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D44536620-e45a02c2-af60-4d4c-b790-c6708ae0f214%26entityType%3Dcollection%26workspaceId%3D65d46c77-2ee2-4fb0-92de-2ec03857a9e6)
 
     ### Integration testing
 
@@ -2418,9 +2418,6 @@ components:
       required:
         - identifier
       properties:
-        type:
-          type: string
-          description: The resource type that the reference refers to
         identifier:
           $ref: "#/components/schemas/Identifier"
 

@@ -25,8 +25,7 @@ ConsentSingleAdultChildRelationshipIncludePatientBundle:
             - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
               value: ABC1234556
           name:
-            - id: "123456"
-              use: usual
+            - use: usual
               period:
                 start: "2020-01-01"
                 end: "2021-12-31"
@@ -40,10 +39,9 @@ ConsentSingleAdultChildRelationshipIncludePatientBundle:
                 - PhD
           birthDate: "2022-10-22"
           generalPractitioner:
-            - type: Organization
-              identifier:
-                value: ODS12345
-                system: "https://fhir.nhs.uk/Id/ods-organization-code"
+              - identifier:
+                  value: ODS12345
+                  system: 'https://fhir.nhs.uk/Id/ods-organization-code'
         search:
           mode: include
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/BBCC67E9

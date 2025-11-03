@@ -45,7 +45,6 @@ ConsentMultipleRelationshipsStatusProposedActiveBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: '9000000017'
-                type: RelatedPerson
               role:
                 coding:
                 - code: PRN
@@ -92,7 +91,6 @@ ConsentMultipleRelationshipsStatusProposedActiveBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: '9000000017'
-                type: RelatedPerson
               role:
                 coding:
                 - code: PRN
@@ -139,7 +137,6 @@ ConsentMultipleRelationshipsStatusProposedActiveBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: '9000000017'
-                type: RelatedPerson
               role:
                 coding:
                 - code: PRN
@@ -186,7 +183,6 @@ ConsentMultipleRelationshipsStatusProposedActiveBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: '9000000017'
-                type: RelatedPerson
               role:
                 coding:
                 - code: PRN
