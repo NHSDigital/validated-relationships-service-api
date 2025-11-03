@@ -21,7 +21,10 @@ from .constants import (
     GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP,
     GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH,
     INTERNAL_SERVER_ERROR_EXAMPLE,
-    INVALIDATED_RESOURCE,
+    INVALIDATED_RESOURCE, GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_UNKNOWN_LEGAL_BASIS,
+    GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_UNKNOWN_LEGAL_BASIS_INCLUDE_BOTH,
+    GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_UNKNOWN_LEGAL_BASIS_INCLUDE_PATIENT,
+    GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_UNKNOWN_LEGAL_BASIS_INCLUDE_PERFORMER,
 )
 from .utils import (
     check_for_consent_filtering,
@@ -65,6 +68,16 @@ def get_consent_response() -> Union[dict, tuple]:
                 GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP,
                 GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH,
             )
+        # Single mother-child relationship with unknown legal basis
+        elif performer_identifier == "9000000999" or patient_identifier == "9000000998":
+            return check_for_consent_include_params(
+                _include,
+                GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_UNKNOWN_LEGAL_BASIS,
+                GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_UNKNOWN_LEGAL_BASIS_INCLUDE_BOTH,
+                GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_UNKNOWN_LEGAL_BASIS_INCLUDE_PATIENT,
+                GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_UNKNOWN_LEGAL_BASIS_INCLUDE_PERFORMER,
+            )
+
         elif patient_identifier == "9000000100":
             return check_for_consent_include_params(
                 _include,
