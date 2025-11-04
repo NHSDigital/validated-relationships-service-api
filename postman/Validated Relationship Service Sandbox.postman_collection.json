@@ -7425,7 +7425,7 @@
 									"                        {",
 									"                            \"reference\": {",
 									"                                \"identifier\": {",
-									"                                    \"system\": \"https://fhir.nhs.uk/Id/nhs-number'\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
 									"                                    \"value\": \"9000000111\"",
 									"                                },",
 									"                                \"type\": \"RelatedPerson\"",

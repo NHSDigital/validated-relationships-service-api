@@ -43,16 +43,16 @@ ConsentSingleAdultChildRelationshipUnknownLegalBasisBundle:
               display: Unknown legal basis
           provision:
             actor:
-              - reference:
-                  identifier:
-                    system: https://fhir.nhs.uk/Id/nhs-number'
-                    value: '9000000111'
-                  type: RelatedPerson
-                role:
-                  coding:
-                    - code: unknown
-                      display: Unknown
-                      system: https://fhir.nhs.uk/CodeSystem/proxy-legal-basis
+            - reference:
+                identifier:
+                  system: https://fhir.nhs.uk/Id/nhs-number
+                  value: '9000000111'
+                type: RelatedPerson
+              role:
+                coding:
+                - code: unknown
+                  display: Unknown
+                  system: https://fhir.nhs.uk/CodeSystem/proxy-legal-basis
             period:
               start: '2025-02-11'
               end: '2026-02-11'
