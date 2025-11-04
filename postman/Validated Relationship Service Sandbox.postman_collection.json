@@ -7489,6 +7489,75 @@
 					"response": []
 				},
 				{
+					"name": "No performer record found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const expectedResponseBody = {",
+									"    \"resourceType\": \"OperationOutcome\",",
+									"    \"issue\": [",
+									"        {  ",
+									"            \"code\": \"processing\",",
+									"            \"details\": {",
+									"                \"coding\": [",
+									"                    {",
+									"                        \"system\": \"https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode\",",
+									"                        \"version\": \"1\",",
+									"                        \"code\": \"INVALIDATED_RESOURCE\",",
+									"                        \"display\": \"Resource that has been marked as invalid was requested - invalid resources cannot be retrieved\"",
+									"                    }",
+									"                ]",
+									"            },",
+									"            \"diagnostics\": \"Resource that has been marked as invalid was requested - invalid resources cannot be retrieved\",",
+									"            \"severity\": \"error\",",
+									"            ",
+									"        }",
+									"    ]",
+									"}",
+									"",
+									"const responseJson = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Should have correct error response\", () => {",
+									"    pm.expect(responseJson.issue[0].details.coding[0].code).to.eql(\"INVALIDATED_RESOURCE\");",
+									"});",
+									"",
+									"pm.test(\"Should have correct response body\", () => {",
+									"    pm.expect(responseJson).to.eql(expectedResponseBody);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000999",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"Consent"
+							],
+							"query": [
+								{
+									"key": "performer:identifier",
+									"value": "9000000999"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Invalid performer identifier",
 					"event": [
 						{
