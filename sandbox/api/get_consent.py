@@ -22,6 +22,7 @@ from .constants import (
     GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH,
     INTERNAL_SERVER_ERROR_EXAMPLE,
     INVALIDATED_RESOURCE,
+    GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_UNKNOWN_LEGAL_BASIS,
 )
 from .utils import (
     check_for_consent_filtering,
@@ -65,6 +66,13 @@ def get_consent_response() -> Union[dict, tuple]:
                 GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP,
                 GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH,
             )
+        # Single mother-child relationship with unknown legal basis
+        elif performer_identifier == "9000000111" or patient_identifier == "9000000119":
+            return check_for_consent_include_params(
+                _include,
+                GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_UNKNOWN_LEGAL_BASIS,
+            )
+
         elif patient_identifier == "9000000100":
             return check_for_consent_include_params(
                 _include,

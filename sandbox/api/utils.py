@@ -229,7 +229,7 @@ def generate_response_from_example(example_path: str, status_code: int, headers:
 def check_for_consent_include_params(
     _include: List[str],
     include_none_response_yaml: str,
-    include_both_response_yaml: str,
+    include_both_response_yaml: str = None,
     include_patient_response_yaml: str = None,
     include_performer_response_yaml: str = None,
 ) -> Response:
@@ -238,7 +238,8 @@ def check_for_consent_include_params(
     Args:
         _include (List[str]): The include parameters supplied to the request
         include_none_response_yaml (str): Bundle to return when include params are empty
-        include_both_response_yaml (str): Bundle to return when include param is Consent:performer,Consent:patient
+        include_both_response_yaml (str): (optional) Bundle to return when include param
+        is Consent:performer,Consent:patient
         include_patient_response_yaml (str): (optional) Bundle to return when include param is Consent:patient
         include_performer_response_yaml (str): (optional) Bundle to return when include param is Consent:performer
 

@@ -169,6 +169,11 @@ def test_get_consent_returns_expected_responses__mocked_get_consent(
             200,
         ),
         (
+            "performer:identifier=9000000111&patient:identifier=9000000119",
+            "./api/examples/GET_Consent/single-mother-child-relationship-unknown-legal-basis.yaml",
+            200,
+        ),
+        (
             "performer:identifier=9000000017&status=test",  # Invalid status parameter error
             "./api/examples/GET_Consent/errors/invalid-status-parameter.yaml",
             422,

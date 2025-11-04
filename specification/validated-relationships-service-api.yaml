@@ -141,8 +141,7 @@ info:
     * only covers a limited set of scenarios
     * is open access, so does not allow you to test authorisation
 
-    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/44536620-e45a02c2-af60-4d4c-b790-c6708ae0f214?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D44536620-e45a02c2-af60-4d4c-b790-c6708ae0f214%26entityType%3Dcollection%26workspaceId%3D65d46c77-2ee2-4fb0-92de-2ec03857a9e6)
-
+    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/26376766-4fd91043-1337-4f8b-92c9-96c597b343c8?action=collection%2Ffork&collection-url=entityId%3D26376766-4fd91043-1337-4f8b-92c9-96c597b343c8%26entityType%3Dcollection%26workspaceId%3D8fc7bffa-055c-43e2-b94b-da0fdce3aa4b)
     ### Integration testing
 
     Our [integration test environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#integration-testing)
@@ -563,6 +562,7 @@ paths:
         | A single proxy relationship between consenting adults including details           | `performer:identifier=9000000010` and/or `patient:identifier=9000000005&_include=Consent:patient&_include=Consent:proxy`                         | HTTP Status 200 Bundle containing a single proxy relationship including performer and patient details             |
         | A single proxy relationship between a mother and child                            | `performer:identifier=9000000019` and/or `patient:identifier=9000000009`                                                                         | HTTP Status 200 Bundle containing a single proxy relationship                                                     |
         | A single proxy relationship between a mother and child including details          | `performer:identifier=9000000019` and/or `patient:identifier=9000000009&_include=Consent:patient&_include=Consent:proxy`                         | HTTP Status 200 Bundle containing a single proxy relationship including performer and patient details             |
+        | A single proxy relationship between a mother and child with legal basis unknown   | `performer:identifier=9000000111` and/or `patient:identifier=9000000119`                                                                         | HTTP Status 200 Bundle containing a single proxy relationship with legal basis unknown                            |
         | Invalid status parameter                                                          | `performer:identifier=9000000019` and/or `patient:identifier=9000000009&status=test`                                                             | HTTP Status 422 and INVALID_PARAMETER error response                                                              |
         | Invalid include parameter                                                         | `performer:identifier=9000000019` and/or `patient:identifier=9000000009&_include=test`                                                           | HTTP Status 422 and INVALID_PARAMETER error response                                                              |
         | Missing identifier                                                                | `patient:identifier=9000000009`                                                                                                                  | HTTP Status 400 and MISSING_IDENTIFIER_VALUE error response                                                       |
