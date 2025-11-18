@@ -941,6 +941,11 @@ paths:
         * JSON Patch operations must be valid according to RFC 6902
         * Status changes must use valid status codes from <http://hl7.org/fhir/consent-state-codes>
 
+        **IMPORTANT: Business Rule Enforcement**
+        If you update the `/status` of a role, you **MUST** also provide a corresponding update to the `/extension` path in the same patch array to provide the `statusReason`.
+
+        Requests that change status without providing a status reason will return an error
+
         ## Access modes
 
         This endpoint supports the following access modes:
@@ -991,12 +996,21 @@ paths:
                 summary: Set status to active with an end date
                 description: |
                   Example of a combined update to a record.
-                  The status will be changed to inactive.
+                  The status will be changed to active.
                   The relationship will be considered as ended following this date.
                 value:
                   - op: replace
                     path: /status
                     value: active
+                  - op: replace
+                    path: /extension
+                    value:
+                    - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
+                      valueCodeableConcept:
+                        coding:
+                        - system: http://terminology.hl7.org/CodeSystem/consent-reason
+                          code: "ROLE_ACTIVATED"
+                          display: "Role Activated"
                   - op: replace
                     path: /provision/period/end
                     value: "2026-12-31"
