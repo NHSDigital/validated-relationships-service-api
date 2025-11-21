@@ -2280,7 +2280,10 @@ components:
         provision:
           $ref: "#/components/schemas/Provision"
         extension:
-          $ref: "#/components/schemas/Extension"
+          type: array
+          items:
+            $ref: "#/components/schemas/Extension"
+          description: "Reasons for the status of the consent"
 
     Policy:
       type: object
