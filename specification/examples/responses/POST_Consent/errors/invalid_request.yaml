@@ -1,0 +1,31 @@
+PostConsentInvalidRequestError:
+  summary: Invalid request. For example you cannot create a proxy role for status 'rejected'.
+  description: Error raised due to a request not being able to be processed.
+  value:
+    issue:
+      - code: invalid
+        details:
+          coding:
+            - code: "BAD_REQUEST"
+              display: "The request could not be processed."
+              system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
+              version: '1'
+        diagnostics: 'The supplied input is not valid.'
+        severity: error
+    resourceType: "OperationOutcome"
+PostConsentInvalidFHIRRequestError:
+  summary: Request failed FHIR validation.
+  description: Error raised due to a request not being a valid FHIR Consent Resource.
+  value:
+    issue:
+      - code: invalid
+        details:
+          coding:
+            - code: "BAD_REQUEST"
+              display: "The request could not be processed."
+              system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
+              version: '1'
+        diagnostics: 'The supplied input is not a valid FHIR Consent.'
+        severity: error
+    resourceType: "OperationOutcome"
+

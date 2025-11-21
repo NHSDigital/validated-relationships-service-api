@@ -17,13 +17,13 @@ ConsentMultipleRelationshipsStatusProposedActiveBundle:
           status: active
           scope:
             coding:
-              - system: 'http://terminology.hl7.org/CodeSystem/consentscope'
+              - system: 'https://terminology.hl7.org/CodeSystem/consentscope'
                 code: patient-privacy
                 display: Privacy Consent
             text: Patient Privacy Consent
           category:
             - coding:
-                - system: 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
+                - system: 'https://terminology.hl7.org/CodeSystem/v3-ActCode'
                   code: INFA
                   display: Information Access
               text: Information Access Consent
@@ -47,12 +47,19 @@ ConsentMultipleRelationshipsStatusProposedActiveBundle:
                   value: '9000000017'
               role:
                 coding:
-                - code: PRN
-                  display: Parent
-                  system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
+                - code: parental-responsibility
+                  display: Parental responsibility
+                  system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
             period:
               end: '2026-02-11'
               start: '2025-02-11'
+          extension:
+          - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
+            valueCodeableConcept:
+              coding:
+                - system: https://terminology.hl7.org/CodeSystem/consent-reason
+                  code: ROLE_CREATED
+                  display: Role created from scratch by GP
         search:
           mode: match
 
@@ -63,13 +70,13 @@ ConsentMultipleRelationshipsStatusProposedActiveBundle:
           status: active
           scope:
             coding:
-              - system: 'http://terminology.hl7.org/CodeSystem/consentscope'
+              - system: 'https://terminology.hl7.org/CodeSystem/consentscope'
                 code: patient-privacy
                 display: Privacy Consent
             text: Patient Privacy Consent
           category:
             - coding:
-                - system: 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
+                - system: 'https://terminology.hl7.org/CodeSystem/v3-ActCode'
                   code: INFA
                   display: Information Access
               text: Information Access Consent
@@ -93,12 +100,19 @@ ConsentMultipleRelationshipsStatusProposedActiveBundle:
                   value: '9000000017'
               role:
                 coding:
-                - code: PRN
-                  display: Parent
-                  system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
+                - code: parental-responsibility
+                  display: Parental responsibility
+                  system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
             period:
               end: '2026-02-11'
               start: '2025-02-11'
+          extension:
+          - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
+            valueCodeableConcept:
+              coding:
+                - system: https://terminology.hl7.org/CodeSystem/consent-reason
+                  code: ROLE_CREATED
+                  display: Role created from scratch by GP
         search:
           mode: match
 
@@ -109,13 +123,13 @@ ConsentMultipleRelationshipsStatusProposedActiveBundle:
           status: proposed
           scope:
             coding:
-              - system: 'http://terminology.hl7.org/CodeSystem/consentscope'
+              - system: 'https://terminology.hl7.org/CodeSystem/consentscope'
                 code: patient-privacy
                 display: Privacy Consent
             text: Patient Privacy Consent
           category:
             - coding:
-                - system: 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
+                - system: 'https://terminology.hl7.org/CodeSystem/v3-ActCode'
                   code: INFA
                   display: Information Access
               text: Information Access Consent
@@ -139,12 +153,19 @@ ConsentMultipleRelationshipsStatusProposedActiveBundle:
                   value: '9000000017'
               role:
                 coding:
-                - code: PRN
-                  display: Parent
-                  system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
+                - code: parental-responsibility
+                  display: Parental responsibility
+                  system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
             period:
               end: '2026-02-11'
               start: '2025-02-11'
+          extension:
+          - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
+            valueCodeableConcept:
+              coding:
+                - system: https://terminology.hl7.org/CodeSystem/consent-reason
+                  code: APPLICATION_SUBMITTED
+                  display: Application submitted online
         search:
           mode: match
 
@@ -155,13 +176,13 @@ ConsentMultipleRelationshipsStatusProposedActiveBundle:
           status: proposed
           scope:
             coding:
-              - system: 'http://terminology.hl7.org/CodeSystem/consentscope'
+              - system: 'https://terminology.hl7.org/CodeSystem/consentscope'
                 code: patient-privacy
                 display: Privacy Consent
             text: Patient Privacy Consent
           category:
             - coding:
-                - system: 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
+                - system: 'https://terminology.hl7.org/CodeSystem/v3-ActCode'
                   code: INFA
                   display: Information Access
               text: Information Access Consent
@@ -185,11 +206,18 @@ ConsentMultipleRelationshipsStatusProposedActiveBundle:
                   value: '9000000017'
               role:
                 coding:
-                - code: PRN
-                  display: Parent
-                  system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
+                - code: parental-responsibility
+                  display: Parental responsibility
+                  system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
             period:
               end: '2026-02-11'
               start: '2025-02-11'
+          extension:
+          - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
+            valueCodeableConcept:
+              coding:
+                - system: https://terminology.hl7.org/CodeSystem/consent-reason
+                  code: APPLICATION_SUBMITTED
+                  display: Application submitted online
         search:
           mode: match

@@ -17,13 +17,13 @@ ConsentMultipleRelationshipsSinglePatientBundle:
           status: active
           scope:
             coding:
-              - system: 'http://terminology.hl7.org/CodeSystem/consentscope'
+              - system: 'https://terminology.hl7.org/CodeSystem/consentscope'
                 code: patient-privacy
                 display: Privacy Consent
             text: Patient Privacy Consent
           category:
             - coding:
-                - system: 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
+                - system: 'https://terminology.hl7.org/CodeSystem/v3-ActCode'
                   code: INFA
                   display: Information Access
               text: Information Access Consent
@@ -47,12 +47,19 @@ ConsentMultipleRelationshipsSinglePatientBundle:
                   value: '9000000020'
               role:
                 coding:
-                - code: PRN
-                  display: Parent
-                  system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
+                - code: parental-responsibility
+                  display: Parental responsibility
+                  system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
             period:
               end: '2026-02-11'
               start: '2025-02-11'
+          extension:
+          - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
+            valueCodeableConcept:
+              coding:
+                - system: https://terminology.hl7.org/CodeSystem/consent-reason
+                  code: ROLE_CREATED
+                  display: Role created from scratch by GP
         search:
           mode: match
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/WWCC67T1
@@ -62,13 +69,13 @@ ConsentMultipleRelationshipsSinglePatientBundle:
           status: active
           scope:
             coding:
-              - system: 'http://terminology.hl7.org/CodeSystem/consentscope'
+              - system: 'https://terminology.hl7.org/CodeSystem/consentscope'
                 code: patient-privacy
                 display: Privacy Consent
             text: Patient Privacy Consent
           category:
             - coding:
-                - system: 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
+                - system: 'https://terminology.hl7.org/CodeSystem/v3-ActCode'
                   code: INFA
                   display: Information Access
               text: Information Access Consent
@@ -92,12 +99,19 @@ ConsentMultipleRelationshipsSinglePatientBundle:
                   value: '9000000021'
               role:
                 coding:
-                - code: GUARD
-                  display: Guardian
-                  system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
+                - code: court-appointed-personal-welfare-deputy
+                  display: Court appointed personal welfare deputy
+                  system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
             period:
               end: '2026-02-11'
               start: '2025-02-11'
+          extension:
+          - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
+            valueCodeableConcept:
+              coding:
+                - system: https://terminology.hl7.org/CodeSystem/consent-reason
+                  code: ROLE_CREATED
+                  display: Role created from scratch by GP
         search:
           mode: match
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/AATD11A1
@@ -107,13 +121,13 @@ ConsentMultipleRelationshipsSinglePatientBundle:
           status: inactive
           scope:
             coding:
-              - system: 'http://terminology.hl7.org/CodeSystem/consentscope'
+              - system: 'https://terminology.hl7.org/CodeSystem/consentscope'
                 code: patient-privacy
                 display: Privacy Consent
             text: Patient Privacy Consent
           category:
             - coding:
-                - system: 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
+                - system: 'https://terminology.hl7.org/CodeSystem/v3-ActCode'
                   code: INFA
                   display: Information Access
               text: Information Access Consent
@@ -137,11 +151,18 @@ ConsentMultipleRelationshipsSinglePatientBundle:
                   value: '9000000022'
               role:
                 coding:
-                - code: CHILD
-                  display: Child
-                  system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
+                - code: court-appointed-personal-welfare-deputy
+                  display: Court appointed personal welfare deputy
+                  system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
             period:
               end: '2026-02-11'
               start: '2025-02-11'
+          extension:
+          - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
+            valueCodeableConcept:
+              coding:
+                - system: https://terminology.hl7.org/CodeSystem/consent-reason
+                  code: ROLE_DEACTIVATED_END_DATE_REACHED
+                  display: End-date reached
         search:
           mode: match
