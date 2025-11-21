@@ -141,7 +141,7 @@ info:
     * only covers a limited set of scenarios
     * is open access, so does not allow you to test authorisation
 
-    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/26376766-4fd91043-1337-4f8b-92c9-96c597b343c8?action=collection%2Ffork&collection-url=entityId%3D26376766-4fd91043-1337-4f8b-92c9-96c597b343c8%26entityType%3Dcollection%26workspaceId%3D8fc7bffa-055c-43e2-b94b-da0fdce3aa4b)
+    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/44536620-12af1681-48d5-410b-8597-78eed58bee68?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D44536620-12af1681-48d5-410b-8597-78eed58bee68%26entityType%3Dcollection%26workspaceId%3D978bc90c-e3e8-4c4e-a472-00bd35cbc4cb)
     ### Integration testing
 
     Our [integration test environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#integration-testing)
@@ -750,6 +750,7 @@ paths:
             | 400         | `MISSING_CATEGORY`          | Missing category.                                                                                                                         |
             | 400         | `MISSING_DATETIME`          | Missing datetime.                                                                                                                         |
             | 400         | `MISSING_VALUE`             | Missing header or parameter. For details, see the `diagnostics` field.                                                                    |
+            | 400         | `BAD_REQUEST`               | Invalid request. For details, see the `diagnostics` field.                                                                                |
             | 401         | `ACCESS_DENIED`             | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
             | 403         | `FORBIDDEN`                 | Access denied to resource.                                                                                                                |
             | 404         | `INVALIDATED_RESOURCE`      | Resource that has been marked as invalid was requested - invalid resources cannot be retrieved                                            |
@@ -786,6 +787,10 @@ paths:
                   $ref: "./examples/responses/POST_Consent/errors/missing_identifier_system.yaml#/PostConsentMissingIdentifierSystemError"
                 postConsentMissingScope:
                   $ref: "./examples/responses/POST_Consent/errors/missing_scope.yaml#/PostConsentMissingScopeError"
+                postConsentInvalidRequest:
+                  $ref: "./examples/responses/POST_Consent/errors/invalid_request.yaml#/PostConsentInvalidRequestError"
+                postConsentInvalidFHIRRequest:
+                  $ref: "./examples/responses/POST_Consent/errors/invalid_request.yaml#/PostConsentInvalidFHIRRequestError"
 
         "5XX":
           description: |
