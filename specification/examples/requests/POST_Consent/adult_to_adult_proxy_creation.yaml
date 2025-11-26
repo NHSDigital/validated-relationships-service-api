@@ -32,7 +32,7 @@ ConsentAdultToAdultGuardianRequest:
       actor:
         - role:
             coding:
-              - system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasi
+              - system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
                 code: court-appointed-personal-welfare-deputy
                 display: Court appointed personal welfare deputy
           reference:
