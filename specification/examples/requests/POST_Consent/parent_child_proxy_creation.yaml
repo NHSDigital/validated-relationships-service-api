@@ -33,7 +33,7 @@ ConsentParentChildProxyCreationRequest:
       actor:
         - role:
             coding:
-              - system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasi
+              - system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
                 code: parental-responsibility
                 display: Parental responsibility
           reference:
