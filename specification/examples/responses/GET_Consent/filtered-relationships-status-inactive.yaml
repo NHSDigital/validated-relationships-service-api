@@ -111,6 +111,6 @@ ConsentMultipleRelationshipsStatusInactiveBundle:
               coding:
                 - system: https://terminology.hl7.org/CodeSystem/consent-reason
                   code: ROLE_DEACTIVATED_END_DATE_REACHED
-                  display: REnd-date reached
+                  display: End-date reached
         search:
           mode: match
