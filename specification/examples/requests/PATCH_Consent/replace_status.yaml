@@ -11,7 +11,7 @@ StatusUpdate:
       - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
         valueCodeableConcept:
           coding:
-            - system: https://terminology.hl7.org/CodeSystem/consent-reason
-              code: ROLE_CREATED
-              display: Role created from scratch by GP
+          - system: https://terminology.hl7.org/CodeSystem/consent-reason
+            code: ROLE_CREATED
+            display: Role created from scratch by GP
 
