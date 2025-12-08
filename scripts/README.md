@@ -4,7 +4,8 @@
 
 ### Install packages
 
-The tooling we use to manage our packages in poetry so this needs to be installed on your local machine in order to run the scripts.
+The tooling we use to manage our packages in poetry so this needs to be installed on your local machine in order to run
+the scripts.
 
 Then run the following command in the scripts directory
 
@@ -25,6 +26,9 @@ export APIGEE_ENVIRONMENT=int
 export APPLICATION_CLIENT_ID={application_client_id}
 export APPLICATION_CLIENT_SECRET={application_client_secret}
 ```
+
+The values for `APPLICATION_CLIENT_ID` and `APPLICATION_CLIENT_SECRET` can be found on the NHS Developer Account
+portal 'NHS - Proxy Core Services...' environment resource in the Active API keys section.
 
 #### Select an identifier
 
@@ -67,6 +71,9 @@ export APPLICATION_CLIENT_ID={application_client_id}
 export APPLICATION_CLIENT_SECRET={application_client_secret}
 ```
 
+The values for `APPLICATION_CLIENT_ID` and `APPLICATION_CLIENT_SECRET` can be found on the NHS Developer Account
+portal 'NHS - Proxy Core Services...' environment resource in the Active API keys section.
+
 #### Select an identifier
 
 There are a different identity proofing levels eg. p9.
@@ -98,7 +105,9 @@ e.g.
 
 ### Get App Restricted Access Token for Int Environment
 
-Application restricted authentication is when a system is trying to access an API rather than a person. For example the Validated Relationship Service (VRS) will need an app restricted access token in order to call the Personal Demographic Service (PDS) API.
+Application restricted authentication is when a system is trying to access an API rather than a person. For example the
+Validated Relationship Service (VRS) will need an app restricted access token in order to call the Personal Demographic
+Service (PDS) API.
 https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#application-restricted-apis
 
 #### Set Environment Variables
@@ -112,7 +121,14 @@ export APPLICATION_CLIENT_KID={vrs_application_client_secret}
 export APPLICATION_CLIENT_PRIVATE_KEY={vrs_application_client_private_key}
 ```
 
-Note with VRS_CLIENT_PRIVATE_KEY it needs to be wrapped in double quotation marks otherwise there can be formatting errors
+Note with VRS_CLIENT_PRIVATE_KEY it needs to be wrapped in double quotation marks otherwise there can be formatting
+errors
+
+The values for `APPLICATION_CLIENT_ID` and `APPLICATION_CLIENT_KID` can be found on the NHS Developer Account portal '
+NHS - Proxy Core Services...' environment resource in the Active API keys section.
+
+The `APPLICATION_CLIENT_PRIVATE_KEY` is stored in AWS Secrets Manager. Please contact the VRS team if you don't have AWS
+access to obtain this.
 
 #### Run the script
 
@@ -132,7 +148,8 @@ e.g.
 
 ### Trouble Shooting
 
-If you have issues with the script, a good place to start is to ensure the environment variables are accessible to poetry. This can be achieved by installing the poetry dotenv plugin
+If you have issues with the script, a good place to start is to ensure the environment variables are accessible to
+poetry. This can be achieved by installing the poetry dotenv plugin
 
 Run this command
 
