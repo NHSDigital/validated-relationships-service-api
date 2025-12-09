@@ -846,13 +846,13 @@ dev = ["argcomplete", "attrs (>=19.2)", "hypothesis (>=3.56)", "mock", "requests
 
 [[package]]
 name = "pytest-nhsd-apim"
-version = "5.0.6"
+version = "5.0.14"
 description = "Pytest plugin accessing NHSDigital's APIM proxies"
 optional = false
-python-versions = "<4.0,>=3.8"
+python-versions = "<4.0,>=3.13"
 files = [
-    {file = "pytest_nhsd_apim-5.0.6-py3-none-any.whl", hash = "sha256:b562297c62594275dcce5b08187d7cea4f56e2704f2354f1beb80c8f3db8202e"},
-    {file = "pytest_nhsd_apim-5.0.6.tar.gz", hash = "sha256:77be049fe6f840c7b37bb7607ee1650ef6cea17806c29051eab5721c6b272be4"},
+    {file = "pytest_nhsd_apim-5.0.14-py3-none-any.whl", hash = "sha256:f21a4b299cc28d031ea671a6ad524fff269193d5e4a09a516cd3fb3879f9fb18"},
+    {file = "pytest_nhsd_apim-5.0.14.tar.gz", hash = "sha256:aca221f772e9cb763d2e5addca4000e2d9eb343ec05a8e32ffc6362442a913c5"},
 ]
 
 [package.dependencies]
@@ -866,8 +866,9 @@ PyJWT = ">=2.8.0,<3.0.0"
 pyotp = ">=2.9.0,<3.0.0"
 pytest = ">=8.2.0,<9.0.0"
 requests = ">=2.32.0,<3.0.0"
+setuptools = ">=78.1.1,<79.0.0"
 toml = ">=0.10.2,<0.11.0"
-typing-extensions = ">=4.11.0,<5.0.0"
+typing-extensions = ">=4.12.2,<5.0.0"
 wheel = ">=0.37.1,<0.39.0"
 
 [[package]]
@@ -904,6 +905,26 @@ urllib3 = ">=1.21.1,<3"
 [package.extras]
 socks = ["PySocks (>=1.5.6,!=1.5.7)"]
 use-chardet-on-py3 = ["chardet (>=3.0.2,<6)"]
+
+[[package]]
+name = "setuptools"
+version = "78.1.1"
+description = "Easily download, build, install, upgrade, and uninstall Python packages"
+optional = false
+python-versions = ">=3.9"
+files = [
+    {file = "setuptools-78.1.1-py3-none-any.whl", hash = "sha256:c3a9c4211ff4c309edb8b8c4f1cbfa7ae324c4ba9f91ff254e3d305b9fd54561"},
+    {file = "setuptools-78.1.1.tar.gz", hash = "sha256:fcc17fd9cd898242f6b4adfaca46137a9edef687f43e6f78469692a5e70d851d"},
+]
+
+[package.extras]
+check = ["pytest-checkdocs (>=2.4)", "pytest-ruff (>=0.2.1)", "ruff (>=0.8.0)"]
+core = ["importlib_metadata (>=6)", "jaraco.functools (>=4)", "jaraco.text (>=3.7)", "more_itertools", "more_itertools (>=8.8)", "packaging (>=24.2)", "platformdirs (>=4.2.2)", "tomli (>=2.0.1)", "wheel (>=0.43.0)"]
+cover = ["pytest-cov"]
+doc = ["furo", "jaraco.packaging (>=9.3)", "jaraco.tidelift (>=1.4)", "pygments-github-lexers (==0.0.5)", "pyproject-hooks (!=1.1)", "rst.linker (>=1.9)", "sphinx (>=3.5)", "sphinx-favicon", "sphinx-inline-tabs", "sphinx-lint", "sphinx-notfound-page (>=1,<2)", "sphinx-reredirects", "sphinxcontrib-towncrier", "towncrier (<24.7)"]
+enabler = ["pytest-enabler (>=2.2)"]
+test = ["build[virtualenv] (>=1.0.3)", "filelock (>=3.4.0)", "ini2toml[lite] (>=0.14)", "jaraco.develop (>=7.21)", "jaraco.envs (>=2.2)", "jaraco.path (>=3.7.2)", "jaraco.test (>=5.5)", "packaging (>=24.2)", "pip (>=19.1)", "pyproject-hooks (!=1.1)", "pytest (>=6,!=8.1.*)", "pytest-home (>=0.5)", "pytest-perf", "pytest-subprocess", "pytest-timeout", "pytest-xdist (>=3)", "tomli-w (>=1.0.0)", "virtualenv (>=13.0.0)", "wheel (>=0.44.0)"]
+type = ["importlib_metadata (>=7.0.2)", "jaraco.develop (>=7.21)", "mypy (==1.14.*)", "pytest-mypy"]
 
 [[package]]
 name = "toml"
@@ -943,13 +964,13 @@ typing-extensions = ">=4.12.0"
 
 [[package]]
 name = "urllib3"
-version = "2.6.0"
+version = "2.6.1"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "urllib3-2.6.0-py3-none-any.whl", hash = "sha256:c90f7a39f716c572c4e3e58509581ebd83f9b59cced005b7db7ad2d22b0db99f"},
-    {file = "urllib3-2.6.0.tar.gz", hash = "sha256:cb9bcef5a4b345d5da5d145dc3e30834f58e8018828cbc724d30b4cb7d4d49f1"},
+    {file = "urllib3-2.6.1-py3-none-any.whl", hash = "sha256:e67d06fe947c36a7ca39f4994b08d73922d40e6cca949907be05efa6fd75110b"},
+    {file = "urllib3-2.6.1.tar.gz", hash = "sha256:5379eb6e1aba4088bae84f8242960017ec8d8e3decf30480b3a1abdaa9671a3f"},
 ]
 
 [package.extras]
@@ -974,5 +995,5 @@ test = ["pytest (>=3.0.0)"]
 
 [metadata]
 lock-version = "2.0"
-python-versions = "^3.12"
-content-hash = "c183564b3e80b78d90779d28724d530d63869f1e56415eb3925a958c5d9cdd55"
+python-versions = "^3.13"
+content-hash = "d06ab9f69af0e5c8f6023e1e8c7972412d83a560df3f6867f4c22c6abcc77711"
