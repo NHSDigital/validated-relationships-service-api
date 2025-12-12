@@ -2213,13 +2213,13 @@ components:
           $ref: "#/components/schemas/Meta"
         identifier:
           type: array
-          description: The patient's NHS number. The primary identifier of a patient, unique within NHS England and Wales. Always 10 digits and must be a [valid NHS number](https://www.datadictionary.nhs.uk/attributes/nhs_number.html).
+          description: The primary identifier of a patient. Possible identifiers include the NHS number or local GP patient identifier. If it is an NHS number, it will always 10 digits and must be a [valid NHS number](https://www.datadictionary.nhs.uk/attributes/nhs_number.html).
           items:
             type: object
             properties:
               system:
                 type: string
-                description: Codesystem URL for the NHS number.
+                description: Codesystem URL for the identifier.
                 enum:
                   [
                     "https://fhir.nhs.uk/Id/nhs-number",
@@ -2227,7 +2227,7 @@ components:
                   ]
               value:
                 type: string
-                description: The NHS number.
+                description: The identifier value (e.g. NHS number).
         name:
           $ref: "#/components/schemas/PDSName"
         birthDate:
