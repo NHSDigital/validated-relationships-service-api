@@ -28,8 +28,8 @@ ConsentParentChildProxyCreationRequest:
           value: "9000000009"
     provision:
       period:
-        start: "2025-02-11"
-        end: "2026-02-11"
+        start: "2025-02-11T14:30:00Z"
+        end: "2026-02-11T14:30:00Z"
       actor:
         - role:
             coding:

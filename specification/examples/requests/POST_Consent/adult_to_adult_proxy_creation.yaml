@@ -28,7 +28,7 @@ ConsentAdultToAdultGuardianRequest:
           value: "9000000017"
     provision:
       period:
-        start: "2025-02-11"
+        start: "2025-02-11T14:30:00Z"
       actor:
         - role:
             coding:
