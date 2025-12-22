@@ -2523,7 +2523,6 @@ components:
         type: object
         required:
           - use
-          - family
         additionalProperties: false
         properties:
           id:
@@ -2584,6 +2583,9 @@ components:
             description: Name suffices and postnominals.
             items:
               type: string
+          text:
+            type: string
+            description: Text representation of the full name
 
     PDSBirthDate:
       description: |
