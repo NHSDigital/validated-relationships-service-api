@@ -987,15 +987,8 @@ paths:
             examples:
               statusUpdate:
                 $ref: "./examples/requests/PATCH_Consent/replace_status.yaml#/StatusUpdate"
-              updateProvision:
-                summary: Set an end date for a role
-                description: |
-                  Example apply end date to a relationship.
-                  The relationship will be considered as ended following this date.
-                value:
-                  - op: replace
-                    path: /provision/period/end
-                    value: "2026-12-31"
+              updateProvisionEndDate:
+                $ref: "./examples/requests/PATCH_Consent/replace_provision_end_date.yaml#/UpdateProvisionEndDate"
               multipleUpdates:
                 summary: Set status to active with an end date
                 description: |
@@ -1015,9 +1008,9 @@ paths:
                         - system: http://terminology.hl7.org/CodeSystem/consent-reason
                           code: "ROLE_ACTIVATED"
                           display: "Role activated"
-                  - op: replace
-                    path: /provision/period/end
-                    value: "2026-12-31"
+                  - op: add
+                    path: /provision/0/period/end
+                    value: "2026-12-31T23:59:59Z"
               replaceLegalBasis:
                 $ref: "./examples/requests/PATCH_Consent/replace_legal_basis.yaml#/ReplaceLegalBasisRequest"
       responses:
@@ -2315,33 +2308,35 @@ components:
           format: uri
 
     Provision:
-      type: object
-      properties:
-        period:
-          type: object
-          description: "Timeframe for this provision."
-          properties:
-            start:
-              type: string
-              description: "Starting time with inclusive boundary"
-              format: date-time
-            end:
-              type: string
-              description: "End time with inclusive boundary, if not ongoing"
-              format: date-time
-        actor:
-          type: array
-          description: "Individuals or organisations involved in the provision"
-          items:
+      type: array
+      description: "Constraints to the base Consent policy rule, which may be enforced over time."
+      items:
+        type: object
+        properties:
+          period:
             type: object
+            description: "Timeframe for this provision."
             properties:
-              reference:
-                $ref: "#/components/schemas/Reference"
-                description: "Individuals or organizations that agreed to the consent"
-              role:
-                $ref: "#/components/schemas/CodeableConcept"
-                description: "Classification of the role of consent, bound to http://terminology.hl7.org/CodeSystem/v3-RoleCode"
-
+              start:
+                type: string
+                description: "Starting time with inclusive boundary"
+                format: date-time
+              end:
+                type: string
+                description: "End time with inclusive boundary, if not ongoing"
+                format: date-time
+          actor:
+            type: array
+            description: "Individuals or organisations involved in the provision"
+            items:
+              type: object
+              properties:
+                reference:
+                  $ref: "#/components/schemas/Reference"
+                  description: "Individuals or organizations that agreed to the consent"
+                role:
+                  $ref: "#/components/schemas/CodeableConcept"
+                  description: "Classification of the role of consent, bound to http://terminology.hl7.org/CodeSystem/v3-RoleCode"
     Extension:
       type: object
       properties:
@@ -2504,11 +2499,13 @@ components:
           enum: [add, remove, replace]
         path:
           type: string
-          enum:
-            - /status
-            - /provision/period/end
-            - /provision/actor
-            - /extension
+          oneOf:
+            - description: "Static paths that do not require an index."
+              enum:
+                - /status
+                - /extension/-
+                - /provision/0/period/end
+                - /provision/0/actor
         value:
           oneOf:
             - type: string

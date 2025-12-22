@@ -1,0 +1,9 @@
+UpdateProvisionEndDate:
+      summary: Set provision end date
+      description: >
+        Example apply end date to a relationship.
+        The relationship will be considered as ended following this date.
+      value:
+        - op: add
+          path: /provision/0/period/end
+          value: "2026-12-31T23:59:59Z"

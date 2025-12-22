@@ -1,17 +1,17 @@
 ReplaceLegalBasisRequest:
   summary: Replace legal basis
-  description: payload used to replace the legal basis of a consent resource
+  description: payload used to add a new actor (legal basis) to the consent provision
   value:
     - op: replace
-      path: /provision/actor
+      path: /provision/0/actor
       value:
-        - role:
-            coding:
-              - system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
-                code: court-appointed-personal-welfare-deputy
-                display: Court appointed personal welfare deputy
-          reference:
-            type: RelatedPerson
-            identifier:
-              system: https://fhir.nhs.uk/Id/nhs-number
-              value: "9000000017"
+        role:
+          coding:
+            - system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
+              code: court-appointed-personal-welfare-deputy
+              display: Court appointed personal welfare deputy
+        reference:
+          type: RelatedPerson
+          identifier:
+            system: https://fhir.nhs.uk/Id/nhs-number
+            value: "9000000017"
