@@ -40,19 +40,19 @@ ConsentMultipleRelationshipsStatusProposedActiveBundle:
             - authority: https://www.england.nhs.uk
               uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
           provision:
-            actor:
-            - reference:
-                identifier:
-                  system: https://fhir.nhs.uk/Id/nhs-number
-                  value: '9000000017'
-              role:
-                coding:
-                - code: parental-responsibility
-                  display: Parental responsibility
-                  system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
-            period:
-              end: '2026-02-11'
-              start: '2025-02-11'
+            - actor:
+                - reference:
+                    identifier:
+                      system: https://fhir.nhs.uk/Id/nhs-number
+                      value: '9000000017'
+                  role:
+                    coding:
+                      - code: parental-responsibility
+                        display: Parental responsibility
+                        system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
+              period:
+                end: '2026-02-11'
+                start: '2025-02-11'
           extension:
           - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
             valueCodeableConcept:
@@ -93,19 +93,19 @@ ConsentMultipleRelationshipsStatusProposedActiveBundle:
             - authority: https://www.england.nhs.uk
               uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
           provision:
-            actor:
-            - reference:
-                identifier:
-                  system: https://fhir.nhs.uk/Id/nhs-number
-                  value: '9000000017'
-              role:
-                coding:
-                - code: parental-responsibility
-                  display: Parental responsibility
-                  system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
-            period:
-              end: '2026-02-11'
-              start: '2025-02-11'
+            - actor:
+                - reference:
+                    identifier:
+                      system: https://fhir.nhs.uk/Id/nhs-number
+                      value: '9000000017'
+                  role:
+                    coding:
+                      - code: parental-responsibility
+                        display: Parental responsibility
+                        system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
+              period:
+                end: '2026-02-11'
+                start: '2025-02-11'
           extension:
           - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
             valueCodeableConcept:
@@ -146,19 +146,19 @@ ConsentMultipleRelationshipsStatusProposedActiveBundle:
             - authority: https://www.england.nhs.uk
               uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
           provision:
-            actor:
-            - reference:
-                identifier:
-                  system: https://fhir.nhs.uk/Id/nhs-number
-                  value: '9000000017'
-              role:
-                coding:
-                - code: parental-responsibility
-                  display: Parental responsibility
-                  system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
-            period:
-              end: '2026-02-11'
-              start: '2025-02-11'
+            - actor:
+                - reference:
+                    identifier:
+                      system: https://fhir.nhs.uk/Id/nhs-number
+                      value: '9000000017'
+                  role:
+                    coding:
+                      - code: parental-responsibility
+                        display: Parental responsibility
+                        system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
+              period:
+                end: '2026-02-11'
+                start: '2025-02-11'
           extension:
           - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
             valueCodeableConcept:
@@ -199,19 +199,19 @@ ConsentMultipleRelationshipsStatusProposedActiveBundle:
             - authority: https://www.england.nhs.uk
               uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
           provision:
-            actor:
-            - reference:
-                identifier:
-                  system: https://fhir.nhs.uk/Id/nhs-number
-                  value: '9000000017'
-              role:
-                coding:
-                - code: parental-responsibility
-                  display: Parental responsibility
-                  system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
-            period:
-              end: '2026-02-11'
-              start: '2025-02-11'
+            - actor:
+                - reference:
+                    identifier:
+                      system: https://fhir.nhs.uk/Id/nhs-number
+                      value: '9000000017'
+                  role:
+                    coding:
+                      - code: parental-responsibility
+                        display: Parental responsibility
+                        system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
+              period:
+                end: '2026-02-11'
+                start: '2025-02-11'
           extension:
           - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
             valueCodeableConcept:

@@ -27,20 +27,20 @@ ConsentParentChildProxyCreationRequest:
           system: https://fhir.nhs.uk/Id/nhs-number
           value: "9000000009"
     provision:
-      period:
-        start: "2025-02-11T14:30:00Z"
-        end: "2026-02-11T14:30:00Z"
-      actor:
-        - role:
-            coding:
-              - system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
-                code: parental-responsibility
-                display: Parental responsibility
-          reference:
-            type: RelatedPerson
-            identifier:
-              system: https://fhir.nhs.uk/Id/nhs-number
-              value: "9000000009"
+      - period:
+          start: "2025-02-11T14:30:00Z"
+          end: "2026-02-11T14:30:00Z"
+        actor:
+          - role:
+              coding:
+                - system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
+                  code: parental-responsibility
+                  display: Parental responsibility
+            reference:
+              type: RelatedPerson
+              identifier:
+                system: https://fhir.nhs.uk/Id/nhs-number
+                value: "9000000009"
     extension:
       - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
         valueCodeableConcept:
