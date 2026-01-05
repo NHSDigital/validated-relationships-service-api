@@ -1,0 +1,4 @@
+name: push-collection-to-postman.yml
+on:
+
+jobs:
