@@ -1,4 +1,45 @@
-name: push-collection-to-postman.yml
+name: Push collection to Postman workspace
 on:
+    workflow_dispatch:
+        inputs:
+            collection:
+                type: choice
+                description: Collection to push
+                options:
+                    - sandbox
+                    - integration
+                required: true
+                default: sandbox
+
+    workflow_call:
+        inputs:
+            collection:
+                type: string
+                description: Collection to push
+                required: true
 
 jobs:
+    push-to-postman:
+        name: Push collection to Postman
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v5
+                with:
+                    fetch-depth: 0
+            -   name: Get collection ID
+                id: get_collection_id
+                run: |
+                    if [[ '${{ github.event.inputs.collection }}' == 'sandbox' ]]; then
+                        echo 'collection_id=${{ secrets.POSTMAN_SANDBOX_COLLECTION_ID }}' >> $GITHUB_OUTPUT
+                    else
+                        echo 'collection_id=${{ secrets.POSTMAN_INTEGRATION_COLLECTION_ID }}' >> $GITHUB_OUTPUT
+                    fi
+            - name: push-to-postman-action
+              id: process
+              uses: gcatanese/push-to-postman-action@main
+              with:
+                goal: update
+                postman-key: ${{ secrets.POSTMAN_API_KEY }}
+                postman-file: '/postman/validated_relationship_service.${{ github.event.inputs.collection }}.postman_collection.json'
+                collection-id: ${{ steps.get_collection_id.outputs.collectionId }}
