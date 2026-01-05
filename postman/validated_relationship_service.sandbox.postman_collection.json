@@ -10848,6 +10848,7 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "076abc43-5571-432e-b834-168ef45d7701",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"issue\": [",
@@ -10881,7 +10882,7 @@
 								],
 								"type": "text/javascript",
 								"packages": {},
-								"id": "076abc43-5571-432e-b834-168ef45d7701"
+								"requests": {}
 							}
 						}
 					],
@@ -10894,7 +10895,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/someotherpath\",\n    \"value\": \"active\"\n  }\n]",
+							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/someotherpath\",\n    \"value\": \"active\"\n  },\n  {\n        \"op\": \"add\",\n        \"path\": \"/extension/-\",\n        \"value\": [\n            {\n                \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n                \"valueCodeableConcept\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",\n                            \"code\": \"ROLE_DEACTIVATED_PATIENT_REQUEST\",\n                            \"display\": \"At patients request\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10912,6 +10913,7 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "b25295e4-0f1b-4055-ae28-8b9e542d741a",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"issue\": [",
@@ -10945,7 +10947,7 @@
 								],
 								"type": "text/javascript",
 								"packages": {},
-								"id": "b25295e4-0f1b-4055-ae28-8b9e542d741a"
+								"requests": {}
 							}
 						}
 					],
@@ -10958,7 +10960,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"inactive\"\n  }\n]",
+							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"inactive\"\n  },\n  {\n        \"op\": \"add\",\n        \"path\": \"/extension/-\",\n        \"value\": [\n            {\n                \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n                \"valueCodeableConcept\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",\n                            \"code\": \"ROLE_DEACTIVATED_PATIENT_REQUEST\",\n                            \"display\": \"At patients request\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -11040,6 +11042,7 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "c61c6285-2cbd-4c4e-b6d1-263d75e68424",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"issue\": [",
@@ -11073,7 +11076,7 @@
 								],
 								"type": "text/javascript",
 								"packages": {},
-								"id": "c61c6285-2cbd-4c4e-b6d1-263d75e68424"
+								"requests": {}
 							}
 						}
 					],
@@ -11086,7 +11089,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"someinvalidcode\"\n  }\n]",
+							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"someinvalidcode\"\n  },\n  {\n        \"op\": \"add\",\n        \"path\": \"/extension/-\",\n        \"value\": [\n            {\n                \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n                \"valueCodeableConcept\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",\n                            \"code\": \"ROLE_DEACTIVATED_PATIENT_REQUEST\",\n                            \"display\": \"At patients request\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -11103,6 +11106,7 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "c4b7332a-8845-497d-8bf7-39f102115876",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"issue\": [",
@@ -11136,7 +11140,7 @@
 								],
 								"type": "text/javascript",
 								"packages": {},
-								"id": "c4b7332a-8845-497d-8bf7-39f102115876"
+								"requests": {}
 							}
 						}
 					],
@@ -11149,7 +11153,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"someinvalidcode\"\n  }\n]",
+							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"someinvalidcode\"\n  },\n  {\n        \"op\": \"add\",\n        \"path\": \"/extension/-\",\n        \"value\": [\n            {\n                \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n                \"valueCodeableConcept\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",\n                            \"code\": \"ROLE_DEACTIVATED_PATIENT_REQUEST\",\n                            \"display\": \"At patients request\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n]",
 							"options": {
 								"raw": {
 									"language": "json"
