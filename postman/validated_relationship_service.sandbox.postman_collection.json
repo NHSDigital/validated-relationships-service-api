@@ -10621,6 +10621,7 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "78635f29-bca7-4f63-847a-1b379b73c7db",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"OperationOutcome\",",
@@ -10643,7 +10644,7 @@
 								],
 								"type": "text/javascript",
 								"packages": {},
-								"id": "78635f29-bca7-4f63-847a-1b379b73c7db"
+								"requests": {}
 							}
 						}
 					],
@@ -10656,7 +10657,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"inactive\"\n  }\n]",
+							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"inactive\"\n  },\n  {\n        \"op\": \"add\",\n        \"path\": \"/extension\",\n        \"value\": [\n            {\n                \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n                \"valueCodeableConcept\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",\n                            \"code\": \"ROLE_DEACTIVATED_PATIENT_REQUEST\",\n                            \"display\": \"At patients request\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10674,6 +10675,7 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "5922f353-8636-4c25-83b0-f51ef506f8f9",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"OperationOutcome\",",
@@ -10696,7 +10698,7 @@
 								],
 								"type": "text/javascript",
 								"packages": {},
-								"id": "5922f353-8636-4c25-83b0-f51ef506f8f9"
+								"requests": {}
 							}
 						}
 					],
@@ -10709,7 +10711,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/provision/period/end\",\n    \"value\": \"2026-12-31\"\n  }\n]",
+							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/provision/0/period/end\",\n    \"value\": \"2026-12-31T23:59:59Z\"\n  }\n]",
 							"options": {
 								"raw": {
 									"language": "json"
