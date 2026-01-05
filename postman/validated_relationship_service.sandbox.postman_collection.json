@@ -3589,6 +3589,7 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "9a1721fb-45e0-4ab2-a34a-da251ad6d211",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"Bundle\",",
@@ -3709,7 +3710,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": {",
+									"                \"provision\": [{",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -3733,7 +3734,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                },",
+									"                }],",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -3856,7 +3857,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": {",
+									"                \"provision\": [{",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -3880,7 +3881,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                },",
+									"                }],",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -4003,7 +4004,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": {",
+									"                \"provision\": [{",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -4027,7 +4028,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                },",
+									"                }],",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -4061,7 +4062,7 @@
 								],
 								"type": "text/javascript",
 								"packages": {},
-								"id": "9a1721fb-45e0-4ab2-a34a-da251ad6d211"
+								"requests": {}
 							}
 						}
 					],
@@ -4100,6 +4101,7 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "49f8dccb-60b7-4d9d-9347-70ff5af36c3e",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"Bundle\",",
@@ -4208,7 +4210,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": {",
+									"                \"provision\": [{",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -4232,7 +4234,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                },",
+									"                }],",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -4338,7 +4340,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": {",
+									"                \"provision\": [{",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -4362,7 +4364,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                },",
+									"                }],",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -4468,7 +4470,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": {",
+									"                \"provision\": [{",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -4492,7 +4494,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                },",
+									"                }],",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -4526,7 +4528,7 @@
 								],
 								"type": "text/javascript",
 								"packages": {},
-								"id": "49f8dccb-60b7-4d9d-9347-70ff5af36c3e"
+								"requests": {}
 							}
 						}
 					],
@@ -4565,6 +4567,7 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "c6f20601-4cc9-486c-bde6-0b5cfa60e8c0",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"Bundle\",",
@@ -4731,7 +4734,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": {",
+									"                \"provision\": [{",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -4755,7 +4758,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                },",
+									"                }],",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -4915,7 +4918,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": {",
+									"                \"provision\": [{",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -4939,7 +4942,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                },",
+									"                }],",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -5157,7 +5160,7 @@
 								],
 								"type": "text/javascript",
 								"packages": {},
-								"id": "c6f20601-4cc9-486c-bde6-0b5cfa60e8c0"
+								"requests": {}
 							}
 						}
 					],
