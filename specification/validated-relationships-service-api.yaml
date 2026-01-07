@@ -794,6 +794,8 @@ paths:
                   $ref: "./examples/responses/POST_Consent/errors/invalid_request.yaml#/PostConsentInvalidRequestError"
                 postConsentInvalidFHIRRequest:
                   $ref: "./examples/responses/POST_Consent/errors/invalid_request.yaml#/PostConsentInvalidFHIRRequestError"
+                postConsentMissingFreeTextForOther:
+                  $ref: "./examples/responses/POST_Consent/errors/missing_free_text_for_other.yaml#/PostConsentMissingFreeTextForOtherError"
 
         "5XX":
           description: |
@@ -1071,6 +1073,8 @@ paths:
                   $ref: "./examples/responses/PATCH_Consent/errors/invalid_status_reason.yaml#/PatchConsentInvalidStatusReasonError"
                 patchConsentInvalidStateTransitionError:
                   $ref: "./examples/responses/PATCH_Consent/errors/invalid_state_transition.yaml#/PatchConsentInvalidStateTransitionError"
+                patchConsentMissingFreeTextForOther:
+                  $ref: "./examples/responses/PATCH_Consent/errors/missing_free_text_for_other.yaml#/PatchConsentMissingFreeTextForOtherError"
         "5XX":
           description: |
             Errors will be returned for the first error encountered in the request. An error occurred as follows:
