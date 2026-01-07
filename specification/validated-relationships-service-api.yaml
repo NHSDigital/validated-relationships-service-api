@@ -141,13 +141,16 @@ info:
     * only covers a limited set of scenarios
     * is open access, so does not allow you to test authorisation
 
-    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/26376766-4fd91043-1337-4f8b-92c9-96c597b343c8?action=collection%2Ffork&collection-url=entityId%3D26376766-4fd91043-1337-4f8b-92c9-96c597b343c8%26entityType%3Dcollection%26workspaceId%3D8fc7bffa-055c-43e2-b94b-da0fdce3aa4b)
+    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/18067099-9c2224fd-e560-4a7c-847c-389d1a950ab7?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D18067099-9c2224fd-e560-4a7c-847c-389d1a950ab7%26entityType%3Dcollection%26workspaceId%3D082e43b8-9a51-4a16-af66-0d2b233cd69c)
+
     ### Integration testing
 
     Our [integration test environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#integration-testing)
 
     * is for formal integration testing
     * includes authorisation with NHS Login
+
+    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/18067099-c3ee07a1-47e5-43f7-96f9-5e56d403af45?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D18067099-c3ee07a1-47e5-43f7-96f9-5e56d403af45%26entityType%3Dcollection%26workspaceId%3D082e43b8-9a51-4a16-af66-0d2b233cd69c#?env%5BINT%5D=W3sia2V5IjoiY2lzMl90b2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InNlY3JldCJ9LHsia2V5IjoibG9naW5fdG9rZW4iLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJzZWNyZXQifSx7ImtleSI6ImFwaV9iYXNlX3VybCIsInZhbHVlIjoiaHR0cHM6Ly9pbnQuYXBpLnNlcnZpY2UubmhzLnVrL3ZhbGlkYXRlZC1yZWxhdGlvbnNoaXBzL0ZISVIvUjQiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoiZGVmYXVsdCJ9LHsia2V5IjoidnJzX2FwaV9wcml2YXRlX2tleSIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InNlY3JldCJ9LHsia2V5IjoibmhzX2RldmVsb3Blcl9hY2NvdW50X2FwaV9rZXkiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJzZWNyZXQifSx7ImtleSI6ImNvbnNlbnRfYXBwX2F1dGhfaGVhZGVyX3ZhbHVlIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoic2VjcmV0In0seyJrZXkiOiJ0cHBfOTY3NDk5ODUzNV9hY2Nlc3NfdG9rZW4iLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJzZWNyZXQifSx7ImtleSI6InRwcF85Njc0OTk4NDU0X2FjY2Vzc190b2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InNlY3JldCJ9LHsia2V5IjoiZW1pc185NjkyMTEzNjk4X2FjY2Vzc190b2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InNlY3JldCJ9LHsia2V5IjoiZW1pc185NjkyMTEzNjEyX2FjY2Vzc190b2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InNlY3JldCJ9XQ==)
 
     ## Onboarding
 
@@ -750,6 +753,7 @@ paths:
             | 400         | `MISSING_CATEGORY`          | Missing category.                                                                                                                         |
             | 400         | `MISSING_DATETIME`          | Missing datetime.                                                                                                                         |
             | 400         | `MISSING_VALUE`             | Missing header or parameter. For details, see the `diagnostics` field.                                                                    |
+            | 400         | `BAD_REQUEST`               | Invalid request. For details, see the `diagnostics` field.                                                                                |
             | 401         | `ACCESS_DENIED`             | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
             | 403         | `FORBIDDEN`                 | Access denied to resource.                                                                                                                |
             | 404         | `INVALIDATED_RESOURCE`      | Resource that has been marked as invalid was requested - invalid resources cannot be retrieved                                            |
@@ -786,6 +790,10 @@ paths:
                   $ref: "./examples/responses/POST_Consent/errors/missing_identifier_system.yaml#/PostConsentMissingIdentifierSystemError"
                 postConsentMissingScope:
                   $ref: "./examples/responses/POST_Consent/errors/missing_scope.yaml#/PostConsentMissingScopeError"
+                postConsentInvalidRequest:
+                  $ref: "./examples/responses/POST_Consent/errors/invalid_request.yaml#/PostConsentInvalidRequestError"
+                postConsentInvalidFHIRRequest:
+                  $ref: "./examples/responses/POST_Consent/errors/invalid_request.yaml#/PostConsentInvalidFHIRRequestError"
 
         "5XX":
           description: |
@@ -937,6 +945,11 @@ paths:
         * JSON Patch operations must be valid according to RFC 6902
         * Status changes must use valid status codes from <http://hl7.org/fhir/consent-state-codes>
 
+         **IMPORTANT: Business Rule Enforcement**
+        If you update the `/status` of a role, you **MUST** also provide a corresponding update to the `/extension` path in the same patch array to provide the `statusReason`.
+
+        Requests that change status without providing a status reason will return an error
+
         ## Access modes
 
         This endpoint supports the following access modes:
@@ -987,12 +1000,21 @@ paths:
                 summary: Set status to active with an end date
                 description: |
                   Example of a combined update to a record.
-                  The status will be changed to inactive.
+                  The status will be changed to active.
                   The relationship will be considered as ended following this date.
                 value:
                   - op: replace
                     path: /status
                     value: active
+                  - op: replace
+                    path: /extension
+                    value:
+                    - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
+                      valueCodeableConcept:
+                        coding:
+                        - system: http://terminology.hl7.org/CodeSystem/consent-reason
+                          code: "ROLE_ACTIVATED"
+                          display: "Role activated"
                   - op: replace
                     path: /provision/period/end
                     value: "2026-12-31"
@@ -2191,13 +2213,13 @@ components:
           $ref: "#/components/schemas/Meta"
         identifier:
           type: array
-          description: The patient's NHS number. The primary identifier of a patient, unique within NHS England and Wales. Always 10 digits and must be a [valid NHS number](https://www.datadictionary.nhs.uk/attributes/nhs_number.html).
+          description: The primary identifier of a patient. Possible identifiers include the NHS number or local GP patient identifier. If it is an NHS number, it will always 10 digits and must be a [valid NHS number](https://www.datadictionary.nhs.uk/attributes/nhs_number.html).
           items:
             type: object
             properties:
               system:
                 type: string
-                description: Codesystem URL for the NHS number.
+                description: Codesystem URL for the identifier.
                 enum:
                   [
                     "https://fhir.nhs.uk/Id/nhs-number",
@@ -2205,7 +2227,7 @@ components:
                   ]
               value:
                 type: string
-                description: The NHS number.
+                description: The identifier value (e.g. NHS number).
         name:
           $ref: "#/components/schemas/PDSName"
         birthDate:
@@ -2275,7 +2297,10 @@ components:
         provision:
           $ref: "#/components/schemas/Provision"
         extension:
-          $ref: "#/components/schemas/Extension"
+          type: array
+          items:
+            $ref: "#/components/schemas/Extension"
+          description: "Reasons for the status of the consent"
 
     Policy:
       type: object
@@ -2498,7 +2523,6 @@ components:
         type: object
         required:
           - use
-          - family
         additionalProperties: false
         properties:
           id:
@@ -2559,6 +2583,9 @@ components:
             description: Name suffices and postnominals.
             items:
               type: string
+          text:
+            type: string
+            description: Text representation of the full name
 
     PDSBirthDate:
       description: |

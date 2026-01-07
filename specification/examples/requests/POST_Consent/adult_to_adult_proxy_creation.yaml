@@ -5,13 +5,13 @@ ConsentAdultToAdultGuardianRequest:
     status: active
     scope:
       coding:
-        - system: "http://terminology.hl7.org/CodeSystem/consentscope"
+        - system: "https://terminology.hl7.org/CodeSystem/consentscope"
           code: patient-privacy
           display: "Privacy Consent"
       text: "Patient Privacy Consent"
     category:
       - coding:
-          - system: "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+          - system: "https://terminology.hl7.org/CodeSystem/v3-ActCode"
             code: INFA
             display: "Information Access"
         text: "Information Access Consent"
@@ -32,9 +32,9 @@ ConsentAdultToAdultGuardianRequest:
       actor:
         - role:
             coding:
-              - system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
-                code: GUARD
-                display: Guardian
+              - system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
+                code: court-appointed-personal-welfare-deputy
+                display: Court appointed personal welfare deputy
           reference:
             type: RelatedPerson
             identifier:
@@ -44,6 +44,6 @@ ConsentAdultToAdultGuardianRequest:
       - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
         valueCodeableConcept:
           coding:
-            - system: http://terminology.hl7.org/CodeSystem/consent-reason
-              code: TBC
-              display: TBC
+            - system: https://terminology.hl7.org/CodeSystem/consent-reason
+              code: ROLE_CREATED
+              display: Role created from scratch by GP

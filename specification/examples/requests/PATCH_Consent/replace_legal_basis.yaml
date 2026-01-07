@@ -7,9 +7,9 @@ ReplaceLegalBasisRequest:
       value:
         - role:
             coding:
-              - system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
-                code: GUARD
-                display: Guardian
+              - system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
+                code: court-appointed-personal-welfare-deputy
+                display: Court appointed personal welfare deputy
           reference:
             type: RelatedPerson
             identifier:
