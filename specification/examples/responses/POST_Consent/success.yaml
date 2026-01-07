@@ -6,3 +6,4 @@ PostConsentSuccess:
     issue:
       - severity: information
         code: informational
+        diagnostics: "Proxy role created successfully"
