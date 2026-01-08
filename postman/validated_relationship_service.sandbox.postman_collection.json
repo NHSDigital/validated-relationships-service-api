@@ -11052,11 +11052,6 @@
 		{
 			"key": "api_base_url",
 			"value": "https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4"
-		},
-		{
-			"value": "",
-			"type": "string",
-			"disabled": true
 		}
 	]
 }
