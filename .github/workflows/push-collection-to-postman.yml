@@ -22,7 +22,7 @@ jobs:
         runs-on: ubuntu-latest
         if: ${{ github.event_name == 'push' }}
         outputs:
-            sandbox: ${{ steps.filter.outputs.backend }}
+            sandbox: ${{ steps.filter.outputs.sandbox }}
             integration: ${{ steps.filter.outputs.integration }}
         steps:
             -   name: Checkout
@@ -41,11 +41,11 @@ jobs:
     push-sandbox-postman:
         name: Push Sandbox collection to Postman
         runs-on: ubuntu-latest
-        needs: detect-changes
+        needs: [detect-changes]
         if: |
             always () && (
-                github.event_name == 'push' && needs.detect-changes.outputs.sandbox == 'true' ||
-                github.event_name == 'workflow-dispatch' && github.event.inputs.should_push_sandbox == 'true'
+                (github.event_name == 'push' && needs.detect-changes.outputs.sandbox == 'true') ||
+                (github.event_name == 'workflow_dispatch' && github.event.inputs.should_push_sandbox == 'true')
             )
         steps:
             -   name: Checkout
@@ -64,11 +64,11 @@ jobs:
     push-integration-postman:
         name: Push Integration collection to Postman
         runs-on: ubuntu-latest
-        needs: detect-changes
+        needs: [detect-changes]
         if: |
             always () && (
-                github.event_name == 'push' && needs.detect-changes.outputs.integration == 'true' ||
-                github.event_name == 'workflow-dispatch' && github.event.inputs.should_push_integration == 'true'
+                (github.event_name == 'push' && needs.detect-changes.outputs.integration == 'true') ||
+                (github.event_name == 'workflow_dispatch' && github.event.inputs.should_push_integration == 'true')
             )
         steps:
             -   name: Checkout
