@@ -37,7 +37,7 @@ jobs:
                     fi
             - name: Check collection ID
               id: check_collection_id
-              run: echo ${{ steps.get_collection_id.outputs.collectionId }}
+              run: echo ${{ steps.get_collection_id.outputs.collection_id }}
             - name: push-to-postman-action
               id: process
               uses: gcatanese/push-to-postman-action@main
@@ -45,4 +45,4 @@ jobs:
                 goal: update
                 postman-key: ${{ secrets.POSTMAN_API_KEY }}
                 postman-file: '/postman/validated_relationship_service.${{ github.event.inputs.collection }}.postman_collection.json'
-                collection-id: ${{ steps.get_collection_id.outputs.collectionId }}
+                collection-id: ${{ steps.get_collection_id.outputs.collection_id }}
