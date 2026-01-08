@@ -1,4 +1,9 @@
 name: Push Postman collection changes to public collection
+# This workflow pushes any changes to the Postman collections in the repo to the Postman collections within the
+# Validated Relationships Service workspace.
+# This means that all changes and version control are handled within GitHub for the collections and only once the
+# changes have been merged are the public-facing Postman collections updated.
+# Please see updated instructions on Confluence for further details about how this workflow fits into that process.
 on:
     workflow_dispatch:
         inputs:
