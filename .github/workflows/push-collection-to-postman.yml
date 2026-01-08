@@ -1,4 +1,4 @@
-name: Push collection to Postman workspace
+name: Push Postman collection changes to public collection
 on:
     workflow_dispatch:
         inputs:
