@@ -44,5 +44,5 @@ jobs:
               with:
                 goal: update
                 postman-key: ${{ secrets.POSTMAN_API_KEY }}
-                postman-file: '/postman/validated_relationship_service.${{ github.event.inputs.collection }}.postman_collection.json'
+                postman-file: './postman/validated_relationship_service.${{ github.event.inputs.collection }}.postman_collection.json'
                 collection-id: ${{ steps.get_collection_id.outputs.collection_id }}
