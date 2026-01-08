@@ -2317,6 +2317,12 @@ components:
     Provision:
       type: object
       properties:
+        type:
+          type: string
+          description: "Action to take for this provision of the consent."
+          enum:
+            - permit
+            - deny
         period:
           type: object
           description: "Timeframe for this provision."

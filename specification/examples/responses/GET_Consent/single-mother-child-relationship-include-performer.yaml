@@ -4,12 +4,12 @@ ConsentSingleAdultChildRelationshipIncludePerformerBundle:
     A Bundle containing a single proxy relationship between an adult and child including the performer details.
   value:
     resourceType: Bundle
-    timestamp: '2020-08-26T14:00:00+00:00'
+    timestamp: '2025-08-26T14:00:00+00:00'
     total: 1
     type: searchset
     link:
       - relation: self
-        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000019&_include=Consent:performer
+        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/9000000019?_include=Consent:performer
     entry:
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742
         resource:
@@ -18,8 +18,6 @@ ConsentSingleAdultChildRelationshipIncludePerformerBundle:
           identifier:
             - system: 'https://fhir.nhs.uk/Id/nhs-number'
               value: '9000000019'
-            - system: 'https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier'
-              value: ABC0000001
           patient:
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
@@ -44,14 +42,12 @@ ConsentSingleAdultChildRelationshipIncludePerformerBundle:
             coding:
               - system: 'https://terminology.hl7.org/CodeSystem/consentscope'
                 code: patient-privacy
-                display: Privacy Consent
-            text: Patient Privacy Consent
+                display: privacy consent
           category:
             - coding:
                 - system: 'https://terminology.hl7.org/CodeSystem/v3-ActCode'
                   code: INFA
-                  display: Information Access
-              text: Information Access Consent
+                  display: information access
           patient:
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
@@ -61,7 +57,11 @@ ConsentSingleAdultChildRelationshipIncludePerformerBundle:
             - identifier:
                 system: 'https://fhir.nhs.uk/Id/nhs-number'
                 value: '9000000019'
+          policy:
+            - authority: https://www.england.nhs.uk
+              uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
           provision:
+            type: permit
             actor:
             - reference:
                 identifier:
@@ -73,7 +73,7 @@ ConsentSingleAdultChildRelationshipIncludePerformerBundle:
                   display: Parental responsibility
                   system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
             period:
-              end: "2026-02-11"
+              end: "2029-02-11"
               start: "2025-02-11"
           extension:
           - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason

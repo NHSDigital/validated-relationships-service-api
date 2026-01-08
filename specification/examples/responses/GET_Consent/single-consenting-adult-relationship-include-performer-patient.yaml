@@ -5,12 +5,12 @@ ConsentSingleConsentingAdultRelationshipIncludePerformerPatientBundle:
     patient details.
   value:
     resourceType: Bundle
-    timestamp: "2020-08-26T14:00:00+00:00"
+    timestamp: "2025-08-26T14:00:00+00:00"
     total: 1
     type: searchset
     link:
       - relation: self
-        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000010&_include=Consent:performer&_include=Consent:patient
+        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/9000000010?_include=Consent:performer&_include=Consent:patient
     entry:
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/RP974720
         resource:
@@ -45,13 +45,11 @@ ConsentSingleConsentingAdultRelationshipIncludePerformerPatientBundle:
           identifier:
             - system: "https://fhir.nhs.uk/Id/nhs-number"
               value: "9000000005"
-            - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
-              value: ABC1234567
           name:
             - use: usual
               period:
-                start: "2020-01-01"
-                end: "2021-12-31"
+                start: "2025-01-01"
+                end: "2029-12-31"
               given:
                 - Sally
               family: Evans
@@ -73,14 +71,12 @@ ConsentSingleConsentingAdultRelationshipIncludePerformerPatientBundle:
             coding:
               - system: "https://terminology.hl7.org/CodeSystem/consentscope"
                 code: patient-privacy
-                display: Privacy Consent
-            text: Patient Privacy Consent
+                display: privacy consent
           category:
             - coding:
                 - system: "https://terminology.hl7.org/CodeSystem/v3-ActCode"
                   code: INFA
-                  display: Information Access
-              text: Information Access Consent
+                  display: information access
           patient:
             identifier:
               system: "https://fhir.nhs.uk/Id/nhs-number"
@@ -94,6 +90,7 @@ ConsentSingleConsentingAdultRelationshipIncludePerformerPatientBundle:
             - authority: https://www.england.nhs.uk
               uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
           provision:
+            type: permit
             actor:
             - reference:
                 identifier:
@@ -105,7 +102,7 @@ ConsentSingleConsentingAdultRelationshipIncludePerformerPatientBundle:
                   display: Parental responsibility
                   system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
             period:
-              end: "2026-02-11"
+              end: "2029-02-11"
               start: "2025-02-11"
           extension:
           - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
