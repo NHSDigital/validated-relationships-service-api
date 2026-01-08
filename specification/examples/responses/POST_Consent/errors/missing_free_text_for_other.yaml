@@ -1,0 +1,15 @@
+PostConsentMissingFreeTextForOtherError:
+  summary: Bad request when free text is missing for OTHER reason code
+  description: 400 error response when free text is not provided for OTHER reason codes
+  value:
+    issue:
+      - code: invalid
+        diagnostics: "Free text is required when reason code is OTHER."
+        details:
+          coding:
+            - code: "MISSING_FREE_TEXT_FOR_OTHER"
+              display: "Free text must be provided for OTHER reason codes."
+              system: "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
+              version: '1'
+        severity: error
+    resourceType: "OperationOutcome"
