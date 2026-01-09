@@ -141,7 +141,7 @@ info:
     * only covers a limited set of scenarios
     * is open access, so does not allow you to test authorisation
 
-    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/18067099-9c2224fd-e560-4a7c-847c-389d1a950ab7?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D18067099-9c2224fd-e560-4a7c-847c-389d1a950ab7%26entityType%3Dcollection%26workspaceId%3D082e43b8-9a51-4a16-af66-0d2b233cd69c)
+    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/18067099-9c2224fd-e560-4a7c-847c-389d1a950ab7?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D18067099-9c2224fd-e560-4a7c-847c-389d1a950ab7%26entityType%3Dcollection%26workspaceId%3D082e43b8-9a51-4a16-af66-0d2b233cd69c#?env%5BINT%5D=W3sia2V5IjoiY2lzMl90b2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InNlY3JldCIsInNlc3Npb25WYWx1ZSI6IiIsImNvbXBsZXRlU2Vzc2lvblZhbHVlIjoiIiwic2Vzc2lvbkluZGV4IjowfSx7ImtleSI6ImxvZ2luX3Rva2VuIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoic2VjcmV0Iiwic2Vzc2lvblZhbHVlIjoiIiwiY29tcGxldGVTZXNzaW9uVmFsdWUiOiIiLCJzZXNzaW9uSW5kZXgiOjF9LHsia2V5IjoiYXBpX2Jhc2VfdXJsIiwidmFsdWUiOiJodHRwczovL2ludC5hcGkuc2VydmljZS5uaHMudWsvdmFsaWRhdGVkLXJlbGF0aW9uc2hpcHMvRkhJUi9SNCIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJkZWZhdWx0Iiwic2Vzc2lvblZhbHVlIjoiaHR0cHM6Ly9pbnQuYXBpLnNlcnZpY2UubmhzLnVrL3ZhbGlkYXRlZC1yZWxhdGlvbnNoaXBzL0ZISVIvUjQiLCJjb21wbGV0ZVNlc3Npb25WYWx1ZSI6Imh0dHBzOi8vaW50LmFwaS5zZXJ2aWNlLm5ocy51ay92YWxpZGF0ZWQtcmVsYXRpb25zaGlwcy9GSElSL1I0Iiwic2Vzc2lvbkluZGV4IjoyfSx7ImtleSI6InZyc19hcGlfcHJpdmF0ZV9rZXkiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJzZWNyZXQiLCJzZXNzaW9uVmFsdWUiOiIiLCJjb21wbGV0ZVNlc3Npb25WYWx1ZSI6IiIsInNlc3Npb25JbmRleCI6M30seyJrZXkiOiJuaHNfZGV2ZWxvcGVyX2FjY291bnRfYXBpX2tleSIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InNlY3JldCIsInNlc3Npb25WYWx1ZSI6IiIsImNvbXBsZXRlU2Vzc2lvblZhbHVlIjoiIiwic2Vzc2lvbkluZGV4Ijo0fSx7ImtleSI6ImNvbnNlbnRfYXBwX2F1dGhfaGVhZGVyX3ZhbHVlIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoic2VjcmV0Iiwic2Vzc2lvblZhbHVlIjoiIiwiY29tcGxldGVTZXNzaW9uVmFsdWUiOiIiLCJzZXNzaW9uSW5kZXgiOjV9LHsia2V5IjoidHBwXzk2NzQ5OTg1MzVfYWNjZXNzX3Rva2VuIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoic2VjcmV0Iiwic2Vzc2lvblZhbHVlIjoiIiwiY29tcGxldGVTZXNzaW9uVmFsdWUiOiIiLCJzZXNzaW9uSW5kZXgiOjZ9LHsia2V5IjoidHBwXzk2NzQ5OTg0NTRfYWNjZXNzX3Rva2VuIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoic2VjcmV0Iiwic2Vzc2lvblZhbHVlIjoiIiwiY29tcGxldGVTZXNzaW9uVmFsdWUiOiIiLCJzZXNzaW9uSW5kZXgiOjd9LHsia2V5IjoiZW1pc185NjkyMTEzNjk4X2FjY2Vzc190b2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InNlY3JldCIsInNlc3Npb25WYWx1ZSI6IiIsImNvbXBsZXRlU2Vzc2lvblZhbHVlIjoiIiwic2Vzc2lvbkluZGV4Ijo4fSx7ImtleSI6ImVtaXNfOTY5MjExMzYxMl9hY2Nlc3NfdG9rZW4iLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJzZWNyZXQiLCJzZXNzaW9uVmFsdWUiOiIiLCJjb21wbGV0ZVNlc3Npb25WYWx1ZSI6IiIsInNlc3Npb25JbmRleCI6OX1d)
 
     ### Integration testing
 
@@ -150,8 +150,7 @@ info:
     * is for formal integration testing
     * includes authorisation with NHS Login
 
-    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/18067099-c3ee07a1-47e5-43f7-96f9-5e56d403af45?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D18067099-c3ee07a1-47e5-43f7-96f9-5e56d403af45%26entityType%3Dcollection%26workspaceId%3D082e43b8-9a51-4a16-af66-0d2b233cd69c#?env%5BINT%5D=W3sia2V5IjoiY2lzMl90b2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InNlY3JldCJ9LHsia2V5IjoibG9naW5fdG9rZW4iLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJzZWNyZXQifSx7ImtleSI6ImFwaV9iYXNlX3VybCIsInZhbHVlIjoiaHR0cHM6Ly9pbnQuYXBpLnNlcnZpY2UubmhzLnVrL3ZhbGlkYXRlZC1yZWxhdGlvbnNoaXBzL0ZISVIvUjQiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoiZGVmYXVsdCJ9LHsia2V5IjoidnJzX2FwaV9wcml2YXRlX2tleSIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InNlY3JldCJ9LHsia2V5IjoibmhzX2RldmVsb3Blcl9hY2NvdW50X2FwaV9rZXkiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJzZWNyZXQifSx7ImtleSI6ImNvbnNlbnRfYXBwX2F1dGhfaGVhZGVyX3ZhbHVlIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoic2VjcmV0In0seyJrZXkiOiJ0cHBfOTY3NDk5ODUzNV9hY2Nlc3NfdG9rZW4iLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJzZWNyZXQifSx7ImtleSI6InRwcF85Njc0OTk4NDU0X2FjY2Vzc190b2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InNlY3JldCJ9LHsia2V5IjoiZW1pc185NjkyMTEzNjk4X2FjY2Vzc190b2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InNlY3JldCJ9LHsia2V5IjoiZW1pc185NjkyMTEzNjEyX2FjY2Vzc190b2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InNlY3JldCJ9XQ==)
-
+    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/18067099-c3ee07a1-47e5-43f7-96f9-5e56d403af45?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D18067099-c3ee07a1-47e5-43f7-96f9-5e56d403af45%26entityType%3Dcollection%26workspaceId%3D082e43b8-9a51-4a16-af66-0d2b233cd69c#?env%5BINT%5D=W3sia2V5IjoiY2lzMl90b2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InNlY3JldCIsInNlc3Npb25WYWx1ZSI6IiIsImNvbXBsZXRlU2Vzc2lvblZhbHVlIjoiIiwic2Vzc2lvbkluZGV4IjowfSx7ImtleSI6ImxvZ2luX3Rva2VuIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoic2VjcmV0Iiwic2Vzc2lvblZhbHVlIjoiIiwiY29tcGxldGVTZXNzaW9uVmFsdWUiOiIiLCJzZXNzaW9uSW5kZXgiOjF9LHsia2V5IjoiYXBpX2Jhc2VfdXJsIiwidmFsdWUiOiJodHRwczovL2ludC5hcGkuc2VydmljZS5uaHMudWsvdmFsaWRhdGVkLXJlbGF0aW9uc2hpcHMvRkhJUi9SNCIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJkZWZhdWx0Iiwic2Vzc2lvblZhbHVlIjoiaHR0cHM6Ly9pbnQuYXBpLnNlcnZpY2UubmhzLnVrL3ZhbGlkYXRlZC1yZWxhdGlvbnNoaXBzL0ZISVIvUjQiLCJjb21wbGV0ZVNlc3Npb25WYWx1ZSI6Imh0dHBzOi8vaW50LmFwaS5zZXJ2aWNlLm5ocy51ay92YWxpZGF0ZWQtcmVsYXRpb25zaGlwcy9GSElSL1I0Iiwic2Vzc2lvbkluZGV4IjoyfSx7ImtleSI6InZyc19hcGlfcHJpdmF0ZV9rZXkiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJzZWNyZXQiLCJzZXNzaW9uVmFsdWUiOiIiLCJjb21wbGV0ZVNlc3Npb25WYWx1ZSI6IiIsInNlc3Npb25JbmRleCI6M30seyJrZXkiOiJuaHNfZGV2ZWxvcGVyX2FjY291bnRfYXBpX2tleSIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InNlY3JldCIsInNlc3Npb25WYWx1ZSI6IiIsImNvbXBsZXRlU2Vzc2lvblZhbHVlIjoiIiwic2Vzc2lvbkluZGV4Ijo0fSx7ImtleSI6ImNvbnNlbnRfYXBwX2F1dGhfaGVhZGVyX3ZhbHVlIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoic2VjcmV0Iiwic2Vzc2lvblZhbHVlIjoiIiwiY29tcGxldGVTZXNzaW9uVmFsdWUiOiIiLCJzZXNzaW9uSW5kZXgiOjV9LHsia2V5IjoidHBwXzk2NzQ5OTg1MzVfYWNjZXNzX3Rva2VuIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoic2VjcmV0Iiwic2Vzc2lvblZhbHVlIjoiIiwiY29tcGxldGVTZXNzaW9uVmFsdWUiOiIiLCJzZXNzaW9uSW5kZXgiOjZ9LHsia2V5IjoidHBwXzk2NzQ5OTg0NTRfYWNjZXNzX3Rva2VuIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoic2VjcmV0Iiwic2Vzc2lvblZhbHVlIjoiIiwiY29tcGxldGVTZXNzaW9uVmFsdWUiOiIiLCJzZXNzaW9uSW5kZXgiOjd9LHsia2V5IjoiZW1pc185NjkyMTEzNjk4X2FjY2Vzc190b2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InNlY3JldCIsInNlc3Npb25WYWx1ZSI6IiIsImNvbXBsZXRlU2Vzc2lvblZhbHVlIjoiIiwic2Vzc2lvbkluZGV4Ijo4fSx7ImtleSI6ImVtaXNfOTY5MjExMzYxMl9hY2Nlc3NfdG9rZW4iLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJzZWNyZXQiLCJzZXNzaW9uVmFsdWUiOiIiLCJjb21wbGV0ZVNlc3Npb25WYWx1ZSI6IiIsInNlc3Npb25JbmRleCI6OX1d)
     ## Onboarding
 
     You need to get your software approved by us before it can go live with this API. We call this onboarding. The onboarding process can sometimes be quite long, so it's worth planning well ahead.
@@ -987,15 +986,8 @@ paths:
             examples:
               statusUpdate:
                 $ref: "./examples/requests/PATCH_Consent/replace_status.yaml#/StatusUpdate"
-              updateProvision:
-                summary: Set an end date for a role
-                description: |
-                  Example apply end date to a relationship.
-                  The relationship will be considered as ended following this date.
-                value:
-                  - op: replace
-                    path: /provision/period/end
-                    value: "2026-12-31"
+              updateProvisionEndDate:
+                $ref: "./examples/requests/PATCH_Consent/replace_provision_end_date.yaml#/UpdateProvisionEndDate"
               multipleUpdates:
                 summary: Set status to active with an end date
                 description: |
@@ -1006,8 +998,8 @@ paths:
                   - op: replace
                     path: /status
                     value: active
-                  - op: replace
-                    path: /extension
+                  - op: add
+                    path: /extension/-
                     value:
                     - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
                       valueCodeableConcept:
@@ -1015,9 +1007,9 @@ paths:
                         - system: http://terminology.hl7.org/CodeSystem/consent-reason
                           code: "ROLE_ACTIVATED"
                           display: "Role activated"
-                  - op: replace
+                  - op: add
                     path: /provision/period/end
-                    value: "2026-12-31"
+                    value: "2026-12-31T23:59:59Z"
               replaceLegalBasis:
                 $ref: "./examples/requests/PATCH_Consent/replace_legal_basis.yaml#/ReplaceLegalBasisRequest"
       responses:
@@ -2316,32 +2308,34 @@ components:
 
     Provision:
       type: object
-      properties:
-        period:
-          type: object
-          description: "Timeframe for this provision."
-          properties:
-            start:
-              type: string
-              description: "Starting time with inclusive boundary"
-              format: date-time
-            end:
-              type: string
-              description: "End time with inclusive boundary, if not ongoing"
-              format: date-time
-        actor:
-          type: array
-          description: "Individuals or organisations involved in the provision"
-          items:
+      description: "Constraints to the base Consent policy rule, which may be enforced over time."
+      items:
+        type: object
+        properties:
+          period:
             type: object
+            description: "Timeframe for this provision."
             properties:
-              reference:
-                $ref: "#/components/schemas/Reference"
-                description: "Individuals or organizations that agreed to the consent"
-              role:
-                $ref: "#/components/schemas/CodeableConcept"
-                description: "Classification of the role of consent, bound to http://terminology.hl7.org/CodeSystem/v3-RoleCode"
-
+              start:
+                type: string
+                description: "Starting time with inclusive boundary"
+                format: date-time
+              end:
+                type: string
+                description: "End time with inclusive boundary, if not ongoing"
+                format: date-time
+          actor:
+            type: array
+            description: "Individuals or organisations involved in the provision"
+            items:
+              type: object
+              properties:
+                reference:
+                  $ref: "#/components/schemas/Reference"
+                  description: "Individuals or organizations that agreed to the consent"
+                role:
+                  $ref: "#/components/schemas/CodeableConcept"
+                  description: "Classification of the role of consent, bound to http://terminology.hl7.org/CodeSystem/v3-RoleCode"
     Extension:
       type: object
       properties:
@@ -2504,11 +2498,13 @@ components:
           enum: [add, remove, replace]
         path:
           type: string
-          enum:
-            - /status
-            - /provision/period/end
-            - /provision/actor
-            - /extension
+          oneOf:
+            - description: "Static paths that do not require an index."
+              enum:
+                - /status
+                - /extension/-
+                - /provision/period/end
+                - /provision/actor
         value:
           oneOf:
             - type: string
