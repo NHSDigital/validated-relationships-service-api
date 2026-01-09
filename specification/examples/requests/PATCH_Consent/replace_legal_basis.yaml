@@ -3,7 +3,7 @@ ReplaceLegalBasisRequest:
   description: payload used to add a new actor (legal basis) to the consent provision
   value:
     - op: replace
-      path: /provision/0/actor
+      path: /provision/actor
       value:
         role:
           coding:

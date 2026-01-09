@@ -1008,7 +1008,7 @@ paths:
                           code: "ROLE_ACTIVATED"
                           display: "Role activated"
                   - op: add
-                    path: /provision/0/period/end
+                    path: /provision/period/end
                     value: "2026-12-31T23:59:59Z"
               replaceLegalBasis:
                 $ref: "./examples/requests/PATCH_Consent/replace_legal_basis.yaml#/ReplaceLegalBasisRequest"
@@ -2307,7 +2307,7 @@ components:
           format: uri
 
     Provision:
-      type: array
+      type: object
       description: "Constraints to the base Consent policy rule, which may be enforced over time."
       items:
         type: object
@@ -2503,8 +2503,8 @@ components:
               enum:
                 - /status
                 - /extension/-
-                - /provision/0/period/end
-                - /provision/0/actor
+                - /provision/period/end
+                - /provision/actor
         value:
           oneOf:
             - type: string

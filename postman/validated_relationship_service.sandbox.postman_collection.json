@@ -10570,7 +10570,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/provision/0/period/end\",\n    \"value\": \"2026-12-31T23:59:59Z\"\n  }\n]",
+							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/provision/period/end\",\n    \"value\": \"2026-12-31T23:59:59Z\"\n  }\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10628,7 +10628,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"active\"\n  },\n  {\n        \"op\": \"add\",\n        \"path\": \"/extension/-\",\n        \"value\": [\n            {\n                \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n                \"valueCodeableConcept\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",\n                            \"code\": \"ROLE_CREATED\",\n                            \"display\": \"Role created\"\n                        }\n                    ]\n                }\n            }\n        ]\n    },\n  {\n    \"op\": \"replace\",\n    \"path\": \"/provision/0/period/end\",\n    \"value\": \"2026-12-31T23:59:59Z\"\n  }\n]",
+							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"active\"\n  },\n  {\n        \"op\": \"add\",\n        \"path\": \"/extension/-\",\n        \"value\": [\n            {\n                \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n                \"valueCodeableConcept\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",\n                            \"code\": \"ROLE_CREATED\",\n                            \"display\": \"Role created\"\n                        }\n                    ]\n                }\n            }\n        ]\n    },\n  {\n    \"op\": \"replace\",\n    \"path\": \"/provision/period/end\",\n    \"value\": \"2026-12-31T23:59:59Z\"\n  }\n]",
 							"options": {
 								"raw": {
 									"language": "json"

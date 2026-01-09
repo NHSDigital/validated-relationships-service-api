@@ -5,5 +5,5 @@ UpdateProvisionEndDate:
         The relationship will be considered as ended following this date.
       value:
         - op: add
-          path: /provision/0/period/end
+          path: /provision/period/end
           value: "2026-12-31T23:59:59Z"
