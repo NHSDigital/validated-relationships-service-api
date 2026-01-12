@@ -10670,6 +10670,60 @@
 					"response": []
 				},
 				{
+					"name": "Missing free text for Other",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "78635f29-bca7-4f63-847a-1b379b73c7db",
+								"exec": [
+									"const expectedResponseBody = {",
+									"    \"resourceType\": \"OperationOutcome\",",
+									"    \"issue\": [",
+									"        {",
+									"            \"severity\": \"information\",",
+									"            \"code\": \"informational\"",
+									"        }",
+									"    ]",
+									"}",
+									"",
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Should have correct response body\", () => {",
+									"    var responseJson = pm.response.json();",
+									"    pm.expect(responseJson).to.eql(expectedResponseBody);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "2ed48057-255b-447e-a7be-ee7a18e38c82",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"inactive\"\n  },\n  {\n        \"op\": \"add\",\n        \"path\": \"/extension/-\",\n        \"value\": [\n            {\n                \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n                \"valueCodeableConcept\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",\n                            \"code\": \"ROLE_DEACTIVATED_PATIENT_REQUEST\",\n                            \"display\": \"At patients request\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{api_base_url}}/Consent/74eed847-ca25-4e76-8cf2-f2c2d7842a7a",
+						"description": "Valid patch changing status to 'active'"
+					},
+					"response": []
+				},
+				{
 					"name": "Access level update",
 					"event": [
 						{
