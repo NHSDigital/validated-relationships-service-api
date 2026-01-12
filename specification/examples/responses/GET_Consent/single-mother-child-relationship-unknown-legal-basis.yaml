@@ -42,7 +42,7 @@ ConsentSingleAdultChildRelationshipUnknownLegalBasisBundle:
               code: unknown
               display: Unknown legal basis
           provision:
-            - actor:
+              actor:
                 - reference:
                     identifier:
                       system: https://fhir.nhs.uk/Id/nhs-number

@@ -62,7 +62,7 @@ ConsentSingleAdultChildRelationshipIncludePerformerBundle:
                 system: 'https://fhir.nhs.uk/Id/nhs-number'
                 value: '9000000019'
           provision:
-            - actor:
+              actor:
                 - reference:
                     identifier:
                       system: https://fhir.nhs.uk/Id/nhs-number
