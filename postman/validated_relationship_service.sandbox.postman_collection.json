@@ -214,15 +214,11 @@
 									"});"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "2e01f49d-a01c-4e74-aa18-1f4479081c9c"
+								"packages": {}
 							}
 						}
 					],
-					"id": "e49016ba-b706-4be3-904a-c419b95f14a6",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "af425cdb-6bed-4430-8996-bc08bd9288c0",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -280,15 +276,11 @@
 									"});"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "1f121a23-b4d5-4b88-8f0c-fc575743a760"
+								"packages": {}
 							}
 						}
 					],
-					"id": "f82f04fe-9901-42c9-869f-335e12d04944",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "9e561922-3d55-4fb2-bf55-fef9f7d4d39a",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -345,15 +337,11 @@
 									"});"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "8577ee84-ec00-4f84-846c-4482c60a388a"
+								"packages": {}
 							}
 						}
 					],
-					"id": "2e591969-8b0f-4069-8666-39398447f765",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "06d07a76-6832-4b22-9b53-21fe20207133",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -410,15 +398,11 @@
 									"});"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "4dba5497-3dd3-4a91-8d8b-8361783eb71c"
+								"packages": {}
 							}
 						}
 					],
-					"id": "3bcc2f6b-4f0b-4844-8384-9b8c86406420",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "e5dfe876-6ce8-481c-b8bc-dd973d0beb01",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -439,7 +423,7 @@
 					"response": []
 				}
 			],
-			"id": "aacb40a4-b587-4f12-b2a8-5315f4323b5e",
+			"id": "14420d08-b0d0-4250-b968-48c1ebcf820d",
 			"description": "The GET Questionnaire Response endpoint is used to retrieve a Questionnaire Response using its unique reference code. This endpoint returns the full Questionnaire Response document that was previously submitted.\n\nThis folder contains requests covering different scenarios of valid and invalid requests.\n\nFor more details, please refer to the [GET Questionnaire Response OAS page for the Validated Relationship Service on the NHS England website.](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service#get-/QuestionnaireResponse)"
 		},
 		{
@@ -484,15 +468,11 @@
 									"})"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "3872c058-84dd-4a74-a7e6-3ac3e453012c"
+								"packages": {}
 							}
 						}
 					],
-					"id": "e35978d5-3f94-414d-ae55-c12970c87a72",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "c89b7c44-9223-462a-adc7-105085bb40d6",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -565,15 +545,11 @@
 									"})"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "4338cd74-a4a6-47c3-9a95-4cf990550817"
+								"packages": {}
 							}
 						}
 					],
-					"id": "02e2cdde-3425-4342-9d55-120e6a4a38a2",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "f1c27210-a0b1-4be5-a0ea-43d991a0653c",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -645,15 +621,11 @@
 									""
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "e8bff761-407f-4f87-b6f1-ded6754ae880"
+								"packages": {}
 							}
 						}
 					],
-					"id": "9a9b99cd-a15e-4808-a8d8-3d647da10539",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "6d15f7ef-26a7-43f3-9691-0c999ce01946",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -709,15 +681,11 @@
 									"})"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "ce6a5c7d-51ab-4f28-915f-d9f132b39eb9"
+								"packages": {}
 							}
 						}
 					],
-					"id": "8942cc96-c83b-458c-a359-30266b4314c2",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "ae137b4e-8894-4fc9-9ef1-8aab9a42b64b",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -789,15 +757,11 @@
 									"})"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "e99a5926-15f7-4e30-ac80-513cea196024"
+								"packages": {}
 							}
 						}
 					],
-					"id": "25bb32f6-fc44-4e23-b260-3cd4c874f470",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "23006fae-0b71-4c00-9755-327f281496c2",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -831,7 +795,7 @@
 					"response": []
 				}
 			],
-			"id": "6aab6413-45cc-4759-9632-b6de0bd8dd89",
+			"id": "ccb042c2-52dc-499d-8cd8-582e95aa3243",
 			"description": "The POST Questionnaire Response endpoint is used to submit a proxy access request for a given performer and patient.\n\nIt is indended to be used by user facing service e.g. Proxy Access Service, who will collect the necessary information from the user and submit it to VRS as a QuestionnaireResponse.\n\nThis folder contains requests covering different scenarios of valid and invalid requests.\n\nFor more details, please refer to the [POST Questionnaire Response OAS page for the Validated Relationship Service on the NHS England website.](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service#post-/QuestionnaireResponse)",
 			"event": [
 				{
@@ -840,8 +804,7 @@
 						"type": "text/javascript",
 						"exec": [
 							""
-						],
-						"id": "a4f758de-cfff-441f-b835-4516392d126e"
+						]
 					}
 				},
 				{
@@ -850,8 +813,7 @@
 						"type": "text/javascript",
 						"exec": [
 							""
-						],
-						"id": "e182b628-b14a-49df-9331-eb908a8d63eb"
+						]
 					}
 				}
 			]
@@ -989,15 +951,11 @@
 									"});"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "5cc16b7b-4a96-4927-98b2-47ed7480bdfe"
+								"packages": {}
 							}
 						}
 					],
-					"id": "0237a6be-f291-49ce-8058-4bd07b879c7f",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "8059df3c-7040-4e26-bfa0-55087b3d7b7b",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1225,15 +1183,11 @@
 									"});"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "a15f61a1-b9fb-4458-a0fe-4ce9eab43f40"
+								"packages": {}
 							}
 						}
 					],
-					"id": "220b682c-f520-4a2a-b448-4bd4858ad88e",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "7081b131-16f2-4f41-a9d7-c9e0989e06d4",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1300,15 +1254,11 @@
 									"    pm.expect(responseJson).to.eql(expectedResponseBody);",
 									"});"
 								],
-								"type": "text/javascript",
-								"id": "2acf6d00-0e2a-4a68-a116-1cb7fb1187f7"
+								"type": "text/javascript"
 							}
 						}
 					],
-					"id": "03bb4adc-c18f-436c-9060-c2be9d6668ec",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "bce3fe9a-c707-42cc-95e0-4299d2bc379b",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1423,15 +1373,11 @@
 									"});"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "eabfd3d0-f9ad-485f-bcc2-b59a68cd89cd"
+								"packages": {}
 							}
 						}
 					],
-					"id": "a4907799-146b-4036-8b18-ba657c3f9da7",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "455707c4-e93e-4cca-a8c1-d29b3de6fc00",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1582,15 +1528,11 @@
 									"});"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "eb473f1a-2883-4983-b8e9-ec9d56c9f1f3"
+								"packages": {}
 							}
 						}
 					],
-					"id": "6cc93662-68be-4093-b593-46bd5a971824",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "acd5776f-86fc-42e7-947b-a22b5872dfee",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1675,15 +1617,11 @@
 									"    pm.expect(responseJson).to.eql(expectedResponseBody);",
 									"});"
 								],
-								"type": "text/javascript",
-								"id": "745cc2cf-4a49-49b8-9f89-9d0e2f94ebec"
+								"type": "text/javascript"
 							}
 						}
 					],
-					"id": "172e5dcf-c9c8-47bf-981a-7366db37cbd7",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "5f063c8b-cdbf-473f-ae6d-a18b45d2500b",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1749,15 +1687,11 @@
 									"});"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "8b961043-41c1-44e4-8ecf-5432457de40c"
+								"packages": {}
 							}
 						}
 					],
-					"id": "f78fbe7e-fb56-4e7e-9952-be8c6db2f074",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "4dca6395-caa9-42a4-847b-3a577e978484",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1833,15 +1767,11 @@
 									"    pm.expect(responseJson).to.eql(expectedResponseBody);",
 									"});"
 								],
-								"type": "text/javascript",
-								"id": "2b3a8117-308c-4566-b4f8-965ce6643df7"
+								"type": "text/javascript"
 							}
 						}
 					],
-					"id": "c82d55d3-c919-4b6f-a0a5-c24239f4bb5c",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "8dc6d52c-d4a4-4a6f-bc2f-2f08363060af",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1918,15 +1848,11 @@
 									"});"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "9ee31a10-0fe5-488d-b9bb-72c57c2ed74d"
+								"packages": {}
 							}
 						}
 					],
-					"id": "42dcfbe1-9a64-4e46-86ed-cab67ef7a682",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "993fd0c8-8046-4d71-b58b-2ec4e9160ef7",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2003,15 +1929,11 @@
 									"});"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "848e3944-9e92-4d32-9463-95a8db3716d2"
+								"packages": {}
 							}
 						}
 					],
-					"id": "5719081f-edbc-4fad-b771-f3fd29fcc4fd",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "f551d1df-e483-4586-96a4-d30b4bb489e0",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2046,7 +1968,7 @@
 					"response": []
 				}
 			],
-			"id": "553eb942-b44f-4e5f-8c4e-b40042c8e9e4",
+			"id": "e80bc8dd-a098-4d9c-897a-af8cc63b4b45",
 			"description": "The GET Related Person endpoint retrieves candidate proxy relationships for a user with a given NHS Number.\n\nThis endpoint should NOT be used to retrieve proxy relationships; these should be queried from the `/Consent` endpoint.\n\nThis folder contains requests covering different scenarios of valid and invalid requests.\n\nFor more details, please refer to the [GET Related Person OAS page for the Validated Relationship Service on the NHS England website.](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service#get-/RelatedPerson)"
 		},
 		{
@@ -2058,7 +1980,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "4cd049f7-9501-4cb6-9740-03ba30d4c2f1",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"Bundle\",",
@@ -2473,7 +2394,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "d6498e9f-a03d-47b9-b1ab-3e0f2fafaa19",
 								"exec": [
 									""
 								],
@@ -2483,7 +2403,7 @@
 							}
 						}
 					],
-					"id": "7f607af7-f35d-4bd7-93d8-fa856ff3f572",
+					"id": "dadc2d56-06d8-49e3-9f5d-ddd34600bdc5",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2535,7 +2455,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "1b74cf81-3b87-4341-bfcb-d0add0135576",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"Bundle\",",
@@ -2755,7 +2674,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "cd32d9b1-bb1a-4e8f-9f20-9be380690343",
 								"exec": [
 									""
 								],
@@ -2765,10 +2683,7 @@
 							}
 						}
 					],
-					"id": "7261822e-8eb2-48eb-af24-8ab730e6cadb",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "1d1467dd-c087-4077-b5bf-943e17a1f046",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -2800,7 +2715,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "107e59ad-9b60-40d5-8d7e-fed8e2f74b10",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"Bundle\",",
@@ -3204,10 +3118,7 @@
 							}
 						}
 					],
-					"id": "34a1cc3a-1fec-4d92-b8bc-ab406bf65a33",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "3f7e8ebf-0369-4fdc-baf8-c18c68db9fe7",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -3247,7 +3158,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "57e17cc5-a7ff-4c91-afac-6e34836a66ed",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"Bundle\",",
@@ -3558,10 +3468,7 @@
 							}
 						}
 					],
-					"id": "26398261-906f-4e35-adff-c8d52f46b89d",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "6595947a-1476-4329-93e5-f68586cb5a89",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -3589,7 +3496,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "9a1721fb-45e0-4ab2-a34a-da251ad6d211",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"Bundle\",",
@@ -4066,10 +3972,7 @@
 							}
 						}
 					],
-					"id": "78b98e08-720f-4c3a-a9d6-b40145a133ba",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "2b3808a9-e981-40e2-85d8-939741a74d1c",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -4101,7 +4004,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "49f8dccb-60b7-4d9d-9347-70ff5af36c3e",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"Bundle\",",
@@ -4532,10 +4434,7 @@
 							}
 						}
 					],
-					"id": "e8dfb34d-d66b-425b-b7f9-0c5cacdaa7ce",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "b994179e-6310-4206-94c5-f0e7a69228d3",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -4567,7 +4466,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "c6f20601-4cc9-486c-bde6-0b5cfa60e8c0",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"Bundle\",",
@@ -5164,10 +5062,7 @@
 							}
 						}
 					],
-					"id": "3e13203c-dd60-4569-9a49-6d1b0b9b3d2d",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "345bfdcb-c75f-4b46-a9ba-0e1839110d28",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -5203,7 +5098,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "fdc4d4ff-8f83-4292-b045-2c5cb04147e1",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"Bundle\",",
@@ -5514,10 +5408,7 @@
 							}
 						}
 					],
-					"id": "cec56e69-c879-4d0c-8fa0-3f803451071b",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "dad0fc82-e245-4aaa-bdd8-21ab8759998d",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -5545,7 +5436,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "633e0336-d8a6-4a85-bfa2-9b20c1858108",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"Bundle\",",
@@ -6030,10 +5920,7 @@
 							}
 						}
 					],
-					"id": "92456caf-2fd2-42b3-a5e0-6cef2b6aea3b",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "e71a0bdc-9683-42a3-b844-a5b56fed0640",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -6069,7 +5956,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "9d9a0c5e-5a4a-499d-b7d1-cb0b84625589",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"Bundle\",",
@@ -6500,10 +6386,7 @@
 							}
 						}
 					],
-					"id": "9285ba92-8d7f-4755-9fbc-56e1c0909844",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "f18c8da9-5327-4560-be71-2f436aeeb2ff",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -6535,7 +6418,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5739512a-9349-4e43-895e-9b8f05734db9",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"Bundle\",",
@@ -6900,10 +6782,7 @@
 							}
 						}
 					],
-					"id": "388dc7d0-d487-4907-9c12-384135098ee9",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "f925aad1-bef9-4dcd-9755-2a388077d5fd",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -6960,15 +6839,11 @@
 									"});"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "3c1fa2bb-d5db-40d4-843d-89bc1be50ce0"
+								"packages": {}
 							}
 						}
 					],
-					"id": "33c5bd27-eae2-4feb-8d55-8b770e779247",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "623912bd-d53b-4d7a-bf95-c53080045883",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -6996,7 +6871,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f738329f-f616-4361-8b0d-8a48170a4874",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"Bundle\",",
@@ -7121,10 +6995,7 @@
 							}
 						}
 					],
-					"id": "5774c920-7766-4fbb-9bc3-bfa0746ec0d8",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "a3050775-86ea-432a-bc51-d29a315e28e4",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -7152,7 +7023,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ac6f9684-9b19-44b7-9fdb-9d929f2dcca5",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"Bundle\",",
@@ -7368,10 +7238,7 @@
 							}
 						}
 					],
-					"id": "3f150a6d-85ed-4584-bef7-2adc53b403d0",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "20a48bf6-fdb4-4e7d-9a0c-d5437a35e6e1",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -7407,7 +7274,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ef18ead4-a1ef-417e-8b9c-300e4a5ab583",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"Bundle\",",
@@ -7532,10 +7398,7 @@
 							}
 						}
 					],
-					"id": "af6a61f5-7a91-4e92-9937-905def470362",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "9b709cd4-c054-45fe-bce2-b67efc947ef3",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -7563,7 +7426,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "d8f3dfc3-b3f4-4a96-8253-a4c81c4464ca",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"Bundle\",",
@@ -7792,10 +7654,7 @@
 							}
 						}
 					],
-					"id": "43d2cfc1-aafe-4086-8e99-c68da05ecaa4",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "6341f5f1-92d7-41e1-9d60-75398fc0302c",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -7864,15 +7723,11 @@
 									"});"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "ca75642d-5650-416c-8161-e3337395edf2"
+								"packages": {}
 							}
 						}
 					],
-					"id": "04eac88a-31a6-479e-986e-33c15f52e84c",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "4b19edc2-2314-4eb3-9382-7aea8cae3dfa",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -7941,15 +7796,11 @@
 									"});"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "1e56bd41-9f92-408b-901f-383cd945bf9a"
+								"packages": {}
 							}
 						}
 					],
-					"id": "bc3777b9-bdb5-4f86-9aaf-8ddaa69a12f8",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "a8d81a25-5ea2-48fa-88c1-05bc01d50002",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -7981,7 +7832,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "b3567c19-c803-4ef1-b83d-8b737852bbe9",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"Bundle\",",
@@ -8109,10 +7959,7 @@
 							}
 						}
 					],
-					"id": "f425d0f5-165a-4e20-90b9-3c5935679cab",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "a6c4ee11-f818-40b1-969e-19298ea6bb95",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -8178,15 +8025,11 @@
 									"});"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "0cff9614-46b2-472d-93ea-20e40581b6c5"
+								"packages": {}
 							}
 						}
 					],
-					"id": "5bc6ade6-f301-444e-bf83-5e994030f80e",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "f67a7d48-224d-4522-b672-e3e8fd5ba409",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -8251,15 +8094,11 @@
 									"});"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "caca9765-3878-48ce-9cd3-df24fd6cf6f7"
+								"packages": {}
 							}
 						}
 					],
-					"id": "b86ca5ca-c585-4c2e-a905-8f7c9c6e8d92",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "93c7d983-e44a-421f-863d-9cbd5fe05db0",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -8324,15 +8163,11 @@
 									"});"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "58201dec-d4b0-4647-a7ef-874483a327fc"
+								"packages": {}
 							}
 						}
 					],
-					"id": "df4e8ce0-5a8e-4b34-8829-70e264fcf177",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "1a7c617f-6013-406f-8b0c-edd731cfa5d8",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -8397,15 +8232,11 @@
 									"});"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "3ae97da9-9f97-4e40-8b98-731e4ea199c7"
+								"packages": {}
 							}
 						}
 					],
-					"id": "a8a31aa0-6f94-490f-8141-694f1860af96",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "79643dab-d59e-4d3d-a940-1a0ad6f84142",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -8456,15 +8287,11 @@
 									"});"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "16201306-0600-4919-b04b-5329890e9b72"
+								"packages": {}
 							}
 						}
 					],
-					"id": "5120c26e-0dfd-4c67-a1a9-8fd81e3355b7",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "c96c416a-f80a-424f-8793-42d2b03e406b",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -8487,7 +8314,7 @@
 					"response": []
 				}
 			],
-			"id": "af92b11a-62c6-4e2c-8106-f28f028c7118",
+			"id": "7cc34738-f558-44f6-87f6-61edbbe10a78",
 			"description": "The GET /Consent is for retrieving confirmed proxy relationships via the Validated Relationship Service.\n\nThis folder contains requests covering different scenarios for users with different types of proxy relationship. Also includes error scenarios.\n\nFor more details, please refer to the [GET Consent OAS page for the Validated Relationship Service on the NHS England website.](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service#get-/Consent)"
 		},
 		{
@@ -8499,7 +8326,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "7526c446-d563-448d-a5ed-a2d2f849415f",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"OperationOutcome\",",
@@ -8530,10 +8356,7 @@
 							}
 						}
 					],
-					"id": "06bbec27-46fa-413f-8b72-9574024812d6",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "c9c26568-1659-4952-87b3-7031a26df165",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -8556,7 +8379,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "86494308-f2e9-4c54-9b05-7ea7a78dcec3",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"OperationOutcome\",",
@@ -8587,10 +8409,7 @@
 							}
 						}
 					],
-					"id": "1681aa61-6fc7-4ce9-b88d-cf4fd34356ee",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "cdaf7f29-8028-4ef4-9825-9482c04d4cc7",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -8613,7 +8432,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "852b9fda-c946-4c28-b14c-9722f4c2c9e5",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"issue\": [",
@@ -8652,10 +8470,7 @@
 							}
 						}
 					],
-					"id": "c47a476c-ec48-4069-86a8-b1332b4e54ca",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "51c06eab-2233-43c3-860c-2e4424d45651",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -8678,7 +8493,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "72f6d5f3-fd7b-44c9-b477-5791d41fdf01",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"issue\": [",
@@ -8717,10 +8531,7 @@
 							}
 						}
 					],
-					"id": "1a963957-aacc-48ec-b206-a5093da2db9e",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "e3dbeb57-955a-492e-a006-7d232c6c4004",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -8738,7 +8549,7 @@
 					"response": []
 				}
 			],
-			"id": "208d8c4a-9a03-4e07-ae97-4aafe123b6d6",
+			"id": "2c8826b6-2152-4215-8135-0f73a679af8b",
 			"description": "The POST /Consent is for storing confirmed proxy relationships via the Validated Relationships Service.\n\nThis folder contains requests covering different scenarios for users with different types of proxy relationship. Also includes error scenarios.\n\nFor more details, please refer to the [POST Consent OAS page for the Validated Relationship Service on the NHS England website.](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service#post-/Consent)"
 		},
 		{
@@ -8750,7 +8561,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "d5c8834f-f310-47f8-baea-2a52b895d291",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"Bundle\",",
@@ -8875,10 +8685,7 @@
 							}
 						}
 					],
-					"id": "7f01e5be-f200-4bbe-a648-5f6afb146d0a",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "c91358c0-fe06-4c6e-8567-0cf0516171c0",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -8892,7 +8699,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "9ed3bd3c-3e39-46af-93b3-c2487ea9a7b6",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"Bundle\",",
@@ -9071,10 +8877,7 @@
 							}
 						}
 					],
-					"id": "7f05f7b0-c0b2-488f-8691-f326d607bea7",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "769458ad-0e8c-4a03-a6dc-5b5e641ac628",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -9103,7 +8906,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "2c3b22e8-8c95-4dd7-b757-fff7eff2e0eb",
 								"exec": [
 									"const expectedResponseBody = {",
 									"  \"resourceType\": \"Bundle\",",
@@ -9265,10 +9067,7 @@
 							}
 						}
 					],
-					"id": "e9011151-6d50-4634-90e2-9a73c3456bf7",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "ec69efb3-5251-45e3-9704-7a77e9f2348a",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -9297,7 +9096,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "c03e7a86-0ac3-4811-8fdf-498ce2494daa",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"Bundle\",",
@@ -9512,10 +9310,7 @@
 							}
 						}
 					],
-					"id": "ddd4906a-7a93-4403-88d6-3cc2fe3810a4",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "fed26672-bdb9-4a1c-9253-d4b179b9353a",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -9548,7 +9343,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "b1876716-9a58-43e4-bea5-4bfb260b6866",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"Bundle\",",
@@ -9673,10 +9467,7 @@
 							}
 						}
 					],
-					"id": "a6292f71-90b3-44c5-a3fe-86eb47e6d17e",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "813b1327-a440-41cf-b5aa-bbfd3b7da17d",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -9690,7 +9481,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "c6e17bb4-41e0-4dd5-ba7b-05774cc1978d",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"Bundle\",",
@@ -9869,10 +9659,7 @@
 							}
 						}
 					],
-					"id": "afa8359a-1c63-4350-9f76-43d37440dafc",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "1fb80f10-e6d7-495a-a876-079e4ac2f631",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -9901,7 +9688,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "690216f9-7dea-42e1-bb89-bff70d5bca3f",
 								"exec": [
 									"const expectedResponseBody = {",
 									"  \"resourceType\": \"Bundle\",",
@@ -10066,10 +9852,7 @@
 							}
 						}
 					],
-					"id": "3abd1656-d134-4987-8dea-fc75499af364",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "491700eb-3d1e-418a-a6f5-244defac0049",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -10098,7 +9881,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "67969e6f-f42c-4880-a5ba-9e7141309a2f",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"Bundle\",",
@@ -10327,10 +10109,7 @@
 							}
 						}
 					],
-					"id": "394f9bb7-6d36-457e-aa2e-1f840bf4ff4d",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "2d824a56-d23a-4782-9182-dfd7b831ca75",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -10396,15 +10175,11 @@
 									"});"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "32b2533b-e52d-4291-b4de-c05f4e5397d8"
+								"packages": {}
 							}
 						}
 					],
-					"id": "2c5710a8-7ae7-488a-8f5b-4e6634bc1536",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "8740b36e-d0bb-4b1e-a988-8389f3bdeb58",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -10452,15 +10227,11 @@
 									"});"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "9917a09a-8db7-454f-9f32-067901e5e3a7"
+								"packages": {}
 							}
 						}
 					],
-					"id": "f4fd7692-dc19-4d6d-8448-280edf894feb",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "f5ef2a6d-edeb-49e7-8968-da6953c98e0d",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -10522,15 +10293,11 @@
 									"});"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "5bfaae08-bb6b-489f-afb2-b96a65323d72"
+								"packages": {}
 							}
 						}
 					],
-					"id": "d70d9647-ba9a-4b5e-ba1a-d11a9dcaef4c",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "da6ccd2b-8ed9-4d81-a148-4d51d6d62e18",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -10592,15 +10359,11 @@
 									"});"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "491a901e-f1f8-4b8e-b2ff-8a27c73b253a"
+								"packages": {}
 							}
 						}
 					],
-					"id": "f88ad7f3-21fa-49c0-8710-997b32eabf4c",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "cff93bd1-4dd3-469f-aa49-54e9c5844c05",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -10609,7 +10372,7 @@
 					"response": []
 				}
 			],
-			"id": "b23e7e50-a8ee-4246-8c28-1af40333c14e",
+			"id": "f64c2780-6e68-49e3-a429-31fd1cee990f",
 			"description": "The GET /Consent/{ID} is for retrieving the details of a single proxy relationship, including current status, based on a provided id.\n\nThis folder contains requests covering different scenarios for users with different types of proxy relationships. It also includes error scenarios.\n\nFor more details, please refer to the [GET Consent by ID OAS page for the Validated Relationship Service on the NHS England website.](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service#get-/Consent/%7Bid%7D)"
 		},
 		{
@@ -10621,7 +10384,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "78635f29-bca7-4f63-847a-1b379b73c7db",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"OperationOutcome\",",
@@ -10648,64 +10410,7 @@
 							}
 						}
 					],
-					"id": "1c59c441-2d6e-4a0c-b1d8-8142a31b696a",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"inactive\"\n  },\n  {\n        \"op\": \"add\",\n        \"path\": \"/extension/-\",\n        \"value\": [\n            {\n                \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n                \"valueCodeableConcept\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",\n                            \"code\": \"ROLE_DEACTIVATED_PATIENT_REQUEST\",\n                            \"display\": \"At patients request\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n]",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{api_base_url}}/Consent/74eed847-ca25-4e76-8cf2-f2c2d7842a7a",
-						"description": "Valid patch changing status to 'active'"
-					},
-					"response": []
-				},
-				{
-					"name": "Missing free text for Other",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "78635f29-bca7-4f63-847a-1b379b73c7db",
-								"exec": [
-									"const expectedResponseBody = {",
-									"    \"resourceType\": \"OperationOutcome\",",
-									"    \"issue\": [",
-									"        {",
-									"            \"severity\": \"information\",",
-									"            \"code\": \"informational\"",
-									"        }",
-									"    ]",
-									"}",
-									"",
-									"pm.test(\"Status code is 201\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"",
-									"pm.test(\"Should have correct response body\", () => {",
-									"    var responseJson = pm.response.json();",
-									"    pm.expect(responseJson).to.eql(expectedResponseBody);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"id": "2ed48057-255b-447e-a7be-ee7a18e38c82",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "a238199f-38c9-459f-adaa-850c649ee0c1",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -10729,7 +10434,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5922f353-8636-4c25-83b0-f51ef506f8f9",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"OperationOutcome\",",
@@ -10756,16 +10460,13 @@
 							}
 						}
 					],
-					"id": "d8d93fbf-ffc1-4245-bb6c-1c21c96e7e32",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "d26cd519-f6e0-4e3f-87ad-b416fad15887",
 					"request": {
 						"method": "PATCH",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/provision/0/period/end\",\n    \"value\": \"2026-12-31T23:59:59Z\"\n  }\n]",
+							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/provision/period/end\",\n    \"value\": \"2026-12-31T23:59:59Z\"\n  }\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10783,7 +10484,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "fccf53bb-94f7-4f1a-ac12-b8ebb107f057",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"resourceType\": \"OperationOutcome\",",
@@ -10810,16 +10510,13 @@
 							}
 						}
 					],
-					"id": "74f7d106-fc78-4fc3-b6ec-48e669ec939a",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "98cb87d9-f1ef-43a2-82dc-ec4c358c3838",
 					"request": {
 						"method": "PATCH",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"active\"\n  },\n  {\n        \"op\": \"add\",\n        \"path\": \"/extension/-\",\n        \"value\": [\n            {\n                \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n                \"valueCodeableConcept\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",\n                            \"code\": \"ROLE_CREATED\",\n                            \"display\": \"Role created\"\n                        }\n                    ]\n                }\n            }\n        ]\n    },\n  {\n    \"op\": \"replace\",\n    \"path\": \"/provision/0/period/end\",\n    \"value\": \"2026-12-31T23:59:59Z\"\n  }\n]",
+							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"active\"\n  },\n  {\n        \"op\": \"add\",\n        \"path\": \"/extension/-\",\n        \"value\": [\n            {\n                \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n                \"valueCodeableConcept\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",\n                            \"code\": \"ROLE_CREATED\",\n                            \"display\": \"Role created\"\n                        }\n                    ]\n                }\n            }\n        ]\n    },\n  {\n    \"op\": \"replace\",\n    \"path\": \"/provision/period/end\",\n    \"value\": \"2026-12-31T23:59:59Z\"\n  }\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10837,7 +10534,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "dbd3e53f-f879-4e13-a662-98c32037ed9d",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"issue\": [",
@@ -10875,10 +10571,7 @@
 							}
 						}
 					],
-					"id": "5056afe1-1859-4fe2-9862-5cce4a6d0964",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "86705db1-1891-4310-92bb-4e40c3d9da58",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -10902,7 +10595,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "076abc43-5571-432e-b834-168ef45d7701",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"issue\": [",
@@ -10940,10 +10632,7 @@
 							}
 						}
 					],
-					"id": "ef250c38-642f-480a-8375-347b4ac1698d",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "ac0293ba-f305-4786-9729-a9dc5617136d",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -10967,7 +10656,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "b25295e4-0f1b-4055-ae28-8b9e542d741a",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"issue\": [",
@@ -11005,10 +10693,7 @@
 							}
 						}
 					],
-					"id": "4349ae63-76c9-4ca4-a004-07c4fe3801c7",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "7e21fe2f-6548-498f-bfbe-aee48d767d5a",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -11064,15 +10749,11 @@
 									"});"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "c914a2bd-dfc3-4cc3-a4df-675ccbd5468d"
+								"packages": {}
 							}
 						}
 					],
-					"id": "90aa005b-55f9-45ed-bb43-cfd73d6b09d3",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "6cf3c387-58c0-49a1-ae3b-df480e7f5257",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -11096,7 +10777,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "c61c6285-2cbd-4c4e-b6d1-263d75e68424",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"issue\": [",
@@ -11134,10 +10814,7 @@
 							}
 						}
 					],
-					"id": "08ead1c5-9076-4fef-b362-ceec4e0139ff",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "5e55a4d9-6d75-44c0-9dc1-b319753ac8c2",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -11160,7 +10837,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "c4b7332a-8845-497d-8bf7-39f102115876",
 								"exec": [
 									"const expectedResponseBody = {",
 									"    \"issue\": [",
@@ -11198,10 +10874,7 @@
 							}
 						}
 					],
-					"id": "bacde938-5d96-4b25-a9fc-248ba095f5c6",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"id": "bf070f3c-b9cd-4a4e-ace6-b5e04bb54ae8",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -11219,7 +10892,7 @@
 					"response": []
 				}
 			],
-			"id": "c45e2761-398a-4e6b-8264-f6392313242d",
+			"id": "9b1fe4fe-b172-4cfe-836e-08ca1b66231e",
 			"description": "Use this endpoint to update an existing proxy role.\n\nCommon update scenarios include:\n\n- Revocation of the role (status change from \"active\" to \"inactive\")\n- Changing the legal basis of the role (TBC)\n- Updating the end date for time-bound access\n    \n\nThis folder contains requests covering different scenarios for various valid and invalid update requests.\n\nFor more details, please refer to the [PATCH Consent OAS page for the Validated Relationship Service on the NHS England website.](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service#patch-/Consent/-id-)"
 		}
 	],
@@ -11230,8 +10903,7 @@
 				"type": "text/javascript",
 				"exec": [
 					""
-				],
-				"id": "3b408066-c5be-4a5f-9e6e-659eb47ff1ef"
+				]
 			}
 		},
 		{
@@ -11242,8 +10914,7 @@
 					"pm.test(\"Response has FHIR content type\", () => {",
 					"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/fhir+json');",
 					"});"
-				],
-				"id": "52f4a62c-6c98-423b-9c32-d069c38316c8"
+				]
 			}
 		}
 	],
@@ -11251,11 +10922,6 @@
 		{
 			"key": "api_base_url",
 			"value": "https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4"
-		},
-		{
-			"value": "",
-			"type": "string",
-			"disabled": true
 		}
 	]
 }
