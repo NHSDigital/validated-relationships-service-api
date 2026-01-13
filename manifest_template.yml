@@ -35,8 +35,8 @@ APIGEE_ENVIRONMENTS:
   - name: int
     display_name: Integration Testing
     has_mock_auth: true
-    rate_limit: 600 # 10 requests per second (calculated per minute)
-    spike_rate_limit: 900pm # 15 requests per second (this isn't on top of the rate limit and limit smoothed into intervals of seconds)
+    rate_limit: 1200 # 20 requests per second (calculated per minute)
+    spike_rate_limit: 1800pm # 30 requests per second (this isn't on top of the rate limit and limit smoothed into intervals of seconds)
     approval_type: auto
   - name: prod
     display_name: Production
