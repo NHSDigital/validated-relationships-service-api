@@ -2308,8 +2308,6 @@ components:
     Provision:
       type: object
       description: "Constraints to the base Consent policy rule, which may be enforced over time."
-      items:
-        type: object
       properties:
         type:
           type: string
@@ -2334,28 +2332,13 @@ components:
           description: "Individuals or organisations involved in the provision"
           items:
             type: object
-            description: "Timeframe for this provision."
             properties:
-              start:
-                type: string
-                description: "Starting time with inclusive boundary"
-                format: date-time
-              end:
-                type: string
-                description: "End time with inclusive boundary, if not ongoing"
-                format: date-time
-          actor:
-            type: array
-            description: "Individuals or organisations involved in the provision"
-            items:
-              type: object
-              properties:
-                reference:
-                  $ref: "#/components/schemas/Reference"
-                  description: "Individuals or organizations that agreed to the consent"
-                role:
-                  $ref: "#/components/schemas/CodeableConcept"
-                  description: "Classification of the role of consent, bound to http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+              reference:
+                $ref: "#/components/schemas/Reference"
+                description: "Individuals or organizations that agreed to the consent"
+              role:
+                $ref: "#/components/schemas/CodeableConcept"
+                description: "Classification of the role of consent, bound to http://terminology.hl7.org/CodeSystem/v3-RoleCode"
     Extension:
       type: object
       properties:
