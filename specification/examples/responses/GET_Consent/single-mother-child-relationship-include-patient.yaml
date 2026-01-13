@@ -75,15 +75,15 @@ ConsentSingleAdultChildRelationshipIncludePatientBundle:
               uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
           provision:
             actor:
-            - reference:
-                identifier:
-                  system: https://fhir.nhs.uk/Id/nhs-number
-                  value: '9000000019'
-              role:
-                coding:
-                - code: parental-responsibility
-                  display: Parental responsibility
-                  system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
+              - reference:
+                  identifier:
+                    system: https://fhir.nhs.uk/Id/nhs-number
+                    value: '9000000019'
+                role:
+                  coding:
+                  - code: parental-responsibility
+                    display: Parental responsibility
+                    system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
           extension:
           - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
             valueCodeableConcept:
