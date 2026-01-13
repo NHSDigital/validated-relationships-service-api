@@ -27,8 +27,8 @@ ConsentParentChildProxyCreationRequest:
     provision:
       type: permit
       period:
-        start: "2025-02-11"
-        end: "2029-02-11"
+        start: "2025-02-11T14:30:00Z"
+        end: "2029-02-11T14:30:00Z"
       actor:
         - role:
             coding:
