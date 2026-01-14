@@ -164,12 +164,5 @@ ConsentMultipleRelationshipsSinglePatientBundle:
                 - system: https://terminology.hl7.org/CodeSystem/consent-reason
                   code: ROLE_DEACTIVATED_END_DATE_REACHED
                   display: End-date reached
-          - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
-            valueCodeableConcept:
-              coding:
-                - system: http://terminology.hl7.org/CodeSystem/consent-reason
-                  code: OTHER
-                  display: Other
-              text: Patient would not respond to phone calls
         search:
           mode: match
