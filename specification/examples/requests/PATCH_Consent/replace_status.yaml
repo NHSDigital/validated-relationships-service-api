@@ -5,8 +5,8 @@ StatusUpdate:
     - op: replace
       path: /status
       value: inactive
-    - op: replace
-      path: /extension
+    - op: add
+      path: /extension/-
       value:
       - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
         valueCodeableConcept:
