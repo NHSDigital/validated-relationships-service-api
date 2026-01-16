@@ -75,14 +75,13 @@ ConsentMultipleRelationshipsIncludePerformerPatientBundle:
             coding:
               - system: "https://terminology.hl7.org/CodeSystem/consentscope"
                 code: patient-privacy
-                display: Privacy Consent
-            text: Patient Privacy Consent
+                display: privacy consent
           category:
             - coding:
                 - system: "https://terminology.hl7.org/CodeSystem/v3-ActCode"
                   code: INFA
-                  display: Information Access
-              text: Information Access Consent
+                  display: information access
+              text: information access Consent
           patient:
             identifier:
               system: "https://fhir.nhs.uk/Id/nhs-number"
@@ -175,14 +174,13 @@ ConsentMultipleRelationshipsIncludePerformerPatientBundle:
             coding:
               - system: "https://terminology.hl7.org/CodeSystem/consentscope"
                 code: patient-privacy
-                display: Privacy Consent
-            text: Patient Privacy Consent
+                display: privacy consent
           category:
             - coding:
                 - system: "https://terminology.hl7.org/CodeSystem/v3-ActCode"
                   code: INFA
-                  display: Information Access
-              text: Information Access Consent
+                  display: information access
+              text: information access Consent
           patient:
             identifier:
               system: "https://fhir.nhs.uk/Id/nhs-number"
@@ -275,14 +273,13 @@ ConsentMultipleRelationshipsIncludePerformerPatientBundle:
             coding:
               - system: "https://terminology.hl7.org/CodeSystem/consentscope"
                 code: patient-privacy
-                display: Privacy Consent
-            text: Patient Privacy Consent
+                display: privacy consent
           category:
             - coding:
                 - system: "https://terminology.hl7.org/CodeSystem/v3-ActCode"
                   code: INFA
-                  display: Information Access
-              text: Information Access Consent
+                  display: information access
+              text: information access Consent
           patient:
             identifier:
               system: "https://fhir.nhs.uk/Id/nhs-number"
