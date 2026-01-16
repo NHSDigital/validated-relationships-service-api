@@ -3,12 +3,12 @@ ConsentSingleAdultChildRelationshipUnknownLegalBasisBundle:
   description: A Bundle containing a single proxy relationship between an adult and child where the legal basis is unknown
   value:
     resourceType: Bundle
-    timestamp: '2020-08-26T14:00:00+00:00'
+    timestamp: '2026-16-01T14:00:00+00:00'
     total: 1
     type: searchset
     link:
       - relation: self
-        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000111
+        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/9000000111
     entry:
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/AF974742
         resource:
@@ -19,14 +19,12 @@ ConsentSingleAdultChildRelationshipUnknownLegalBasisBundle:
             coding:
               - system: 'https://terminology.hl7.org/CodeSystem/consentscope'
                 code: patient-privacy
-                display: Privacy Consent
-            text: Patient Privacy Consent
+                display: privacy consent
           category:
             - coding:
                 - system: 'https://terminology.hl7.org/CodeSystem/v3-ActCode'
                   code: INFA
-                  display: Information Access
-              text: Information Access Consent
+                  display: information access
           patient:
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
@@ -42,20 +40,21 @@ ConsentSingleAdultChildRelationshipUnknownLegalBasisBundle:
               code: unknown
               display: Unknown legal basis
           provision:
-              actor:
-                - reference:
-                    identifier:
-                      system: https://fhir.nhs.uk/Id/nhs-number
-                      value: '9000000111'
-                    type: RelatedPerson
-                  role:
-                    coding:
-                      - code: UNK
-                        display: Unknown
-                        system: https://terminology.hl7.org/CodeSystem/v3-NullFlavor
-              period:
-                start: '2025-02-11'
-                end: '2026-02-11'
+            type: permit
+            actor:
+              - reference:
+                  identifier:
+                    system: https://fhir.nhs.uk/Id/nhs-number
+                    value: '9000000111'
+                  type: RelatedPerson
+                role:
+                  coding:
+                    - code: UNK
+                      display: Unknown
+                      system: https://terminology.hl7.org/CodeSystem/v3-NullFlavor
+            period:
+              start: '2025-02-11'
+              end: '2026-02-11'
           extension:
           - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
             valueCodeableConcept:

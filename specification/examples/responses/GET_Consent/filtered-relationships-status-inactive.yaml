@@ -3,12 +3,12 @@ ConsentMultipleRelationshipsStatusInactiveBundle:
   description: A Bundle containing multiple inactive proxy relationships with varying legal basis
   value:
     resourceType: Bundle
-    timestamp: '2020-08-26T14:00:00+00:00'
+    timestamp: '2026-16-01T14:00:00+00:00'
     total: 2
     type: searchset
     link:
       - relation: self
-        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000017&status=inactive
+        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/9000000017?status=inactive
     entry:
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/AATD11A1
         resource:
@@ -19,14 +19,12 @@ ConsentMultipleRelationshipsStatusInactiveBundle:
             coding:
               - system: 'https://terminology.hl7.org/CodeSystem/consentscope'
                 code: patient-privacy
-                display: Privacy Consent
-            text: Patient Privacy Consent
+                display: privacy consent
           category:
             - coding:
                 - system: 'https://terminology.hl7.org/CodeSystem/v3-ActCode'
                   code: INFA
-                  display: Information Access
-              text: Information Access Consent
+                  display: information access
           patient:
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
@@ -40,6 +38,7 @@ ConsentMultipleRelationshipsStatusInactiveBundle:
             - authority: https://www.england.nhs.uk
               uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
           provision:
+            type: permit
             actor:
             - reference:
                 identifier:
@@ -71,14 +70,12 @@ ConsentMultipleRelationshipsStatusInactiveBundle:
             coding:
               - system: 'https://terminology.hl7.org/CodeSystem/consentscope'
                 code: patient-privacy
-                display: Privacy Consent
-            text: Patient Privacy Consent
+                display: privacy consent
           category:
             - coding:
                 - system: 'https://terminology.hl7.org/CodeSystem/v3-ActCode'
                   code: INFA
-                  display: Information Access
-              text: Information Access Consent
+                  display: information access
           patient:
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
@@ -92,6 +89,7 @@ ConsentMultipleRelationshipsStatusInactiveBundle:
             - authority: https://www.england.nhs.uk
               uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
           provision:
+            type: permit
             actor:
             - reference:
                 identifier:
