@@ -40,20 +40,21 @@ ConsentSingleAdultChildRelationshipUnknownLegalBasisBundle:
               code: unknown
               display: Unknown legal basis
           provision:
-              actor:
-                - reference:
-                    identifier:
-                      system: https://fhir.nhs.uk/Id/nhs-number
-                      value: '9000000111'
-                    type: RelatedPerson
-                  role:
-                    coding:
-                      - code: UNK
-                        display: Unknown
-                        system: https://terminology.hl7.org/CodeSystem/v3-NullFlavor
-              period:
-                start: '2025-02-11'
-                end: '2026-02-11'
+            type: permit
+            actor:
+              - reference:
+                  identifier:
+                    system: https://fhir.nhs.uk/Id/nhs-number
+                    value: '9000000111'
+                  type: RelatedPerson
+                role:
+                  coding:
+                    - code: UNK
+                      display: Unknown
+                      system: https://terminology.hl7.org/CodeSystem/v3-NullFlavor
+            period:
+              start: '2025-02-11'
+              end: '2026-02-11'
           extension:
           - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
             valueCodeableConcept:

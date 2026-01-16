@@ -60,6 +60,7 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
             - authority: https://www.england.nhs.uk
               uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
           provision:
+            type: permit
             actor:
             - reference:
                 identifier:
@@ -128,6 +129,7 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
             - authority: https://www.england.nhs.uk
               uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
           provision:
+            type: permit
             actor:
             - reference:
                 identifier:
@@ -196,6 +198,7 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
             - authority: https://www.england.nhs.uk
               uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
           provision:
+            type: permit
             actor:
             - reference:
                 identifier:
