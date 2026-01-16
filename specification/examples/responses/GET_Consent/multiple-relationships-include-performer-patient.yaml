@@ -81,7 +81,6 @@ ConsentMultipleRelationshipsIncludePerformerPatientBundle:
                 - system: "https://terminology.hl7.org/CodeSystem/v3-ActCode"
                   code: INFA
                   display: information access
-              text: information access Consent
           patient:
             identifier:
               system: "https://fhir.nhs.uk/Id/nhs-number"
@@ -180,7 +179,6 @@ ConsentMultipleRelationshipsIncludePerformerPatientBundle:
                 - system: "https://terminology.hl7.org/CodeSystem/v3-ActCode"
                   code: INFA
                   display: information access
-              text: information access Consent
           patient:
             identifier:
               system: "https://fhir.nhs.uk/Id/nhs-number"
@@ -279,7 +277,6 @@ ConsentMultipleRelationshipsIncludePerformerPatientBundle:
                 - system: "https://terminology.hl7.org/CodeSystem/v3-ActCode"
                   code: INFA
                   display: information access
-              text: information access Consent
           patient:
             identifier:
               system: "https://fhir.nhs.uk/Id/nhs-number"
