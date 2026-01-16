@@ -63,7 +63,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{api_base_url}}/Consent?performer:identifier=9736898148",
+							"raw": "{{api_base_url}}/Consent/9736898148",
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -108,7 +108,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{api_base_url}}/Consent?performer:identifier=9736898148",
+									"raw": "{{api_base_url}}/Consent/9736898148",
 									"host": [
 										"{{api_base_url}}"
 									],
@@ -199,7 +199,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{api_base_url}}/Consent?performer:identifier=9736898148&_include=Consent:patient",
+									"raw": "{{api_base_url}}/Consent/9736898148?_include=Consent:patient",
 									"host": [
 										"{{api_base_url}}"
 									],
@@ -294,7 +294,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{api_base_url}}/Consent?performer:identifier=9736898148&_include=Consent:performer",
+									"raw": "{{api_base_url}}/Consent/9736898148?_include=Consent:performer",
 									"host": [
 										"{{api_base_url}}"
 									],
@@ -389,7 +389,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{api_base_url}}/Consent?performer:identifier=9736898148&_include=Consent:performer&_include=Consent:patient",
+									"raw": "{{api_base_url}}/Consent/9736898148?_include=Consent:performer&_include=Consent:patient",
 									"host": [
 										"{{api_base_url}}"
 									],
@@ -488,7 +488,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{api_base_url}}/Consent?performer:identifier=9736898156&status=inactive",
+									"raw": "{{api_base_url}}/Consent/9736898156?status=inactive",
 									"host": [
 										"{{api_base_url}}"
 									],
@@ -583,7 +583,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{api_base_url}}/Consent?performer:identifier=9736898156&status=active&_include=Consent:performer&_include=Consent:patient",
+									"raw": "{{api_base_url}}/Consent/9736898156?status=active&_include=Consent:performer&_include=Consent:patient",
 									"host": [
 										"{{api_base_url}}"
 									],
@@ -1361,7 +1361,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{api_base_url}}/Consent?performer:identifier=9736898121&patient:identifier=9736898644",
+							"raw": "{{api_base_url}}/Consent/9736898121?patient:identifier=9736898644",
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -1410,7 +1410,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{api_base_url}}/Consent?performer:identifier=9736898121&patient:identifier=9736898644",
+									"raw": "{{api_base_url}}/Consent/9736898121?patient:identifier=9736898644",
 									"host": [
 										"{{api_base_url}}"
 									],
@@ -1505,7 +1505,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{api_base_url}}/Consent?performer:identifier=9736898121&patient:identifier=9736898644&_include=Consent:performer",
+									"raw": "{{api_base_url}}/Consent/9736898121?patient:identifier=9736898644&_include=Consent:performer",
 									"host": [
 										"{{api_base_url}}"
 									],
@@ -1604,7 +1604,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{api_base_url}}/Consent?performer:identifier=9736898121&patient:identifier=9736898644&_include=Consent:patient",
+									"raw": "{{api_base_url}}/Consent/9736898121?patient:identifier=9736898644&_include=Consent:patient",
 									"host": [
 										"{{api_base_url}}"
 									],
@@ -1703,7 +1703,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{api_base_url}}/Consent?performer:identifier=9736898121&patient:identifier=9736898644&_include=Consent:performer&_include=Consent:patient",
+									"raw": "{{api_base_url}}/Consentperformer:identifier=9736898121&patient:identifier=9736898644&_include=Consent:performer&_include=Consent:patient",
 									"host": [
 										"{{api_base_url}}"
 									],
@@ -1806,7 +1806,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{api_base_url}}/Consent?performer:identifier=9736898156&patient:identifier=9736898652&status=inactive",
+									"raw": "{{api_base_url}}/Consent/9736898156?patient:identifier=9736898652&status=inactive",
 									"host": [
 										"{{api_base_url}}"
 									],
@@ -1905,7 +1905,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{api_base_url}}/Consent?performer:identifier=9736898156&patient:identifier=9736898652&status=active&_include=Consent:performer&_include=Consent:patient",
+									"raw": "{{api_base_url}}/Consent/9736898156?patient:identifier=9736898652&status=active&_include=Consent:performer&_include=Consent:patient",
 									"host": [
 										"{{api_base_url}}"
 									],
@@ -2038,7 +2038,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{api_base_url}}/Consent?performer:identifier=9674998535",
+							"raw": "{{api_base_url}}/Consent/9674998535",
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -2083,7 +2083,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{api_base_url}}/Consent?performer:identifier=9674998535&_include=Consent:performer&_include=Consent:patient",
+									"raw": "{{api_base_url}}/Consent/9674998535?_include=Consent:performer&_include=Consent:patient",
 									"host": [
 										"{{api_base_url}}"
 									],
@@ -2182,7 +2182,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{api_base_url}}/Consent?performer:identifier=9674998454&_include=Consent:patient",
+									"raw": "{{api_base_url}}/Consent/9674998454?_include=Consent:patient",
 									"host": [
 										"{{api_base_url}}"
 									],
@@ -2277,7 +2277,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{api_base_url}}/Consent?performer:identifier=9692113612&_include=Consent:patient",
+									"raw": "{{api_base_url}}/Consent/9692113612?_include=Consent:patient",
 									"host": [
 										"{{api_base_url}}"
 									],
@@ -2372,7 +2372,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{api_base_url}}/Consent?performer:identifier=9692113698&_include=Consent:performer",
+									"raw": "{{api_base_url}}/Consent/9692113698?_include=Consent:performer",
 									"host": [
 										"{{api_base_url}}"
 									],
@@ -2808,7 +2808,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{api_base_url}}/Consent?performer:identifier=9736898148&_include=Consent:test",
+							"raw": "{{api_base_url}}/Consent/9736898148?_include=Consent:test",
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -2857,7 +2857,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{api_base_url}}/Consent?performer:identifier=9736898148&_include=Consent:test",
+									"raw": "{{api_base_url}}/Consent/9736898148?_include=Consent:test",
 									"host": [
 										"{{api_base_url}}"
 									],
@@ -2967,7 +2967,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{api_base_url}}/Consent?performer:identifier=90000000",
+							"raw": "{{api_base_url}}/Consent/90000000",
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -3012,7 +3012,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{api_base_url}}/Consent?performer:identifier=90000000",
+									"raw": "{{api_base_url}}/Consent/90000000",
 									"host": [
 										"{{api_base_url}}"
 									],
@@ -3408,7 +3408,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{api_base_url}}/Consent?performer:identifier=9736898229",
+							"raw": "{{api_base_url}}/Consent/9736898229",
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -3453,7 +3453,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{api_base_url}}/Consent?performer:identifier=9736898229",
+									"raw": "{{api_base_url}}/Consent/9736898229",
 									"host": [
 										"{{api_base_url}}"
 									],
