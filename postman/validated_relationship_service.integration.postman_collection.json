@@ -8207,13 +8207,19 @@
 							}
 						},
 						"url": {
-							"raw": "{{api_base_url}}/Consent/{{consent_id}}",
+							"raw": "{{api_base_url}}/Consent/:consent_id",
 							"host": [
 								"{{api_base_url}}"
 							],
 							"path": [
 								"Consent",
-								"{{consent_id}}"
+								":consent_id"
+							],
+							"variable": [
+								{
+									"key": "consent_id",
+									"value": ""
+								}
 							]
 						},
 						"description": "## Example scenario\n\n**Given** a proxy role exists in the National Proxy Store for a given UUID  \n**When** a PATCH /Consent request with an invalid path is sent using the UUID  \n**Then** a 400 error is returned with code 'INVALID_PATCH_PATH'"
@@ -8250,13 +8256,19 @@
 									}
 								},
 								"url": {
-									"raw": "{{api_base_url}}/Consent/{{consent_id}}",
+									"raw": "{{api_base_url}}/Consent/:consent_id",
 									"host": [
 										"{{api_base_url}}"
 									],
 									"path": [
 										"Consent",
-										"{{consent_id}}"
+										":consent_id"
+									],
+									"variable": [
+										{
+											"key": "consent_id",
+											"value": ""
+										}
 									]
 								}
 							},
