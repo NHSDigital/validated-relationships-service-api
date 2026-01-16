@@ -2126,7 +2126,6 @@ components:
                 enum:
                   [
                     "https://fhir.nhs.uk/Id/nhs-number",
-                    "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier",
                   ]
               value:
                 type: string
@@ -2213,8 +2212,7 @@ components:
                 description: Codesystem URL for the identifier.
                 enum:
                   [
-                    "https://fhir.nhs.uk/Id/nhs-number",
-                    "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier",
+                    "https://fhir.nhs.uk/Id/nhs-number"
                   ]
               value:
                 type: string

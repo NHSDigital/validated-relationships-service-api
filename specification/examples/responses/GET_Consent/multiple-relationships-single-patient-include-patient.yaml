@@ -22,8 +22,6 @@ ConsentMultipleRelationshipsSinglePatientIncludePatientBundle:
           identifier:
             - system: "https://fhir.nhs.uk/Id/nhs-number"
               value: "9000000100"
-            - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
-              value: ABC1234567
           name:
             - use: usual
               period:

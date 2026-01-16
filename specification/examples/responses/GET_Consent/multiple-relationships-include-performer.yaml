@@ -9,7 +9,7 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
     type: searchset
     link:
       - relation: self
-        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000022&_include=Consent:performer
+        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/9000000022?_include=Consent:performer
     entry:
       - fullUrl: >-
           https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742
@@ -19,8 +19,6 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
           identifier:
             - system: 'https://fhir.nhs.uk/Id/nhs-number'
               value: '9000000022'
-            - system: 'https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier'
-              value: ABC0000003
           patient:
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
@@ -97,8 +95,6 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
           identifier:
             - system: 'https://fhir.nhs.uk/Id/nhs-number'
               value: '9000000022'
-            - system: 'https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier'
-              value: ABC00000234
           patient:
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
@@ -172,8 +168,6 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
           identifier:
             - system: 'https://fhir.nhs.uk/Id/nhs-number'
               value: '9000000022'
-            - system: 'https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier'
-              value: ABC0000001
           patient:
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'

@@ -19,8 +19,6 @@ ConsentMultipleRelationshipsIncludePerformerPatientBundle:
           identifier:
             - system: "https://fhir.nhs.uk/Id/nhs-number"
               value: "9000000022"
-            - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
-              value: ABC0000003
           patient:
             identifier:
               system: "https://fhir.nhs.uk/Id/nhs-number"
@@ -48,8 +46,6 @@ ConsentMultipleRelationshipsIncludePerformerPatientBundle:
           identifier:
             - system: "https://fhir.nhs.uk/Id/nhs-number"
               value: "9000000009"
-            - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
-              value: ABC1234567
           name:
             - use: usual
               period:
@@ -129,8 +125,6 @@ ConsentMultipleRelationshipsIncludePerformerPatientBundle:
           identifier:
             - system: "https://fhir.nhs.uk/Id/nhs-number"
               value: "9000000022"
-            - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
-              value: ABC00000234
           patient:
             identifier:
               system: "https://fhir.nhs.uk/Id/nhs-number"
@@ -155,8 +149,6 @@ ConsentMultipleRelationshipsIncludePerformerPatientBundle:
           identifier:
             - system: "https://fhir.nhs.uk/Id/nhs-number"
               value: "9000000005"
-            - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
-              value: ABC9999999
           name:
             - use: usual
               period:
@@ -233,8 +225,6 @@ ConsentMultipleRelationshipsIncludePerformerPatientBundle:
           identifier:
             - system: "https://fhir.nhs.uk/Id/nhs-number"
               value: "9000000022"
-            - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
-              value: ABC0000001
           patient:
             identifier:
               system: "https://fhir.nhs.uk/Id/nhs-number"
@@ -259,8 +249,6 @@ ConsentMultipleRelationshipsIncludePerformerPatientBundle:
           identifier:
             - system: "https://fhir.nhs.uk/Id/nhs-number"
               value: "9000000006"
-            - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
-              value: ABC9999999
           name:
             - use: usual
               period:

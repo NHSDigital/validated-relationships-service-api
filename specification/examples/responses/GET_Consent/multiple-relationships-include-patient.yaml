@@ -22,8 +22,6 @@ ConsentMultipleRelationshipsIncludePatientBundle:
           identifier:
             - system: "https://fhir.nhs.uk/Id/nhs-number"
               value: "9000000009"
-            - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
-              value: ABC1234567
           name:
             - use: usual
               period:
@@ -108,8 +106,6 @@ ConsentMultipleRelationshipsIncludePatientBundle:
           identifier:
             - system: "https://fhir.nhs.uk/Id/nhs-number"
               value: "9000000005"
-            - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
-              value: ABC9999999
           name:
             - use: usual
               period:
@@ -191,8 +187,6 @@ ConsentMultipleRelationshipsIncludePatientBundle:
           identifier:
             - system: "https://fhir.nhs.uk/Id/nhs-number"
               value: "9000000006"
-            - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
-              value: ABC9999999
           name:
             - use: usual
               period:
