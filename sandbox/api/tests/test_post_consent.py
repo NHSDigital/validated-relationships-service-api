@@ -8,6 +8,7 @@ from sandbox.api.constants import (
     POST_CONSENT__DUPLICATE_RELATIONSHIP_ERROR,
     POST_CONSENT__PERFORMER_IDENTIFIER_ERROR,
     POST_CONSENT__SUCCESS,
+    POST_CONSENT__MISSING_FREE_TEXT_FOR_OTHER,
 )
 
 CONSENT_API_ENDPOINT = "/FHIR/R4/Consent"
@@ -30,6 +31,30 @@ CONSENT_API_ENDPOINT = "/FHIR/R4/Consent"
         ),
         ("9000000000", POST_CONSENT__PERFORMER_IDENTIFIER_ERROR, 422, None),
         ("9000000049", POST_CONSENT__DUPLICATE_RELATIONSHIP_ERROR, 409, None),
+        (
+            "9000000050",
+            POST_CONSENT__MISSING_FREE_TEXT_FOR_OTHER,
+            400,
+            None,
+        ),
+        (
+            "9000000051",
+            POST_CONSENT__SUCCESS,
+            201,
+            "a1b2c3d4-e5f6-4789-a0b1-c2d3e4f5a6b7",
+        ),
+        (
+            "9000000052",
+            POST_CONSENT__SUCCESS,
+            201,
+            "b2c3d4e5-f6a7-4890-b1c2-d3e4f5a6b7c8",
+        ),
+        (
+            "9000000053",
+            POST_CONSENT__SUCCESS,
+            201,
+            "c3d4e5f6-a7b8-4901-c2d3-e4f5a6b7c8d9",
+        ),
     ],
 )
 @patch("sandbox.api.post_consent.generate_response_from_example")

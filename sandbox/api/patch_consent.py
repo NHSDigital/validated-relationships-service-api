@@ -10,6 +10,7 @@ from .constants import (
     PATCH_CONSENT__RESOURCE_NOT_FOUND,
     PATCH_CONSENT__SUCCESS,
     PATCH_CONSENT__INVALID_STATUS_REASON,
+    PATCH_CONSENT__MISSING_FREE_TEXT_FOR_OTHER,
 )
 from .utils import generate_response_from_example
 
@@ -62,6 +63,24 @@ def patch_consent_response(id: str) -> Union[dict, tuple]:
         elif id == "7b7f47b8-96e5-43eb-b733-283bf1449f2c":
             # Invalid state transition
             return generate_response_from_example(PATCH_CONSENT__INVALID_STATE_TRANSITION, 422)
+
+        # Mandatory free text for OTHER reason codes
+        elif id == "d4e8a6f2-1c3b-4a7e-9d2f-8b5c7e9f1a3d":
+            # Missing free text for OTHER reason code (should fail)
+            return generate_response_from_example(PATCH_CONSENT__MISSING_FREE_TEXT_FOR_OTHER, 400)
+
+        elif id == "a1b2c3d4-e5f6-4789-a0b1-c2d3e4f5a6b7":
+            # Valid OTHER reason code WITH free text (should succeed)
+            return generate_response_from_example(PATCH_CONSENT__SUCCESS, 200)
+
+        # Optional free text for non-OTHER reason codes
+        elif id == "b2c3d4e5-f6a7-4890-b1c2-d3e4f5a6b7c8":
+            # Non-OTHER reason code WITHOUT free text (should succeed)
+            return generate_response_from_example(PATCH_CONSENT__SUCCESS, 200)
+
+        elif id == "c3d4e5f6-a7b8-4901-c2d3-e4f5a6b7c8d9":
+            # Non-OTHER reason code WITH free text (should succeed)
+            return generate_response_from_example(PATCH_CONSENT__SUCCESS, 200)
 
         else:
             # Resource not found
