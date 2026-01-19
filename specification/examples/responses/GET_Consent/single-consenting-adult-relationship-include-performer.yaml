@@ -4,7 +4,7 @@ ConsentSingleConsentingAdultRelationshipIncludePerformerBundle:
     A Bundle containing a single proxy relationship between consenting adults including the performer details.
   value:
     resourceType: Bundle
-    timestamp: '2026-16-01T14:00:00+00:00'
+    timestamp: '2026-01-16T14:00:00+00:00'
     total: 1
     type: searchset
     link:
@@ -67,7 +67,7 @@ ConsentSingleConsentingAdultRelationshipIncludePerformerBundle:
               role:
                 coding:
                 - code: parental-responsibility
-                  display: parental responsibility
+                  display: Parental responsibility
                   system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
             period:
               end: "2029-02-11"

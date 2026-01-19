@@ -3,7 +3,7 @@ ConsentMultipleRelationshipsStatusInactiveBundle:
   description: A Bundle containing multiple inactive proxy relationships with varying legal basis
   value:
     resourceType: Bundle
-    timestamp: '2026-16-01T14:00:00+00:00'
+    timestamp: '2026-01-16T14:00:00+00:00'
     total: 2
     type: searchset
     link:
