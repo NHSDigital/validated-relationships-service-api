@@ -59,7 +59,7 @@ ConsentMultipleRelationshipsSinglePatientBundle:
               coding:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: ROLE_CREATED
-                  display: Role created from scratch by GP
+                  display: Role created
         search:
           mode: match
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/WWCC67T1
@@ -111,7 +111,7 @@ ConsentMultipleRelationshipsSinglePatientBundle:
               coding:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: ROLE_CREATED
-                  display: Role created from scratch by GP
+                  display: Role created
         search:
           mode: match
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/AATD11A1
@@ -163,6 +163,6 @@ ConsentMultipleRelationshipsSinglePatientBundle:
               coding:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: ROLE_DEACTIVATED_END_DATE_REACHED
-                  display: End-date reached
+                  display: End date reached
         search:
           mode: match

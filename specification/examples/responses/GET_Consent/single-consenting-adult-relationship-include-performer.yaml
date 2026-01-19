@@ -81,6 +81,6 @@ ConsentSingleConsentingAdultRelationshipIncludePerformerBundle:
               coding:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: ROLE_CREATED
-                  display: Role created from scratch by GP
+                  display: Role created
         search:
           mode: match
