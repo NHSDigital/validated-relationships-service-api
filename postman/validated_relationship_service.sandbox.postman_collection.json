@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "9c2224fd-e560-4a7c-847c-389d1a950ab7",
-		"name": "Validated Relationship Service - Sandbox - 21/11/25",
+		"name": "Validated Relationship Service Sandbox 16/01/26",
 		"description": "This Postman collection includes example scenarios for each of the Validated Relationship Service (VRS) API endpoints, covering both valid and invalid request scenarios.\n\nThe collection is pointed towards the VRS sandbox environment, which will return a specific example response based on the request sent. All data shown in the requests or responses is test data.\n\nOur sandbox environment only covers the scenarios listed in the Postman collection and is open access. It does not allow you to test authorisation or any scenarios beyond the ones documented.\n\nFull specification is available at [https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -218,7 +218,7 @@
 							}
 						}
 					],
-					"id": "af425cdb-6bed-4430-8996-bc08bd9288c0",
+					"id": "b80e63b3-a5ce-4162-a109-35ab0539bb1a",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -280,7 +280,7 @@
 							}
 						}
 					],
-					"id": "9e561922-3d55-4fb2-bf55-fef9f7d4d39a",
+					"id": "8aee2089-476c-4e7d-b231-854fc08163fd",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -341,7 +341,7 @@
 							}
 						}
 					],
-					"id": "06d07a76-6832-4b22-9b53-21fe20207133",
+					"id": "f50027f5-e3dc-4a9f-91d9-79e27929813b",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -402,7 +402,7 @@
 							}
 						}
 					],
-					"id": "e5dfe876-6ce8-481c-b8bc-dd973d0beb01",
+					"id": "432b24fc-6fcc-4e39-b947-cb84282b67da",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -423,7 +423,7 @@
 					"response": []
 				}
 			],
-			"id": "14420d08-b0d0-4250-b968-48c1ebcf820d",
+			"id": "1189d01a-f8c4-4a81-8c9a-9a8ee55e1570",
 			"description": "The GET Questionnaire Response endpoint is used to retrieve a Questionnaire Response using its unique reference code. This endpoint returns the full Questionnaire Response document that was previously submitted.\n\nThis folder contains requests covering different scenarios of valid and invalid requests.\n\nFor more details, please refer to the [GET Questionnaire Response OAS page for the Validated Relationship Service on the NHS England website.](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service#get-/QuestionnaireResponse)"
 		},
 		{
@@ -472,7 +472,7 @@
 							}
 						}
 					],
-					"id": "c89b7c44-9223-462a-adc7-105085bb40d6",
+					"id": "8f35600a-126f-4937-874d-9ebf74a373ab",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -549,7 +549,7 @@
 							}
 						}
 					],
-					"id": "f1c27210-a0b1-4be5-a0ea-43d991a0653c",
+					"id": "8c12c63a-8ffa-4e72-bc0e-689be8cf9891",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -625,7 +625,7 @@
 							}
 						}
 					],
-					"id": "6d15f7ef-26a7-43f3-9691-0c999ce01946",
+					"id": "80ce1ae9-6ba1-4a72-835a-32788348ee37",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -685,7 +685,7 @@
 							}
 						}
 					],
-					"id": "ae137b4e-8894-4fc9-9ef1-8aab9a42b64b",
+					"id": "d96010ae-ddc7-47a6-b287-b855c652e340",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -761,7 +761,7 @@
 							}
 						}
 					],
-					"id": "23006fae-0b71-4c00-9755-327f281496c2",
+					"id": "dd395f8d-1342-4c84-bf86-8b4c553e5ea3",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -795,7 +795,7 @@
 					"response": []
 				}
 			],
-			"id": "ccb042c2-52dc-499d-8cd8-582e95aa3243",
+			"id": "4e208dcf-6262-4cd0-8d8e-8e80f126f709",
 			"description": "The POST Questionnaire Response endpoint is used to submit a proxy access request for a given performer and patient.\n\nIt is indended to be used by user facing service e.g. Proxy Access Service, who will collect the necessary information from the user and submit it to VRS as a QuestionnaireResponse.\n\nThis folder contains requests covering different scenarios of valid and invalid requests.\n\nFor more details, please refer to the [POST Questionnaire Response OAS page for the Validated Relationship Service on the NHS England website.](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service#post-/QuestionnaireResponse)",
 			"event": [
 				{
@@ -955,7 +955,7 @@
 							}
 						}
 					],
-					"id": "8059df3c-7040-4e26-bfa0-55087b3d7b7b",
+					"id": "91f31950-015e-475c-abea-133e88118cf4",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1187,7 +1187,7 @@
 							}
 						}
 					],
-					"id": "7081b131-16f2-4f41-a9d7-c9e0989e06d4",
+					"id": "ebd6c6b6-0b02-4c89-8bc5-965896729d24",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1258,7 +1258,7 @@
 							}
 						}
 					],
-					"id": "bce3fe9a-c707-42cc-95e0-4299d2bc379b",
+					"id": "1f8abfeb-5630-478a-a04b-7ffe72648088",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1377,7 +1377,7 @@
 							}
 						}
 					],
-					"id": "455707c4-e93e-4cca-a8c1-d29b3de6fc00",
+					"id": "437a5db1-4370-4e4b-bb85-c5bc128e8b48",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1532,7 +1532,7 @@
 							}
 						}
 					],
-					"id": "acd5776f-86fc-42e7-947b-a22b5872dfee",
+					"id": "a9a84ed5-3fd8-493b-8775-39a9d6c33d3c",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1621,7 +1621,7 @@
 							}
 						}
 					],
-					"id": "5f063c8b-cdbf-473f-ae6d-a18b45d2500b",
+					"id": "7aaec1b4-e8ca-4a0f-a184-bb7f25eea275",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1691,7 +1691,7 @@
 							}
 						}
 					],
-					"id": "4dca6395-caa9-42a4-847b-3a577e978484",
+					"id": "3889b8cb-1472-4ea0-aee4-bbfcb4cd32cb",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1771,7 +1771,7 @@
 							}
 						}
 					],
-					"id": "8dc6d52c-d4a4-4a6f-bc2f-2f08363060af",
+					"id": "362e22d6-3250-47dc-bc2e-9629b9cbc17a",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1852,7 +1852,7 @@
 							}
 						}
 					],
-					"id": "993fd0c8-8046-4d71-b58b-2ec4e9160ef7",
+					"id": "c6a3ffca-e0f7-4c68-83a9-4cfffaf79d23",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1933,7 +1933,7 @@
 							}
 						}
 					],
-					"id": "f551d1df-e483-4586-96a4-d30b4bb489e0",
+					"id": "8c129637-1f60-4012-a09f-82b1d9de6fcc",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1968,7 +1968,7 @@
 					"response": []
 				}
 			],
-			"id": "e80bc8dd-a098-4d9c-897a-af8cc63b4b45",
+			"id": "e37ed9d5-5a8b-4027-a40b-158d30c82f30",
 			"description": "The GET Related Person endpoint retrieves candidate proxy relationships for a user with a given NHS Number.\n\nThis endpoint should NOT be used to retrieve proxy relationships; these should be queried from the `/Consent` endpoint.\n\nThis folder contains requests covering different scenarios of valid and invalid requests.\n\nFor more details, please refer to the [GET Related Person OAS page for the Validated Relationship Service on the NHS England website.](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service#get-/RelatedPerson)"
 		},
 		{
@@ -2146,7 +2146,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -2170,7 +2170,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -2330,7 +2330,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -2354,7 +2354,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -2403,7 +2403,7 @@
 							}
 						}
 					],
-					"id": "dadc2d56-06d8-49e3-9f5d-ddd34600bdc5",
+					"id": "f87773b8-23c2-49fc-a933-37d5453afedf",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2517,7 +2517,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -2541,7 +2541,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -2610,7 +2610,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -2634,18 +2634,19 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
-									"                                    \"code\": \"ROLE_DEACTIVATED_END_DATE_REACHED\",",
-									"                                    \"display\": \"End-date reached\"",
+									"                                    \"system\": \"http://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"code\": \"OTHER\",",
+									"                                    \"display\": \"Other\"",
 									"                                }",
-									"                            ]",
+									"                            ],",
+									"                            \"text\": \"Patient would not respond to phone calls\"",
 									"                        }",
 									"                    }",
 									"                ]",
@@ -2683,7 +2684,7 @@
 							}
 						}
 					],
-					"id": "1d1467dd-c087-4077-b5bf-943e17a1f046",
+					"id": "38b07206-4416-4231-a604-4217701014cd",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -2777,7 +2778,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -2801,7 +2802,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -2870,7 +2871,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -2894,7 +2895,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -2963,7 +2964,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -2987,7 +2988,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -3056,7 +3057,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -3080,7 +3081,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -3118,7 +3119,7 @@
 							}
 						}
 					],
-					"id": "3f7e8ebf-0369-4fdc-baf8-c18c68db9fe7",
+					"id": "3143d99d-8193-4fa0-bb23-24eb9027a49d",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -3220,7 +3221,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -3244,7 +3245,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -3313,7 +3314,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -3337,7 +3338,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -3406,7 +3407,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -3430,7 +3431,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -3468,7 +3469,7 @@
 							}
 						}
 					],
-					"id": "6595947a-1476-4329-93e5-f68586cb5a89",
+					"id": "3fcb812a-83aa-497f-974d-6fc166ac4a53",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -3616,7 +3617,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -3640,7 +3641,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -3763,7 +3764,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -3787,7 +3788,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -3895,7 +3896,7 @@
 									"                        \"value\": \"9000000006\"",
 									"                    }",
 									"                },",
-									"                \"dateTime\": \"2024-07-21T17:32:28Z\",",
+									"                \"dateTime\": \"2024-07-21T1T32:28Z\",",
 									"                \"performer\": [",
 									"                    {",
 									"                        \"identifier\": {",
@@ -3910,7 +3911,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -3934,7 +3935,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -3972,7 +3973,7 @@
 							}
 						}
 					],
-					"id": "2b3808a9-e981-40e2-85d8-939741a74d1c",
+					"id": "aaa416ee-7c0a-46e6-8dfa-b93ead8475df",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -4112,7 +4113,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -4136,7 +4137,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -4242,7 +4243,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -4266,7 +4267,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -4372,7 +4373,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -4396,7 +4397,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -4434,7 +4435,7 @@
 							}
 						}
 					],
-					"id": "b994179e-6310-4206-94c5-f0e7a69228d3",
+					"id": "a1d66860-8632-4d1a-bc2d-4c0ffe33cecb",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -4632,7 +4633,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -4656,7 +4657,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -4816,7 +4817,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -4840,7 +4841,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -5000,7 +5001,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -5024,7 +5025,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -5062,7 +5063,7 @@
 							}
 						}
 					],
-					"id": "345bfdcb-c75f-4b46-a9ba-0e1839110d28",
+					"id": "4d14282c-dfda-4adb-baf3-0366d667edb7",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -5160,7 +5161,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -5184,7 +5185,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -5253,7 +5254,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -5277,7 +5278,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -5346,7 +5347,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -5370,7 +5371,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -5408,7 +5409,7 @@
 							}
 						}
 					],
-					"id": "dad0fc82-e245-4aaa-bdd8-21ab8759998d",
+					"id": "03f9e685-be6f-41d0-9e87-1fb33c99d632",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -5598,7 +5599,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -5622,7 +5623,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -5728,7 +5729,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -5752,7 +5753,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -5858,7 +5859,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -5882,7 +5883,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -5920,7 +5921,7 @@
 							}
 						}
 					],
-					"id": "e71a0bdc-9683-42a3-b844-a5b56fed0640",
+					"id": "5c831113-f50f-43ab-b701-7dd7bb20083b",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -6064,7 +6065,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -6088,7 +6089,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -6194,7 +6195,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -6218,7 +6219,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -6324,7 +6325,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -6348,7 +6349,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -6386,7 +6387,7 @@
 							}
 						}
 					],
-					"id": "f18c8da9-5327-4560-be71-2f436aeeb2ff",
+					"id": "d7d24aa1-0141-489e-ab95-bd5c68e7a93e",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -6534,7 +6535,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -6558,7 +6559,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -6627,7 +6628,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -6651,7 +6652,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -6720,7 +6721,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -6744,7 +6745,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -6782,7 +6783,7 @@
 							}
 						}
 					],
-					"id": "f925aad1-bef9-4dcd-9755-2a388077d5fd",
+					"id": "29ddd0e6-42cf-41b9-86c6-014d4cc0e49d",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -6843,7 +6844,7 @@
 							}
 						}
 					],
-					"id": "623912bd-d53b-4d7a-bf95-c53080045883",
+					"id": "dd30a7ac-8699-4eff-a4f1-0b2949072e35",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -6933,7 +6934,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -6957,7 +6958,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -6995,7 +6996,7 @@
 							}
 						}
 					],
-					"id": "a3050775-86ea-432a-bc51-d29a315e28e4",
+					"id": "6dbd38f9-fdf7-4ed7-92fa-9bf51bab8c1d",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -7176,7 +7177,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -7200,7 +7201,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -7238,7 +7239,7 @@
 							}
 						}
 					],
-					"id": "20a48bf6-fdb4-4e7d-9a0c-d5437a35e6e1",
+					"id": "3d118a32-5500-448d-9703-c2576a162f0f",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -7336,7 +7337,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -7360,7 +7361,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -7398,7 +7399,7 @@
 							}
 						}
 					],
-					"id": "9b709cd4-c054-45fe-bce2-b67efc947ef3",
+					"id": "857e4c41-1b63-42ae-a496-94938abb6267",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -7592,7 +7593,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -7616,7 +7617,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -7654,7 +7655,7 @@
 							}
 						}
 					],
-					"id": "6341f5f1-92d7-41e1-9d60-75398fc0302c",
+					"id": "16f9db2a-5bcb-4941-9d45-b921bffc6fd1",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -7727,7 +7728,7 @@
 							}
 						}
 					],
-					"id": "4b19edc2-2314-4eb3-9382-7aea8cae3dfa",
+					"id": "c2307a02-9c37-4a00-9593-6c330da26ec4",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -7800,7 +7801,7 @@
 							}
 						}
 					],
-					"id": "a8d81a25-5ea2-48fa-88c1-05bc01d50002",
+					"id": "4b719b1f-6168-42be-9f69-d15c9b901cdc",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -7896,7 +7897,7 @@
 									"                        \"display\": \"Unknown legal basis\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -7921,7 +7922,7 @@
 									"                        \"start\": \"2025-02-11\",",
 									"                        \"end\": \"2026-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -7959,7 +7960,7 @@
 							}
 						}
 					],
-					"id": "a6c4ee11-f818-40b1-969e-19298ea6bb95",
+					"id": "243409d5-8ae1-433c-8034-46c7a23b5ebc",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -8029,7 +8030,7 @@
 							}
 						}
 					],
-					"id": "f67a7d48-224d-4522-b672-e3e8fd5ba409",
+					"id": "00939d5f-cab6-4e3a-987c-fc06644a8d21",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -8098,7 +8099,7 @@
 							}
 						}
 					],
-					"id": "93c7d983-e44a-421f-863d-9cbd5fe05db0",
+					"id": "8d4656b7-65c8-47c4-8dd3-4c308db69d66",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -8167,7 +8168,7 @@
 							}
 						}
 					],
-					"id": "1a7c617f-6013-406f-8b0c-edd731cfa5d8",
+					"id": "46796a75-3618-4faa-8457-935dec6f5eeb",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -8236,7 +8237,7 @@
 							}
 						}
 					],
-					"id": "79643dab-d59e-4d3d-a940-1a0ad6f84142",
+					"id": "92dd4877-5ba1-46c2-bb0b-54bcf32e534a",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -8291,7 +8292,7 @@
 							}
 						}
 					],
-					"id": "c96c416a-f80a-424f-8793-42d2b03e406b",
+					"id": "900603a3-1b5e-49de-96b1-db49e09770cc",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -8314,7 +8315,7 @@
 					"response": []
 				}
 			],
-			"id": "7cc34738-f558-44f6-87f6-61edbbe10a78",
+			"id": "c78e22a3-8b15-4d61-bbd1-298c2797a618",
 			"description": "The GET /Consent is for retrieving confirmed proxy relationships via the Validated Relationship Service.\n\nThis folder contains requests covering different scenarios for users with different types of proxy relationship. Also includes error scenarios.\n\nFor more details, please refer to the [GET Consent OAS page for the Validated Relationship Service on the NHS England website.](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service#get-/Consent)"
 		},
 		{
@@ -8356,7 +8357,7 @@
 							}
 						}
 					],
-					"id": "c9c26568-1659-4952-87b3-7031a26df165",
+					"id": "7f154ea1-6f19-4e91-98b3-0901ff767ada",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -8409,7 +8410,7 @@
 							}
 						}
 					],
-					"id": "cdaf7f29-8028-4ef4-9825-9482c04d4cc7",
+					"id": "2d219915-80bf-46d1-a3ff-bf1117f0c824",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -8470,13 +8471,73 @@
 							}
 						}
 					],
-					"id": "51c06eab-2233-43c3-860c-2e4424d45651",
+					"id": "7c07d015-0f2f-46f2-a05c-b53726969d1c",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"resourceType\": \"Consent\",\n    \"status\": \"active\",\n    \"scope\": {\n        \"coding\": [\n            {\n                \"system\": \"http://terminology.hl7.org/CodeSystem/consentscope\",\n                \"code\": \"patient-privacy\",\n                \"display\": \"Privacy Consent\"\n            }\n        ],\n        \"text\": \"Patient Privacy Consent\"\n    },\n    \"category\": [\n        {\n            \"coding\": [\n                {\n                    \"system\": \"http://terminology.hl7.org/CodeSystem/v3-ActCode\",\n                    \"code\": \"INFA\",\n                    \"display\": \"Information Access\"\n                }\n            ],\n            \"text\": \"Information Access Consent\"\n        }\n    ],\n    \"patient\": {\n        \"type\": \"Patient\",\n        \"identifier\": {\n            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n            \"value\": \"9000000012\"\n        }\n    },\n    \"dateTime\": \"2025-02-11T14:30:00Z\",\n    \"performer\": [\n        {\n            \"type\": \"RelatedPerson\",\n            \"identifier\": {\n                \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                \"value\": \"9000000000\"\n            }\n        }\n    ],\n    \"provision\": [{\n        \"period\": {\n            \"start\": \"2025-02-11\"\n        },\n        \"actor\": [\n            {\n                \"role\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",\n                            \"code\": \"GUARD\",\n                            \"display\": \"Guardian\"\n                        }\n                    ]\n                },\n                \"reference\": {\n                    \"type\": \"RelatedPerson\",\n                    \"identifier\": {\n                        \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                        \"value\": \"9000000000\"\n                    }\n                }\n            }\n        ]\n    }],\n    \"extension\": [\n        {\n            \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n            \"valueCodeableConcept\": {\n                \"coding\": [\n                    {\n                        \"system\": \"http://terminology.hl7.org/CodeSystem/consent-reason\",\n                        \"code\": \"TBC\",\n                        \"display\": \"TBC\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{api_base_url}}/Consent"
+					},
+					"response": []
+				},
+				{
+					"name": "Missing free text",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const expectedResponseBody = {",
+									"    \"issue\": [",
+									"        {",
+									"            \"code\": \"invalid\",",
+									"            \"diagnostics\": \"Free text is required when reason code is OTHER.\",",
+									"            \"details\": {",
+									"                \"coding\": [",
+									"                    {",
+									"                        \"code\": \"MISSING_FREE_TEXT_FOR_OTHER\",",
+									"                        \"display\": \"Free text must be provided for OTHER reason codes.\",",
+									"                        \"system\": \"https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode\",",
+									"                        \"version\": \"1\"",
+									"                    }",
+									"                ]",
+									"            },",
+									"            \"severity\": \"error\"",
+									"        }",
+									"    ],",
+									"    \"resourceType\": \"OperationOutcome\"",
+									"}",
+									"",
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Should have correct response body\", () => {",
+									"    var responseJson = pm.response.json();",
+									"    pm.expect(responseJson).to.eql(expectedResponseBody);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "ec4788ba-e826-453f-a672-e1a06d81fa84",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"resourceType\": \"Consent\",\n    \"status\": \"active\",\n    \"scope\": {\n        \"coding\": [\n            {\n                \"system\": \"http://terminology.hl7.org/CodeSystem/consentscope\",\n                \"code\": \"patient-privacy\",\n                \"display\": \"Privacy Consent\"\n            }\n        ],\n        \"text\": \"Patient Privacy Consent\"\n    },\n    \"category\": [\n        {\n            \"coding\": [\n                {\n                    \"system\": \"http://terminology.hl7.org/CodeSystem/v3-ActCode\",\n                    \"code\": \"INFA\",\n                    \"display\": \"Information Access\"\n                }\n            ],\n            \"text\": \"Information Access Consent\"\n        }\n    ],\n    \"patient\": {\n        \"type\": \"Patient\",\n        \"identifier\": {\n            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n            \"value\": \"9000000050\"\n        }\n    },\n    \"dateTime\": \"2025-02-11T14:30:00Z\",\n    \"performer\": [\n        {\n            \"type\": \"RelatedPerson\",\n            \"identifier\": {\n                \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                \"value\": \"9000000050\"\n            }\n        }\n    ],\n    \"provision\": {\n        \"period\": {\n            \"start\": \"2025-02-11\",\n            \"end\": \"2026-02-11\"\n        },\n        \"actor\": [\n            {\n                \"role\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",\n                            \"code\": \"PRN\",\n                            \"display\": \"Parent\"\n                        }\n                    ]\n                },\n                \"reference\": {\n                    \"type\": \"RelatedPerson\",\n                    \"identifier\": {\n                        \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                        \"value\": \"9000000050\"\n                    }\n                }\n            }\n        ]\n    },\n    \"extension\": [\n        {\n            \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n            \"valueCodeableConcept\": {\n                \"coding\": [\n                    {\n                        \"system\": \"http://terminology.hl7.org/CodeSystem/consent-reason\",\n                        \"code\": \"TBC\",\n                        \"display\": \"TBC\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -8531,7 +8592,7 @@
 							}
 						}
 					],
-					"id": "e3dbeb57-955a-492e-a006-7d232c6c4004",
+					"id": "eca3628f-be47-445b-993a-87c5e6b6a617",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -8549,7 +8610,7 @@
 					"response": []
 				}
 			],
-			"id": "2c8826b6-2152-4215-8135-0f73a679af8b",
+			"id": "e3ee9022-3ab0-4d25-af27-76e983de0776",
 			"description": "The POST /Consent is for storing confirmed proxy relationships via the Validated Relationships Service.\n\nThis folder contains requests covering different scenarios for users with different types of proxy relationship. Also includes error scenarios.\n\nFor more details, please refer to the [POST Consent OAS page for the Validated Relationship Service on the NHS England website.](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service#post-/Consent)"
 		},
 		{
@@ -8623,7 +8684,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -8647,7 +8708,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -8685,7 +8746,7 @@
 							}
 						}
 					],
-					"id": "c91358c0-fe06-4c6e-8567-0cf0516171c0",
+					"id": "607b4631-1fd5-4cfd-bd0d-7ce1b3787ef2",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -8815,7 +8876,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -8839,7 +8900,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -8877,7 +8938,7 @@
 							}
 						}
 					],
-					"id": "769458ad-0e8c-4a03-a6dc-5b5e641ac628",
+					"id": "f9fdf448-f8a4-4145-8c01-edf3a72908a4",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -9005,7 +9066,7 @@
 									"                \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"            }",
 									"        ],",
-									"        \"provision\": [{",
+									"        \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -9029,7 +9090,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -9067,7 +9128,7 @@
 							}
 						}
 					],
-					"id": "ec69efb3-5251-45e3-9704-7a77e9f2348a",
+					"id": "947d07b9-446a-421c-89c4-e2a55d43655e",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -9249,7 +9310,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -9273,7 +9334,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -9310,7 +9371,7 @@
 							}
 						}
 					],
-					"id": "fed26672-bdb9-4a1c-9253-d4b179b9353a",
+					"id": "6bb732e7-f89a-4d4a-9dbc-6ee17d533299",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -9405,7 +9466,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -9429,7 +9490,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -9467,7 +9528,7 @@
 							}
 						}
 					],
-					"id": "813b1327-a440-41cf-b5aa-bbfd3b7da17d",
+					"id": "c0cf8dcd-a878-42c2-886f-cb62dfd11fe3",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -9601,7 +9662,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -9621,7 +9682,7 @@
 									"                            }",
 									"                        }",
 									"                    ]",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -9659,7 +9720,7 @@
 							}
 						}
 					],
-					"id": "1fb80f10-e6d7-495a-a876-079e4ac2f631",
+					"id": "cca42365-c827-413b-a2af-78488aa9fc3e",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -9790,7 +9851,7 @@
 									"            }",
 									"          }",
 									"        ],",
-									"        \"provision\": [{",
+									"        \"provision\": {",
 									"            \"actor\": [",
 									"                {",
 									"                    \"reference\": {",
@@ -9814,7 +9875,7 @@
 									"                \"end\": \"2026-02-11\",",
 									"                \"start\": \"2025-02-11\"",
 									"            }",
-									"        }],",
+									"        },",
 									"        \"extension\": [",
 									"            {",
 									"                \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -9852,7 +9913,7 @@
 							}
 						}
 					],
-					"id": "491700eb-3d1e-418a-a6f5-244defac0049",
+					"id": "d516352a-3612-4e9b-9423-c205f1bd764c",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -10047,7 +10108,7 @@
 									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
 									"                    }",
 									"                ],",
-									"                \"provision\": [{",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -10071,7 +10132,7 @@
 									"                        \"end\": \"2026-02-11\",",
 									"                        \"start\": \"2025-02-11\"",
 									"                    }",
-									"                }],",
+									"                },",
 									"                \"extension\": [",
 									"                    {",
 									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
@@ -10109,7 +10170,7 @@
 							}
 						}
 					],
-					"id": "2d824a56-d23a-4782-9182-dfd7b831ca75",
+					"id": "bddbf0b0-2264-4931-a449-f5880a7306d0",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -10179,7 +10240,7 @@
 							}
 						}
 					],
-					"id": "8740b36e-d0bb-4b1e-a988-8389f3bdeb58",
+					"id": "23ca92dc-44c2-41ce-9968-c25c7458646f",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -10231,7 +10292,7 @@
 							}
 						}
 					],
-					"id": "f5ef2a6d-edeb-49e7-8968-da6953c98e0d",
+					"id": "762b8344-4ec3-416d-9fa6-97be76304684",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -10297,7 +10358,7 @@
 							}
 						}
 					],
-					"id": "da6ccd2b-8ed9-4d81-a148-4d51d6d62e18",
+					"id": "e628afea-6666-419d-903d-d7836cf389f5",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -10363,7 +10424,7 @@
 							}
 						}
 					],
-					"id": "cff93bd1-4dd3-469f-aa49-54e9c5844c05",
+					"id": "5f494f88-0b5c-4a5e-92e2-9cd397cbf2d0",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -10372,7 +10433,7 @@
 					"response": []
 				}
 			],
-			"id": "f64c2780-6e68-49e3-a429-31fd1cee990f",
+			"id": "c4c4cb8c-19f9-4687-9870-be383368eb01",
 			"description": "The GET /Consent/{ID} is for retrieving the details of a single proxy relationship, including current status, based on a provided id.\n\nThis folder contains requests covering different scenarios for users with different types of proxy relationships. It also includes error scenarios.\n\nFor more details, please refer to the [GET Consent by ID OAS page for the Validated Relationship Service on the NHS England website.](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service#get-/Consent/%7Bid%7D)"
 		},
 		{
@@ -10410,7 +10471,7 @@
 							}
 						}
 					],
-					"id": "a238199f-38c9-459f-adaa-850c649ee0c1",
+					"id": "3a100f7d-cbf1-4408-b70e-29c5d7da40e2",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -10424,6 +10485,66 @@
 							}
 						},
 						"url": "{{api_base_url}}/Consent/74eed847-ca25-4e76-8cf2-f2c2d7842a7a",
+						"description": "Valid patch changing status to 'active'"
+					},
+					"response": []
+				},
+				{
+					"name": "Missing free text for Other",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const expectedResponseBody = {",
+									"    \"issue\": [",
+									"        {",
+									"            \"code\": \"invalid\",",
+									"            \"diagnostics\": \"Free text is required when reason code is OTHER.\",",
+									"            \"details\": {",
+									"                \"coding\": [",
+									"                    {",
+									"                        \"code\": \"MISSING_FREE_TEXT_FOR_OTHER\",",
+									"                        \"display\": \"Free text must be provided for OTHER reason codes.\",",
+									"                        \"system\": \"https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode\",",
+									"                        \"version\": \"1\"",
+									"                    }",
+									"                ]",
+									"            },",
+									"            \"severity\": \"error\"",
+									"        }",
+									"    ],",
+									"    \"resourceType\": \"OperationOutcome\"",
+									"}",
+									"",
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Should have correct response body\", () => {",
+									"    var responseJson = pm.response.json();",
+									"    pm.expect(responseJson).to.eql(expectedResponseBody);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "512f4be7-022f-443d-aea7-46dc90c9a909",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"inactive\"\n  }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{api_base_url}}/Consent/d4e8a6f2-1c3b-4a7e-9d2f-8b5c7e9f1a3d",
 						"description": "Valid patch changing status to 'active'"
 					},
 					"response": []
@@ -10460,7 +10581,7 @@
 							}
 						}
 					],
-					"id": "d26cd519-f6e0-4e3f-87ad-b416fad15887",
+					"id": "6b58556f-034a-46e6-83a5-0711cd2ee7b2",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -10510,7 +10631,7 @@
 							}
 						}
 					],
-					"id": "98cb87d9-f1ef-43a2-82dc-ec4c358c3838",
+					"id": "041c7d4f-4600-45c3-972c-29120d6de288",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -10571,7 +10692,7 @@
 							}
 						}
 					],
-					"id": "86705db1-1891-4310-92bb-4e40c3d9da58",
+					"id": "ec8cfa54-6859-47e4-aab2-1359334ad204",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -10632,7 +10753,7 @@
 							}
 						}
 					],
-					"id": "ac0293ba-f305-4786-9729-a9dc5617136d",
+					"id": "5916fb46-b0d9-4ad4-b261-7852604a0c9e",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -10693,7 +10814,7 @@
 							}
 						}
 					],
-					"id": "7e21fe2f-6548-498f-bfbe-aee48d767d5a",
+					"id": "91e6d07d-e17c-4a2e-a7ee-a7ada017ffeb",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -10753,7 +10874,7 @@
 							}
 						}
 					],
-					"id": "6cf3c387-58c0-49a1-ae3b-df480e7f5257",
+					"id": "cb67dc14-1d92-4f89-a9b3-22f6030215ef",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -10814,7 +10935,7 @@
 							}
 						}
 					],
-					"id": "5e55a4d9-6d75-44c0-9dc1-b319753ac8c2",
+					"id": "31e85a22-3ac8-4df9-b567-5645f9ade531",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -10874,7 +10995,7 @@
 							}
 						}
 					],
-					"id": "bf070f3c-b9cd-4a4e-ace6-b5e04bb54ae8",
+					"id": "b10715c6-148e-4348-ba80-c50de0559a18",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -10892,7 +11013,7 @@
 					"response": []
 				}
 			],
-			"id": "9b1fe4fe-b172-4cfe-836e-08ca1b66231e",
+			"id": "58eee14b-7a63-45a4-bd0e-b5cd1c09fac9",
 			"description": "Use this endpoint to update an existing proxy role.\n\nCommon update scenarios include:\n\n- Revocation of the role (status change from \"active\" to \"inactive\")\n- Changing the legal basis of the role (TBC)\n- Updating the end date for time-bound access\n    \n\nThis folder contains requests covering different scenarios for various valid and invalid update requests.\n\nFor more details, please refer to the [PATCH Consent OAS page for the Validated Relationship Service on the NHS England website.](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service#patch-/Consent/-id-)"
 		}
 	],
