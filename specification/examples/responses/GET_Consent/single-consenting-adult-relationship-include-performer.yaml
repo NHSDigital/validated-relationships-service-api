@@ -76,10 +76,10 @@ ConsentSingleConsentingAdultRelationshipIncludePerformerBundle:
                 end: "2026-02-11"
                 start: "2025-02-11"
           extension:
-          - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
+          - url: https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason
             valueCodeableConcept:
               coding:
-                - system: https://terminology.hl7.org/CodeSystem/consent-reason
+                - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: ROLE_CREATED
                   display: Role created from scratch by GP
         search:
