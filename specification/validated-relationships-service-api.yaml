@@ -2249,7 +2249,6 @@ components:
         - category
         - patient
         - dateTime
-        - performer
       description: The details of the consent including who the patient and care "performer" are, status of the relationship and whether consent was given by a patient with capacity.
       properties:
         resourceType:
@@ -2291,7 +2290,8 @@ components:
           maxItems: 1
           items:
             $ref: "#/components/schemas/Reference"
-          description: "Individuals or organizations that agreed to the consent."
+          description: "Deprecated. Instead use the Grantee Extension."
+          deprecated: true
         policy:
           type: array
           items:
@@ -2301,8 +2301,10 @@ components:
         extension:
           type: array
           items:
-            $ref: "#/components/schemas/Extension"
-          description: "Reasons for the status of the consent"
+            anyOf:
+              - $ref: "#/components/schemas/StatusReasonExtension"
+              - $ref: "#/components/schemas/GranteeExtension"
+          description: "Additioanl content"
 
     Policy:
       type: object
@@ -2350,14 +2352,28 @@ components:
               role:
                 $ref: "#/components/schemas/CodeableConcept"
                 description: "Classification of the role of consent, bound to http://terminology.hl7.org/CodeSystem/v3-RoleCode"
-    Extension:
+    
+    StatusReasonExtension:
       type: object
       properties:
         url:
           type: string
+          enum:
+          - "https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason"
         valueCodeableConcept:
           $ref: "#/components/schemas/CodeableConcept"
-          description: Classification of the status of consent, bound to http://terminology.hl7.org/CodeSystem/consent-reason.
+          description: Classification of the status.
+
+    GranteeExtension:
+      type: object
+      properties:
+        url:
+          type: string
+          enum:
+          - "https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee"
+        valueCodeableConcept:
+          $ref: "#/components/schemas/CodeableConcept"
+          description: Details for a proxy.
 
     OperationOutcome:
       type: object
