@@ -8,7 +8,7 @@ ConsentSingleConsentingAdultRelationshipIncludePatientBundle:
     type: searchset
     link:
       - relation: self
-        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/9000000010?_include=Consent:patient
+        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000010&_include=Consent:patient
     entry:
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/DFCC67F5
         resource:
