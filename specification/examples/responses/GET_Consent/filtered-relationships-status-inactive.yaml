@@ -54,12 +54,12 @@ ConsentMultipleRelationshipsStatusInactiveBundle:
               end: '2026-02-11'
               start: '2025-02-11'
           extension:
-          - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
+          - url: https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason
             valueCodeableConcept:
               coding:
-                - system: https://terminology.hl7.org/CodeSystem/consent-reason
+                - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: ROLE_DEACTIVATED_END_DATE_REACHED
-                  display: End-date reached
+                  display: End date reached
         search:
           mode: match
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/ABCD12B3
@@ -106,12 +106,12 @@ ConsentMultipleRelationshipsStatusInactiveBundle:
               end: '2026-02-11'
               start: '2025-02-11'
           extension:
-          - url: https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason
+          - url: https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason
             valueCodeableConcept:
               coding:
                 - system: http://terminology.hl7.org/CodeSystem/consent-reason
                   code: OTHER
-                  display: Other
+                  display: Other reason
               text: Patient would not respond to phone calls
         search:
           mode: match
