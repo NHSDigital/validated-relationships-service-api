@@ -19,7 +19,7 @@ ConsentSingleAdultChildRelationshipBundle:
             coding:
               - system: 'https://terminology.hl7.org/CodeSystem/consentscope'
                 code: patient-privacy
-                display: privacy consent
+                display: Privacy Consent
           category:
             - coding:
                 - system: 'https://terminology.hl7.org/CodeSystem/v3-ActCode'
