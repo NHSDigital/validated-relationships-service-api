@@ -83,6 +83,7 @@ POST_CONSENT__DIRECTORY = "./api/examples/POST_Consent/"
 POST_CONSENT__SUCCESS = f"{POST_CONSENT__DIRECTORY}success.yaml"
 POST_CONSENT__DUPLICATE_RELATIONSHIP_ERROR = f"{POST_CONSENT__DIRECTORY}errors/duplicate_relationship_error.yaml"
 POST_CONSENT__PERFORMER_IDENTIFIER_ERROR = f"{POST_CONSENT__DIRECTORY}errors/invalid_performer_identifier_error.yaml"
+POST_CONSENT__MISSING_FREE_TEXT_FOR_OTHER = f"{POST_CONSENT__DIRECTORY}errors/missing_free_text_for_other.yaml"
 
 # PATCH Consent
 PATCH_CONSENT__DIRECTORY = "./api/examples/PATCH_Consent/"
@@ -93,6 +94,7 @@ PATCH_CONSENT__INVALID_STATUS_CODE = f"{PATCH_CONSENT__DIRECTORY}errors/invalid_
 PATCH_CONSENT__INVALID_STATUS_REASON = f"{PATCH_CONSENT__DIRECTORY}errors/invalid_status_reason.yaml"
 PATCH_CONSENT__RESOURCE_NOT_FOUND = f"{PATCH_CONSENT__DIRECTORY}errors/resource_not_found.yaml"
 PATCH_CONSENT__INVALID_STATE_TRANSITION = f"{PATCH_CONSENT__DIRECTORY}errors/invalid_state_transition.yaml"
+PATCH_CONSENT__MISSING_FREE_TEXT_FOR_OTHER = f"{PATCH_CONSENT__DIRECTORY}errors/missing_free_text_for_other.yaml"
 
 # POST QuestionnaireResponse
 POST_QUESTIONNAIRE_RESPONSE_DIRECTORY = "./api/examples/POST_QuestionnaireResponse/"
