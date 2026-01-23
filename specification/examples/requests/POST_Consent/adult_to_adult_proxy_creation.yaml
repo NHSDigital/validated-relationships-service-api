@@ -27,7 +27,7 @@ ConsentAdultToAdultGuardianRequest:
     provision:
       type: permit
       period:
-        start: "2026-02-11"
+        start: "2026-02-11T14:30:00Z"
       actor:
         - role:
             coding:
