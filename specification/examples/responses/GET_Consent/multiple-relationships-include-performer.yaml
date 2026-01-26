@@ -4,7 +4,7 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
     A Bundle containing multiple proxy relationships with varying legal basis' including performer details
   value:
     resourceType: Bundle
-    timestamp: '2020-08-26T14:00:00+00:00'
+    timestamp: '2026-01-16T14:00:00+00:00'
     total: 3
     type: searchset
     link:
@@ -19,8 +19,6 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
           identifier:
             - system: 'https://fhir.nhs.uk/Id/nhs-number'
               value: '9000000022'
-            - system: 'https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier'
-              value: ABC0000003
           patient:
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
@@ -47,13 +45,11 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
               - system: 'https://terminology.hl7.org/CodeSystem/consentscope'
                 code: patient-privacy
                 display: Privacy Consent
-            text: Patient Privacy Consent
           category:
             - coding:
                 - system: 'https://terminology.hl7.org/CodeSystem/v3-ActCode'
                   code: INFA
-                  display: Information Access
-              text: Information Access Consent
+                  display: information access
           patient:
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
@@ -67,19 +63,20 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
             - authority: https://www.england.nhs.uk
               uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
           provision:
-              actor:
-                - reference:
-                    identifier:
-                      system: https://fhir.nhs.uk/Id/nhs-number
-                      value: '9000000022'
-                  role:
-                    coding:
-                      - code: parental-responsibility
-                        display: Parental responsibility
-                        system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
-              period:
-                end: '2026-02-11'
-                start: '2025-02-11'
+            type: permit
+            actor:
+              - reference:
+                  identifier:
+                    system: https://fhir.nhs.uk/Id/nhs-number
+                    value: '9000000022'
+                role:
+                  coding:
+                    - code: parental-responsibility
+                      display: Parental responsibility
+                      system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
+            period:
+              end: '2026-02-11'
+              start: '2025-02-11'
           extension:
           - url: https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason
             valueCodeableConcept:
@@ -97,8 +94,6 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
           identifier:
             - system: 'https://fhir.nhs.uk/Id/nhs-number'
               value: '9000000022'
-            - system: 'https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier'
-              value: ABC00000234
           patient:
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
@@ -122,13 +117,11 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
               - system: 'https://terminology.hl7.org/CodeSystem/consentscope'
                 code: patient-privacy
                 display: Privacy Consent
-            text: Patient Privacy Consent
           category:
             - coding:
                 - system: 'https://terminology.hl7.org/CodeSystem/v3-ActCode'
                   code: INFA
-                  display: Information Access
-              text: Information Access Consent
+                  display: information access
           patient:
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
@@ -142,19 +135,20 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
             - authority: https://www.england.nhs.uk
               uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
           provision:
-              actor:
-                - reference:
-                    identifier:
-                      system: https://fhir.nhs.uk/Id/nhs-number
-                      value: '9000000022'
-                  role:
-                    coding:
-                      - code: best-interest
-                        display: Best Interest
-                        system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
-              period:
-                end: '2026-02-11'
-                start: '2025-02-11'
+            type: permit
+            actor:
+              - reference:
+                  identifier:
+                    system: https://fhir.nhs.uk/Id/nhs-number
+                    value: '9000000022'
+                role:
+                  coding:
+                    - code: best-interest
+                      display: Best Interest
+                      system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
+            period:
+              end: '2026-02-11'
+              start: '2025-02-11'
           extension:
           - url: https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason
             valueCodeableConcept:
@@ -172,8 +166,6 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
           identifier:
             - system: 'https://fhir.nhs.uk/Id/nhs-number'
               value: '9000000022'
-            - system: 'https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier'
-              value: ABC0000001
           patient:
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
@@ -197,13 +189,11 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
               - system: 'https://terminology.hl7.org/CodeSystem/consentscope'
                 code: patient-privacy
                 display: Privacy Consent
-            text: Patient Privacy Consent
           category:
             - coding:
                 - system: 'https://terminology.hl7.org/CodeSystem/v3-ActCode'
                   code: INFA
-                  display: Information Access
-              text: Information Access Consent
+                  display: information access
           patient:
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
@@ -217,19 +207,20 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
             - authority: https://www.england.nhs.uk
               uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
           provision:
-              actor:
-                - reference:
-                    identifier:
-                      system: https://fhir.nhs.uk/Id/nhs-number
-                      value: '9000000022'
-                  role:
-                    coding:
-                      - code: best-interest
-                        display: Best Interest
-                        system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
-              period:
-                end: '2026-02-11'
-                start: '2025-02-11'
+            type: permit
+            actor:
+              - reference:
+                  identifier:
+                    system: https://fhir.nhs.uk/Id/nhs-number
+                    value: '9000000022'
+                role:
+                  coding:
+                    - code: best-interest
+                      display: Best Interest
+                      system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
+            period:
+              end: '2026-02-11'
+              start: '2025-02-11'
           extension:
           - url: https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason
             valueCodeableConcept:

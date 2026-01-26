@@ -3,7 +3,7 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
   description: A Bundle containing multiple proxy relationships with single patient, including patient and proxy details.
   value:
     resourceType: Bundle
-    timestamp: "2020-08-26T14:00:00+00:00"
+    timestamp: "2026-01-16T14:00:00+00:00"
     total: 3
     type: searchset
     link:
@@ -22,8 +22,6 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
           identifier:
             - system: "https://fhir.nhs.uk/Id/nhs-number"
               value: "9000000100"
-            - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
-              value: ABC1234567
           name:
             - use: usual
               period:
@@ -48,8 +46,6 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
           identifier:
             - system: "https://fhir.nhs.uk/Id/nhs-number"
               value: "9000000020"
-            - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
-              value: ABC0000003
           patient:
             identifier:
               system: "https://fhir.nhs.uk/Id/nhs-number"
@@ -75,13 +71,11 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
               - system: "https://terminology.hl7.org/CodeSystem/consentscope"
                 code: patient-privacy
                 display: Privacy Consent
-            text: Patient Privacy Consent
           category:
             - coding:
                 - system: "https://terminology.hl7.org/CodeSystem/v3-ActCode"
                   code: INFA
-                  display: Information Access
-              text: Information Access Consent
+                  display: information access
           patient:
             identifier:
               system: "https://fhir.nhs.uk/Id/nhs-number"
@@ -95,6 +89,7 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
             - authority: https://www.england.nhs.uk
               uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
           provision:
+            type: permit
             actor:
             - reference:
                 identifier:
@@ -124,8 +119,6 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
           identifier:
             - system: "https://fhir.nhs.uk/Id/nhs-number"
               value: "9000000021"
-            - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
-              value: ABC0000003
           patient:
             identifier:
               system: "https://fhir.nhs.uk/Id/nhs-number"
@@ -147,13 +140,11 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
               - system: "https://terminology.hl7.org/CodeSystem/consentscope"
                 code: patient-privacy
                 display: Privacy Consent
-            text: Patient Privacy Consent
           category:
             - coding:
                 - system: "https://terminology.hl7.org/CodeSystem/v3-ActCode"
                   code: INFA
-                  display: Information Access
-              text: Information Access Consent
+                  display: information access
           patient:
             identifier:
               system: "https://fhir.nhs.uk/Id/nhs-number"
@@ -167,6 +158,7 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
             - authority: https://www.england.nhs.uk
               uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
           provision:
+            type: permit
             actor:
             - reference:
                 identifier:
@@ -196,8 +188,6 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
           identifier:
             - system: "https://fhir.nhs.uk/Id/nhs-number"
               value: "9000000022"
-            - system: "https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier"
-              value: ABC0000003
           patient:
             identifier:
               system: "https://fhir.nhs.uk/Id/nhs-number"
@@ -219,13 +209,11 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
               - system: "https://terminology.hl7.org/CodeSystem/consentscope"
                 code: patient-privacy
                 display: Privacy Consent
-            text: Patient Privacy Consent
           category:
             - coding:
                 - system: "https://terminology.hl7.org/CodeSystem/v3-ActCode"
                   code: INFA
-                  display: Information Access
-              text: Information Access Consent
+                  display: information access
           patient:
             identifier:
               system: "https://fhir.nhs.uk/Id/nhs-number"
@@ -239,6 +227,7 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
             - authority: https://www.england.nhs.uk
               uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
           provision:
+            type: permit
             actor:
             - reference:
                 identifier:

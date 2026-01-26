@@ -8,13 +8,11 @@ ConsentParentChildProxyCreationRequest:
         - system: "https://terminology.hl7.org/CodeSystem/consentscope"
           code: patient-privacy
           display: "Privacy Consent"
-      text: "Patient Privacy Consent"
     category:
       - coding:
           - system: "https://terminology.hl7.org/CodeSystem/v3-ActCode"
             code: INFA
-            display: "Information Access"
-        text: "Information Access Consent"
+            display: "information access"
     patient:
       type: Patient
       identifier:
@@ -27,20 +25,21 @@ ConsentParentChildProxyCreationRequest:
           system: https://fhir.nhs.uk/Id/nhs-number
           value: "9000000009"
     provision:
-      - period:
-          start: "2025-02-11T14:30:00Z"
-          end: "2026-02-11T14:30:00Z"
-        actor:
-          - role:
-              coding:
-                - system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
-                  code: parental-responsibility
-                  display: Parental responsibility
-            reference:
-              type: RelatedPerson
-              identifier:
-                system: https://fhir.nhs.uk/Id/nhs-number
-                value: "9000000009"
+      type: permit
+      period:
+        start: "2025-02-11T14:30:00Z"
+        end: "2029-02-11T14:30:00Z"
+      actor:
+        - role:
+            coding:
+              - system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
+                code: parental-responsibility
+                display: Parental responsibility
+          reference:
+            type: RelatedPerson
+            identifier:
+              system: https://fhir.nhs.uk/Id/nhs-number
+              value: "9000000009"
     extension:
       - url: https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason
         valueCodeableConcept:
