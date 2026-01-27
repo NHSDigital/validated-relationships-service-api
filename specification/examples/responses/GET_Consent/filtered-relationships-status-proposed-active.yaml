@@ -55,7 +55,7 @@ ConsentMultipleRelationshipsStatusProposedActiveBundle:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: ROLE_CREATED
                   display: Role created
-          - url: http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
+          - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
             valueReference:
               identifier:
                 system: https://fhir.nhs.uk/Id/nhs-number
@@ -108,7 +108,7 @@ ConsentMultipleRelationshipsStatusProposedActiveBundle:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: ROLE_CREATED
                   display: Role created
-          - url: http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
+          - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
             valueReference:
               identifier:
                 system: https://fhir.nhs.uk/Id/nhs-number
@@ -161,7 +161,7 @@ ConsentMultipleRelationshipsStatusProposedActiveBundle:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: APPLICATION_SUBMITTED
                   display: Application submitted online
-          - url: http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
+          - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
             valueReference:
               identifier:
                 system: https://fhir.nhs.uk/Id/nhs-number
@@ -214,7 +214,7 @@ ConsentMultipleRelationshipsStatusProposedActiveBundle:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: APPLICATION_SUBMITTED
                   display: Application submitted online
-          - url: http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
+          - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
             valueReference:
               identifier:
                 system: https://fhir.nhs.uk/Id/nhs-number
