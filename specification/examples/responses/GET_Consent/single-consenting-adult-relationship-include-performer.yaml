@@ -50,10 +50,6 @@ ConsentSingleConsentingAdultRelationshipIncludePerformerBundle:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
               value: '9000000005'
           dateTime: '2024-07-21T17:32:28Z'
-          performer:
-            - identifier:
-                system: 'https://fhir.nhs.uk/Id/nhs-number'
-                value: '9000000010'
           policy:
             - authority: https://www.england.nhs.uk
               uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
@@ -79,5 +75,10 @@ ConsentSingleConsentingAdultRelationshipIncludePerformerBundle:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: ROLE_CREATED
                   display: Role created
+          - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
+            valueReference:
+              identifier:
+                system: https://fhir.nhs.uk/Id/nhs-number
+                value: '9000000010'
         search:
           mode: match
