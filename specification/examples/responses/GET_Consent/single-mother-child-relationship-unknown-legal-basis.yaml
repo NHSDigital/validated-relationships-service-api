@@ -47,6 +47,11 @@ ConsentSingleAdultChildRelationshipUnknownLegalBasisBundle:
                     system: https://fhir.nhs.uk/Id/nhs-number
                     value: '9000000111'
                   type: RelatedPerson
+                role:
+                  coding:
+                  - code: "UNK"
+                    display: "Unknown"
+                    system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
             period:
               start: '2025-02-11'
               end: '2026-02-11'
@@ -57,10 +62,10 @@ ConsentSingleAdultChildRelationshipUnknownLegalBasisBundle:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: ROLE_CREATED
                   display: Role created
-          - url: "http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis"
+          - url: http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis
             valueCodeableConcept:
               coding:
-                - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+                - system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
                   code: "UNK"
                   display: "Unknown"
         search:

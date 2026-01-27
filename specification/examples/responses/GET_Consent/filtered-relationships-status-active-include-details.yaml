@@ -96,7 +96,12 @@ ConsentMultipleRelationshipsStatusActiveIncludeDetailsBundle:
           provision:
             type: permit
             actor:
-            - reference:
+            - role:
+                coding:
+                  - code: parental-responsibility
+                    display: "Parental responsibility"
+                    system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+              reference:
                 identifier:
                   system: "https://fhir.nhs.uk/Id/nhs-number"
                   value: "9000000017"
@@ -195,7 +200,12 @@ ConsentMultipleRelationshipsStatusActiveIncludeDetailsBundle:
           provision:
             type: permit
             actor:
-            - reference:
+            - role:
+                coding:
+                  - code: parental-responsibility
+                    display: "Parental responsibility"
+                    system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+              reference:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: "9000000017"
