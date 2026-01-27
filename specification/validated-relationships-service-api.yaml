@@ -1021,7 +1021,7 @@ paths:
                     path: /provision/period/end
                     value: "2026-12-31T23:59:59Z"
               replaceLegalBasis:
-                $ref: "./examples/requests/PATCH_Consent/replace_legal_basis.yaml#/ReplaceLegalBasisRequest"
+                $ref: "./examples/requests/PATCH_Consent/replace_legal_basis.yaml#/ReplaceRegulatoryBasisRequest"
       responses:
         "200":
           description: Consent resource successfully updated
