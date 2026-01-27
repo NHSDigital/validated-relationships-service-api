@@ -44,11 +44,6 @@ ConsentMultipleRelationshipsStatusProposedActiveBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: '9000000017'
-              role:
-                coding:
-                  - code: parental-responsibility
-                    display: Parental responsibility
-                    system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
             period:
               end: '2026-02-11'
               start: '2025-02-11'
@@ -59,6 +54,12 @@ ConsentMultipleRelationshipsStatusProposedActiveBundle:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: ROLE_CREATED
                   display: Role created
+          - url: "http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis"
+            valueCodeableConcept:
+              coding:
+                - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+                  code: "parental-responsibility"
+                  display: "Parental responsibility"
         search:
           mode: match
 
@@ -96,11 +97,6 @@ ConsentMultipleRelationshipsStatusProposedActiveBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: '9000000017'
-              role:
-                coding:
-                  - code: parental-responsibility
-                    display: Parental responsibility
-                    system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
             period:
               end: '2026-02-11'
               start: '2025-02-11'
@@ -111,6 +107,12 @@ ConsentMultipleRelationshipsStatusProposedActiveBundle:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: ROLE_CREATED
                   display: Role created
+          - url: "http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis"
+            valueCodeableConcept:
+              coding:
+                - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+                  code: "parental-responsibility"
+                  display: "Parental responsibility"
         search:
           mode: match
 
@@ -148,11 +150,6 @@ ConsentMultipleRelationshipsStatusProposedActiveBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: '9000000017'
-              role:
-                coding:
-                  - code: parental-responsibility
-                    display: Parental responsibility
-                    system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
             period:
               end: '2026-02-11'
               start: '2025-02-11'
@@ -163,6 +160,12 @@ ConsentMultipleRelationshipsStatusProposedActiveBundle:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: APPLICATION_SUBMITTED
                   display: Application submitted online
+          - url: "http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis"
+            valueCodeableConcept:
+              coding:
+                - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+                  code: "parental-responsibility"
+                  display: "Parental responsibility"
         search:
           mode: match
 
@@ -200,11 +203,6 @@ ConsentMultipleRelationshipsStatusProposedActiveBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: '9000000017'
-              role:
-                coding:
-                  - code: parental-responsibility
-                    display: Parental responsibility
-                    system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
             period:
               end: '2026-02-11'
               start: '2025-02-11'
@@ -215,5 +213,11 @@ ConsentMultipleRelationshipsStatusProposedActiveBundle:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: APPLICATION_SUBMITTED
                   display: Application submitted online
+          - url: "http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis"
+            valueCodeableConcept:
+              coding:
+                - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+                  code: "parental-responsibility"
+                  display: "Parental responsibility"
         search:
           mode: match

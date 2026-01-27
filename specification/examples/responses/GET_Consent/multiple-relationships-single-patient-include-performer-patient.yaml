@@ -95,11 +95,6 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: '9000000020'
-              role:
-                coding:
-                - code: court-appointed-personal-welfare-deputy
-                  display: Court appointed personal welfare deputy
-                  system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
             period:
               end: "2026-02-11"
               start: "2025-02-11"
@@ -110,6 +105,12 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: ROLE_CREATED
                   display: Role created
+          - url: "http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis"
+            valueCodeableConcept:
+              coding:
+                - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+                  code: "court-appointed-personal-welfare-deputy"
+                  display: "Court appointed personal welfare deputy"
         search:
           mode: match
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742
@@ -164,11 +165,6 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: '9000000021'
-              role:
-                coding:
-                - code: court-appointed-personal-welfare-deputy
-                  display: Court appointed personal welfare deputy
-                  system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
             period:
               end: "2026-02-11"
               start: "2025-02-11"
@@ -179,6 +175,12 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: ROLE_CREATED
                   display: Role created
+          - url: "http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis"
+            valueCodeableConcept:
+              coding:
+                - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+                  code: "court-appointed-personal-welfare-deputy"
+                  display: "Court appointed personal welfare deputy"
         search:
           mode: match
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742
@@ -233,11 +235,6 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: '9000000022'
-              role:
-                coding:
-                - code: parental-responsibility
-                  display: Parental responsibility
-                  system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
             period:
               end: "2026-02-11"
               start: "2025-02-11"
@@ -248,5 +245,11 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: ROLE_DEACTIVATED_END_DATE_REACHED
                   display: End date reached
+          - url: "http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis"
+            valueCodeableConcept:
+              coding:
+                - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+                  code: "parental-responsibility"
+                  display: "Parental responsibility"
         search:
           mode: match
