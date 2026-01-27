@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "9c2224fd-e560-4a7c-847c-389d1a950ab7",
-		"name": "Validated Relationship Service Sandbox 16/01/26",
+		"name": "Validated Relationship Service Sandbox 21/01/26",
 		"description": "This Postman collection includes example scenarios for each of the Validated Relationship Service (VRS) API endpoints, covering both valid and invalid request scenarios.\n\nThe collection is pointed towards the VRS sandbox environment, which will return a specific example response based on the request sent. All data shown in the requests or responses is test data.\n\nOur sandbox environment only covers the scenarios listed in the Postman collection and is open access. It does not allow you to test authorisation or any scenarios beyond the ones documented.\n\nFull specification is available at [https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -218,7 +218,7 @@
 							}
 						}
 					],
-					"id": "b80e63b3-a5ce-4162-a109-35ab0539bb1a",
+					"id": "a28e6ac2-43d7-4f83-88c0-b6101401a159",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -280,7 +280,7 @@
 							}
 						}
 					],
-					"id": "8aee2089-476c-4e7d-b231-854fc08163fd",
+					"id": "d8f1b236-c203-4942-a3b0-a37547825bfe",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -341,7 +341,7 @@
 							}
 						}
 					],
-					"id": "f50027f5-e3dc-4a9f-91d9-79e27929813b",
+					"id": "c8e59a08-a38e-4b0b-8af9-e426af74eedb",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -402,7 +402,7 @@
 							}
 						}
 					],
-					"id": "432b24fc-6fcc-4e39-b947-cb84282b67da",
+					"id": "d7a9f6a7-6c30-446d-bbd2-317a5a73388c",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -423,7 +423,7 @@
 					"response": []
 				}
 			],
-			"id": "1189d01a-f8c4-4a81-8c9a-9a8ee55e1570",
+			"id": "0004f209-751a-438d-ae12-5858f330a38f",
 			"description": "The GET Questionnaire Response endpoint is used to retrieve a Questionnaire Response using its unique reference code. This endpoint returns the full Questionnaire Response document that was previously submitted.\n\nThis folder contains requests covering different scenarios of valid and invalid requests.\n\nFor more details, please refer to the [GET Questionnaire Response OAS page for the Validated Relationship Service on the NHS England website.](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service#get-/QuestionnaireResponse)"
 		},
 		{
@@ -472,7 +472,7 @@
 							}
 						}
 					],
-					"id": "8f35600a-126f-4937-874d-9ebf74a373ab",
+					"id": "0c29bee2-3a18-47f0-892c-14aa131988d3",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -549,7 +549,7 @@
 							}
 						}
 					],
-					"id": "8c12c63a-8ffa-4e72-bc0e-689be8cf9891",
+					"id": "22cca4b5-a165-40d2-b0fc-3b9f4a89f24a",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -625,7 +625,7 @@
 							}
 						}
 					],
-					"id": "80ce1ae9-6ba1-4a72-835a-32788348ee37",
+					"id": "c86fefcf-d31d-4295-ac96-7949003b7619",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -685,7 +685,7 @@
 							}
 						}
 					],
-					"id": "d96010ae-ddc7-47a6-b287-b855c652e340",
+					"id": "34d05665-3fa7-4859-9db7-b805180cd048",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -761,7 +761,7 @@
 							}
 						}
 					],
-					"id": "dd395f8d-1342-4c84-bf86-8b4c553e5ea3",
+					"id": "d26e67ab-dced-475c-ba5e-bdde6c24c48d",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -795,7 +795,7 @@
 					"response": []
 				}
 			],
-			"id": "4e208dcf-6262-4cd0-8d8e-8e80f126f709",
+			"id": "d6d02220-d896-48f9-a58d-8bc38931c864",
 			"description": "The POST Questionnaire Response endpoint is used to submit a proxy access request for a given performer and patient.\n\nIt is indended to be used by user facing service e.g. Proxy Access Service, who will collect the necessary information from the user and submit it to VRS as a QuestionnaireResponse.\n\nThis folder contains requests covering different scenarios of valid and invalid requests.\n\nFor more details, please refer to the [POST Questionnaire Response OAS page for the Validated Relationship Service on the NHS England website.](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service#post-/QuestionnaireResponse)",
 			"event": [
 				{
@@ -955,7 +955,7 @@
 							}
 						}
 					],
-					"id": "91f31950-015e-475c-abea-133e88118cf4",
+					"id": "13f5bc83-0bad-4ae6-88a6-347727755a50",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1187,7 +1187,7 @@
 							}
 						}
 					],
-					"id": "ebd6c6b6-0b02-4c89-8bc5-965896729d24",
+					"id": "a64a0f7d-1c1b-4610-8f29-2ad39fe234ee",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1258,7 +1258,7 @@
 							}
 						}
 					],
-					"id": "1f8abfeb-5630-478a-a04b-7ffe72648088",
+					"id": "e64b8cc0-3a7f-42d2-bc26-0a26ea4e1868",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1377,7 +1377,7 @@
 							}
 						}
 					],
-					"id": "437a5db1-4370-4e4b-bb85-c5bc128e8b48",
+					"id": "30cc5da4-d3f0-4534-a9ca-b9f6a3aeceb5",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1532,7 +1532,7 @@
 							}
 						}
 					],
-					"id": "a9a84ed5-3fd8-493b-8775-39a9d6c33d3c",
+					"id": "55be851a-14d3-499d-a47e-952465ad913a",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1621,7 +1621,7 @@
 							}
 						}
 					],
-					"id": "7aaec1b4-e8ca-4a0f-a184-bb7f25eea275",
+					"id": "d28071f4-33d6-4ce0-a29a-bad8a2d02472",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1691,7 +1691,7 @@
 							}
 						}
 					],
-					"id": "3889b8cb-1472-4ea0-aee4-bbfcb4cd32cb",
+					"id": "6a43fff4-0be1-4995-87d3-b64bf20ea21d",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1771,7 +1771,7 @@
 							}
 						}
 					],
-					"id": "362e22d6-3250-47dc-bc2e-9629b9cbc17a",
+					"id": "d53ebc48-4136-4123-abb8-5404bede7ccf",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1852,7 +1852,7 @@
 							}
 						}
 					],
-					"id": "c6a3ffca-e0f7-4c68-83a9-4cfffaf79d23",
+					"id": "15367a67-9ba3-4079-a434-a9de9ea0ffb5",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1933,7 +1933,7 @@
 							}
 						}
 					],
-					"id": "8c129637-1f60-4012-a09f-82b1d9de6fcc",
+					"id": "a0f13871-5ab6-4d2f-8bca-cfe972d88cba",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1968,7 +1968,7 @@
 					"response": []
 				}
 			],
-			"id": "e37ed9d5-5a8b-4027-a40b-158d30c82f30",
+			"id": "093bf714-5294-49c1-ab1a-77b5a9564ac3",
 			"description": "The GET Related Person endpoint retrieves candidate proxy relationships for a user with a given NHS Number.\n\nThis endpoint should NOT be used to retrieve proxy relationships; these should be queried from the `/Consent` endpoint.\n\nThis folder contains requests covering different scenarios of valid and invalid requests.\n\nFor more details, please refer to the [GET Related Person OAS page for the Validated Relationship Service on the NHS England website.](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service#get-/RelatedPerson)"
 		},
 		{
@@ -2173,13 +2173,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -2357,13 +2357,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -2403,7 +2403,7 @@
 							}
 						}
 					],
-					"id": "f87773b8-23c2-49fc-a933-37d5453afedf",
+					"id": "8203466b-ebd3-4389-b9f6-6feecc35e307",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2544,13 +2544,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_DEACTIVATED_END_DATE_REACHED\",",
-									"                                    \"display\": \"End-date reached\"",
+									"                                    \"display\": \"End date reached\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -2637,13 +2637,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
 									"                                    \"system\": \"http://terminology.hl7.org/CodeSystem/consent-reason\",",
 									"                                    \"code\": \"OTHER\",",
-									"                                    \"display\": \"Other\"",
+									"                                    \"display\": \"Other reason\"",
 									"                                }",
 									"                            ],",
 									"                            \"text\": \"Patient would not respond to phone calls\"",
@@ -2684,7 +2684,7 @@
 							}
 						}
 					],
-					"id": "38b07206-4416-4231-a604-4217701014cd",
+					"id": "256652bd-5dbd-4213-a849-8f6f862c3a9d",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -2805,13 +2805,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -2898,13 +2898,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -2991,11 +2991,11 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"APPLICATION_SUBMITTED\",",
 									"                                    \"display\": \"Application submitted online\"",
 									"                                }",
@@ -3084,11 +3084,11 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"APPLICATION_SUBMITTED\",",
 									"                                    \"display\": \"Application submitted online\"",
 									"                                }",
@@ -3119,7 +3119,7 @@
 							}
 						}
 					],
-					"id": "3143d99d-8193-4fa0-bb23-24eb9027a49d",
+					"id": "139a361f-9c88-430f-923f-194368306003",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -3248,13 +3248,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -3341,13 +3341,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -3434,13 +3434,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_DEACTIVATED_END_DATE_REACHED\",",
-									"                                    \"display\": \"End-date reached\"",
+									"                                    \"display\": \"End date reached\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -3469,7 +3469,7 @@
 							}
 						}
 					],
-					"id": "3fcb812a-83aa-497f-974d-6fc166ac4a53",
+					"id": "22f08b40-faf3-4c34-9d1d-1305b738a35f",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -3644,13 +3644,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -3791,13 +3791,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -3938,13 +3938,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_DEACTIVATED_END_DATE_REACHED\",",
-									"                                    \"display\": \"End-date reached\"",
+									"                                    \"display\": \"End date reached\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -3973,7 +3973,7 @@
 							}
 						}
 					],
-					"id": "aaa416ee-7c0a-46e6-8dfa-b93ead8475df",
+					"id": "fb71f99e-d3ac-4e93-8a7d-3dd6a2de9d9e",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -4140,13 +4140,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -4270,13 +4270,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -4400,13 +4400,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_DEACTIVATED_END_DATE_REACHED\",",
-									"                                    \"display\": \"End-date reached\"",
+									"                                    \"display\": \"End date reached\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -4435,7 +4435,7 @@
 							}
 						}
 					],
-					"id": "a1d66860-8632-4d1a-bc2d-4c0ffe33cecb",
+					"id": "867543de-e637-4f9d-bf46-1f6b29cbecec",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -4660,13 +4660,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -4844,13 +4844,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -5028,13 +5028,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_DEACTIVATED_END_DATE_REACHED\",",
-									"                                    \"display\": \"End-date reached\"",
+									"                                    \"display\": \"End date reached\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -5063,7 +5063,7 @@
 							}
 						}
 					],
-					"id": "4d14282c-dfda-4adb-baf3-0366d667edb7",
+					"id": "c5e97feb-43af-4da9-b483-0c5429afa126",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -5188,13 +5188,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -5281,13 +5281,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -5374,13 +5374,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_DEACTIVATED_END_DATE_REACHED\",",
-									"                                    \"display\": \"End-date reached\"",
+									"                                    \"display\": \"End date reached\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -5409,7 +5409,7 @@
 							}
 						}
 					],
-					"id": "03f9e685-be6f-41d0-9e87-1fb33c99d632",
+					"id": "d450ba3b-e467-47df-9511-3beff133804e",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -5626,13 +5626,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -5756,13 +5756,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -5886,13 +5886,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_DEACTIVATED_END_DATE_REACHED\",",
-									"                                    \"display\": \"End-date reached\"",
+									"                                    \"display\": \"End date reached\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -5921,7 +5921,7 @@
 							}
 						}
 					],
-					"id": "5c831113-f50f-43ab-b701-7dd7bb20083b",
+					"id": "ca441014-02ef-4ef7-8c9c-204815b9bb5f",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -6092,13 +6092,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -6222,13 +6222,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -6352,13 +6352,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_DEACTIVATED_END_DATE_REACHED\",",
-									"                                    \"display\": \"End-date reached\"",
+									"                                    \"display\": \"End date reached\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -6387,7 +6387,7 @@
 							}
 						}
 					],
-					"id": "d7d24aa1-0141-489e-ab95-bd5c68e7a93e",
+					"id": "f4958471-f6a1-4378-9cb9-0e72cc97d0f0",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -6562,13 +6562,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -6655,13 +6655,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -6748,13 +6748,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_DEACTIVATED_END_DATE_REACHED\",",
-									"                                    \"display\": \"End-date reached\"",
+									"                                    \"display\": \"End date reached\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -6783,7 +6783,7 @@
 							}
 						}
 					],
-					"id": "29ddd0e6-42cf-41b9-86c6-014d4cc0e49d",
+					"id": "f87475ab-5012-413f-952b-e4cdc5f8c3b1",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -6817,17 +6817,17 @@
 							"script": {
 								"exec": [
 									"const expectedResponseBody = {",
-									"  \"resourceType\": \"Bundle\",",
-									"  \"timestamp\": \"2020-08-26T14:00:00+00:00\",",
-									"  \"total\": 0,",
-									"  \"type\": \"searchset\",",
-									"  \"link\": [",
+									"    \"resourceType\": \"Bundle\",",
+									"    \"timestamp\": \"2020-08-26T14:00:00+00:00\",",
+									"    \"total\": 0,",
+									"    \"type\": \"searchset\",",
+									"    \"link\": [",
 									"        {",
 									"            \"relation\": \"self\",",
 									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000025&_include=Consent:performer&_include=Consent:patient\"",
 									"        }",
 									"    ],",
-									"  \"entry\": []",
+									"    \"entry\": []",
 									"}",
 									"",
 									"pm.test(\"Status code is 200\", function () {",
@@ -6840,11 +6840,12 @@
 									"});"
 								],
 								"type": "text/javascript",
-								"packages": {}
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
-					"id": "dd30a7ac-8699-4eff-a4f1-0b2949072e35",
+					"id": "b385e927-8092-4783-8a56-7aff75303ea5",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -6961,13 +6962,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -6996,7 +6997,7 @@
 							}
 						}
 					],
-					"id": "6dbd38f9-fdf7-4ed7-92fa-9bf51bab8c1d",
+					"id": "7abcd790-dd10-44b2-997e-53a018fc5b9e",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -7204,13 +7205,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -7239,7 +7240,7 @@
 							}
 						}
 					],
-					"id": "3d118a32-5500-448d-9703-c2576a162f0f",
+					"id": "28af7414-f4a6-4851-8385-5fa81bac780b",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -7364,13 +7365,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -7399,7 +7400,7 @@
 							}
 						}
 					],
-					"id": "857e4c41-1b63-42ae-a496-94938abb6267",
+					"id": "3e86f76c-fffd-4836-85ff-247300a541f8",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -7620,13 +7621,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -7655,7 +7656,7 @@
 							}
 						}
 					],
-					"id": "16f9db2a-5bcb-4941-9d45-b921bffc6fd1",
+					"id": "84a359be-73ea-4ca1-a6f9-46a7c47c8e14",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -7728,7 +7729,7 @@
 							}
 						}
 					],
-					"id": "c2307a02-9c37-4a00-9593-6c330da26ec4",
+					"id": "6e46d15e-a1b2-42bc-a313-9f8fd8e1b4de",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -7801,7 +7802,7 @@
 							}
 						}
 					],
-					"id": "4b719b1f-6168-42be-9f69-d15c9b901cdc",
+					"id": "ffafb101-434c-4717-bda0-ad59ff45ba17",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -7925,13 +7926,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -7960,7 +7961,7 @@
 							}
 						}
 					],
-					"id": "243409d5-8ae1-433c-8034-46c7a23b5ebc",
+					"id": "db2213fe-b8ba-45e9-9c33-60c40f761227",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -8030,7 +8031,7 @@
 							}
 						}
 					],
-					"id": "00939d5f-cab6-4e3a-987c-fc06644a8d21",
+					"id": "b14afa0e-34b1-46f5-9dd0-8f2ecc3286be",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -8099,7 +8100,7 @@
 							}
 						}
 					],
-					"id": "8d4656b7-65c8-47c4-8dd3-4c308db69d66",
+					"id": "3da7e6f7-db06-4ffb-866a-d5935eb25c3c",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -8168,7 +8169,7 @@
 							}
 						}
 					],
-					"id": "46796a75-3618-4faa-8457-935dec6f5eeb",
+					"id": "4fa4fde2-d850-4cbf-9d18-bec5f83b42ce",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -8237,7 +8238,7 @@
 							}
 						}
 					],
-					"id": "92dd4877-5ba1-46c2-bb0b-54bcf32e534a",
+					"id": "a1237779-fb01-40c8-b098-5140c59d476a",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -8292,7 +8293,7 @@
 							}
 						}
 					],
-					"id": "900603a3-1b5e-49de-96b1-db49e09770cc",
+					"id": "486e3c6c-95c4-4bb0-a24b-3f520030fc22",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -8315,7 +8316,7 @@
 					"response": []
 				}
 			],
-			"id": "c78e22a3-8b15-4d61-bbd1-298c2797a618",
+			"id": "7d549d49-ad31-45f4-b445-9d8bf1895b4c",
 			"description": "The GET /Consent is for retrieving confirmed proxy relationships via the Validated Relationship Service.\n\nThis folder contains requests covering different scenarios for users with different types of proxy relationship. Also includes error scenarios.\n\nFor more details, please refer to the [GET Consent OAS page for the Validated Relationship Service on the NHS England website.](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service#get-/Consent)"
 		},
 		{
@@ -8357,13 +8358,13 @@
 							}
 						}
 					],
-					"id": "7f154ea1-6f19-4e91-98b3-0901ff767ada",
+					"id": "29d14f65-da4b-47d5-9b9a-60074cb0dc45",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"resourceType\": \"Consent\",\n    \"status\": \"active\",\n    \"scope\": {\n        \"coding\": [\n            {\n                \"system\": \"http://terminology.hl7.org/CodeSystem/consentscope\",\n                \"code\": \"patient-privacy\",\n                \"display\": \"Privacy Consent\"\n            }\n        ],\n        \"text\": \"Patient Privacy Consent\"\n    },\n    \"category\": [\n        {\n            \"coding\": [\n                {\n                    \"system\": \"http://terminology.hl7.org/CodeSystem/v3-ActCode\",\n                    \"code\": \"INFA\",\n                    \"display\": \"Information Access\"\n                }\n            ],\n            \"text\": \"Information Access Consent\"\n        }\n    ],\n    \"patient\": {\n        \"type\": \"Patient\",\n        \"identifier\": {\n            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n            \"value\": \"9000000012\"\n        }\n    },\n    \"dateTime\": \"2025-02-11T14:30:00Z\",\n    \"performer\": [\n        {\n            \"type\": \"RelatedPerson\",\n            \"identifier\": {\n                \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                \"value\": \"9000000009\"\n            }\n        }\n    ],\n    \"provision\": [{\n        \"period\": {\n            \"start\": \"2025-02-11\",\n            \"end\": \"2026-02-11\"\n        },\n        \"actor\": [\n            {\n                \"role\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",\n                            \"code\": \"PRN\",\n                            \"display\": \"Parent\"\n                        }\n                    ]\n                },\n                \"reference\": {\n                    \"type\": \"RelatedPerson\",\n                    \"identifier\": {\n                        \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                        \"value\": \"9000000009\"\n                    }\n                }\n            }\n        ]\n    }],\n    \"extension\": [\n        {\n            \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n            \"valueCodeableConcept\": {\n                \"coding\": [\n                    {\n                        \"system\": \"http://terminology.hl7.org/CodeSystem/consent-reason\",\n                        \"code\": \"TBC\",\n                        \"display\": \"TBC\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
+							"raw": "{\n    \"resourceType\": \"Consent\",\n    \"status\": \"active\",\n    \"scope\": {\n        \"coding\": [\n            {\n                \"system\": \"http://terminology.hl7.org/CodeSystem/consentscope\",\n                \"code\": \"patient-privacy\",\n                \"display\": \"Privacy Consent\"\n            }\n        ]\n    },\n    \"category\": [\n        {\n            \"coding\": [\n                {\n                    \"system\": \"http://terminology.hl7.org/CodeSystem/v3-ActCode\",\n                    \"code\": \"INFA\",\n                    \"display\": \"information access\"\n                }\n            ]\n        }\n    ],\n    \"patient\": {\n        \"type\": \"Patient\",\n        \"identifier\": {\n            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n            \"value\": \"9000000012\"\n        }\n    },\n    \"dateTime\": \"2025-02-11T14:30:00Z\",\n    \"performer\": [\n        {\n            \"type\": \"RelatedPerson\",\n            \"identifier\": {\n                \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                \"value\": \"9000000009\"\n            }\n        }\n    ],\n    \"provision\": {\n        \"type\": \"permit\",\n        \"period\": {\n            \"start\": \"2025-02-11\",\n            \"end\": \"2026-02-11\"\n        },\n        \"actor\": [\n            {\n                \"role\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",\n                            \"code\": \"PRN\",\n                            \"display\": \"Parent\"\n                        }\n                    ]\n                },\n                \"reference\": {\n                    \"type\": \"RelatedPerson\",\n                    \"identifier\": {\n                        \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                        \"value\": \"9000000009\"\n                    }\n                }\n            }\n        ]\n    },\n    \"extension\": [\n        {\n            \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n            \"valueCodeableConcept\": {\n                \"coding\": [\n                    {\n                        \"system\": \"http://terminology.hl7.org/CodeSystem/consent-reason\",\n                        \"code\": \"TBC\",\n                        \"display\": \"TBC\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -8410,13 +8411,13 @@
 							}
 						}
 					],
-					"id": "2d219915-80bf-46d1-a3ff-bf1117f0c824",
+					"id": "9feb68a2-ce81-45ad-8d81-d2aa91af9a55",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"resourceType\": \"Consent\",\n    \"status\": \"active\",\n    \"scope\": {\n        \"coding\": [\n            {\n                \"system\": \"http://terminology.hl7.org/CodeSystem/consentscope\",\n                \"code\": \"patient-privacy\",\n                \"display\": \"Privacy Consent\"\n            }\n        ],\n        \"text\": \"Patient Privacy Consent\"\n    },\n    \"category\": [\n        {\n            \"coding\": [\n                {\n                    \"system\": \"http://terminology.hl7.org/CodeSystem/v3-ActCode\",\n                    \"code\": \"INFA\",\n                    \"display\": \"Information Access\"\n                }\n            ],\n            \"text\": \"Information Access Consent\"\n        }\n    ],\n    \"patient\": {\n        \"type\": \"Patient\",\n        \"identifier\": {\n            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n            \"value\": \"9000000012\"\n        }\n    },\n    \"dateTime\": \"2025-02-11T14:30:00Z\",\n    \"performer\": [\n        {\n            \"type\": \"RelatedPerson\",\n            \"identifier\": {\n                \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                \"value\": \"9000000017\"\n            }\n        }\n    ],\n    \"provision\": [{\n        \"period\": {\n            \"start\": \"2025-02-11\"\n        },\n        \"actor\": [\n            {\n                \"role\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",\n                            \"code\": \"GUARD\",\n                            \"display\": \"Guardian\"\n                        }\n                    ]\n                },\n                \"reference\": {\n                    \"type\": \"RelatedPerson\",\n                    \"identifier\": {\n                        \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                        \"value\": \"9000000017\"\n                    }\n                }\n            }\n        ]\n    }],\n    \"extension\": [\n        {\n            \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n            \"valueCodeableConcept\": {\n                \"coding\": [\n                    {\n                        \"system\": \"http://terminology.hl7.org/CodeSystem/consent-reason\",\n                        \"code\": \"TBC\",\n                        \"display\": \"TBC\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
+							"raw": "{\n    \"resourceType\": \"Consent\",\n    \"status\": \"active\",\n    \"scope\": {\n        \"coding\": [\n            {\n                \"system\": \"http://terminology.hl7.org/CodeSystem/consentscope\",\n                \"code\": \"patient-privacy\",\n                \"display\": \"Privacy Consent\"\n            }\n        ]\n    },\n    \"category\": [\n        {\n            \"coding\": [\n                {\n                    \"system\": \"http://terminology.hl7.org/CodeSystem/v3-ActCode\",\n                    \"code\": \"INFA\",\n                    \"display\": \"information access\"\n                }\n            ]\n        }\n    ],\n    \"patient\": {\n        \"type\": \"Patient\",\n        \"identifier\": {\n            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n            \"value\": \"9000000012\"\n        }\n    },\n    \"dateTime\": \"2025-02-11T14:30:00Z\",\n    \"performer\": [\n        {\n            \"type\": \"RelatedPerson\",\n            \"identifier\": {\n                \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                \"value\": \"9000000017\"\n            }\n        }\n    ],\n    \"provision\": {\n        \"type\": \"permit\",\n        \"period\": {\n            \"start\": \"2025-02-11\"\n        },\n        \"actor\": [\n            {\n                \"role\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",\n                            \"code\": \"GUARD\",\n                            \"display\": \"Guardian\"\n                        }\n                    ]\n                },\n                \"reference\": {\n                    \"type\": \"RelatedPerson\",\n                    \"identifier\": {\n                        \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                        \"value\": \"9000000017\"\n                    }\n                }\n            }\n        ]\n    },\n    \"extension\": [\n        {\n            \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n            \"valueCodeableConcept\": {\n                \"coding\": [\n                    {\n                        \"system\": \"http://terminology.hl7.org/CodeSystem/consent-reason\",\n                        \"code\": \"TBC\",\n                        \"display\": \"TBC\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -8471,73 +8472,13 @@
 							}
 						}
 					],
-					"id": "7c07d015-0f2f-46f2-a05c-b53726969d1c",
+					"id": "3342c37e-131c-412d-bc42-9d491ab1bb7d",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"resourceType\": \"Consent\",\n    \"status\": \"active\",\n    \"scope\": {\n        \"coding\": [\n            {\n                \"system\": \"http://terminology.hl7.org/CodeSystem/consentscope\",\n                \"code\": \"patient-privacy\",\n                \"display\": \"Privacy Consent\"\n            }\n        ],\n        \"text\": \"Patient Privacy Consent\"\n    },\n    \"category\": [\n        {\n            \"coding\": [\n                {\n                    \"system\": \"http://terminology.hl7.org/CodeSystem/v3-ActCode\",\n                    \"code\": \"INFA\",\n                    \"display\": \"Information Access\"\n                }\n            ],\n            \"text\": \"Information Access Consent\"\n        }\n    ],\n    \"patient\": {\n        \"type\": \"Patient\",\n        \"identifier\": {\n            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n            \"value\": \"9000000012\"\n        }\n    },\n    \"dateTime\": \"2025-02-11T14:30:00Z\",\n    \"performer\": [\n        {\n            \"type\": \"RelatedPerson\",\n            \"identifier\": {\n                \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                \"value\": \"9000000000\"\n            }\n        }\n    ],\n    \"provision\": [{\n        \"period\": {\n            \"start\": \"2025-02-11\"\n        },\n        \"actor\": [\n            {\n                \"role\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",\n                            \"code\": \"GUARD\",\n                            \"display\": \"Guardian\"\n                        }\n                    ]\n                },\n                \"reference\": {\n                    \"type\": \"RelatedPerson\",\n                    \"identifier\": {\n                        \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                        \"value\": \"9000000000\"\n                    }\n                }\n            }\n        ]\n    }],\n    \"extension\": [\n        {\n            \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n            \"valueCodeableConcept\": {\n                \"coding\": [\n                    {\n                        \"system\": \"http://terminology.hl7.org/CodeSystem/consent-reason\",\n                        \"code\": \"TBC\",\n                        \"display\": \"TBC\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{api_base_url}}/Consent"
-					},
-					"response": []
-				},
-				{
-					"name": "Missing free text",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"const expectedResponseBody = {",
-									"    \"issue\": [",
-									"        {",
-									"            \"code\": \"invalid\",",
-									"            \"diagnostics\": \"Free text is required when reason code is OTHER.\",",
-									"            \"details\": {",
-									"                \"coding\": [",
-									"                    {",
-									"                        \"code\": \"MISSING_FREE_TEXT_FOR_OTHER\",",
-									"                        \"display\": \"Free text must be provided for OTHER reason codes.\",",
-									"                        \"system\": \"https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode\",",
-									"                        \"version\": \"1\"",
-									"                    }",
-									"                ]",
-									"            },",
-									"            \"severity\": \"error\"",
-									"        }",
-									"    ],",
-									"    \"resourceType\": \"OperationOutcome\"",
-									"}",
-									"",
-									"pm.test(\"Status code is 400\", function () {",
-									"    pm.response.to.have.status(400);",
-									"});",
-									"",
-									"pm.test(\"Should have correct response body\", () => {",
-									"    var responseJson = pm.response.json();",
-									"    pm.expect(responseJson).to.eql(expectedResponseBody);",
-									"});",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "ec4788ba-e826-453f-a672-e1a06d81fa84",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"resourceType\": \"Consent\",\n    \"status\": \"active\",\n    \"scope\": {\n        \"coding\": [\n            {\n                \"system\": \"http://terminology.hl7.org/CodeSystem/consentscope\",\n                \"code\": \"patient-privacy\",\n                \"display\": \"Privacy Consent\"\n            }\n        ],\n        \"text\": \"Patient Privacy Consent\"\n    },\n    \"category\": [\n        {\n            \"coding\": [\n                {\n                    \"system\": \"http://terminology.hl7.org/CodeSystem/v3-ActCode\",\n                    \"code\": \"INFA\",\n                    \"display\": \"Information Access\"\n                }\n            ],\n            \"text\": \"Information Access Consent\"\n        }\n    ],\n    \"patient\": {\n        \"type\": \"Patient\",\n        \"identifier\": {\n            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n            \"value\": \"9000000050\"\n        }\n    },\n    \"dateTime\": \"2025-02-11T14:30:00Z\",\n    \"performer\": [\n        {\n            \"type\": \"RelatedPerson\",\n            \"identifier\": {\n                \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                \"value\": \"9000000050\"\n            }\n        }\n    ],\n    \"provision\": {\n        \"period\": {\n            \"start\": \"2025-02-11\",\n            \"end\": \"2026-02-11\"\n        },\n        \"actor\": [\n            {\n                \"role\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",\n                            \"code\": \"PRN\",\n                            \"display\": \"Parent\"\n                        }\n                    ]\n                },\n                \"reference\": {\n                    \"type\": \"RelatedPerson\",\n                    \"identifier\": {\n                        \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                        \"value\": \"9000000050\"\n                    }\n                }\n            }\n        ]\n    },\n    \"extension\": [\n        {\n            \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n            \"valueCodeableConcept\": {\n                \"coding\": [\n                    {\n                        \"system\": \"http://terminology.hl7.org/CodeSystem/consent-reason\",\n                        \"code\": \"TBC\",\n                        \"display\": \"TBC\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
+							"raw": "{\n    \"resourceType\": \"Consent\",\n    \"status\": \"active\",\n    \"scope\": {\n        \"coding\": [\n            {\n                \"system\": \"http://terminology.hl7.org/CodeSystem/consentscope\",\n                \"code\": \"patient-privacy\",\n                \"display\": \"Privacy Consent\"\n            }\n        ]\n    },\n    \"category\": [\n        {\n            \"coding\": [\n                {\n                    \"system\": \"http://terminology.hl7.org/CodeSystem/v3-ActCode\",\n                    \"code\": \"INFA\",\n                    \"display\": \"information access\"\n                }\n            ]\n        }\n    ],\n    \"patient\": {\n        \"type\": \"Patient\",\n        \"identifier\": {\n            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n            \"value\": \"9000000012\"\n        }\n    },\n    \"dateTime\": \"2025-02-11T14:30:00Z\",\n    \"performer\": [\n        {\n            \"type\": \"RelatedPerson\",\n            \"identifier\": {\n                \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                \"value\": \"9000000000\"\n            }\n        }\n    ],\n    \"provision\": {\n        \"type\":\"permit\",\n        \"period\": {\n            \"start\": \"2025-02-11\"\n        },\n        \"actor\": [\n            {\n                \"role\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",\n                            \"code\": \"GUARD\",\n                            \"display\": \"Guardian\"\n                        }\n                    ]\n                },\n                \"reference\": {\n                    \"type\": \"RelatedPerson\",\n                    \"identifier\": {\n                        \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                        \"value\": \"9000000000\"\n                    }\n                }\n            }\n        ]\n    },\n    \"extension\": [\n        {\n            \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n            \"valueCodeableConcept\": {\n                \"coding\": [\n                    {\n                        \"system\": \"http://terminology.hl7.org/CodeSystem/consent-reason\",\n                        \"code\": \"TBC\",\n                        \"display\": \"TBC\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -8592,13 +8533,13 @@
 							}
 						}
 					],
-					"id": "eca3628f-be47-445b-993a-87c5e6b6a617",
+					"id": "af2e776c-e7df-4335-9e22-3b7285166111",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"resourceType\": \"Consent\",\n    \"status\": \"active\",\n    \"scope\": {\n        \"coding\": [\n            {\n                \"system\": \"http://terminology.hl7.org/CodeSystem/consentscope\",\n                \"code\": \"patient-privacy\",\n                \"display\": \"Privacy Consent\"\n            }\n        ],\n        \"text\": \"Patient Privacy Consent\"\n    },\n    \"category\": [\n        {\n            \"coding\": [\n                {\n                    \"system\": \"http://terminology.hl7.org/CodeSystem/v3-ActCode\",\n                    \"code\": \"INFA\",\n                    \"display\": \"Information Access\"\n                }\n            ],\n            \"text\": \"Information Access Consent\"\n        }\n    ],\n    \"patient\": {\n        \"type\": \"Patient\",\n        \"identifier\": {\n            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n            \"value\": \"9000000000\"\n        }\n    },\n    \"dateTime\": \"2025-02-11T14:30:00Z\",\n    \"performer\": [\n        {\n            \"type\": \"RelatedPerson\",\n            \"identifier\": {\n                \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                \"value\": \"9000000049\"\n            }\n        }\n    ],\n    \"provision\": [{\n        \"period\": {\n            \"start\": \"2025-02-11\"\n        },\n        \"actor\": [\n            {\n                \"role\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",\n                            \"code\": \"GUARD\",\n                            \"display\": \"Guardian\"\n                        }\n                    ]\n                },\n                \"reference\": {\n                    \"type\": \"RelatedPerson\",\n                    \"identifier\": {\n                        \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                        \"value\": \"9000000049\"\n                    }\n                }\n            }\n        ]\n    }],\n    \"extension\": [\n        {\n            \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n            \"valueCodeableConcept\": {\n                \"coding\": [\n                    {\n                        \"system\": \"http://terminology.hl7.org/CodeSystem/consent-reason\",\n                        \"code\": \"TBC\",\n                        \"display\": \"TBC\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
+							"raw": "{\n    \"resourceType\": \"Consent\",\n    \"status\": \"active\",\n    \"scope\": {\n        \"coding\": [\n            {\n                \"system\": \"http://terminology.hl7.org/CodeSystem/consentscope\",\n                \"code\": \"patient-privacy\",\n                \"display\": \"Privacy Consent\"\n            }\n        ]\n    },\n    \"category\": [\n        {\n            \"coding\": [\n                {\n                    \"system\": \"http://terminology.hl7.org/CodeSystem/v3-ActCode\",\n                    \"code\": \"INFA\",\n                    \"display\": \"information access\"\n                }\n            ]\n        }\n    ],\n    \"patient\": {\n        \"type\": \"Patient\",\n        \"identifier\": {\n            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n            \"value\": \"9000000000\"\n        }\n    },\n    \"dateTime\": \"2025-02-11T14:30:00Z\",\n    \"performer\": [\n        {\n            \"type\": \"RelatedPerson\",\n            \"identifier\": {\n                \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                \"value\": \"9000000049\"\n            }\n        }\n    ],\n    \"provision\": {\n        \"type\": \"permit\",\n        \"period\": {\n            \"start\": \"2025-02-11\"\n        },\n        \"actor\": [\n            {\n                \"role\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",\n                            \"code\": \"GUARD\",\n                            \"display\": \"Guardian\"\n                        }\n                    ]\n                },\n                \"reference\": {\n                    \"type\": \"RelatedPerson\",\n                    \"identifier\": {\n                        \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                        \"value\": \"9000000049\"\n                    }\n                }\n            }\n        ]\n    },\n    \"extension\": [\n        {\n            \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n            \"valueCodeableConcept\": {\n                \"coding\": [\n                    {\n                        \"system\": \"http://terminology.hl7.org/CodeSystem/consent-reason\",\n                        \"code\": \"TBC\",\n                        \"display\": \"TBC\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -8610,7 +8551,7 @@
 					"response": []
 				}
 			],
-			"id": "e3ee9022-3ab0-4d25-af27-76e983de0776",
+			"id": "464f28e3-3e71-44fb-bed6-89a48db9c301",
 			"description": "The POST /Consent is for storing confirmed proxy relationships via the Validated Relationships Service.\n\nThis folder contains requests covering different scenarios for users with different types of proxy relationship. Also includes error scenarios.\n\nFor more details, please refer to the [POST Consent OAS page for the Validated Relationship Service on the NHS England website.](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service#post-/Consent)"
 		},
 		{
@@ -8711,13 +8652,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -8746,7 +8687,7 @@
 							}
 						}
 					],
-					"id": "607b4631-1fd5-4cfd-bd0d-7ce1b3787ef2",
+					"id": "1e647040-1a2c-498a-a5a0-586871545182",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -8903,13 +8844,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -8938,7 +8879,7 @@
 							}
 						}
 					],
-					"id": "f9fdf448-f8a4-4145-8c01-edf3a72908a4",
+					"id": "87e1a265-87ec-4ab3-9c9c-4173919e5cfb",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -8969,104 +8910,104 @@
 							"script": {
 								"exec": [
 									"const expectedResponseBody = {",
-									"  \"resourceType\": \"Bundle\",",
-									"  \"timestamp\": \"2020-08-26T14:00:00+00:00\",",
-									"  \"total\": 1,",
-									"  \"type\": \"searchset\",",
-									"  \"link\": [",
+									"    \"resourceType\": \"Bundle\",",
+									"    \"timestamp\": \"2020-08-26T14:00:00+00:00\",",
+									"    \"total\": 1,",
+									"    \"type\": \"searchset\",",
+									"    \"link\": [",
 									"        {",
 									"            \"relation\": \"self\",",
 									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000010&_include=Consent:performer\"",
 									"        }",
 									"    ],",
-									"  \"entry\": [",
-									"    {",
-									"      \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/RP974720\",",
-									"      \"resource\": {",
-									"        \"resourceType\": \"RelatedPerson\",",
-									"        \"id\": \"RP974720\",",
-									"        \"identifier\": [",
-									"          {",
-									"            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
-									"            \"value\": \"9000000010\"",
-									"          },",
-									"          {",
-									"            \"system\": \"https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier\",",
-									"            \"value\": \"ABC0000008\"",
-									"          }",
-									"        ],",
-									"        \"patient\": {",
-									"          \"identifier\": {",
-									"            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
-									"            \"value\": \"9000000005\"",
-									"          }",
-									"        },",
-									"        \"relationship\": [",
-									"          {",
-									"            \"coding\": [",
-									"              {",
-									"                \"system\": \"https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole\",",
-									"                \"code\": \"Personal\",",
-									"                \"display\": \"Personal relationship with the patient\"",
-									"              }",
-									"            ]",
-									"          }",
-									"        ]",
-									"      },",
-									"      \"search\": {",
-									"        \"mode\": \"include\"",
-									"      }",
-									"    },",
-									"    {",
-									"      \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/WWCC67T1\",",
-									"      \"resource\": {",
-									"        \"resourceType\": \"Consent\",",
-									"        \"id\": \"WWCC67T1\",",
-									"        \"status\": \"active\",",
-									"        \"scope\": {",
-									"          \"coding\": [",
-									"            {",
-									"              \"system\": \"https://terminology.hl7.org/CodeSystem/consentscope\",",
-									"              \"code\": \"patient-privacy\",",
-									"              \"display\": \"Privacy Consent\"",
+									"    \"entry\": [",
+									"        {",
+									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/RP974720\",",
+									"            \"resource\": {",
+									"                \"resourceType\": \"RelatedPerson\",",
+									"                \"id\": \"RP974720\",",
+									"                \"identifier\": [",
+									"                    {",
+									"                        \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"                        \"value\": \"9000000010\"",
+									"                    },",
+									"                    {",
+									"                        \"system\": \"https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier\",",
+									"                        \"value\": \"ABC0000008\"",
+									"                    }",
+									"                ],",
+									"                \"patient\": {",
+									"                    \"identifier\": {",
+									"                        \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"                        \"value\": \"9000000005\"",
+									"                    }",
+									"                },",
+									"                \"relationship\": [",
+									"                    {",
+									"                        \"coding\": [",
+									"                            {",
+									"                                \"system\": \"https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole\",",
+									"                                \"code\": \"Personal\",",
+									"                                \"display\": \"Personal relationship with the patient\"",
+									"                            }",
+									"                        ]",
+									"                    }",
+									"                ]",
+									"            },",
+									"            \"search\": {",
+									"                \"mode\": \"include\"",
 									"            }",
-									"          ],",
-									"          \"text\": \"Patient Privacy Consent\"",
 									"        },",
-									"        \"category\": [",
-									"          {",
-									"            \"coding\": [",
-									"              {",
-									"                \"system\": \"https://terminology.hl7.org/CodeSystem/v3-ActCode\",",
-									"                \"code\": \"INFA\",",
-									"                \"display\": \"Information Access\"",
-									"              }",
-									"            ],",
-									"            \"text\": \"Information Access Consent\"",
-									"          }",
-									"        ],",
-									"        \"patient\": {",
-									"          \"identifier\": {",
-									"            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
-									"            \"value\": \"9000000005\"",
-									"          }",
-									"        },",
-									"        \"dateTime\": \"2024-07-21T17:32:28Z\",",
-									"        \"performer\": [",
-									"          {",
-									"            \"identifier\": {",
-									"              \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
-									"              \"value\": \"9000000010\"",
-									"            }",
-									"          }",
-									"        ],",
-									"        \"policy\": [",
-									"            {",
-									"                \"authority\": \"https://www.england.nhs.uk\",",
-									"                \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
-									"            }",
-									"        ],",
-									"        \"provision\": {",
+									"        {",
+									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/WWCC67T1\",",
+									"            \"resource\": {",
+									"                \"resourceType\": \"Consent\",",
+									"                \"id\": \"WWCC67T1\",",
+									"                \"status\": \"active\",",
+									"                \"scope\": {",
+									"                    \"coding\": [",
+									"                        {",
+									"                            \"system\": \"https://terminology.hl7.org/CodeSystem/consentscope\",",
+									"                            \"code\": \"patient-privacy\",",
+									"                            \"display\": \"Privacy Consent\"",
+									"                        }",
+									"                    ],",
+									"                    \"text\": \"Patient Privacy Consent\"",
+									"                },",
+									"                \"category\": [",
+									"                    {",
+									"                        \"coding\": [",
+									"                            {",
+									"                                \"system\": \"https://terminology.hl7.org/CodeSystem/v3-ActCode\",",
+									"                                \"code\": \"INFA\",",
+									"                                \"display\": \"Information Access\"",
+									"                            }",
+									"                        ],",
+									"                        \"text\": \"Information Access Consent\"",
+									"                    }",
+									"                ],",
+									"                \"patient\": {",
+									"                    \"identifier\": {",
+									"                        \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"                        \"value\": \"9000000005\"",
+									"                    }",
+									"                },",
+									"                \"dateTime\": \"2024-07-21T17:32:28Z\",",
+									"                \"performer\": [",
+									"                    {",
+									"                        \"identifier\": {",
+									"                            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"                            \"value\": \"9000000010\"",
+									"                        }",
+									"                    }",
+									"                ],",
+									"                \"policy\": [",
+									"                    {",
+									"                        \"authority\": \"https://www.england.nhs.uk\",",
+									"                        \"uri\": \"REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD\"",
+									"                    }",
+									"                ],",
+									"                \"provision\": {",
 									"                    \"actor\": [",
 									"                        {",
 									"                            \"reference\": {",
@@ -9093,24 +9034,24 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
 									"                    }",
 									"                ]",
-									"      },",
-									"      \"search\": {",
-									"        \"mode\": \"match\"",
-									"      }",
-									"    }",
-									"  ]",
+									"            },",
+									"            \"search\": {",
+									"                \"mode\": \"match\"",
+									"            }",
+									"        }",
+									"    ]",
 									"}",
 									"",
 									"pm.test(\"Status code is 200\", function () {",
@@ -9128,7 +9069,7 @@
 							}
 						}
 					],
-					"id": "947d07b9-446a-421c-89c4-e2a55d43655e",
+					"id": "203c2d06-7b00-4cb1-9949-0bddac452a15",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -9337,13 +9278,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -9356,6 +9297,7 @@
 									"        }",
 									"    ]",
 									"}",
+									"",
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
@@ -9371,7 +9313,7 @@
 							}
 						}
 					],
-					"id": "6bb732e7-f89a-4d4a-9dbc-6ee17d533299",
+					"id": "ba91b97e-9962-4347-86f1-31cd411896ab",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -9493,13 +9435,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -9528,7 +9470,7 @@
 							}
 						}
 					],
-					"id": "c0cf8dcd-a878-42c2-886f-cb62dfd11fe3",
+					"id": "35efedab-8087-46ef-8572-3a961df797f1",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -9685,13 +9627,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -9720,7 +9662,7 @@
 							}
 						}
 					],
-					"id": "cca42365-c827-413b-a2af-78488aa9fc3e",
+					"id": "084dc62f-1f04-4ce2-91f0-0bc0cb1a5979",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -9751,151 +9693,151 @@
 							"script": {
 								"exec": [
 									"const expectedResponseBody = {",
-									"  \"resourceType\": \"Bundle\",",
-									"  \"timestamp\": \"2020-08-26T14:00:00+00:00\",",
-									"  \"total\": 1,",
-									"  \"type\": \"searchset\",",
-									"  \"link\": [",
+									"    \"resourceType\": \"Bundle\",",
+									"    \"timestamp\": \"2020-08-26T14:00:00+00:00\",",
+									"    \"total\": 1,",
+									"    \"type\": \"searchset\",",
+									"    \"link\": [",
 									"        {",
 									"            \"relation\": \"self\",",
 									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000019&_include=Consent:performer\"",
 									"        }",
 									"    ],",
-									"  \"entry\": [",
-									"    {",
-									"      \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742\",",
-									"      \"resource\": {",
-									"        \"resourceType\": \"RelatedPerson\",",
-									"        \"id\": \"BE974742\",",
-									"        \"identifier\": [",
-									"          {",
-									"            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
-									"            \"value\": \"9000000019\"",
-									"          },",
-									"          {",
-									"            \"system\": \"https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier\",",
-									"            \"value\": \"ABC0000001\"",
-									"          }",
-									"        ],",
-									"        \"patient\": {",
-									"          \"identifier\": {",
-									"            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
-									"            \"value\": \"9000000009\"",
-									"          }",
-									"        },",
-									"        \"relationship\": [",
-									"          {",
-									"            \"coding\": [",
-									"              {",
-									"                \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",",
-									"                \"code\": \"PRN\",",
-									"                \"display\": \"parent\"",
-									"              }",
-									"            ]",
-									"          },",
-									"          {",
-									"            \"coding\":[",
-									"              {",
-									"                \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",",
-									"                \"code\": \"MTH\",",
-									"                \"display\": \"mother\"",
-									"              }",
-									"            ]",
-									"          }",
-									"        ]",
-									"      },",
-									"      \"search\": {",
-									"        \"mode\": \"include\"",
-									"      }",
-									"    },",
-									"    {",
-									"      \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/BBCC67E9\",",
-									"      \"resource\": {",
-									"        \"resourceType\": \"Consent\",",
-									"        \"id\": \"BBCC67E9\",",
-									"        \"status\": \"active\",",
-									"        \"scope\": {",
-									"          \"coding\": [",
-									"            {",
-									"              \"system\": \"https://terminology.hl7.org/CodeSystem/consentscope\",",
-									"              \"code\": \"patient-privacy\",",
-									"              \"display\": \"Privacy Consent\"",
+									"    \"entry\": [",
+									"        {",
+									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742\",",
+									"            \"resource\": {",
+									"                \"resourceType\": \"RelatedPerson\",",
+									"                \"id\": \"BE974742\",",
+									"                \"identifier\": [",
+									"                    {",
+									"                        \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"                        \"value\": \"9000000019\"",
+									"                    },",
+									"                    {",
+									"                        \"system\": \"https://placeholder.fhir.nhs.uk/Id/local-gp-patient-identifier\",",
+									"                        \"value\": \"ABC0000001\"",
+									"                    }",
+									"                ],",
+									"                \"patient\": {",
+									"                    \"identifier\": {",
+									"                        \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"                        \"value\": \"9000000009\"",
+									"                    }",
+									"                },",
+									"                \"relationship\": [",
+									"                    {",
+									"                        \"coding\": [",
+									"                            {",
+									"                                \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",",
+									"                                \"code\": \"PRN\",",
+									"                                \"display\": \"parent\"",
+									"                            }",
+									"                        ]",
+									"                    },",
+									"                    {",
+									"                        \"coding\": [",
+									"                            {",
+									"                                \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",",
+									"                                \"code\": \"MTH\",",
+									"                                \"display\": \"mother\"",
+									"                            }",
+									"                        ]",
+									"                    }",
+									"                ]",
+									"            },",
+									"            \"search\": {",
+									"                \"mode\": \"include\"",
 									"            }",
-									"          ],",
-									"          \"text\": \"Patient Privacy Consent\"",
 									"        },",
-									"        \"category\": [",
-									"          {",
-									"            \"coding\": [",
-									"              {",
-									"                \"system\": \"https://terminology.hl7.org/CodeSystem/v3-ActCode\",",
-									"                \"code\": \"INFA\",",
-									"                \"display\": \"Information Access\"",
-									"              }",
-									"            ],",
-									"            \"text\": \"Information Access Consent\"",
-									"          }",
-									"        ],",
-									"        \"patient\": {",
-									"          \"identifier\": {",
-									"            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
-									"            \"value\": \"9000000009\"",
-									"          }",
-									"        },",
-									"        \"dateTime\": \"2024-07-21T17:32:28Z\",",
-									"        \"performer\": [",
-									"          {",
-									"            \"identifier\": {",
-									"              \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
-									"              \"value\": \"9000000019\"",
-									"            }",
-									"          }",
-									"        ],",
-									"        \"provision\": {",
-									"            \"actor\": [",
-									"                {",
-									"                    \"reference\": {",
+									"        {",
+									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/BBCC67E9\",",
+									"            \"resource\": {",
+									"                \"resourceType\": \"Consent\",",
+									"                \"id\": \"BBCC67E9\",",
+									"                \"status\": \"active\",",
+									"                \"scope\": {",
+									"                    \"coding\": [",
+									"                        {",
+									"                            \"system\": \"https://terminology.hl7.org/CodeSystem/consentscope\",",
+									"                            \"code\": \"patient-privacy\",",
+									"                            \"display\": \"Privacy Consent\"",
+									"                        }",
+									"                    ],",
+									"                    \"text\": \"Patient Privacy Consent\"",
+									"                },",
+									"                \"category\": [",
+									"                    {",
+									"                        \"coding\": [",
+									"                            {",
+									"                                \"system\": \"https://terminology.hl7.org/CodeSystem/v3-ActCode\",",
+									"                                \"code\": \"INFA\",",
+									"                                \"display\": \"Information Access\"",
+									"                            }",
+									"                        ],",
+									"                        \"text\": \"Information Access Consent\"",
+									"                    }",
+									"                ],",
+									"                \"patient\": {",
+									"                    \"identifier\": {",
+									"                        \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"                        \"value\": \"9000000009\"",
+									"                    }",
+									"                },",
+									"                \"dateTime\": \"2024-07-21T17:32:28Z\",",
+									"                \"performer\": [",
+									"                    {",
 									"                        \"identifier\": {",
 									"                            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
 									"                            \"value\": \"9000000019\"",
 									"                        }",
-									"                    },",
-									"                    \"role\": {",
-									"                        \"coding\": [",
-									"                            {",
-									"                                \"code\": \"parental-responsibility\",",
-									"                                \"display\": \"Parental responsibility\",",
-									"                                \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis\"",
-									"                            }",
-									"                        ]",
 									"                    }",
-									"                }",
-									"            ],",
-									"            \"period\": {",
-									"                \"end\": \"2026-02-11\",",
-									"                \"start\": \"2025-02-11\"",
-									"            }",
-									"        },",
-									"        \"extension\": [",
-									"            {",
-									"                \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
-									"                \"valueCodeableConcept\": {",
-									"                    \"coding\": [",
+									"                ],",
+									"                \"provision\": {",
+									"                    \"actor\": [",
 									"                        {",
-									"                            \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
-									"                            \"code\": \"ROLE_CREATED\",",
-									"                            \"display\": \"Role created from scratch by GP\"",
+									"                            \"reference\": {",
+									"                                \"identifier\": {",
+									"                                    \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
+									"                                    \"value\": \"9000000019\"",
+									"                                }",
+									"                            },",
+									"                            \"role\": {",
+									"                                \"coding\": [",
+									"                                    {",
+									"                                        \"code\": \"parental-responsibility\",",
+									"                                        \"display\": \"Parental responsibility\",",
+									"                                        \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis\"",
+									"                                    }",
+									"                                ]",
+									"                            }",
 									"                        }",
-									"                    ]",
-									"                }",
+									"                    ],",
+									"                    \"period\": {",
+									"                        \"end\": \"2026-02-11\",",
+									"                        \"start\": \"2025-02-11\"",
+									"                    }",
+									"                },",
+									"                \"extension\": [",
+									"                    {",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
+									"                        \"valueCodeableConcept\": {",
+									"                            \"coding\": [",
+									"                                {",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
+									"                                    \"code\": \"ROLE_CREATED\",",
+									"                                    \"display\": \"Role created\"",
+									"                                }",
+									"                            ]",
+									"                        }",
+									"                    }",
+									"                ]",
+									"            },",
+									"            \"search\": {",
+									"                \"mode\": \"match\"",
 									"            }",
-									"        ]",
-									"      },",
-									"      \"search\": {",
-									"        \"mode\": \"match\"",
-									"      }",
-									"    }",
-									"  ]",
+									"        }",
+									"    ]",
 									"}",
 									"",
 									"pm.test(\"Status code is 200\", function () {",
@@ -9913,7 +9855,7 @@
 							}
 						}
 					],
-					"id": "d516352a-3612-4e9b-9423-c205f1bd764c",
+					"id": "eb6908bd-ff6b-46d4-a3cf-d1b73ecd9e94",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -10135,13 +10077,13 @@
 									"                },",
 									"                \"extension\": [",
 									"                    {",
-									"                        \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",",
+									"                        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",",
 									"                        \"valueCodeableConcept\": {",
 									"                            \"coding\": [",
 									"                                {",
-									"                                    \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",",
+									"                                    \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",",
 									"                                    \"code\": \"ROLE_CREATED\",",
-									"                                    \"display\": \"Role created from scratch by GP\"",
+									"                                    \"display\": \"Role created\"",
 									"                                }",
 									"                            ]",
 									"                        }",
@@ -10170,7 +10112,7 @@
 							}
 						}
 					],
-					"id": "bddbf0b0-2264-4931-a449-f5880a7306d0",
+					"id": "ec4c87cc-75c5-4b2a-b8b8-0c4c24bc672a",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -10240,7 +10182,7 @@
 							}
 						}
 					],
-					"id": "23ca92dc-44c2-41ce-9968-c25c7458646f",
+					"id": "7c2a3778-43f4-454d-846c-b923fdf3f713",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -10292,7 +10234,7 @@
 							}
 						}
 					],
-					"id": "762b8344-4ec3-416d-9fa6-97be76304684",
+					"id": "c2cb96c6-6971-4762-bb7e-d2bd283e2655",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -10358,7 +10300,7 @@
 							}
 						}
 					],
-					"id": "e628afea-6666-419d-903d-d7836cf389f5",
+					"id": "26badfb2-5cb0-4c73-afcb-1ab83e71e210",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -10424,7 +10366,7 @@
 							}
 						}
 					],
-					"id": "5f494f88-0b5c-4a5e-92e2-9cd397cbf2d0",
+					"id": "dea7ca7d-a2be-4303-b76b-e2cb22c0b48b",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -10433,7 +10375,7 @@
 					"response": []
 				}
 			],
-			"id": "c4c4cb8c-19f9-4687-9870-be383368eb01",
+			"id": "9e513d8f-60dc-4681-b0b0-75fc9ae48eae",
 			"description": "The GET /Consent/{ID} is for retrieving the details of a single proxy relationship, including current status, based on a provided id.\n\nThis folder contains requests covering different scenarios for users with different types of proxy relationships. It also includes error scenarios.\n\nFor more details, please refer to the [GET Consent by ID OAS page for the Validated Relationship Service on the NHS England website.](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service#get-/Consent/%7Bid%7D)"
 		},
 		{
@@ -10471,13 +10413,13 @@
 							}
 						}
 					],
-					"id": "3a100f7d-cbf1-4408-b70e-29c5d7da40e2",
+					"id": "e477a408-6b82-4c91-9316-98af6fed16c5",
 					"request": {
 						"method": "PATCH",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"inactive\"\n  },\n  {\n        \"op\": \"add\",\n        \"path\": \"/extension/-\",\n        \"value\": [\n            {\n                \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n                \"valueCodeableConcept\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",\n                            \"code\": \"ROLE_DEACTIVATED_PATIENT_REQUEST\",\n                            \"display\": \"At patients request\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n]",
+							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"inactive\"\n  },\n  {\n        \"op\": \"add\",\n        \"path\": \"/extension/-\",\n        \"value\": [\n            {\n                \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",\n                \"valueCodeableConcept\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",\n                            \"code\": \"ROLE_DEACTIVATED_PATIENT_REQUEST\",\n                            \"display\": \"At patient request\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10531,7 +10473,7 @@
 							}
 						}
 					],
-					"id": "512f4be7-022f-443d-aea7-46dc90c9a909",
+					"id": "e711e1d1-13f6-4721-9bea-30512ee8cafe",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -10581,7 +10523,7 @@
 							}
 						}
 					],
-					"id": "6b58556f-034a-46e6-83a5-0711cd2ee7b2",
+					"id": "d4389547-7421-46b5-8a68-d28c6562127b",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -10631,13 +10573,13 @@
 							}
 						}
 					],
-					"id": "041c7d4f-4600-45c3-972c-29120d6de288",
+					"id": "40875aa1-e19b-4b3a-9554-4da0373f56ff",
 					"request": {
 						"method": "PATCH",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"active\"\n  },\n  {\n        \"op\": \"add\",\n        \"path\": \"/extension/-\",\n        \"value\": [\n            {\n                \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n                \"valueCodeableConcept\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",\n                            \"code\": \"ROLE_CREATED\",\n                            \"display\": \"Role created\"\n                        }\n                    ]\n                }\n            }\n        ]\n    },\n  {\n    \"op\": \"replace\",\n    \"path\": \"/provision/period/end\",\n    \"value\": \"2026-12-31T23:59:59Z\"\n  }\n]",
+							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"active\"\n  },\n  {\n        \"op\": \"add\",\n        \"path\": \"/extension/-\",\n        \"value\": [\n            {\n                \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",\n                \"valueCodeableConcept\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",\n                            \"code\": \"ROLE_CREATED\",\n                            \"display\": \"Role created\"\n                        }\n                    ]\n                }\n            }\n        ]\n    },\n  {\n    \"op\": \"replace\",\n    \"path\": \"/provision/period/end\",\n    \"value\": \"2026-12-31T23:59:59Z\"\n  }\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10692,13 +10634,13 @@
 							}
 						}
 					],
-					"id": "ec8cfa54-6859-47e4-aab2-1359334ad204",
+					"id": "27011292-7f54-4075-b3dd-4bb5e2089656",
 					"request": {
 						"method": "PATCH",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"someinvalidcode\"\n  },\n  {\n        \"op\": \"add\",\n        \"path\": \"/extension/-\",\n        \"value\": [\n            {\n                \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n                \"valueCodeableConcept\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",\n                            \"code\": \"ROLE_DEACTIVATED_PATIENT_REQUEST\",\n                            \"display\": \"At patients request\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n]",
+							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"someinvalidcode\"\n  },\n  {\n        \"op\": \"add\",\n        \"path\": \"/extension/-\",\n        \"value\": [\n            {\n                \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",\n                \"valueCodeableConcept\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",\n                            \"code\": \"ROLE_DEACTIVATED_PATIENT_REQUEST\",\n                            \"display\": \"At patient request\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10753,13 +10695,13 @@
 							}
 						}
 					],
-					"id": "5916fb46-b0d9-4ad4-b261-7852604a0c9e",
+					"id": "a6bef8c2-657f-438e-a03f-a26ac83f5299",
 					"request": {
 						"method": "PATCH",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/someotherpath\",\n    \"value\": \"active\"\n  },\n  {\n        \"op\": \"add\",\n        \"path\": \"/extension/-\",\n        \"value\": [\n            {\n                \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n                \"valueCodeableConcept\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",\n                            \"code\": \"ROLE_DEACTIVATED_PATIENT_REQUEST\",\n                            \"display\": \"At patients request\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n]",
+							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/someotherpath\",\n    \"value\": \"active\"\n  },\n  {\n        \"op\": \"add\",\n        \"path\": \"/extension/-\",\n        \"value\": [\n            {\n                \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",\n                \"valueCodeableConcept\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",\n                            \"code\": \"ROLE_DEACTIVATED_PATIENT_REQUEST\",\n                            \"display\": \"At patient request\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10814,13 +10756,13 @@
 							}
 						}
 					],
-					"id": "91e6d07d-e17c-4a2e-a7ee-a7ada017ffeb",
+					"id": "7b7c6119-8fec-4de6-a1fd-10f0921c3208",
 					"request": {
 						"method": "PATCH",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"inactive\"\n  },\n  {\n        \"op\": \"add\",\n        \"path\": \"/extension/-\",\n        \"value\": [\n            {\n                \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n                \"valueCodeableConcept\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",\n                            \"code\": \"ROLE_DEACTIVATED_PATIENT_REQUEST\",\n                            \"display\": \"At patients request\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n]",
+							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"inactive\"\n  },\n  {\n        \"op\": \"add\",\n        \"path\": \"/extension/-\",\n        \"value\": [\n            {\n                \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",\n                \"valueCodeableConcept\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",\n                            \"code\": \"ROLE_DEACTIVATED_PATIENT_REQUEST\",\n                            \"display\": \"At patient request\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10874,7 +10816,7 @@
 							}
 						}
 					],
-					"id": "cb67dc14-1d92-4f89-a9b3-22f6030215ef",
+					"id": "f2bb636e-f36b-4d84-aa53-e3a8324139a8",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -10935,13 +10877,13 @@
 							}
 						}
 					],
-					"id": "31e85a22-3ac8-4df9-b567-5645f9ade531",
+					"id": "72f88a9e-e669-45ff-94f0-c5e95a04ee33",
 					"request": {
 						"method": "PATCH",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"someinvalidcode\"\n  },\n  {\n        \"op\": \"add\",\n        \"path\": \"/extension/-\",\n        \"value\": [\n            {\n                \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n                \"valueCodeableConcept\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",\n                            \"code\": \"ROLE_DEACTIVATED_PATIENT_REQUEST\",\n                            \"display\": \"At patients request\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n]",
+							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"someinvalidcode\"\n  },\n  {\n        \"op\": \"add\",\n        \"path\": \"/extension/-\",\n        \"value\": [\n            {\n                \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",\n                \"valueCodeableConcept\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",\n                            \"code\": \"ROLE_DEACTIVATED_PATIENT_REQUEST\",\n                            \"display\": \"At patient request\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10995,13 +10937,13 @@
 							}
 						}
 					],
-					"id": "b10715c6-148e-4348-ba80-c50de0559a18",
+					"id": "5d56cb18-8c85-4322-bd87-6bd85d198453",
 					"request": {
 						"method": "PATCH",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"someinvalidcode\"\n  },\n  {\n        \"op\": \"add\",\n        \"path\": \"/extension/-\",\n        \"value\": [\n            {\n                \"url\": \"https://fhir.hl7.org.uk/StructureDefinition/Extension-statusReason\",\n                \"valueCodeableConcept\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"https://terminology.hl7.org/CodeSystem/consent-reason\",\n                            \"code\": \"ROLE_DEACTIVATED_PATIENT_REQUEST\",\n                            \"display\": \"At patients request\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n]",
+							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"someinvalidcode\"\n  },\n  {\n        \"op\": \"add\",\n        \"path\": \"/extension/-\",\n        \"value\": [\n            {\n                \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",\n                \"valueCodeableConcept\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",\n                            \"code\": \"ROLE_DEACTIVATED_PATIENT_REQUEST\",\n                            \"display\": \"At patient request\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -11013,7 +10955,7 @@
 					"response": []
 				}
 			],
-			"id": "58eee14b-7a63-45a4-bd0e-b5cd1c09fac9",
+			"id": "d05ca9a9-0ae2-488e-8310-07fa32c1dbb6",
 			"description": "Use this endpoint to update an existing proxy role.\n\nCommon update scenarios include:\n\n- Revocation of the role (status change from \"active\" to \"inactive\")\n- Changing the legal basis of the role (TBC)\n- Updating the end date for time-bound access\n    \n\nThis folder contains requests covering different scenarios for various valid and invalid update requests.\n\nFor more details, please refer to the [PATCH Consent OAS page for the Validated Relationship Service on the NHS England website.](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service#patch-/Consent/-id-)"
 		}
 	],
