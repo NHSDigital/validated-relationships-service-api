@@ -81,10 +81,6 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
               system: "https://fhir.nhs.uk/Id/nhs-number"
               value: "9000000100"
           dateTime: "2024-07-21T17:32:28Z"
-          performer:
-            - identifier:
-                system: "https://fhir.nhs.uk/Id/nhs-number"
-                value: "9000000020"
           policy:
             - authority: https://www.england.nhs.uk
               uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
@@ -110,6 +106,11 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: ROLE_CREATED
                   display: Role created
+          - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
+            valueReference:
+              identifier:
+                system: https://fhir.nhs.uk/Id/nhs-number
+                value: '9000000020'
         search:
           mode: match
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742
@@ -150,10 +151,6 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
               system: "https://fhir.nhs.uk/Id/nhs-number"
               value: "9000000100"
           dateTime: "2024-07-21T17:32:28Z"
-          performer:
-            - identifier:
-                system: "https://fhir.nhs.uk/Id/nhs-number"
-                value: "9000000021"
           policy:
             - authority: https://www.england.nhs.uk
               uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
@@ -179,6 +176,11 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: ROLE_CREATED
                   display: Role created
+          - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
+            valueReference:
+              identifier:
+                system: https://fhir.nhs.uk/Id/nhs-number
+                value: '9000000021'
         search:
           mode: match
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742
@@ -219,10 +221,6 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
               system: "https://fhir.nhs.uk/Id/nhs-number"
               value: "9000000100"
           dateTime: "2024-07-21T17:32:28Z"
-          performer:
-            - identifier:
-                system: "https://fhir.nhs.uk/Id/nhs-number"
-                value: "9000000022"
           policy:
             - authority: https://www.england.nhs.uk
               uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
@@ -248,5 +246,10 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: ROLE_DEACTIVATED_END_DATE_REACHED
                   display: End date reached
+          - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
+            valueReference:
+              identifier:
+                system: https://fhir.nhs.uk/Id/nhs-number
+                value: '9000000022'
         search:
           mode: match

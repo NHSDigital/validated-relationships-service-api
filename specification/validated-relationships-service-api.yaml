@@ -704,7 +704,6 @@ paths:
         | Non-OTHER reason code without free text | Request with a reason code other than 'OTHER', no free text, performer identifier `9000000052`              | HTTP Status 201 and OperationOutcome response               |
         | Non-OTHER reason code with free text    | Request with a reason code other than 'OTHER', with free text, performer identifier `9000000053`            | HTTP Status 201 and OperationOutcome response               |
         | Missing free text for OTHER reason code | Request with reason code 'OTHER' but missing free text, performer identifier `9000000050`                   | HTTP Status 400 and MISSING_FREE_TEXT_FOR_OTHER error response |
-        | Invalid performer NHS number            | Request with invalid NHS number format, with performer identifier value of `9000000000`                     | HTTP Status 422 and INVALID_IDENTIFIER_VALUE error response |
         | Duplicate relationship                  | Request for relationship that already exists, with performer identifier value of `9000000049`               | HTTP Status 409 and DUPLICATE_RELATIONSHIP error response   |
 
       operationId: create-proxy-role
@@ -746,10 +745,10 @@ paths:
             | HTTP status | Error code                  | Description                                                                                                                               |
             | ----------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
             | 400         | `INVALID_VALUE`             | Invalid Parameter or Invalid operation.                                                                                                   |
-            | 400         | `MISSING_IDENTIFIER_VALUE`  | Missing performer or patient identifier.                                                                                                  |
-            | 400         | `MISSING_IDENTIFIER_SYSTEM` | Missing performer or patient identifier system.                                                                                           |
+            | 400         | `MISSING_IDENTIFIER_VALUE`  | Missing grantee or patient identifier.                                                                                                  |
+            | 400         | `MISSING_IDENTIFIER_SYSTEM` | Missing grantee or patient identifier system.                                                                                           |
             | 400         | `MISSING_PATIENT`           | Missing patient.                                                                                                                          |
-            | 400         | `MISSING_PERFORMER`         | Missing performer.                                                                                                                        |
+            | 400         | `MISSING_GRANTEE`           | Missing grantee.                                                                                                                          |
             | 400         | `MISSING_STATUS`            | Missing status.                                                                                                                           |
             | 400         | `MISSING_SCOPE`             | Missing scope.                                                                                                                            |
             | 400         | `MISSING_CATEGORY`          | Missing category.                                                                                                                         |
@@ -762,10 +761,10 @@ paths:
             | 405         | `METHOD_NOT_ALLOWED`        | The method is not allowed.                                                                                                                |
             | 408         | `TIMEOUT`                   | Request timed out.                                                                                                                        |
             | 409         | `DUPLICATE_RELATIONSHIP`    | Conflict with requested proxy role.                                                                                                       |
-            | 422         | `INVALID_IDENTIFIER_VALUE`  | Invalid performer or patient identifier value.                                                                                            |
-            | 422         | `INVALID_IDENTIFIER_SYSTEM` | Invalid performer or patient identifier system.                                                                                           |
+            | 422         | `INVALID_IDENTIFIER_VALUE`  | Invalid grantee or patient identifier value.                                                                                              |
+            | 422         | `INVALID_IDENTIFIER_SYSTEM` | Invalid grantee or patient identifier system.                                                                                             |
             | 422         | `INVALID_PATIENT`           | Invalid patient.                                                                                                                          |
-            | 422         | `INVALID_PERFORMER`         | Invalid performer.                                                                                                                        |
+            | 422         | `INVALID_GRANTEE`           | Invalid grantee.                                                                                                                          |
             | 422         | `INVALID_STATUS`            | Invalid status.                                                                                                                           |
             | 422         | `INVALID_SCOPE`             | Invalid scope.                                                                                                                            |
             | 422         | `INVALID_CATEGORY`          | Invalid category.                                                                                                                         |
@@ -780,8 +779,6 @@ paths:
               schema:
                 $ref: "#/components/schemas/OperationOutcome"
               examples:
-                postConsentInvalidPerformerIdentifier:
-                  $ref: "./examples/responses/POST_Consent/errors/invalid_performer_identifier_error.yaml#/PostConsentInvalidPerformerIdentifierError"
                 postConsentDuplicateRelationship:
                   $ref: "./examples/responses/POST_Consent/errors/duplicate_relationship_error.yaml#/PostConsentDuplicateRelationshipError"
                 postConsentInvalidIdentifierValue:
@@ -2249,7 +2246,7 @@ components:
         - category
         - patient
         - dateTime
-        - performer
+        - extension
       description: The details of the consent including who the patient and care "performer" are, status of the relationship and whether consent was given by a patient with capacity.
       properties:
         resourceType:
@@ -2291,7 +2288,8 @@ components:
           maxItems: 1
           items:
             $ref: "#/components/schemas/Reference"
-          description: "Individuals or organizations that agreed to the consent."
+          description: "Deprecated. Instead use the Grantee Extension."
+          deprecated: true
         policy:
           type: array
           items:
@@ -2301,8 +2299,10 @@ components:
         extension:
           type: array
           items:
-            $ref: "#/components/schemas/Extension"
-          description: "Reasons for the status of the consent"
+            anyOf:
+              - $ref: "#/components/schemas/StatusReasonExtension"
+              - $ref: "#/components/schemas/GranteeExtension"
+          description: "Additioanl content"
 
     Policy:
       type: object
@@ -2350,14 +2350,30 @@ components:
               role:
                 $ref: "#/components/schemas/CodeableConcept"
                 description: "Classification of the role of consent, bound to http://terminology.hl7.org/CodeSystem/v3-RoleCode"
-    Extension:
+    
+    StatusReasonExtension:
       type: object
       properties:
         url:
           type: string
+          enum:
+          - "https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason"
         valueCodeableConcept:
           $ref: "#/components/schemas/CodeableConcept"
-          description: Classification of the status of consent, bound to http://terminology.hl7.org/CodeSystem/consent-reason.
+          description: Classification of the status.
+
+    GranteeExtension:
+      type: object
+      properties:
+        url:
+          type: string
+          enum:
+          - "https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee"
+        valueReference:
+          properties:
+            identifier:
+              $ref: "#/components/schemas/Identifier"
+              description: Details for proxy.
 
     OperationOutcome:
       type: object

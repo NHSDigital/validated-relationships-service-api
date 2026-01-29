@@ -19,11 +19,6 @@ ConsentParentChildProxyCreationRequest:
         system: https://fhir.nhs.uk/Id/nhs-number
         value: "9000000012"
     dateTime: "2025-02-11T14:30:00Z"
-    performer:
-      - type: RelatedPerson
-        identifier:
-          system: https://fhir.nhs.uk/Id/nhs-number
-          value: "9000000009"
     provision:
       type: permit
       period:
@@ -47,3 +42,8 @@ ConsentParentChildProxyCreationRequest:
             - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
               code: ROLE_CREATED
               display: Role created
+      - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
+        valueReference:
+          identifier:
+            system: https://fhir.nhs.uk/Id/nhs-number
+            value: '9000000009'
