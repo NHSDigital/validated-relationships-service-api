@@ -6,3 +6,4 @@ PatchConsentSuccess:
     issue:
       - severity: information
         code: informational
+
