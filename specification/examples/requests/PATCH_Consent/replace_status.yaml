@@ -14,4 +14,3 @@ StatusUpdate:
           - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
             code: ROLE_CREATED
             display: Role created
-
