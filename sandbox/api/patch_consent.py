@@ -11,6 +11,7 @@ from .constants import (
     PATCH_CONSENT__SUCCESS,
     PATCH_CONSENT__INVALID_STATUS_REASON,
     PATCH_CONSENT__MISSING_FREE_TEXT_FOR_OTHER,
+    PATCH_CONSENT__MISSING_GRANTOR_FOR_ACTIVE,
 )
 from .utils import generate_response_from_example
 
@@ -81,6 +82,10 @@ def patch_consent_response(id: str) -> Union[dict, tuple]:
         elif id == "c3d4e5f6-a7b8-4901-c2d3-e4f5a6b7c8d9":
             # Non-OTHER reason code WITH free text (should succeed)
             return generate_response_from_example(PATCH_CONSENT__SUCCESS, 200)
+
+        elif id == "90957744-b971-496e-b7c3-ab971868ce14":
+            # PATCH to activate proxy role without providing grantor extension
+            return generate_response_from_example(PATCH_CONSENT__MISSING_GRANTOR_FOR_ACTIVE, 400)
 
         else:
             # Resource not found

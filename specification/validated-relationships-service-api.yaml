@@ -706,6 +706,10 @@ paths:
         | Non-OTHER reason code without free text | Request with a reason code other than 'OTHER', no free text, performer identifier `9000000052`              | HTTP Status 201 and OperationOutcome response               |
         | Non-OTHER reason code with free text    | Request with a reason code other than 'OTHER', with free text, performer identifier `9000000053`            | HTTP Status 201 and OperationOutcome response               |
         | Missing free text for OTHER reason code | Request with reason code 'OTHER' but missing free text, performer identifier `9000000050`                   | HTTP Status 400 and MISSING_FREE_TEXT_FOR_OTHER error response |
+        | Missing grantor when status=active      | Valid request with status 'active' but no grantor extension, performer identifier `9000000054`              | HTTP Status 400 and MISSING_GRANTOR error response                       |
+        | Missing grantor valueReference/identifier     | Request with grantor extension but malformed (no valueReference or identifier), performer identifier `9000000057` | HTTP Status 400 and MISSING_GRANTOR_REFERENCE error response             |
+        | Invalid grantor ODS code value                | Request with grantor extension but missing/empty/invalid ODS code, performer identifier `9000000055`       | HTTP Status 422 and INVALID_GRANTOR_VALUE error response                 |
+        | Invalid grantor identifier system             | Request with grantor extension but wrong/missing identifier system, performer identifier `9000000056`      | HTTP Status 422 and INVALID_GRANTOR_SYSTEM error response                |
         | Duplicate relationship                  | Request for relationship that already exists, with performer identifier value of `9000000049`               | HTTP Status 409 and DUPLICATE_RELATIONSHIP error response   |
 
       operationId: create-proxy-role
@@ -797,6 +801,14 @@ paths:
                   $ref: "./examples/responses/POST_Consent/errors/invalid_request.yaml#/PostConsentInvalidFHIRRequestError"
                 postConsentMissingFreeTextForOther:
                   $ref: "./examples/responses/POST_Consent/errors/missing_free_text_for_other.yaml#/PostConsentMissingFreeTextForOtherError"
+                postConsentMissingGrantorError:
+                  $ref: "./examples/responses/POST_Consent/errors/missing_grantor.yaml#/PostConsentMissingGrantorError"
+                postConsentMissingGrantorReferenceError:
+                  $ref: "./examples/responses/POST_Consent/errors/missing_grantor_reference.yaml#/PostConsentMissingGrantorReferenceError"
+                postConsentInvalidGrantorIdentifierSystemError:
+                  $ref: "./examples/responses/POST_Consent/errors/invalid_grantor_identifier_system.yaml#/PostConsentInvalidGrantorIdentifierSystemError"
+                postConsentInvalidGrantorIdentifierValueError:
+                  $ref: "./examples/responses/POST_Consent/errors/invalid_grantor_identifier_value.yaml#/PostConsentInvalidGrantorIdentifierValueError"
 
         "5XX":
           description: |
@@ -983,7 +995,7 @@ paths:
         | Resource not found              | Patch for non-existent Consent, request with an id not listed here                              | HTTP Status 404 and RESOURCE_NOT_FOUND error response         |
         | Invalid state transition        | Patch attempting invalid status change, request with id '7b7f47b8-96e5-43eb-b733-283bf1449f2c'  | HTTP Status 422 and INVALID_STATE_TRANSITION error response   |
         | Missing free text for OTHER reason code  | Patch with reason code 'OTHER' but missing free text, id='d4e8a6f2-1c3b-4a7e-9d2f-8b5c7e9f1a3d' | HTTP Status 400 and MISSING_FREE_TEXT_FOR_OTHER error response |
-
+        | Missing grantor when activating status        | Patch attempting to set status to 'active' without grantor extension, id='90957744-b971-496e-b7c3-ab971868ce14' | HTTP Status 400 and MISSING_GRANTOR_FOR_ACTIVE error response            |
       parameters:
         - $ref: "#/components/parameters/ConsentID"
       requestBody:
@@ -1076,6 +1088,8 @@ paths:
                   $ref: "./examples/responses/PATCH_Consent/errors/invalid_state_transition.yaml#/PatchConsentInvalidStateTransitionError"
                 patchConsentMissingFreeTextForOther:
                   $ref: "./examples/responses/PATCH_Consent/errors/missing_free_text_for_other.yaml#/PatchConsentMissingFreeTextForOtherError"
+                patchConsentMissingGrantorForActiveStatusError:
+                  $ref: "./examples/responses/PATCH_Consent/errors/missing_grantor_for_active_status.yaml#/PatchConsentMissingGrantorForActiveStatusError"
         "5XX":
           description: |
             Errors will be returned for the first error encountered in the request. An error occurred as follows:
@@ -2354,7 +2368,7 @@ components:
               role:
                 $ref: "#/components/schemas/CodeableConcept"
                 description: "Classification of the role of consent, bound to http://terminology.hl7.org/CodeSystem/v3-RoleCode"
-    
+
     StatusReasonExtension:
       type: object
       properties:

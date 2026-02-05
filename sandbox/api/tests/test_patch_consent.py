@@ -13,6 +13,7 @@ from sandbox.api.constants import (
     PATCH_CONSENT__SUCCESS,
     PATCH_CONSENT__INVALID_STATUS_REASON,
     PATCH_CONSENT__MISSING_FREE_TEXT_FOR_OTHER,
+    PATCH_CONSENT__MISSING_GRANTOR_FOR_ACTIVE,
 )
 
 CONSENT_API_ENDPOINT = "/FHIR/R4/Consent"
@@ -48,6 +49,11 @@ CONSENT_API_ENDPOINT = "/FHIR/R4/Consent"
         (
             "d4e8a6f2-1c3b-4a7e-9d2f-8b5c7e9f1a3d",
             PATCH_CONSENT__MISSING_FREE_TEXT_FOR_OTHER,
+            400,
+        ),
+        (
+            "90957744-b971-496e-b7c3-ab971868ce14",
+            PATCH_CONSENT__MISSING_GRANTOR_FOR_ACTIVE,
             400,
         ),
         (

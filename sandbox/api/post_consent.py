@@ -8,6 +8,10 @@ from .constants import (
     POST_CONSENT__DUPLICATE_RELATIONSHIP_ERROR,
     POST_CONSENT__SUCCESS,
     POST_CONSENT__MISSING_FREE_TEXT_FOR_OTHER,
+    POST_CONSENT__MISSING_GRANTOR,
+    POST_CONSENT__INVALID_GRANTOR_VALUE,
+    POST_CONSENT__INVALID_GRANTOR_SYSTEM,
+    POST_CONSENT__MISSING_GRANTOR_REFERENCE,
 )
 from .utils import generate_response_from_example
 
@@ -58,6 +62,22 @@ def post_consent_response() -> Union[dict, tuple]:
             # Non-OTHER reason code WITH free text (should succeed)
             header = {"location": f"{CONSENT_APP_BASE_PATH}/c3d4e5f6-a7b8-4901-c2d3-e4f5a6b7c8d9"}
             response = generate_response_from_example(POST_CONSENT__SUCCESS, 201, headers=header)
+
+        elif patient_identifier == "9000000054":
+            # Missing grantor entirely when active
+            response = generate_response_from_example(POST_CONSENT__MISSING_GRANTOR, 400)
+
+        elif patient_identifier == "9000000055":
+            # Invalid/empty ODS code
+            response = generate_response_from_example(POST_CONSENT__INVALID_GRANTOR_VALUE, 422)
+
+        elif patient_identifier == "9000000056":
+            # Wrong system
+            response = generate_response_from_example(POST_CONSENT__INVALID_GRANTOR_SYSTEM, 422)
+
+        elif patient_identifier == "9000000057":
+            # Missing valueReference/identifier
+            response = generate_response_from_example(POST_CONSENT__MISSING_GRANTOR_REFERENCE, 400)
 
         else:
             # Out of scope errors

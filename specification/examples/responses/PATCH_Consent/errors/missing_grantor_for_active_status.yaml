@@ -1,0 +1,17 @@
+PatchConsentMissingGrantorForActiveStatusError:
+  summary: Missing Grantor on Status Activation
+  description: Returned when a PATCH request attempts to set status to 'active' without including a grantor extension in the same request
+  value:
+    issue:
+      - code: invalid
+        details:
+          coding:
+            - code: MISSING_GRANTOR
+              display: Grantor required for active status
+              system: https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode
+              version: "1"
+        diagnostics: Grantor extension must be included in the same PATCH request when changing status to active
+        expression:
+          - "extension.where(url = 'http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor')"
+        severity: error
+    resourceType: OperationOutcome
