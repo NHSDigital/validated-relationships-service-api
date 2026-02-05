@@ -6,7 +6,6 @@ from flask import Response
 
 from sandbox.api.constants import (
     POST_CONSENT__DUPLICATE_RELATIONSHIP_ERROR,
-    POST_CONSENT__PERFORMER_IDENTIFIER_ERROR,
     POST_CONSENT__SUCCESS,
     POST_CONSENT__MISSING_FREE_TEXT_FOR_OTHER,
 )
@@ -29,7 +28,6 @@ CONSENT_API_ENDPOINT = "/FHIR/R4/Consent"
             201,
             "90b9863e-e33c-4895-a333-fd0ea0e23205",
         ),
-        ("9000000000", POST_CONSENT__PERFORMER_IDENTIFIER_ERROR, 422, None),
         ("9000000049", POST_CONSENT__DUPLICATE_RELATIONSHIP_ERROR, 409, None),
         (
             "9000000050",

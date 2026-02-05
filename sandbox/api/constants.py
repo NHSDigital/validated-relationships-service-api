@@ -82,7 +82,6 @@ GET_CONSENT_BY_ID__INVALID_ID_ERROR = f"{GET_CONSENT__DIRECTORY}ID/errors/invali
 POST_CONSENT__DIRECTORY = "./api/examples/POST_Consent/"
 POST_CONSENT__SUCCESS = f"{POST_CONSENT__DIRECTORY}success.yaml"
 POST_CONSENT__DUPLICATE_RELATIONSHIP_ERROR = f"{POST_CONSENT__DIRECTORY}errors/duplicate_relationship_error.yaml"
-POST_CONSENT__PERFORMER_IDENTIFIER_ERROR = f"{POST_CONSENT__DIRECTORY}errors/invalid_performer_identifier_error.yaml"
 POST_CONSENT__MISSING_FREE_TEXT_FOR_OTHER = f"{POST_CONSENT__DIRECTORY}errors/missing_free_text_for_other.yaml"
 
 # PATCH Consent

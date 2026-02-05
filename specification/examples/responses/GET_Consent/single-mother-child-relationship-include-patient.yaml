@@ -59,10 +59,6 @@ ConsentSingleAdultChildRelationshipIncludePatientBundle:
               system: "https://fhir.nhs.uk/Id/nhs-number"
               value: "9000000009"
           dateTime: "2024-07-21T17:32:28Z"
-          performer:
-            - identifier:
-                system: "https://fhir.nhs.uk/Id/nhs-number"
-                value: "9000000019"
           policy:
             - authority: https://www.england.nhs.uk
               uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
@@ -91,5 +87,10 @@ ConsentSingleAdultChildRelationshipIncludePatientBundle:
                 - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
                   code: "parental-responsibility"
                   display: "Parental responsibility"
+          - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
+            valueReference:
+              identifier:
+                system: https://fhir.nhs.uk/Id/nhs-number
+                value: '9000000019'
         search:
           mode: match

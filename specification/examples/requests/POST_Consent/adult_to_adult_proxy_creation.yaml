@@ -19,11 +19,6 @@ ConsentAdultToAdultGuardianRequest:
         system: https://fhir.nhs.uk/Id/nhs-number
         value: "9000000012"
     dateTime: "2025-02-11T14:30:00Z"
-    performer:
-      - type: RelatedPerson
-        identifier:
-          system: https://fhir.nhs.uk/Id/nhs-number
-          value: "9000000017"
     provision:
       type: permit
       period:
@@ -57,5 +52,3 @@ ConsentAdultToAdultGuardianRequest:
           identifier:
             system: https://fhir.nhs.uk/Id/nhs-number
             value: '9000000017'
-
-

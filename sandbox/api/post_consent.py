@@ -6,7 +6,6 @@ from flask import request
 from .constants import (
     INTERNAL_SERVER_ERROR_EXAMPLE,
     POST_CONSENT__DUPLICATE_RELATIONSHIP_ERROR,
-    POST_CONSENT__PERFORMER_IDENTIFIER_ERROR,
     POST_CONSENT__SUCCESS,
     POST_CONSENT__MISSING_FREE_TEXT_FOR_OTHER,
 )
@@ -39,10 +38,6 @@ def post_consent_response() -> Union[dict, tuple]:
         # Duplicate relationship
         elif patient_identifier == "9000000049":
             response = generate_response_from_example(POST_CONSENT__DUPLICATE_RELATIONSHIP_ERROR, 409)
-
-        # Invalid performer NHS number
-        elif patient_identifier == "9000000000":
-            response = generate_response_from_example(POST_CONSENT__PERFORMER_IDENTIFIER_ERROR, 422)
 
         elif patient_identifier == "9000000050":
             # Missing free text for OTHER reason code (should fail)
