@@ -2320,7 +2320,8 @@ components:
             anyOf:
               - $ref: "#/components/schemas/StatusReasonExtension"
               - $ref: "#/components/schemas/GranteeExtension"
-          description: "Additioanl content"
+              - $ref: "#/components/schemas/GrantorExtension"
+          description: "Additional content. For active proxy roles, grantor is required."
 
     Policy:
       type: object
@@ -2392,6 +2393,20 @@ components:
             identifier:
               $ref: "#/components/schemas/Identifier"
               description: Details for proxy.
+
+    GrantorExtension:
+      type: object
+      properties:
+        url:
+          type: string
+          enum:
+            - "http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor"
+        valueReference:
+          type: object
+          properties:
+            identifier:
+              $ref: "#/components/schemas/Identifier"
+              description: "The ODS code of the GP practice that granted the proxy role"
 
     OperationOutcome:
       type: object
