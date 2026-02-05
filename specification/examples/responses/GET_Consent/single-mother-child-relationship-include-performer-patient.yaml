@@ -114,5 +114,10 @@ ConsentSingleAdultChildRelationshipIncludePerformerPatientBundle:
               identifier:
                 system: https://fhir.nhs.uk/Id/nhs-number
                 value: '9000000019'
+          - url: http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor
+            valueReference:
+              identifier:
+                system: https://fhir.nhs.uk/Id/ods-organization-code
+                value: "G8101234"
         search:
           mode: match

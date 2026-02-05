@@ -1,0 +1,17 @@
+PostConsentInvalidGrantorIdentifierSystemError:
+  summary: Invalid Grantor Identifier System
+  description: Returned when the grantor identifier system is incorrect or missing
+  value:
+    issue:
+      - code: invalid
+        details:
+          coding:
+            - code: INVALID_GRANTOR_SYSTEM
+              display: Invalid grantor identifier system
+              system: https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode
+              version: "1"
+        diagnostics: Grantor extension is required when creating a consent with status 'active'
+        expression:
+          - "extension.where(url = 'http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor').valueReference.identifier.system"
+        severity: error
+    resourceType: OperationOutcome

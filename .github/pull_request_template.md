@@ -36,9 +36,9 @@ https://nhsd-jira.digital.nhs.uk/browse/NPA-XXXX
 <!-- - Testing environment details (e.g. sandbox/local setup) -->
 <!-- - Steps to verify the changes -->
 
-- [ ] <!-- Add bullet points for testing instructions -->
-- [ ] <!-- Add bullet points for testing instructions -->
-- [ ] <!-- Add bullet points for testing instructions -->
+- <!-- Add bullet points for testing instructions -->
+- <!-- Add bullet points for testing instructions -->
+- <!-- Add bullet points for testing instructions -->
 
 ---
 

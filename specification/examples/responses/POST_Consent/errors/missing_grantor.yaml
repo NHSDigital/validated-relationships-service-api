@@ -1,0 +1,17 @@
+PostConsentMissingGrantorError:
+  summary: Missing Grantor Extension for Active Consent
+  description: Returned when creating a consent with status 'active' but no grantor extension is included
+  value:
+    issue:
+      - code: invalid
+        details:
+          coding:
+            - code: MISSING_GRANTOR
+              display: Grantor required for active status
+              system: https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode
+              version: "1"
+        diagnostics: Grantor extension is required when creating a consent with status 'active'
+        expression:
+          - "extension.where(url = 'http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor')"
+        severity: error
+    resourceType: OperationOutcome

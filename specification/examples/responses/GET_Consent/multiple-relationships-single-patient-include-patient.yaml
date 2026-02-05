@@ -89,6 +89,11 @@ ConsentMultipleRelationshipsSinglePatientIncludePatientBundle:
               identifier:
                 system: https://fhir.nhs.uk/Id/nhs-number
                 value: '9000000020'
+          - url: http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor
+            valueReference:
+              identifier:
+                system: https://fhir.nhs.uk/Id/ods-organization-code
+                value: "G8101234"
         search:
           mode: match
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/WWCC67T1
@@ -141,6 +146,11 @@ ConsentMultipleRelationshipsSinglePatientIncludePatientBundle:
               identifier:
                 system: https://fhir.nhs.uk/Id/nhs-number
                 value: '9000000021'
+          - url: http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor
+            valueReference:
+              identifier:
+                system: https://fhir.nhs.uk/Id/ods-organization-code
+                value: "G8101234"
         search:
           mode: match
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/AATD11A1
@@ -193,5 +203,10 @@ ConsentMultipleRelationshipsSinglePatientIncludePatientBundle:
               identifier:
                 system: https://fhir.nhs.uk/Id/nhs-number
                 value: '9000000022'
+          - url: http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor
+            valueReference:
+              identifier:
+                system: https://fhir.nhs.uk/Id/ods-organization-code
+                value: "G8101234"
         search:
           mode: match
