@@ -2305,6 +2305,7 @@ components:
           items:
             anyOf:
               - $ref: "#/components/schemas/StatusReasonExtension"
+              - $ref: "#/components/schemas/RegulatoryBasisExtension"
               - $ref: "#/components/schemas/GranteeExtension"
           description: "Additioanl content"
 
@@ -2365,6 +2366,17 @@ components:
         valueCodeableConcept:
           $ref: "#/components/schemas/CodeableConcept"
           description: Classification of the status.
+
+    RegulatoryBasisExtension:
+      type: object
+      properties:
+        url:
+          type: string
+          enum:
+          - "http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis"
+        valueCodeableConcept:
+          $ref: "#/components/schemas/CodeableConcept"
+          description: Classification of the regulatory basis for the consent.
 
     GranteeExtension:
       type: object
