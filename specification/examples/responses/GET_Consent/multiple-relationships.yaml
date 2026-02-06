@@ -40,12 +40,6 @@ ConsentMultipleRelationshipsBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: '9000000022'
-              role:
-                coding:
-                - code: "parental-responsibility"
-                  display: "Parental responsibility"
-                  system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
-
             period:
               end: '2026-02-11'
               start: '2025-02-11'
@@ -99,11 +93,6 @@ ConsentMultipleRelationshipsBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: '9000000022'
-              role:
-                coding:
-                - code: "parental-responsibility"
-                  display: "Parental responsibility"
-                  system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
             period:
               end: '2026-02-11'
               start: '2025-02-11'
@@ -157,11 +146,6 @@ ConsentMultipleRelationshipsBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: '9000000022'
-              role:
-                coding:
-                - code: "parental-responsibility"
-                  display: "Parental responsibility"
-                  system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
             period:
               end: '2026-02-11'
               start: '2025-02-11'

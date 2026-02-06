@@ -43,11 +43,6 @@ ConsentSingleAdultChildRelationshipUnknownLegalBasisBundle:
                     system: https://fhir.nhs.uk/Id/nhs-number
                     value: '9000000111'
                   type: RelatedPerson
-                role:
-                  coding:
-                  - code: "UNK"
-                    display: "Unknown"
-                    system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
             period:
               start: '2025-02-11'
               end: '2026-02-11'

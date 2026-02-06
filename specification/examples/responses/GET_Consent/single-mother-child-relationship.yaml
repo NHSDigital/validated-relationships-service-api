@@ -36,13 +36,8 @@ ConsentSingleAdultChildRelationshipBundle:
           provision:
             type: permit
             actor:
-            - role:
-                coding:
-                - code: parental-responsibility
-                  display: Parental responsibility
-                  system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
-              reference:
-                  identifier:
+            - reference:
+                identifier:
                     system: https://fhir.nhs.uk/Id/nhs-number
                     value: '9000000019'
             period:
