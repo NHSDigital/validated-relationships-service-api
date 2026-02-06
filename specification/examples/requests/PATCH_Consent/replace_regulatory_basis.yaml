@@ -1,0 +1,13 @@
+ReplaceRegulatoryBasisRequest:
+  summary: Replace regulatory basis
+  description: payload used to add a new actor (regulatory basis) to the consent provision
+  value:
+    - op: add
+      path: /extension/-
+      value:
+      - url: "http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis"
+        valueCodeableConcept:
+          coding:
+            - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+              code: court-appointed-personal-welfare-deputy
+              display: Court appointed personal welfare deputy
