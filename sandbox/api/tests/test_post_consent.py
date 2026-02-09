@@ -8,6 +8,10 @@ from sandbox.api.constants import (
     POST_CONSENT__DUPLICATE_RELATIONSHIP_ERROR,
     POST_CONSENT__SUCCESS,
     POST_CONSENT__MISSING_FREE_TEXT_FOR_OTHER,
+    POST_CONSENT__MISSING_GRANTOR,
+    POST_CONSENT__INVALID_GRANTOR_VALUE,
+    POST_CONSENT__INVALID_GRANTOR_SYSTEM,
+    POST_CONSENT__MISSING_GRANTOR_REFERENCE,
 )
 
 CONSENT_API_ENDPOINT = "/FHIR/R4/Consent"
@@ -32,6 +36,30 @@ CONSENT_API_ENDPOINT = "/FHIR/R4/Consent"
         (
             "9000000050",
             POST_CONSENT__MISSING_FREE_TEXT_FOR_OTHER,
+            400,
+            None,
+        ),
+        (
+            "9000000054",
+            POST_CONSENT__MISSING_GRANTOR,
+            400,
+            None,
+        ),
+        (
+            "9000000055",
+            POST_CONSENT__INVALID_GRANTOR_VALUE,
+            422,
+            None,
+        ),
+        (
+            "9000000056",
+            POST_CONSENT__INVALID_GRANTOR_SYSTEM,
+            422,
+            None,
+        ),
+        (
+            "9000000057",
+            POST_CONSENT__MISSING_GRANTOR_REFERENCE,
             400,
             None,
         ),

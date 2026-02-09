@@ -1,0 +1,17 @@
+PostConsentInvalidGrantorIdentifierValueError:
+  summary: Invalid Grantor ODS Code
+  description: Returned when the grantor ODS code value is missing, empty, or invalid
+  value:
+    issue:
+      - code: invalid
+        details:
+          coding:
+            - code: INVALID_GRANTOR_VALUE
+              display: Invalid grantor identifier value
+              system: https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode
+              version: "1"
+        diagnostics: Grantor extension is required when creating a consent with status 'active'
+        expression:
+          - "extension.where(url = 'http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor').valueReference.identifier.value"
+        severity: error
+    resourceType: OperationOutcome

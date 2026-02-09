@@ -1,0 +1,17 @@
+PostConsentMissingGrantorReferenceError:
+  summary: Missing Grantor Reference Structure
+  description: Returned when the grantor extension is malformed (missing valueReference or identifier)
+  value:
+    issue:
+      - code: invalid
+        details:
+          coding:
+            - code: MISSING_GRANTOR_REFERENCE
+              display: Missing grantor reference
+              system: https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode
+              version: "1"
+        diagnostics: Grantor extension must contain a valueReference with identifier
+        expression:
+          - "extension.where(url = 'http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor').valueReference"
+        severity: error
+    resourceType: OperationOutcome
