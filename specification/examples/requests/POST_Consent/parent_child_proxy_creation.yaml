@@ -25,16 +25,11 @@ ConsentParentChildProxyCreationRequest:
         start: "2025-02-11T14:30:00Z"
         end: "2029-02-11T14:30:00Z"
       actor:
-        - role:
-            coding:
-              - system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
-                code: parental-responsibility
-                display: Parental responsibility
-          reference:
-            type: RelatedPerson
-            identifier:
-              system: https://fhir.nhs.uk/Id/nhs-number
-              value: "9000000009"
+          - reference:
+              type: RelatedPerson
+              identifier:
+                system: https://fhir.nhs.uk/Id/nhs-number
+                value: "9000000009"
     extension:
       - url: https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason
         valueCodeableConcept:

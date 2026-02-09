@@ -89,15 +89,10 @@ ConsentMultipleRelationshipsStatusInactiveBundle:
           provision:
             type: permit
             actor:
-            - role:
-                coding:
-                - code: parental-responsibility
-                  display: Parental responsibility
-                  system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
-              reference:
-                identifier:
-                  system: https://fhir.nhs.uk/Id/nhs-number
-                  value: '9000000017'
+              - reference:
+                  identifier:
+                    system: https://fhir.nhs.uk/Id/nhs-number
+                    value: '9000000017'
             period:
               end: '2026-02-11'
               start: '2025-02-11'

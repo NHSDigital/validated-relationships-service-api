@@ -24,16 +24,11 @@ ConsentAdultToAdultGuardianRequest:
       period:
         start: "2026-02-11T14:30:00Z"
       actor:
-        - role:
-          coding:
-            - system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
-              code: court-appointed-personal-welfare-deputy
-              display: Court appointed personal welfare deputy
-          reference:
-            type: RelatedPerson
-            identifier:
-              system: https://fhir.nhs.uk/Id/nhs-number
-              value: "9000000017"
+          - reference:
+              type: RelatedPerson
+              identifier:
+                system: https://fhir.nhs.uk/Id/nhs-number
+                value: "9000000017"
     extension:
       - url: https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason
         valueCodeableConcept:
