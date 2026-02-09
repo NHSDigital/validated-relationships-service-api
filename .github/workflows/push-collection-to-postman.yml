@@ -31,7 +31,7 @@ jobs:
             integration: ${{ steps.filter.outputs.integration }}
         steps:
             -   name: Checkout
-                uses: actions/checkout@v5
+                uses: actions/checkout@v6
                 with:
                     fetch-depth: 0
             -   uses: dorny/paths-filter@v3
@@ -54,7 +54,7 @@ jobs:
             )
         steps:
             -   name: Checkout
-                uses: actions/checkout@v5
+                uses: actions/checkout@v6
                 with:
                     fetch-depth: 0
             - name: Push Sandbox Postman collection
@@ -77,7 +77,7 @@ jobs:
             )
         steps:
             -   name: Checkout
-                uses: actions/checkout@v5
+                uses: actions/checkout@v6
                 with:
                     fetch-depth: 0
             -   name: Push Integration Postman collection
