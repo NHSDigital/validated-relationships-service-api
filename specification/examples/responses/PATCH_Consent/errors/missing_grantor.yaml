@@ -1,5 +1,5 @@
-PatchConsentMissingGrantorForActiveStatusError:
-  summary: Missing Grantor on Status Activation
+PatchConsentMissingGrantorError:
+  summary: Missing Grantor Extension for Active Consent
   description: Returned when a PATCH request attempts to set status to 'active' without including a grantor extension in the same request
   value:
     issue:
@@ -10,7 +10,7 @@ PatchConsentMissingGrantorForActiveStatusError:
               display: Grantor required for active status
               system: https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode
               version: "1"
-        diagnostics: Grantor extension must be included in the same PATCH request when changing status to active
+        diagnostics: Grantor extension is required when creating/updating an active proxy role
         expression:
           - "extension.where(url = 'http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor')"
         severity: error

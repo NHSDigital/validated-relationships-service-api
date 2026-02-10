@@ -1,4 +1,4 @@
-PostConsentMissingGrantorReferenceError:
+PatchConsentMissingGrantorReferenceError:
   summary: Missing Grantor Reference Structure
   description: Returned when the grantor extension is missing reference
   value:

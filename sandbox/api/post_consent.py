@@ -11,7 +11,7 @@ from .constants import (
     POST_CONSENT__MISSING_GRANTOR,
     POST_CONSENT__INVALID_GRANTOR_VALUE,
     POST_CONSENT__INVALID_GRANTOR_SYSTEM,
-    POST_CONSENT__MISSING_GRANTOR_REFERENCE,
+    POST_CONSENT__MISSING_GRANTOR_REFERENCE, POST_CONSENT__MISSING_GRANTOR_IDENTIFIER,
 )
 from .utils import generate_response_from_example
 
@@ -68,16 +68,20 @@ def post_consent_response() -> Union[dict, tuple]:
             response = generate_response_from_example(POST_CONSENT__MISSING_GRANTOR, 400)
 
         elif patient_identifier == "9000000055":
-            # Invalid/empty ODS code
+            # Invalid ODS code
             response = generate_response_from_example(POST_CONSENT__INVALID_GRANTOR_VALUE, 422)
 
         elif patient_identifier == "9000000056":
-            # Wrong system
+            # Invalid identifier system
             response = generate_response_from_example(POST_CONSENT__INVALID_GRANTOR_SYSTEM, 422)
 
         elif patient_identifier == "9000000057":
-            # Missing valueReference/identifier
+            # Missing valueReference
             response = generate_response_from_example(POST_CONSENT__MISSING_GRANTOR_REFERENCE, 400)
+
+        elif patient_identifier == "9000000058":
+            # Missing valueIdentifier
+            response = generate_response_from_example(POST_CONSENT__MISSING_GRANTOR_IDENTIFIER, 400)
 
         else:
             # Out of scope errors

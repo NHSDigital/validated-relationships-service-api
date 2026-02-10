@@ -13,7 +13,9 @@ from sandbox.api.constants import (
     PATCH_CONSENT__SUCCESS,
     PATCH_CONSENT__INVALID_STATUS_REASON,
     PATCH_CONSENT__MISSING_FREE_TEXT_FOR_OTHER,
-    PATCH_CONSENT__MISSING_GRANTOR_FOR_ACTIVE,
+    PATCH_CONSENT__MISSING_GRANTOR, PATCH_CONSENT__INVALID_GRANTOR_VALUE,
+    PATCH_CONSENT__INVALID_GRANTOR_SYSTEM, PATCH_CONSENT__MISSING_GRANTOR_REFERENCE,
+    PATCH_CONSENT__MISSING_GRANTOR_IDENTIFIER,
 )
 
 CONSENT_API_ENDPOINT = "/FHIR/R4/Consent"
@@ -53,7 +55,27 @@ CONSENT_API_ENDPOINT = "/FHIR/R4/Consent"
         ),
         (
             "90957744-b971-496e-b7c3-ab971868ce14",
-            PATCH_CONSENT__MISSING_GRANTOR_FOR_ACTIVE,
+            PATCH_CONSENT__MISSING_GRANTOR,
+            400,
+        ),
+        (
+            "b68cbfc8-ccc2-48ad-b97b-b7410d773dc1",
+            PATCH_CONSENT__INVALID_GRANTOR_VALUE,
+            422,
+        ),
+        (
+            "fd189522-68e5-42dc-b44c-989be0eaa2bf",
+            PATCH_CONSENT__INVALID_GRANTOR_SYSTEM,
+            422,
+        ),
+        (
+            "7e764160-38b6-41eb-9012-a3e476cbc517",
+            PATCH_CONSENT__MISSING_GRANTOR_REFERENCE,
+            400,
+        ),
+        (
+            "faefd8c5-5e24-4415-8252-96e9241c7e78",
+            PATCH_CONSENT__MISSING_GRANTOR_IDENTIFIER,
             400,
         ),
         (

@@ -11,7 +11,9 @@ from .constants import (
     PATCH_CONSENT__SUCCESS,
     PATCH_CONSENT__INVALID_STATUS_REASON,
     PATCH_CONSENT__MISSING_FREE_TEXT_FOR_OTHER,
-    PATCH_CONSENT__MISSING_GRANTOR_FOR_ACTIVE,
+    PATCH_CONSENT__MISSING_GRANTOR, PATCH_CONSENT__INVALID_GRANTOR_VALUE,
+    PATCH_CONSENT__INVALID_GRANTOR_SYSTEM, PATCH_CONSENT__MISSING_GRANTOR_REFERENCE,
+    PATCH_CONSENT__MISSING_GRANTOR_IDENTIFIER,
 )
 from .utils import generate_response_from_example
 
@@ -84,8 +86,24 @@ def patch_consent_response(id: str) -> Union[dict, tuple]:
             return generate_response_from_example(PATCH_CONSENT__SUCCESS, 200)
 
         elif id == "90957744-b971-496e-b7c3-ab971868ce14":
-            # PATCH to activate proxy role without providing grantor extension
-            return generate_response_from_example(PATCH_CONSENT__MISSING_GRANTOR_FOR_ACTIVE, 400)
+            # Missing grantor extension
+            return generate_response_from_example(PATCH_CONSENT__MISSING_GRANTOR, 400)
+
+        elif id == "b68cbfc8-ccc2-48ad-b97b-b7410d773dc1":
+            # Invalid grantor identifier value
+            return generate_response_from_example(PATCH_CONSENT__INVALID_GRANTOR_VALUE, 422)
+
+        elif id == "fd189522-68e5-42dc-b44c-989be0eaa2bf":
+            # Invalid grantor identifier system
+            return generate_response_from_example(PATCH_CONSENT__INVALID_GRANTOR_SYSTEM, 422)
+
+        elif id == "7e764160-38b6-41eb-9012-a3e476cbc517":
+            # Missing grantor reference
+            return generate_response_from_example(PATCH_CONSENT__MISSING_GRANTOR_REFERENCE, 400)
+
+        elif id == "faefd8c5-5e24-4415-8252-96e9241c7e78":
+            # Missing grantor identifier
+            return generate_response_from_example(PATCH_CONSENT__MISSING_GRANTOR_IDENTIFIER, 400)
 
         else:
             # Resource not found
