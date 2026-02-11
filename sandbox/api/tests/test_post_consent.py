@@ -99,16 +99,27 @@ def test_post_consent_when_valid_returns_expected_response(
         content_type="application/json",
     )
     # Act
-    json = {"extension": [{"url": "https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee", "valueReference": {"identifier": {"value": nhs_num}}}]}
+    json = {
+        "extension": [
+            {
+                "url": "https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee",
+                "valueReference": {"identifier": {"value": nhs_num}},
+            }
+        ]
+    }
     response = client.post(CONSENT_API_ENDPOINT, json=json)
     # Assert
     if id is not None:
         mock_generate_response_from_example.assert_called_once_with(
             response_file_name,
             status_code,
-            headers={"location": f"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/{id}"},
+            headers={
+                "location": f"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/{id}"
+            },
         )
     else:
-        mock_generate_response_from_example.assert_called_once_with(response_file_name, status_code)
+        mock_generate_response_from_example.assert_called_once_with(
+            response_file_name, status_code
+        )
     assert response.status_code == status_code
     assert response.json == loads(mocked_response.get_data(as_text=True))
