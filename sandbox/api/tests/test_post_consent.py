@@ -113,13 +113,9 @@ def test_post_consent_when_valid_returns_expected_response(
         mock_generate_response_from_example.assert_called_once_with(
             response_file_name,
             status_code,
-            headers={
-                "location": f"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/{id}"
-            },
+            headers={"location": f"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/{id}"},
         )
     else:
-        mock_generate_response_from_example.assert_called_once_with(
-            response_file_name, status_code
-        )
+        mock_generate_response_from_example.assert_called_once_with(response_file_name, status_code)
     assert response.status_code == status_code
     assert response.json == loads(mocked_response.get_data(as_text=True))
