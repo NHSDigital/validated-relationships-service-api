@@ -99,7 +99,7 @@ def test_post_consent_when_valid_returns_expected_response(
         content_type="application/json",
     )
     # Act
-    json = {"performer": [{"identifier": {"value": nhs_num}}]}
+    json = {"extension": [{"url": "https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee", "valueReference": {"identifier": {"value": nhs_num}}}]}
     response = client.post(CONSENT_API_ENDPOINT, json=json)
     # Assert
     if id is not None:
