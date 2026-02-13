@@ -1,4 +1,4 @@
-PostConsentInvalidGrantorIdentifierSystemError:
+PatchConsentInvalidGrantorIdentifierSystemError:
   summary: Invalid Grantor Identifier System
   description: Returned when the grantor identifier system is incorrect
   value:

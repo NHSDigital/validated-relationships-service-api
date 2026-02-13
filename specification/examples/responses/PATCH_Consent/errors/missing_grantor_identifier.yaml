@@ -1,0 +1,17 @@
+PatchConsentMissingGrantorIdentifierError:
+  summary: Missing Grantor Identifier Structure
+  description: Returned when the grantor extension is missing identifier
+  value:
+    issue:
+      - code: invalid
+        details:
+          coding:
+            - code: MISSING_GRANTOR_IDENTIFIER
+              display: Missing grantor identifier
+              system: https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode
+              version: "1"
+        diagnostics: Grantor extension must contain a valueIdentifier
+        expression:
+          - "extension.where(url = 'http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor').valueReference.identifier"
+        severity: error
+    resourceType: OperationOutcome

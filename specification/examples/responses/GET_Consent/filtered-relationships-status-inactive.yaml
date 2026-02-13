@@ -61,6 +61,11 @@ ConsentMultipleRelationshipsStatusInactiveBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: '9000000017'
+            - url: http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor
+              valueReference:
+                identifier:
+                  system: https://fhir.nhs.uk/Id/ods-organization-code
+                  value: "G8101234"
         search:
           mode: match
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/ABCD12B3
@@ -115,5 +120,10 @@ ConsentMultipleRelationshipsStatusInactiveBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: '9000000017'
+            - url: http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor
+              valueReference:
+                identifier:
+                  system: https://fhir.nhs.uk/Id/ods-organization-code
+                  value: "G8101234"
         search:
           mode: match
