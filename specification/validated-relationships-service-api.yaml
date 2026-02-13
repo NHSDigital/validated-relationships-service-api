@@ -1046,8 +1046,8 @@ paths:
                   - op: add
                     path: /provision/period/end
                     value: "2026-12-31T23:59:59Z"
-              replaceLegalBasis:
-                $ref: "./examples/requests/PATCH_Consent/replace_legal_basis.yaml#/ReplaceLegalBasisRequest"
+              regulatoryBasis:
+                $ref: "./examples/requests/PATCH_Consent/replace_regulatory_basis.yaml#/ReplaceRegulatoryBasisRequest"
       responses:
         "200":
           description: Consent resource successfully updated
@@ -2346,6 +2346,7 @@ components:
           items:
             anyOf:
               - $ref: "#/components/schemas/StatusReasonExtension"
+              - $ref: "#/components/schemas/RegulatoryBasisExtension"
               - $ref: "#/components/schemas/GranteeExtension"
               - $ref: "#/components/schemas/GrantorExtension"
           description: "Additional content. For active proxy roles, grantor is required."
@@ -2395,7 +2396,8 @@ components:
                 description: "Individuals or organizations that agreed to the consent"
               role:
                 $ref: "#/components/schemas/CodeableConcept"
-                description: "Classification of the role of consent, bound to http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+                description: "Deprecated. Instead use the Regulatory Basis Extension."
+                deprecated: true
 
     StatusReasonExtension:
       type: object
@@ -2407,6 +2409,17 @@ components:
         valueCodeableConcept:
           $ref: "#/components/schemas/CodeableConcept"
           description: Classification of the status.
+
+    RegulatoryBasisExtension:
+      type: object
+      properties:
+        url:
+          type: string
+          enum:
+          - "http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis"
+        valueCodeableConcept:
+          $ref: "#/components/schemas/CodeableConcept"
+          description: Classification of the regulatory basis for the consent.
 
     GranteeExtension:
       type: object

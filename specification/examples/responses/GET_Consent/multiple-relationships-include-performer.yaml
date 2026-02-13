@@ -79,8 +79,8 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
             valueCodeableConcept:
               coding:
                 - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
-                  code: "parental-responsibility"
-                  display: "Parental responsibility"
+                  code: parental-responsibility
+                  display: Parental responsibility
           - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
             valueReference:
               identifier:
@@ -154,12 +154,12 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: ROLE_CREATED
                   display: Role created
-          - url: "http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis"
+          - url: http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis
             valueCodeableConcept:
               coding:
-                - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
-                  code: "best-interest"
-                  display: "Best Interest"
+                - system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
+                  code: best-interest
+                  display: Best interest
           - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
             valueReference:
               identifier:
@@ -233,12 +233,12 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: ROLE_DEACTIVATED_END_DATE_REACHED
                   display: End date reached
-          - url: "http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis"
+          - url: http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis
             valueCodeableConcept:
               coding:
-                - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
-                  code: "best-interest"
-                  display: "Best Interest"
+                - system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
+                  code: 'best-interest'
+                  display: 'Best interest'
           - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
             valueReference:
               identifier:
@@ -251,4 +251,3 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
                 value: "G8101234"
         search:
           mode: match
-
