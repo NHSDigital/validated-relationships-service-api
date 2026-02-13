@@ -30,7 +30,8 @@ def post_consent_response() -> Union[dict, tuple]:
         logger.debug("Received request to POST consent")
         # Validate body - beyond the scope of sandbox - assume body is valid for scenario
         json = request.get_json()
-        patient_identifier = json["performer"][0]["identifier"]["value"]
+        grantee_ext = next(ext for ext in json["extension"] if "grantee" in ext["url"])
+        patient_identifier = grantee_ext["valueReference"]["identifier"]["value"]
         response = None
 
         # Successful parent-child proxy creation
