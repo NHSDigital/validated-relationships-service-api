@@ -15,4 +15,3 @@ PostConsentInvalidStatusError:
           - "status"
         severity: error
     resourceType: OperationOutcome
-    

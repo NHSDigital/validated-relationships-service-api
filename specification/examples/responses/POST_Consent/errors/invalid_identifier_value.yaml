@@ -15,4 +15,3 @@ PostConsentInvalidIdentifierValueError:
           - "extension.grantee.valueReference.identifier.value"
         severity: error
     resourceType: OperationOutcome
-    

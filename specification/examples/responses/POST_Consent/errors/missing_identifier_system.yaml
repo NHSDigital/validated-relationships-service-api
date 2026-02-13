@@ -15,4 +15,3 @@ PostConsentMissingIdentifierSystemError:
           - "patient.identifier.system"
         severity: error
     resourceType: OperationOutcome
-    

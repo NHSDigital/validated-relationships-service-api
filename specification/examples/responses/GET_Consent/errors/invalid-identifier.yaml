@@ -13,3 +13,4 @@ ConsentInvalidIdentifierError:
         diagnostics: 'Invalid request with error - performer:identifier or patient:identifier parameter is invalid.'
         severity: error
     resourceType: "OperationOutcome"
+
