@@ -15,4 +15,3 @@ PostConsentMissingScopeError:
           - "scope"
         severity: error
     resourceType: OperationOutcome
-    

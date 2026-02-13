@@ -28,5 +28,4 @@ PostConsentInvalidFHIRRequestError:
         diagnostics: 'The supplied input is not a valid FHIR Consent.'
         severity: error
     resourceType: "OperationOutcome"
-    
 

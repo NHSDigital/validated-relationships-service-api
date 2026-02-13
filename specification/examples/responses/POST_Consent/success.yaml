@@ -6,4 +6,3 @@ PostConsentSuccess:
     issue:
       - severity: information
         code: informational
-
