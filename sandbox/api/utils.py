@@ -9,7 +9,7 @@ from yaml import load as yaml_load
 from .constants import (
     BAD_REQUEST_INCLUDE_PARAM_INVALID,
     CONSENT_PATIENT,
-    CONSENT_PERFORMER,
+    CONSENT_GRANTEE,
     GET_CONSENT__STATUS_PARAM_INVALID,
     INCLUDE_FLAG,
     INTERNAL_SERVER_ERROR_EXAMPLE,
@@ -231,7 +231,7 @@ def check_for_consent_include_params(
     include_none_response_yaml: str,
     include_both_response_yaml: str = None,
     include_patient_response_yaml: str = None,
-    include_performer_response_yaml: str = None,
+    include_grantee_response_yaml: str = None,
 ) -> Response:
     """Checks the GET consent request include params and provides the related response
 
@@ -239,20 +239,20 @@ def check_for_consent_include_params(
         _include (List[str]): The include parameters supplied to the request
         include_none_response_yaml (str): Bundle to return when include params are empty
         include_both_response_yaml (str): (optional) Bundle to return when include param
-        is Consent:performer,Consent:patient
+        is Consent:grantee,Consent:patient
         include_patient_response_yaml (str): (optional) Bundle to return when include param is Consent:patient
-        include_performer_response_yaml (str): (optional) Bundle to return when include param is Consent:performer
+        include_grantee_response_yaml (str): (optional) Bundle to return when include param is Consent:grantee
 
     Returns:
         response: Resultant Response object based on input.
     """
     if _include == [] or _include is None:
         return generate_response_from_example(include_none_response_yaml, 200)
-    elif _include == [CONSENT_PERFORMER]:
-        if include_performer_response_yaml:
-            return generate_response_from_example(include_performer_response_yaml, 200)
+    elif _include == [CONSENT_GRANTEE]:
+        if include_grantee_response_yaml:
+            return generate_response_from_example(include_grantee_response_yaml, 200)
         else:
-            logger.error("No consent performer example provided")
+            logger.error("No consent grantee example provided")
             return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)
     elif _include == [CONSENT_PATIENT]:
         if include_patient_response_yaml:
@@ -260,7 +260,7 @@ def check_for_consent_include_params(
         else:
             logger.error("No consent:patient example provided")
             return generate_response_from_example(INTERNAL_SERVER_ERROR_EXAMPLE, 500)
-    elif len(_include) == 2 and CONSENT_PATIENT in _include and CONSENT_PERFORMER in _include:
+    elif len(_include) == 2 and CONSENT_PATIENT in _include and CONSENT_GRANTEE in _include:
         return generate_response_from_example(include_both_response_yaml, 200)
     else:
         return generate_response_from_example(BAD_REQUEST_INCLUDE_PARAM_INVALID, 422)
@@ -288,7 +288,7 @@ def check_for_consent_filtering(
     if status == [] or status is None:
         return generate_response_from_example(INVALIDATED_RESOURCE, 404)
     if status == ["active"]:
-        if len(_include) == 2 and CONSENT_PERFORMER in _include and CONSENT_PERFORMER in _include:
+        if len(_include) == 2 and CONSENT_GRANTEE in _include and CONSENT_GRANTEE in _include:
             return generate_response_from_example(status_active_with_details_response_yaml, 200)
         else:
             return generate_response_from_example(INVALIDATED_RESOURCE, 404)

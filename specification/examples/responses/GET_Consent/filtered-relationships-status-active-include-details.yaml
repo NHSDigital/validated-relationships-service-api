@@ -1,8 +1,8 @@
 ConsentMultipleRelationshipsStatusActiveIncludeDetailsBundle:
-  summary: Multiple active relationships including performer and patient details
+  summary: Multiple active relationships including grantee and patient details
   description:
     A Bundle containing multiple active proxy relationships with varying legal bases including the details
-    of the performer and patient.
+    of the grantee and patient.
   value:
     resourceType: Bundle
     timestamp: "2026-01-16T14:00:00+00:00"
@@ -10,8 +10,37 @@ ConsentMultipleRelationshipsStatusActiveIncludeDetailsBundle:
     type: searchset
     link:
       - relation: self
-        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000017&status=active&_include=Consent:performer&_include=Consent:patient
+        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000017&status=active&_include=Consent:grantee&_include=Consent:patient
     entry:
+      - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/PR974746"
+        resource:
+          resourceType: Patient
+          id: PR974746
+          meta:
+            security:
+              - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSIdentityProofingLevel"
+                code: "P9"
+                display: "High level verification (P9)"
+          identifier:
+            - system: "https://fhir.nhs.uk/Id/nhs-number"
+              value: "9000000017"
+          name:
+            - use: usual
+              period:
+                start: "2020-01-01"
+                end: "2029-12-31"
+              given:
+                - Lisa
+              family: Thompson
+              prefix:
+                - Mrs
+          birthDate: "1990-07-18"
+          generalPractitioner:
+            - identifier:
+                value: ODS12345
+                system: "https://fhir.nhs.uk/Id/ods-organization-code"
+        search:
+          mode: include
       - fullUrl: "https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742"
         resource:
           resourceType: RelatedPerson
@@ -196,7 +225,12 @@ ConsentMultipleRelationshipsStatusActiveIncludeDetailsBundle:
           provision:
             type: permit
             actor:
-            - reference:
+            - role:
+                coding:
+                  - code: parental-responsibility
+                    display: "Parental responsibility"
+                    system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+              reference:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: "9000000017"

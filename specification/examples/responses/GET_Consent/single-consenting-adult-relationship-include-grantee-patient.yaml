@@ -1,7 +1,7 @@
-ConsentSingleConsentingAdultRelationshipIncludePerformerPatientBundle:
-  summary: Single consenting adult proxy relationship with performer and patient details
+ConsentSingleConsentingAdultRelationshipIncludeGranteePatientBundle:
+  summary: Single consenting adult proxy relationship with grantee and patient details
   description:
-    A Bundle containing a single proxy relationship between consenting adults including the performer and
+    A Bundle containing a single proxy relationship between consenting adults including the grantee and
     patient details.
   value:
     resourceType: Bundle
@@ -10,8 +10,37 @@ ConsentSingleConsentingAdultRelationshipIncludePerformerPatientBundle:
     type: searchset
     link:
       - relation: self
-        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000010&_include=Consent:performer&_include=Consent:patient
+        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000010&_include=Consent:grantee&_include=Consent:patient
     entry:
+      - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/PR974720
+        resource:
+          resourceType: Patient
+          id: PR974720
+          meta:
+            security:
+              - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSIdentityProofingLevel"
+                code: "P9"
+                display: "High level verification (P9)"
+          identifier:
+            - system: "https://fhir.nhs.uk/Id/nhs-number"
+              value: "9000000010"
+          name:
+            - use: usual
+              period:
+                start: "2020-01-01"
+                end: "2029-12-31"
+              given:
+                - John
+              family: Smith
+              prefix:
+                - Mr
+          birthDate: "1980-01-15"
+          generalPractitioner:
+            - identifier:
+                value: ODS12345
+                system: "https://fhir.nhs.uk/Id/ods-organization-code"
+        search:
+          mode: include
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/RP974720
         resource:
           resourceType: RelatedPerson
@@ -90,11 +119,6 @@ ConsentSingleConsentingAdultRelationshipIncludePerformerPatientBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: '9000000010'
-              role:
-                coding:
-                - code: parental-responsibility
-                  display: Parental responsibility
-                  system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
             period:
               end: "2029-02-11"
               start: "2025-02-11"
@@ -105,6 +129,12 @@ ConsentSingleConsentingAdultRelationshipIncludePerformerPatientBundle:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: ROLE_CREATED
                   display: Role created
+          - url: "http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis"
+            valueCodeableConcept:
+              coding:
+                - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+                  code: "parental-responsibility"
+                  display: "Parental responsibility"
           - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
             valueReference:
               identifier:

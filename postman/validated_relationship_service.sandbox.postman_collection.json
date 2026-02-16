@@ -2053,7 +2053,7 @@
 									"    \"link\": [",
 									"        {",
 									"            \"relation\": \"self\",",
-									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000017&status=active&_include=Consent:performer&_include=Consent:patient\"",
+									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000017&status=active&_include=Consent:grantee&_include=Consent:patient\"",
 									"        }",
 									"    ],",
 									"    \"entry\": [",
@@ -2509,7 +2509,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000017&status=active&_include=Consent:performer&_include=Consent:patient",
+							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000017&status=active&_include=Consent:grantee&_include=Consent:patient",
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -2527,7 +2527,7 @@
 								},
 								{
 									"key": "_include",
-									"value": "Consent:performer"
+									"value": "Consent:grantee"
 								},
 								{
 									"key": "_include",
@@ -4213,7 +4213,7 @@
 									"    \"link\": [",
 									"        {",
 									"            \"relation\": \"self\",",
-									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000022&_include=Consent:performer\"",
+									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000022&_include=Consent:grantee\"",
 									"        }",
 									"    ],",
 									"    \"entry\": [",
@@ -4662,7 +4662,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000022&_include=Consent:performer",
+							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000022&_include=Consent:grantee",
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -4676,7 +4676,7 @@
 								},
 								{
 									"key": "_include",
-									"value": "Consent:performer"
+									"value": "Consent:grantee"
 								}
 							]
 						}
@@ -4698,7 +4698,7 @@
 									"    \"link\": [",
 									"        {",
 									"            \"relation\": \"self\",",
-									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000022&_include=Consent:performer&_include=Consent:patient\"",
+									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000022&_include=Consent:grantee&_include=Consent:patient\"",
 									"        }",
 									"    ],",
 									"    \"entry\": [",
@@ -5301,7 +5301,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000022&_include=Consent:performer&_include=Consent:patient",
+							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000022&_include=Consent:grantee&_include=Consent:patient",
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -5315,7 +5315,7 @@
 								},
 								{
 									"key": "_include",
-									"value": "Consent:performer"
+									"value": "Consent:grantee"
 								},
 								{
 									"key": "_include",
@@ -5714,7 +5714,7 @@
 									"    \"link\": [",
 									"        {",
 									"            \"relation\": \"self\",",
-									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?patient:identifier=9000000100&_include=Consent:performer&_include=Consent:patient\"",
+									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?patient:identifier=9000000100&_include=Consent:grantee&_include=Consent:patient\"",
 									"        }",
 									"    ],",
 									"    \"entry\": [",
@@ -6213,7 +6213,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api_base_url}}/Consent?patient:identifier=9000000100&_include=Consent:performer&_include=Consent:patient",
+							"raw": "{{api_base_url}}/Consent?patient:identifier=9000000100&_include=Consent:grantee&_include=Consent:patient",
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -6227,7 +6227,7 @@
 								},
 								{
 									"key": "_include",
-									"value": "Consent:performer"
+									"value": "Consent:grantee"
 								},
 								{
 									"key": "_include",
@@ -6253,7 +6253,7 @@
 									"    \"link\": [",
 									"        {",
 									"            \"relation\": \"self\",",
-									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?patient:identifier=9000000100&_include=Consent:performer\"",
+									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?patient:identifier=9000000100&_include=Consent:grantee\"",
 									"        }",
 									"    ],",
 									"    \"entry\": [",
@@ -6702,7 +6702,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api_base_url}}/Consent?patient:identifier=9000000100&_include=Consent:performer",
+							"raw": "{{api_base_url}}/Consent?patient:identifier=9000000100&_include=Consent:grantee",
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -6716,7 +6716,7 @@
 								},
 								{
 									"key": "_include",
-									"value": "Consent:performer"
+									"value": "Consent:grantee"
 								}
 							]
 						}
@@ -7165,7 +7165,7 @@
 									"    \"link\": [",
 									"        {",
 									"            \"relation\": \"self\",",
-									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000025&_include=Consent:performer&_include=Consent:patient\"",
+									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000025&_include=Consent:grantee&_include=Consent:patient\"",
 									"        }",
 									"    ],",
 									"    \"entry\": []",
@@ -7385,7 +7385,7 @@
 									"    \"link\": [",
 									"        {",
 									"            \"relation\": \"self\",",
-									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000010&_include=Consent:performer&_include=Consent:patient\"",
+									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000010&_include=Consent:grantee&_include=Consent:patient\"",
 									"        }",
 									"    ],",
 									"    \"entry\": [",
@@ -7599,7 +7599,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000010&_include=Consent:performer&_include=Consent:patient",
+							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000010&_include=Consent:grantee&_include=Consent:patient",
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -7613,7 +7613,7 @@
 								},
 								{
 									"key": "_include",
-									"value": "Consent:performer"
+									"value": "Consent:grantee"
 								},
 								{
 									"key": "_include",
@@ -7802,7 +7802,7 @@
 									"    \"link\": [",
 									"        {",
 									"            \"relation\": \"self\",",
-									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000019&_include=Consent:performer&_include=Consent:patient\"",
+									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000019&_include=Consent:grantee&_include=Consent:patient\"",
 									"        }",
 									"    ],",
 									"    \"entry\": [",
@@ -8025,7 +8025,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000019&_include=Consent:performer&_include=Consent:patient",
+							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000019&_include=Consent:grantee&_include=Consent:patient",
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -8039,7 +8039,7 @@
 								},
 								{
 									"key": "_include",
-									"value": "Consent:performer"
+									"value": "Consent:grantee"
 								},
 								{
 									"key": "_include",
@@ -9263,7 +9263,7 @@
 					"response": []
 				},
 				{
-					"name": "Retrieve consenting adult relationship with performer details",
+					"name": "Retrieve consenting adult relationship with grantee details",
 					"event": [
 						{
 							"listen": "test",
@@ -9277,7 +9277,7 @@
 									"    \"link\": [",
 									"        {",
 									"            \"relation\": \"self\",",
-									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000010&_include=Consent:performer\"",
+									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000010&_include=Consent:grantee\"",
 									"        }",
 									"    ],",
 									"    \"entry\": [",
@@ -9441,7 +9441,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api_base_url}}/Consent/74eed847-ca25-4e76-8cf2-f2c2d7842a7a?_include=Consent:performer",
+							"raw": "{{api_base_url}}/Consent/74eed847-ca25-4e76-8cf2-f2c2d7842a7a?_include=Consent:grantee",
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -9452,7 +9452,7 @@
 							"query": [
 								{
 									"key": "_include",
-									"value": "Consent:performer"
+									"value": "Consent:grantee"
 								}
 							]
 						}
@@ -9474,7 +9474,7 @@
 									"    \"link\": [",
 									"        {",
 									"            \"relation\": \"self\",",
-									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000010&_include=Consent:performer&_include=Consent:patient\"",
+									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000010&_include=Consent:grantee&_include=Consent:patient\"",
 									"        }",
 									"    ],",
 									"    \"entry\": [",
@@ -9688,7 +9688,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api_base_url}}/Consent/74eed847-ca25-4e76-8cf2-f2c2d7842a7a?_include=Consent:performer&_include=Consent:patient",
+							"raw": "{{api_base_url}}/Consent/74eed847-ca25-4e76-8cf2-f2c2d7842a7a?_include=Consent:grantee&_include=Consent:patient",
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -9699,7 +9699,7 @@
 							"query": [
 								{
 									"key": "_include",
-									"value": "Consent:performer"
+									"value": "Consent:grantee"
 								},
 								{
 									"key": "_include",
@@ -10079,7 +10079,7 @@
 					"response": []
 				},
 				{
-					"name": "Retrieve mother-child relationship with performer details",
+					"name": "Retrieve mother-child relationship with grantee details",
 					"event": [
 						{
 							"listen": "test",
@@ -10093,7 +10093,7 @@
 									"    \"link\": [",
 									"        {",
 									"            \"relation\": \"self\",",
-									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000019&_include=Consent:performer\"",
+									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000019&_include=Consent:grantee\"",
 									"        }",
 									"    ],",
 									"    \"entry\": [",
@@ -10266,7 +10266,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api_base_url}}/Consent/39df03a2-1b14-4d19-b1dc-d5d8cbf96948?_include=Consent:performer",
+							"raw": "{{api_base_url}}/Consent/39df03a2-1b14-4d19-b1dc-d5d8cbf96948?_include=Consent:grantee",
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -10277,7 +10277,7 @@
 							"query": [
 								{
 									"key": "_include",
-									"value": "Consent:performer"
+									"value": "Consent:grantee"
 								}
 							]
 						}
@@ -10299,7 +10299,7 @@
 									"    \"link\": [",
 									"        {",
 									"            \"relation\": \"self\",",
-									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000019&_include=Consent:performer&_include=Consent:patient\"",
+									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000019&_include=Consent:grantee&_include=Consent:patient\"",
 									"        }",
 									"    ],",
 									"    \"entry\": [",
@@ -10522,7 +10522,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api_base_url}}/Consent/39df03a2-1b14-4d19-b1dc-d5d8cbf96948?_include=Consent:performer&_include=Consent:patient",
+							"raw": "{{api_base_url}}/Consent/39df03a2-1b14-4d19-b1dc-d5d8cbf96948?_include=Consent:grantee&_include=Consent:patient",
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -10533,7 +10533,7 @@
 							"query": [
 								{
 									"key": "_include",
-									"value": "Consent:performer"
+									"value": "Consent:grantee"
 								},
 								{
 									"key": "_include",
