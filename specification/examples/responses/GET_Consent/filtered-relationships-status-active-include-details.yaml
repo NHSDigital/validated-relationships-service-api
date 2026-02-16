@@ -125,11 +125,6 @@ ConsentMultipleRelationshipsStatusActiveIncludeDetailsBundle:
                 identifier:
                   system: "https://fhir.nhs.uk/Id/nhs-number"
                   value: "9000000017"
-              role:
-                coding:
-                  - code: parental-responsibility
-                    display: "Parental responsibility"
-                    system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
             period:
               end: "2026-02-11"
               start: "2025-02-11"
@@ -140,6 +135,12 @@ ConsentMultipleRelationshipsStatusActiveIncludeDetailsBundle:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: ROLE_CREATED
                   display: Role created
+          - url: "http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis"
+            valueCodeableConcept:
+              coding:
+                - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+                  code: "parental-responsibility"
+                  display: "Parental responsibility"
           - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
             valueReference:
               identifier:
@@ -234,30 +235,31 @@ ConsentMultipleRelationshipsStatusActiveIncludeDetailsBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: "9000000017"
-              role:
-                coding:
-                - code: parental-responsibility
-                  display: Parental responsibility
-                  system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
             period:
               end: "2026-02-11"
               start: "2025-02-11"
           extension:
-          - url: https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason
-            valueCodeableConcept:
-              coding:
-                - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
-                  code: ROLE_CREATED
-                  display: Role created
-          - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
-            valueReference:
-              identifier:
-                system: https://fhir.nhs.uk/Id/nhs-number
-                value: '9000000017'
-          - url: http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor
-            valueReference:
-              identifier:
-                system: https://fhir.nhs.uk/Id/ods-organization-code
-                value: "G8101234"
+            - url: https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason
+              valueCodeableConcept:
+                coding:
+                  - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
+                    code: ROLE_CREATED
+                    display: Role created
+            - url: "http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis"
+              valueCodeableConcept:
+                coding:
+                  - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+                    code: "parental-responsibility"
+                    display: "Parental responsibility"
+            - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
+              valueReference:
+                identifier:
+                  system: https://fhir.nhs.uk/Id/nhs-number
+                  value: '9000000017'
+            - url: http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor
+              valueReference:
+                identifier:
+                  system: https://fhir.nhs.uk/Id/ods-organization-code
+                  value: "G8101234"
         search:
           mode: match

@@ -40,11 +40,6 @@ ConsentSingleConsentingAdultRelationshipBundle:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
                   value: '9000000010'
-              role:
-                coding:
-                - code: court-appointed-personal-welfare-deputy
-                  display: Court appointed personal welfare deputy
-                  system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
             period:
               end: '2026-02-11'
               start: '2025-02-11'
@@ -55,6 +50,12 @@ ConsentSingleConsentingAdultRelationshipBundle:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: ROLE_CREATED
                   display: Role created
+          - url: "http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis"
+            valueCodeableConcept:
+              coding:
+                - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+                  code: "court-appointed-personal-welfare-deputy"
+                  display: "Court appointed personal welfare deputy"
           - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
             valueReference:
               identifier:
