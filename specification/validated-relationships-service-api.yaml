@@ -604,20 +604,20 @@ paths:
                   $ref: "./examples/responses/GET_Consent/multiple-relationships.yaml#/ConsentMultipleRelationshipsBundle"
                 ConsentMultipleRelationshipsIncludePatientBundle:
                   $ref: "./examples/responses/GET_Consent/multiple-relationships-include-patient.yaml#/ConsentMultipleRelationshipsIncludePatientBundle"
-                ConsentMultipleRelationshipsIncludePerformerBundle:
-                  $ref: "./examples/responses/GET_Consent/multiple-relationships-include-grantee.yaml#/ConsentMultipleRelationshipsIncludePerformerBundle"
-                ConsentMultipleRelationshipsIncludePerformerPatientBundle:
-                  $ref: "./examples/responses/GET_Consent/multiple-relationships-include-grantee-patient.yaml#/ConsentMultipleRelationshipsIncludePerformerPatientBundle"
+                ConsentMultipleRelationshipsIncludeGranteeBundle:
+                  $ref: "./examples/responses/GET_Consent/multiple-relationships-include-grantee.yaml#/ConsentMultipleRelationshipsIncludeGranteeBundle"
+                ConsentMultipleRelationshipsIncludeGranteePatientBundle:
+                  $ref: "./examples/responses/GET_Consent/multiple-relationships-include-grantee-patient.yaml#/ConsentMultipleRelationshipsIncludeGranteePatientBundle"
                 ConsentNoRelationshipsEmptyBundle:
                   $ref: "./examples/responses/GET_Consent/no-relationships.yaml#/ConsentNoRelationshipsEmptyBundle"
                 ConsentSingleConsentingAdultRelationshipBundle:
                   $ref: "./examples/responses/GET_Consent/single-consenting-adult-relationship.yaml#/ConsentSingleConsentingAdultRelationshipBundle"
-                ConsentSingleConsentingAdultRelationshipIncludePerformerPatientBundle:
-                  $ref: "./examples/responses/GET_Consent/single-consenting-adult-relationship-include-grantee-patient.yaml#/ConsentSingleConsentingAdultRelationshipIncludePerformerPatientBundle"
+                ConsentSingleConsentingAdultRelationshipIncludeGranteePatientBundle:
+                  $ref: "./examples/responses/GET_Consent/single-consenting-adult-relationship-include-grantee-patient.yaml#/ConsentSingleConsentingAdultRelationshipIncludeGranteePatientBundle"
                 ConsentSingleAdultChildRelationshipBundle:
                   $ref: "./examples/responses/GET_Consent/single-mother-child-relationship.yaml#/ConsentSingleAdultChildRelationshipBundle"
-                ConsentSingleAdultChildRelationshipIncludePerformerPatientBundle:
-                  $ref: "./examples/responses/GET_Consent/single-mother-child-relationship-include-grantee-patient.yaml#/ConsentSingleAdultChildRelationshipIncludePerformerPatientBundle"
+                ConsentSingleAdultChildRelationshipIncludeGranteePatientBundle:
+                  $ref: "./examples/responses/GET_Consent/single-mother-child-relationship-include-grantee-patient.yaml#/ConsentSingleAdultChildRelationshipIncludeGranteePatientBundle"
                 ConsentMultipleRelationshipsSinglePatientBundle:
                   $ref: "./examples/responses/GET_Consent/multiple-relationships-single-patient.yaml#/ConsentMultipleRelationshipsSinglePatientBundle"
 
@@ -886,18 +886,18 @@ paths:
                   $ref: "./examples/responses/GET_Consent/single-consenting-adult-relationship.yaml#/ConsentSingleConsentingAdultRelationshipBundle"
                 ConsentSingleConsentingAdultRelationshipIncludePatientBundle:
                   $ref: "./examples/responses/GET_Consent/single-consenting-adult-relationship-include-patient.yaml#/ConsentSingleConsentingAdultRelationshipIncludePatientBundle"
-                ConsentSingleConsentingAdultRelationshipIncludePerformerBundle:
-                  $ref: "./examples/responses/GET_Consent/single-consenting-adult-relationship-include-grantee.yaml#/ConsentSingleConsentingAdultRelationshipIncludePerformerBundle"
-                ConsentSingleConsentingAdultRelationshipIncludePerformerPatientBundle:
-                  $ref: "./examples/responses/GET_Consent/single-consenting-adult-relationship-include-grantee-patient.yaml#/ConsentSingleConsentingAdultRelationshipIncludePerformerPatientBundle"
+                ConsentSingleConsentingAdultRelationshipIncludeGranteeBundle:
+                  $ref: "./examples/responses/GET_Consent/single-consenting-adult-relationship-include-grantee.yaml#/ConsentSingleConsentingAdultRelationshipIncludeGranteeBundle"
+                ConsentSingleConsentingAdultRelationshipIncludeGranteePatientBundle:
+                  $ref: "./examples/responses/GET_Consent/single-consenting-adult-relationship-include-grantee-patient.yaml#/ConsentSingleConsentingAdultRelationshipIncludeGranteePatientBundle"
                 ConsentSingleAdultChildRelationshipBundle:
                   $ref: "./examples/responses/GET_Consent/single-mother-child-relationship.yaml#/ConsentSingleAdultChildRelationshipBundle"
                 ConsentSingleAdultChildRelationshipIncludePatientBundle:
                   $ref: "./examples/responses/GET_Consent/single-mother-child-relationship-include-patient.yaml#/ConsentSingleAdultChildRelationshipIncludePatientBundle"
-                ConsentSingleAdultChildRelationshipIncludePerformerBundle:
-                  $ref: "./examples/responses/GET_Consent/single-mother-child-relationship-include-grantee.yaml#/ConsentSingleAdultChildRelationshipIncludePerformerBundle"
-                ConsentSingleAdultChildRelationshipIncludePerformerPatientBundle:
-                  $ref: "./examples/responses/GET_Consent/single-mother-child-relationship-include-grantee-patient.yaml#/ConsentSingleAdultChildRelationshipIncludePerformerPatientBundle"
+                ConsentSingleAdultChildRelationshipIncludeGranteeBundle:
+                  $ref: "./examples/responses/GET_Consent/single-mother-child-relationship-include-grantee.yaml#/ConsentSingleAdultChildRelationshipIncludeGranteeBundle"
+                ConsentSingleAdultChildRelationshipIncludeGranteePatientBundle:
+                  $ref: "./examples/responses/GET_Consent/single-mother-child-relationship-include-grantee-patient.yaml#/ConsentSingleAdultChildRelationshipIncludeGranteePatientBundle"
 
         "4XX":
           description: |
@@ -2779,7 +2779,7 @@ components:
           - "Consent:grantee"
           - "Consent:patient"
       examples:
-        IncludePerformer:
+        IncludeGrantee:
           summary: Include the grantee (proxy) in the bundle
           value: Consent:grantee
         IncludePatient:
