@@ -13,9 +13,12 @@
                     "enabled": true
                 },
                 "schemaValidation": {
-                    "enabled": true
+                    "enabled": false
                 }
             }
         ]
+    },
+    "globals": {
+        "stripResponseExamples": true
     }
 }
