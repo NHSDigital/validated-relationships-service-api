@@ -31,8 +31,8 @@ ConsentMultipleRelationshipsSinglePatientBundle:
               value: '9000000100'
           dateTime: '2024-07-21T17:32:28Z'
           policy:
-            - authority: https://www.england.nhs.uk
-              uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
+            - authority: 'https://www.england.nhs.uk'
+              uri: 'https://digital.nhs.uk/data-and-information/information-standards/governance/latest-activity/standards-and-collections/dapb3051-identity-verification-and-authentication-standard-for-digital-health-and-care-services'
           provision:
             type: permit
             actor:
@@ -91,8 +91,8 @@ ConsentMultipleRelationshipsSinglePatientBundle:
               value: '9000000100'
           dateTime: '2024-07-21T17:32:28Z'
           policy:
-            - authority: https://www.england.nhs.uk
-              uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
+            - authority: 'https://www.england.nhs.uk'
+              uri: 'https://digital.nhs.uk/data-and-information/information-standards/governance/latest-activity/standards-and-collections/dapb3051-identity-verification-and-authentication-standard-for-digital-health-and-care-services'
           provision:
             type: permit
             actor:
@@ -151,8 +151,8 @@ ConsentMultipleRelationshipsSinglePatientBundle:
               value: '9000000100'
           dateTime: '2024-07-21T17:32:28Z'
           policy:
-            - authority: https://www.england.nhs.uk
-              uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
+            - authority: 'https://www.england.nhs.uk'
+              uri: 'https://digital.nhs.uk/data-and-information/information-standards/governance/latest-activity/standards-and-collections/dapb3051-identity-verification-and-authentication-standard-for-digital-health-and-care-services'
           provision:
             type: permit
             actor:
