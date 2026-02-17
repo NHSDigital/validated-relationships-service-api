@@ -32,6 +32,9 @@ clean:
 	rm -rf build
 	rm -rf dist
 
+generate-postman-collection:
+	npx portman --cliOptionsFile scripts/portman/portman-cli.json
+
 #Creates the fully expanded OAS spec in json
 publish: clean
 	mkdir -p build
