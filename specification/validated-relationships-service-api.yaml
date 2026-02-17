@@ -149,7 +149,10 @@ info:
     * only covers a limited set of scenarios
     * is open access, so does not allow you to test authorisation
 
-    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/18067099-9c2224fd-e560-4a7c-847c-389d1a950ab7?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D18067099-9c2224fd-e560-4a7c-847c-389d1a950ab7%26entityType%3Dcollection%26workspaceId%3D082e43b8-9a51-4a16-af66-0d2b233cd69c)
+    [![Import Postman Collection](https://img.shields.io/badge/Import-Postman%20Collection-orange?logo=postman)](https://raw.githubusercontent.com/NHSDigital/validated-relationships-service-api/master/postman/validated_relationship_service.sandbox.postman_collection.json)
+
+    Import the  postman collection to run requests against sandbox.
+    
     ### Integration testing
 
     Our [integration test environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#integration-testing)
@@ -241,17 +244,6 @@ paths:
           application/fhir+json; charset=utf-8:
             schema:
               $ref: "#/components/schemas/QuestionnaireResponse"
-            examples:
-              questionnaireResponseMotherChildRequest:
-                $ref: "./examples/requests/POST_QuestionnaireResponse/mother-child.yaml#/QuestionnaireResponseMotherChildRequest"
-              questionnaireResponseAdultToAdultWithoutCapacityRequest:
-                $ref: "./examples/requests/POST_QuestionnaireResponse/adult-to-adult-without-capacity.yaml#/QuestionnaireResponseAdultToAdultWithoutCapacityRequest"
-              questionnaireResponseAdultToAdultWithCapacityRequest:
-                $ref: "./examples/requests/POST_QuestionnaireResponse/adult-to-adult-with-capacity.yaml#/QuestionnaireResponseAdultToAdultWithCapacityRequest"
-              questionnaireResponseAdultNominatesAdultRequest:
-                $ref: "./examples/requests/POST_QuestionnaireResponse/adult-nominates-adult.yaml#/QuestionnaireResponseAdultNominatesAdultRequest"
-              questionnaireResponseDuplicateRelationship:
-                $ref: "./examples/requests/POST_QuestionnaireResponse/duplicate_relationship.yaml#/QuestionnaireResponseDuplicateRelationship"
       responses:
         "200":
           description: Request was received successfully for processing
@@ -2834,17 +2826,17 @@ components:
           - "Consent:grantee"
           - "Consent:patient"
       examples:
+        FullInclude:
+          summary: Include the grantee (proxy) and patient in the bundle
+          value:
+            - "Consent:grantee"
+            - "Consent:patient"
         IncludeGrantee:
           summary: Include the grantee (proxy) in the bundle
           value: Consent:grantee
         IncludePatient:
           summary: Include the patient in the bundle
           value: Consent:patient
-        FullInclude:
-          summary: Include the grantee (Proxy) and patient in the bundle
-          value:
-            - "Consent:grantee"
-            - "Consent:patient"
 
     ConsentStatus:
       in: query

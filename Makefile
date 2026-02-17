@@ -32,6 +32,16 @@ clean:
 	rm -rf build
 	rm -rf dist
 
+# Generate Postman Collection
+generate-postman-collection:
+	npx portman --cliOptionsFile scripts/portman/portman-cli.json
+
+# Test Postman Collection
+test-postman-collection:
+# Mandatory arguments:
+# SANDBOX_BASE_URL: The base URL for the sandbox environment (e.g. https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4)
+	npx newman run postman/validated_relationship_service.sandbox.postman_collection.json --env-var baseUrl=$(SANDBOX_BASE_URL)
+
 #Creates the fully expanded OAS spec in json
 publish: clean
 	mkdir -p build

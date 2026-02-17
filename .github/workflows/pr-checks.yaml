@@ -1,0 +1,68 @@
+name: Sandbox Check
+on: pull_request
+jobs:
+  test-sandbox-and-postman:
+    name: "Test Sandbox and Postman"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - name: Install poetry
+        run: pipx install poetry
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+          cache: "poetry"
+      - name: Install dependencies
+        run: make install
+      - name: Install Sandobx dependencies
+        run: make install
+        working-directory: sandbox
+      - name: Check Sandbox Formatting
+        run: make format
+      - name: Run Sandbox Linting
+        run: make lint
+      - name: Run Sandbox Unit Tests
+        run: make test
+        working-directory: sandbox
+      - name: Generate Postman Collection
+        run: make generate-postman-collection
+        env:
+          POSTMAN_API_KEY: ${{ secrets.POSTMAN_API_KEY }}
+      - name: Test Postman Collection agaist Sandbox
+        working-directory: sandbox
+        run: |
+          # 1. Run Flask in the background (using 'poetry run python -m flask')
+          # We use FLASK_DEBUG=1 to see the 500 errors in the console
+          cp -r $GITHUB_WORKSPACE/specification/examples/responses/. $GITHUB_WORKSPACE/sandbox/api/examples/
+          FLASK_DEBUG=1 poetry run python -m flask --app api.app:app run -p 9000 &
+          FLASK_PID=$!
+          
+          # 2. Use npx to wait for the server to actually be ready
+          npx wait-on http://127.0.0.1:9000/health --timeout 30000
+          
+          # 3. Run your tests
+          echo "Running Newman tests..."
+          npx newman run ../postman/validated_relationship_service.sandbox.postman_collection.json --env-var baseUrl=http://127.0.0.1:9000/FHIR/R4
+          
+          # 4. Cleanup: Kill the Flask process using the PID we saved
+          echo "Shutting down Flask..."
+          kill $FLASK_PID
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Add the specific file
+          git add postman/validated_relationship_service.sandbox.postman_collection.json
+          
+          # Only commit and push if there are actually changes
+          if git diff --staged --quiet; then
+            echo "No changes to the collection."
+          else
+            git commit -m "chore: auto-generate sandbox postman collection"
+            git push origin HEAD:${{ github.head_ref }}
+          fi
