@@ -241,17 +241,6 @@ paths:
           application/fhir+json; charset=utf-8:
             schema:
               $ref: "#/components/schemas/QuestionnaireResponse"
-            examples:
-              questionnaireResponseMotherChildRequest:
-                $ref: "./examples/requests/POST_QuestionnaireResponse/mother-child.yaml#/QuestionnaireResponseMotherChildRequest"
-              questionnaireResponseAdultToAdultWithoutCapacityRequest:
-                $ref: "./examples/requests/POST_QuestionnaireResponse/adult-to-adult-without-capacity.yaml#/QuestionnaireResponseAdultToAdultWithoutCapacityRequest"
-              questionnaireResponseAdultToAdultWithCapacityRequest:
-                $ref: "./examples/requests/POST_QuestionnaireResponse/adult-to-adult-with-capacity.yaml#/QuestionnaireResponseAdultToAdultWithCapacityRequest"
-              questionnaireResponseAdultNominatesAdultRequest:
-                $ref: "./examples/requests/POST_QuestionnaireResponse/adult-nominates-adult.yaml#/QuestionnaireResponseAdultNominatesAdultRequest"
-              questionnaireResponseDuplicateRelationship:
-                $ref: "./examples/requests/POST_QuestionnaireResponse/duplicate_relationship.yaml#/QuestionnaireResponseDuplicateRelationship"
       responses:
         "200":
           description: Request was received successfully for processing
