@@ -2,6 +2,7 @@
   "local": "specification/validated-relationships-service-api.yaml",
   "output": "postman/postman_collection.json",
   "portmanConfigFile": "scripts/portman/portman-config.json",
+  "postmanConfigFile": "scripts/portman/postman-config.json",
   "includeTests": true,
   "syncPostman": false, 
   "runNewman": false

@@ -1,0 +1,8 @@
+{
+    "folderStrategy": "Tags",
+    "parametersResolution": "Example",
+    "exampleParametersResolution": "Pick",
+    "preferredRequestBodyType": "application/fhir+json",
+    "includeOptionalParameters": true,
+    "optimizeConversion": true
+}
