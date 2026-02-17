@@ -65,6 +65,8 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
             period:
               end: '2026-02-11'
               start: '2025-02-11'
+          meta:
+            lastUpdated: '2025-02-17T14:30:00Z'
           extension:
           - url: https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason
             valueCodeableConcept:
@@ -141,6 +143,8 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
             period:
               end: '2026-02-11'
               start: '2025-02-11'
+          meta:
+            lastUpdated: '2025-02-17T14:30:00Z'
           extension:
           - url: https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason
             valueCodeableConcept:
@@ -217,6 +221,8 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
             period:
               end: '2026-02-11'
               start: '2025-02-11'
+          meta:
+            lastUpdated: '2025-02-17T14:30:00Z'
           extension:
           - url: https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason
             valueCodeableConcept:
