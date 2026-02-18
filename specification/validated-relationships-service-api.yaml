@@ -25,9 +25,9 @@ info:
 
     ## Who can use this API
     This API can only be used where there is a legal basis to do so. Make sure you have this and a valid use case before
-    you go too far with your development by [contacting us](https://digital.nhs.uk/developer/help-and-support)
+    you go too far with your development by [contacting us](https://digital.nhs.uk/developer/help-and-support).
 
-    You must do this before you can go live (see 'Onboarding' below).
+    You must do this before you can go live (see the 'Onboarding' section below).
 
     ## Related APIs
     The following APIs are related to this API:
@@ -213,7 +213,8 @@ paths:
         The sandbox environment has the following constraints for this endpoint:
 
         - QuestionnaireResponse is not validated.
-        - Headers are not tested. `X-Request-ID` and `X-Correlation-ID` are disregarded.
+        - Request headers are not tested. `X-Request-ID` and `X-Correlation-ID` are disregarded.
+        - No access request is created.
 
       operationId: new-access-request
       parameters:
@@ -330,12 +331,20 @@ paths:
 
         ## Sandbox test scenarios
 
+        You can test the following scenarios in our sandbox environment:
+
         | Scenario                         | Request                                          | Response                                                      |
         | -------------------------------- | ------------------------------------------------ | ------------------------------------------------------------- |
         | Valid access request ID          | ID value: `156e1560-e532-4e2a-85ad-5aeff03dc43e` | HTTP Status 200 with QuestionnaireResponse                    |
         | Invalid access request ID        | ID value:  `INVALID`                             | HTTP Status 400 with INVALID_IDENTIFIER_VALUE message         |
         | Missing access request ID        | No ID path parameter                             | HTTP Status 405 with METHOD_NOT_ALLOWED message               |
         | Non-existent access request ID   | ID value: `60d09b82-f4bb-41f9-b41e-767999b4ac9b` | HTTP Status 404 with QUESTIONNAIRE_RESPONSE_NOT_FOUND message |
+
+        ### Sandbox constraints
+
+        The sandbox environment has the following constraints for this endpoint:
+
+          - Request headers are not tested. For example, `X-Request-ID` and `X-Correlation-ID` are disregarded.
 
       operationId: get-questionnaire-response
       parameters:
@@ -414,7 +423,7 @@ paths:
         | Search for candidate proxy relationships for a patient                              | `patient:identifier={patient identifier}`                               |
         | Search for a specific verified candidate relationship for a given proxy and patient | `identifier={proxy identifier}&patient:identifier={patient identifier}` |
 
-        You must provide either the `identifier={identifier}` or `patient:identifier={identifier}` query parameter, or both, in your request.
+        You must provide either the `identifier={identifier}` or `patient:identifier={identifier}` query string, or both, in your request.
 
         ## Access modes
 
@@ -423,6 +432,8 @@ paths:
         - Healthcare worker access
 
         ## Sandbox test scenarios
+
+        You can test the following scenarios in our sandbox environment:
 
         | Scenario                                                                    | Request                                                                                              | Response                                                                                       |
         | --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
@@ -441,8 +452,7 @@ paths:
 
         The sandbox environment has the following constraints for this endpoint:
 
-          - Headers are not tested. For example, `X-Request-ID` and `X-Correlation-ID` are disregarded.
-          - `patient:identifier` is not validated.
+          - Request headers are not tested. For example, `X-Request-ID` and `X-Correlation-ID` are disregarded.
 
       operationId: get-validated-relationships
       parameters:
@@ -556,6 +566,8 @@ paths:
 
         ## Sandbox test scenarios
 
+        You can test the following scenarios in our sandbox environment:
+
         | Scenario                                                                          | Request                                                                                                                                          | Response                                                                                                          |
         | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
         | Multiple proxy relationships filtered by 'active' status including details        | `performer:identifier=9000000017&_include=Consent:patient&_include=Consent:performer&status=active`                                  | HTTP Status 200 Bundle containing a multiple active proxy relationships including performer and patient details   |
@@ -584,7 +596,10 @@ paths:
         | GP Practice not found                                                             | `identifier=9000000012`                                                                                                                          | HTTP Status 404 and GP_PRACTICE_NOT_FOUND error response                                                          |
 
         ### Sandbox constraints
-          - Headers are not tested. `X-IM1-Connection-Params`, `X-Request-ID` and `X-Correlation-ID` are disregarded.
+
+        The sandbox environment has the following constraints for this endpoint:
+
+          - Request headers are not tested. `X-IM1-Connection-Params`, `X-Request-ID` and `X-Correlation-ID` are disregarded.
 
       operationId: get-consent
       parameters:
@@ -705,9 +720,8 @@ paths:
 
         ## Sandbox test scenarios
 
-        The sandbox supports a limited number of scenarios, and does not attempt to validate requests.  The returned result is dependant on the `performer.identifier.value`.
+        You can test the following scenarios in our sandbox environment:
 
-        See the postman collection for an example request body.
         | Scenario                                | Request                                                                                                     | Response                                                    |
         | --------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
         | Successful parent-child proxy creation  | Valid request with a legal basis of parental responsibility, with performer identifier value of `9000000009`| HTTP Status 201 and OperationOutcome response               |
@@ -722,6 +736,15 @@ paths:
         | Invalid grantor ODS code value                | Request with grantor extension but missing/empty/invalid ODS code, performer identifier `9000000055`       | HTTP Status 422 and INVALID_GRANTOR_VALUE error response                 |
         | Invalid grantor identifier system             | Request with grantor extension but wrong/missing identifier system, performer identifier `9000000056`      | HTTP Status 422 and INVALID_GRANTOR_SYSTEM error response                |
         | Duplicate relationship                  | Request for relationship that already exists, with performer identifier value of `9000000049`               | HTTP Status 409 and DUPLICATE_RELATIONSHIP error response   |
+
+        ### Sandbox constraints
+
+        The sandbox environment has the following constraints for this endpoint:
+
+        - `patient.identifier.value` is disregarded. The returned response is based on the `performer.identifier.value` only.
+        - Request body is not validated.
+        - Request headers are not tested. `X-Request-ID` and `X-Correlation-ID` are disregarded.
+        - No proxy role is created.
 
       operationId: create-proxy-role
       parameters:
@@ -867,9 +890,8 @@ paths:
 
         ## Sandbox test scenarios
 
-        The sandbox supports a limited number of scenarios, and does not attempt to validate requests.  The returned result is dependant on the `ID` for the consent resource.
+        You can test the following scenarios in our sandbox environment:
 
-        See the postman collection for an example request body.
         | Scenario                                                                         | Request                                                                                                                                  | Response                                                                                                         |
         | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
         | Retrieve single consenting adult relationship                                    | Valid request with ID `74eed847-ca25-4e76-8cf2-f2c2d7842a7a`                                                                             | HTTP Status 200 Bundle containing a single active proxy relationship                                             |
@@ -880,6 +902,12 @@ paths:
         | Retrieve single mother-child relationship with patient details                   | Valid request with ID `39df03a2-1b14-4d19-b1dc-d5d8cbf96948?_include=Consent:patient`                                                    | HTTP Status 200 Bundle containing a single active proxy relationship with patient details                        |
         | Retrieve single mother-child relationship with performer details                 | Valid request with ID `39df03a2-1b14-4d19-b1dc-d5d8cbf96948?_include=Consent:performer`                                                  | HTTP Status 200 Bundle containing a single active proxy relationship with performer details                      |
         | Retrieve single mother-child relationship with performer and patient details     | Valid request with ID `39df03a2-1b14-4d19-b1dc-d5d8cbf96948?_include=Consent:performer&_include=Consent:patient`                       | HTTP Status 200 Bundle containing a single active proxy relationship with performer details and patient details  |
+
+        ### Sandbox constraints
+
+        The sandbox environment has the following constraints for this endpoint:
+
+        - Request headers are not tested. `X-Request-ID` and `X-Correlation-ID` are disregarded.
 
       operationId: get-consent-by-id
       parameters:
@@ -993,11 +1021,8 @@ paths:
         - Application-restricted access
 
         ## Sandbox test scenarios
-        The sandbox supports a limited number of scenarios, and does not attempt to validate requests.  The returned response is dependant on the `id` parameters.
 
-        No changes are applied to any records.
-
-        See the postman collection for example requests.
+        You can test the following scenarios in our sandbox environment:
 
         | Scenario                        | Request                                                                                         | Response                                                      |
         | ------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
@@ -1019,6 +1044,14 @@ paths:
         | Missing grantor valueIdentifier     | Request with grantor extension but missing valueIdentifier, id='faefd8c5-5e24-4415-8252-96e9241c7e78' | HTTP Status 400 and MISSING_GRANTOR_IDENTIFIER error response             |
         | Invalid grantor ODS code value                | Request with grantor extension but missing/empty/invalid ODS code, id='b68cbfc8-ccc2-48ad-b97b-b7410d773dc1'       | HTTP Status 422 and INVALID_GRANTOR_VALUE error response                 |
         | Invalid grantor identifier system             | Request with grantor extension but wrong/missing identifier system, id='fd189522-68e5-42dc-b44c-989be0eaa2bf'     | HTTP Status 422 and INVALID_GRANTOR_SYSTEM error response                |
+
+        ### Sandbox constraints
+
+        The sandbox environment has the following constraints for this endpoint:
+
+        - Request body is not validated.
+        - Request headers are not tested.
+        - No proxy role is updated.
 
       parameters:
         - $ref: "#/components/parameters/ConsentID"
@@ -2302,7 +2335,7 @@ components:
           description: Unique identifier of the Consent resource
         status:
           type: string
-          description: "The status of the consent, following the ConsentStateCodes value set. See more information about this code system in the [FHIR specification](http://hl7.org/fhir/R4/codesystem-consent-state-codes.html)."
+          description: "The status of the consent, following the ConsentStateCodes value set. See more information about this codesystem in the [FHIR specification](http://hl7.org/fhir/R4/codesystem-consent-state-codes.html)."
           enum:
             - draft
             - proposed
@@ -2566,25 +2599,6 @@ components:
         value:
           type: string
           description: "The value that is unique."
-
-#    PatientMeta:
-#      type: object
-#      description: Metadata about a resource
-#      properties:
-#        security:
-#          type: array
-#          description: Security Labels applied a resource
-#          items:
-#            $ref: "#/components/schemas/Coding"
-#
-#    ConsentMeta:
-#      type: object
-#      description: Metadata about a resource
-#      properties:
-#        lastUpdated:
-#          type: string
-#          format: date-time
-#          description: When the resource last changed
 
     CodeableConcept:
       type: object
