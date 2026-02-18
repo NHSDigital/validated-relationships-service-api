@@ -7,6 +7,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
       - name: Install poetry
         run: pipx install poetry
       - uses: actions/setup-python@v6
@@ -46,3 +49,18 @@ jobs:
           # 4. Cleanup: Kill the Flask process using the PID we saved
           echo "Shutting down Flask..."
           kill $FLASK_PID
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Add the specific file
+          git add postman/validated_relationship_service.sandbox.postman_collection.json
+          
+          # Only commit and push if there are actually changes
+          if git diff --staged --quiet; then
+            echo "No changes to the collection."
+          else
+            git commit -m "chore: auto-generate sandbox postman collection"
+            git push origin HEAD:${{ github.head_ref }}
+          fi
