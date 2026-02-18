@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	"info": {
 		"_postman_id": "1cda64af-6449-45ca-a17e-e6a9bf00598f",
 		"name": "Validated Relationship Service - Sandbox - 20/02/26",
@@ -12940,4 +12941,706 @@
 			"value": "https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4"
 		}
 	]
+=======
+  "_": {
+    "postman_id": "1f34a695-49cc-4bfe-9173-694085b0b468"
+  },
+  "item": [
+    {
+      "id": "9b2d2f89-69cc-44a6-aa5e-474ac54abf30",
+      "name": "QuestionnaireResponse",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3e3b2b7c-6ef7-46e6-91f3-db1d0439d0fd",
+          "name": "New Access request",
+          "request": {
+            "name": "New Access request",
+            "description": {
+              "content": "## Overview\nFor any new access request, the necessary details should be collected from a user facing service e.g.\nProxy Access Service and submitted as a QuestionnaireResponse.\n\nFor the most part demographics information doesn't need to be provided in the access request since it can be pulled from PDS.\n\n## Access modes\n\nThis endpoint supports the following access modes:\n- Patient access\n\n## Sandbox test scenarios\n\n| Scenario               | Request                                                                                     | Response                                                    |\n| ---------------------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |\n| Successful request     | Valid request with performer identifier value of `9000000009` or `9000000017`                  | HTTP Status 200 Success response                            |\n| Duplicate relationship | Request for relationship that already exists, with performer identifier value of `9000000049` | HTTP Status 409 and DUPLICATE_RELATIONSHIP error response   |\n\n\n### Sandbox constraints\n  - Questionnaire Response is not validated.\n  - Headers are not tested. `X-Request-ID` and `X-Correlation-ID` are disregarded.\n\nOr perhaps you'd like to try out the sandbox using our 'Try it out' feature.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "QuestionnaireResponse"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": {
+                  "content": "(Required) A globally unique identifier (GUID) for the request, which we use to correlate logs through different components.\nMust be a universally unique identifier (UUID) (ideally version 4).\nMirrored back in a response header.\n",
+                  "type": "text/plain"
+                },
+                "key": "X-Request-ID",
+                "value": "60E0B220-8136-4CA5-AE46-1D97EF59D068"
+              },
+              {
+                "disabled": false,
+                "description": {
+                  "content": "An optional ID which you can use to track transactions across multiple systems.\nMust be a universally unique identifier (UUID) (ideally version 4).\nMirrored back in a response header.\n",
+                  "type": "text/plain"
+                },
+                "key": "X-Correlation-ID",
+                "value": "11C46F5F-CDEF-4865-94B2-0EE0EDCC26DA"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/fhir+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resourceType\": \"QuestionnaireResponse\",\n  \"status\": \"completed\",\n  \"authored\": \"2024-07-15T09:43:03.280Z\",\n  \"source\": {\n    \"type\": \"RelatedPerson\",\n    \"identifier\": {\n      \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n      \"value\": \"9000000017\"\n    }\n  },\n  \"subject\": {\n    \"type\": \"Patient\",\n    \"identifier\": {\n      \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n      \"value\": \"9000000002\"\n    }\n  },\n  \"questionnaire\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/Questionnaire/01dc6813-3421-4d14-948d-a4888241add1\",\n  \"item\": [\n    {\n      \"linkId\": \"relatedPerson\",\n      \"text\": \"Proxy details\",\n      \"item\": [\n        {\n          \"linkId\": \"relatedPerson_identifier\",\n          \"text\": \"NHS number\",\n          \"answer\": [\n            {\n              \"valueString\": \"9000000017\"\n            }\n          ]\n        },\n        {\n          \"linkId\": \"relatedPerson_basisForAccess\",\n          \"text\": \"Basis for Access\",\n          \"answer\": [\n            {\n              \"valueCoding\": {\n                \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",\n                \"code\": \"PRN\",\n                \"display\": \"Parent\"\n              }\n            }\n          ]\n        },\n        {\n          \"linkId\": \"relatedPerson_relationship\",\n          \"text\": \"Relationship\",\n          \"answer\": [\n            {\n              \"valueCoding\": {\n                \"system\": \"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",\n                \"code\": \"PRN\",\n                \"display\": \"Parent\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"linkId\": \"parentalApplicationSupplementaryDetails\",\n      \"text\": \"Parental Application Supplementary Details\",\n      \"item\": [\n        {\n          \"linkId\": \"parentalApplicationSupplementaryDetails_evidenceOfResponsibility\",\n          \"text\": \"Evidence of parental responsibility\",\n          \"answer\": [\n            {\n              \"valueCoding\": {\n                \"system\": \"https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-EvidenceOfResponsibility\",\n                \"code\": \"BRTH\",\n                \"display\": \"Birth certificate\"\n              }\n            }\n          ]\n        },\n        {\n          \"linkId\": \"parentalApplicationSupplementaryDetails_isCurrentAddressConfirmed\",\n          \"text\": \"Is current address confirmed?\",\n          \"answer\": [\n            {\n              \"valueBoolean\": true\n            }\n          ]\n        },\n        {\n          \"linkId\": \"parentalApplicationSupplementaryDetails_liveAtSameAddress\",\n          \"text\": \"Do adult and child live at the same address?\",\n          \"answer\": [\n            {\n              \"valueBoolean\": true\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"linkId\": \"patient\",\n      \"text\": \"Patient details\",\n      \"item\": [\n        {\n          \"linkId\": \"patient_identifier\",\n          \"text\": \"NHS number\",\n          \"answer\": [\n            {\n              \"valueString\": \"9000000002\"\n            }\n          ]\n        },\n        {\n          \"linkId\": \"patient_name\",\n          \"text\": \"Name\",\n          \"item\": [\n            {\n              \"linkId\": \"patient_name_first\",\n              \"text\": \"First name\",\n              \"answer\": [\n                {\n                  \"valueString\": \"Timothy\"\n                }\n              ]\n            },\n            {\n              \"linkId\": \"patient_name_family\",\n              \"text\": \"Last name\",\n              \"answer\": [\n                {\n                  \"valueString\": \"Tenenbaum\"\n                }\n              ]\n            }\n          ]\n        },\n        {\n          \"linkId\": \"patient_birthDate\",\n          \"text\": \"Date of birth\",\n          \"answer\": [\n            {\n              \"valueDate\": \"2020-10-22\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"linkId\": \"requestedAccess\",\n      \"text\": \"Requested access\",\n      \"item\": [\n        {\n          \"linkId\": \"requestedAccess_accessLevel\",\n          \"text\": \"Requested access level\",\n          \"answer\": [\n            {\n              \"valueCoding\": {\n                \"system\": \"https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess\",\n                \"code\": \"PRESCR\",\n                \"display\": \"Request and manage repeat prescriptions\"\n              }\n            },\n            {\n              \"valueCoding\": {\n                \"system\": \"https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess\",\n                \"code\": \"APPT\",\n                \"display\": \"Appointment Booking\"\n              }\n            },\n            {\n              \"valueCoding\": {\n                \"system\": \"https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess\",\n                \"code\": \"RECRD\",\n                \"display\": \"GP Health Records Access\"\n              }\n            },\n            {\n              \"valueCoding\": {\n                \"system\": \"https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess\",\n                \"code\": \"TEST\",\n                \"display\": \"Test Results\"\n              }\n            },\n            {\n              \"valueCoding\": {\n                \"system\": \"https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess\",\n                \"code\": \"VACC\",\n                \"display\": \"Vaccination Records\"\n              }\n            },\n            {\n              \"valueCoding\": {\n                \"system\": \"https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess\",\n                \"code\": \"COND\",\n                \"display\": \"Health Conditions\"\n              }\n            },\n            {\n              \"valueCoding\": {\n                \"system\": \"https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess\",\n                \"code\": \"CONSULT\",\n                \"display\": \"Consultations and Events\"\n              }\n            },\n            {\n              \"valueCoding\": {\n                \"system\": \"https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-RequestedAccess\",\n                \"code\": \"DOCS\",\n                \"display\": \"Documents\"\n              }\n            }\n          ]\n        },\n        {\n          \"linkId\": \"requestedAccess_accessLevelMoreinfo\",\n          \"text\": \"Requested access level - further information\",\n          \"answer\": [\n            {\n              \"valueString\": \"My child cannot access their own record\"\n            }\n          ]\n        },\n        {\n          \"linkId\": \"requestedAccess_reasonsForAccess\",\n          \"text\": \"Reason for access\",\n          \"answer\": [\n            {\n              \"valueCoding\": {\n                \"system\": \"https://fhir.nhs.uk/CodeSystem/Proxy-Placeholder-ReasonForAccess\",\n                \"code\": \"PRAC\",\n                \"display\": \"Practical Reasons\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2e142e74-0c14-40ff-8386-8f12c02129e6",
+                "type": "text/javascript",
+                "exec": [
+                  "// Validate status 2xx \npm.test(\"[POST]::/QuestionnaireResponse - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
+                  "// Validate if response header has matching content-type\npm.test(\"[POST]::/QuestionnaireResponse - Content-Type is application/fhir+json\", function () {\n   pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/fhir+json\");\n});\n",
+                  "// Validate if response has JSON Body \npm.test(\"[POST]::/QuestionnaireResponse - Response has JSON Body\", function () {\n    pm.response.to.have.jsonBody();\n});\n"
+                ]
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf49dafd-7fc6-4d89-8bb3-ac9af292c5dc",
+          "name": "{id}",
+          "description": {
+            "content": "",
+            "type": "text/plain"
+          },
+          "item": [
+            {
+              "id": "84d64f35-a176-4487-9144-6fede5a2d91a",
+              "name": "Get a proxy access request",
+              "request": {
+                "name": "Get a proxy access request",
+                "description": {
+                  "content": "## Overview\nRetrieve a QuestionnaireResponse using its unique access request ID. This endpoint returns the full\nQuestionnaireResponse document that was previously submitted.\n\n## Request Requirements\nA valid access request ID must be provided as a path parameter. This access request ID is returned\nwhen a QuestionnaireResponse is initially submitted via the POST endpoint.\n\n## Access modes\n\nThis endpoint supports the following access modes:\n- Patient access\n- Healthcare worker access\n- Application-restricted access\n\n## Sandbox test scenarios\n\n| Scenario                         | Request                                          | Response                                                      |\n| -------------------------------- | ------------------------------------------------ | ------------------------------------------------------------- |\n| Valid access request ID          | ID value: `156e1560-e532-4e2a-85ad-5aeff03dc43e` | HTTP Status 200 with QuestionnaireResponse                    |\n| Invalid access request ID        | ID value:  `INVALID`                             | HTTP Status 400 with INVALID_IDENTIFIER_VALUE message         |\n| Missing access request ID        | No ID path parameter                             | HTTP Status 405 with METHOD_NOT_ALLOWED message               |\n| Non-existent access request ID   | ID value: `60d09b82-f4bb-41f9-b41e-767999b4ac9b` | HTTP Status 404 with QUESTIONNAIRE_RESPONSE_NOT_FOUND message |\n",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "path": [
+                    "QuestionnaireResponse",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The unique access request ID of the QuestionnaireResponse to retrieve",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "156e1560-e532-4e2a-85ad-5aeff03dc43e",
+                      "key": "id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": {
+                      "content": "(Required) A globally unique identifier (GUID) for the request, which we use to correlate logs through different components.\nMust be a universally unique identifier (UUID) (ideally version 4).\nMirrored back in a response header.\n",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Request-ID",
+                    "value": "60E0B220-8136-4CA5-AE46-1D97EF59D068"
+                  },
+                  {
+                    "disabled": false,
+                    "description": {
+                      "content": "An optional ID which you can use to track transactions across multiple systems.\nMust be a universally unique identifier (UUID) (ideally version 4).\nMirrored back in a response header.\n",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Correlation-ID",
+                    "value": "11C46F5F-CDEF-4865-94B2-0EE0EDCC26DA"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "95bb6ee4-2534-44f2-85c0-8074de4fc1a6",
+                    "type": "text/javascript",
+                    "exec": [
+                      "// Validate status 2xx \npm.test(\"[GET]::/QuestionnaireResponse/:id - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
+                      "// Validate if response header has matching content-type\npm.test(\"[GET]::/QuestionnaireResponse/:id - Content-Type is application/fhir+json\", function () {\n   pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/fhir+json\");\n});\n",
+                      "// Validate if response has JSON Body \npm.test(\"[GET]::/QuestionnaireResponse/:id - Response has JSON Body\", function () {\n    pm.response.to.have.jsonBody();\n});\n"
+                    ]
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            }
+          ],
+          "event": []
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "84dfb078-7b9a-40c3-b7ab-5b1793f87767",
+      "name": "RelatedPerson",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "20d06a98-5e68-4b4f-a787-95ec9a355fa0",
+          "name": "Get verified candidate relationships",
+          "request": {
+            "name": "Get verified candidate relationships",
+            "description": {
+              "content": "## Overview\nUse this endpoint to get candidate proxy relationships for a user with a given NHS Number. This endpoint should NOT be used to retrieve proxy relationships; these should be queried from the `/Consent` endpoint.\n\nYou can (optionally) include `patient:identifier={nhsNumber}` request parameter with the patient's NHS number to get a specific verified relationship for the proxy.\n\nYou can (optionally) include the `_include=RelatedPerson:patient` request parameter to include the patient's details in the response.\n\n## Access modes\n\nThis endpoint supports the following access modes:\n- Patient access\n- Healthcare worker access\n\n## Sandbox test scenarios\n\n| Scenario                                                                    | Request                                                                                                | Response                                                                                       |\n| --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |\n| List Relationship                                                           | `identifier=9000000017`                                                                                | HTTP Status 200 List of relationships for the proxy                                            |\n| List Relationship and include patient's details                             | `identifier=9000000017&_include=RelatedPerson:patient`                                                 | HTTP Status 200 List of relationships for the proxy and includes patient data                  |\n| List Patient Relationship                                                   | `patient:identifier=9000000042`                                                                        | HTTP Status 200 List of relationships for the patient                                          |\n| List Patient Relationship and include patient's details                     | `patient:identifier=9000000042&_include=RelatedPerson:patient`                                         | HTTP Status 200 List of relationships for the patient and includes proxy data                  |\n| List Relationship and no relationships returned                             | `identifier=9000000033`                                                                                | HTTP Status 200 Empty bundle                                                                   |\n| Verify Relationship between proxy and patient                               | `identifier=9000000017&patient:identifier=9000000009`                                                  | HTTP Status 200 Verified relationship between patient and proxy                                |\n| Verify Relationship between proxy and patient and include patient's details | `identifier=9000000017&patient:identifier=9000000009&_include=RelatedPerson:patient`                   | HTTP Status 200 Verified relationship between patient and proxy and includes patient's details |\n| Verify Relationship between proxy and patient                               | `identifier=9000000017&patient:identifier=9000000025`                                                  | HTTP Status 200 Verified relationship between patient and proxy                                |\n| Verify Relationship between proxy and patient and include patient's details | `identifier=9000000017&patient:identifier=9000000025&_include=RelatedPerson:patient`                   | HTTP Status 200 Verified relationship between patient and proxy and includes patient's details |\n| Missing identifier                                                          | `patient:identifier=9000000009`                                                                      | HTTP Status 400 and MISSING_IDENTIFIER_VALUE error response                                    |\n| Invalid identifier                                                          | `identifier=900000000` Note: This identifier is 9 characters long, too short to be NHS Number        | HTTP Status 400 and INVALID_IDENTIFIER_VALUE error response                                    |\n| Invalid identifier system                                                   | `identifier=https://fhir.nhs.uk/Id/nhs-number/9730675929`                                            | HTTP Status 400 and INVALID_IDENTIFIER_SYSTEM error response                                   |\n| Identifier not supported in sandbox                                         | `identifier=1000000001`                                                                              | HTTP Status 404 and INVALIDATED_RESOURCE error response                                        |\n\n### Sandbox constraints\n  - Headers are not tested. `X-Request-ID` and `X-Correlation-ID` are disregarded.\n  - `patient:identifier` is not validated.\n\nOr perhaps you'd like to try out the sandbox using our 'Try it out' feature.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "RelatedPerson"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "The proxy's NHS number. For more information on FHIR tokens in general, [see here](https://build.fhir.org/search.html#token).\n",
+                    "type": "text/plain"
+                  },
+                  "key": "identifier",
+                  "value": "9000000017"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "The patient's NHS number. For more information on FHIR tokens in general, [see here](https://build.fhir.org/search.html#token).\n",
+                    "type": "text/plain"
+                  },
+                  "key": "patient:identifier",
+                  "value": "9000000009"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "Include referenced resources in the bundle response by specifying one or more `_include` parameters. Further info [here](https://www.hl7.org/fhir/search.html#_include).\n",
+                    "type": "text/plain"
+                  },
+                  "key": "_include",
+                  "value": "RelatedPerson:patient"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": {
+                  "content": "(Required) A globally unique identifier (GUID) for the request, which we use to correlate logs through different components.\nMust be a universally unique identifier (UUID) (ideally version 4).\nMirrored back in a response header.\n",
+                  "type": "text/plain"
+                },
+                "key": "X-Request-ID",
+                "value": "60E0B220-8136-4CA5-AE46-1D97EF59D068"
+              },
+              {
+                "disabled": false,
+                "description": {
+                  "content": "An optional ID which you can use to track transactions across multiple systems.\nMust be a universally unique identifier (UUID) (ideally version 4).\nMirrored back in a response header.\n",
+                  "type": "text/plain"
+                },
+                "key": "X-Correlation-ID",
+                "value": "11C46F5F-CDEF-4865-94B2-0EE0EDCC26DA"
+              },
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "d80dff68-3b7c-443d-978a-7fa618b773a3",
+                "type": "text/javascript",
+                "exec": [
+                  "// Validate status 2xx \npm.test(\"[GET]::/RelatedPerson - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
+                  "// Validate if response header has matching content-type\npm.test(\"[GET]::/RelatedPerson - Content-Type is application/fhir+json\", function () {\n   pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/fhir+json\");\n});\n",
+                  "// Validate if response has JSON Body \npm.test(\"[GET]::/RelatedPerson - Response has JSON Body\", function () {\n    pm.response.to.have.jsonBody();\n});\n"
+                ]
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "61d2ffa6-eea9-47f2-aeec-a9722146f8fa",
+      "name": "Consent",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cdd4a285-aa4b-4ea8-9b88-e1e951f7d090",
+          "name": "Get proxy roles",
+          "request": {
+            "name": "Get proxy roles",
+            "description": {
+              "content": "## Overview\nUse this endpoint to get the details about proxy roles, including current status, based on a provided NHS Number.\n\nEither `performer:identifier` or `patient:identifier` request parameters must be provided. `performer:identifier` and `patient:identifier` can be used together.\n\nYou can (optionally) include `status={status}` request parameter to filter the limit the response to records with a given status bound to the http://hl7.org/fhir/consent-state-codes CodeSystem e.g. `status=active`.\n\nYou can (optionally) include the `_include=Consent:performer` request parameter to include the proxy's details in the response.\n\nYou can (optionally) include the `_include=Consent:patient` request parameter to include the patient's details in the response.\n\n## Access modes\n\nThis endpoint supports the following access modes:\n- Patient access\n- Healthcare worker access\n- Application-restricted access\n\n## Sandbox test scenarios\n\n| Scenario                                                                          | Request                                                                                                                                          | Response                                                                                                          |\n| --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |\n| Multiple proxy relationships filtered by 'active' status including details        | `performer:identifier=9000000017&_include=Consent:patient&_include=Consent:performer&status=active`                                  | HTTP Status 200 Bundle containing a multiple active proxy relationships including performer and patient details   |\n| Multiple proxy relationships filtered by 'inactive' status                        | `performer:identifier=9000000017&status=inactive`                                                                                                | HTTP Status 200 Bundle containing a multiple inactive proxy relationships                                         |\n| Multiple proxy relationships filtered by 'proposed' and 'active' status           | `performer:identifier=9000000017&status=proposed,active`                                                                                         | HTTP Status 200 Bundle containing a multiple proposed and active proxy relationships                              |\n| Multiple proxy relationships without filtering and details                        | `performer:identifier=9000000022`                                                                                                                | HTTP Status 200 Bundle containing a multiple proxy relationships without details                                  |\n| Multiple proxy relationships including performer details                          | `performer:identifier=9000000022&_include=Consent:performer`                                                                                     | HTTP Status 200 Bundle containing a multiple proxy relationships including performer details                      |\n| Multiple proxy relationships including patient details                            | `performer:identifier=9000000022&_include=Consent:patient`                                                                                       | HTTP Status 200 Bundle containing a multiple proxy relationships including patient details                        |\n| Multiple proxy relationships including performer and patient details              | `performer:identifier=9000000022&_include=Consent:patient&_include=Consent:performer`                                                            | HTTP Status 200 Bundle containing a multiple proxy relationships including performer and patient details          |\n| Multiple proxy relationships, single patient                                      | `patient:identifier=9000000100`                                                                                                                  | HTTP Status 200 Bundle containing a multiple proxy relationships including performer and patient details          |\n| Multiple proxy relationships, single patient, including proxy details             | `patient:identifier=9000000100&_include=Consent:performer`                                                                                       | HTTP Status 200 Bundle containing a multiple proxy relationships including proxy details                          |\n| Multiple proxy relationships, single patient, including patient details           | `patient:identifier=9000000100&_include=Consent:patient`                                                                                         | HTTP Status 200 Bundle containing a multiple proxy relationships including patient details                        |\n| Multiple proxy relationships, single patient, including proxy and patient details | `patient:identifier=9000000100&_include=Consent:patient&_include=Consent:performer`                                                              | HTTP Status 200 Bundle containing a multiple proxy relationships including proxy and patient details              |\n| No proxy relationships                                                            | `performer:identifier=9000000025&_include=Consent:patient&_include=Consent:performer&status=active`                                              | HTTP Status 200 empty bundle                                                                                      |\n| A single proxy relationship between consenting adults                             | `performer:identifier=9000000010` and/or `patient:identifier=9000000005`                                                                         | HTTP Status 200 Bundle containing a single proxy relationship                                                     |\n| A single proxy relationship between consenting adults including details           | `performer:identifier=9000000010` and/or `patient:identifier=9000000005&_include=Consent:patient&_include=Consent:proxy`                         | HTTP Status 200 Bundle containing a single proxy relationship including performer and patient details             |\n| A single proxy relationship between a mother and child                            | `performer:identifier=9000000019` and/or `patient:identifier=9000000009`                                                                         | HTTP Status 200 Bundle containing a single proxy relationship                                                     |\n| A single proxy relationship between a mother and child including details          | `performer:identifier=9000000019` and/or `patient:identifier=9000000009&_include=Consent:patient&_include=Consent:proxy`                         | HTTP Status 200 Bundle containing a single proxy relationship including performer and patient details             |\n| A single proxy relationship between a mother and child with legal basis unknown   | `performer:identifier=9000000111` and/or `patient:identifier=9000000119`                                                                         | HTTP Status 200 Bundle containing a single proxy relationship with legal basis unknown                            |\n| Invalid status parameter                                                          | `performer:identifier=9000000019` and/or `patient:identifier=9000000009&status=test`                                                             | HTTP Status 422 and INVALID_PARAMETER error response                                                              |\n| Invalid include parameter                                                         | `performer:identifier=9000000019` and/or `patient:identifier=9000000009&_include=test`                                                           | HTTP Status 422 and INVALID_PARAMETER error response                                                              |\n| Missing identifier                                                                | `patient:identifier=9000000009`                                                                                                                  | HTTP Status 400 and MISSING_IDENTIFIER_VALUE error response                                                       |\n| Invalid identifier                                                                | `identifier=900000000` Note: This identifier is 9 characters long, too short to be NHS Number                                                    | HTTP Status 422 and INVALID_IDENTIFIER_VALUE error response                                                       |\n| Invalid identifier system                                                         | `identifier=https://fhir.nhs.uk/Id/nhs-number/9730675929`                                                                                        | HTTP Status 422 and INVALID_IDENTIFIER_SYSTEM error response                                                      |\n| No performer record found                                                         | `identifier=9000000999`                                                                                                                          | HTTP Status 404 and INVALIDATED_RESOURCE error response                                                           |\n| GP Practice not found                                                             | `identifier=9000000012`                                                                                                                          | HTTP Status 404 and GP_PRACTICE_NOT_FOUND error response                                                          |\n\n### Sandbox constraints\n  - Headers are not tested. `X-IM1-Connection-Params`, `X-Request-ID` and `X-Correlation-ID` are disregarded.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Consent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "The performer's (Proxy) NHS number. For more information on FHIR tokens in general, [see here](https://build.fhir.org/search.html#token).\n",
+                    "type": "text/plain"
+                  },
+                  "key": "performer:identifier",
+                  "value": "9000000017"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "The patient's NHS number. For more information on FHIR tokens in general, [see here](https://build.fhir.org/search.html#token).\n",
+                    "type": "text/plain"
+                  },
+                  "key": "patient:identifier",
+                  "value": "9000000017"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "Specify one or more `status` to filter the records returned in the bundle. For example you can filter to only `active` or `proposed` proxy relationships.",
+                    "type": "text/plain"
+                  },
+                  "key": "status",
+                  "value": "active"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "Include referenced resources in the bundle response by specifying one or more `_include` parameters. Further info [here](https://www.hl7.org/fhir/search.html#_include).",
+                    "type": "text/plain"
+                  },
+                  "key": "_include",
+                  "value": "Consent:performer"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "Include referenced resources in the bundle response by specifying one or more `_include` parameters. Further info [here](https://www.hl7.org/fhir/search.html#_include).",
+                    "type": "text/plain"
+                  },
+                  "key": "_include",
+                  "value": "Consent:patient"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": {
+                  "content": "(Required) A globally unique identifier (GUID) for the request, which we use to correlate logs through different components.\nMust be a universally unique identifier (UUID) (ideally version 4).\nMirrored back in a response header.\n",
+                  "type": "text/plain"
+                },
+                "key": "X-Request-ID",
+                "value": "60E0B220-8136-4CA5-AE46-1D97EF59D068"
+              },
+              {
+                "disabled": false,
+                "description": {
+                  "content": "An optional ID which you can use to track transactions across multiple systems.\nMust be a universally unique identifier (UUID) (ideally version 4).\nMirrored back in a response header.\n",
+                  "type": "text/plain"
+                },
+                "key": "X-Correlation-ID",
+                "value": "11C46F5F-CDEF-4865-94B2-0EE0EDCC26DA"
+              },
+              {
+                "disabled": false,
+                "description": {
+                  "content": "An optional `;` delimited string containing parameters required to refresh proxy relationships from GPIT supplier systems. Parameters that comprise this string are:\n\n- IM1 User Connection token\n- ODS Code\n",
+                  "type": "text/plain"
+                },
+                "key": "X-IM1-Connection-Params",
+                "value": "NiV3CyMJH3xYV26ghlVpbbjT7pDVEA8HpFczAjRLTs1VezC4CYzupZ3XxXAWM7ELuseqrV8r0Ill7EL7G2tXUaVHCPWgg4q10+MxFjnRPrjDvckBRSZazqZcp0K2VBdUV0rZ7RUYJNJsjVAeefWhiK/Y4R+GFO86QDpt41JS9xA=;G123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "c4da01a7-bec0-4c0b-a133-e46ce2e11e2a",
+                "type": "text/javascript",
+                "exec": [
+                  "// Validate status 2xx \npm.test(\"[GET]::/Consent - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
+                  "// Validate if response header has matching content-type\npm.test(\"[GET]::/Consent - Content-Type is application/fhir+json\", function () {\n   pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/fhir+json\");\n});\n",
+                  "// Validate if response has JSON Body \npm.test(\"[GET]::/Consent - Response has JSON Body\", function () {\n    pm.response.to.have.jsonBody();\n});\n"
+                ]
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "11f32e1e-0d18-4713-868a-a1020370f7b3",
+          "name": "Create a proxy role",
+          "request": {
+            "name": "Create a proxy role",
+            "description": {
+              "content": "## Overview\nUse this endpoint to create a new proxy role between a patient and a related person (proxy).\n\n## Access modes\n\nThis endpoint supports the following access modes:\n- Healthcare worker access\n- Application-restricted access\n\n## Sandbox test scenarios\n\nThe sandbox supports a limited number of scenarios, and does not attempt to validate requests.  The returned result is dependant on the `performer.identifier.value`.\n\nSee the postman collection for an example request body.\n| Scenario                                | Request                                                                                                     | Response                                                    |\n| --------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |\n| Successful parent-child proxy creation  | Valid request with a legal basis of parental responsibility, with performer identifier value of `9000000009`| HTTP Status 201 and OperationOutcome response               |\n| Successful adult-adult proxy creation   | Valid request with legal basis of consent, with performer identifier value of `9000000017`                  | HTTP Status 201 and OperationOutcome response               |\n| Valid OTHER reason code with free text  | Request with reason code 'OTHER' and free text provided, performer identifier `9000000051`                  | HTTP Status 201 and OperationOutcome response               |\n| Non-OTHER reason code without free text | Request with a reason code other than 'OTHER', no free text, performer identifier `9000000052`              | HTTP Status 201 and OperationOutcome response               |\n| Non-OTHER reason code with free text    | Request with a reason code other than 'OTHER', with free text, performer identifier `9000000053`            | HTTP Status 201 and OperationOutcome response               |\n| Missing free text for OTHER reason code | Request with reason code 'OTHER' but missing free text, performer identifier `9000000050`                   | HTTP Status 400 and MISSING_FREE_TEXT_FOR_OTHER error response |\n| Missing grantor when status=active      | Valid request with status 'active' but no grantor extension, performer identifier `9000000054`              | HTTP Status 400 and MISSING_GRANTOR error response                       |\n| Missing grantor valueReference/identifier     | Request with grantor extension but malformed (no valueReference or identifier), performer identifier `9000000057` | HTTP Status 400 and MISSING_GRANTOR_REFERENCE error response             |\n| Invalid grantor ODS code value                | Request with grantor extension but missing/empty/invalid ODS code, performer identifier `9000000055`       | HTTP Status 422 and INVALID_GRANTOR_VALUE error response                 |\n| Invalid grantor identifier system             | Request with grantor extension but wrong/missing identifier system, performer identifier `9000000056`      | HTTP Status 422 and INVALID_GRANTOR_SYSTEM error response                |\n| Duplicate relationship                  | Request for relationship that already exists, with performer identifier value of `9000000049`               | HTTP Status 409 and DUPLICATE_RELATIONSHIP error response   |\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Consent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": {
+                  "content": "(Required) A globally unique identifier (GUID) for the request, which we use to correlate logs through different components.\nMust be a universally unique identifier (UUID) (ideally version 4).\nMirrored back in a response header.\n",
+                  "type": "text/plain"
+                },
+                "key": "X-Request-ID",
+                "value": "60E0B220-8136-4CA5-AE46-1D97EF59D068"
+              },
+              {
+                "disabled": false,
+                "description": {
+                  "content": "An optional ID which you can use to track transactions across multiple systems.\nMust be a universally unique identifier (UUID) (ideally version 4).\nMirrored back in a response header.\n",
+                  "type": "text/plain"
+                },
+                "key": "X-Correlation-ID",
+                "value": "11C46F5F-CDEF-4865-94B2-0EE0EDCC26DA"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/fhir+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resourceType\": \"Consent\",\n  \"status\": \"active\",\n  \"scope\": {\n    \"coding\": [\n      {\n        \"system\": \"https://terminology.hl7.org/CodeSystem/consentscope\",\n        \"code\": \"patient-privacy\",\n        \"display\": \"Privacy Consent\"\n      }\n    ]\n  },\n  \"category\": [\n    {\n      \"coding\": [\n        {\n          \"system\": \"https://terminology.hl7.org/CodeSystem/v3-ActCode\",\n          \"code\": \"INFA\",\n          \"display\": \"information access\"\n        }\n      ]\n    }\n  ],\n  \"patient\": {\n    \"type\": \"Patient\",\n    \"identifier\": {\n      \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n      \"value\": \"9000000012\"\n    }\n  },\n  \"dateTime\": \"2025-02-11T14:30:00Z\",\n  \"provision\": {\n    \"type\": \"permit\",\n    \"period\": {\n      \"start\": \"2025-02-11T14:30:00Z\",\n      \"end\": \"2029-02-11T14:30:00Z\"\n    },\n    \"actor\": [\n      {\n        \"reference\": {\n          \"type\": \"RelatedPerson\",\n          \"identifier\": {\n            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n            \"value\": \"9000000009\"\n          }\n        }\n      }\n    ]\n  },\n  \"extension\": [\n    {\n      \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",\n      \"valueCodeableConcept\": {\n        \"coding\": [\n          {\n            \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",\n            \"code\": \"ROLE_CREATED\",\n            \"display\": \"Role created from scratch by GP\"\n          }\n        ]\n      }\n    },\n    {\n      \"url\": \"http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee\",\n      \"valueReference\": {\n        \"identifier\": {\n          \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n          \"value\": \"9000000009\",\n          \"display\": \"Role created\"\n        }\n      }\n    },\n    {\n      \"url\": \"http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis\",\n      \"valueCodeableConcept\": {\n        \"coding\": [\n          {\n            \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis\",\n            \"code\": \"parental-responsibility\",\n            \"display\": \"Parental responsibility\"\n          }\n        ]\n      }\n    },\n    {\n      \"url\": \"http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor\",\n      \"valueReference\": {\n        \"identifier\": {\n          \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",\n          \"value\": \"G8101234\"\n        }\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "c2f6a6c9-b585-4178-adad-b31753298da2",
+                "type": "text/javascript",
+                "exec": [
+                  "// Validate status 2xx \npm.test(\"[POST]::/Consent - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
+                  "// Validate if response header has matching content-type\npm.test(\"[POST]::/Consent - Content-Type is application/fhir+json\", function () {\n   pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/fhir+json\");\n});\n",
+                  "// Validate if response has JSON Body \npm.test(\"[POST]::/Consent - Response has JSON Body\", function () {\n    pm.response.to.have.jsonBody();\n});\n"
+                ]
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fa68085f-38a6-4385-8eed-4323a8d7e3cc",
+          "name": "{id}",
+          "description": {
+            "content": "",
+            "type": "text/plain"
+          },
+          "item": [
+            {
+              "id": "bead8333-634c-441d-8e30-c838afa290b9",
+              "name": "Get proxy role",
+              "request": {
+                "name": "Get proxy role",
+                "description": {
+                  "content": "## Overview\nUse this endpoint to get the details of a proxy role, including current status, based on a provided id.\n\nYou can (optionally) include the `_include=Consent:performer` request parameter to include the proxy's details in the response.\n\nYou can (optionally) include the `_include=Consent:patient` request parameter to include the patient's details in the response.\n\n## Access modes\n\nThis endpoint supports the following access modes:\n- Healthcare worker access\n- Application-restricted access\n\n## Sandbox test scenarios\n\nThe sandbox supports a limited number of scenarios, and does not attempt to validate requests.  The returned result is dependant on the `ID` for the consent resource.\n\nSee the postman collection for an example request body.\n| Scenario                                                                         | Request                                                                                                                                  | Response                                                                                                         |\n| -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |\n| Retrieve single consenting adult relationship                                    | Valid request with ID `74eed847-ca25-4e76-8cf2-f2c2d7842a7a`                                                                             | HTTP Status 200 Bundle containing a single active proxy relationship                                             |\n| Retrieve single consenting adult relationship with patient details               | Valid request with ID `74eed847-ca25-4e76-8cf2-f2c2d7842a7a?_include=Consent:patient`                                                    | HTTP Status 200 Bundle containing a single active proxy relationship with patient details                        |\n| Retrieve single consenting adult relationship with performer details             | Valid request with ID `74eed847-ca25-4e76-8cf2-f2c2d7842a7a?_include=Consent:performer`                                                  | HTTP Status 200 Bundle containing a single active proxy relationship with performer details                      |\n| Retrieve single consenting adult relationship with performer and patient details | Valid request with ID `74eed847-ca25-4e76-8cf2-f2c2d7842a7a?_include=Consent:performer&_include=Consent:patient`                         | HTTP Status 200 Bundle containing a single active proxy relationship with performer details and patient details  |\n| Retrieve single mother-child relationship                                        | Valid request with ID `39df03a2-1b14-4d19-b1dc-d5d8cbf96948`                                                                             | HTTP Status 200 Bundle containing a single active proxy relationship                                             |\n| Retrieve single mother-child relationship with patient details                   | Valid request with ID `39df03a2-1b14-4d19-b1dc-d5d8cbf96948?_include=Consent:patient`                                                    | HTTP Status 200 Bundle containing a single active proxy relationship with patient details                        |\n| Retrieve single mother-child relationship with performer details                 | Valid request with ID `39df03a2-1b14-4d19-b1dc-d5d8cbf96948?_include=Consent:performer`                                                  | HTTP Status 200 Bundle containing a single active proxy relationship with performer details                      |\n| Retrieve single mother-child relationship with performer and patient details     | Valid request with ID `39df03a2-1b14-4d19-b1dc-d5d8cbf96948?_include=Consent:performer&_include=Consent:patient`                       | HTTP Status 200 Bundle containing a single active proxy relationship with performer details and patient details  |\n",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "path": [
+                    "Consent",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Include referenced resources in the bundle response by specifying one or more `_include` parameters. Further info [here](https://www.hl7.org/fhir/search.html#_include).",
+                        "type": "text/plain"
+                      },
+                      "key": "_include",
+                      "value": "Consent:performer"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Include referenced resources in the bundle response by specifying one or more `_include` parameters. Further info [here](https://www.hl7.org/fhir/search.html#_include).",
+                        "type": "text/plain"
+                      },
+                      "key": "_include",
+                      "value": "Consent:patient"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The logical id of the Consent resource",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "74eed847-ca25-4e76-8cf2-f2c2d7842a7a",
+                      "key": "id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": {
+                      "content": "(Required) A globally unique identifier (GUID) for the request, which we use to correlate logs through different components.\nMust be a universally unique identifier (UUID) (ideally version 4).\nMirrored back in a response header.\n",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Request-ID",
+                    "value": "60E0B220-8136-4CA5-AE46-1D97EF59D068"
+                  },
+                  {
+                    "disabled": false,
+                    "description": {
+                      "content": "An optional ID which you can use to track transactions across multiple systems.\nMust be a universally unique identifier (UUID) (ideally version 4).\nMirrored back in a response header.\n",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Correlation-ID",
+                    "value": "11C46F5F-CDEF-4865-94B2-0EE0EDCC26DA"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "cac2e05a-b450-4301-bbe7-b7cc9774fec4",
+                    "type": "text/javascript",
+                    "exec": [
+                      "// Validate status 2xx \npm.test(\"[GET]::/Consent/:id - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
+                      "// Validate if response header has matching content-type\npm.test(\"[GET]::/Consent/:id - Content-Type is application/fhir+json\", function () {\n   pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/fhir+json\");\n});\n",
+                      "// Validate if response has JSON Body \npm.test(\"[GET]::/Consent/:id - Response has JSON Body\", function () {\n    pm.response.to.have.jsonBody();\n});\n"
+                    ]
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            },
+            {
+              "id": "41436bf5-3398-4808-b586-790413dbb74a",
+              "name": "Update a proxy role",
+              "request": {
+                "name": "Update a proxy role",
+                "description": {
+                  "content": "## Overview\nUse this endpoint to update an existing proxy role.\n\nCommon update scenarios include:\n* Revocation of the role (status change from \"active\" to \"inactive\")\n* Changing the legal basis of the role (TBC)\n* Updating the end date for time-bound access\n\n## Request Requirements\n* The proxy role must exist and be identified by a valid identifier\n* JSON Patch operations must be valid according to RFC 6902\n* Status changes must use valid status codes from <http://hl7.org/fhir/consent-state-codes>\n\n **IMPORTANT: Business Rule Enforcement**\nIf you update the `/status` of a role, you **MUST** also provide a corresponding update to the `/extension` path in the same patch array to provide the `statusReason`.\n\nRequests that change status without providing a status reason will return an error\n\n## Access modes\n\nThis endpoint supports the following access modes:\n- Patient access\n- Healthcare worker access\n- Application-restricted access\n\n## Sandbox test scenarios\nThe sandbox supports a limited number of scenarios, and does not attempt to validate requests.  The returned response is dependant on the `id` parameters.\n\nNo changes are applied to any records.\n\nSee the postman collection for example requests.\n\n| Scenario                        | Request                                                                                         | Response                                                      |\n| ------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |\n| Successful status update        | Valid patch changing status to 'active', request with id '74eed847-ca25-4e76-8cf2-f2c2d7842a7a' | HTTP Status 200 and OperationOutcome                          |\n| Successful access level update  | Valid patch modifying the role end date, request with id '6b71ac92-baa3-4b76-b0f5-a601257e2722' | HTTP Status 200 and OperationOutcome                          |\n| Multiple valid changes          | Valid patch with multiple operations, request with id '43003db8-ffcd-4bd6-ab2f-b49b9656f9e5'    | HTTP Status 200 and OperationOutcome                          |\n| Valid OTHER reason code with free text   | Patch with reason code 'OTHER' and free text, id='a1b2c3d4-e5f6-4789-a0b1-c2d3e4f5a6b7'| HTTP Status 200 and OperationOutcome                          |\n| Non-OTHER reason code without free text  | Patch with a reason code other than 'OTHER', no free text, id='b2c3d4e5-f6a7-4890-b1c2-d3e4f5a6b7c8' | HTTP Status 200 and OperationOutcome                          |\n| Non-OTHER reason code with free text     | Patch with a reason code other than 'OTHER', with free text, id='c3d4e5f6-a7b8-4901-c2d3-e4f5a6b7c8d9' | HTTP Status 200 and OperationOutcome                          |\n| Invalid patch format            | Malformed JSON patch document, request with id '849ea584-2318-471b-a24c-cee1b5ad0137'           | HTTP Status 400 and INVALID_PATCH_FORMAT error response       |\n| Invalid path                    | Patch targeting non-existent element, request with id '01abb0c5-b1ac-499d-9655-9cd0b8d3588f'    | HTTP Status 400 and INVALID_PATCH_PATH error response         |\n| Invalid status code             | Patch with invalid status value, request with id '78c35330-fa2f-4934-a5dd-fff847f38de5'         | HTTP Status 422 and INVALID_STATUS_CODE error response        |\n| Invalid status reason           | Patch with invalid status reason value, request with id '51fb4df5-815a-45cd-8427-04d6558336b7'  | HTTP Status 422 and INVALID_STATUS_REASON error response      |\n| Resource not found              | Patch for non-existent Consent, request with an id not listed here                              | HTTP Status 404 and RESOURCE_NOT_FOUND error response         |\n| Invalid state transition        | Patch attempting invalid status change, request with id '7b7f47b8-96e5-43eb-b733-283bf1449f2c'  | HTTP Status 422 and INVALID_STATE_TRANSITION error response   |\n| Missing free text for OTHER reason code  | Patch with reason code 'OTHER' but missing free text, id='d4e8a6f2-1c3b-4a7e-9d2f-8b5c7e9f1a3d' | HTTP Status 400 and MISSING_FREE_TEXT_FOR_OTHER error response |\n| Missing grantor when activating status        | Patch attempting to set status to 'active' without grantor extension, id='90957744-b971-496e-b7c3-ab971868ce14' | HTTP Status 400 and MISSING_GRANTOR_FOR_ACTIVE error response            |\n",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "path": [
+                    "Consent",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The logical id of the Consent resource",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "74eed847-ca25-4e76-8cf2-f2c2d7842a7a",
+                      "key": "id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json-patch+json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"inactive\"\n  },\n  {\n    \"op\": \"add\",\n    \"path\": \"/extension/-\",\n    \"value\": [\n      {\n        \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",\n        \"valueCodeableConcept\": {\n          \"coding\": [\n            {\n              \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",\n              \"code\": \"ROLE_CREATED\",\n              \"display\": \"Role created\"\n            }\n          ]\n        }\n      }\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "d7f822ba-a0c5-4ea1-9367-b6942f91d132",
+                    "type": "text/javascript",
+                    "exec": [
+                      "// Validate status 2xx \npm.test(\"[PATCH]::/Consent/:id - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
+                      "// Validate if response header has matching content-type\npm.test(\"[PATCH]::/Consent/:id - Content-Type is application/fhir+json\", function () {\n   pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/fhir+json\");\n});\n",
+                      "// Validate if response has JSON Body \npm.test(\"[PATCH]::/Consent/:id - Response has JSON Body\", function () {\n    pm.response.to.have.jsonBody();\n});\n"
+                    ]
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            }
+          ],
+          "event": []
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "any",
+      "value": "https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1f34a695-49cc-4bfe-9173-694085b0b468",
+    "name": "Validated Relationships Service API",
+    "version": {
+      "raw": "1.16.0",
+      "major": 1,
+      "minor": 16,
+      "patch": 0,
+      "prerelease": [],
+      "build": [],
+      "string": "1.16.0"
+    },
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "## Overview\nUse this API to access the Validated Relationships Service - the national electronic database of relationships\nthat have been verified for the purpose of enabling citizens to access patient facing services on behalf of\n(as a proxy for) patients they care for.\n\nThe relationships held by this service are strictly for the purpose of enabling access to healthcare services.\nThis is in contrast to the relationships held by the Personal Demographics Service (PDS), which are largely to\nsupport the provision of direct care.\n\nYou can:\n\n- get verified relationships (to support decision making when granting proxy access)\n- create a new proxy access request\n- get proxy roles\n\nIn the future you will be able to:\n\n- update a proxy access request\n- update a proxy relationship\n- delete (revoke) a proxy relationship\n\n## Who can use this API\nThis API can only be used where there is a legal basis to do so. Make sure you have this and a valid use case before\nyou go too far with your development by [contacting us](https://digital.nhs.uk/developer/help-and-support)\n\nYou must do this before you can go live (see 'Onboarding' below).\n\n## Related APIs\nThe following APIs are related to this API:\n\n- [Personal Demographics Service - FHIR API](https://digital.nhs.uk/developer/api-catalogue/personal-demographics-service-fhir) - we use the data held in PDS as a source of data to verify relationships.\n\n## API status and roadmap\nThis API is [in production, beta](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#statuses), meaning:\n- we might make breaking changes, but only if we cannot avoid it, and we will give advance notice\n\n## Service level\nThis API is a bronze service, meaning it is operational and supported only during business hours (8am to 6pm), Monday to Friday excluding bank holidays.\n\nFor more details, see [service levels](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#service-levels).\n\n## Technology\nThis API is [RESTful](https://digital.nhs.uk/developer/guides-and-documentation/our-api-technologies#basic-rest).\n\nIt conforms to the [FHIR](https://digital.nhs.uk/developer/guides-and-documentation/our-api-technologies#fhir) global standard for health care data exchange, specifically to [FHIR R4 (v4.0.1)](https://hl7.org/fhir/r4/), except that it does not support the [capabilities](http://hl7.org/fhir/R4/http.html#capabilities) interaction.\n\nIt includes some country-specific FHIR extensions, which are built against [FHIR UK Core](https://digital.nhs.uk/services/fhir-uk-core), specifically [UK.core.r4 1.0.0](https://simplifier.net/packages/uk.core.r4/1.0.0).\n\nYou do not need to know much about FHIR to use this API - FHIR APIs are just RESTful APIs that follow specific rules.\nIn particular:\n- resource names are capitalised and singular, for example `/RelatedPerson` not `/relatedpersons`\n- array names are singular, for example `name` not `names` for the recorded names of a patient\n\nThere are [libraries and SDKs available](https://digital.nhs.uk/developer/guides-and-documentation/api-technologies-at-nhs-digital#fhir-libraries-and-sdks) to help with FHIR API integration.\n\n## Network access\nThis API is available on the internet.\n\nFor more details see [Network access for APIs](https://digital.nhs.uk/developer/guides-and-documentation/network-access-for-apis).\n\n## Security and authorisation\n\nThis API supports both [user-restricted](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#user-restricted-apis) and [application-restricted](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#application-restricted-apis) access types with the following access modes:\n\n| Access mode                   | Access type            |\n|-------------------------------|------------------------|\n| Patient access                | User-restricted        |\n| Healthcare worker access      | User-restricted        |\n| Application-restricted access | Application-restricted |\n\nFor more information on access modes and how to use them, see the developer [security and authorisation guide](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation).\n\n### User-restricted access\n\nUser-restricted access meaning an end user must be present, authenticated and authorised.\n\n#### Patient access mode\nIf the end user is a patient then you must use this access mode.\n\n[Review all patient access modes](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#patient-access-mode)\n\nValidated Relationships Service API checks the patient is P9 verified and has a high [vector of trust](https://nhsconnect.github.io/nhslogin/vectors-of-trust/) (VOT).\n\nAllowed vectors of trust are:\n- `P9.Cp.Cd`\n- `P9.Cp.Ck`\n- `P9.Cm`\n\n#### Healthcare worker access mode\nIf the end user is a healthcare worker then you must use this access mode.\n\n[Review all CIS2 healthcare worker access modes](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#healthcare-worker-access-mode)\n\n### Application-restricted access\n\nThis API is application-restricted, meaning we authenticate the calling application but not the end user.\n\n[Review all application-restricted access modes](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#application-restricted-apis)\n\n## Headers\nThis API is case-insensitive when processing request headers, meaning it will accept headers regardless of the letter casing used. (e.g. X-Request-Id, x-request-id are treated the same). When sending headers back in the response, we preserve the exact casing as received in the original request.\n\n## Errors\nWe use standard HTTP status codes to show whether an API request succeeded or not. They are usually in the range:\n\n* 200 to 299 if it succeeded, including code 202 if it was accepted by an API that needs to wait for further action\n* 400 to 499 if it failed because of a client error by your application\n* 500 to 599 if it failed because of an error on our server\n\nErrors specific to each API are shown in the Endpoints section, under Response. See our [reference guide](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#http-status-codes) for more on errors.\n\n## Open source\nYou might find the following [open source](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#open-source) resources useful:\n\n| Resource                         | Description                                                                                                  | Links                                                                                                                                                          |\n| -------------------------------- | ------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| Validated Relationships FHIR API | Source code for the API proxy, sandbox and specification.                                                    | [GitHub repo](https://github.com/NHSDigital/validated-relationships-service-api)                                                                               |\n| FHIR libraries and SDKs          | Various open source libraries for integrating with FHIR APIs.                                                | [FHIR libraries and SDKs](https://digital.nhs.uk/developer/guides-and-documentation/api-technologies-at-nhs-digital#fhir-libraries-and-sdks)                   |\n| nhs-number                       | Python package containing utilities for NHS numbers including validity checks, normalisation and generation. | [GitHub repo](https://github.com/uk-fci/nhs-number) \\| [Python Package index](https://pypi.org/project/nhs-number/) \\| [Docs](https://nhs-number.uk-fci.tech/) |\n\nWe currently don't have any open source client libraries or sample code for this API and the source code for the PDS FHIR back end (the Core Spine source code) is not currently in the open. If you think this would be useful, [contact us](https://digital.nhs.uk/developer/help-and-support).\n\n## Environments and testing\n| Environment       | Base URL                                                                             |\n| ----------------- | ------------------------------------------------------------------------------------ |\n| Sandbox           | `https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/`                |\n| Integration test  | `https://int.api.service.nhs.uk/validated-relationships/FHIR/R4/`                    |\n| Production        | `https://api.service.nhs.uk/validated-relationships/FHIR/R4/`                        |\n\n### Sandbox testing\nOur [sandbox environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#sandbox-testing)\n\n* is for early developer testing\n* only covers a limited set of scenarios\n* is open access, so does not allow you to test authorisation\n\n[<img src=\"https://run.pstmn.io/button.svg\" alt=\"Run In Postman\" style=\"width: 128px; height: 32px;\">](https://app.getpostman.com/run-collection/18067099-9c2224fd-e560-4a7c-847c-389d1a950ab7?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D18067099-9c2224fd-e560-4a7c-847c-389d1a950ab7%26entityType%3Dcollection%26workspaceId%3D082e43b8-9a51-4a16-af66-0d2b233cd69c)\n### Integration testing\n\nOur [integration test environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#integration-testing)\n\n* is for formal integration testing\n* includes authorisation with NHS Login\n\n[<img src=\"https://run.pstmn.io/button.svg\" alt=\"Run In Postman\" style=\"width: 128px; height: 32px;\">](https://app.getpostman.com/run-collection/50544839-b6783b4e-de59-42c6-a80e-72cf64fa5ec9?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D50544839-b6783b4e-de59-42c6-a80e-72cf64fa5ec9%26entityType%3Dcollection%26workspaceId%3D082e43b8-9a51-4a16-af66-0d2b233cd69c#?env%5BINT%5D=W3sia2V5IjoiY2lzMl90b2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InNlY3JldCIsInNlc3Npb25WYWx1ZSI6InFNQnZnNVVId0kxc3k3UWx4WUtQc1VxekZoQXIiLCJjb21wbGV0ZVNlc3Npb25WYWx1ZSI6InFNQnZnNVVId0kxc3k3UWx4WUtQc1VxekZoQXIiLCJzZXNzaW9uSW5kZXgiOjB9LHsia2V5IjoibG9naW5fdG9rZW4iLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJzZWNyZXQiLCJzZXNzaW9uVmFsdWUiOiJqOXcxNUxMa1VjbWtzOU15c0FHbGpmTW9LMGdGIiwiY29tcGxldGVTZXNzaW9uVmFsdWUiOiJqOXcxNUxMa1VjbWtzOU15c0FHbGpmTW9LMGdGIiwic2Vzc2lvbkluZGV4IjoxfSx7ImtleSI6ImFwaV9iYXNlX3VybCIsInZhbHVlIjoiaHR0cHM6Ly9pbnQuYXBpLnNlcnZpY2UubmhzLnVrL3ZhbGlkYXRlZC1yZWxhdGlvbnNoaXBzL0ZISVIvUjQiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoiZGVmYXVsdCIsInNlc3Npb25WYWx1ZSI6Imh0dHBzOi8vaW50LmFwaS5zZXJ2aWNlLm5ocy51ay92YWxpZGF0ZWQtcmVsYXRpb25zaGlwcy9GSElSL1I0IiwiY29tcGxldGVTZXNzaW9uVmFsdWUiOiJodHRwczovL2ludC5hcGkuc2VydmljZS5uaHMudWsvdmFsaWRhdGVkLXJlbGF0aW9uc2hpcHMvRkhJUi9SNCIsInNlc3Npb25JbmRleCI6Mn0seyJrZXkiOiJ2cnNfYXBpX3ByaXZhdGVfa2V5IiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoic2VjcmV0Iiwic2Vzc2lvblZhbHVlIjoiLS0tLS1CRUdJTiBQUklWQVRFLi4uIiwiY29tcGxldGVTZXNzaW9uVmFsdWUiOiItLS0tLUJFR0lOIFBSSVZBVEUgS0VZLS0tLS1cXG5NSUlKUVFJQkFEQU5CZ2txaGtpRzl3MEJBUUVGQUFTQ0NTc3dnZ2tuQWdFQUFvSUNBUURVMDhhUGJWckxRR0R3XFxuTGE2NlNYeVNzc1hTZ0VWa3V5cW9XVGJGbWVlV0ZVaWx5d0xLMGp1aTRpcjI5V1VadWpqNmt0NWg5MFdaMER5Slxcbml3SU9lOWJQdVlnbXR2am9RY2lWZ1J2UUJ4UlZYYzhJUnlveUVnV0pYZVgxUXVPVFVVWEZwT2VzZUFyOXJXeXhcXG5iVTUwek1NTFo3REtId1llUGlNZG1zaExoUGI2bWdScEdQaXpseFJDUXF6RGJxVzh0REM1YWhaYUN5UG1xYWhKXFxuYXFpSzgyQWNpbW5PL1FnZTFjd1JKMGtMU2d0ZG5tS3hGVFpvbm5WOWJJc2wwNUhrczM3R096S3B6ZEt0cFBZdlxcbmFCaGhZVUZzY24yR3grUmxocGo2UWdSS2VwNUpDUXN1UzExbUJKM2E2ZVZDRXlZa3VOdHl0WVh4aVB2YXJYVk5cXG5VZFpIQ0tNb3pjcUpNTHpXZlVKQW9UWGtwMVJ3RURkbDVzTHlPOWxuZlhOdHZKYkx2OGhBalNJT08vY0VCOGJLXFxuVmVyV2I5bnBLMTl4cXhSRjNEdTJiOFdweW5HMEVpZ21NK0lVbkVYQjZMVUNxWWpiVjl0ejMzVDBSM1BkaHg0WFxcbkY4dktzWHY2V0NYVXlVWktNSi9BVTAyc3ZvYlltV3JwOTFEdEdidy9YZ0pFZjBhSVUySzNaTGRUNzV5RWRPWHpcXG4rK2FZNW03VjIzbEpBQjgzU3o4T1R1QW1iMkdkY3IvV2xYRUh6NG5xdms0bVBSU3pzcWFVenBXOEpyS1dBR0JMXFxuU1J0bVU4dWFIZ1kweWFoRnpINWtNNy9oa1NTQTZoeURpaDFxeTkwSjJRN0s0Q1crbE9LbmROYTZaQTh0ZVNBY1xcbm53dHB5aDBWSS9yd3A3TURuZVZ5L0x1Q1dRU0dOd0lEQVFBQkFvSUNBRTc3SElmam5Ec3JkQTROMWZiNkNJbmtcXG5ZRGVETkwxeUhCMkhwaVRrdmFYYjFpNzR6TnQ1ODNtNkZ4bTQ3Y0VEYzl2Qm4xZVp6VEdNcnJxWVpMWDlUVFdmXFxuYzZCeWJLSzhydlNVaWo3RU1jNlFWcUdLejJUdmZUQ0NNVEc0bGYzNHZqemZ1cjR0ZWw2eitrOUo4a0MwTUhuT1xcbkREU21HTDRtYngrd2JqNWdaTXVSVnF1dUFiV2NEbitjZ01LeUVEMmNYU3loNnhPVmFNaFVFOGpURlNNanVIbytcXG4vNDg2SmNaVHJ6eDZhTWdRdlhFTHN6Sm1YZCtyVm95cU9HVmNRNXNzNVpJcEs5OEtLL0lXOHVtYTV0bFVuMVBnXFxubFNic2paMER1MGU4TWgxMXJjSUs0aVJYQVowM2YyRmJSYUlrdXhZTHFCekVzcVYxSVlvQXJ6UjNkMTY3SE5qOVxcbmJCYmF4SVdPcDRBUmpzU1ByM3JDMmVNSXR2bzh4OGVjVG5pZ2llS2ViSXJVcy9xMS9BNGFiZVl6Yk9Ob1JZWGRcXG5wWUc4QTB5RVNHWGpDeUd2bXZDL1krQ0hpSmJVNXB2SkNDUU8vVHNlR21Ed0N6Nk1JTldOK3NKWlpHaU5idTJ6XFxuejJGM0ZUVlJ4VTlTOFdRV3NiZmxFMjgyWmJ5VDNYNzV1TVMzZG5ZTjNta3A1NmsvRkJkWXZmUzhTN0VtLzNOWlxcbk5kbUtuMi83QnB5ZEVaSk9RYitISHVSbWFua09YVEVmUU9aUE5SbXhFU1NWUHJEaWZMaVhLOFMyK1lvb0F2RERcXG4vandvOG1rcU5lVWNEOTlhWWthTk52NHJLaDZpRitSZmhvSm85aHFIOVFCR2swUGZ6TW5yN0w0QWFNcHRkS1duXFxuK0NLLzJuR1VXcWZtZUhZamF2TmhBb0lCQVFEc0JBSFNPaFdDQnlFQU9ZNGdub3hPZ29yeDJCOUdGT1J0TmpRK1xcbnhtMXV4Z3B5ams1RGFUKzRBQ1daRVMvdXNrYkhTV0NuVStlMXlNWjFTdFE5ZlpHcGNyVmpuZ0ZJOXRMVG13VmdcXG5zcmxwUGpWQ2lHS1QzR3MyQ0NodjZwenlidGN3U0RCVjVYbEVkTXJ2ZkVBRFBEaURCZ2Q1ck5QVUZhQjNJVDJjXFxuaVJHMlN6VDFGRWNmME1UNHg3MmQvMVFIbWhoVFowT2tMREkyc0hOODlXcjRrQ1MrUXhOWGY2WHpzUXlDWnBqK1xcbk93ZElnM3V5aVJEaHgvR213UDBVdGJzdXJSZ3dLcVVaZitpa3R3WnRHYmp6QytZWmphTU9zWDdkWTNhSFUyNDdcXG52Q29GZzltZG1nZ1d0Mzd0d1JZMGxjSnpzemIwL1c2bjAzTXBqeXJ1SE50bCtIS1JBb0lCQVFEbTJTQUhEc2xwXFxuSnZMSEJ5aEgvektmcGY1MFJSTFFCWWxvM2NGcGZsd1Bob0lyK25wbjNoRmdoY2x5MU15N214U3Q0Ulh2YjZaVVxcbm9IM2MyV2wrb2NGUWxsNStncGhyaU1ibC9RclJ4bS8wK2lmM3BRK0RjK1M1ZW1OSDdaN3hmSDA5TGdsRFFkMmpcXG5WU1V5SU56OVA2d1cwbm9vOWZna0Nucy9tQVo1QnRyWklHZE92QjhBejdZMm1oWWlSOEZNMTFqZGxLRHlvMWZVXFxuZFc0L0NXdjhLTmxnU1ZFemlMMVBNcHRPUloyYUFybTZZMTl3ZnVwa0crR1o4VEswQ0FTME5QNUFROGwyZUVaMFxcbmZhUEFvNU5RMUZzSWYxamdJVk9wY00xd1ZQVE1xSEk4Q0FRRm5uVEhFL0N1ZW9KSWFSa1drc0tCS0ZITk5jOE5cXG4wcThvSkNWQU1NQkhBb0lCQUhSd2dhbURLSXRQRXhQMlVVMThpMEpNbTFvM3d5NGpMcE5HODcyb3plS2g2Qk9lXFxuYTdSTVg3aGFzakh6VGMrWXV0eWxNZjg3b1F5SmNvZjVrLzZHVGUvb2ZOOFozQTV3WDVFd1lSWFU5eTZhRjFLc1xcbjBOMmNHSFMrejV4dmhtRUJHRDlremh3Q3E3Si9ZSU9JckZnc1JNRTNuMGFEWXJxMnRNVXhiQ0VuYXNxaURnMS9cXG5wSnRvdDFUNXptMzl3eXBBOXhGbTEvTk9MclBXbUJPbFROSTI0em5QQStMZVFqU1pPOCsxNkhNOUVoblBiSjZuXFxuaXVHcGNHcFJ1a3FXWWpQa0NCUHpaaUxQZlNxT2RhZ3IwWmh2WFdWc0FHOUdXSTNHL1hwRVNoVkVmd0xiaXVoN1xcblR0Uk9VVnZoTUNCZlptRUlvT3Q3Z1RWaFYrYkFFSEVMWVo3TVZWRUNnZ0VBZkgvakx3dEJnczEzcC9GclB4RWFcXG5LMUhwM3FrV0VVeTdJK3hkRUZrT3EyemVyWHRFSXRwNFFyZEV3d0tUZkNhU1M0aVdQUERaSXREL3NHa3M1UmUxXFxuMjVHTld1dHg2cVQwcURzRlo4ZCt2LzllS01oRGlxQ3BYWUx0SW5DOEJQOGZ5Q3dZNE1ZWUU2dXJDTk1DZkM2blxcbjBCTXB3UWVQRVZqNXlYMWpHRWlqSlBDOTVvKzhwTUpoUWlkdUFvVHljays5NUpyeEJvc2pwampEQVlwQ1M5ZDRcXG5ETjdkeFU1YzB1YTNMY3FMeWZEb1crYVdKV1M5WXNwS3JLeVJyTmlhT05wUHVUY1Y0eWZRejZpbTlSRUROVmVoXFxuMVA1aFgxZDUrR3NXMFJ0d2Z5UGxvQXl1cHAwajIrNGNJdTE5Y0RJR1RzOU55VHlHaVljWXFSclVUbkRZQ2p1QVxcbnB3S0NBUUFXeFF4V0J6TnZ4L1pNZFlQK0o3eTd3VDlTY1JYZHR5MlRpbFJ0dWxTTGpGZmx1bnRCcUF1ZTVlWTZcXG41Y0hNRGp3N09lajhmaFFXdDN2Yi9xUHBEeXdoOXRTS0hCR0JxWXRJK3NCRXY3bktqNUcvTnVWWUhYOEVuOHBvXFxuc1pTUnphL3FxeHdSTDZtaHppNDlGOEo5ZGdZWHJLUzl6OUpDaTFZRUlCVzA1Y0xpVFk5ZFZiOGZFbTByMllNOFxcbkJOZjQ1NExlNG1TWnJSTjRoMG5ETDdMZzdMTFp5eW85S1Zjc1lDSG5rQ2FGVTNNS0NlTnp5ZEY4YXpyZ2FkU29cXG5xQzMybkxiSDFZMFN5UmhFM1EzOVlDVWVGek5Zbzl3d3luemVmakZ1cHNyckNxaEFPZTFnQytRMTEyNHRGTVp1XFxuS0VIdzJBQkJFT1crTU4ydkZXcEZ5WnBlVHg5Tlxcbi0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS0iLCJzZXNzaW9uSW5kZXgiOjN9LHsia2V5IjoibmhzX2RldmVsb3Blcl9hY2NvdW50X2FwaV9rZXkiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJzZWNyZXQiLCJzZXNzaW9uVmFsdWUiOiI0aHdpdnBKQVpJcXZwSmxBV09jdFJYQ1NnVU1sd1p1SyIsImNvbXBsZXRlU2Vzc2lvblZhbHVlIjoiNGh3aXZwSkFaSXF2cEpsQVdPY3RSWENTZ1VNbHdadUsiLCJzZXNzaW9uSW5kZXgiOjR9LHsia2V5IjoiY29uc2VudF9hcHBfYXV0aF9oZWFkZXJfdmFsdWUiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJzZWNyZXQiLCJzZXNzaW9uVmFsdWUiOiJDU1ZjYm90QVFHYmhMcUdabjFWVEZHY1FudEFFIiwiY29tcGxldGVTZXNzaW9uVmFsdWUiOiJDU1ZjYm90QVFHYmhMcUdabjFWVEZHY1FudEFFIiwic2Vzc2lvbkluZGV4Ijo1fSx7ImtleSI6InRwcF85Njc0OTk4NTM1X2FjY2Vzc190b2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InNlY3JldCIsInNlc3Npb25WYWx1ZSI6IntcIkFjY291bnRJZFwiOlwiNTUyODY5ODM0XCIsXCJQYXNzcGhyYXNlXCI6XCJ2UkpxdTEzOWQ3ZHZlclpnKzhlVzd2V0ZTQ2FTbndBV0ZSNlk0dFlYalA3L3VGU2d0djdrMklPd0E0NzhPV3A3WkRxNE1CWUM2aGNUSVRFcm5Od2dieFZtN1ZaOGYzUVVuTC4uLiIsImNvbXBsZXRlU2Vzc2lvblZhbHVlIjoie1wiQWNjb3VudElkXCI6XCI1NTI4Njk4MzRcIixcIlBhc3NwaHJhc2VcIjpcInZSSnF1MTM5ZDdkdmVyWmcrOGVXN3ZXRlNDYVNud0FXRlI2WTR0WVhqUDcvdUZTZ3R2N2sySU93QTQ3OE9XcDdaRHE0TUJZQzZoY1RJVEVybk53Z2J4Vm03Vlo4ZjNRVW5MUFdoKzRLN0VQNWkvNEswQWRHWjBJSzBVdzcrQzdYWmM3RkhnOFJTY0lqaCsyTXFGN3Z1WjQ0dW1lUHZnOGVTTTQ4V1I4SzRYRT1cIixcIlByb3ZpZGVySWRcIjpcImI4OTFmYzNiNTFkNWU3YzFcIixcIkltMUNhY2hlS2V5XCI6XCJ6OEVsQ0RJM2Uxc2xXTGJac0lSVXdpaHk4V1pGc2NyMmRQbVRmVXVpK2dBcVE3WmgwV1BWSVhvL005RHVFVnpPM1hhRk9wYkIzd2M5eWhBVWhBWmhVZz09XCJ9Iiwic2Vzc2lvbkluZGV4Ijo2fSx7ImtleSI6InRwcF85Njc0OTk4NDU0X2FjY2Vzc190b2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InNlY3JldCIsInNlc3Npb25WYWx1ZSI6IntcIkFjY291bnRJZFwiOlwiODU4ODAzMjAzXCIsXCJQYXNzcGhyYXNlXCI6XCJKVzRIc3JXTWw0SEhNamx4OUJJVW5zUzV1QkpmcUFsWnk0L2VZbUt3a3U5VUZRL0xBQ21PR21tWGJkOG95VUZiMHY3NE14bkVmKzl6UVdPQTQ0QUtPSXQ3bEtFdlJJbzVNYy4uLiIsImNvbXBsZXRlU2Vzc2lvblZhbHVlIjoie1wiQWNjb3VudElkXCI6XCI4NTg4MDMyMDNcIixcIlBhc3NwaHJhc2VcIjpcIkpXNEhzcldNbDRISE1qbHg5QklVbnNTNXVCSmZxQWxaeTQvZVltS3drdTlVRlEvTEFDbU9HbW1YYmQ4b3lVRmIwdjc0TXhuRWYrOXpRV09BNDRBS09JdDdsS0V2UklvNU1jQjVOanZaTkJCaWhMTE82N09xNm9KY0x5bHpDRzFaZUhqTEl4MTJrUnQwblZEc3ZqQ2IyMTZuRm5EYk9mNWkxQWFYbXBTdFVIY1xcdTAwM2RcIixcIlByb3ZpZGVySWRcIjpcImI4OTFmYzNiNTFkNWU3YzFcIixcIkltMUNhY2hlS2V5XCI6XCJrMFlPWVdzVHRteGdrVlpTWXA1YXkraEd6eUYyWUhTcEE2YnpxQTZHODdiOWtxbitHTy9XQ3E0RFRiQ2RISGhkUmZCRVhhZThUU2hHa2lpOEt1Qnd3QVxcdTAwM2RcXHUwMDNkXCJ9Iiwic2Vzc2lvbkluZGV4Ijo3fSx7ImtleSI6ImVtaXNfOTY5MjExMzY5OF9hY2Nlc3NfdG9rZW4iLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJzZWNyZXQiLCJzZXNzaW9uVmFsdWUiOiJ7XCJJbTFDYWNoZUtleVwiOlwiV3VqUGxITDNGK0p4SUpReDdGUER3aWNvKzZWamVEYXp3Zjd2eW91a1M0b2c2RnllZXFxSUlVSkVVdS8zRHZZRkljQUVBenFEdk5hMXk2UGY3Rlg5Q3c9PVwiLFwiQWNjZXNzSWRlbnRpdHlHdWlkXCI6XCI3OWU4MzkyOS0uLi4iLCJjb21wbGV0ZVNlc3Npb25WYWx1ZSI6IntcIkltMUNhY2hlS2V5XCI6XCJXdWpQbEhMM0YrSnhJSlF4N0ZQRHdpY28rNlZqZURhendmN3Z5b3VrUzRvZzZGeWVlcXFJSVVKRVV1LzNEdllGSWNBRUF6cUR2TmExeTZQZjdGWDlDdz09XCIsXCJBY2Nlc3NJZGVudGl0eUd1aWRcIjpcIjc5ZTgzOTI5LWFiNzctNDI2Ni1iMWI5LWZjN2I4MjNjMTUyNVwifSIsInNlc3Npb25JbmRleCI6OH0seyJrZXkiOiJlbWlzXzk2OTIxMTM2MTJfYWNjZXNzX3Rva2VuIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoic2VjcmV0Iiwic2Vzc2lvblZhbHVlIjoie1wiSW0xQ2FjaGVLZXlcIjpcIkM4QXZheEp0YjZaMlFlemNSelEzWUprbFRlSVVtU2N6Y0F6Mno1a2tDazlPNjQ0dlVqV20veUJzRWF6c0htZmxPT0V1MDBlc3IvbGxDT2g4RzQzbWNBPT1cIixcIkFjY2Vzc0lkZW50aXR5R3VpZFwiOlwiMjE3ZWY2ZjEtLi4uIiwiY29tcGxldGVTZXNzaW9uVmFsdWUiOiJ7XCJJbTFDYWNoZUtleVwiOlwiQzhBdmF4SnRiNloyUWV6Y1J6UTNZSmtsVGVJVW1TY3pjQXoyejVra0NrOU82NDR2VWpXbS95QnNFYXpzSG1mbE9PRXUwMGVzci9sbENPaDhHNDNtY0E9PVwiLFwiQWNjZXNzSWRlbnRpdHlHdWlkXCI6XCIyMTdlZjZmMS0xZDcwLTRhOGUtYjcyOC02NjQzMTZjNzU2NTRcIn0iLCJzZXNzaW9uSW5kZXgiOjl9XQ==)\n## Onboarding\n\nYou need to get your software approved by us before it can go live with this API. We call this onboarding. The onboarding process can sometimes be quite long, so it's worth planning well ahead.\n\nAs part of this process, you need to demonstrate your technical conformance to the requirements for this API.\n\nYou also need to demonstrate that you can manage risks. This might impact the design of your software.\n\nTo understand how our online digital onboarding process works, see [digital onboarding](https://digital.nhs.uk/developer/guides-and-documentation/digital-onboarding).\n\n## Contact us\n\nFor help and support connecting to our APIs and to join our developer community, see [Help and support building healthcare software](https://digital.nhs.uk/developer/help-and-support).\n\n\nContact Support:\n Name: Validated Relationships Service API Support\n Email: api.management@nhs.net",
+      "type": "text/plain"
+    }
+  }
+>>>>>>> 03c4af2 (NPA-5882: Update PR workflow to run sandbox locally and test postman collection)
 }

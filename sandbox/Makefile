@@ -20,7 +20,7 @@ format: # Formats the code using black
 	poetry run black . --line-length 120
 
 start: load-examples # Starts the Flask app (Don't use this in production)
-	poetry run flask --app api.app:app run -p 9000
+	poetry run flask --app api.app:app run -p 9000 --debug
 
 start-dev: clear-examples load-examples # Starts the Flask app in development mode
 	poetry run flask --app api.app:app run -p 9000 --reload --debug
