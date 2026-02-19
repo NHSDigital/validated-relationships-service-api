@@ -2337,7 +2337,6 @@ components:
           type: string
           description: "The status of the consent, following the ConsentStateCodes value set. See more information about this codesystem in the [FHIR specification](http://hl7.org/fhir/R4/codesystem-consent-state-codes.html)."
           enum:
-            - draft
             - proposed
             - active
             - rejected
@@ -2859,7 +2858,6 @@ components:
         items:
           type: string
           enum:
-            - draft
             - proposed
             - active
             - rejected
