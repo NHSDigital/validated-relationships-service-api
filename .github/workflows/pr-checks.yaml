@@ -30,6 +30,8 @@ jobs:
         working-directory: sandbox
       - name: Generate Postman Collection
         run: make generate-postman-collection
+        env:
+          POSTMAN_API_KEY: ${{ secrets.POSTMAN_API_KEY }}
       - name: Test Postman Collection agaist Sandbox
         working-directory: sandbox
         run: |

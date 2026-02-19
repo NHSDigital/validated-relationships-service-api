@@ -1,5 +1,6 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	"info": {
 		"_postman_id": "1cda64af-6449-45ca-a17e-e6a9bf00598f",
 		"name": "Validated Relationship Service - Sandbox - 20/02/26",
@@ -7,6 +8,15 @@
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "48873809",
 		"_collection_link": "https://christopher-bacon1-3957569.postman.co/workspace/4fecd6eb-42d0-49f8-8d9c-6e7f9e5db805/collection/48873809-1cda64af-6449-45ca-a17e-e6a9bf00598f?action=share&source=collection_link&creator=48873809"
+=======
+	"info": {
+		"_postman_id": "a51dd7c1-d882-44aa-bc0d-3b8fa55e101f",
+		"name": "Validated Relationship Service - Sandbox - 11/02/26",
+		"description": "This Postman collection includes example scenarios for each of the Validated Relationship Service (VRS) API endpoints, covering both valid and invalid request scenarios.\n\nThe collection is pointed towards the VRS sandbox environment, which will return a specific example response based on the request sent. All data shown in the requests or responses is test data.\n\nOur sandbox environment only covers the scenarios listed in the Postman collection and is open access. It does not allow you to test authorisation or any scenarios beyond the ones documented.\n\nFull specification is available at [https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48873809",
+		"_collection_link": "https://christopher-bacon1-3957569.postman.co/workspace/4fecd6eb-42d0-49f8-8d9c-6e7f9e5db805/collection/48873809-a51dd7c1-d882-44aa-bc0d-3b8fa55e101f?action=share&source=collection_link&creator=48873809"
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 	},
 	"item": [
 		{
@@ -2054,11 +2064,16 @@
 									"    \"link\": [",
 									"        {",
 									"            \"relation\": \"self\",",
+<<<<<<< HEAD
 									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000017&status=active&_include=Consent:grantee&_include=Consent:patient\"",
+=======
+									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000017&status=active&_include=Consent:performer&_include=Consent:patient\"",
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"        }",
 									"    ],",
 									"    \"entry\": [",
 									"        {",
+<<<<<<< HEAD
 									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/PR974746\",",
 									"            \"resource\": {",
 									"                \"resourceType\": \"Patient\",",
@@ -2109,6 +2124,8 @@
 									"            }",
 									"        },",
 									"        {",
+=======
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742\",",
 									"            \"resource\": {",
 									"                \"resourceType\": \"RelatedPerson\",",
@@ -2247,6 +2264,18 @@
 									"                    \"type\": \"permit\",",
 									"                    \"actor\": [",
 									"                        {",
+<<<<<<< HEAD
+=======
+									"                            \"role\": {",
+									"                                \"coding\": [",
+									"                                    {",
+									"                                        \"code\": \"parental-responsibility\",",
+									"                                        \"display\": \"Parental responsibility\",",
+									"                                        \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis\"",
+									"                                    }",
+									"                                ]",
+									"                            },",
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"                            \"reference\": {",
 									"                                \"identifier\": {",
 									"                                    \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",",
@@ -2519,7 +2548,12 @@
 									"});"
 								],
 								"type": "text/javascript",
+<<<<<<< HEAD
 								"packages": {}
+=======
+								"packages": {},
+								"requests": {}
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 							}
 						},
 						{
@@ -2529,7 +2563,12 @@
 									""
 								],
 								"type": "text/javascript",
+<<<<<<< HEAD
 								"packages": {}
+=======
+								"packages": {},
+								"requests": {}
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 							}
 						}
 					],
@@ -2549,7 +2588,11 @@
 							}
 						},
 						"url": {
+<<<<<<< HEAD
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000017&status=active&_include=Consent:grantee&_include=Consent:patient",
+=======
+							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000017&status=active&_include=Consent:performer&_include=Consent:patient",
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -2567,7 +2610,11 @@
 								},
 								{
 									"key": "_include",
+<<<<<<< HEAD
 									"value": "Consent:grantee"
+=======
+									"value": "Consent:performer"
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 								},
 								{
 									"key": "_include",
@@ -2686,6 +2733,7 @@
 									"                                \"value\": \"9000000017\"",
 									"                            }",
 									"                        }",
+<<<<<<< HEAD
 									"                    },",
 									"                    {",
 									"                        \"url\": \"http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor\",",
@@ -2695,6 +2743,8 @@
 									"                                \"value\": \"G8101234\"",
 									"                            }",
 									"                        }",
+=======
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"                    }",
 									"                ]",
 									"            },",
@@ -2792,6 +2842,7 @@
 									"                                \"value\": \"9000000017\"",
 									"                            }",
 									"                        }",
+<<<<<<< HEAD
 									"                    },",
 									"                    {",
 									"                        \"url\": \"http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor\",",
@@ -2801,6 +2852,8 @@
 									"                                \"value\": \"G8101234\"",
 									"                            }",
 									"                        }",
+=======
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"                    }",
 									"                ]",
 									"            },",
@@ -2821,7 +2874,12 @@
 									"});"
 								],
 								"type": "text/javascript",
+<<<<<<< HEAD
 								"packages": {}
+=======
+								"packages": {},
+								"requests": {}
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 							}
 						},
 						{
@@ -2831,7 +2889,12 @@
 									""
 								],
 								"type": "text/javascript",
+<<<<<<< HEAD
 								"packages": {}
+=======
+								"packages": {},
+								"requests": {}
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 							}
 						}
 					],
@@ -4269,11 +4332,16 @@
 									"    \"link\": [",
 									"        {",
 									"            \"relation\": \"self\",",
+<<<<<<< HEAD
 									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000022&_include=Consent:grantee\"",
+=======
+									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000022&_include=Consent:performer\"",
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"        }",
 									"    ],",
 									"    \"entry\": [",
 									"        {",
+<<<<<<< HEAD
 									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/PR974743\",",
 									"            \"resource\": {",
 									"                \"resourceType\": \"Patient\",",
@@ -4324,6 +4392,8 @@
 									"            }",
 									"        },",
 									"        {",
+=======
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742\",",
 									"            \"resource\": {",
 									"                \"resourceType\": \"RelatedPerson\",",
@@ -4768,7 +4838,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
+<<<<<<< HEAD
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000022&_include=Consent:grantee",
+=======
+							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000022&_include=Consent:performer",
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -4782,7 +4856,11 @@
 								},
 								{
 									"key": "_include",
+<<<<<<< HEAD
 									"value": "Consent:grantee"
+=======
+									"value": "Consent:performer"
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 								}
 							]
 						}
@@ -4804,11 +4882,16 @@
 									"    \"link\": [",
 									"        {",
 									"            \"relation\": \"self\",",
+<<<<<<< HEAD
 									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000022&_include=Consent:grantee&_include=Consent:patient\"",
+=======
+									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000022&_include=Consent:performer&_include=Consent:patient\"",
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"        }",
 									"    ],",
 									"    \"entry\": [",
 									"        {",
+<<<<<<< HEAD
 									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/PR974743\",",
 									"            \"resource\": {",
 									"                \"resourceType\": \"Patient\",",
@@ -4859,6 +4942,8 @@
 									"            }",
 									"        },",
 									"        {",
+=======
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742\",",
 									"            \"resource\": {",
 									"                \"resourceType\": \"RelatedPerson\",",
@@ -5457,7 +5542,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
+<<<<<<< HEAD
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000022&_include=Consent:grantee&_include=Consent:patient",
+=======
+							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000022&_include=Consent:performer&_include=Consent:patient",
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -5471,7 +5560,11 @@
 								},
 								{
 									"key": "_include",
+<<<<<<< HEAD
 									"value": "Consent:grantee"
+=======
+									"value": "Consent:performer"
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 								},
 								{
 									"key": "_include",
@@ -5870,7 +5963,11 @@
 									"    \"link\": [",
 									"        {",
 									"            \"relation\": \"self\",",
+<<<<<<< HEAD
 									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?patient:identifier=9000000100&_include=Consent:grantee&_include=Consent:patient\"",
+=======
+									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?patient:identifier=9000000100&_include=Consent:performer&_include=Consent:patient\"",
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"        }",
 									"    ],",
 									"    \"entry\": [",
@@ -5925,6 +6022,7 @@
 									"            }",
 									"        },",
 									"        {",
+<<<<<<< HEAD
 									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/PR974744\",",
 									"            \"resource\": {",
 									"                \"resourceType\": \"Patient\",",
@@ -5975,6 +6073,8 @@
 									"            }",
 									"        },",
 									"        {",
+=======
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742\",",
 									"            \"resource\": {",
 									"                \"resourceType\": \"RelatedPerson\",",
@@ -6122,6 +6222,7 @@
 									"            }",
 									"        },",
 									"        {",
+<<<<<<< HEAD
 									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/PR974745\",",
 									"            \"resource\": {",
 									"                \"resourceType\": \"Patient\",",
@@ -6172,6 +6273,8 @@
 									"            }",
 									"        },",
 									"        {",
+=======
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742\",",
 									"            \"resource\": {",
 									"                \"resourceType\": \"RelatedPerson\",",
@@ -6310,6 +6413,7 @@
 									"            }",
 									"        },",
 									"        {",
+<<<<<<< HEAD
 									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/PR974743\",",
 									"            \"resource\": {",
 									"                \"resourceType\": \"Patient\",",
@@ -6360,6 +6464,8 @@
 									"            }",
 									"        },",
 									"        {",
+=======
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742\",",
 									"            \"resource\": {",
 									"                \"resourceType\": \"RelatedPerson\",",
@@ -6519,7 +6625,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
+<<<<<<< HEAD
 							"raw": "{{api_base_url}}/Consent?patient:identifier=9000000100&_include=Consent:grantee&_include=Consent:patient",
+=======
+							"raw": "{{api_base_url}}/Consent?patient:identifier=9000000100&_include=Consent:performer&_include=Consent:patient",
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -6533,7 +6643,11 @@
 								},
 								{
 									"key": "_include",
+<<<<<<< HEAD
 									"value": "Consent:grantee"
+=======
+									"value": "Consent:performer"
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 								},
 								{
 									"key": "_include",
@@ -6559,11 +6673,16 @@
 									"    \"link\": [",
 									"        {",
 									"            \"relation\": \"self\",",
+<<<<<<< HEAD
 									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?patient:identifier=9000000100&_include=Consent:grantee\"",
+=======
+									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?patient:identifier=9000000100&_include=Consent:performer\"",
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"        }",
 									"    ],",
 									"    \"entry\": [",
 									"        {",
+<<<<<<< HEAD
 									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/PR974744\",",
 									"            \"resource\": {",
 									"                \"resourceType\": \"Patient\",",
@@ -6614,6 +6733,8 @@
 									"            }",
 									"        },",
 									"        {",
+=======
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742\",",
 									"            \"resource\": {",
 									"                \"resourceType\": \"RelatedPerson\",",
@@ -6761,6 +6882,7 @@
 									"            }",
 									"        },",
 									"        {",
+<<<<<<< HEAD
 									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/PR974745\",",
 									"            \"resource\": {",
 									"                \"resourceType\": \"Patient\",",
@@ -6811,6 +6933,8 @@
 									"            }",
 									"        },",
 									"        {",
+=======
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742\",",
 									"            \"resource\": {",
 									"                \"resourceType\": \"RelatedPerson\",",
@@ -6949,6 +7073,7 @@
 									"            }",
 									"        },",
 									"        {",
+<<<<<<< HEAD
 									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/PR974743\",",
 									"            \"resource\": {",
 									"                \"resourceType\": \"Patient\",",
@@ -6999,6 +7124,8 @@
 									"            }",
 									"        },",
 									"        {",
+=======
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742\",",
 									"            \"resource\": {",
 									"                \"resourceType\": \"RelatedPerson\",",
@@ -7158,7 +7285,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
+<<<<<<< HEAD
 							"raw": "{{api_base_url}}/Consent?patient:identifier=9000000100&_include=Consent:grantee",
+=======
+							"raw": "{{api_base_url}}/Consent?patient:identifier=9000000100&_include=Consent:performer",
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -7172,7 +7303,11 @@
 								},
 								{
 									"key": "_include",
+<<<<<<< HEAD
 									"value": "Consent:grantee"
+=======
+									"value": "Consent:performer"
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 								}
 							]
 						}
@@ -7621,7 +7756,11 @@
 									"    \"link\": [",
 									"        {",
 									"            \"relation\": \"self\",",
+<<<<<<< HEAD
 									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000025&_include=Consent:grantee&_include=Consent:patient\"",
+=======
+									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000025&_include=Consent:performer&_include=Consent:patient\"",
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"        }",
 									"    ],",
 									"    \"entry\": []",
@@ -7841,11 +7980,16 @@
 									"    \"link\": [",
 									"        {",
 									"            \"relation\": \"self\",",
+<<<<<<< HEAD
 									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000010&_include=Consent:grantee&_include=Consent:patient\"",
+=======
+									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000010&_include=Consent:performer&_include=Consent:patient\"",
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"        }",
 									"    ],",
 									"    \"entry\": [",
 									"        {",
+<<<<<<< HEAD
 									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/PR974720\",",
 									"            \"resource\": {",
 									"                \"resourceType\": \"Patient\",",
@@ -7896,6 +8040,8 @@
 									"            }",
 									"        },",
 									"        {",
+=======
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/RP974720\",",
 									"            \"resource\": {",
 									"                \"resourceType\": \"RelatedPerson\",",
@@ -8105,7 +8251,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
+<<<<<<< HEAD
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000010&_include=Consent:grantee&_include=Consent:patient",
+=======
+							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000010&_include=Consent:performer&_include=Consent:patient",
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -8119,7 +8269,11 @@
 								},
 								{
 									"key": "_include",
+<<<<<<< HEAD
 									"value": "Consent:grantee"
+=======
+									"value": "Consent:performer"
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 								},
 								{
 									"key": "_include",
@@ -8308,11 +8462,16 @@
 									"    \"link\": [",
 									"        {",
 									"            \"relation\": \"self\",",
+<<<<<<< HEAD
 									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000019&_include=Consent:grantee&_include=Consent:patient\"",
+=======
+									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000019&_include=Consent:performer&_include=Consent:patient\"",
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"        }",
 									"    ],",
 									"    \"entry\": [",
 									"        {",
+<<<<<<< HEAD
 									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/PR974742\",",
 									"            \"resource\": {",
 									"                \"resourceType\": \"Patient\",",
@@ -8363,6 +8522,8 @@
 									"            }",
 									"        },",
 									"        {",
+=======
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742\",",
 									"            \"resource\": {",
 									"                \"resourceType\": \"RelatedPerson\",",
@@ -8581,7 +8742,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
+<<<<<<< HEAD
 							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000019&_include=Consent:grantee&_include=Consent:patient",
+=======
+							"raw": "{{api_base_url}}/Consent?performer:identifier=9000000019&_include=Consent:performer&_include=Consent:patient",
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -8595,7 +8760,11 @@
 								},
 								{
 									"key": "_include",
+<<<<<<< HEAD
 									"value": "Consent:grantee"
+=======
+									"value": "Consent:performer"
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 								},
 								{
 									"key": "_include",
@@ -9313,6 +9482,7 @@
 					"response": []
 				},
 				{
+<<<<<<< HEAD
 					"name": "Missing grantor",
 					"event": [
 						{
@@ -9658,6 +9828,8 @@
 					"response": []
 				},
 				{
+=======
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 					"name": "Adult-adult proxy creation",
 					"event": [
 						{
@@ -10164,7 +10336,11 @@
 					"response": []
 				},
 				{
+<<<<<<< HEAD
 					"name": "Retrieve consenting adult relationship with grantee details",
+=======
+					"name": "Retrieve consenting adult relationship with performer details",
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 					"event": [
 						{
 							"listen": "test",
@@ -10178,11 +10354,16 @@
 									"    \"link\": [",
 									"        {",
 									"            \"relation\": \"self\",",
+<<<<<<< HEAD
 									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000010&_include=Consent:grantee\"",
+=======
+									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000010&_include=Consent:performer\"",
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"        }",
 									"    ],",
 									"    \"entry\": [",
 									"        {",
+<<<<<<< HEAD
 									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/PR974720\",",
 									"            \"resource\": {",
 									"                \"resourceType\": \"Patient\",",
@@ -10233,6 +10414,8 @@
 									"            }",
 									"        },",
 									"        {",
+=======
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/RP974720\",",
 									"            \"resource\": {",
 									"                \"resourceType\": \"RelatedPerson\",",
@@ -10392,7 +10575,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
+<<<<<<< HEAD
 							"raw": "{{api_base_url}}/Consent/74eed847-ca25-4e76-8cf2-f2c2d7842a7a?_include=Consent:grantee",
+=======
+							"raw": "{{api_base_url}}/Consent/74eed847-ca25-4e76-8cf2-f2c2d7842a7a?_include=Consent:performer",
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -10403,7 +10590,11 @@
 							"query": [
 								{
 									"key": "_include",
+<<<<<<< HEAD
 									"value": "Consent:grantee"
+=======
+									"value": "Consent:performer"
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 								}
 							]
 						}
@@ -10425,11 +10616,16 @@
 									"    \"link\": [",
 									"        {",
 									"            \"relation\": \"self\",",
+<<<<<<< HEAD
 									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000010&_include=Consent:grantee&_include=Consent:patient\"",
+=======
+									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000010&_include=Consent:performer&_include=Consent:patient\"",
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"        }",
 									"    ],",
 									"    \"entry\": [",
 									"        {",
+<<<<<<< HEAD
 									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/PR974720\",",
 									"            \"resource\": {",
 									"                \"resourceType\": \"Patient\",",
@@ -10480,6 +10676,8 @@
 									"            }",
 									"        },",
 									"        {",
+=======
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/RP974720\",",
 									"            \"resource\": {",
 									"                \"resourceType\": \"RelatedPerson\",",
@@ -10689,7 +10887,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
+<<<<<<< HEAD
 							"raw": "{{api_base_url}}/Consent/74eed847-ca25-4e76-8cf2-f2c2d7842a7a?_include=Consent:grantee&_include=Consent:patient",
+=======
+							"raw": "{{api_base_url}}/Consent/74eed847-ca25-4e76-8cf2-f2c2d7842a7a?_include=Consent:performer&_include=Consent:patient",
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -10700,7 +10902,11 @@
 							"query": [
 								{
 									"key": "_include",
+<<<<<<< HEAD
 									"value": "Consent:grantee"
+=======
+									"value": "Consent:performer"
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 								},
 								{
 									"key": "_include",
@@ -11080,7 +11286,11 @@
 					"response": []
 				},
 				{
+<<<<<<< HEAD
 					"name": "Retrieve mother-child relationship with grantee details",
+=======
+					"name": "Retrieve mother-child relationship with performer details",
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 					"event": [
 						{
 							"listen": "test",
@@ -11094,11 +11304,16 @@
 									"    \"link\": [",
 									"        {",
 									"            \"relation\": \"self\",",
+<<<<<<< HEAD
 									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000019&_include=Consent:grantee\"",
+=======
+									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000019&_include=Consent:performer\"",
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"        }",
 									"    ],",
 									"    \"entry\": [",
 									"        {",
+<<<<<<< HEAD
 									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/PR974742\",",
 									"            \"resource\": {",
 									"                \"resourceType\": \"Patient\",",
@@ -11149,6 +11364,8 @@
 									"            }",
 									"        },",
 									"        {",
+=======
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742\",",
 									"            \"resource\": {",
 									"                \"resourceType\": \"RelatedPerson\",",
@@ -11317,7 +11534,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
+<<<<<<< HEAD
 							"raw": "{{api_base_url}}/Consent/39df03a2-1b14-4d19-b1dc-d5d8cbf96948?_include=Consent:grantee",
+=======
+							"raw": "{{api_base_url}}/Consent/39df03a2-1b14-4d19-b1dc-d5d8cbf96948?_include=Consent:performer",
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -11328,7 +11549,11 @@
 							"query": [
 								{
 									"key": "_include",
+<<<<<<< HEAD
 									"value": "Consent:grantee"
+=======
+									"value": "Consent:performer"
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 								}
 							]
 						}
@@ -11350,11 +11575,16 @@
 									"    \"link\": [",
 									"        {",
 									"            \"relation\": \"self\",",
+<<<<<<< HEAD
 									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000019&_include=Consent:grantee&_include=Consent:patient\"",
+=======
+									"            \"url\": \"https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000019&_include=Consent:performer&_include=Consent:patient\"",
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"        }",
 									"    ],",
 									"    \"entry\": [",
 									"        {",
+<<<<<<< HEAD
 									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/PR974742\",",
 									"            \"resource\": {",
 									"                \"resourceType\": \"Patient\",",
@@ -11405,6 +11635,8 @@
 									"            }",
 									"        },",
 									"        {",
+=======
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"            \"fullUrl\": \"https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742\",",
 									"            \"resource\": {",
 									"                \"resourceType\": \"RelatedPerson\",",
@@ -11623,7 +11855,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
+<<<<<<< HEAD
 							"raw": "{{api_base_url}}/Consent/39df03a2-1b14-4d19-b1dc-d5d8cbf96948?_include=Consent:grantee&_include=Consent:patient",
+=======
+							"raw": "{{api_base_url}}/Consent/39df03a2-1b14-4d19-b1dc-d5d8cbf96948?_include=Consent:performer&_include=Consent:patient",
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 							"host": [
 								"{{api_base_url}}"
 							],
@@ -11634,7 +11870,11 @@
 							"query": [
 								{
 									"key": "_include",
+<<<<<<< HEAD
 									"value": "Consent:grantee"
+=======
+									"value": "Consent:performer"
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 								},
 								{
 									"key": "_include",
@@ -12046,7 +12286,11 @@
 									"                    }",
 									"                ]",
 									"            },",
+<<<<<<< HEAD
 									"            \"diagnostics\": \"Grantor extension is required when creating/updating an active proxy role\",",
+=======
+									"            \"diagnostics\": \"Grantor extension must be included in the same PATCH request when changing status to active\",",
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 									"            \"expression\": [",
 									"                \"extension.where(url = 'http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor')\"",
 									"            ],",
@@ -12075,7 +12319,11 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
+<<<<<<< HEAD
 							"raw": "[\n    {\n        \"op\": \"replace\",\n        \"path\": \"/status\",\n        \"value\": \"active\"\n    },\n    {\n        \"op\": \"add\",\n        \"path\": \"/extension/-\",\n        \"value\": [\n            {\n                \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",\n                \"valueCodeableConcept\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",\n                            \"code\": \"ROLE_CREATED\",\n                            \"display\": \"Role created\"\n                        }\n                    ]\n                }\n            },\n            {\n                \"url\": \"https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee\",\n                \"valueReference\": {\n                    \"identifier\": {\n                        \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n                        \"value\": \"9736898148\"\n                    }\n                }\n            }\n        ]\n    },\n    {\n        \"op\": \"replace\",\n        \"path\": \"/provision/period/end\",\n        \"value\": \"2026-12-31T23:59:59Z\"\n    }\n]",
+=======
+							"raw": "[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": \"active\"\n  },\n  {\n        \"op\": \"add\",\n        \"path\": \"/extension/-\",\n        \"value\": [\n            {\n                \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",\n                \"valueCodeableConcept\": {\n                    \"coding\": [\n                        {\n                            \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",\n                            \"code\": \"ROLE_CREATED\",\n                            \"display\": \"Role created\"\n                        }\n                    ]\n                }\n            }\n        ]\n    },\n  {\n    \"op\": \"replace\",\n    \"path\": \"/provision/period/end\",\n    \"value\": \"2026-12-31T23:59:59Z\"\n  }\n]",
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 							"options": {
 								"raw": {
 									"language": "json"
@@ -12097,6 +12345,7 @@
 					"response": []
 				},
 				{
+<<<<<<< HEAD
 					"name": "Missing Grantor identifier",
 					"event": [
 						{
@@ -12381,6 +12630,8 @@
 					"response": []
 				},
 				{
+=======
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 					"name": "Access level update",
 					"event": [
 						{
@@ -12916,7 +13167,10 @@
 			"listen": "prerequest",
 			"script": {
 				"type": "text/javascript",
+<<<<<<< HEAD
 				"requests": {},
+=======
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 				"exec": [
 					""
 				]
@@ -12926,7 +13180,10 @@
 			"listen": "test",
 			"script": {
 				"type": "text/javascript",
+<<<<<<< HEAD
 				"requests": {},
+=======
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
 				"exec": [
 					"pm.test(\"Response has FHIR content type\", () => {",
 					"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/fhir+json');",
@@ -12941,6 +13198,7 @@
 			"value": "https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4"
 		}
 	]
+<<<<<<< HEAD
 =======
   "_": {
     "postman_id": "ae97818a-8f10-4472-bac0-1b4d8ec4ca75"
@@ -13644,3 +13902,6 @@
   }
 >>>>>>> 03c4af2 (NPA-5882: Update PR workflow to run sandbox locally and test postman collection)
 }
+=======
+}
+>>>>>>> c9ef37e (NPA-5882: Keep postman id consistent)
