@@ -1,11 +1,11 @@
 {
 	"info": {
-		"_postman_id": "0d8c2f36-9e84-45bc-9f27-861703559c66",
-		"name": "Validated Relationship Service Sandbox 16/02/26",
+		"_postman_id": "241eb7ed-1286-4afb-90e2-2d84edb588d1",
+		"name": "Validated Relationship Service Sandbox 19/02/26",
 		"description": "This Postman collection includes example scenarios for each of the Validated Relationship Service (VRS) API endpoints, covering both valid and invalid request scenarios.\n\nThe collection is pointed towards the VRS sandbox environment, which will return a specific example response based on the request sent. All data shown in the requests or responses is test data.\n\nOur sandbox environment only covers the scenarios listed in the Postman collection and is open access. It does not allow you to test authorisation or any scenarios beyond the ones documented.\n\nFull specification is available at [https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service](https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "46399153",
-		"_collection_link": "https://www.postman.com/leohoward/workspace/vrsa-13-02-2026/collection/46399153-0d8c2f36-9e84-45bc-9f27-861703559c66?action=share&source=collection_link&creator=46399153"
+		"_collection_link": "https://www.postman.com/leohoward/workspace/vrsa-19-02-2026/collection/46399153-241eb7ed-1286-4afb-90e2-2d84edb588d1?action=share&source=collection_link&creator=46399153"
 	},
 	"item": [
 		{
