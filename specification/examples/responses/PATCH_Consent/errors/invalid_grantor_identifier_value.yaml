@@ -1,4 +1,4 @@
-PostConsentInvalidGrantorIdentifierValueError:
+PatchConsentInvalidGrantorIdentifierValueError:
   summary: Invalid Grantor ODS Code
   description: Returned when the grantor ODS code value is invalid
   value:
