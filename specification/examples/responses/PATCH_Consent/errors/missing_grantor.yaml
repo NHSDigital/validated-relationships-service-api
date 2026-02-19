@@ -12,6 +12,6 @@ PatchConsentMissingGrantorError:
               version: "1"
         diagnostics: Grantor extension is required when creating/updating an active proxy role
         expression:
-          - "extension.where(url = 'http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor')"
+          - "extension.where(url = 'https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor')"
         severity: error
     resourceType: OperationOutcome

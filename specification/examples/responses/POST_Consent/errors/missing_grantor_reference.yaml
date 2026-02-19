@@ -12,6 +12,6 @@ PostConsentMissingGrantorReferenceError:
               version: "1"
         diagnostics: Grantor extension must contain a valueReference
         expression:
-          - "extension.where(url = 'http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor').valueReference"
+          - "extension.where(url = 'https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor').valueReference"
         severity: error
     resourceType: OperationOutcome
