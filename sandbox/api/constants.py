@@ -87,6 +87,7 @@ POST_CONSENT__MISSING_GRANTOR = f"{POST_CONSENT__DIRECTORY}errors/missing_granto
 POST_CONSENT__INVALID_GRANTOR_VALUE = f"{POST_CONSENT__DIRECTORY}errors/invalid_grantor_identifier_value.yaml"
 POST_CONSENT__INVALID_GRANTOR_SYSTEM = f"{POST_CONSENT__DIRECTORY}errors/invalid_grantor_identifier_system.yaml"
 POST_CONSENT__MISSING_GRANTOR_REFERENCE = f"{POST_CONSENT__DIRECTORY}errors/missing_grantor_reference.yaml"
+POST_CONSENT__MISSING_GRANTOR_IDENTIFIER = f"{POST_CONSENT__DIRECTORY}errors/missing_grantor_identifier.yaml"
 
 # PATCH Consent
 PATCH_CONSENT__DIRECTORY = "./api/examples/PATCH_Consent/"
@@ -98,7 +99,11 @@ PATCH_CONSENT__INVALID_STATUS_REASON = f"{PATCH_CONSENT__DIRECTORY}errors/invali
 PATCH_CONSENT__RESOURCE_NOT_FOUND = f"{PATCH_CONSENT__DIRECTORY}errors/resource_not_found.yaml"
 PATCH_CONSENT__INVALID_STATE_TRANSITION = f"{PATCH_CONSENT__DIRECTORY}errors/invalid_state_transition.yaml"
 PATCH_CONSENT__MISSING_FREE_TEXT_FOR_OTHER = f"{PATCH_CONSENT__DIRECTORY}errors/missing_free_text_for_other.yaml"
-PATCH_CONSENT__MISSING_GRANTOR_FOR_ACTIVE = f"{PATCH_CONSENT__DIRECTORY}errors/missing_grantor_for_active_status.yaml"
+PATCH_CONSENT__MISSING_GRANTOR = f"{PATCH_CONSENT__DIRECTORY}errors/missing_grantor.yaml"
+PATCH_CONSENT__INVALID_GRANTOR_VALUE = f"{PATCH_CONSENT__DIRECTORY}errors/invalid_grantor_identifier_value.yaml"
+PATCH_CONSENT__INVALID_GRANTOR_SYSTEM = f"{PATCH_CONSENT__DIRECTORY}errors/invalid_grantor_identifier_system.yaml"
+PATCH_CONSENT__MISSING_GRANTOR_REFERENCE = f"{PATCH_CONSENT__DIRECTORY}errors/missing_grantor_reference.yaml"
+PATCH_CONSENT__MISSING_GRANTOR_IDENTIFIER = f"{PATCH_CONSENT__DIRECTORY}errors/missing_grantor_identifier.yaml"
 
 # POST QuestionnaireResponse
 POST_QUESTIONNAIRE_RESPONSE_DIRECTORY = "./api/examples/POST_QuestionnaireResponse/"
