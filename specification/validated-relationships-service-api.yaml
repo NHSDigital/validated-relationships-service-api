@@ -999,7 +999,7 @@ paths:
         Supported update scenarios include:
 
         * Update the status and status reason, (optionally) providing an additional free text description
-        * Update the legal basis
+        * Update the regulatory basis
         * Update the end date, for time-bound access
 
         ## Request Requirements
