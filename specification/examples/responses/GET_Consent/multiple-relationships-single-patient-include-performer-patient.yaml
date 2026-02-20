@@ -82,8 +82,8 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
               value: "9000000100"
           dateTime: "2024-07-21T17:32:28Z"
           policy:
-            - authority: https://www.england.nhs.uk
-              uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
+            - authority: "https://www.england.nhs.uk"
+              uri: "https://digital.nhs.uk/data-and-information/information-standards/governance/latest-activity/standards-and-collections/dapb3051-identity-verification-and-authentication-standard-for-digital-health-and-care-services"
           provision:
             type: permit
             actor:
@@ -94,6 +94,8 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
             period:
               end: "2026-02-11"
               start: "2025-02-11"
+          meta:
+            lastUpdated: '2025-02-17T14:30:00Z'
           extension:
           - url: https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason
             valueCodeableConcept:
@@ -158,8 +160,8 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
               value: "9000000100"
           dateTime: "2024-07-21T17:32:28Z"
           policy:
-            - authority: https://www.england.nhs.uk
-              uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
+            - authority: "https://www.england.nhs.uk"
+              uri: "https://digital.nhs.uk/data-and-information/information-standards/governance/latest-activity/standards-and-collections/dapb3051-identity-verification-and-authentication-standard-for-digital-health-and-care-services"
           provision:
             type: permit
             actor:
@@ -170,6 +172,8 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
             period:
               end: "2026-02-11"
               start: "2025-02-11"
+          meta:
+            lastUpdated: '2025-02-17T14:30:00Z'
           extension:
           - url: https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason
             valueCodeableConcept:
@@ -234,8 +238,8 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
               value: "9000000100"
           dateTime: "2024-07-21T17:32:28Z"
           policy:
-            - authority: https://www.england.nhs.uk
-              uri: REPLACE_WITH_LINK_TO_PUBLISHED_NATIONAL_PROXY_STANDARD
+            - authority: "https://www.england.nhs.uk"
+              uri: "https://digital.nhs.uk/data-and-information/information-standards/governance/latest-activity/standards-and-collections/dapb3051-identity-verification-and-authentication-standard-for-digital-health-and-care-services"
           provision:
             type: permit
             actor:
@@ -246,6 +250,8 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
             period:
               end: "2026-02-11"
               start: "2025-02-11"
+          meta:
+            lastUpdated: '2025-02-17T14:30:00Z'
           extension:
           - url: https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason
             valueCodeableConcept:
