@@ -1,12 +1,12 @@
 {
-    "folderStrategy": "No folders",
-    "parametersResolution": "Example",
-    "exampleParametersResolution": "Pick",
-    "preferredRequestBodyType": "application/fhir+json",
-    "includeOptionalParameters": true,
-    "optimizeConversion": true,
-    "schemaFakerOptions": {
-        "alwaysFakeOptionals": false,
-        "optionalsProbability": 0
-    }
+  "folderStrategy": "No folders",
+  "parametersResolution": "Example",
+  "exampleParametersResolution": "Pick",
+  "preferredRequestBodyType": "application/fhir+json",
+  "includeOptionalParameters": true,
+  "optimizeConversion": true,
+  "schemaFakerOptions": {
+    "alwaysFakeOptionals": false,
+    "optionalsProbability": 0
+  }
 }
