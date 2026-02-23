@@ -14,6 +14,9 @@
                 },
                 "schemaValidation": {
                     "enabled": false
+                },
+                "headersPresent": {
+                    "enabled": true
                 }
             }
         ]

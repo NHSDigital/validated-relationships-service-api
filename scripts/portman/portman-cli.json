@@ -3,8 +3,5 @@
   "output": "postman/validated_relationship_service.sandbox.postman_collection.json",
   "portmanConfigFile": "scripts/portman/portman-config.json",
   "postmanConfigFile": "scripts/portman/postman-config.json",
-  "includeTests": true,
-  "syncPostmanCollectionIds": true,
-  "useOperationIdAsName": true,
-  "postmanUid": "a51dd7c1-d882-44aa-bc0d-3b8fa55e101f"
+  "includeTests": true
 }
