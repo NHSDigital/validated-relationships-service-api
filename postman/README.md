@@ -16,6 +16,11 @@ Use following command to generate sandbox postman collection:
 make generate-postman-collection
 ```
 
+Use the following commadn to test sandbox postman collection:
+```
+make test-postman-collection
+```
+
 ## Integration collection
 
 The 'integration' postman collection includes requests and examples to be used by the VRS team, consumers, and external
