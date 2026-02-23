@@ -7,10 +7,6 @@ name: Push Postman collection changes to public collection
 on:
     workflow_dispatch:
         inputs:
-            should_push_sandbox:
-                type: boolean
-                description: Push Sandbox collection
-                default: false
             should_push_integration:
                 type: boolean
                 description: Push Integration collection
@@ -27,7 +23,6 @@ jobs:
         runs-on: ubuntu-latest
         if: ${{ github.event_name == 'push' }}
         outputs:
-            sandbox: ${{ steps.filter.outputs.sandbox }}
             integration: ${{ steps.filter.outputs.integration }}
         steps:
             -   name: Checkout
@@ -38,33 +33,8 @@ jobs:
                 id: filter
                 with:
                     filters: |
-                        sandbox:
-                            - './postman/validated_relationship_service.sandbox.postman_collection.json'
                         integration:
                             - './postman/validated_relationship_service.integration.postman_collection.json'
-
-    push-sandbox-postman:
-        name: Push Sandbox collection to Postman
-        runs-on: ubuntu-latest
-        needs: [detect-changes]
-        if: |
-            always () && (
-                (github.event_name == 'push' && needs.detect-changes.outputs.sandbox == 'true') ||
-                (github.event_name == 'workflow_dispatch' && github.event.inputs.should_push_sandbox == 'true')
-            )
-        steps:
-            -   name: Checkout
-                uses: actions/checkout@v5
-                with:
-                    fetch-depth: 0
-            - name: Push Sandbox Postman collection
-              id: push_sandbox_postman_collection
-              uses: gcatanese/push-to-postman-action@main
-              with:
-                goal: update
-                postman-key: ${{ secrets.POSTMAN_API_KEY }}
-                postman-file: './postman/validated_relationship_service.sandbox.postman_collection.json'
-                collection-id: ${{ secrets.POSTMAN_SANDBOX_COLLECTION_ID }}
 
     push-integration-postman:
         name: Push Integration collection to Postman

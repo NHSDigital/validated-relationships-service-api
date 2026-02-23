@@ -34,8 +34,6 @@ clean:
 
 # Generate Postman Collection
 generate-postman-collection:
-# Mandatory arguments:
-# POSTMAN_API_KEY: The API Key to connect to postman to sync the collection
 	npx portman --cliOptionsFile scripts/portman/portman-cli.json
 
 # Test Postman Collection

@@ -2824,9 +2824,9 @@ components:
           - "Consent:patient"
       examples:
         FullInclude:
-          summary: Include the performer (Proxy) and patient in the bundle
+          summary: Include the grantee (proxy) and patient in the bundle
           value:
-            - "Consent:performer"
+            - "Consent:grantee"
             - "Consent:patient"
         IncludeGrantee:
           summary: Include the grantee (proxy) in the bundle
