@@ -1,7 +1,7 @@
-ConsentMultipleRelationshipsIncludePerformerBundle:
-  summary: Multiple relationships with performer details
+ConsentMultipleRelationshipsIncludeGranteeBundle:
+  summary: Multiple relationships with grantee details
   description:
-    A Bundle containing multiple proxy relationships with varying legal basis' including performer details
+    A Bundle containing multiple proxy relationships with varying legal basis' including grantee details
   value:
     resourceType: Bundle
     timestamp: '2026-01-16T14:00:00+00:00'
@@ -9,8 +9,37 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
     type: searchset
     link:
       - relation: self
-        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000022&_include=Consent:performer
+        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000022&_include=Consent:grantee
     entry:
+      - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/PR974743
+        resource:
+          resourceType: Patient
+          id: PR974743
+          meta:
+            security:
+              - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSIdentityProofingLevel"
+                code: "P9"
+                display: "High level verification (P9)"
+          identifier:
+            - system: "https://fhir.nhs.uk/Id/nhs-number"
+              value: "9000000022"
+          name:
+            - use: usual
+              period:
+                start: "2020-01-01"
+                end: "2029-12-31"
+              given:
+                - David
+              family: Brown
+              prefix:
+                - Mr
+          birthDate: "1975-06-10"
+          generalPractitioner:
+            - identifier:
+                value: ODS12345
+                system: "https://fhir.nhs.uk/Id/ods-organization-code"
+        search:
+          mode: include
       - fullUrl: >-
           https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742
         resource:
