@@ -18,6 +18,7 @@ make generate-postman-collection
 
 Use the following commadn to test sandbox postman collection:
 ```
+export SANDBOX_BASE_URL=https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4
 make test-postman-collection
 ```
 
