@@ -1,7 +1,6 @@
-ConsentMultipleRelationshipsIncludePerformerBundle:
-  summary: Multiple relationships with performer details
-  description:
-    A Bundle containing multiple proxy relationships with varying legal basis' including performer details
+ConsentMultipleRelationshipsSinglePatientIncludeGranteeBundle:
+  summary: Multiple relationships (multiple proxy relationships with single patient)
+  description: A Bundle containing multiple proxy relationships with single patient, including grantee details.
   value:
     resourceType: Bundle
     timestamp: '2026-01-16T14:00:00+00:00'
@@ -9,20 +8,48 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
     type: searchset
     link:
       - relation: self
-        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000022&_include=Consent:performer
+        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?patient:identifier=9000000100&_include=Consent:grantee
     entry:
-      - fullUrl: >-
-          https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742
+      - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/PR974744
+        resource:
+          resourceType: Patient
+          id: PR974744
+          meta:
+            security:
+              - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSIdentityProofingLevel"
+                code: "P9"
+                display: "High level verification (P9)"
+          identifier:
+            - system: "https://fhir.nhs.uk/Id/nhs-number"
+              value: "9000000020"
+          name:
+            - use: usual
+              period:
+                start: "2020-01-01"
+                end: "2029-12-31"
+              given:
+                - Emma
+              family: Wilson
+              prefix:
+                - Mrs
+          birthDate: "1978-04-12"
+          generalPractitioner:
+            - identifier:
+                value: ODS12345
+                system: "https://fhir.nhs.uk/Id/ods-organization-code"
+        search:
+          mode: include
+      - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742
         resource:
           resourceType: RelatedPerson
           id: BE974742
           identifier:
             - system: 'https://fhir.nhs.uk/Id/nhs-number'
-              value: '9000000022'
+              value: '9000000020'
           patient:
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
-              value: '9000000009'
+              value: '9000000100'
           relationship:
             - coding:
               - system: 'http://terminology.hl7.org/CodeSystem/v3-RoleCode'
@@ -34,8 +61,7 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
                 display: mother
         search:
           mode: include
-      - fullUrl: >-
-          https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/BBCC67E9
+      - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/BBCC67E9
         resource:
           resourceType: Consent
           id: BBCC67E9
@@ -53,7 +79,7 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
           patient:
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
-              value: '9000000009'
+              value: '9000000100'
           dateTime: '2024-07-21T17:32:28Z'
           policy:
             - authority: 'https://www.england.nhs.uk'
@@ -61,10 +87,10 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
           provision:
             type: permit
             actor:
-              - reference:
-                  identifier:
-                    system: https://fhir.nhs.uk/Id/nhs-number
-                    value: '9000000022'
+            - reference:
+                identifier:
+                  system: https://fhir.nhs.uk/Id/nhs-number
+                  value: '9000000020'
             period:
               end: '2026-02-11'
               start: '2025-02-11'
@@ -81,13 +107,13 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
             valueCodeableConcept:
               coding:
                 - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
-                  code: parental-responsibility
-                  display: Parental responsibility
+                  code: "court-appointed-personal-welfare-deputy"
+                  display: "Court appointed personal welfare deputy"
           - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
             valueReference:
               identifier:
                 system: https://fhir.nhs.uk/Id/nhs-number
-                value: '9000000022'
+                value: '9000000020'
           - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor
             valueReference:
               identifier:
@@ -95,28 +121,54 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
                 value: "G8101234"
         search:
           mode: match
-      - fullUrl: >-
-          https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/RP974720
+      - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/PR974745
+        resource:
+          resourceType: Patient
+          id: PR974745
+          meta:
+            security:
+              - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSIdentityProofingLevel"
+                code: "P9"
+                display: "High level verification (P9)"
+          identifier:
+            - system: "https://fhir.nhs.uk/Id/nhs-number"
+              value: "9000000021"
+          name:
+            - use: usual
+              period:
+                start: "2020-01-01"
+                end: "2029-12-31"
+              given:
+                - Mark
+              family: Taylor
+              prefix:
+                - Mr
+          birthDate: "1982-08-30"
+          generalPractitioner:
+            - identifier:
+                value: ODS12345
+                system: "https://fhir.nhs.uk/Id/ods-organization-code"
+        search:
+          mode: include
+      - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742
         resource:
           resourceType: RelatedPerson
-          id: RP974720
+          id: BE974742
           identifier:
             - system: 'https://fhir.nhs.uk/Id/nhs-number'
-              value: '9000000022'
+              value: '9000000021'
           patient:
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
-              value: '9000000005'
+              value: '9000000100'
           relationship:
             - coding:
-                - system: >-
-                    https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole
+                - system: 'http://terminology.hl7.org/CodeSystem/v3-RoleCode'
                   code: Personal
                   display: Personal relationship with the patient
         search:
           mode: include
-      - fullUrl: >-
-          https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/WWCC67T1
+      - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/WWCC67T1
         resource:
           resourceType: Consent
           id: WWCC67T1
@@ -134,7 +186,7 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
           patient:
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
-              value: '9000000005'
+              value: '9000000100'
           dateTime: '2024-07-21T17:32:28Z'
           policy:
             - authority: 'https://www.england.nhs.uk'
@@ -142,10 +194,10 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
           provision:
             type: permit
             actor:
-              - reference:
-                  identifier:
-                    system: https://fhir.nhs.uk/Id/nhs-number
-                    value: '9000000022'
+            - reference:
+                identifier:
+                  system: https://fhir.nhs.uk/Id/nhs-number
+                  value: '9000000021'
             period:
               end: '2026-02-11'
               start: '2025-02-11'
@@ -158,17 +210,17 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: ROLE_CREATED
                   display: Role created
-          - url: http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis
+          - url: "http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis"
             valueCodeableConcept:
               coding:
-                - system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
-                  code: best-interest
-                  display: Best interest
+                - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+                  code: "court-appointed-personal-welfare-deputy"
+                  display: "Court appointed personal welfare deputy"
           - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
             valueReference:
               identifier:
                 system: https://fhir.nhs.uk/Id/nhs-number
-                value: '9000000022'
+                value: '9000000021'
           - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor
             valueReference:
               identifier:
@@ -176,28 +228,54 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
                 value: "G8101234"
         search:
           mode: match
-      - fullUrl: >-
-          https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/AATD11A1
+      - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/PR974743
+        resource:
+          resourceType: Patient
+          id: PR974743
+          meta:
+            security:
+              - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSIdentityProofingLevel"
+                code: "P9"
+                display: "High level verification (P9)"
+          identifier:
+            - system: "https://fhir.nhs.uk/Id/nhs-number"
+              value: "9000000022"
+          name:
+            - use: usual
+              period:
+                start: "2020-01-01"
+                end: "2029-12-31"
+              given:
+                - David
+              family: Brown
+              prefix:
+                - Mr
+          birthDate: "1975-06-10"
+          generalPractitioner:
+            - identifier:
+                value: ODS12345
+                system: "https://fhir.nhs.uk/Id/ods-organization-code"
+        search:
+          mode: include
+      - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742
         resource:
           resourceType: RelatedPerson
-          id: AATD11A1
+          id: BE974742
           identifier:
             - system: 'https://fhir.nhs.uk/Id/nhs-number'
               value: '9000000022'
           patient:
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
-              value: '9000000006'
+              value: '9000000100'
           relationship:
             - coding:
-                - system: >-
-                    https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole
+                - system: 'http://terminology.hl7.org/CodeSystem/v3-RoleCode'
                   code: Personal
                   display: Personal relationship with the patient
         search:
           mode: include
-      - fullUrl: >-
-          https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/AATD11A1
+      - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/AATD11A1
         resource:
           resourceType: Consent
           id: AATD11A1
@@ -215,7 +293,7 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
           patient:
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
-              value: '9000000006'
+              value: '9000000100'
           dateTime: '2024-07-21T17:32:28Z'
           policy:
             - authority: 'https://www.england.nhs.uk'
@@ -223,10 +301,10 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
           provision:
             type: permit
             actor:
-              - reference:
-                  identifier:
-                    system: https://fhir.nhs.uk/Id/nhs-number
-                    value: '9000000022'
+            - reference:
+                identifier:
+                  system: https://fhir.nhs.uk/Id/nhs-number
+                  value: '9000000022'
             period:
               end: '2026-02-11'
               start: '2025-02-11'
@@ -239,12 +317,12 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: ROLE_DEACTIVATED_END_DATE_REACHED
                   display: End date reached
-          - url: http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis
+          - url: "http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis"
             valueCodeableConcept:
               coding:
-                - system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
-                  code: 'best-interest'
-                  display: 'Best interest'
+                - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+                  code: "parental-responsibility"
+                  display: "Parental responsibility"
           - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
             valueReference:
               identifier:

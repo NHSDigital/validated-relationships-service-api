@@ -49,7 +49,7 @@ def test_get_consent_returns_expected_responses__mocked_get_consent(
     ("request_args", "response_file_name", "status_code"),
     [
         (
-            "performer:identifier=9000000017&status=active&_include=Consent:performer&_include=Consent:patient",
+            "performer:identifier=9000000017&status=active&_include=Consent:grantee&_include=Consent:patient",
             "./api/examples/GET_Consent/filtered-relationships-status-active-include-details.yaml",
             200,
         ),
@@ -79,13 +79,13 @@ def test_get_consent_returns_expected_responses__mocked_get_consent(
             200,
         ),
         (
-            "performer:identifier=9000000022&_include=Consent:performer",
-            "./api/examples/GET_Consent/multiple-relationships-include-performer.yaml",
+            "performer:identifier=9000000022&_include=Consent:grantee",
+            "./api/examples/GET_Consent/multiple-relationships-include-grantee.yaml",
             200,
         ),
         (
-            "performer:identifier=9000000022&_include=Consent:performer&_include=Consent:patient",
-            "./api/examples/GET_Consent/multiple-relationships-include-performer-patient.yaml",
+            "performer:identifier=9000000022&_include=Consent:grantee&_include=Consent:patient",
+            "./api/examples/GET_Consent/multiple-relationships-include-grantee-patient.yaml",
             200,
         ),
         (
@@ -104,18 +104,18 @@ def test_get_consent_returns_expected_responses__mocked_get_consent(
             200,
         ),
         (
-            "performer:identifier=9000000010&_include=Consent:performer&_include=Consent:patient",
-            "./api/examples/GET_Consent/single-consenting-adult-relationship-include-performer-patient.yaml",
+            "performer:identifier=9000000010&_include=Consent:grantee&_include=Consent:patient",
+            "./api/examples/GET_Consent/single-consenting-adult-relationship-include-grantee-patient.yaml",
             200,
         ),
         (
-            "patient:identifier=9000000005&_include=Consent:performer&_include=Consent:patient",
-            "./api/examples/GET_Consent/single-consenting-adult-relationship-include-performer-patient.yaml",
+            "patient:identifier=9000000005&_include=Consent:grantee&_include=Consent:patient",
+            "./api/examples/GET_Consent/single-consenting-adult-relationship-include-grantee-patient.yaml",
             200,
         ),
         (
-            "performer:identifier=9000000010&patient:identifier=9000000005&_include=Consent:performer&_include=Consent:patient",  # noqa: E501
-            "./api/examples/GET_Consent/single-consenting-adult-relationship-include-performer-patient.yaml",
+            "performer:identifier=9000000010&patient:identifier=9000000005&_include=Consent:grantee&_include=Consent:patient",  # noqa: E501
+            "./api/examples/GET_Consent/single-consenting-adult-relationship-include-grantee-patient.yaml",
             200,
         ),
         (
@@ -134,18 +134,18 @@ def test_get_consent_returns_expected_responses__mocked_get_consent(
             200,
         ),
         (
-            "performer:identifier=9000000019&_include=Consent:performer&_include=Consent:patient",
-            "./api/examples/GET_Consent/single-mother-child-relationship-include-performer-patient.yaml",
+            "performer:identifier=9000000019&_include=Consent:grantee&_include=Consent:patient",
+            "./api/examples/GET_Consent/single-mother-child-relationship-include-grantee-patient.yaml",
             200,
         ),
         (
-            "patient:identifier=9000000009&_include=Consent:performer&_include=Consent:patient",
-            "./api/examples/GET_Consent/single-mother-child-relationship-include-performer-patient.yaml",
+            "patient:identifier=9000000009&_include=Consent:grantee&_include=Consent:patient",
+            "./api/examples/GET_Consent/single-mother-child-relationship-include-grantee-patient.yaml",
             200,
         ),
         (
-            "performer:identifier=9000000019&patient:identifier=9000000009&_include=Consent:performer&_include=Consent:patient",  # noqa: E501
-            "./api/examples/GET_Consent/single-mother-child-relationship-include-performer-patient.yaml",
+            "performer:identifier=9000000019&patient:identifier=9000000009&_include=Consent:grantee&_include=Consent:patient",  # noqa: E501
+            "./api/examples/GET_Consent/single-mother-child-relationship-include-grantee-patient.yaml",
             200,
         ),
         (
@@ -154,8 +154,8 @@ def test_get_consent_returns_expected_responses__mocked_get_consent(
             200,
         ),
         (
-            "patient:identifier=9000000100&_include=Consent:performer",
-            "./api/examples/GET_Consent/multiple-relationships-single-patient-include-performer.yaml",
+            "patient:identifier=9000000100&_include=Consent:grantee",
+            "./api/examples/GET_Consent/multiple-relationships-single-patient-include-grantee.yaml",
             200,
         ),
         (
@@ -164,8 +164,8 @@ def test_get_consent_returns_expected_responses__mocked_get_consent(
             200,
         ),
         (
-            "patient:identifier=9000000100&_include=Consent:performer&_include=Consent:patient",
-            "./api/examples/GET_Consent/multiple-relationships-single-patient-include-performer-patient.yaml",
+            "patient:identifier=9000000100&_include=Consent:grantee&_include=Consent:patient",
+            "./api/examples/GET_Consent/multiple-relationships-single-patient-include-grantee-patient.yaml",
             200,
         ),
         (
@@ -232,6 +232,6 @@ def test_get_consent__500_internal_server_error(
     """Test Consent endpoint."""
     mock_remove_system.side_effect = Exception("Test exception")
     # Act
-    client.get(f"{CONSENT_API_ENDPOINT}?performer:identifier=9000000015&status=active&_include=Consent:performer")
+    client.get(f"{CONSENT_API_ENDPOINT}?performer:identifier=9000000015&status=active&_include=Consent:grantee")
     # Assert
     mock_generate_response_from_example.assert_called_once_with("./api/examples/errors/internal-server-error.yaml", 500)

@@ -1,7 +1,7 @@
-ConsentSingleAdultChildRelationshipIncludePerformerBundle:
-  summary: Single adult child proxy relationship with performer details
+ConsentSingleAdultChildRelationshipIncludeGranteeBundle:
+  summary: Single adult child proxy relationship with grantee details
   description:
-    A Bundle containing a single proxy relationship between an adult and child including the performer details.
+    A Bundle containing a single proxy relationship between an adult and child including the grantee details.
   value:
     resourceType: Bundle
     timestamp: '2026-01-16T14:00:00+00:00'
@@ -9,8 +9,37 @@ ConsentSingleAdultChildRelationshipIncludePerformerBundle:
     type: searchset
     link:
       - relation: self
-        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000019&_include=Consent:performer
+        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000019&_include=Consent:grantee
     entry:
+      - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/PR974742
+        resource:
+          resourceType: Patient
+          id: PR974742
+          meta:
+            security:
+              - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSIdentityProofingLevel"
+                code: "P9"
+                display: "High level verification (P9)"
+          identifier:
+            - system: "https://fhir.nhs.uk/Id/nhs-number"
+              value: "9000000019"
+          name:
+            - use: usual
+              period:
+                start: "2020-01-01"
+                end: "2029-12-31"
+              given:
+                - Sarah
+              family: Jones
+              prefix:
+                - Mrs
+          birthDate: "1985-03-22"
+          generalPractitioner:
+            - identifier:
+                value: ODS12345
+                system: "https://fhir.nhs.uk/Id/ods-organization-code"
+        search:
+          mode: include
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742
         resource:
           resourceType: RelatedPerson
@@ -54,8 +83,8 @@ ConsentSingleAdultChildRelationshipIncludePerformerBundle:
               value: '9000000009'
           dateTime: '2024-07-21T17:32:28Z'
           policy:
-            - authority: 'https://www.england.nhs.uk'
-              uri: 'https://digital.nhs.uk/data-and-information/information-standards/governance/latest-activity/standards-and-collections/dapb3051-identity-verification-and-authentication-standard-for-digital-health-and-care-services'
+            - authority: "https://www.england.nhs.uk"
+              uri: "https://digital.nhs.uk/data-and-information/information-standards/governance/latest-activity/standards-and-collections/dapb3051-identity-verification-and-authentication-standard-for-digital-health-and-care-services"
           provision:
             type: permit
             actor:
