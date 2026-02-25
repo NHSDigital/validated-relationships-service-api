@@ -114,7 +114,7 @@ ConsentMultipleRelationshipsSinglePatientIncludeGranteeBundle:
               identifier:
                 system: https://fhir.nhs.uk/Id/nhs-number
                 value: '9000000020'
-          - url: http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor
+          - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor
             valueReference:
               identifier:
                 system: https://fhir.nhs.uk/Id/ods-organization-code
@@ -221,7 +221,7 @@ ConsentMultipleRelationshipsSinglePatientIncludeGranteeBundle:
               identifier:
                 system: https://fhir.nhs.uk/Id/nhs-number
                 value: '9000000021'
-          - url: http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor
+          - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor
             valueReference:
               identifier:
                 system: https://fhir.nhs.uk/Id/ods-organization-code
@@ -328,7 +328,7 @@ ConsentMultipleRelationshipsSinglePatientIncludeGranteeBundle:
               identifier:
                 system: https://fhir.nhs.uk/Id/nhs-number
                 value: '9000000022'
-          - url: http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor
+          - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor
             valueReference:
               identifier:
                 system: https://fhir.nhs.uk/Id/ods-organization-code

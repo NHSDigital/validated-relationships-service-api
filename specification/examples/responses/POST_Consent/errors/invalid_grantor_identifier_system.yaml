@@ -12,6 +12,6 @@ PostConsentInvalidGrantorIdentifierSystemError:
               version: "1"
         diagnostics: Valid grantor extension identifier system is required when creating/updating a consent with status 'active'
         expression:
-          - "extension.where(url = 'http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor').valueReference.identifier.system"
+          - "extension.where(url = 'https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor').valueReference.identifier.system"
         severity: error
     resourceType: OperationOutcome
