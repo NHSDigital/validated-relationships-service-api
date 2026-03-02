@@ -152,7 +152,7 @@ info:
     [![Import Postman Collection](https://img.shields.io/badge/Import-Postman%20Collection-orange?logo=postman)](https://raw.githubusercontent.com/NHSDigital/validated-relationships-service-api/master/postman/validated_relationship_service.sandbox.postman_collection.json)
 
     Import the  postman collection to run requests against sandbox.
-    
+
     ### Integration testing
 
     Our [integration test environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#integration-testing)
@@ -2511,37 +2511,13 @@ components:
                 type: string
                 description: FHIR error code.
                 enum:
-                  - invalid
-                  - structure
-                  - required
-                  - value
-                  - invariant
-                  - security
-                  - login
-                  - unknown
-                  - expired
-                  - forbidden
-                  - suppressed
-                  - processing
-                  - not-supported
-                  - duplicate
-                  - multiple-matches
-                  - not-found
-                  - deleted
-                  - too-long
-                  - code-invalid
-                  - extension
-                  - too-costly
-                  - business-rule
-                  - conflict
-                  - transient
-                  - lock-error
-                  - no-store
                   - exception
-                  - timeout
-                  - incomplete
-                  - throttled
+                  - forbidden
                   - informational
+                  - invalid
+                  - not-supported
+                  - processing
+                  - required
               details:
                 type: object
                 description: Internal error code.
