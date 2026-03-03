@@ -2515,6 +2515,7 @@ components:
                   - forbidden
                   - informational
                   - invalid
+                  - not-found
                   - not-supported
                   - processing
                   - required
@@ -2543,8 +2544,10 @@ components:
                 type: string
                 description: Additional diagnostic information about the issue. This information is subject to change.
               expression:
-                type: string
+                type: array
                 description: FHIRPath of element(s) related to the error.
+                items:
+                  type: string
 
     Reference:
       type: object
