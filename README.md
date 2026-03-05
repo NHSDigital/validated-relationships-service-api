@@ -28,9 +28,17 @@ This repository includes:
 
 Contributions to this project are welcome from anyone, providing that they conform to the [guidelines for contribution](./CONTRIBUTING.md) and the [community code of conduct](./CODE_OF_CONDUCT.md).
 
+## Documentation
+
+- [Development Guide](./docs/DEVELOPMENT_GUIDE.md) - Setup and development workflows
+- [Dependabot Review Runbook](./docs/DEPENDABOT_REVIEW_RUNBOOK.md) - Process for reviewing dependency updates
+- [Contributing Guidelines](./docs/CONTRIBUTING.md) - How to contribute to this project
+- [Code of Conduct](./docs/CODE_OF_CONDUCT.md) - Community standards
+- [Security Policy](./docs/SECURITY.md) - Reporting security vulnerabilities
+
 ## Development & Testing
 
-Development documentation can be found in [DEVELOPMENT_GUIDE.md](./DEVELOPMENT_GUIDE.md).
+Development documentation can be found in [DEVELOPMENT_GUIDE.md](./docs/DEVELOPMENT_GUIDE.md).
 
 ### Licensing
 
