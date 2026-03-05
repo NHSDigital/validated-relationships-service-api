@@ -114,7 +114,11 @@ schema-all:
 schema-get-consent:
 	@find specification/examples/responses/GET_Consent -name "*.yaml" -type f | while read file; do \
 		echo "Processing $$file"; \
-		poetry run python scripts/validate_schema.py operationoutcome "$$(realpath $$file)"; \
+		if echo "$$file" | grep -q "error"; then \
+			poetry run python scripts/validate_schema.py operationoutcome "$$(realpath $$file)"; \
+		else \
+			poetry run python scripts/validate_schema.py consent "$$(realpath $$file)"; \
+		fi; \
 		echo -e "$(GREEN)Success!$(RESET)"; \
 	done
 
@@ -135,7 +139,11 @@ schema-patch-consent:
 schema-related-person:
 	@find specification/examples/responses/GET_RelatedPerson -name "*.yaml" -type f | while read file; do \
 		echo "Processing $$file"; \
-		poetry run python scripts/validate_schema.py operationoutcome "$$(realpath $$file)"; \
+		if echo "$$file" | grep -q "error"; then \
+			poetry run python scripts/validate_schema.py operationoutcome "$$(realpath $$file)"; \
+		else \
+			poetry run python scripts/validate_schema.py relatedperson "$$(realpath $$file)"; \
+		fi; \
 		echo -e "$(GREEN)Success!$(RESET)"; \
 	done
 
@@ -156,6 +164,10 @@ schema-errors:
 schema-get-questionnaire:
 	@find specification/examples/responses/GET_QuestionnaireResponse -name "*.yaml" -type f | while read file; do \
 		echo "Processing $$file"; \
-		poetry run python scripts/validate_schema.py operationoutcome "$$(realpath $$file)"; \
+		if echo "$$file" | grep -q "error"; then \
+			poetry run python scripts/validate_schema.py operationoutcome "$$(realpath $$file)"; \
+		else \
+			poetry run python scripts/validate_schema.py questionnaireresponse "$$(realpath $$file)"; \
+		fi; \
 		echo -e "$(GREEN)Success!$(RESET)"; \
 	done
