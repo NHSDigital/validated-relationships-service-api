@@ -112,50 +112,62 @@ schema-all:
 	schema-errors
 
 schema-get-consent:
-	@for file in specification/examples/responses/GET_Consent/*.yaml; do \
+	@find specification/examples/responses/GET_Consent -name "*.yaml" -type f | while read file; do \
 		echo "Processing $$file"; \
-		poetry run python scripts/validate_schema.py consent "$$(realpath $$file)"; \
+		if echo "$$file" | grep -q "error"; then \
+			poetry run python scripts/validate_schema.py operationoutcome "$$(realpath $$file)"; \
+		else \
+			poetry run python scripts/validate_schema.py consent "$$(realpath $$file)"; \
+		fi; \
 		echo -e "$(GREEN)Success!$(RESET)"; \
 	done
 
 schema-post-consent:
-	@for file in specification/examples/responses/POST_Consent/*.yaml; do \
+	@find specification/examples/responses/POST_Consent -name "*.yaml" -type f | while read file; do \
 		echo "Processing $$file"; \
 		poetry run python scripts/validate_schema.py operationoutcome "$$(realpath $$file)"; \
 		echo -e "$(GREEN)Success!$(RESET)"; \
 	done
 
 schema-patch-consent:
-	@for file in specification/examples/responses/PATCH_Consent/*.yaml; do \
+	@find specification/examples/responses/PATCH_Consent -name "*.yaml" -type f | while read file; do \
 		echo "Processing $$file"; \
 		poetry run python scripts/validate_schema.py operationoutcome "$$(realpath $$file)"; \
 		echo -e "$(GREEN)Success!$(RESET)"; \
 	done
 
 schema-related-person:
-	@for file in specification/examples/responses/GET_RelatedPerson/*.yaml; do \
+	@find specification/examples/responses/GET_RelatedPerson -name "*.yaml" -type f | while read file; do \
 		echo "Processing $$file"; \
-		poetry run python scripts/validate_schema.py relatedperson "$$(realpath $$file)"; \
+		if echo "$$file" | grep -q "error"; then \
+			poetry run python scripts/validate_schema.py operationoutcome "$$(realpath $$file)"; \
+		else \
+			poetry run python scripts/validate_schema.py relatedperson "$$(realpath $$file)"; \
+		fi; \
 		echo -e "$(GREEN)Success!$(RESET)"; \
 	done
 
 schema-questionnaire:
-	@for file in specification/examples/responses/POST_QuestionnaireResponse/*.yaml; do \
+	@find specification/examples/responses/POST_QuestionnaireResponse -name "*.yaml" -type f | while read file; do \
 		echo "Processing $$file"; \
 		poetry run python scripts/validate_schema.py operationoutcome "$$(realpath $$file)"; \
 		echo -e "$(GREEN)Success!$(RESET)"; \
 	done
 
 schema-errors:
-	@for file in specification/examples/responses/errors/*.yaml; do \
+	@find specification/examples/responses/errors -name "*.yaml" -type f | while read file; do \
 		echo "Processing $$file"; \
 		poetry run python scripts/validate_schema.py operationoutcome "$$(realpath $$file)"; \
 		echo -e "$(GREEN)Success!$(RESET)"; \
 	done
 
 schema-get-questionnaire:
-	@for file in specification/examples/responses/GET_QuestionnaireResponse/*.yaml; do \
+	@find specification/examples/responses/GET_QuestionnaireResponse -name "*.yaml" -type f | while read file; do \
 		echo "Processing $$file"; \
-		poetry run python scripts/validate_schema.py questionnaireresponse "$$(realpath $$file)"; \
+		if echo "$$file" | grep -q "error"; then \
+			poetry run python scripts/validate_schema.py operationoutcome "$$(realpath $$file)"; \
+		else \
+			poetry run python scripts/validate_schema.py questionnaireresponse "$$(realpath $$file)"; \
+		fi; \
 		echo -e "$(GREEN)Success!$(RESET)"; \
 	done
