@@ -4,6 +4,7 @@ yaml2json.py
 
 Takes yaml on stdin and writes json on stdout, converting dates correctly.
 """
+
 import sys
 import json
 import datetime

@@ -4,6 +4,7 @@ validate_schema.py
 
 Validates a given example file against the schema specification
 """
+
 from yaml import safe_load
 from os import path
 from openapi_schema_validator import OAS30Validator
