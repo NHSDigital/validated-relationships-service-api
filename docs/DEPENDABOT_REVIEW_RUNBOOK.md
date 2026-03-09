@@ -255,9 +255,13 @@ make publish
 # Check the build output
 ls -la build/
 
-# Serve the spec locally to preview
-make serve
-# Open browser to http://localhost:8080
+# Import the spec into Postman to review
+# 1. Open Postman
+# 2. Click "Import" button (top left)
+# 3. Select "Files" tab
+# 4. Browse to and select: build/validated-relationships-service-api.json
+# 5. Click "Import" to create a collection from the OpenAPI spec
+# 6. Review the imported endpoints and schemas in Postman
 ```
 
 #### Test Postman Collection (if npm updated)
@@ -645,7 +649,7 @@ make smoketest         # Run smoke tests only
 
 # Build and publish
 make publish           # Generate OpenAPI spec
-make serve             # Serve spec locally
+# Import build/validated-relationships-service-api.json into Postman to review the spec
 ```
 
 ## Additional Resources
