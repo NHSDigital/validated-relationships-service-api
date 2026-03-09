@@ -28,7 +28,7 @@ Dependabot is configured to create grouped dependency update PRs weekly (Mondays
 2. **NPM Dependencies** (`npm-dependencies` group) - Major version updates for npm packages
 3. **GitHub Actions** (`github-dependencies` group) - All updates to GitHub Actions
 
-Minor and patch updates are ignored per the configuration in `.github/dependabot.yml`.
+For Python (pip) and NPM dependencies, minor and patch updates are ignored per the configuration in `.github/dependabot.yml`. GitHub Actions dependencies receive all update types, including minor and patch.
 
 ## Prerequisites
 
