@@ -389,6 +389,7 @@ paths:
             | HTTP status | Error code                 | Description                                                  |
             | ----------- | -------------------------- | ------------------------------------------------------------ |
             | 500         | `SERVER_ERROR`             | An unexpected internal server error has occurred.  (Could be possible? there is a generic try catch that returns an APIError object with whatever error it gets thrown)          |
+            | 501         | `NOT_IMPLEMENTED`          | API Endpoint not implemented.                                |
             | 502         | `BAD_GATEWAY`              | Connection to the backend service failed.   (NOT IN CODE)                 |
             | 503         | `DOWNSTREAM_SERVICE_ERROR` | Failed to generate response                                  |
 
@@ -487,19 +488,17 @@ paths:
 
             | HTTP status | Error code                         | Description                                                                                                                               |
             | ----------- | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-            | 400         | `INVALID_IDENTIFIER_SYSTEM`        | Invalid identifier system.                                                                                                                |
-            | 400         | `INVALID_VALUE`                    | Invalid Parameter or Invalid operation.                                                                                                   |
             | 400         | `MISSING_IDENTIFIER_VALUE`         | Missing RelatedPerson NHS number.                                                                                                         |
-            | 400         | `MISSING_VALUE`                    | Missing header or parameter. For details, see the `diagnostics` field.                                                                    |
-            | 400         | `INVALID_IDENTIFIER_VALUE`         | Malformed RelatedPerson NHS number.                                                                                                       |
-            | 400         | `INVALID_PATIENT_IDENTIFIER_VALUE` | Malformed Patient NHS number.                                                                                                             |
-            | 400         | `NOT_SUPPORTED`                    | The request is not currently supported.                                                                                                   |
-            | 401         | `ACCESS_DENIED`                    | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
-            | 403         | `FORBIDDEN`                        | Access denied to resource.                                                                                                                |
+            | 401         | `ACCESS_DENIED`                    | Missing or invalid OAuth 2.0 bearer token in request.  (NOT IN CODE)                                                                                   |
+            | 403         | `FORBIDDEN`                        | Access denied to resource.  (NOT IN CODE - less certain this is one)                                                                                                              |
             | 404         | `INVALIDATED_RESOURCE`             | Resource that has been marked as invalid was requested - invalid resources cannot be retrieved                                            |
-            | 405         | `METHOD_NOT_ALLOWED`               | The method is not allowed.                                                                                                                |
-            | 408         | `TIMEOUT`                          | Request timed out.                                                                                                                        |
-            | 429         | `THROTTLED`                        | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
+            | 405         | `METHOD_NOT_ALLOWED`               | The method is not allowed.  (NOT IN CODE)                                                                                                              |
+            | 408         | `TIMEOUT`                          | Request timed out. (NOT IN CODE)                                                                                                                        |
+            | 422         | `INVALID_IDENTIFIER_SYSTEM`        | Invalid identifier system.                                                                                                                |
+            | 422         | `INVALID_VALUE`                    | Invalid Parameter or Invalid operation.                                                                                                   |
+            | 422         | `INVALID_PATIENT_IDENTIFIER_VALUE` | Malformed Patient NHS number.                                                                                                             |
+            | 422         | `INVALID_IDENTIFIER_VALUE`         | Malformed RelatedPerson NHS number.                                                                                                       |
+            | 429         | `THROTTLED`                        | You have exceeded your application's (NOT IN CODE) [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
 
           content:
             application/fhir+json:
@@ -524,7 +523,8 @@ paths:
             | HTTP status | Error code                 | Description                                                  |
             | ----------- | -------------------------- | ------------------------------------------------------------ |
             | 500         | `SERVER_ERROR`             | An unexpected internal server error has occurred.            |
-            | 502         | `BAD_GATEWAY`              | Connection to the backend service failed.                    |
+            | 501         | `NOT_IMPLEMENTED`          | API Endpoint not implemented.                                |
+            | 502         | `BAD_GATEWAY`              | Connection to the backend service failed. (NOT IN CODE)                   |
 
           content:
             application/fhir+json:
