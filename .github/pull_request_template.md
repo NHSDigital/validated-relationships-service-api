@@ -12,9 +12,7 @@ https://nhsd-jira.digital.nhs.uk/browse/NPA-XXXX
 
 <!-- Describe the changes made in this PR. Include the purpose/scope/impact of the changes -->
 
-- <!-- Add bullet points summarising key changes -->
-- <!-- Add bullet points summarising key changes -->
-- <!-- Add bullet points summarising key changes -->
+- <!-- Briefly describe the key changes in this PR -->
 
 ---
 
@@ -23,54 +21,27 @@ https://nhsd-jira.digital.nhs.uk/browse/NPA-XXXX
 <!-- Describe what tests (automated/unit/manual etc.) have been done for the ticket. Include: -->
 <!-- - Any tests added/updated -->
 <!-- - Evidence that each acceptance criterion from the Jira ticket is met -->
+<!-- - Evidence of tests running eg. link to github workflow with tests passing or screenshot of tests running locally -->
 
-- <!-- Add bullet points for testing instructions -->
-- <!-- Add bullet points for testing instructions -->
-- <!-- Add bullet points for testing instructions -->
-
----
-
-## 🧪 Reviewer Testing Required
-
-<!-- Describe how to test the changes that have been made in the ticket. Include: -->
-<!-- - Testing environment details (e.g. sandbox/local setup) -->
-<!-- - Steps to verify the changes -->
-
-- <!-- Add bullet points for testing instructions -->
-- <!-- Add bullet points for testing instructions -->
-- <!-- Add bullet points for testing instructions -->
+- <!-- Briefly describe the testing carried out in this PR -->
 
 ---
 
-## ✅ Developer Checklist
+## 📋 PR Principles
 
-<!-- Complete before submitting the PR -->
+<!-- Principles we as a team follow when conducting a PR -->
 
-- [ ] PR title follows the format: `NPA-XXXX: <short-description>`
-- [ ] Branch name follows the convention: `<type>/NPA-XXXX/<short-description>`
-- [ ] Commit messages follow the template: `NPA-XXXX: <short-description>`
-- [ ] All acceptance criteria from the Jira ticket are addressed
-- [ ] Automated tests (unit/integration/API/infrastructure etc. tests) are added or updated
-- [ ] Assignees and appropriate labels (e.g. `terraform`, `documentation`) are added
+- Keep PRs Small and Focused: Ensure the PR addresses a single task or feature to make it easier to review.
+- Multiple PRs for one Ticket: When splitting work into multiple PRs, clearly describe what this PR addresses and outline the remaining work to complete the ticket.
+- Ensure Tests Are Included: Add or update unit, integration, or end-to-end tests to cover the changes made.
+- Follow Coding Standards: Ensure the code adheres to the team's coding guidelines and best practices.
+- Resolve Comments Promptly: If you raise a comment, ensure you follow up and resolve it before approving the PR to maintain clarity and ensure comments are addressed.
+- Foster Learning: PR reviews are an opportunity to share knowledge, provide constructive feedback, and encourage a collaborative environment.
 
----
+## 🏷️ Naming Conventions Reminder
 
-## 👀 Reviewer Checklist
+Please ensure the following naming conventions are followed:
 
-<!-- To be completed by the reviewer -->
-
-- [ ] Changes meet the acceptance criteria of the Jira ticket
-- [ ] Code is able to be merged (no conflicts and adheres to coding standards)
-- [ ] Sufficient test evidence is provided (manual and/or automated)
-- [ ] Infrastructure/operational/build changes are validated (if applicable)
-
----
-
-## 🚀 Post-merge
-
-<!-- Actions to complete after merging -->
-
-After merging and deploying changes to the sandbox, Postman collection or spec examples please run the Run Postman
-collection workflow.
-
-This will run the tests within the collection to check that the sandbox is working as expected once deployed.
+- PR title follows the format: `NPA-XXXX: <short-description>`
+- Branch name follows the convention: `<type>/NPA-XXXX/<short-description>`
+- Commit messages follow the template: `NPA-XXXX: <short-description>`
