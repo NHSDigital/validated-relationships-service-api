@@ -776,7 +776,6 @@ paths:
 
             | HTTP status | Error code                  | Description                                                                                                                               |
             | ----------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-            | 400         | `INVALID_VALUE`             | Invalid Parameter or Invalid operation.                                                                                                   |
             | 400         | `MISSING_IDENTIFIER_VALUE`  | Missing grantee or patient identifier.                                                                                                  |
             | 400         | `MISSING_IDENTIFIER_SYSTEM` | Missing grantee or patient identifier system.                                                                                           |
             | 400         | `MISSING_PATIENT`           | Missing patient.                                                                                                                          |
@@ -796,6 +795,7 @@ paths:
             | 405         | `METHOD_NOT_ALLOWED`        | The method is not allowed.                                                                                                                |
             | 408         | `TIMEOUT`                   | Request timed out.                                                                                                                        |
             | 409         | `DUPLICATE_RELATIONSHIP`    | Conflict with requested proxy role.                                                                                                       |
+            | 422         | `INVALID_VALUE`             | Invalid Parameter or Invalid operation.                                                                                                   |
             | 422         | `INVALID_IDENTIFIER_VALUE`  | Invalid grantee or patient identifier value.                                                                                              |
             | 422         | `INVALID_IDENTIFIER_SYSTEM` | Invalid grantee or patient identifier system.                                                                                             |
             | 422         | `INVALID_PATIENT`           | Invalid patient.                                                                                                                          |
@@ -807,6 +807,7 @@ paths:
             | 422         | `INVALID_PROVISION`         | Invalid provision.                                                                                                                        |
             | 422         | `INVALID_EXTENSION`         | Invalid extension.                                                                                                                        |
             | 422         | `INVALID_GRANTOR_VALUE`     | Grantor ODS code is missing, empty, whitespace-only or invalid format.                                                                   |
+            | 422         | `INVALID_PERFORMER`         | Invalid performer.                                                                   |
             | 422         | `INVALID_GRANTOR_SYSTEM`    | Grantor identifier system is invalid (must be 'https://fhir.nhs.uk/Id/ods-organization-code').                                            |
             | 422         | `INVALID_PARAMETER`         | Invalid request parameter. For details, see the diagnostics field.                                                                        |
             | 429         | `THROTTLED`                 | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
@@ -850,6 +851,7 @@ paths:
             | HTTP status | Error code                 | Description                                                   |
             | ----------- | -------------------------- | ------------------------------------------------------------- |
             | 500         | `SERVER_ERROR`             | An unexpected internal server error has occurred.             |
+            | 501         | `NOT_IMPLEMENTED`          | API Endpoint not implemented.                                 |
             | 502         | `BAD_GATEWAY`              | Connection to the backend service failed.                     |
             | 503         | `DOWNSTREAM_SERVICE_ERROR` | A downstream service has failed, request cannot be completed. |
 
