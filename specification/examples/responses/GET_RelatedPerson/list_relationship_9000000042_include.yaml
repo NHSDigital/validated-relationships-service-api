@@ -15,7 +15,7 @@ ListRelationship9000000042Include:
         id: BE974742
         identifier:
         - system: https://fhir.nhs.uk/Id/nhs-number
-          value: '9000000042'
+          value: '9000000009'
         name:
         - family: MOGAJI
           given:
@@ -28,7 +28,7 @@ ListRelationship9000000042Include:
         patient:
           identifier:
             system: https://fhir.nhs.uk/Id/nhs-number
-            value: '9000000009'
+            value: '9000000042'
         relationship:
         - coding:
           - code: CHILD
@@ -37,13 +37,13 @@ ListRelationship9000000042Include:
         resourceType: RelatedPerson
       search:
         mode: match
-    - fullUrl: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/9000000009
+    - fullUrl: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/9000000042
       resource:
         birthDate: '2017-09-23'
-        id: '9000000009'
+        id: '9000000042'
         identifier:
         - system: https://fhir.nhs.uk/Id/nhs-number
-          value: '9000000009'
+          value: '9000000042'
         name:
         - family: MOGAJI
           given:
