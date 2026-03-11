@@ -364,13 +364,12 @@ paths:
             | 400         | `INVALID_VALUE`                    | Invalid Parameter or Invalid operation.                                                                                                   |
             | 400         | `BAD_REQUEST`                      | The access request ID is required but was not provided in the request.                                                                  |
             | 400         | `MISSING_VALUE`                    | Missing header or parameter. For details, see the `diagnostics` field.                                                                    |
-            | 401         | `ACCESS_DENIED`                    | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
+            | 401         | `ACCESS_DENIED`                    | Missing or invalid OAuth 2.0 bearer token in request.   (NOT IN CODE)                                                                                 |
             | 403         | `FORBIDDEN`                        | Access denied to resource.                                                                                                                |
             | 404         | `QUESTIONNAIRE_RESPONSE_NOT_FOUND` | No questionnaire response was found for the provided access request ID.                                                                 |
-            | 404         | `INVALIDATED_RESOURCE`             | Resource that has been marked as invalid was requested - invalid resources cannot be retrieved                                            |
-            | 405         | `METHOD_NOT_ALLOWED`               | The method is not allowed.                                                                                                                |
-            | 408         | `TIMEOUT`                          | Request timed out.                                                                                                                        |
-            | 429         | `THROTTLED`                        | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
+            | 405         | `METHOD_NOT_ALLOWED`               | The method is not allowed. (NOT IN CODE)                                                                                                               |
+            | 408         | `TIMEOUT`                          | Request timed out. (NOT IN CODE)                                                                                                                       |
+            | 429         | `THROTTLED`                        | You have exceeded your application's (NOT IN CODE) [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
 
           content:
             application/fhir+json:
@@ -389,8 +388,9 @@ paths:
 
             | HTTP status | Error code                 | Description                                                  |
             | ----------- | -------------------------- | ------------------------------------------------------------ |
-            | 500         | `SERVER_ERROR`             | An unexpected internal server error has occurred.            |
-            | 502         | `BAD_GATEWAY`              | Connection to the backend service failed.                    |
+            | 500         | `SERVER_ERROR`             | An unexpected internal server error has occurred.  (Could be possible? there is a generic try catch that returns an APIError object with whatever error it gets thrown)          |
+            | 502         | `BAD_GATEWAY`              | Connection to the backend service failed.   (NOT IN CODE)                 |
+            | 503         | `DOWNSTREAM_SERVICE_ERROR` | Failed to generate response                                  |
 
           content:
             application/fhir+json:
