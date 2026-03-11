@@ -293,7 +293,7 @@ paths:
             | HTTP status | Error code                 | Description                                                  |
             | ----------- | -------------------------- | ------------------------------------------------------------ |
             | 500         | `SERVER_ERROR`             | An unexpected internal server error has occurred.            |
-            | 502         | `BAD_GATEWAY`              | Connection to the backend service failed.                    |
+            | 502         | `BAD_GATEWAY`              | Connection to the backend service failed. (NOT IN CODE)                   |
 
           content:
             application/fhir+json:
