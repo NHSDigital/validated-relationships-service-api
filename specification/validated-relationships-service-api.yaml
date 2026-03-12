@@ -1083,26 +1083,25 @@ paths:
 
             | HTTP status | Error code                  | Description                                                                                                                               |
             | ----------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-            | 400         | `INVALID_VALUE`             | Invalid Parameter or Invalid operation.                                                                                                   |
-            | 400         | `INVALID_PATCH_FORMAT`      | Invalid patch format.                                                                                                                     |
-            | 400         | `INVALID_PATCH`             | Invalid patch.                                                                                                                            |
             | 400         | `MISSING_VALUE`             | Missing header or parameter. For details, see the `diagnostics` field.                                                                    |
             | 400         | `MISSING_GRANTOR`           | Grantor extension is required when creating or activating a consent with status "active". For details, see the `diagnostics` field.       |
             | 400         | `MISSING_GRANTOR_REFERENCE` | Grantor extension reference is required when creating or activating a consent with status "active". For details, see the `diagnostics` field.       |
             | 400         | `MISSING_GRANTOR_IDENTIFIER`| Grantor extension identifier is required when creating or activating a consent with status "active". For details, see the `diagnostics` field.       |
             | 401         | `ACCESS_DENIED`             | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
             | 403         | `FORBIDDEN`                 | Access denied to resource.                                                                                                                |
-            | 404         | `INVALIDATED_RESOURCE`      | Resource that has been marked as invalid was requested - invalid resources cannot be retrieved                                            |
             | 405         | `METHOD_NOT_ALLOWED`        | The method is not allowed.                                                                                                                |
             | 408         | `TIMEOUT`                   | Request timed out.                                                                                                                        |
-            | 415         | `UNSUPPORTED_MEDIA`         | Unsupported media type.                                                                                                                   |
+            | 409         | `DUPLICATE_PATCHES`         | Two or more patches use same path.                                                                                                        |
+            | 415         | `UNSUPPORTED_MEDIA`         | Unsupported media type. (NOT IN CODE)                                                                                                                  |
+            | 422         | `INVALID_VALUE`             | Invalid Parameter or Invalid operation.                                                                                                   |
+            | 422         | `INVALID_EXTENSION`         | Invalid extension.                                                                                                                        |
+            | 422         | `INVALID_PATCH`             | Invalid patch.                                                                                                                            |
             | 422         | `INVALID_PATCH_PATH`        | Invalid patch path.                                                                                                                       |
             | 422         | `INVALID_STATUS_CODE`       | Invalid status code.                                                                                                                      |
             | 422         | `INVALID_STATUS_REASON`     | Invalid status reason.                                                                                                                    |
             | 422         | `INVALID_STATE_TRANSITION`  | Invalid state transition.                                                                                                                 |
             | 422         | `INVALID_LEGAL_BASIS_CODE`  | Invalid legal basis code.                                                                                                                 |
             | 422         | `INVALID_END_DATE`          | End date is invalid.                                                                                                                      |
-            | 422         | `DUPLICATE_PATCHES`         | Two or more patches use same path.                                                                                                        |
             | 422         | `INVALID_GRANTOR_VALUE`     | Invalid grantor identifier value. For details, see the `diagnostics` field.                                                                                                      |
             | 422         | `INVALID_GRANTOR_SYSTEM`    | Invalid grantor system value. For details, see the `diagnostics` field.                                                                                                      |
             | 429         | `THROTTLED`                 | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
@@ -1142,6 +1141,7 @@ paths:
             | HTTP status | Error code                 | Description                                                   |
             | ----------- | -------------------------- | ------------------------------------------------------------- |
             | 500         | `SERVER_ERROR`             | An unexpected internal server error has occurred.             |
+            | 501         | `NOT_IMPLEMENTED`          | API Endpoint not implemented.                                 |
             | 502         | `BAD_GATEWAY`              | Connection to the backend service failed.                     |
 
           content:
