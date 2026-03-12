@@ -13,7 +13,7 @@ ListRelationship9000000042:
         id: BE974742
         identifier:
         - system: https://fhir.nhs.uk/Id/nhs-number
-          value: '9000000042'
+          value: '9000000009'
         name:
         - family: MOGAJI
           given:
@@ -26,7 +26,7 @@ ListRelationship9000000042:
         patient:
           identifier:
             system: https://fhir.nhs.uk/Id/nhs-number
-            value: '9000000009'
+            value: '9000000042'
         relationship:
         - coding:
           - code: CHILD
