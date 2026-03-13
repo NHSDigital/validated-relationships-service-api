@@ -330,7 +330,7 @@ paths:
         | Valid access request ID          | ID value: `156e1560-e532-4e2a-85ad-5aeff03dc43e` | HTTP Status 200 with QuestionnaireResponse                    |
         | Invalid access request ID        | ID value:  `INVALID`                             | HTTP Status 400 with INVALID_IDENTIFIER_VALUE message         |
         | Missing access request ID        | No ID path parameter                             | HTTP Status 405 with METHOD_NOT_ALLOWED message               |
-        | Non-existent access request ID   | ID value: `60d09b82-f4bb-41f9-b41e-767999b4ac9b` | HTTP Status 404 with NOT_FOUND message                        |
+        | Non-existent access request ID   | ID value: `60d09b82-f4bb-41f9-b41e-767999b4ac9b` | HTTP Status 404 with QUESTIONNAIRE_RESPONSE_NOT_FOUND message |
 
         ### Sandbox constraints
 
