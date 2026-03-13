@@ -781,13 +781,13 @@ paths:
             | 400         | `MISSING_SCOPE`             | Missing scope.                                                                                                                            |
             | 400         | `MISSING_CATEGORY`          | Missing category.                                                                                                                         |
             | 400         | `MISSING_DATETIME`          | Missing datetime.                                                                                                                         |
-            | 400 (422 in the code but we need a new error to cover this)         | `MISSING_VALUE`             | Missing header or parameter. For details, see the `diagnostics` field.            |
             | 400         | `BAD_REQUEST`               | Invalid request. For details, see the `diagnostics` field.                                                                                |
             | 401         | `ACCESS_DENIED`             | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
             | 403         | `FORBIDDEN`                 | Access denied to resource.                                                                                                                |
             | 405         | `METHOD_NOT_ALLOWED`        | The method is not allowed.                                                                                                                |
             | 408         | `TIMEOUT`                   | Request timed out.                                                                                                                        |
             | 409         | `DUPLICATE_RELATIONSHIP`    | Conflict with requested proxy role.                                                                                                       |
+            | 422         | `MISSING_VALUE`             | Missing header or parameter. For details, see the `diagnostics` field.                                                                    |
             | 422         | `INVALID_IDENTIFIER_VALUE`  | Invalid grantee or patient identifier value.                                                                                              |
             | 422         | `INVALID_IDENTIFIER_SYSTEM` | Invalid grantee or patient identifier system.                                                                                             |
             | 422         | `INVALID_PATIENT`           | Invalid patient.                                                                                                                          |
