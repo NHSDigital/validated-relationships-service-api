@@ -274,7 +274,7 @@ paths:
             | 405         | `METHOD_NOT_ALLOWED`     | The method is not allowed.                                                                                                                |
             | 408         | `TIMEOUT`                | Request timed out.                                                                                                                        |
             | 409         | `DUPLICATE_RELATIONSHIP` | A proposed proxy role already exists for this proxy/patient relationship.                                                                 |
-            | 415         | `UNSUPPORTED_MEDIA`      | Unsupported media type. (NOT IN CODE)                                                                                                     |
+            | 415         | `UNSUPPORTED_MEDIA`      | Unsupported media type.                                                                                                     |
             | 429         | `THROTTLED`              | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
 
           content:
@@ -293,7 +293,7 @@ paths:
             | HTTP status | Error code                 | Description                                                  |
             | ----------- | -------------------------- | ------------------------------------------------------------ |
             | 500         | `SERVER_ERROR`             | An unexpected internal server error has occurred.            |
-            | 502         | `BAD_GATEWAY`              | Connection to the backend service failed. (NOT IN CODE)                   |
+            | 502         | `BAD_GATEWAY`              | Connection to the backend service failed.                    |
 
           content:
             application/fhir+json:
@@ -490,7 +490,7 @@ paths:
             | ----------- | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
             | 400         | `MISSING_IDENTIFIER_VALUE`         | Missing RelatedPerson NHS number.                                                                                                         |
             | 401         | `ACCESS_DENIED`                    | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
-            | 403         | `FORBIDDEN`                        | Access denied to resource.  (NOT IN CODE - less certain this is one)                                                                      |
+            | 403         | `FORBIDDEN`                        | Access denied to resource.                                                                                                                |
             | 404         | `INVALIDATED_RESOURCE`             | Resource that has been marked as invalid was requested - invalid resources cannot be retrieved                                            |
             | 405         | `METHOD_NOT_ALLOWED`               | The method is not allowed.                                                                                                                |
             | 408         | `TIMEOUT`                          | Request timed out.                                                                                                                        |
@@ -1078,7 +1078,7 @@ paths:
             | 405         | `METHOD_NOT_ALLOWED`        | The method is not allowed.                                                                                                                |
             | 408         | `TIMEOUT`                   | Request timed out.                                                                                                                        |
             | 409         | `DUPLICATE_PATCHES`         | Two or more patches use same path.                                                                                                        |
-            | 415         | `UNSUPPORTED_MEDIA`         | Unsupported media type. (NOT IN CODE)                                                                                                     |
+            | 415         | `UNSUPPORTED_MEDIA`         | Unsupported media type.                                                                                                                   |
             | 422         | `INVALID_VALUE`             | Invalid Parameter or Invalid operation.                                                                                                   |
             | 422         | `INVALID_EXTENSION`         | Invalid extension.                                                                                                                        |
             | 422         | `INVALID_PATCH`             | Invalid patch.                                                                                                                            |
