@@ -388,7 +388,7 @@ paths:
 
             | HTTP status | Error code                 | Description                                                  |
             | ----------- | -------------------------- | ------------------------------------------------------------ |
-            | 500         | `SERVER_ERROR`             | An unexpected internal server error has occurred.  (Could be possible? there is a generic try catch that returns an APIError object with whatever error it gets thrown)          |
+            | 500         | `SERVER_ERROR`             | An unexpected internal server error has occurred.            |
             | 501         | `NOT_IMPLEMENTED`          | API Endpoint not implemented.                                |
             | 502         | `BAD_GATEWAY`              | Connection to the backend service failed.                    |
             | 503         | `DOWNSTREAM_SERVICE_ERROR` | Failed to generate response                                  |
