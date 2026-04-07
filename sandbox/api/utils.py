@@ -1,6 +1,6 @@
 from json import dumps, load
 from logging import getLogger
-from typing import Any, List, Optional
+from typing import Any, List, Optional, Set
 
 from flask import Request, Response
 from yaml import CLoader as Loader
@@ -25,6 +25,42 @@ from .constants import (
 
 FHIR_MIMETYPE = "application/fhir+json"
 logger = getLogger(__name__)
+
+VALID_STATUS_VALUES = {"proposed", "active", "rejected", "inactive", "entered-in-error"}
+
+
+def parse_fhir_status_params(status_list: List[str]) -> Optional[Set[str]]:
+    """Parse FHIR search status parameters handling OR (comma-separated) and AND (repeated) semantics.
+
+    FHIR search conventions:
+    - OR: comma-separated values within a single param, e.g. status=active,proposed
+    - AND: repeated params, e.g. status=active&status=proposed
+    - AND of ORs: status=active,proposed&status=inactive
+
+    For a single-valued field like status, AND groups are intersected. If the intersection
+    is empty, no records can match (e.g. status=active&status=inactive is always empty).
+
+    Args:
+        status_list (List[str]): Raw list from request.args.getlist("status")
+
+    Returns:
+        Optional[Set[str]]: Effective set of status values to match, or None if any value is invalid.
+                            An empty set means the AND intersection produced no possible matches.
+    """
+    all_values = {value.strip() for item in status_list for value in item.split(",")}
+
+    if not all_values.issubset(VALID_STATUS_VALUES):
+        return None
+
+    # Each item in status_list is an AND group; values within each group are OR alternatives
+    and_groups = [set(value.strip() for value in item.split(",")) for item in status_list]
+
+    # Intersect across AND groups — for a single-valued field, only values common to all groups can match
+    result = and_groups[0]
+    for group in and_groups[1:]:
+        result = result & group
+
+    return result
 
 
 def load_json_file(file_name: str) -> dict:
@@ -273,28 +309,46 @@ def check_for_consent_filtering(
     status_inactive_response_yaml: str,
     status_proposed_and_active_response_yaml: str,
 ) -> Response:
-    """Checks the GET consent request status params and provides related response
+    """Checks the GET consent request status params and provides related response.
+
+    Supports FHIR search conventions:
+    - OR: comma-separated values within a single param, e.g. status=active,proposed
+    - AND: repeated params, e.g. status=active&status=proposed
+    For a single-valued field like status, AND groups are intersected; an empty intersection
+    means no records can match and a 404 is returned.
 
     Args:
         status (List[str]): The status parameters supplied to the request
         _include (List[str]): The include parameters supplied to the request
-        status_active_with_details_response_yaml (str): Bundle to return when status param is 'active'
-        status_inactive_response_yaml (str): Bundle to return when status param is 'inactive'
-        status_proposed_and_active_response_yaml (str): Bundle to return when status param is 'proposed,inactive'
+        status_active_with_details_response_yaml (str): Bundle to return when effective status is {'active'}
+        status_inactive_response_yaml (str): Bundle to return when effective status is {'inactive'}
+        status_proposed_and_active_response_yaml (str): Bundle to return when effective status is {'proposed', 'active'}
 
     Returns:
         response: Resultant Response object based on input.
     """
-    if status == [] or status is None:
+    if not status:
         return generate_response_from_example(INVALIDATED_RESOURCE, 404)
-    if status == ["active"]:
-        if len(_include) == 2 and CONSENT_GRANTEE in _include and CONSENT_GRANTEE in _include:
+
+    effective_statuses = parse_fhir_status_params(status)
+
+    if effective_statuses is None:
+        # One or more values were not in the allowed enum
+        return generate_response_from_example(GET_CONSENT__STATUS_PARAM_INVALID, 422)
+
+    if not effective_statuses:  # equivalent to effective_statuses == set()
+        # AND intersection across repeated params produced no common values
+        return generate_response_from_example(INVALIDATED_RESOURCE, 404)
+
+    if effective_statuses == {"active"}:
+        if len(_include) == 2 and CONSENT_GRANTEE in _include and CONSENT_PATIENT in _include:
             return generate_response_from_example(status_active_with_details_response_yaml, 200)
         else:
             return generate_response_from_example(INVALIDATED_RESOURCE, 404)
-    elif status == ["inactive"]:
+    elif effective_statuses == {"inactive"}:
         return generate_response_from_example(status_inactive_response_yaml, 200)
-    elif len(status) == 2 and "active" in status and "proposed" in status:
+    elif effective_statuses == {"active", "proposed"}:
         return generate_response_from_example(status_proposed_and_active_response_yaml, 200)
     else:
-        return generate_response_from_example(GET_CONSENT__STATUS_PARAM_INVALID, 422)
+        # Valid enum values but no sandbox example exists for this combination
+        return generate_response_from_example(INVALIDATED_RESOURCE, 404)

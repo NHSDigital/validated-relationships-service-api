@@ -64,9 +64,16 @@ def test_get_consent_returns_expected_responses__mocked_get_consent(
             200,
         ),
         (
-            "performer:identifier=9000000017&status=proposed&status=active",
+            # OR semantics → resource can have either status
+            "performer:identifier=9000000017&status=proposed,active",
             "./api/examples/GET_Consent/filtered-relationships-status-proposed-active.yaml",
             200,
+        ),
+        (
+            # AND semantics → empty intersection → no results because each resource can only have one status
+            "performer:identifier=9000000017&status=proposed&status=active",
+            "./api/examples/errors/invalidated-resource.yaml",
+            404,
         ),
         (
             "performer:identifier=9000000022",
