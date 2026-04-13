@@ -2808,7 +2808,20 @@ components:
     ConsentStatus:
       in: query
       name: status
-      description: Specify one or more `status` to filter the records returned in the bundle. For example you can filter to only `active` or `proposed` proxy relationships.
+      description: >
+        Specify one or more `status` values to filter the records returned in the bundle.
+
+
+        Supports FHIR search conventions:
+
+        - **OR** — comma-separated values within a single parameter, e.g. `status=active,proposed` returns records with status `active` _or_ `proposed`.
+
+        - **AND** — repeated parameters, e.g. `status=active&status=proposed`. For a single-valued field like `status`, AND groups are intersected; disjoint groups will return no results.
+
+        - **AND of ORs** — e.g. `status=active,proposed&status=inactive`.
+
+
+        Valid status values are bound to the http://hl7.org/fhir/consent-state-codes CodeSystem: `proposed`, `active`, `rejected`, `inactive`, `entered-in-error`.
       required: false
       style: form
       explode: true
@@ -2816,12 +2829,9 @@ components:
         type: array
         items:
           type: string
-          enum:
-            - proposed
-            - active
-            - rejected
-            - inactive
-            - entered-in-error
+          description: >
+            A single status value, or a comma-separated list of status values representing an OR group.
+            Valid values are: `proposed`, `active`, `rejected`, `inactive`, `entered-in-error`.
       examples:
         Active:
           summary: Only active authorised proxy relationships
@@ -2832,8 +2842,7 @@ components:
         ActiveOrProposed:
           summary: Active OR proposed (but not yet authorised) proxy relationships
           value:
-            - proposed
-            - active
+            - proposed,active
 
     BearerAuthorization:
       in: header
