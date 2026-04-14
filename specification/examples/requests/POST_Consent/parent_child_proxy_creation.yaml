@@ -19,6 +19,11 @@ ConsentParentChildProxyCreationRequest:
         system: https://fhir.nhs.uk/Id/nhs-number
         value: "9000000012"
     dateTime: "2025-02-11T14:30:00Z"
+    policyRule:
+      - coding:
+          - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+            code: parental-responsibility
+            display: Parental responsibility
     provision:
       type: permit
       period:
@@ -43,12 +48,6 @@ ConsentParentChildProxyCreationRequest:
             system: https://fhir.nhs.uk/Id/nhs-number
             value: '9000000009'
             display: Role created
-      - url: "http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis"
-        valueCodeableConcept:
-          coding:
-            - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
-              code: "parental-responsibility"
-              display: "Parental responsibility"
       - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor
         valueReference:
           identifier:
