@@ -1050,8 +1050,8 @@ paths:
                 $ref: "./examples/requests/PATCH_Consent/replace_provision_end_date.yaml#/UpdateProvisionEndDate"
               multipleUpdates:
                 $ref: "./examples/requests/PATCH_Consent/multiple_updates.yaml#/MultipleUpdates"
-              regulatoryBasis:
-                $ref: "./examples/requests/PATCH_Consent/replace_regulatory_basis.yaml#/ReplaceRegulatoryBasisRequest"
+              policyRule:
+                $ref: "./examples/requests/PATCH_Consent/replace_policy_rule.yaml#/ReplacePolicyRuleRequest"
       responses:
         "200":
           description: Consent resource successfully updated
@@ -2348,6 +2348,10 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/Policy"
+        policyRule:
+          type: array
+          items:
+            $ref: "#/components/schemas/CodeableConcept"
         provision:
           $ref: "#/components/schemas/Provision"
         extension:
@@ -2358,7 +2362,7 @@ components:
               - $ref: "#/components/schemas/RegulatoryBasisExtension"
               - $ref: "#/components/schemas/GranteeExtension"
               - $ref: "#/components/schemas/GrantorExtension"
-          description: "Additional content. For active proxy roles, grantor is required."
+          description: "Additional content. For active proxy roles, grantor is required. Note: RegulatoryBasisExtension is deprecated in favor of the policyRule field."
 
     ReadConsent:
       allOf: # Extends the Consent model
@@ -2442,7 +2446,7 @@ components:
           - "http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis"
         valueCodeableConcept:
           $ref: "#/components/schemas/CodeableConcept"
-          description: Classification of the regulatory basis for the consent.
+          description: Classification of the regulatory basis for the consent.          
 
     GranteeExtension:
       type: object
