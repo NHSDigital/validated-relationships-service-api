@@ -7842,7 +7842,7 @@
 							"body": "{\n    \"resourceType\": \"OperationOutcome\",\n    \"issue\": [\n        {\n            \"severity\": \"information\",\n            \"code\": \"informational\"\n        }\n    ]\n}"
 						},
 						{
-							"name": "Proxy role regulatory basis updated",
+							"name": "Proxy role policy rule updated",
 							"originalRequest": {
 								"method": "PATCH",
 								"header": [
