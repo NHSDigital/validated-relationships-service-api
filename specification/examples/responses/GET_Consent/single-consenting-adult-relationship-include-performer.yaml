@@ -1,7 +1,7 @@
-ConsentSingleAdultChildRelationshipIncludeGranteeBundle:
-  summary: Single adult child proxy relationship with grantee details
+ConsentSingleConsentingAdultRelationshipIncludePerformerBundle:
+  summary: Single consenting adult proxy relationship with performer details
   description:
-    A Bundle containing a single proxy relationship between an adult and child including the grantee details.
+    A Bundle containing a single proxy relationship between consenting adults including the performer details.
   value:
     resourceType: Bundle
     timestamp: '2026-01-16T14:00:00+00:00'
@@ -9,12 +9,12 @@ ConsentSingleAdultChildRelationshipIncludeGranteeBundle:
     type: searchset
     link:
       - relation: self
-        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000019&_include=Consent:grantee
+        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000010&_include=Consent:performer
     entry:
-      - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/PR974742
+      - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/PR974720
         resource:
           resourceType: Patient
-          id: PR974742
+          id: PR974720
           meta:
             security:
               - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSIdentityProofingLevel"
@@ -22,50 +22,47 @@ ConsentSingleAdultChildRelationshipIncludeGranteeBundle:
                 display: "High level verification (P9)"
           identifier:
             - system: "https://fhir.nhs.uk/Id/nhs-number"
-              value: "9000000019"
+              value: "9000000010"
           name:
             - use: usual
               period:
                 start: "2020-01-01"
                 end: "2029-12-31"
               given:
-                - Sarah
-              family: Jones
+                - John
+              family: Smith
               prefix:
-                - Mrs
-          birthDate: "1985-03-22"
+                - Mr
+          birthDate: "1980-01-15"
           generalPractitioner:
             - identifier:
                 value: ODS12345
                 system: "https://fhir.nhs.uk/Id/ods-organization-code"
         search:
           mode: include
-      - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/BE974742
+      - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/RelatedPerson/RP974720
         resource:
           resourceType: RelatedPerson
-          id: BE974742
+          id: RP974720
           identifier:
             - system: 'https://fhir.nhs.uk/Id/nhs-number'
-              value: '9000000019'
+              value: '9000000010'
           patient:
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
-              value: '9000000009'
+              value: '9000000005'
           relationship:
             - coding:
-              - system: 'http://terminology.hl7.org/CodeSystem/v3-RoleCode'
-                code: PRN
-                display: parent
-            - coding:
-              - system: 'http://terminology.hl7.org/CodeSystem/v3-RoleCode'
-                code: MTH
-                display: mother
+                - system: >-
+                    https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole
+                  code: Personal
+                  display: Personal relationship with the patient
         search:
           mode: include
-      - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/BBCC67E9
+      - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/WWCC67T1
         resource:
           resourceType: Consent
-          id: BBCC67E9
+          id: WWCC67T1
           status: active
           scope:
             coding:
@@ -80,7 +77,7 @@ ConsentSingleAdultChildRelationshipIncludeGranteeBundle:
           patient:
             identifier:
               system: 'https://fhir.nhs.uk/Id/nhs-number'
-              value: '9000000009'
+              value: '9000000005'
           dateTime: '2024-07-21T17:32:28Z'
           policy:
             - authority: "https://www.england.nhs.uk"
@@ -96,7 +93,7 @@ ConsentSingleAdultChildRelationshipIncludeGranteeBundle:
             - reference:
                 identifier:
                   system: https://fhir.nhs.uk/Id/nhs-number
-                  value: '9000000019'
+                  value: '9000000010'
             period:
               end: "2029-02-11"
               start: "2025-02-11"
@@ -113,7 +110,7 @@ ConsentSingleAdultChildRelationshipIncludeGranteeBundle:
             valueReference:
               identifier:
                 system: https://fhir.nhs.uk/Id/nhs-number
-                value: '9000000019'
+                value: '9000000010'
           - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor
             valueReference:
               identifier:

@@ -1,4 +1,4 @@
-ConsentSingleConsentingAdultRelationshipIncludeGranteePatientBundle:
+ConsentSingleConsentingAdultRelationshipIncludePerformerPatientBundle:
   summary: Single consenting adult proxy relationship with grantee and patient details
   description:
     A Bundle containing a single proxy relationship between consenting adults including the grantee and

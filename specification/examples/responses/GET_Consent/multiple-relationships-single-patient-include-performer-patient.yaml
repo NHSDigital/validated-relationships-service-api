@@ -1,4 +1,4 @@
-ConsentMultipleRelationshipsSinglePatientIncludeGranteePatientBundle:
+ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
   summary: Multiple relationships (multiple proxy relationships with single patient)
   description: A Bundle containing multiple proxy relationships with single patient, including patient and grantee details.
   value:
