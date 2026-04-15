@@ -979,7 +979,7 @@ paths:
         Supported update scenarios include:
 
         * Update the status and status reason, (optionally) providing an additional free text description
-        * Update the regulatory basis
+        * Update the policy rule
         * Update the end date, for time-bound access
 
         ## Request Requirements
@@ -2359,10 +2359,9 @@ components:
           items:
             anyOf:
               - $ref: "#/components/schemas/StatusReasonExtension"
-              - $ref: "#/components/schemas/RegulatoryBasisExtension"
               - $ref: "#/components/schemas/GranteeExtension"
               - $ref: "#/components/schemas/GrantorExtension"
-          description: "Additional content. For active proxy roles, grantor is required. Note: RegulatoryBasisExtension is deprecated in favor of the policyRule field."
+          description: "Additional content. For active proxy roles, grantor is required."
 
     ReadConsent:
       allOf: # Extends the Consent model
@@ -2423,7 +2422,7 @@ components:
                 description: "Individuals or organizations that agreed to the consent"
               role:
                 $ref: "#/components/schemas/CodeableConcept"
-                description: "Deprecated. Instead use the Regulatory Basis Extension."
+                description: "Deprecated. Instead use policyRule."
                 deprecated: true
 
     StatusReasonExtension:
@@ -2436,18 +2435,6 @@ components:
         valueCodeableConcept:
           $ref: "#/components/schemas/CodeableConcept"
           description: Classification of the status.
-
-    RegulatoryBasisExtension:
-      type: object
-      properties:
-        url:
-          type: string
-          enum:
-          - "http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis"
-        valueCodeableConcept:
-          $ref: "#/components/schemas/CodeableConcept"
-          description: Classification of the regulatory basis for the consent.          
-
     GranteeExtension:
       type: object
       properties:
