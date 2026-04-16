@@ -275,9 +275,9 @@ def check_for_consent_include_params(
         _include (List[str]): The include parameters supplied to the request
         include_none_response_yaml (str): Bundle to return when include params are empty
         include_both_response_yaml (str): (optional) Bundle to return when include param
-        is Consent:grantee,Consent:patient
+        is Consent:performer,Consent:patient
         include_patient_response_yaml (str): (optional) Bundle to return when include param is Consent:patient
-        include_grantee_response_yaml (str): (optional) Bundle to return when include param is Consent:grantee
+        include_grantee_response_yaml (str): (optional) Bundle to return when include param is Consent:performer
 
     Returns:
         response: Resultant Response object based on input.

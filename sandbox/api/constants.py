@@ -3,7 +3,7 @@ INCLUDE_FLAG = "RelatedPerson:patient"
 PATIENT_IDENTIFIERS = ["9000000017", "9000000033", "9000000042"]
 RELATED_IDENTIFIERS = ["9000000009", "9000000025", "9000000042"]
 
-CONSENT_GRANTEE = "Consent:grantee"
+CONSENT_GRANTEE = "Consent:performer"
 CONSENT_PATIENT = "Consent:patient"
 
 # Example files
