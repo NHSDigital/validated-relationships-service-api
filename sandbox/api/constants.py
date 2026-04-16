@@ -29,47 +29,47 @@ GET_CONSENT__FILTERED_RELATIONSHIPS_STATUS_PROPOSED_ACTIVE = (
 )
 GET_CONSENT__MULTIPLE_RELATIONSHIPS = f"{GET_CONSENT__DIRECTORY}multiple-relationships.yaml"
 GET_CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_BOTH = (
-    f"{GET_CONSENT__DIRECTORY}multiple-relationships-include-perfomer-patient.yaml"
+    f"{GET_CONSENT__DIRECTORY}multiple-relationships-include-performer-patient.yaml"
 )
 GET_CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PATIENT = (
     f"{GET_CONSENT__DIRECTORY}multiple-relationships-include-patient.yaml"
 )
 GET_CONSENT__MULTIPLE_RELATIONSHIPS_INCLUDE_PERFORMER = (
-    f"{GET_CONSENT__DIRECTORY}multiple-relationships-include-perfomer.yaml"
+    f"{GET_CONSENT__DIRECTORY}multiple-relationships-include-performer.yaml"
 )
 GET_CONSENT__NO_RELATIONSHIPS = f"{GET_CONSENT__DIRECTORY}no-relationships.yaml"
 GET_CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP = f"{GET_CONSENT__DIRECTORY}single-consenting-adult-relationship.yaml"
 GET_CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_BOTH = (
-    f"{GET_CONSENT__DIRECTORY}single-consenting-adult-relationship-include-perfomer-patient.yaml"
+    f"{GET_CONSENT__DIRECTORY}single-consenting-adult-relationship-include-performer-patient.yaml"
 )
 GET_CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_PATIENT = (
     f"{GET_CONSENT__DIRECTORY}single-consenting-adult-relationship-include-patient.yaml"
 )
 GET_CONSENT__SINGLE_CONSENTING_ADULT_RELATIONSHIP_INCLUDE_PERFORMER = (
-    f"{GET_CONSENT__DIRECTORY}single-consenting-adult-relationship-include-perfomer.yaml"
+    f"{GET_CONSENT__DIRECTORY}single-consenting-adult-relationship-include-performer.yaml"
 )
 GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP = f"{GET_CONSENT__DIRECTORY}single-mother-child-relationship.yaml"
 GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_BOTH = (
-    f"{GET_CONSENT__DIRECTORY}single-mother-child-relationship-include-perfomer-patient.yaml"
+    f"{GET_CONSENT__DIRECTORY}single-mother-child-relationship-include-performer-patient.yaml"
 )
 GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_PATIENT = (
     f"{GET_CONSENT__DIRECTORY}single-mother-child-relationship-include-patient.yaml"
 )
 GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_INCLUDE_PERFORMER = (
-    f"{GET_CONSENT__DIRECTORY}single-mother-child-relationship-include-perfomer.yaml"
+    f"{GET_CONSENT__DIRECTORY}single-mother-child-relationship-include-performer.yaml"
 )
 GET_CONSENT__STATUS_PARAM_INVALID = f"{GET_CONSENT__DIRECTORY}errors/invalid-status-parameter.yaml"
 GET_CONSENT__MULTIPLE_RELATIONSHIPS_SINGLE_PATIENT = (
     f"{GET_CONSENT__DIRECTORY}multiple-relationships-single-patient.yaml"
 )
 GET_CONSENT__MULTIPLE_RELATIONSHIPS_SINGLE_PATIENT_INCLUDE_PERFORMER = (
-    f"{GET_CONSENT__DIRECTORY}multiple-relationships-single-patient-include-perfomer.yaml"
+    f"{GET_CONSENT__DIRECTORY}multiple-relationships-single-patient-include-performer.yaml"
 )
 GET_CONSENT__MULTIPLE_RELATIONSHIPS_SINGLE_PATIENT_INCLUDE_PATIENT = (
     f"{GET_CONSENT__DIRECTORY}multiple-relationships-single-patient-include-patient.yaml"
 )
 GET_CONSENT__MULTIPLE_RELATIONSHIPS_SINGLE_PATIENT_INCLUDE_BOTH = (
-    f"{GET_CONSENT__DIRECTORY}multiple-relationships-single-patient-include-perfomer-patient.yaml"
+    f"{GET_CONSENT__DIRECTORY}multiple-relationships-single-patient-include-performer-patient.yaml"
 )
 GET_CONSENT__SINGLE_MOTHER_CHILD_RELATIONSHIP_UNKNOWN_LEGAL_BASIS = (
     f"{GET_CONSENT__DIRECTORY}single-mother-child-relationship-unknown-legal-basis.yaml"
