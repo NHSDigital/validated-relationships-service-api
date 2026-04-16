@@ -1,10 +1,10 @@
 {
   "_": {
-    "postman_id": "614b5082-b38a-4cdd-941c-f75e9524cdbb"
+    "postman_id": "88a9dda6-bdbb-46c0-b888-78c8f4d35995"
   },
   "item": [
     {
-      "id": "91a7588c-30a3-4ebf-89b2-5e6b81829d1e",
+      "id": "8441cbba-8ba9-4b55-b8fa-78146d129bcf",
       "name": "QuestionnaireResponse",
       "description": {
         "content": "",
@@ -12,7 +12,7 @@
       },
       "item": [
         {
-          "id": "60cf64e4-19d4-4da2-8033-505056daaa0e",
+          "id": "412e86f5-ab8d-44de-9440-b9ee9d3a95b0",
           "name": "New Access request",
           "request": {
             "name": "New Access request",
@@ -75,7 +75,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "f73a14d7-b392-44be-852a-0bfd940e1237",
+                "id": "368c1d60-821c-45b9-bb10-9692c28c3fee",
                 "type": "text/javascript",
                 "exec": [
                   "// Validate status 2xx \npm.test(\"[POST]::/QuestionnaireResponse - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
@@ -90,7 +90,7 @@
           }
         },
         {
-          "id": "6f29f381-b6fc-48f5-a2ec-34b1b9831782",
+          "id": "d7714453-8e84-4c96-a8a2-ea5802156b61",
           "name": "{id}",
           "description": {
             "content": "",
@@ -98,7 +98,7 @@
           },
           "item": [
             {
-              "id": "4b5e52d5-6591-423a-95ea-2c04984de500",
+              "id": "5fcbb209-b9ba-41cb-864f-101ec5e38839",
               "name": "Get a proxy access request",
               "request": {
                 "name": "Get a proxy access request",
@@ -160,7 +160,7 @@
                 {
                   "listen": "test",
                   "script": {
-                    "id": "25cb817b-74a1-456f-927f-681a676a76a8",
+                    "id": "2d754eb4-7f1d-4de3-ad26-711a2a8fff44",
                     "type": "text/javascript",
                     "exec": [
                       "// Validate status 2xx \npm.test(\"[GET]::/QuestionnaireResponse/:id - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
@@ -181,7 +181,7 @@
       "event": []
     },
     {
-      "id": "a2786a23-ac4e-4f04-9b4a-6b33d6c2ef2e",
+      "id": "1216ab88-365a-4570-87a8-e9cfdcff9fd5",
       "name": "RelatedPerson",
       "description": {
         "content": "",
@@ -189,12 +189,12 @@
       },
       "item": [
         {
-          "id": "bfa1d5bd-77d5-452d-9248-0e55ea6b7352",
+          "id": "95a24513-7db5-4ceb-86fe-ff4fe11f558d",
           "name": "Get verified candidate relationships",
           "request": {
             "name": "Get verified candidate relationships",
             "description": {
-              "content": "## Overview\nUse this endpoint to get verified relationship information for a user with a given NHS Number. This endpoint should NOT be used to retrieve established proxy roles; these should be queried from the GET /Consent endpoints.\n\nYou can query for RelatedPerson's in the following ways:\n\n| Outcome                                                                             | Query string value                                                      |\n| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |\n| Search for patient relationships for a candidate proxy                              | `identifier={proxy identifier}`                                         |\n| Search for candidate proxy relationships for a patient                              | `patient:identifier={patient identifier}`                               |\n| Search for a specific verified candidate relationship for a given proxy and patient | `identifier={proxy identifier}&patient:identifier={patient identifier}` |\n\nYou must provide either the `identifier={identifier}` or `patient:identifier={identifier}` query string, or both, in your request.\n\n## Access modes\n\nThis endpoint supports the following access modes:\n- Patient access\n- Healthcare worker access\n\n## Sandbox test scenarios\n\nYou can test the following scenarios in our sandbox environment:\n\n| Scenario                                                                    | Request                                                                                              | Response                                                                                       |\n| --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |\n| List Relationship                                                           | `identifier=9000000017`                                                                              | HTTP Status 200 List of relationships for the proxy                                            |\n| List Relationship and include patient's details                             | `identifier=9000000017&_include=RelatedPerson:patient`                                               | HTTP Status 200 List of relationships for the proxy and includes patient data                  |\n| List Patient Relationship                                                   | `patient:identifier=9000000042`                                                                      | HTTP Status 200 List of relationships for the patient                                          |\n| List Patient Relationship and include patient's details                     | `patient:identifier=9000000042&_include=RelatedPerson:patient`                                       | HTTP Status 200 List of relationships for the patient and includes proxy data                  |\n| List Relationship and no relationships returned                             | `identifier=9000000033`                                                                              | HTTP Status 200 Empty bundle                                                                   |\n| Verify Relationship between proxy and patient                               | `identifier=9000000017&patient:identifier=9000000009`                                                | HTTP Status 200 Verified relationship between patient and proxy                                |\n| Verify Relationship between proxy and patient and include patient's details | `identifier=9000000017&patient:identifier=9000000009&_include=RelatedPerson:patient`                 | HTTP Status 200 Verified relationship between patient and proxy and includes patient's details |\n| Missing identifier                                                          | ``                                                                                                   | HTTP Status 400 and MISSING_IDENTIFIER_VALUE error response                                    |\n| Invalid identifier                                                          | `identifier=900000000` Note: This identifier is 9 characters long, too short to be NHS Number        | HTTP Status 400 and INVALID_IDENTIFIER_VALUE error response                                    |\n| Malformed identifier & system                                               | `identifier=https://fhir.nhs.uk/Id/nhs-number/9730675929`                                            | HTTP Status 400 and INVALID_IDENTIFIER_SYSTEM error response                                   |\n\n### Sandbox constraints\n\nThe sandbox environment has the following constraints for this endpoint:\n\n  - Request headers are not tested. For example, `X-Request-ID` and `X-Correlation-ID` are disregarded.\n",
+              "content": "## Overview\nUse this endpoint to get verified relationship information for a user with a given NHS Number. This endpoint should NOT be used to retrieve established proxy roles; these should be queried from the GET /Consent endpoints.\n\nYou can query for RelatedPerson's in the following ways:\n\n| Outcome                                                                             | Query string value                                                      |\n| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |\n| Search for patient relationships for a candidate proxy                              | `identifier={proxy identifier}`                                         |\n| Search for candidate proxy relationships for a patient                              | `patient:identifier={patient identifier}`                               |\n| Search for a specific verified candidate relationship for a given proxy and patient | `identifier={proxy identifier}&patient:identifier={patient identifier}` |\n\nYou must provide either the `identifier={identifier}` or `patient:identifier={identifier}` query string, or both, in your request.\n\n## Access modes\n\nThis endpoint supports the following access modes:\n- Patient access\n- Healthcare worker access\n\n## Sandbox test scenarios\n\nYou can test the following scenarios in our sandbox environment:\n\n| Scenario                                                                    | Request                                                                                              | Response                                                                                       |\n| --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |\n| List Relationship                                                           | `identifier=9000000017`                                                                              | HTTP Status 200 List of relationships for the proxy                                            |\n| List Relationship and include patient's details                             | `identifier=9000000017&_include=RelatedPerson:patient`                                               | HTTP Status 200 List of relationships for the proxy and includes patient data                  |\n| List Patient Relationship                                                   | `patient:identifier=9000000042`                                                                      | HTTP Status 200 List of relationships for the patient                                          |\n| List Patient Relationship and include patient's details                     | `patient:identifier=9000000042&_include=RelatedPerson:patient`                                       | HTTP Status 200 List of relationships for the patient and includes patient data                  |\n| List Relationship and no relationships returned                             | `identifier=9000000033`                                                                              | HTTP Status 200 Empty bundle                                                                   |\n| Verify Relationship between proxy and patient                               | `identifier=9000000017&patient:identifier=9000000009`                                                | HTTP Status 200 Verified relationship between patient and proxy                                |\n| Verify Relationship between proxy and patient and include patient's details | `identifier=9000000017&patient:identifier=9000000009&_include=RelatedPerson:patient`                 | HTTP Status 200 Verified relationship between patient and proxy and includes patient's details |\n| Missing identifier                                                          | ``                                                                                                   | HTTP Status 400 and MISSING_IDENTIFIER_VALUE error response                                    |\n| Invalid identifier                                                          | `identifier=900000000` Note: This identifier is 9 characters long, too short to be NHS Number        | HTTP Status 400 and INVALID_IDENTIFIER_VALUE error response                                    |\n| Malformed identifier & system                                               | `identifier=https://fhir.nhs.uk/Id/nhs-number/9730675929`                                            | HTTP Status 400 and INVALID_IDENTIFIER_SYSTEM error response                                   |\n\n### Sandbox constraints\n\nThe sandbox environment has the following constraints for this endpoint:\n\n  - Request headers are not tested. For example, `X-Request-ID` and `X-Correlation-ID` are disregarded.\n",
               "type": "text/plain"
             },
             "url": {
@@ -267,7 +267,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "c57e1509-078e-442b-bccb-e143a1185b5b",
+                "id": "3a2ee785-3f57-43c8-81e4-006a25d39636",
                 "type": "text/javascript",
                 "exec": [
                   "// Validate status 2xx \npm.test(\"[GET]::/RelatedPerson - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
@@ -285,7 +285,7 @@
       "event": []
     },
     {
-      "id": "8e5528ef-a4f4-42ce-97ee-e39128f7c0df",
+      "id": "1fbfa513-0cff-4736-bc88-3f98695a90e2",
       "name": "Consent",
       "description": {
         "content": "",
@@ -293,7 +293,7 @@
       },
       "item": [
         {
-          "id": "ea5df181-f1d6-4339-b71a-7deb23eaf113",
+          "id": "efb2a45e-e289-466c-8e81-2997d0746674",
           "name": "Get proxy roles",
           "request": {
             "name": "Get proxy roles",
@@ -330,7 +330,7 @@
                 {
                   "disabled": false,
                   "description": {
-                    "content": "Specify one or more `status` to filter the records returned in the bundle. For example you can filter to only `active` or `proposed` proxy relationships.",
+                    "content": "Specify one or more `status` values to filter the records returned in the bundle.\n\nSupports FHIR search conventions:\n- **OR** — comma-separated values within a single parameter, e.g. `status=active,proposed` returns records with status `active` _or_ `proposed`.\n- **AND** — repeated parameters, e.g. `status=active&status=proposed`. For a single-valued field like `status`, AND groups are intersected; disjoint groups will return no results.\n- **AND of ORs** — e.g. `status=active,proposed&status=inactive`.\n\nValid status values are bound to the http://hl7.org/fhir/consent-state-codes CodeSystem: `proposed`, `active`, `rejected`, `inactive`, `entered-in-error`.\n",
                     "type": "text/plain"
                   },
                   "key": "status",
@@ -398,7 +398,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "df30547e-861b-4e28-aaff-b79639bd9cd1",
+                "id": "a4fc385e-21c7-4de4-892f-482d74436914",
                 "type": "text/javascript",
                 "exec": [
                   "// Validate status 2xx \npm.test(\"[GET]::/Consent - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
@@ -413,7 +413,7 @@
           }
         },
         {
-          "id": "1a74de43-34f6-4656-8441-2f29e1067f21",
+          "id": "33298e76-4b7a-4a87-b69c-8838e0a611a6",
           "name": "Create a proxy role",
           "request": {
             "name": "Create a proxy role",
@@ -462,7 +462,7 @@
             "method": "POST",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"resourceType\": \"Consent\",\n  \"status\": \"active\",\n  \"scope\": {\n    \"coding\": [\n      {\n        \"system\": \"https://terminology.hl7.org/CodeSystem/consentscope\",\n        \"code\": \"patient-privacy\",\n        \"display\": \"Privacy Consent\"\n      }\n    ]\n  },\n  \"category\": [\n    {\n      \"coding\": [\n        {\n          \"system\": \"https://terminology.hl7.org/CodeSystem/v3-ActCode\",\n          \"code\": \"INFA\",\n          \"display\": \"information access\"\n        }\n      ]\n    }\n  ],\n  \"patient\": {\n    \"type\": \"Patient\",\n    \"identifier\": {\n      \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n      \"value\": \"9000000012\"\n    }\n  },\n  \"dateTime\": \"2025-02-11T14:30:00Z\",\n  \"provision\": {\n    \"type\": \"permit\",\n    \"period\": {\n      \"start\": \"2025-02-11T14:30:00Z\",\n      \"end\": \"2029-02-11T14:30:00Z\"\n    },\n    \"actor\": [\n      {\n        \"reference\": {\n          \"type\": \"RelatedPerson\",\n          \"identifier\": {\n            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n            \"value\": \"9000000009\"\n          }\n        }\n      }\n    ]\n  },\n  \"extension\": [\n    {\n      \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",\n      \"valueCodeableConcept\": {\n        \"coding\": [\n          {\n            \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",\n            \"code\": \"ROLE_CREATED\",\n            \"display\": \"Role created from scratch by GP\"\n          }\n        ]\n      }\n    },\n    {\n      \"url\": \"http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee\",\n      \"valueReference\": {\n        \"identifier\": {\n          \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n          \"value\": \"9000000009\",\n          \"display\": \"Role created\"\n        }\n      }\n    },\n    {\n      \"url\": \"http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis\",\n      \"valueCodeableConcept\": {\n        \"coding\": [\n          {\n            \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis\",\n            \"code\": \"parental-responsibility\",\n            \"display\": \"Parental responsibility\"\n          }\n        ]\n      }\n    },\n    {\n      \"url\": \"http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor\",\n      \"valueReference\": {\n        \"identifier\": {\n          \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",\n          \"value\": \"G8101234\"\n        }\n      }\n    }\n  ]\n}",
+              "raw": "{\n  \"resourceType\": \"Consent\",\n  \"status\": \"active\",\n  \"scope\": {\n    \"coding\": [\n      {\n        \"system\": \"https://terminology.hl7.org/CodeSystem/consentscope\",\n        \"code\": \"patient-privacy\",\n        \"display\": \"Privacy Consent\"\n      }\n    ]\n  },\n  \"category\": [\n    {\n      \"coding\": [\n        {\n          \"system\": \"https://terminology.hl7.org/CodeSystem/v3-ActCode\",\n          \"code\": \"INFA\",\n          \"display\": \"information access\"\n        }\n      ]\n    }\n  ],\n  \"patient\": {\n    \"type\": \"Patient\",\n    \"identifier\": {\n      \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n      \"value\": \"9000000012\"\n    }\n  },\n  \"dateTime\": \"2025-02-11T14:30:00Z\",\n  \"policyRule\": [\n    {\n      \"coding\": [\n        {\n          \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis\",\n          \"code\": \"parental-responsibility\",\n          \"display\": \"Parental responsibility\"\n        }\n      ]\n    }\n  ],\n  \"provision\": {\n    \"type\": \"permit\",\n    \"period\": {\n      \"start\": \"2025-02-11T14:30:00Z\",\n      \"end\": \"2029-02-11T14:30:00Z\"\n    },\n    \"actor\": [\n      {\n        \"reference\": {\n          \"type\": \"RelatedPerson\",\n          \"identifier\": {\n            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n            \"value\": \"9000000009\"\n          }\n        }\n      }\n    ]\n  },\n  \"extension\": [\n    {\n      \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",\n      \"valueCodeableConcept\": {\n        \"coding\": [\n          {\n            \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",\n            \"code\": \"ROLE_CREATED\",\n            \"display\": \"Role created from scratch by GP\"\n          }\n        ]\n      }\n    },\n    {\n      \"url\": \"http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee\",\n      \"valueReference\": {\n        \"identifier\": {\n          \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n          \"value\": \"9000000009\",\n          \"display\": \"Role created\"\n        }\n      }\n    },\n    {\n      \"url\": \"https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor\",\n      \"valueReference\": {\n        \"identifier\": {\n          \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",\n          \"value\": \"G8101234\"\n        }\n      }\n    }\n  ]\n}",
               "options": {
                 "raw": {
                   "headerFamily": "json",
@@ -476,7 +476,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "c7e7255e-216e-4466-99c3-bc0a6aebb3d2",
+                "id": "5691a776-3a12-48b9-aa71-0b0b946b5ea3",
                 "type": "text/javascript",
                 "exec": [
                   "// Validate status 2xx \npm.test(\"[POST]::/Consent - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
@@ -491,7 +491,7 @@
           }
         },
         {
-          "id": "080aed9c-b82f-4ef1-9b98-8b610310d0ef",
+          "id": "10590cf0-9865-4096-a2ff-3cc85c8ee732",
           "name": "{id}",
           "description": {
             "content": "",
@@ -499,7 +499,7 @@
           },
           "item": [
             {
-              "id": "ae09a18a-b34b-4e53-9ca6-5931ea0ed360",
+              "id": "542b8b92-0ff3-46cf-9fb7-86a5b9e9d6f2",
               "name": "Get proxy role",
               "request": {
                 "name": "Get proxy role",
@@ -580,7 +580,7 @@
                 {
                   "listen": "test",
                   "script": {
-                    "id": "f25b8bde-c9ad-491f-b659-07361909e97a",
+                    "id": "f3269a55-7a51-43b1-abe3-5fbc974410ab",
                     "type": "text/javascript",
                     "exec": [
                       "// Validate status 2xx \npm.test(\"[GET]::/Consent/:id - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
@@ -595,12 +595,12 @@
               }
             },
             {
-              "id": "54679606-dd1e-4d13-aa73-20407a03431c",
+              "id": "ea177cf6-d5b7-4ecf-8ccc-10146e70c2a0",
               "name": "Update a proxy role",
               "request": {
                 "name": "Update a proxy role",
                 "description": {
-                  "content": "## Overview\nUse this endpoint to update an existing proxy role.\n\nSupported update scenarios include:\n\n* Update the status and status reason, (optionally) providing an additional free text description\n* Update the regulatory basis\n* Update the end date, for time-bound access\n\n## Request Requirements\n* The proxy role must exist and be identified by a valid ID\n* JSON Patch operations must be valid according to RFC 6902\n* Status changes must use valid status codes from <http://hl7.org/fhir/consent-state-codes>\n\n### IMPORTANT: Business Rule Enforcement for `/status` updates\n\nIf you update the `/status` of a role, you **MUST** also provide a corresponding update to the `/extension` path in the same patch array to provide the `statusReason`. An error will be returned if a request for a change of `/status` does not include a status reason.\n\nThe values for `/status` and `statusReason` are validated against a proxy role lifecycle to ensure that the transition between the existing and requested status is valid. An error will be returned if the requested transition is not valid.\n\n## Access modes\n\nThis endpoint supports the following access modes:\n- Patient access\n- Healthcare worker access\n- Application-restricted access\n\n## Sandbox test scenarios\n\nYou can test the following scenarios in our sandbox environment:\n\n| Scenario                        | Request                                                                                         | Response                                                      |\n| ------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |\n| Successful status update        | Valid patch changing status to 'active', request with id '74eed847-ca25-4e76-8cf2-f2c2d7842a7a' | HTTP Status 200 and OperationOutcome                          |\n| Successful access level update  | Valid patch modifying the role end date, request with id '6b71ac92-baa3-4b76-b0f5-a601257e2722' | HTTP Status 200 and OperationOutcome                          |\n| Multiple valid changes          | Valid patch with multiple operations, request with id '43003db8-ffcd-4bd6-ab2f-b49b9656f9e5'    | HTTP Status 200 and OperationOutcome                          |\n| Valid OTHER reason code with free text   | Patch with reason code 'OTHER' and free text, id='a1b2c3d4-e5f6-4789-a0b1-c2d3e4f5a6b7'| HTTP Status 200 and OperationOutcome                          |\n| Non-OTHER reason code without free text  | Patch with a reason code other than 'OTHER', no free text, id='b2c3d4e5-f6a7-4890-b1c2-d3e4f5a6b7c8' | HTTP Status 200 and OperationOutcome                          |\n| Non-OTHER reason code with free text     | Patch with a reason code other than 'OTHER', with free text, id='c3d4e5f6-a7b8-4901-c2d3-e4f5a6b7c8d9' | HTTP Status 200 and OperationOutcome                          |\n| Invalid patch format            | Malformed JSON patch document, request with id '849ea584-2318-471b-a24c-cee1b5ad0137'           | HTTP Status 400 and INVALID_PATCH_FORMAT error response       |\n| Invalid path                    | Patch targeting non-existent element, request with id '01abb0c5-b1ac-499d-9655-9cd0b8d3588f'    | HTTP Status 400 and INVALID_PATCH_PATH error response         |\n| Invalid status code             | Patch with invalid status value, request with id '78c35330-fa2f-4934-a5dd-fff847f38de5'         | HTTP Status 422 and INVALID_STATUS_CODE error response        |\n| Invalid status reason           | Patch with invalid status reason value, request with id '51fb4df5-815a-45cd-8427-04d6558336b7'  | HTTP Status 422 and INVALID_STATUS_REASON error response      |\n| Resource not found              | Patch for non-existent Consent, request with an id not listed here                              | HTTP Status 404 and RESOURCE_NOT_FOUND error response         |\n| Invalid state transition        | Patch attempting invalid status change, request with id '7b7f47b8-96e5-43eb-b733-283bf1449f2c'  | HTTP Status 422 and INVALID_STATE_TRANSITION error response   |\n| Missing free text for OTHER reason code  | Patch with reason code 'OTHER' but missing free text, id='d4e8a6f2-1c3b-4a7e-9d2f-8b5c7e9f1a3d' | HTTP Status 400 and MISSING_FREE_TEXT_FOR_OTHER error response |\n| Missing grantor                 | Patch attempting to set status to 'active' without grantor extension, id='90957744-b971-496e-b7c3-ab971868ce14' | HTTP Status 400 and MISSING_GRANTOR error response            |\n| Missing grantor valueReference     | Request with grantor extension but missing valueReference, id='7e764160-38b6-41eb-9012-a3e476cbc517'  | HTTP Status 400 and MISSING_GRANTOR_REFERENCE error response             |\n| Missing grantor valueIdentifier     | Request with grantor extension but missing valueIdentifier, id='faefd8c5-5e24-4415-8252-96e9241c7e78' | HTTP Status 400 and MISSING_GRANTOR_IDENTIFIER error response             |\n| Invalid grantor ODS code value                | Request with grantor extension but missing/empty/invalid ODS code, id='b68cbfc8-ccc2-48ad-b97b-b7410d773dc1'       | HTTP Status 422 and INVALID_GRANTOR_VALUE error response                 |\n| Invalid grantor identifier system             | Request with grantor extension but wrong/missing identifier system, id='fd189522-68e5-42dc-b44c-989be0eaa2bf'     | HTTP Status 422 and INVALID_GRANTOR_SYSTEM error response                |\n\n### Sandbox constraints\n\nThe sandbox environment has the following constraints for this endpoint:\n\n- Request body is not validated.\n- Request headers are not tested.\n- No proxy role is updated.\n",
+                  "content": "## Overview\nUse this endpoint to update an existing proxy role.\n\nSupported update scenarios include:\n\n* Update the status and status reason, (optionally) providing an additional free text description\n* Update the policy rule\n* Update the end date, for time-bound access\n\n## Request Requirements\n* The proxy role must exist and be identified by a valid ID\n* JSON Patch operations must be valid according to RFC 6902\n* Status changes must use valid status codes from <http://hl7.org/fhir/consent-state-codes>\n\n### IMPORTANT: Business Rule Enforcement for `/status` updates\n\nIf you update the `/status` of a role, you **MUST** also provide a corresponding update to the `/extension` path in the same patch array to provide the `statusReason`. An error will be returned if a request for a change of `/status` does not include a status reason.\n\nThe values for `/status` and `statusReason` are validated against a proxy role lifecycle to ensure that the transition between the existing and requested status is valid. An error will be returned if the requested transition is not valid.\n\n## Access modes\n\nThis endpoint supports the following access modes:\n- Patient access\n- Healthcare worker access\n- Application-restricted access\n\n## Sandbox test scenarios\n\nYou can test the following scenarios in our sandbox environment:\n\n| Scenario                        | Request                                                                                         | Response                                                      |\n| ------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |\n| Successful status update        | Valid patch changing status to 'active', request with id '74eed847-ca25-4e76-8cf2-f2c2d7842a7a' | HTTP Status 200 and OperationOutcome                          |\n| Successful access level update  | Valid patch modifying the role end date, request with id '6b71ac92-baa3-4b76-b0f5-a601257e2722' | HTTP Status 200 and OperationOutcome                          |\n| Multiple valid changes          | Valid patch with multiple operations, request with id '43003db8-ffcd-4bd6-ab2f-b49b9656f9e5'    | HTTP Status 200 and OperationOutcome                          |\n| Valid OTHER reason code with free text   | Patch with reason code 'OTHER' and free text, id='a1b2c3d4-e5f6-4789-a0b1-c2d3e4f5a6b7'| HTTP Status 200 and OperationOutcome                          |\n| Non-OTHER reason code without free text  | Patch with a reason code other than 'OTHER', no free text, id='b2c3d4e5-f6a7-4890-b1c2-d3e4f5a6b7c8' | HTTP Status 200 and OperationOutcome                          |\n| Non-OTHER reason code with free text     | Patch with a reason code other than 'OTHER', with free text, id='c3d4e5f6-a7b8-4901-c2d3-e4f5a6b7c8d9' | HTTP Status 200 and OperationOutcome                          |\n| Invalid patch format            | Malformed JSON patch document, request with id '849ea584-2318-471b-a24c-cee1b5ad0137'           | HTTP Status 400 and INVALID_PATCH_FORMAT error response       |\n| Invalid path                    | Patch targeting non-existent element, request with id '01abb0c5-b1ac-499d-9655-9cd0b8d3588f'    | HTTP Status 400 and INVALID_PATCH_PATH error response         |\n| Invalid status code             | Patch with invalid status value, request with id '78c35330-fa2f-4934-a5dd-fff847f38de5'         | HTTP Status 422 and INVALID_STATUS_CODE error response        |\n| Invalid status reason           | Patch with invalid status reason value, request with id '51fb4df5-815a-45cd-8427-04d6558336b7'  | HTTP Status 422 and INVALID_STATUS_REASON error response      |\n| Resource not found              | Patch for non-existent Consent, request with an id not listed here                              | HTTP Status 404 and RESOURCE_NOT_FOUND error response         |\n| Invalid state transition        | Patch attempting invalid status change, request with id '7b7f47b8-96e5-43eb-b733-283bf1449f2c'  | HTTP Status 422 and INVALID_STATE_TRANSITION error response   |\n| Missing free text for OTHER reason code  | Patch with reason code 'OTHER' but missing free text, id='d4e8a6f2-1c3b-4a7e-9d2f-8b5c7e9f1a3d' | HTTP Status 400 and MISSING_FREE_TEXT_FOR_OTHER error response |\n| Missing grantor                 | Patch attempting to set status to 'active' without grantor extension, id='90957744-b971-496e-b7c3-ab971868ce14' | HTTP Status 400 and MISSING_GRANTOR error response            |\n| Missing grantor valueReference     | Request with grantor extension but missing valueReference, id='7e764160-38b6-41eb-9012-a3e476cbc517'  | HTTP Status 400 and MISSING_GRANTOR_REFERENCE error response             |\n| Missing grantor valueIdentifier     | Request with grantor extension but missing valueIdentifier, id='faefd8c5-5e24-4415-8252-96e9241c7e78' | HTTP Status 400 and MISSING_GRANTOR_IDENTIFIER error response             |\n| Invalid grantor ODS code value                | Request with grantor extension but missing/empty/invalid ODS code, id='b68cbfc8-ccc2-48ad-b97b-b7410d773dc1'       | HTTP Status 422 and INVALID_GRANTOR_VALUE error response                 |\n| Invalid grantor identifier system             | Request with grantor extension but wrong/missing identifier system, id='fd189522-68e5-42dc-b44c-989be0eaa2bf'     | HTTP Status 422 and INVALID_GRANTOR_SYSTEM error response                |\n\n### Sandbox constraints\n\nThe sandbox environment has the following constraints for this endpoint:\n\n- Request body is not validated.\n- Request headers are not tested.\n- No proxy role is updated.\n",
                   "type": "text/plain"
                 },
                 "url": {
@@ -652,7 +652,7 @@
                 {
                   "listen": "test",
                   "script": {
-                    "id": "2fff21b8-e010-4b64-aeb6-8bb8a7dd4049",
+                    "id": "3384add5-3b96-4318-9f1c-f9600940b155",
                     "type": "text/javascript",
                     "exec": [
                       "// Validate status 2xx \npm.test(\"[PATCH]::/Consent/:id - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
@@ -682,16 +682,16 @@
     }
   ],
   "info": {
-    "_postman_id": "614b5082-b38a-4cdd-941c-f75e9524cdbb",
+    "_postman_id": "88a9dda6-bdbb-46c0-b888-78c8f4d35995",
     "name": "Validated Relationships Service API",
     "version": {
-      "raw": "1.16.0",
+      "raw": "1.19.0",
       "major": 1,
-      "minor": 16,
+      "minor": 19,
       "patch": 0,
       "prerelease": [],
       "build": [],
-      "string": "1.16.0"
+      "string": "1.19.0"
     },
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {

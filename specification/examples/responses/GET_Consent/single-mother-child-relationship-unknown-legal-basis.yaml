@@ -35,6 +35,11 @@ ConsentSingleAdultChildRelationshipUnknownLegalBasisBundle:
               uri: 'https://digital.nhs.uk/data-and-information/information-standards/governance/latest-activity/standards-and-collections/dapb3051-identity-verification-and-authentication-standard-for-digital-health-and-care-services'
               code: unknown
               display: Unknown legal basis
+          policyRule:
+            - coding:
+                - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+                  code: UNK
+                  display: Unknown
           provision:
             type: permit
             actor:
@@ -55,12 +60,6 @@ ConsentSingleAdultChildRelationshipUnknownLegalBasisBundle:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: ROLE_CREATED
                   display: Role created
-          - url: http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis
-            valueCodeableConcept:
-              coding:
-                - system: https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis
-                  code: "UNK"
-                  display: "Unknown"
           - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
             valueReference:
               identifier:
