@@ -1,7 +1,7 @@
-ConsentSingleAdultChildRelationshipIncludePerformerPatientBundle:
-  summary: Single adult child proxy relationship with grantee and patient details
+ConsentSingleAdultChildRelationshipIncludeGranteePatientBundle:
+  summary: Single adult child proxy relationship with performer and patient details
   description:
-    A Bundle containing a single proxy relationship between an adult and child including the grantee
+    A Bundle containing a single proxy relationship between an adult and child including the performer
     and patient details.
   value:
     resourceType: Bundle
@@ -10,7 +10,7 @@ ConsentSingleAdultChildRelationshipIncludePerformerPatientBundle:
     type: searchset
     link:
       - relation: self
-        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000019&_include=Consent:grantee&_include=Consent:patient
+        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000019&_include=Consent:performer&_include=Consent:patient
     entry:
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/PR974742
         resource:

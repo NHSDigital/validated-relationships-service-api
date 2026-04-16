@@ -1,6 +1,6 @@
 ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
   summary: Multiple relationships (multiple proxy relationships with single patient)
-  description: A Bundle containing multiple proxy relationships with single patient, including patient and grantee details.
+  description: A Bundle containing multiple proxy relationships with single patient, including patient and performer details.
   value:
     resourceType: Bundle
     timestamp: "2026-01-16T14:00:00+00:00"
@@ -8,7 +8,7 @@ ConsentMultipleRelationshipsSinglePatientIncludePerformerPatientBundle:
     type: searchset
     link:
       - relation: self
-        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?patient:identifier=9000000100&_include=Consent:grantee&_include=Consent:patient
+        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?patient:identifier=9000000100&_include=Consent:performer&_include=Consent:patient
     entry:
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/A3CC67E2
         resource:

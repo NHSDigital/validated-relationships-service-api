@@ -1,7 +1,7 @@
-ConsentMultipleRelationshipsIncludePerformerBundle:
-  summary: Multiple relationships with grantee details
+ConsentMultipleRelationshipsIncludeGranteeBundle:
+  summary: Multiple relationships with performer details
   description:
-    A Bundle containing multiple proxy relationships with varying legal basis' including grantee details
+    A Bundle containing multiple proxy relationships with varying legal basis' including performer details
   value:
     resourceType: Bundle
     timestamp: '2026-01-16T14:00:00+00:00'
@@ -9,7 +9,7 @@ ConsentMultipleRelationshipsIncludePerformerBundle:
     type: searchset
     link:
       - relation: self
-        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000022&_include=Consent:grantee
+        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000022&_include=Consent:performer
     entry:
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/PR974743
         resource:
