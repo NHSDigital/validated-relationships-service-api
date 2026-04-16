@@ -1,4 +1,4 @@
-ConsentSingleAdultChildRelationshipIncludeGranteeBundle:
+ConsentSingleAdultChildRelationshipIncludePerformerBundle:
   summary: Single adult child proxy relationship with performer details
   description:
     A Bundle containing a single proxy relationship between an adult and child including the performer details.

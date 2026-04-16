@@ -1,4 +1,4 @@
-ConsentMultipleRelationshipsIncludeGranteeBundle:
+ConsentMultipleRelationshipsIncludePerformerBundle:
   summary: Multiple relationships with performer details
   description:
     A Bundle containing multiple proxy relationships with varying legal basis' including performer details

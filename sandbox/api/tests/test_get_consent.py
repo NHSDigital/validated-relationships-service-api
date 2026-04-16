@@ -87,12 +87,12 @@ def test_get_consent_returns_expected_responses__mocked_get_consent(
         ),
         (
             "performer:identifier=9000000022&_include=Consent:performer",
-            "./api/examples/GET_Consent/multiple-relationships-include-grantee.yaml",
+            "./api/examples/GET_Consent/multiple-relationships-include-performer.yaml",
             200,
         ),
         (
             "performer:identifier=9000000022&_include=Consent:performer&_include=Consent:patient",
-            "./api/examples/GET_Consent/multiple-relationships-include-grantee-patient.yaml",
+            "./api/examples/GET_Consent/multiple-relationships-include-performer-patient.yaml",
             200,
         ),
         (
@@ -112,17 +112,17 @@ def test_get_consent_returns_expected_responses__mocked_get_consent(
         ),
         (
             "performer:identifier=9000000010&_include=Consent:performer&_include=Consent:patient",
-            "./api/examples/GET_Consent/single-consenting-adult-relationship-include-grantee-patient.yaml",
+            "./api/examples/GET_Consent/single-consenting-adult-relationship-include-performer-patient.yaml",
             200,
         ),
         (
             "patient:identifier=9000000005&_include=Consent:performer&_include=Consent:patient",
-            "./api/examples/GET_Consent/single-consenting-adult-relationship-include-grantee-patient.yaml",
+            "./api/examples/GET_Consent/single-consenting-adult-relationship-include-performer-patient.yaml",
             200,
         ),
         (
             "performer:identifier=9000000010&patient:identifier=9000000005&_include=Consent:performer&_include=Consent:patient",  # noqa: E501
-            "./api/examples/GET_Consent/single-consenting-adult-relationship-include-grantee-patient.yaml",
+            "./api/examples/GET_Consent/single-consenting-adult-relationship-include-performer-patient.yaml",
             200,
         ),
         (
@@ -142,17 +142,17 @@ def test_get_consent_returns_expected_responses__mocked_get_consent(
         ),
         (
             "performer:identifier=9000000019&_include=Consent:performer&_include=Consent:patient",
-            "./api/examples/GET_Consent/single-mother-child-relationship-include-grantee-patient.yaml",
+            "./api/examples/GET_Consent/single-mother-child-relationship-include-performer-patient.yaml",
             200,
         ),
         (
             "patient:identifier=9000000009&_include=Consent:performer&_include=Consent:patient",
-            "./api/examples/GET_Consent/single-mother-child-relationship-include-grantee-patient.yaml",
+            "./api/examples/GET_Consent/single-mother-child-relationship-include-performer-patient.yaml",
             200,
         ),
         (
             "performer:identifier=9000000019&patient:identifier=9000000009&_include=Consent:performer&_include=Consent:patient",  # noqa: E501
-            "./api/examples/GET_Consent/single-mother-child-relationship-include-grantee-patient.yaml",
+            "./api/examples/GET_Consent/single-mother-child-relationship-include-performer-patient.yaml",
             200,
         ),
         (
@@ -162,7 +162,7 @@ def test_get_consent_returns_expected_responses__mocked_get_consent(
         ),
         (
             "patient:identifier=9000000100&_include=Consent:performer",
-            "./api/examples/GET_Consent/multiple-relationships-single-patient-include-grantee.yaml",
+            "./api/examples/GET_Consent/multiple-relationships-single-patient-include-performer.yaml",
             200,
         ),
         (
@@ -172,7 +172,7 @@ def test_get_consent_returns_expected_responses__mocked_get_consent(
         ),
         (
             "patient:identifier=9000000100&_include=Consent:performer&_include=Consent:patient",
-            "./api/examples/GET_Consent/multiple-relationships-single-patient-include-grantee-patient.yaml",
+            "./api/examples/GET_Consent/multiple-relationships-single-patient-include-performer-patient.yaml",
             200,
         ),
         (
