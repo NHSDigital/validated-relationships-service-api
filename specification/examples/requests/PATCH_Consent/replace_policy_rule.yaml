@@ -1,0 +1,11 @@
+ReplacePolicyRuleRequest:
+  summary: Replace policy rule
+  description: payload used to add a new policy rule to the consent provision
+  value:
+    - op: add
+      path: /policyRule
+      value:
+        coding:
+          - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+            code: parental-responsibility
+            display: Parental responsibility

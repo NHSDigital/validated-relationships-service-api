@@ -34,6 +34,7 @@ jobs:
           # 1. Run Flask in the background (using 'poetry run python -m flask')
           # We use FLASK_DEBUG=1 to see the 500 errors in the console
           cp -r $GITHUB_WORKSPACE/specification/examples/responses/. $GITHUB_WORKSPACE/sandbox/api/examples/
+          set -m
           FLASK_DEBUG=1 poetry run python -m flask --app api.app:app run -p 9000 &
           FLASK_PID=$!
           
@@ -46,4 +47,4 @@ jobs:
           
           # 4. Cleanup: Kill the Flask process using the PID we saved
           echo "Shutting down Flask..."
-          kill $FLASK_PID
+          kill -TERM -$FLASK_PID

@@ -979,7 +979,7 @@ paths:
         Supported update scenarios include:
 
         * Update the status and status reason, (optionally) providing an additional free text description
-        * Update the regulatory basis
+        * Update the policy rule
         * Update the end date, for time-bound access
 
         ## Request Requirements
@@ -1050,8 +1050,8 @@ paths:
                 $ref: "./examples/requests/PATCH_Consent/replace_provision_end_date.yaml#/UpdateProvisionEndDate"
               multipleUpdates:
                 $ref: "./examples/requests/PATCH_Consent/multiple_updates.yaml#/MultipleUpdates"
-              regulatoryBasis:
-                $ref: "./examples/requests/PATCH_Consent/replace_regulatory_basis.yaml#/ReplaceRegulatoryBasisRequest"
+              policyRule:
+                $ref: "./examples/requests/PATCH_Consent/replace_policy_rule.yaml#/ReplacePolicyRuleRequest"
       responses:
         "200":
           description: Consent resource successfully updated
@@ -2348,6 +2348,10 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/Policy"
+        policyRule:
+          type: array
+          items:
+            $ref: "#/components/schemas/CodeableConcept"
         provision:
           $ref: "#/components/schemas/Provision"
         extension:
@@ -2355,7 +2359,6 @@ components:
           items:
             anyOf:
               - $ref: "#/components/schemas/StatusReasonExtension"
-              - $ref: "#/components/schemas/RegulatoryBasisExtension"
               - $ref: "#/components/schemas/GranteeExtension"
               - $ref: "#/components/schemas/GrantorExtension"
           description: "Additional content. For active proxy roles, grantor is required."
@@ -2419,7 +2422,7 @@ components:
                 description: "Individuals or organizations that agreed to the consent"
               role:
                 $ref: "#/components/schemas/CodeableConcept"
-                description: "Deprecated. Instead use the Regulatory Basis Extension."
+                description: "Deprecated. Instead use policyRule."
                 deprecated: true
 
     StatusReasonExtension:
@@ -2432,18 +2435,6 @@ components:
         valueCodeableConcept:
           $ref: "#/components/schemas/CodeableConcept"
           description: Classification of the status.
-
-    RegulatoryBasisExtension:
-      type: object
-      properties:
-        url:
-          type: string
-          enum:
-          - "http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis"
-        valueCodeableConcept:
-          $ref: "#/components/schemas/CodeableConcept"
-          description: Classification of the regulatory basis for the consent.
-
     GranteeExtension:
       type: object
       properties:

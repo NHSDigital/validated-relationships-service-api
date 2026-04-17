@@ -118,6 +118,11 @@ ConsentMultipleRelationshipsIncludeGranteePatientBundle:
           policy:
             - authority: "https://www.england.nhs.uk"
               uri: "https://digital.nhs.uk/data-and-information/information-standards/governance/latest-activity/standards-and-collections/dapb3051-identity-verification-and-authentication-standard-for-digital-health-and-care-services"
+          policyRule:
+            - coding:
+                - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+                  code: parental-responsibility
+                  display: Parental responsibility
           provision:
             type: permit
             actor:
@@ -137,12 +142,6 @@ ConsentMultipleRelationshipsIncludeGranteePatientBundle:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: ROLE_CREATED
                   display: Role created
-          - url: "http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis"
-            valueCodeableConcept:
-              coding:
-                - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
-                  code: "parental-responsibility"
-                  display: "Parental responsibility"
           - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
             valueReference:
               identifier:
@@ -226,6 +225,11 @@ ConsentMultipleRelationshipsIncludeGranteePatientBundle:
           policy:
             - authority: "https://www.england.nhs.uk"
               uri: "https://digital.nhs.uk/data-and-information/information-standards/governance/latest-activity/standards-and-collections/dapb3051-identity-verification-and-authentication-standard-for-digital-health-and-care-services"
+          policyRule:
+            - coding:
+                - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+                  code: "best-interest"
+                  display: "Best Interest"
           provision:
             type: permit
             actor:
@@ -245,12 +249,6 @@ ConsentMultipleRelationshipsIncludeGranteePatientBundle:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: ROLE_CREATED
                   display: Role created
-          - url: "http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis"
-            valueCodeableConcept:
-              coding:
-                - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
-                  code: "best-interest"
-                  display: "Best Interest"
           - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
             valueReference:
               identifier:
@@ -334,6 +332,11 @@ ConsentMultipleRelationshipsIncludeGranteePatientBundle:
           policy:
             - authority: "https://www.england.nhs.uk"
               uri: "https://digital.nhs.uk/data-and-information/information-standards/governance/latest-activity/standards-and-collections/dapb3051-identity-verification-and-authentication-standard-for-digital-health-and-care-services"
+          policyRule:
+            - coding:
+                - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+                  code: "best-interest"
+                  display: "Best Interest"
           provision:
             type: permit
             actor:
@@ -353,12 +356,6 @@ ConsentMultipleRelationshipsIncludeGranteePatientBundle:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: ROLE_DEACTIVATED_END_DATE_REACHED
                   display: End date reached
-          - url: "http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis"
-            valueCodeableConcept:
-              coding:
-                - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
-                  code: "best-interest"
-                  display: "Best Interest"
           - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
             valueReference:
               identifier:

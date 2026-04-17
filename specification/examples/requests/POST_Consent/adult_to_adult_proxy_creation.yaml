@@ -18,6 +18,11 @@ ConsentAdultToAdultGuardianRequest:
       identifier:
         system: https://fhir.nhs.uk/Id/nhs-number
         value: "9000000012"
+    policyRule:
+      - coding:
+          - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+            code: "court-appointed-personal-welfare-deputy"
+            display: "Court Appointed Personal Welfare Deputy"
     dateTime: "2025-02-11T14:30:00Z"
     provision:
       type: permit
@@ -36,12 +41,6 @@ ConsentAdultToAdultGuardianRequest:
             - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
               code: ROLE_CREATED
               display: Role created from scratch by GP
-      - url: "http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.regulatoryBasis"
-        valueCodeableConcept:
-          coding:
-            - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
-              code: "court-appointed-personal-welfare-deputy"
-              display: "Court Appointed Personal Welfare Deputy"
       - url: http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
         valueReference:
           identifier:
