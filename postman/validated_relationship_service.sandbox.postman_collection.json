@@ -1,10 +1,10 @@
 {
   "_": {
-    "postman_id": "88a9dda6-bdbb-46c0-b888-78c8f4d35995"
+    "postman_id": "3286622e-e0e8-481d-a81b-42f14fc2d60e"
   },
   "item": [
     {
-      "id": "8441cbba-8ba9-4b55-b8fa-78146d129bcf",
+      "id": "1c5e41b5-fa25-48e1-aa9d-bd1aa82fec4e",
       "name": "QuestionnaireResponse",
       "description": {
         "content": "",
@@ -12,7 +12,7 @@
       },
       "item": [
         {
-          "id": "412e86f5-ab8d-44de-9440-b9ee9d3a95b0",
+          "id": "5e250ec6-330e-4c97-b17b-98f8a31fb350",
           "name": "New Access request",
           "request": {
             "name": "New Access request",
@@ -75,7 +75,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "368c1d60-821c-45b9-bb10-9692c28c3fee",
+                "id": "ffc42bc2-6d18-41c1-9536-cd45cf9ec1cc",
                 "type": "text/javascript",
                 "exec": [
                   "// Validate status 2xx \npm.test(\"[POST]::/QuestionnaireResponse - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
@@ -90,7 +90,7 @@
           }
         },
         {
-          "id": "d7714453-8e84-4c96-a8a2-ea5802156b61",
+          "id": "d3c0dfe5-f5c0-4ba8-b172-415822766745",
           "name": "{id}",
           "description": {
             "content": "",
@@ -98,7 +98,7 @@
           },
           "item": [
             {
-              "id": "5fcbb209-b9ba-41cb-864f-101ec5e38839",
+              "id": "e1242e40-20b2-41a5-b625-0342335603f1",
               "name": "Get a proxy access request",
               "request": {
                 "name": "Get a proxy access request",
@@ -160,7 +160,7 @@
                 {
                   "listen": "test",
                   "script": {
-                    "id": "2d754eb4-7f1d-4de3-ad26-711a2a8fff44",
+                    "id": "5eb2dd3c-81dd-4cf9-a77e-ad2e97910983",
                     "type": "text/javascript",
                     "exec": [
                       "// Validate status 2xx \npm.test(\"[GET]::/QuestionnaireResponse/:id - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
@@ -181,7 +181,7 @@
       "event": []
     },
     {
-      "id": "1216ab88-365a-4570-87a8-e9cfdcff9fd5",
+      "id": "26f23c7f-0821-48d3-9b67-a5c2fdda2b5b",
       "name": "RelatedPerson",
       "description": {
         "content": "",
@@ -189,7 +189,7 @@
       },
       "item": [
         {
-          "id": "95a24513-7db5-4ceb-86fe-ff4fe11f558d",
+          "id": "89bb037d-5bbe-4aac-9c2b-2c4ad4824b29",
           "name": "Get verified candidate relationships",
           "request": {
             "name": "Get verified candidate relationships",
@@ -267,7 +267,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "3a2ee785-3f57-43c8-81e4-006a25d39636",
+                "id": "a8d54083-2e05-4079-ba93-d0d88149a674",
                 "type": "text/javascript",
                 "exec": [
                   "// Validate status 2xx \npm.test(\"[GET]::/RelatedPerson - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
@@ -285,7 +285,7 @@
       "event": []
     },
     {
-      "id": "1fbfa513-0cff-4736-bc88-3f98695a90e2",
+      "id": "c4c8ecf4-4c2f-4add-b164-21a2da2d83ce",
       "name": "Consent",
       "description": {
         "content": "",
@@ -293,12 +293,12 @@
       },
       "item": [
         {
-          "id": "efb2a45e-e289-466c-8e81-2997d0746674",
+          "id": "9e9dd57d-5df5-4024-84e9-ea13ed3403ef",
           "name": "Get proxy roles",
           "request": {
             "name": "Get proxy roles",
             "description": {
-              "content": "## Overview\nUse this endpoint to get the details about proxy roles, including current status, based on a provided NHS Number.\n\nEither `performer:identifier` or `patient:identifier` request parameters must be provided. `performer:identifier` and `patient:identifier` can be used together.\n\nYou can (optionally) include a `status={status}` query string parameter to filter the response to records with a given status bound to the http://hl7.org/fhir/consent-state-codes CodeSystem e.g. `status=active` or `status=proposed,active`.\n\nYou can (optionally) include the `_include=Consent:grantee` request parameter to include the proxy's details in the response.\n\nYou can (optionally) include the `_include=Consent:patient` request parameter to include the patient's details in the response.\n\n## Access modes\n\nThis endpoint supports the following access modes:\n- Patient access\n- Healthcare worker access\n- Application-restricted access\n\n## Sandbox test scenarios\n\nYou can test the following scenarios in our sandbox environment:\n\n| Scenario                                                                          | Request                                                                                                                                          | Response                                                                                                          |\n| --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |\n| Multiple proxy relationships filtered by 'active' status including details        | `performer:identifier=9000000017&_include=Consent:patient&_include=Consent:grantee&status=active`                                  | HTTP Status 200 Bundle containing a multiple active proxy relationships including grantee and patient details   |\n| Multiple proxy relationships filtered by 'inactive' status                        | `performer:identifier=9000000017&status=inactive`                                                                                                | HTTP Status 200 Bundle containing a multiple inactive proxy relationships                                         |\n| Multiple proxy relationships filtered by 'proposed' and 'active' status           | `performer:identifier=9000000017&status=proposed,active`                                                                                         | HTTP Status 200 Bundle containing a multiple proposed and active proxy relationships                              |\n| Multiple proxy relationships without filtering and details                        | `performer:identifier=9000000022`                                                                                                                | HTTP Status 200 Bundle containing a multiple proxy relationships without details                                  |\n| Multiple proxy relationships including grantee details                          | `performer:identifier=9000000022&_include=Consent:grantee`                                                                                     | HTTP Status 200 Bundle containing a multiple proxy relationships including grantee details                      |\n| Multiple proxy relationships including patient details                            | `performer:identifier=9000000022&_include=Consent:patient`                                                                                       | HTTP Status 200 Bundle containing a multiple proxy relationships including patient details                        |\n| Multiple proxy relationships including grantee and patient details              | `performer:identifier=9000000022&_include=Consent:patient&_include=Consent:grantee`                                                            | HTTP Status 200 Bundle containing a multiple proxy relationships including grantee and patient details          |\n| Multiple proxy relationships, single patient                                      | `patient:identifier=9000000100`                                                                                                                  | HTTP Status 200 Bundle containing a multiple proxy relationships including grantee and patient details          |\n| Multiple proxy relationships, single patient, including proxy details             | `patient:identifier=9000000100&_include=Consent:grantee`                                                                                       | HTTP Status 200 Bundle containing a multiple proxy relationships including proxy details                          |\n| Multiple proxy relationships, single patient, including patient details           | `patient:identifier=9000000100&_include=Consent:patient`                                                                                         | HTTP Status 200 Bundle containing a multiple proxy relationships including patient details                        |\n| Multiple proxy relationships, single patient, including proxy and patient details | `patient:identifier=9000000100&_include=Consent:patient&_include=Consent:grantee`                                                              | HTTP Status 200 Bundle containing a multiple proxy relationships including proxy and patient details              |\n| No proxy relationships                                                            | `performer:identifier=9000000025&_include=Consent:patient&_include=Consent:grantee&status=active`                                              | HTTP Status 200 empty bundle                                                                                      |\n| A single proxy relationship between consenting adults                             | `performer:identifier=9000000010` and/or `patient:identifier=9000000005`                                                                         | HTTP Status 200 Bundle containing a single proxy relationship                                                     |\n| A single proxy relationship between consenting adults including details           | `performer:identifier=9000000010` and/or `patient:identifier=9000000005&_include=Consent:patient&_include=Consent:grantee`                         | HTTP Status 200 Bundle containing a single proxy relationship including grantee and patient details             |\n| A single proxy relationship between a mother and child                            | `performer:identifier=9000000019` and/or `patient:identifier=9000000009`                                                                         | HTTP Status 200 Bundle containing a single proxy relationship                                                     |\n| A single proxy relationship between a mother and child including details          | `performer:identifier=9000000019` and/or `patient:identifier=9000000009&_include=Consent:patient&_include=Consent:grantee`                         | HTTP Status 200 Bundle containing a single proxy relationship including grantee and patient details             |\n| A single proxy relationship between a mother and child with legal basis unknown   | `performer:identifier=9000000111` and/or `patient:identifier=9000000119`                                                                         | HTTP Status 200 Bundle containing a single proxy relationship with legal basis unknown                            |\n| Invalid status parameter                                                          | `performer:identifier=9000000019` and/or `patient:identifier=9000000009&status=test`                                                             | HTTP Status 422 and INVALID_PARAMETER error response                                                              |\n| Invalid include parameter                                                         | `performer:identifier=9000000019` and/or `patient:identifier=9000000009&_include=test`                                                           | HTTP Status 422 and INVALID_PARAMETER error response                                                              |\n| Missing identifier                                                                | `patient:identifier=9000000009`                                                                                                                  | HTTP Status 400 and MISSING_IDENTIFIER_VALUE error response                                                       |\n| Invalid identifier                                                                | `identifier=900000000` Note: This identifier is 9 characters long, too short to be NHS Number                                                    | HTTP Status 422 and INVALID_IDENTIFIER_VALUE error response                                                       |\n| Invalid identifier system                                                         | `identifier=https://fhir.nhs.uk/Id/nhs-number/9730675929`                                                                                        | HTTP Status 422 and INVALID_IDENTIFIER_SYSTEM error response                                                      |\n| No performer record found                                                         | `identifier=9000000999`                                                                                                                          | HTTP Status 404 and INVALIDATED_RESOURCE error response                                                           |\n| GP Practice not found                                                             | `identifier=9000000012`                                                                                                                          | HTTP Status 404 and GP_PRACTICE_NOT_FOUND error response                                                          |\n\n### Sandbox constraints\n\nThe sandbox environment has the following constraints for this endpoint:\n\n  - Request headers are not tested. `X-IM1-Connection-Params`, `X-Request-ID` and `X-Correlation-ID` are disregarded.\n",
+              "content": "## Overview\nUse this endpoint to get the details about proxy roles, including current status, based on a provided NHS Number.\n\nEither `performer:identifier` or `patient:identifier` request parameters must be provided. `performer:identifier` and `patient:identifier` can be used together.\n\nYou can (optionally) include a `status={status}` query string parameter to filter the response to records with a given status bound to the http://hl7.org/fhir/consent-state-codes CodeSystem e.g. `status=active` or `status=proposed,active`.\n\nYou can (optionally) include the `_include=Consent:performer` request parameter to include the proxy's details in the response.\n\nYou can (optionally) include the `_include=Consent:patient` request parameter to include the patient's details in the response.\n\n## Access modes\n\nThis endpoint supports the following access modes:\n- Patient access\n- Healthcare worker access\n- Application-restricted access\n\n## Sandbox test scenarios\n\nYou can test the following scenarios in our sandbox environment:\n\n| Scenario                                                                          | Request                                                                                                                                          | Response                                                                                                          |\n| --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |\n| Multiple proxy relationships filtered by 'active' status including details        | `performer:identifier=9000000017&_include=Consent:patient&_include=Consent:performer&status=active`                                  | HTTP Status 200 Bundle containing a multiple active proxy relationships including performer and patient details   |\n| Multiple proxy relationships filtered by 'inactive' status                        | `performer:identifier=9000000017&status=inactive`                                                                                                | HTTP Status 200 Bundle containing a multiple inactive proxy relationships                                         |\n| Multiple proxy relationships filtered by 'proposed' and 'active' status           | `performer:identifier=9000000017&status=proposed,active`                                                                                         | HTTP Status 200 Bundle containing a multiple proposed and active proxy relationships                              |\n| Multiple proxy relationships without filtering and details                        | `performer:identifier=9000000022`                                                                                                                | HTTP Status 200 Bundle containing a multiple proxy relationships without details                                  |\n| Multiple proxy relationships including performer details                          | `performer:identifier=9000000022&_include=Consent:performer`                                                                                     | HTTP Status 200 Bundle containing a multiple proxy relationships including performer details                      |\n| Multiple proxy relationships including patient details                            | `performer:identifier=9000000022&_include=Consent:patient`                                                                                       | HTTP Status 200 Bundle containing a multiple proxy relationships including patient details                        |\n| Multiple proxy relationships including performer and patient details              | `performer:identifier=9000000022&_include=Consent:patient&_include=Consent:performer`                                                            | HTTP Status 200 Bundle containing a multiple proxy relationships including performer and patient details          |\n| Multiple proxy relationships, single patient                                      | `patient:identifier=9000000100`                                                                                                                  | HTTP Status 200 Bundle containing a multiple proxy relationships including performer and patient details          |\n| Multiple proxy relationships, single patient, including proxy details             | `patient:identifier=9000000100&_include=Consent:performer`                                                                                       | HTTP Status 200 Bundle containing a multiple proxy relationships including proxy details                          |\n| Multiple proxy relationships, single patient, including patient details           | `patient:identifier=9000000100&_include=Consent:patient`                                                                                         | HTTP Status 200 Bundle containing a multiple proxy relationships including patient details                        |\n| Multiple proxy relationships, single patient, including proxy and patient details | `patient:identifier=9000000100&_include=Consent:patient&_include=Consent:performer`                                                              | HTTP Status 200 Bundle containing a multiple proxy relationships including proxy and patient details              |\n| No proxy relationships                                                            | `performer:identifier=9000000025&_include=Consent:patient&_include=Consent:performer&status=active`                                              | HTTP Status 200 empty bundle                                                                                      |\n| A single proxy relationship between consenting adults                             | `performer:identifier=9000000010` and/or `patient:identifier=9000000005`                                                                         | HTTP Status 200 Bundle containing a single proxy relationship                                                     |\n| A single proxy relationship between consenting adults including details           | `performer:identifier=9000000010` and/or `patient:identifier=9000000005&_include=Consent:patient&_include=Consent:performer`                         | HTTP Status 200 Bundle containing a single proxy relationship including performer and patient details             |\n| A single proxy relationship between a mother and child                            | `performer:identifier=9000000019` and/or `patient:identifier=9000000009`                                                                         | HTTP Status 200 Bundle containing a single proxy relationship                                                     |\n| A single proxy relationship between a mother and child including details          | `performer:identifier=9000000019` and/or `patient:identifier=9000000009&_include=Consent:patient&_include=Consent:performer`                         | HTTP Status 200 Bundle containing a single proxy relationship including performer and patient details             |\n| A single proxy relationship between a mother and child with legal basis unknown   | `performer:identifier=9000000111` and/or `patient:identifier=9000000119`                                                                         | HTTP Status 200 Bundle containing a single proxy relationship with legal basis unknown                            |\n| Invalid status parameter                                                          | `performer:identifier=9000000019` and/or `patient:identifier=9000000009&status=test`                                                             | HTTP Status 422 and INVALID_PARAMETER error response                                                              |\n| Invalid include parameter                                                         | `performer:identifier=9000000019` and/or `patient:identifier=9000000009&_include=test`                                                           | HTTP Status 422 and INVALID_PARAMETER error response                                                              |\n| Missing identifier                                                                | `patient:identifier=9000000009`                                                                                                                  | HTTP Status 400 and MISSING_IDENTIFIER_VALUE error response                                                       |\n| Invalid identifier                                                                | `identifier=900000000` Note: This identifier is 9 characters long, too short to be NHS Number                                                    | HTTP Status 422 and INVALID_IDENTIFIER_VALUE error response                                                       |\n| Invalid identifier system                                                         | `identifier=https://fhir.nhs.uk/Id/nhs-number/9730675929`                                                                                        | HTTP Status 422 and INVALID_IDENTIFIER_SYSTEM error response                                                      |\n| No performer record found                                                         | `identifier=9000000999`                                                                                                                          | HTTP Status 404 and INVALIDATED_RESOURCE error response                                                           |\n| GP Practice not found                                                             | `identifier=9000000012`                                                                                                                          | HTTP Status 404 and GP_PRACTICE_NOT_FOUND error response                                                          |\n\n### Sandbox constraints\n\nThe sandbox environment has the following constraints for this endpoint:\n\n  - Request headers are not tested. `X-IM1-Connection-Params`, `X-Request-ID` and `X-Correlation-ID` are disregarded.\n",
               "type": "text/plain"
             },
             "url": {
@@ -343,7 +343,7 @@
                     "type": "text/plain"
                   },
                   "key": "_include",
-                  "value": "Consent:grantee"
+                  "value": "Consent:performer"
                 },
                 {
                   "disabled": false,
@@ -398,7 +398,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "a4fc385e-21c7-4de4-892f-482d74436914",
+                "id": "5fa3d9b0-8f87-4c69-aeae-6c547afe83f1",
                 "type": "text/javascript",
                 "exec": [
                   "// Validate status 2xx \npm.test(\"[GET]::/Consent - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
@@ -413,7 +413,7 @@
           }
         },
         {
-          "id": "33298e76-4b7a-4a87-b69c-8838e0a611a6",
+          "id": "0442727f-b94c-47ae-bf24-322b32241270",
           "name": "Create a proxy role",
           "request": {
             "name": "Create a proxy role",
@@ -462,7 +462,7 @@
             "method": "POST",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"resourceType\": \"Consent\",\n  \"status\": \"active\",\n  \"scope\": {\n    \"coding\": [\n      {\n        \"system\": \"https://terminology.hl7.org/CodeSystem/consentscope\",\n        \"code\": \"patient-privacy\",\n        \"display\": \"Privacy Consent\"\n      }\n    ]\n  },\n  \"category\": [\n    {\n      \"coding\": [\n        {\n          \"system\": \"https://terminology.hl7.org/CodeSystem/v3-ActCode\",\n          \"code\": \"INFA\",\n          \"display\": \"information access\"\n        }\n      ]\n    }\n  ],\n  \"patient\": {\n    \"type\": \"Patient\",\n    \"identifier\": {\n      \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n      \"value\": \"9000000012\"\n    }\n  },\n  \"dateTime\": \"2025-02-11T14:30:00Z\",\n  \"policyRule\": [\n    {\n      \"coding\": [\n        {\n          \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis\",\n          \"code\": \"parental-responsibility\",\n          \"display\": \"Parental responsibility\"\n        }\n      ]\n    }\n  ],\n  \"provision\": {\n    \"type\": \"permit\",\n    \"period\": {\n      \"start\": \"2025-02-11T14:30:00Z\",\n      \"end\": \"2029-02-11T14:30:00Z\"\n    },\n    \"actor\": [\n      {\n        \"reference\": {\n          \"type\": \"RelatedPerson\",\n          \"identifier\": {\n            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n            \"value\": \"9000000009\"\n          }\n        }\n      }\n    ]\n  },\n  \"extension\": [\n    {\n      \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",\n      \"valueCodeableConcept\": {\n        \"coding\": [\n          {\n            \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",\n            \"code\": \"ROLE_CREATED\",\n            \"display\": \"Role created from scratch by GP\"\n          }\n        ]\n      }\n    },\n    {\n      \"url\": \"http://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee\",\n      \"valueReference\": {\n        \"identifier\": {\n          \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n          \"value\": \"9000000009\",\n          \"display\": \"Role created\"\n        }\n      }\n    },\n    {\n      \"url\": \"https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor\",\n      \"valueReference\": {\n        \"identifier\": {\n          \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",\n          \"value\": \"G8101234\"\n        }\n      }\n    }\n  ]\n}",
+              "raw": "{\n  \"resourceType\": \"Consent\",\n  \"status\": \"active\",\n  \"scope\": {\n    \"coding\": [\n      {\n        \"system\": \"https://terminology.hl7.org/CodeSystem/consentscope\",\n        \"code\": \"patient-privacy\",\n        \"display\": \"Privacy Consent\"\n      }\n    ]\n  },\n  \"category\": [\n    {\n      \"coding\": [\n        {\n          \"system\": \"https://terminology.hl7.org/CodeSystem/v3-ActCode\",\n          \"code\": \"INFA\",\n          \"display\": \"information access\"\n        }\n      ]\n    }\n  ],\n  \"patient\": {\n    \"type\": \"Patient\",\n    \"identifier\": {\n      \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n      \"value\": \"9000000012\"\n    }\n  },\n  \"dateTime\": \"2025-02-11T14:30:00Z\",\n  \"performer\": [\n    {\n      \"identifier\": {\n        \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n        \"value\": \"9000000009\"\n      }\n    }\n  ],\n  \"policyRule\": [\n    {\n      \"coding\": [\n        {\n          \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis\",\n          \"code\": \"parental-responsibility\",\n          \"display\": \"Parental responsibility\"\n        }\n      ]\n    }\n  ],\n  \"provision\": {\n    \"type\": \"permit\",\n    \"period\": {\n      \"start\": \"2025-02-11T14:30:00Z\",\n      \"end\": \"2029-02-11T14:30:00Z\"\n    },\n    \"actor\": [\n      {\n        \"reference\": {\n          \"type\": \"RelatedPerson\",\n          \"identifier\": {\n            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n            \"value\": \"9000000009\"\n          }\n        }\n      }\n    ]\n  },\n  \"extension\": [\n    {\n      \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",\n      \"valueCodeableConcept\": {\n        \"coding\": [\n          {\n            \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",\n            \"code\": \"ROLE_CREATED\",\n            \"display\": \"Role created from scratch by GP\"\n          }\n        ]\n      }\n    },\n    {\n      \"url\": \"https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor\",\n      \"valueReference\": {\n        \"identifier\": {\n          \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",\n          \"value\": \"G8101234\"\n        }\n      }\n    }\n  ]\n}",
               "options": {
                 "raw": {
                   "headerFamily": "json",
@@ -476,7 +476,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "5691a776-3a12-48b9-aa71-0b0b946b5ea3",
+                "id": "c15f8cad-efe9-48cb-a88a-b3a8b25f6eec",
                 "type": "text/javascript",
                 "exec": [
                   "// Validate status 2xx \npm.test(\"[POST]::/Consent - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
@@ -491,7 +491,7 @@
           }
         },
         {
-          "id": "10590cf0-9865-4096-a2ff-3cc85c8ee732",
+          "id": "800dca0d-d8ae-47c4-bb6c-22a30ba4691c",
           "name": "{id}",
           "description": {
             "content": "",
@@ -499,12 +499,12 @@
           },
           "item": [
             {
-              "id": "542b8b92-0ff3-46cf-9fb7-86a5b9e9d6f2",
+              "id": "70df3ba8-54c8-4ab2-bcc2-8af4fe0166ea",
               "name": "Get proxy role",
               "request": {
                 "name": "Get proxy role",
                 "description": {
-                  "content": "## Overview\nUse this endpoint to get the details of a proxy role, including current status, based on a provided id.\n\nYou can (optionally) include the `_include=Consent:grantee` request parameter to include the proxy's details in the response.\n\nYou can (optionally) include the `_include=Consent:patient` request parameter to include the patient's details in the response.\n\n## Access modes\n\nThis endpoint supports the following access modes:\n- Healthcare worker access\n- Application-restricted access\n\n## Sandbox test scenarios\n\nYou can test the following scenarios in our sandbox environment:\n\n| Scenario                                                                         | Request                                                                                                                                  | Response                                                                                                         |\n| -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |\n| Retrieve single consenting adult relationship                                    | Valid request with ID `74eed847-ca25-4e76-8cf2-f2c2d7842a7a`                                                                             | HTTP Status 200 Bundle containing a single active proxy relationship                                             |\n| Retrieve single consenting adult relationship with patient details               | Valid request with ID `74eed847-ca25-4e76-8cf2-f2c2d7842a7a?_include=Consent:patient`                                                    | HTTP Status 200 Bundle containing a single active proxy relationship with patient details                        |\n| Retrieve single consenting adult relationship with grantee details             | Valid request with ID `74eed847-ca25-4e76-8cf2-f2c2d7842a7a?_include=Consent:grantee`                                                  | HTTP Status 200 Bundle containing a single active proxy relationship with grantee details                      |\n| Retrieve single consenting adult relationship with grantee and patient details | Valid request with ID `74eed847-ca25-4e76-8cf2-f2c2d7842a7a?_include=Consent:grantee&_include=Consent:patient`                         | HTTP Status 200 Bundle containing a single active proxy relationship with grantee and patient details  |\n| Retrieve single mother-child relationship                                        | Valid request with ID `39df03a2-1b14-4d19-b1dc-d5d8cbf96948`                                                                             | HTTP Status 200 Bundle containing a single active proxy relationship                                             |\n| Retrieve single mother-child relationship with patient details                   | Valid request with ID `39df03a2-1b14-4d19-b1dc-d5d8cbf96948?_include=Consent:patient`                                                    | HTTP Status 200 Bundle containing a single active proxy relationship with patient details                        |\n| Retrieve single mother-child relationship with grantee details                 | Valid request with ID `39df03a2-1b14-4d19-b1dc-d5d8cbf96948?_include=Consent:grantee`                                                  | HTTP Status 200 Bundle containing a single active proxy relationship with grantee details                      |\n| Retrieve single mother-child relationship with grantee and patient details     | Valid request with ID `39df03a2-1b14-4d19-b1dc-d5d8cbf96948?_include=Consent:grantee&_include=Consent:patient`                       | HTTP Status 200 Bundle containing a single active proxy relationship with grantee and patient details  |\n\n### Sandbox constraints\n\nThe sandbox environment has the following constraints for this endpoint:\n\n- Request headers are not tested. `X-Request-ID` and `X-Correlation-ID` are disregarded.\n",
+                  "content": "## Overview\nUse this endpoint to get the details of a proxy role, including current status, based on a provided id.\n\nYou can (optionally) include the `_include=Consent:performer` request parameter to include the proxy's details in the response.\n\nYou can (optionally) include the `_include=Consent:patient` request parameter to include the patient's details in the response.\n\n## Access modes\n\nThis endpoint supports the following access modes:\n- Healthcare worker access\n- Application-restricted access\n\n## Sandbox test scenarios\n\nYou can test the following scenarios in our sandbox environment:\n\n| Scenario                                                                         | Request                                                                                                                                  | Response                                                                                                         |\n| -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |\n| Retrieve single consenting adult relationship                                    | Valid request with ID `74eed847-ca25-4e76-8cf2-f2c2d7842a7a`                                                                             | HTTP Status 200 Bundle containing a single active proxy relationship                                             |\n| Retrieve single consenting adult relationship with patient details               | Valid request with ID `74eed847-ca25-4e76-8cf2-f2c2d7842a7a?_include=Consent:patient`                                                    | HTTP Status 200 Bundle containing a single active proxy relationship with patient details                        |\n| Retrieve single consenting adult relationship with performer details             | Valid request with ID `74eed847-ca25-4e76-8cf2-f2c2d7842a7a?_include=Consent:performer`                                                  | HTTP Status 200 Bundle containing a single active proxy relationship with performer details                      |\n| Retrieve single consenting adult relationship with performer and patient details | Valid request with ID `74eed847-ca25-4e76-8cf2-f2c2d7842a7a?_include=Consent:performer&_include=Consent:patient`                         | HTTP Status 200 Bundle containing a single active proxy relationship with performer and patient details  |\n| Retrieve single mother-child relationship                                        | Valid request with ID `39df03a2-1b14-4d19-b1dc-d5d8cbf96948`                                                                             | HTTP Status 200 Bundle containing a single active proxy relationship                                             |\n| Retrieve single mother-child relationship with patient details                   | Valid request with ID `39df03a2-1b14-4d19-b1dc-d5d8cbf96948?_include=Consent:patient`                                                    | HTTP Status 200 Bundle containing a single active proxy relationship with patient details                        |\n| Retrieve single mother-child relationship with performer details                 | Valid request with ID `39df03a2-1b14-4d19-b1dc-d5d8cbf96948?_include=Consent:performer`                                                  | HTTP Status 200 Bundle containing a single active proxy relationship with performer details                      |\n| Retrieve single mother-child relationship with performer and patient details     | Valid request with ID `39df03a2-1b14-4d19-b1dc-d5d8cbf96948?_include=Consent:performer&_include=Consent:patient`                       | HTTP Status 200 Bundle containing a single active proxy relationship with performer and patient details  |\n\n### Sandbox constraints\n\nThe sandbox environment has the following constraints for this endpoint:\n\n- Request headers are not tested. `X-Request-ID` and `X-Correlation-ID` are disregarded.\n",
                   "type": "text/plain"
                 },
                 "url": {
@@ -523,7 +523,7 @@
                         "type": "text/plain"
                       },
                       "key": "_include",
-                      "value": "Consent:grantee"
+                      "value": "Consent:performer"
                     },
                     {
                       "disabled": false,
@@ -580,7 +580,7 @@
                 {
                   "listen": "test",
                   "script": {
-                    "id": "f3269a55-7a51-43b1-abe3-5fbc974410ab",
+                    "id": "f294fdd1-70d3-4280-ae9f-3f22806de372",
                     "type": "text/javascript",
                     "exec": [
                       "// Validate status 2xx \npm.test(\"[GET]::/Consent/:id - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
@@ -595,7 +595,7 @@
               }
             },
             {
-              "id": "ea177cf6-d5b7-4ecf-8ccc-10146e70c2a0",
+              "id": "bbcb0867-9cc4-42aa-a09f-1d4bf8930d6c",
               "name": "Update a proxy role",
               "request": {
                 "name": "Update a proxy role",
@@ -652,7 +652,7 @@
                 {
                   "listen": "test",
                   "script": {
-                    "id": "3384add5-3b96-4318-9f1c-f9600940b155",
+                    "id": "f8d2e86a-ab42-4c78-bbd4-0d18e034ba8a",
                     "type": "text/javascript",
                     "exec": [
                       "// Validate status 2xx \npm.test(\"[PATCH]::/Consent/:id - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
@@ -682,7 +682,7 @@
     }
   ],
   "info": {
-    "_postman_id": "88a9dda6-bdbb-46c0-b888-78c8f4d35995",
+    "_postman_id": "3286622e-e0e8-481d-a81b-42f14fc2d60e",
     "name": "Validated Relationships Service API",
     "version": {
       "raw": "1.19.0",

@@ -1,16 +1,15 @@
-ConsentSingleConsentingAdultRelationshipIncludeGranteePatientBundle:
-  summary: Single consenting adult proxy relationship with grantee and patient details
+ConsentSingleConsentingAdultRelationshipIncludePerformerBundle:
+  summary: Single consenting adult proxy relationship with performer details
   description:
-    A Bundle containing a single proxy relationship between consenting adults including the grantee and
-    patient details.
+    A Bundle containing a single proxy relationship between consenting adults including the performer details.
   value:
     resourceType: Bundle
-    timestamp: "2026-01-16T14:00:00+00:00"
+    timestamp: '2026-01-16T14:00:00+00:00'
     total: 1
     type: searchset
     link:
       - relation: self
-        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000010&_include=Consent:grantee&_include=Consent:patient
+        url: https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/Consent?performer:identifier=9000000010&_include=Consent:performer
     entry:
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/PR974720
         resource:
@@ -46,47 +45,18 @@ ConsentSingleConsentingAdultRelationshipIncludeGranteePatientBundle:
           resourceType: RelatedPerson
           id: RP974720
           identifier:
-            - system: "https://fhir.nhs.uk/Id/nhs-number"
-              value: "9000000010"
+            - system: 'https://fhir.nhs.uk/Id/nhs-number'
+              value: '9000000010'
           patient:
             identifier:
-              system: "https://fhir.nhs.uk/Id/nhs-number"
-              value: "9000000005"
+              system: 'https://fhir.nhs.uk/Id/nhs-number'
+              value: '9000000005'
           relationship:
             - coding:
                 - system: >-
                     https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole
                   code: Personal
                   display: Personal relationship with the patient
-        search:
-          mode: include
-      - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Patient/DFCC67F5
-        resource:
-          resourceType: Patient
-          id: DFCC67F5
-          meta:
-            security:
-              - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSIdentityProofingLevel"
-                code: "P9"
-                display: "High level verification (P9)"
-          identifier:
-            - system: "https://fhir.nhs.uk/Id/nhs-number"
-              value: "9000000005"
-          name:
-            - use: usual
-              period:
-                start: "2025-01-01"
-                end: "2029-12-31"
-              given:
-                - Sally
-              family: Evans
-              prefix:
-                - Mrs
-          birthDate: "1995-10-22"
-          generalPractitioner:
-            - identifier:
-                value: ODS12345
-                system: "https://fhir.nhs.uk/Id/ods-organization-code"
         search:
           mode: include
       - fullUrl: https://api.service.nhs.uk/validated-relationships/FHIR/R4/Consent/WWCC67T1
@@ -96,22 +66,26 @@ ConsentSingleConsentingAdultRelationshipIncludeGranteePatientBundle:
           status: active
           scope:
             coding:
-              - system: "https://terminology.hl7.org/CodeSystem/consentscope"
+              - system: 'https://terminology.hl7.org/CodeSystem/consentscope'
                 code: patient-privacy
                 display: Privacy Consent
           category:
             - coding:
-                - system: "https://terminology.hl7.org/CodeSystem/v3-ActCode"
+                - system: 'https://terminology.hl7.org/CodeSystem/v3-ActCode'
                   code: INFA
                   display: information access
           patient:
             identifier:
-              system: "https://fhir.nhs.uk/Id/nhs-number"
-              value: "9000000005"
-          dateTime: "2024-07-21T17:32:28Z"
+              system: 'https://fhir.nhs.uk/Id/nhs-number'
+              value: '9000000005'
+          dateTime: '2024-07-21T17:32:28Z'
+          performer:
+            - identifier:
+                system: https://fhir.nhs.uk/Id/nhs-number
+                value: '9000000010'
           policy:
-            - authority: 'https://www.england.nhs.uk'
-              uri: 'https://digital.nhs.uk/data-and-information/information-standards/governance/latest-activity/standards-and-collections/dapb3051-identity-verification-and-authentication-standard-for-digital-health-and-care-services'
+            - authority: "https://www.england.nhs.uk"
+              uri: "https://digital.nhs.uk/data-and-information/information-standards/governance/latest-activity/standards-and-collections/dapb3051-identity-verification-and-authentication-standard-for-digital-health-and-care-services"
           policyRule:
             - coding:
                 - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
@@ -136,11 +110,6 @@ ConsentSingleConsentingAdultRelationshipIncludeGranteePatientBundle:
                 - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                   code: ROLE_CREATED
                   display: Role created
-          - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee
-            valueReference:
-              identifier:
-                system: https://fhir.nhs.uk/Id/nhs-number
-                value: '9000000010'
           - url: https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor
             valueReference:
               identifier:

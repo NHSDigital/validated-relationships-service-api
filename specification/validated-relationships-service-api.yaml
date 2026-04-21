@@ -545,7 +545,7 @@ paths:
 
         You can (optionally) include a `status={status}` query string parameter to filter the response to records with a given status bound to the http://hl7.org/fhir/consent-state-codes CodeSystem e.g. `status=active` or `status=proposed,active`.
 
-        You can (optionally) include the `_include=Consent:grantee` request parameter to include the proxy's details in the response.
+        You can (optionally) include the `_include=Consent:performer` request parameter to include the proxy's details in the response.
 
         You can (optionally) include the `_include=Consent:patient` request parameter to include the patient's details in the response.
 
@@ -562,22 +562,22 @@ paths:
 
         | Scenario                                                                          | Request                                                                                                                                          | Response                                                                                                          |
         | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
-        | Multiple proxy relationships filtered by 'active' status including details        | `performer:identifier=9000000017&_include=Consent:patient&_include=Consent:grantee&status=active`                                  | HTTP Status 200 Bundle containing a multiple active proxy relationships including grantee and patient details   |
+        | Multiple proxy relationships filtered by 'active' status including details        | `performer:identifier=9000000017&_include=Consent:patient&_include=Consent:performer&status=active`                                  | HTTP Status 200 Bundle containing a multiple active proxy relationships including performer and patient details   |
         | Multiple proxy relationships filtered by 'inactive' status                        | `performer:identifier=9000000017&status=inactive`                                                                                                | HTTP Status 200 Bundle containing a multiple inactive proxy relationships                                         |
         | Multiple proxy relationships filtered by 'proposed' and 'active' status           | `performer:identifier=9000000017&status=proposed,active`                                                                                         | HTTP Status 200 Bundle containing a multiple proposed and active proxy relationships                              |
         | Multiple proxy relationships without filtering and details                        | `performer:identifier=9000000022`                                                                                                                | HTTP Status 200 Bundle containing a multiple proxy relationships without details                                  |
-        | Multiple proxy relationships including grantee details                          | `performer:identifier=9000000022&_include=Consent:grantee`                                                                                     | HTTP Status 200 Bundle containing a multiple proxy relationships including grantee details                      |
+        | Multiple proxy relationships including performer details                          | `performer:identifier=9000000022&_include=Consent:performer`                                                                                     | HTTP Status 200 Bundle containing a multiple proxy relationships including performer details                      |
         | Multiple proxy relationships including patient details                            | `performer:identifier=9000000022&_include=Consent:patient`                                                                                       | HTTP Status 200 Bundle containing a multiple proxy relationships including patient details                        |
-        | Multiple proxy relationships including grantee and patient details              | `performer:identifier=9000000022&_include=Consent:patient&_include=Consent:grantee`                                                            | HTTP Status 200 Bundle containing a multiple proxy relationships including grantee and patient details          |
-        | Multiple proxy relationships, single patient                                      | `patient:identifier=9000000100`                                                                                                                  | HTTP Status 200 Bundle containing a multiple proxy relationships including grantee and patient details          |
-        | Multiple proxy relationships, single patient, including proxy details             | `patient:identifier=9000000100&_include=Consent:grantee`                                                                                       | HTTP Status 200 Bundle containing a multiple proxy relationships including proxy details                          |
+        | Multiple proxy relationships including performer and patient details              | `performer:identifier=9000000022&_include=Consent:patient&_include=Consent:performer`                                                            | HTTP Status 200 Bundle containing a multiple proxy relationships including performer and patient details          |
+        | Multiple proxy relationships, single patient                                      | `patient:identifier=9000000100`                                                                                                                  | HTTP Status 200 Bundle containing a multiple proxy relationships including performer and patient details          |
+        | Multiple proxy relationships, single patient, including proxy details             | `patient:identifier=9000000100&_include=Consent:performer`                                                                                       | HTTP Status 200 Bundle containing a multiple proxy relationships including proxy details                          |
         | Multiple proxy relationships, single patient, including patient details           | `patient:identifier=9000000100&_include=Consent:patient`                                                                                         | HTTP Status 200 Bundle containing a multiple proxy relationships including patient details                        |
-        | Multiple proxy relationships, single patient, including proxy and patient details | `patient:identifier=9000000100&_include=Consent:patient&_include=Consent:grantee`                                                              | HTTP Status 200 Bundle containing a multiple proxy relationships including proxy and patient details              |
-        | No proxy relationships                                                            | `performer:identifier=9000000025&_include=Consent:patient&_include=Consent:grantee&status=active`                                              | HTTP Status 200 empty bundle                                                                                      |
+        | Multiple proxy relationships, single patient, including proxy and patient details | `patient:identifier=9000000100&_include=Consent:patient&_include=Consent:performer`                                                              | HTTP Status 200 Bundle containing a multiple proxy relationships including proxy and patient details              |
+        | No proxy relationships                                                            | `performer:identifier=9000000025&_include=Consent:patient&_include=Consent:performer&status=active`                                              | HTTP Status 200 empty bundle                                                                                      |
         | A single proxy relationship between consenting adults                             | `performer:identifier=9000000010` and/or `patient:identifier=9000000005`                                                                         | HTTP Status 200 Bundle containing a single proxy relationship                                                     |
-        | A single proxy relationship between consenting adults including details           | `performer:identifier=9000000010` and/or `patient:identifier=9000000005&_include=Consent:patient&_include=Consent:grantee`                         | HTTP Status 200 Bundle containing a single proxy relationship including grantee and patient details             |
+        | A single proxy relationship between consenting adults including details           | `performer:identifier=9000000010` and/or `patient:identifier=9000000005&_include=Consent:patient&_include=Consent:performer`                         | HTTP Status 200 Bundle containing a single proxy relationship including performer and patient details             |
         | A single proxy relationship between a mother and child                            | `performer:identifier=9000000019` and/or `patient:identifier=9000000009`                                                                         | HTTP Status 200 Bundle containing a single proxy relationship                                                     |
-        | A single proxy relationship between a mother and child including details          | `performer:identifier=9000000019` and/or `patient:identifier=9000000009&_include=Consent:patient&_include=Consent:grantee`                         | HTTP Status 200 Bundle containing a single proxy relationship including grantee and patient details             |
+        | A single proxy relationship between a mother and child including details          | `performer:identifier=9000000019` and/or `patient:identifier=9000000009&_include=Consent:patient&_include=Consent:performer`                         | HTTP Status 200 Bundle containing a single proxy relationship including performer and patient details             |
         | A single proxy relationship between a mother and child with legal basis unknown   | `performer:identifier=9000000111` and/or `patient:identifier=9000000119`                                                                         | HTTP Status 200 Bundle containing a single proxy relationship with legal basis unknown                            |
         | Invalid status parameter                                                          | `performer:identifier=9000000019` and/or `patient:identifier=9000000009&status=test`                                                             | HTTP Status 422 and INVALID_PARAMETER error response                                                              |
         | Invalid include parameter                                                         | `performer:identifier=9000000019` and/or `patient:identifier=9000000009&_include=test`                                                           | HTTP Status 422 and INVALID_PARAMETER error response                                                              |
@@ -621,20 +621,20 @@ paths:
                   $ref: "./examples/responses/GET_Consent/multiple-relationships.yaml#/ConsentMultipleRelationshipsBundle"
                 ConsentMultipleRelationshipsIncludePatientBundle:
                   $ref: "./examples/responses/GET_Consent/multiple-relationships-include-patient.yaml#/ConsentMultipleRelationshipsIncludePatientBundle"
-                ConsentMultipleRelationshipsIncludeGranteeBundle:
-                  $ref: "./examples/responses/GET_Consent/multiple-relationships-include-grantee.yaml#/ConsentMultipleRelationshipsIncludeGranteeBundle"
-                ConsentMultipleRelationshipsIncludeGranteePatientBundle:
-                  $ref: "./examples/responses/GET_Consent/multiple-relationships-include-grantee-patient.yaml#/ConsentMultipleRelationshipsIncludeGranteePatientBundle"
+                ConsentMultipleRelationshipsIncludePerformerBundle:
+                  $ref: "./examples/responses/GET_Consent/multiple-relationships-include-performer.yaml#/ConsentMultipleRelationshipsIncludePerformerBundle"
+                ConsentMultipleRelationshipsIncludePerformerPatientBundle:
+                  $ref: "./examples/responses/GET_Consent/multiple-relationships-include-performer-patient.yaml#/ConsentMultipleRelationshipsIncludePerformerPatientBundle"
                 ConsentNoRelationshipsEmptyBundle:
                   $ref: "./examples/responses/GET_Consent/no-relationships.yaml#/ConsentNoRelationshipsEmptyBundle"
                 ConsentSingleConsentingAdultRelationshipBundle:
                   $ref: "./examples/responses/GET_Consent/single-consenting-adult-relationship.yaml#/ConsentSingleConsentingAdultRelationshipBundle"
-                ConsentSingleConsentingAdultRelationshipIncludeGranteePatientBundle:
-                  $ref: "./examples/responses/GET_Consent/single-consenting-adult-relationship-include-grantee-patient.yaml#/ConsentSingleConsentingAdultRelationshipIncludeGranteePatientBundle"
+                ConsentSingleConsentingAdultRelationshipIncludePerformerPatientBundle:
+                  $ref: "./examples/responses/GET_Consent/single-consenting-adult-relationship-include-performer-patient.yaml#/ConsentSingleConsentingAdultRelationshipIncludePerformerPatientBundle"
                 ConsentSingleAdultChildRelationshipBundle:
                   $ref: "./examples/responses/GET_Consent/single-mother-child-relationship.yaml#/ConsentSingleAdultChildRelationshipBundle"
-                ConsentSingleAdultChildRelationshipIncludeGranteePatientBundle:
-                  $ref: "./examples/responses/GET_Consent/single-mother-child-relationship-include-grantee-patient.yaml#/ConsentSingleAdultChildRelationshipIncludeGranteePatientBundle"
+                ConsentSingleAdultChildRelationshipIncludePerformerPatientBundle:
+                  $ref: "./examples/responses/GET_Consent/single-mother-child-relationship-include-performer-patient.yaml#/ConsentSingleAdultChildRelationshipIncludePerformerPatientBundle"
                 ConsentMultipleRelationshipsSinglePatientBundle:
                   $ref: "./examples/responses/GET_Consent/multiple-relationships-single-patient.yaml#/ConsentMultipleRelationshipsSinglePatientBundle"
 
@@ -770,10 +770,10 @@ paths:
 
             | HTTP status | Error code                  | Description                                                                                                                               |
             | ----------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-            | 400         | `MISSING_IDENTIFIER_VALUE`  | Missing grantee or patient identifier.                                                                                                    |
-            | 400         | `MISSING_IDENTIFIER_SYSTEM` | Missing grantee or patient identifier system.                                                                                             |
+            | 400         | `MISSING_IDENTIFIER_VALUE`  | Missing performer or patient identifier.                                                                                                    |
+            | 400         | `MISSING_IDENTIFIER_SYSTEM` | Missing performer or patient identifier system.                                                                                             |
             | 400         | `MISSING_PATIENT`           | Missing patient.                                                                                                                          |
-            | 400         | `MISSING_GRANTEE`           | Missing grantee.                                                                                                                          |
+            | 400         | `MISSING_PERFORMER`           | Missing performer.                                                                                                                          |
             | 400         | `MISSING_GRANTOR`           | Grantor extension is required when creating or activating an active proxy role.                                                           |
             | 400         | `MISSING_GRANTOR_REFERENCE` | Grantor extension is present but missing valueReference.                                                                                  |
             | 400         | `MISSING_GRANTOR_IDENTIFIER`| Grantor extension is present but missing valueIdentifier.                                                                                 |
@@ -788,10 +788,10 @@ paths:
             | 405         | `METHOD_NOT_ALLOWED`        | The method is not allowed.                                                                                                                |
             | 408         | `TIMEOUT`                   | Request timed out.                                                                                                                        |
             | 409         | `DUPLICATE_RELATIONSHIP`    | Conflict with requested proxy role.                                                                                                       |
-            | 422         | `INVALID_IDENTIFIER_VALUE`  | Invalid grantee or patient identifier value.                                                                                              |
-            | 422         | `INVALID_IDENTIFIER_SYSTEM` | Invalid grantee or patient identifier system.                                                                                             |
+            | 422         | `INVALID_IDENTIFIER_VALUE`  | Invalid performer or patient identifier value.                                                                                              |
+            | 422         | `INVALID_IDENTIFIER_SYSTEM` | Invalid performer or patient identifier system.                                                                                             |
             | 422         | `INVALID_PATIENT`           | Invalid patient.                                                                                                                          |
-            | 422         | `INVALID_GRANTEE`           | Invalid grantee.                                                                                                                          |
+            | 422         | `INVALID_PERFORMER`           | Invalid performer.                                                                                                                          |
             | 422         | `INVALID_STATUS`            | Invalid status.                                                                                                                           |
             | 422         | `INVALID_SCOPE`             | Invalid scope.                                                                                                                            |
             | 422         | `INVALID_CATEGORY`          | Invalid category.                                                                                                                         |
@@ -863,7 +863,7 @@ paths:
         ## Overview
         Use this endpoint to get the details of a proxy role, including current status, based on a provided id.
 
-        You can (optionally) include the `_include=Consent:grantee` request parameter to include the proxy's details in the response.
+        You can (optionally) include the `_include=Consent:performer` request parameter to include the proxy's details in the response.
 
         You can (optionally) include the `_include=Consent:patient` request parameter to include the patient's details in the response.
 
@@ -881,12 +881,12 @@ paths:
         | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
         | Retrieve single consenting adult relationship                                    | Valid request with ID `74eed847-ca25-4e76-8cf2-f2c2d7842a7a`                                                                             | HTTP Status 200 Bundle containing a single active proxy relationship                                             |
         | Retrieve single consenting adult relationship with patient details               | Valid request with ID `74eed847-ca25-4e76-8cf2-f2c2d7842a7a?_include=Consent:patient`                                                    | HTTP Status 200 Bundle containing a single active proxy relationship with patient details                        |
-        | Retrieve single consenting adult relationship with grantee details             | Valid request with ID `74eed847-ca25-4e76-8cf2-f2c2d7842a7a?_include=Consent:grantee`                                                  | HTTP Status 200 Bundle containing a single active proxy relationship with grantee details                      |
-        | Retrieve single consenting adult relationship with grantee and patient details | Valid request with ID `74eed847-ca25-4e76-8cf2-f2c2d7842a7a?_include=Consent:grantee&_include=Consent:patient`                         | HTTP Status 200 Bundle containing a single active proxy relationship with grantee and patient details  |
+        | Retrieve single consenting adult relationship with performer details             | Valid request with ID `74eed847-ca25-4e76-8cf2-f2c2d7842a7a?_include=Consent:performer`                                                  | HTTP Status 200 Bundle containing a single active proxy relationship with performer details                      |
+        | Retrieve single consenting adult relationship with performer and patient details | Valid request with ID `74eed847-ca25-4e76-8cf2-f2c2d7842a7a?_include=Consent:performer&_include=Consent:patient`                         | HTTP Status 200 Bundle containing a single active proxy relationship with performer and patient details  |
         | Retrieve single mother-child relationship                                        | Valid request with ID `39df03a2-1b14-4d19-b1dc-d5d8cbf96948`                                                                             | HTTP Status 200 Bundle containing a single active proxy relationship                                             |
         | Retrieve single mother-child relationship with patient details                   | Valid request with ID `39df03a2-1b14-4d19-b1dc-d5d8cbf96948?_include=Consent:patient`                                                    | HTTP Status 200 Bundle containing a single active proxy relationship with patient details                        |
-        | Retrieve single mother-child relationship with grantee details                 | Valid request with ID `39df03a2-1b14-4d19-b1dc-d5d8cbf96948?_include=Consent:grantee`                                                  | HTTP Status 200 Bundle containing a single active proxy relationship with grantee details                      |
-        | Retrieve single mother-child relationship with grantee and patient details     | Valid request with ID `39df03a2-1b14-4d19-b1dc-d5d8cbf96948?_include=Consent:grantee&_include=Consent:patient`                       | HTTP Status 200 Bundle containing a single active proxy relationship with grantee and patient details  |
+        | Retrieve single mother-child relationship with performer details                 | Valid request with ID `39df03a2-1b14-4d19-b1dc-d5d8cbf96948?_include=Consent:performer`                                                  | HTTP Status 200 Bundle containing a single active proxy relationship with performer details                      |
+        | Retrieve single mother-child relationship with performer and patient details     | Valid request with ID `39df03a2-1b14-4d19-b1dc-d5d8cbf96948?_include=Consent:performer&_include=Consent:patient`                       | HTTP Status 200 Bundle containing a single active proxy relationship with performer and patient details  |
 
         ### Sandbox constraints
 
@@ -913,18 +913,18 @@ paths:
                   $ref: "./examples/responses/GET_Consent/single-consenting-adult-relationship.yaml#/ConsentSingleConsentingAdultRelationshipBundle"
                 ConsentSingleConsentingAdultRelationshipIncludePatientBundle:
                   $ref: "./examples/responses/GET_Consent/single-consenting-adult-relationship-include-patient.yaml#/ConsentSingleConsentingAdultRelationshipIncludePatientBundle"
-                ConsentSingleConsentingAdultRelationshipIncludeGranteeBundle:
-                  $ref: "./examples/responses/GET_Consent/single-consenting-adult-relationship-include-grantee.yaml#/ConsentSingleConsentingAdultRelationshipIncludeGranteeBundle"
-                ConsentSingleConsentingAdultRelationshipIncludeGranteePatientBundle:
-                  $ref: "./examples/responses/GET_Consent/single-consenting-adult-relationship-include-grantee-patient.yaml#/ConsentSingleConsentingAdultRelationshipIncludeGranteePatientBundle"
+                ConsentSingleConsentingAdultRelationshipIncludePerformerBundle:
+                  $ref: "./examples/responses/GET_Consent/single-consenting-adult-relationship-include-performer.yaml#/ConsentSingleConsentingAdultRelationshipIncludePerformerBundle"
+                ConsentSingleConsentingAdultRelationshipIncludePerformerPatientBundle:
+                  $ref: "./examples/responses/GET_Consent/single-consenting-adult-relationship-include-performer-patient.yaml#/ConsentSingleConsentingAdultRelationshipIncludePerformerPatientBundle"
                 ConsentSingleAdultChildRelationshipBundle:
                   $ref: "./examples/responses/GET_Consent/single-mother-child-relationship.yaml#/ConsentSingleAdultChildRelationshipBundle"
                 ConsentSingleAdultChildRelationshipIncludePatientBundle:
                   $ref: "./examples/responses/GET_Consent/single-mother-child-relationship-include-patient.yaml#/ConsentSingleAdultChildRelationshipIncludePatientBundle"
-                ConsentSingleAdultChildRelationshipIncludeGranteeBundle:
-                  $ref: "./examples/responses/GET_Consent/single-mother-child-relationship-include-grantee.yaml#/ConsentSingleAdultChildRelationshipIncludeGranteeBundle"
-                ConsentSingleAdultChildRelationshipIncludeGranteePatientBundle:
-                  $ref: "./examples/responses/GET_Consent/single-mother-child-relationship-include-grantee-patient.yaml#/ConsentSingleAdultChildRelationshipIncludeGranteePatientBundle"
+                ConsentSingleAdultChildRelationshipIncludePerformerBundle:
+                  $ref: "./examples/responses/GET_Consent/single-mother-child-relationship-include-performer.yaml#/ConsentSingleAdultChildRelationshipIncludePerformerBundle"
+                ConsentSingleAdultChildRelationshipIncludePerformerPatientBundle:
+                  $ref: "./examples/responses/GET_Consent/single-mother-child-relationship-include-performer-patient.yaml#/ConsentSingleAdultChildRelationshipIncludePerformerPatientBundle"
 
         "4XX":
           description: |
@@ -2342,8 +2342,7 @@ components:
           maxItems: 1
           items:
             $ref: "#/components/schemas/Reference"
-          description: "Deprecated. Instead use the Grantee Extension."
-          deprecated: true
+          description: "Individuals or organizations that agreed to the consent."
         policy:
           type: array
           items:
@@ -2359,7 +2358,6 @@ components:
           items:
             anyOf:
               - $ref: "#/components/schemas/StatusReasonExtension"
-              - $ref: "#/components/schemas/GranteeExtension"
               - $ref: "#/components/schemas/GrantorExtension"
           description: "Additional content. For active proxy roles, grantor is required."
 
@@ -2435,18 +2433,6 @@ components:
         valueCodeableConcept:
           $ref: "#/components/schemas/CodeableConcept"
           description: Classification of the status.
-    GranteeExtension:
-      type: object
-      properties:
-        url:
-          type: string
-          enum:
-          - "https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantee"
-        valueReference:
-          properties:
-            identifier:
-              $ref: "#/components/schemas/Identifier"
-              description: Details for proxy.
 
     GrantorExtension:
       type: object
@@ -2778,20 +2764,20 @@ components:
         items:
           type: string
           enum:
-            - "Consent:grantee"
+            - "Consent:performer"
             - "Consent:patient"
         default:
-          - "Consent:grantee"
+          - "Consent:performer"
           - "Consent:patient"
       examples:
         FullInclude:
-          summary: Include the grantee (proxy) and patient in the bundle
+          summary: Include the performer (proxy) and patient in the bundle
           value:
-            - "Consent:grantee"
+            - "Consent:performer"
             - "Consent:patient"
-        IncludeGrantee:
-          summary: Include the grantee (proxy) in the bundle
-          value: Consent:grantee
+        IncludePerformer:
+          summary: Include the performer (proxy) in the bundle
+          value: Consent:performer
         IncludePatient:
           summary: Include the patient in the bundle
           value: Consent:patient
