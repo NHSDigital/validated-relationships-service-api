@@ -40,6 +40,14 @@
     </Flow>
   </Flows>
   <PreFlow/>
+    <PreFlow>
+      <Request>
+        <Step>
+          <Name>FlowCallout.ValidateIDAssuranceLevel</Name>
+          <Condition>!(proxy.pathsuffix = "/_ping" OR proxy.pathsuffix = "/_status")</Condition>
+        </Step>
+      </Request>
+    </PreFlow>
   <PostClientFlow name="PostClientFlow">
     <Response>
       <Step>
