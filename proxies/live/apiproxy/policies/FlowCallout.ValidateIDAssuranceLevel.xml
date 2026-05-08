@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<FlowCallout async="false" continueOnError="false" enabled="true" name="FlowCallout.ValidateIDAssuranceLevel">
+    <DisplayName>FlowCallout.ValidateIDAssuranceLevel</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <SharedFlowBundle>ValidateIDAssuranceLevel</SharedFlowBundle>
+</FlowCallout>
