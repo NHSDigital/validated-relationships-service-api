@@ -13,3 +13,4 @@ jobs:
               uses: actions/dependency-review-action@v5
               with:
                   allow-ghsas: GHSA-w596-4wvx-j9j6 # Due to APIM Pytest dependency
+                  fail-on-severity: high
