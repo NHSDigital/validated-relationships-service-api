@@ -9,7 +9,7 @@ info:
     This service underpins the National Proxy Programme whose core objective is to allow Patients to be supported with
     their healthcare by someone they trust (a Proxy) as part of a digitally-enabled journey. The service has two core
     uses. Firstly, it surfaces verified candidate relationships (i.e. indicates suitable Proxies for a Patient such as
-    Birth Mothers) to support GP’s decision-making when granting Proxy access. Secondly, it supports the subsequent
+    Birth Mothers) to support GP's decision-making when granting Proxy access. Secondly, it supports the subsequent
     creation, use and management of Proxy roles which are stored in a central, national database. The Proxy roles held
     by the database are strictly for the purpose of enabling access to healthcare services, initially in Primary Care.
 
