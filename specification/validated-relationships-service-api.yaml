@@ -33,6 +33,7 @@ info:
     The following APIs are related to this API:
 
     - [Personal Demographics Service - FHIR API](https://digital.nhs.uk/developer/api-catalogue/personal-demographics-service-fhir) - we use the data held in PDS as a source of data to verify relationships.
+    - [Related Person Network - FHIR API](https://digital.nhs.uk/developer/api-catalogue/related-person-network---fhir-api) - we use the data held in RPN as a source of data to verify relationships.
 
     ## API status and roadmap
     This API is [in production, beta](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#statuses), meaning:
