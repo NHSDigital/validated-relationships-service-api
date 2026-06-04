@@ -2348,9 +2348,7 @@ components:
           items:
             $ref: "#/components/schemas/Policy"
         policyRule:
-          type: array
-          items:
-            $ref: "#/components/schemas/CodeableConcept"
+          $ref: "#/components/schemas/LegalBasisCodeableConcept"
         provision:
           $ref: "#/components/schemas/Provision"
         extension:
@@ -2374,6 +2372,44 @@ components:
                   type: string
                   format: date-time
                   description: "When the resource version last changed"
+
+    LegalBasisCodeableConcept:
+      type: object
+      description: "The legal basis for the consent"
+      properties:
+        coding:
+          type: array
+          items:
+            type: object
+            properties:
+              system:
+                type: string
+                description: |
+                  The code system for the legal basis code:
+                  - Use `https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis` for all codes except `UNK`.
+                  - Use `https://terminology.hl7.org/CodeSystem/v3-NullFlavor` for `UNK` (Unknown).
+                enum:
+                  - "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+                  - "https://terminology.hl7.org/CodeSystem/v3-NullFlavor"
+              code:
+                type: string
+                enum:
+                  - UNK
+                  - court-appointed-personal-welfare-deputy
+                  - health-and-welfare-lasting-power-of-attorney
+                  - best-interest
+                  - consent
+                  - parental-responsibility
+              display:
+                type: string
+                description: |
+                  Human-readable display for the code:
+                  - `UNK`: Unknown
+                  - `court-appointed-personal-welfare-deputy`: Court appointed personal welfare deputy
+                  - `health-and-welfare-lasting-power-of-attorney`: Health and welfare lasting power of attorney
+                  - `best-interest`: Best interest
+                  - `consent`: Consent
+                  - `parental-responsibility`: Parental responsibility
 
     Policy:
       type: object
@@ -2423,6 +2459,95 @@ components:
                 description: "Deprecated. Instead use policyRule."
                 deprecated: true
 
+    StatusReasonCodeableConcept:
+      type: object
+      description: Classification of the status.
+      properties:
+        coding:
+          type: array
+          items:
+            type: object
+            properties:
+              system:
+                type: string
+                enum:
+                  - "https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason"
+              code:
+                type: string
+                enum:
+                  - ROLE_CREATED
+                  - ROLE_ACTIVATED
+                  - ROLE_REACTIVATED
+                  - ROLE_DEACTIVATED_SAFEGUARDING
+                  - ROLE_DEACTIVATED_PATIENT_REQUEST
+                  - ROLE_DEACTIVATED_END_DATE_REACHED
+                  - ROLE_DEACTIVATED_INACTIVE_ROLE
+                  - ROLE_DEACTIVATED_PATIENT_DECEASED
+                  - ROLE_DEACTIVATED_PROXY_DECEASED
+                  - ROLE_DEACTIVATED_FAMILIAL_REASON
+                  - ROLE_DEACTIVATED_CHANGE_IN_RELATIONSHIP
+                  - ROLE_DEACTIVATED_PROXY_LACKS_CAPACITY
+                  - ROLE_DEACTIVATED_MISUSE_OF_SYSTEM
+                  - ROLE_DEACTIVATED_PATIENT_GP_TRANSFERRED
+                  - ROLE_DEACTIVATED_PROXY_GP_TRANSFERRED
+                  - ROLE_DEACTIVATED_PROXY_ABROAD
+                  - ROLE_SUSPENDED_PENDING_REVIEW
+                  - APPLICATION_SUBMITTED
+                  - APPLICATION_RESUBMITTED
+                  - APPLICATION_REJECTED_NOT_NEEDED
+                  - APPLICATION_REJECTED_SAFEGUARDING
+                  - APPLICATION_REJECTED_IDENTITY_NOT_VERIFIED
+                  - APPLICATION_REJECTED_NO_CONSENT
+                  - APPLICATION_WITHDRAWN
+                  - APPLICATION_REJECTED_COERCION
+                  - APPLICATION_REJECTED_PROXY_LACKS_CAPACITY
+                  - APPLICATION_REJECTED_PROXY_ABROAD
+                  - APPLICATION_REJECTED_NO_LEGAL_BASIS
+                  - OTHER
+              display:
+                type: string
+                description: |
+                  Human-readable display for the code:
+
+                  **Role created**
+                  - `ROLE_CREATED`: Role created
+                  - `ROLE_ACTIVATED`: Role activated
+                  - `ROLE_REACTIVATED`: Role reactivated
+
+                  **Role deactivated**
+                  - `ROLE_DEACTIVATED_SAFEGUARDING`: Safeguarding concern
+                  - `ROLE_DEACTIVATED_PATIENT_REQUEST`: At patient request
+                  - `ROLE_DEACTIVATED_END_DATE_REACHED`: End date reached
+                  - `ROLE_DEACTIVATED_INACTIVE_ROLE`: Role no longer in use
+                  - `ROLE_DEACTIVATED_PATIENT_DECEASED`: Patient deceased
+                  - `ROLE_DEACTIVATED_PROXY_DECEASED`: Proxy deceased
+                  - `ROLE_DEACTIVATED_FAMILIAL_REASON`: Family reason or circumstance
+                  - `ROLE_DEACTIVATED_CHANGE_IN_RELATIONSHIP`: Change in relationship
+                  - `ROLE_DEACTIVATED_PROXY_LACKS_CAPACITY`: Proxy lacks capacity
+                  - `ROLE_DEACTIVATED_MISUSE_OF_SYSTEM`: Misuse of system
+                  - `ROLE_DEACTIVATED_PATIENT_GP_TRANSFERRED`: Patient GP transferred
+                  - `ROLE_DEACTIVATED_PROXY_GP_TRANSFERRED`: Proxy GP transferred
+                  - `ROLE_DEACTIVATED_PROXY_ABROAD`: Proxy lives abroad
+                  - `ROLE_SUSPENDED_PENDING_REVIEW`: Suspended pending review
+
+                  **Application submission**
+                  - `APPLICATION_SUBMITTED`: Application submitted online
+                  - `APPLICATION_RESUBMITTED`: Application re-submitted
+
+                  **Application rejected**
+                  - `APPLICATION_REJECTED_NOT_NEEDED`: Proxy support not required
+                  - `APPLICATION_REJECTED_SAFEGUARDING`: Safeguarding concern identified
+                  - `APPLICATION_REJECTED_IDENTITY_NOT_VERIFIED`: Proxy identity not verified
+                  - `APPLICATION_REJECTED_NO_CONSENT`: Patient does not consent
+                  - `APPLICATION_WITHDRAWN`: Proxy application withdrawn
+                  - `APPLICATION_REJECTED_COERCION`: Coercion concern identified
+                  - `APPLICATION_REJECTED_PROXY_LACKS_CAPACITY`: Proxy lacks capacity
+                  - `APPLICATION_REJECTED_PROXY_ABROAD`: Proxy lives abroad
+                  - `APPLICATION_REJECTED_NO_LEGAL_BASIS`: Relationship or legal basis not proven
+
+                  **Other**
+                  - `OTHER`: Other reason
+
     StatusReasonExtension:
       type: object
       properties:
@@ -2431,8 +2556,7 @@ components:
           enum:
           - "https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason"
         valueCodeableConcept:
-          $ref: "#/components/schemas/CodeableConcept"
-          description: Classification of the status.
+          $ref: "#/components/schemas/StatusReasonCodeableConcept"
 
     GrantorExtension:
       type: object
