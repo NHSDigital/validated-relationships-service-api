@@ -40,10 +40,10 @@ ConsentSingleAdultChildRelationshipUnknownLegalBasisBundle:
               code: unknown
               display: Unknown legal basis
           policyRule:
-            - coding:
-                - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
-                  code: UNK
-                  display: Unknown
+            coding:
+              - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+                code: UNK
+                display: Unknown
           provision:
             type: permit
             actor:

@@ -38,10 +38,10 @@ ConsentMultipleRelationshipsSinglePatientBundle:
             - authority: 'https://www.england.nhs.uk'
               uri: 'https://digital.nhs.uk/data-and-information/information-standards/governance/latest-activity/standards-and-collections/dapb3051-identity-verification-and-authentication-standard-for-digital-health-and-care-services'
           policyRule:
-            - coding:
-                - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
-                  code: parental-responsibility
-                  display: Parental responsibility
+            coding:
+              - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+                code: parental-responsibility
+                display: Parental responsibility
           provision:
             type: permit
             actor:
@@ -96,10 +96,10 @@ ConsentMultipleRelationshipsSinglePatientBundle:
             - authority: 'https://www.england.nhs.uk'
               uri: 'https://digital.nhs.uk/data-and-information/information-standards/governance/latest-activity/standards-and-collections/dapb3051-identity-verification-and-authentication-standard-for-digital-health-and-care-services'
           policyRule:
-            - coding:
-              - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
-                code: "court-appointed-personal-welfare-deputy"
-                display: "Court appointed personal welfare deputy"
+            coding:
+            - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+              code: "court-appointed-personal-welfare-deputy"
+              display: "Court appointed personal welfare deputy"
           provision:
             type: permit
             actor:
@@ -154,10 +154,10 @@ ConsentMultipleRelationshipsSinglePatientBundle:
             - authority: 'https://www.england.nhs.uk'
               uri: 'https://digital.nhs.uk/data-and-information/information-standards/governance/latest-activity/standards-and-collections/dapb3051-identity-verification-and-authentication-standard-for-digital-health-and-care-services'
           policyRule:
-            - coding:
-              - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
-                code: "court-appointed-personal-welfare-deputy"
-                display: "Court Appointed Personal Welfare Deputy"
+            coding:
+            - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+              code: "court-appointed-personal-welfare-deputy"
+              display: "Court Appointed Personal Welfare Deputy"
           provision:
             type: permit
             actor:
