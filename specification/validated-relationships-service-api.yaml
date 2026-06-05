@@ -2548,6 +2548,9 @@ components:
 
                   **Other**
                   - `OTHER`: Other reason
+        text:
+          type: string
+          description: Plain text representation of the status reason, used when code is `OTHER`.
 
     StatusReasonExtension:
       type: object
