@@ -2462,7 +2462,7 @@ components:
 
     StatusReasonCodeableConcept:
       type: object
-      description: Classification of the status.
+      description: Classification of the status reason.
       properties:
         coding:
           type: array

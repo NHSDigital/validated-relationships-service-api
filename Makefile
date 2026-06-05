@@ -47,6 +47,11 @@ publish: clean
 	mkdir -p build
 	npm run publish 2> /dev/null
 
+#Builds NHS-styled HTML documentation using RapiDoc (matches digital.nhs.uk layout) and opens it
+localdev-preview-spec:
+	poetry run python scripts/localdev_build_spec_for_preview.py
+	open build/docs.html
+
 #Runs build proxy script
 build-proxy:
 	scripts/build_proxy.sh
