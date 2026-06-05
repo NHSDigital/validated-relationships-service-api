@@ -72,7 +72,7 @@ ConsentMultipleRelationshipsIncludePatientBundle:
           policyRule:
             coding:
               - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
-                code: parental-responsibilitydssds
+                code: parental-responsibility
                 display: Parental responsibility
           provision:
             type: permit
