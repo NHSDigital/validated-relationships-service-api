@@ -32,6 +32,7 @@ info:
     ## Related APIs
     The following APIs are related to this API:
 
+    - [NHS Notify API](https://digital.nhs.uk/developer/api-catalogue/nhs-notify) - we use NHS Notify to send communications to patients, proxies and GPs about their use of this service.
     - [Personal Demographics Service - FHIR API](https://digital.nhs.uk/developer/api-catalogue/personal-demographics-service-fhir) - we use the data held in PDS as a source of data to verify relationships.
     - [Related Person Network - FHIR API](https://digital.nhs.uk/developer/api-catalogue/related-person-network---fhir-api) - we use the data held in RPN as a source of data to verify relationships.
 
