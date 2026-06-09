@@ -14,8 +14,6 @@ OUTPUT = os.path.join(BUILD_DIR, "docs.html")
 
 NHS_CATALOGUE_URL = "https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service"
 
-DIGIBLOCKS_SVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 550" aria-hidden="true" focusable="false"><g><g transform="translate(222, 224)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#BFD7ED"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#B2CFEA"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#A6C7E6"/></g><g transform="translate(328.5, 367.5)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#FBFAFA"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#F5F5F4"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#EFF2F1"/></g><g transform="translate(151, 306)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#3C4D57"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#32434C"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#313D45"/></g><g transform="translate(80, 306)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#FBFAFA"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#F5F5F4"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#EFF2F1"/></g></g><g><g transform="translate(186.5, 203.5)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#FBFAFA"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#F5F5F4"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#EFF2F1"/></g><g transform="translate(186.5, 285.5)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#00267A"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#001F75"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#001766"/></g><g transform="translate(257.5, 449.5)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#F5D507"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#F2CB0C"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#EEC000"/></g></g><g><g transform="translate(186.5, 203.5)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#6D7B86"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#62717A"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#5C6B75"/></g><g transform="translate(399.5, 326.5)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#BFD7ED"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#B2CFEA"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#A6C7E6"/></g></g><g><g transform="translate(328.5, 162.5)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#F5D507"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#F2CB0C"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#EEC000"/></g><g transform="translate(399.5, 244.5)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#00267A"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#001F75"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#001766"/></g><g transform="translate(186.5, 244.5)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#0062CC"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#005ABE"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#0050B5"/></g><g transform="translate(328.5, 326.5)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#0062CC"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#005ABE"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#0050B5"/></g><g transform="translate(257.5, 326.5)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#3C4D57"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#32434C"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#313D45"/></g></g><g><g transform="translate(328.5, 244.5)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#DADFDF"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#CDD5D6"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#C5CDCF"/></g><g transform="translate(257.5, 285.5)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#0062CC"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#005ABE"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#0050B5"/></g><g transform="translate(435, 142)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#0062CC"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#005ABE"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#0050B5"/></g></g></svg>'
-
 
 def fetch_nhs_js_files():
     """Download NHS Digital's exact rapidoc-min.js and rapidoc-customisation.js using curl."""
@@ -178,19 +176,27 @@ def generate_html(spec_json, js_version):
             <li class="nhsd-m-breadcrumbs__item">
               <a class="nhsd-a-link nhsd-a-link--col-dark-grey" href="https://digital.nhs.uk">NHS Digital</a>
               <span class="nhsd-a-icon nhsd-a-icon--size-xxs nhsd-a-icon--col-dark-grey" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%"><path d="M12,8l-6.5,7L4,13.5L9.2,8L4,2.5L5.5,1L12,8z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
+                  <path d="M12,8l-6.5,7L4,13.5L9.2,8L4,2.5L5.5,1L12,8z"/>
+                </svg>
               </span>
             </li>
             <li class="nhsd-m-breadcrumbs__item">
               <a class="nhsd-a-link nhsd-a-link--col-dark-grey" href="https://digital.nhs.uk/developer">Developer</a>
               <span class="nhsd-a-icon nhsd-a-icon--size-xxs nhsd-a-icon--col-dark-grey" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%"><path d="M12,8l-6.5,7L4,13.5L9.2,8L4,2.5L5.5,1L12,8z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
+                  <path d="M12,8l-6.5,7L4,13.5L9.2,8L4,2.5L5.5,1L12,8z"/>
+                </svg>
               </span>
             </li>
             <li class="nhsd-m-breadcrumbs__item">
-              <a class="nhsd-a-link nhsd-a-link--col-dark-grey" href="https://digital.nhs.uk/developer/api-catalogue">API and integration catalogue</a>
+              <a class="nhsd-a-link nhsd-a-link--col-dark-grey"
+                href="https://digital.nhs.uk/developer/api-catalogue"
+              >API and integration catalogue</a>
               <span class="nhsd-a-icon nhsd-a-icon--size-xxs nhsd-a-icon--col-dark-grey" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%"><path d="M12,8l-6.5,7L4,13.5L9.2,8L4,2.5L5.5,1L12,8z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
+                  <path d="M12,8l-6.5,7L4,13.5L9.2,8L4,2.5L5.5,1L12,8z"/>
+                </svg>
               </span>
             </li>
             <li class="nhsd-m-breadcrumbs__item">
@@ -211,7 +217,8 @@ def generate_html(spec_json, js_version):
           <p>
             This is a LOCALDEV PREVIEW of the API documentation for the Validated Relationships Service.
             It is intended for use during development to view the API documentation in a format SIMILAR TO the
-            <a href="https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service" target="_blank">NHS Digital API catalogue</a>.
+            <a href="https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service"
+              target="_blank">NHS Digital API catalogue</a>.
           </p>
           <p>
             Although the layout of this preview is not exact, it should provide confidence to developers
@@ -226,7 +233,152 @@ def generate_html(spec_json, js_version):
       </div>
     </div>
     <div class="nhsd-a-digiblocks nhsd-a-digiblocks--pos-tr">
-      {DIGIBLOCKS_SVG}
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 550">
+        <g>
+          <g transform="translate(222, 224)">
+            <polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#BFD7ED"></polygon>
+            <polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#B2CFEA"></polygon>
+            <polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#A6C7E6"></polygon>
+          </g>
+          <g transform="translate(328.5, 367.5)">
+            <polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#FBFAFA"></polygon>
+            <polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#F5F5F4"></polygon>
+            <polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#EFF2F1"></polygon>
+          </g>
+          <g transform="translate(151, 306)">
+            <polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#3C4D57"></polygon>
+            <polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#32434C"></polygon>
+            <polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#313D45"></polygon>
+          </g>
+          <g transform="translate(80, 306)">
+            <polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#FBFAFA"></polygon>
+            <polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#F5F5F4"></polygon>
+            <polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#EFF2F1"></polygon>
+          </g>
+        </g>
+        <g>
+          <g transform="translate(186.5, 203.5)">
+            <polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#FBFAFA"></polygon>
+            <polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#F5F5F4"></polygon>
+            <polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#EFF2F1"></polygon>
+          </g>
+          <g transform="translate(186.5, 285.5)">
+            <polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#00267A"></polygon>
+            <polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#001F75"></polygon>
+            <polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#001766"></polygon>
+          </g>
+          <g transform="translate(222, 306)">
+            <polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#00267A"></polygon>
+            <polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#001F75"></polygon>
+            <polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#001766"></polygon>
+          </g>
+          <g transform="translate(9, 306)">
+            <polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#00267A"></polygon>
+            <polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#001F75"></polygon>
+            <polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#001766"></polygon>
+          </g>
+          <g transform="translate(257.5, 449.5)">
+            <polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#F5D507"></polygon>
+            <polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#F2CB0C"></polygon>
+            <polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#EEC000"></polygon>
+          </g>
+        </g>
+        <g>
+          <g transform="translate(186.5, 203.5)">
+            <polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#6D7B86"></polygon>
+            <polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#62717A"></polygon>
+            <polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#5C6B75"></polygon>
+          </g>
+          <g transform="translate(399.5, 326.5)">
+            <polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#BFD7ED"></polygon>
+            <polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#B2CFEA"></polygon>
+            <polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#A6C7E6"></polygon>
+          </g>
+          <g transform="translate(222, 306)">
+            <polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#FBFAFA"></polygon>
+            <polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#F5F5F4"></polygon>
+            <polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#EFF2F1"></polygon>
+          </g>
+        </g>
+        <g>
+          <g transform="translate(328.5, 162.5)">
+            <polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#F5D507"></polygon>
+            <polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#F2CB0C"></polygon>
+            <polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#EEC000"></polygon>
+          </g>
+          <g transform="translate(399.5, 244.5)">
+            <polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#00267A"></polygon>
+            <polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#001F75"></polygon>
+            <polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#001766"></polygon>
+          </g>
+          <g transform="translate(115.5, 162.5)">
+            <polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#6D7B86"></polygon>
+            <polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#62717A"></polygon>
+            <polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#5C6B75"></polygon>
+          </g>
+          <g transform="translate(186.5, 244.5)">
+            <polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#0062CC"></polygon>
+            <polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#005ABE"></polygon>
+            <polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#0050B5"></polygon>
+          </g>
+          <g transform="translate(328.5, 326.5)">
+            <polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#0062CC"></polygon>
+            <polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#005ABE"></polygon>
+            <polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#0050B5"></polygon>
+          </g>
+          <g transform="translate(257.5, 326.5)">
+            <polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#3C4D57"></polygon>
+            <polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#32434C"></polygon>
+            <polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#313D45"></polygon>
+          </g>
+        </g>
+        <g>
+          <g transform="translate(328.5, 244.5)">
+            <polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#DADFDF"></polygon>
+            <polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#CDD5D6"></polygon>
+            <polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#C5CDCF"></polygon>
+          </g>
+          <g transform="translate(257.5, 285.5)">
+            <polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#0062CC"></polygon>
+            <polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#005ABE"></polygon>
+            <polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#0050B5"></polygon>
+          </g>
+          <g transform="translate(44.5, 203.5)">
+            <polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#6D7B86"></polygon>
+            <polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#62717A"></polygon>
+            <polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#5C6B75"></polygon>
+          </g>
+          <g transform="translate(151, 265)">
+            <polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#BFD7ED"></polygon>
+            <polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#B2CFEA"></polygon>
+            <polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#A6C7E6"></polygon>
+          </g>
+        </g>
+        <g>
+          <g transform="translate(435, 142)">
+            <polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#0062CC"></polygon>
+            <polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#005ABE"></polygon>
+            <polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#0050B5"></polygon>
+          </g>
+        </g>
+        <g>
+          <g transform="translate(328.5, 39.5)">
+            <polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#BFD7ED"></polygon>
+            <polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#B2CFEA"></polygon>
+            <polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#A6C7E6"></polygon>
+          </g>
+          <g transform="translate(222, 19)">
+            <polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#00267A"></polygon>
+            <polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#001F75"></polygon>
+            <polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#001766"></polygon>
+          </g>
+          <g transform="translate(257.5, 80.5)">
+            <polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#DADFDF"></polygon>
+            <polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#CDD5D6"></polygon>
+            <polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#C5CDCF"></polygon>
+          </g>
+        </g>
+      </svg>
     </div>
   </div>
 
@@ -275,9 +427,13 @@ def generate_html(spec_json, js_version):
                 <nav aria-labelledby="footer-developer">
                   <div id="footer-developer" class="nhsd-t-body-s"><h2 class="nhsd-t-heading-m">Developer</h2></div>
                   <ul class="nhsd-t-list nhsd-t-list--links">
-                    <li class="nhsd-t-body-s"><a class="nhsd-a-link nhsd-a-link--col-dark-grey" href="https://digital.nhs.uk/developer/api-catalogue">API catalogue</a></li>
-                    <li class="nhsd-t-body-s"><a class="nhsd-a-link nhsd-a-link--col-dark-grey" href="https://digital.nhs.uk/developer/guides-and-documentation">Guides and documentation</a></li>
-                    <li class="nhsd-t-body-s"><a class="nhsd-a-link nhsd-a-link--col-dark-grey" href="https://digital.nhs.uk/developer/help-and-support">Help and support</a></li>
+                    <li class="nhsd-t-body-s"><a class="nhsd-a-link nhsd-a-link--col-dark-grey"
+                      href="https://digital.nhs.uk/developer/api-catalogue">API catalogue</a></li>
+                    <li class="nhsd-t-body-s"><a class="nhsd-a-link nhsd-a-link--col-dark-grey"
+                      href="https://digital.nhs.uk/developer/guides-and-documentation"
+                    >Guides and documentation</a></li>
+                    <li class="nhsd-t-body-s"><a class="nhsd-a-link nhsd-a-link--col-dark-grey"
+                      href="https://digital.nhs.uk/developer/help-and-support">Help and support</a></li>
                   </ul>
                 </nav>
               </div>
@@ -285,9 +441,15 @@ def generate_html(spec_json, js_version):
                 <nav aria-labelledby="footer-legal">
                   <div id="footer-legal" class="nhsd-t-body-s"><h2 class="nhsd-t-heading-m">Legal</h2></div>
                   <ul class="nhsd-t-list nhsd-t-list--links">
-                    <li class="nhsd-t-body-s"><a class="nhsd-a-link nhsd-a-link--col-dark-grey" href="https://digital.nhs.uk/about-nhs-digital/privacy-and-cookies">Privacy and cookies</a></li>
-                    <li class="nhsd-t-body-s"><a class="nhsd-a-link nhsd-a-link--col-dark-grey" href="https://digital.nhs.uk/about-nhs-digital/terms-and-conditions">Terms and conditions</a></li>
-                    <li class="nhsd-t-body-s"><a class="nhsd-a-link nhsd-a-link--col-dark-grey" href="https://digital.nhs.uk/about-nhs-digital/accessibility">Accessibility</a></li>
+                    <li class="nhsd-t-body-s"><a class="nhsd-a-link nhsd-a-link--col-dark-grey"
+                      href="https://digital.nhs.uk/about-nhs-digital/privacy-and-cookies"
+                    >Privacy and cookies</a></li>
+                    <li class="nhsd-t-body-s"><a class="nhsd-a-link nhsd-a-link--col-dark-grey"
+                      href="https://digital.nhs.uk/about-nhs-digital/terms-and-conditions"
+                    >Terms and conditions</a></li>
+                    <li class="nhsd-t-body-s"><a class="nhsd-a-link nhsd-a-link--col-dark-grey"
+                      href="https://digital.nhs.uk/about-nhs-digital/accessibility"
+                    >Accessibility</a></li>
                   </ul>
                 </nav>
               </div>
@@ -318,7 +480,8 @@ def generate_html(spec_json, js_version):
             // Restore the table which gets nhsd-!t-display-hide added to it
             '.nhsd-\\\\!t-display-hide {{ display: revert !important; }}',
             // nhsd-a-horizontal-rule styles from nhsd-frontend.css can't pierce the shadow DOM
-            '.nhsd-a-horizontal-rule {{ width: 100%; height: 0; border: 0; border-bottom: 1px solid #d5dade; margin: 1.6666666667rem 0; }}',
+            '.nhsd-a-horizontal-rule {{ width: 100%; height: 0; border: 0; '
+            + 'border-bottom: 1px solid #d5dade; margin: 1.6666666667rem 0; }}',
           ].join('\\n');
           shadow.appendChild(style);
         }}, 100);
