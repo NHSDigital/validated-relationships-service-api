@@ -175,24 +175,6 @@ def generate_html(spec_json, js_version):
   </style>
 </head>
 <body>
-
-  <!-- Header -->
-  <header class="preview-header" role="banner">
-    <div class="preview-header__inner">
-      <a class="preview-header__logo" href="https://digital.nhs.uk" aria-label="NHS Digital">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 16" aria-hidden="true" focusable="false">
-          <path d="M0 0h12.48l4.16 9.28L16 0h5.44L16.48 16h-3.84l-4.8-10.72L7.52 16H2.08L0 0zM20.32 0h6.08L24 7.36 32.32 0H40L27.52 16h-6.4L21.6 5.12 14.24 16H8.16L20.32 0z"/>
-        </svg>
-      </a>
-      <div class="preview-header__divider" aria-hidden="true"></div>
-      <span class="preview-header__name">Developer Portal</span>
-      <nav class="preview-header__nav" aria-label="Primary navigation">
-        <a href="https://digital.nhs.uk/developer/api-catalogue">API catalogue</a>
-        <a href="https://digital.nhs.uk/developer/help-and-support">Help &amp; support</a>
-      </nav>
-    </div>
-  </header>
-
   <!-- Breadcrumb — exact structure from digital.nhs.uk -->
   <div class="nhsd-t-grid nhsd-!t-padding-top-3 nhsd-!t-padding-bottom-3">
     <div class="nhsd-t-row">
