@@ -7,16 +7,12 @@ import subprocess
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SPEC_FILE = os.path.join(
-    ROOT, "specification", "validated-relationships-service-api.yaml"
-)
+SPEC_FILE = os.path.join(ROOT, "specification", "validated-relationships-service-api.yaml")
 BUILD_DIR = os.path.join(ROOT, "build")
 BUNDLE_FILE = os.path.join(BUILD_DIR, "spec-bundled.json")
 OUTPUT = os.path.join(BUILD_DIR, "docs.html")
 
-NHS_CATALOGUE_URL = (
-    "https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service"
-)
+NHS_CATALOGUE_URL = "https://digital.nhs.uk/developer/api-catalogue/validated-relationship-service"
 
 DIGIBLOCKS_SVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 550" aria-hidden="true" focusable="false"><g><g transform="translate(222, 224)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#BFD7ED"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#B2CFEA"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#A6C7E6"/></g><g transform="translate(328.5, 367.5)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#FBFAFA"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#F5F5F4"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#EFF2F1"/></g><g transform="translate(151, 306)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#3C4D57"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#32434C"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#313D45"/></g><g transform="translate(80, 306)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#FBFAFA"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#F5F5F4"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#EFF2F1"/></g></g><g><g transform="translate(186.5, 203.5)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#FBFAFA"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#F5F5F4"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#EFF2F1"/></g><g transform="translate(186.5, 285.5)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#00267A"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#001F75"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#001766"/></g><g transform="translate(257.5, 449.5)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#F5D507"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#F2CB0C"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#EEC000"/></g></g><g><g transform="translate(186.5, 203.5)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#6D7B86"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#62717A"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#5C6B75"/></g><g transform="translate(399.5, 326.5)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#BFD7ED"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#B2CFEA"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#A6C7E6"/></g></g><g><g transform="translate(328.5, 162.5)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#F5D507"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#F2CB0C"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#EEC000"/></g><g transform="translate(399.5, 244.5)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#00267A"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#001F75"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#001766"/></g><g transform="translate(186.5, 244.5)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#0062CC"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#005ABE"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#0050B5"/></g><g transform="translate(328.5, 326.5)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#0062CC"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#005ABE"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#0050B5"/></g><g transform="translate(257.5, 326.5)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#3C4D57"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#32434C"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#313D45"/></g></g><g><g transform="translate(328.5, 244.5)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#DADFDF"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#CDD5D6"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#C5CDCF"/></g><g transform="translate(257.5, 285.5)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#0062CC"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#005ABE"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#0050B5"/></g><g transform="translate(435, 142)"><polygon points="0,20.5 35.5,0 71,20.5 35.5,41" fill="#0062CC"/><polygon points="35.5,82 71,61.4 71,20.5 35.5,41" fill="#005ABE"/><polygon points="0,20.5 0,61.4 35.5,82 35.5,41" fill="#0050B5"/></g></g></svg>'
 
@@ -29,9 +25,7 @@ def fetch_nhs_js_files():
         capture_output=True,
         text=True,
     )
-    match = re.search(
-        r"/webfiles/(\d+)/apispecification/rapidoc-min\.js", result.stdout
-    )
+    match = re.search(r"/webfiles/(\d+)/apispecification/rapidoc-min\.js", result.stdout)
     if not match:
         sys.exit("Could not find rapidoc JS URL on NHS Digital page")
     version = match.group(1)
