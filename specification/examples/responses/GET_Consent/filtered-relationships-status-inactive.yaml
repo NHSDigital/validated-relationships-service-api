@@ -38,10 +38,10 @@ ConsentMultipleRelationshipsStatusInactiveBundle:
             - authority: 'https://www.england.nhs.uk'
               uri: 'https://digital.nhs.uk/data-and-information/information-standards/governance/latest-activity/standards-and-collections/dapb3051-identity-verification-and-authentication-standard-for-digital-health-and-care-services'
           policyRule:
-            - coding:
-                - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
-                  code: parental-responsibility
-                  display: Parental responsibility
+            coding:
+              - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+                code: parental-responsibility
+                display: Parental responsibility
           provision:
             type: permit
             actor:
@@ -96,10 +96,10 @@ ConsentMultipleRelationshipsStatusInactiveBundle:
             - authority: 'https://www.england.nhs.uk'
               uri: 'https://digital.nhs.uk/data-and-information/information-standards/governance/latest-activity/standards-and-collections/dapb3051-identity-verification-and-authentication-standard-for-digital-health-and-care-services'
           policyRule:
-            - coding:
-                - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
-                  code: parental-responsibility
-                  display: Parental responsibility
+            coding:
+              - system: "https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis"
+                code: parental-responsibility
+                display: Parental responsibility
           provision:
             type: permit
             actor:
@@ -116,7 +116,7 @@ ConsentMultipleRelationshipsStatusInactiveBundle:
             - url: https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason
               valueCodeableConcept:
                 coding:
-                  - system: http://terminology.hl7.org/CodeSystem/consent-reason
+                  - system: https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason
                     code: OTHER
                     display: Other reason
                 text: Patient would not respond to phone calls
