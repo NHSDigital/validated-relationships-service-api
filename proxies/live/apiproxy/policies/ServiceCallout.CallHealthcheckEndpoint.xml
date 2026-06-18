@@ -16,7 +16,7 @@
 <!--        <Path>/_ping</Path>-->
 <!--    </HTTPTargetConnection>-->
     <HTTPTargetConnection>
-        <URL>http://reqbin.com/echo/get/json</URL>
+        <URL>https://www.thirdrock.co.uk/npa-6981.txt</URL>
         <Properties>
             <Property name="supports.http10">true</Property>
             <Property name="request.retain.headers">User-Agent,Referer,Accept-Language</Property>
