@@ -16,7 +16,7 @@
 <!--        <Path>/_ping</Path>-->
 <!--    </HTTPTargetConnection>-->
     <HTTPTargetConnection>
-        <URL>http://mocktarget.apigee.net</URL>
+        <URL>http://reqbin.com/echo/get/json</URL>
         <Properties>
             <Property name="supports.http10">true</Property>
             <Property name="request.retain.headers">User-Agent,Referer,Accept-Language</Property>
