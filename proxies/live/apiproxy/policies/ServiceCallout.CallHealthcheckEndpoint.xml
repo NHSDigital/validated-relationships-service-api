@@ -13,7 +13,7 @@
         <LoadBalancer>
             <Server name="validated-relationships-service-api" />
         </LoadBalancer>
-        <Path>/_status</Path>
+        <Path>/{{ SERVICE_BASE_PATH }}/_status</Path>
     </HTTPTargetConnection>
     <Timeout>20000</Timeout>
 </ServiceCallout>
