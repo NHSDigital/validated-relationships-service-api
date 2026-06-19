@@ -4,9 +4,6 @@
     <Properties/>
     <Request clearPayload="true" variable="healthcheckRequest">
         <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
-        <Set>
-            <Verb>GET</Verb>
-        </Set>
     </Request>
     <Response>healthcheckResponse</Response>
     <HTTPTargetConnection>
