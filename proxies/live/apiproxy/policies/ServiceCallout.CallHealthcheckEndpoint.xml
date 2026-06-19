@@ -5,6 +5,7 @@
     <Request clearPayload="true" variable="healthcheckRequest">
         <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
     </Request>
+    <Verb>GET</Verb>
     <Response>healthcheckResponse</Response>
     <HTTPTargetConnection>
         <SSLInfo>
@@ -13,7 +14,7 @@
         <LoadBalancer>
             <Server name="validated-relationships-service-api" />
         </LoadBalancer>
-        <Path>/{{ SERVICE_BASE_PATH }}/_status</Path>
+        <Path>/_status</Path>
     </HTTPTargetConnection>
     <Timeout>20000</Timeout>
 </ServiceCallout>
