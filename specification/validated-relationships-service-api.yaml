@@ -2488,13 +2488,12 @@ components:
                   - ROLE_DEACTIVATED_INACTIVE_ROLE
                   - ROLE_DEACTIVATED_PATIENT_DECEASED
                   - ROLE_DEACTIVATED_PROXY_DECEASED
-                  - ROLE_DEACTIVATED_FAMILIAL_REASON
                   - ROLE_DEACTIVATED_CHANGE_IN_RELATIONSHIP
                   - ROLE_DEACTIVATED_PROXY_LACKS_CAPACITY
                   - ROLE_DEACTIVATED_MISUSE_OF_SYSTEM
                   - ROLE_DEACTIVATED_PATIENT_GP_TRANSFERRED
                   - ROLE_DEACTIVATED_PROXY_GP_TRANSFERRED
-                  - ROLE_DEACTIVATED_PROXY_ABROAD
+                  - ROLE_DEACTIVATED_PROXY_NOT_LIVING_IN_ENGLAND_OR_WALES
                   - ROLE_SUSPENDED_PENDING_REVIEW
                   - APPLICATION_SUBMITTED
                   - APPLICATION_RESUBMITTED
@@ -2503,9 +2502,8 @@ components:
                   - APPLICATION_REJECTED_IDENTITY_NOT_VERIFIED
                   - APPLICATION_REJECTED_NO_CONSENT
                   - APPLICATION_WITHDRAWN
-                  - APPLICATION_REJECTED_COERCION
                   - APPLICATION_REJECTED_PROXY_LACKS_CAPACITY
-                  - APPLICATION_REJECTED_PROXY_ABROAD
+                  - APPLICATION_REJECTED_PROXY_NOT_LIVING_IN_ENGLAND_OR_WALES
                   - APPLICATION_REJECTED_NO_LEGAL_BASIS
                   - OTHER
               display:
@@ -2525,13 +2523,12 @@ components:
                   - `ROLE_DEACTIVATED_INACTIVE_ROLE`: Role no longer in use
                   - `ROLE_DEACTIVATED_PATIENT_DECEASED`: Patient deceased
                   - `ROLE_DEACTIVATED_PROXY_DECEASED`: Proxy deceased
-                  - `ROLE_DEACTIVATED_FAMILIAL_REASON`: Family reason or circumstance
                   - `ROLE_DEACTIVATED_CHANGE_IN_RELATIONSHIP`: Change in relationship
                   - `ROLE_DEACTIVATED_PROXY_LACKS_CAPACITY`: Proxy lacks capacity
                   - `ROLE_DEACTIVATED_MISUSE_OF_SYSTEM`: Misuse of system
                   - `ROLE_DEACTIVATED_PATIENT_GP_TRANSFERRED`: Patient GP transferred
                   - `ROLE_DEACTIVATED_PROXY_GP_TRANSFERRED`: Proxy GP transferred
-                  - `ROLE_DEACTIVATED_PROXY_ABROAD`: Proxy lives abroad
+                  - `ROLE_DEACTIVATED_PROXY_NOT_LIVING_IN_ENGLAND_OR_WALES`: Proxy not living in England or Wales
                   - `ROLE_SUSPENDED_PENDING_REVIEW`: Suspended pending review
 
                   **Application submission**
@@ -2544,9 +2541,8 @@ components:
                   - `APPLICATION_REJECTED_IDENTITY_NOT_VERIFIED`: Proxy identity not verified
                   - `APPLICATION_REJECTED_NO_CONSENT`: Patient does not consent
                   - `APPLICATION_WITHDRAWN`: Proxy application withdrawn
-                  - `APPLICATION_REJECTED_COERCION`: Coercion concern identified
                   - `APPLICATION_REJECTED_PROXY_LACKS_CAPACITY`: Proxy lacks capacity
-                  - `APPLICATION_REJECTED_PROXY_ABROAD`: Proxy lives abroad
+                  - `APPLICATION_REJECTED_PROXY_NOT_LIVING_IN_ENGLAND_OR_WALES`: Proxy not living in England or Wales
                   - `APPLICATION_REJECTED_NO_LEGAL_BASIS`: Relationship or legal basis not proven
 
                   **Other**
