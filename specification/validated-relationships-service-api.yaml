@@ -2704,6 +2704,7 @@ components:
                 - /extension/-
                 - /provision/period/end
                 - /provision/actor
+                - /policyRule
         value:
           oneOf:
             - type: string
