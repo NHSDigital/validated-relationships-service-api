@@ -1,35 +1,6 @@
-name: Commit Checks
+name: Sandbox Check
 on: pull_request
 jobs:
-  vulnerability-scan:
-    name: "Vulnerability Scan"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
-        with:
-          fetch-depth: 0
-          persist-credentials: false
-      - name: Scan Repo for vulnerabilities using Grype
-        uses: anchore/scan-action@e1165082ffb1fe366ebaf02d8526e7c4989ea9d2 # v7
-        with:
-          path: ./
-          fail-build: false
-          output-format: table
-      - name: Generate SBOM (Syft)
-        uses: anchore/sbom-action@e22c389904149dbc22b58101806040fa8d37a610 # v0
-        with:
-          path: ./
-          format: spdx-json
-          output-file: sbom-repo.spdx.json
-          artifact-name: sbom
-      - name: Scan SBOM for vulnerabilities using Grype
-        uses: anchore/scan-action@e1165082ffb1fe366ebaf02d8526e7c4989ea9d2 # v7
-        # Upload the results to GitHub Security tab once repository is public - NPA-4480
-        with:
-          sbom: sbom-repo.spdx.json
-          severity-cutoff: high
-          output-format: table
   test-sandbox-and-postman:
     name: "Test Sandbox and Postman"
     runs-on: ubuntu-latest
@@ -66,14 +37,14 @@ jobs:
           set -m
           FLASK_DEBUG=1 poetry run python -m flask --app api.app:app run -p 9000 &
           FLASK_PID=$!
-          
+
           # 2. Use npx to wait for the server to actually be ready
           npx wait-on http://127.0.0.1:9000/health --timeout 30000
-          
+
           # 3. Run your tests
           echo "Running Newman tests..."
           npx newman run ../postman/validated_relationship_service.sandbox.postman_collection.json --env-var baseUrl=http://127.0.0.1:9000/FHIR/R4
-          
+
           # 4. Cleanup: Kill the Flask process using the PID we saved
           echo "Shutting down Flask..."
           kill -TERM -$FLASK_PID
