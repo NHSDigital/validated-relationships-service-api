@@ -26,10 +26,10 @@ jobs:
             integration: ${{ steps.filter.outputs.integration }}
         steps:
             -   name: Checkout
-                uses: actions/checkout@v6
+                uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
                 with:
                     fetch-depth: 0
-            -   uses: dorny/paths-filter@v4
+            -   uses: dorny/paths-filter@7b450fff21473bca461d4b92ce414b9d0420d706 # v4
                 id: filter
                 with:
                     filters: |
@@ -47,12 +47,12 @@ jobs:
             )
         steps:
             -   name: Checkout
-                uses: actions/checkout@v6
+                uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
                 with:
                     fetch-depth: 0
             -   name: Push Integration Postman collection
                 id: push_integration_postman_collection
-                uses: gcatanese/push-to-postman-action@main
+                uses: gcatanese/push-to-postman-action@d849d1167946121113dd9be98c9d43af09e272ef # v1.0.0
                 with:
                     goal: update
                     postman-key: ${{ secrets.POSTMAN_API_KEY }}
