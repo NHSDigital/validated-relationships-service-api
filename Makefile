@@ -19,13 +19,13 @@ install: install-node install-python install-git-hooks
 
 #Run the npm linting script (specified in package.json). Used to check the syntax and formatting of files.
 lint:
-	find . -name '*.py' -not -path '**/.venv/*' | xargs poetry run flake8
+	find . -name '*.py' -not -path '**/.venv/*' -not -path '**/node_modules/*' | xargs poetry run flake8
 
 format:
-	find . -name '*.py' -not -path '**/.venv/*' | xargs poetry run black --check --line-length 120
+	find . -name '*.py' -not -path '**/.venv/*' -not -path '**/node_modules/*' | xargs poetry run black --check --line-length 120
 
 format-apply:
-	find . -name '*.py' -not -path '**/.venv/*' | xargs poetry run black --line-length 120
+	find . -name '*.py' -not -path '**/.venv/*' -not -path '**/node_modules/*' | xargs poetry run black --line-length 120
 
 #Removes build/ + dist/ directories
 clean:
