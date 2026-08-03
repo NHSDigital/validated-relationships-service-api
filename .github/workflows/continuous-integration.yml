@@ -8,12 +8,12 @@ jobs:
         if: github.ref == 'refs/heads/master'
         steps:
             - name: Checkout
-              uses: actions/checkout@v6
+              uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
               with:
                   fetch-depth: 0 # This causes all history to be fetched, which is required for calculate-version to function
 
             - name: Install Python 3.13
-              uses: actions/setup-python@v6
+              uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
               with:
                   python-version: 3.13
 
@@ -34,7 +34,7 @@ jobs:
             - name: Create release (master only)
               id: create-release
               if: github.ref == 'refs/heads/master'
-              uses: actions/create-release@v1
+              uses: actions/create-release@0cb9c9b65d5d1901c1f53e5e66eaf4afd303e70e # v1
               continue-on-error: true
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
