@@ -37,14 +37,14 @@ jobs:
           set -m
           FLASK_DEBUG=1 poetry run python -m flask --app api.app:app run -p 9000 &
           FLASK_PID=$!
-          
+
           # 2. Use npx to wait for the server to actually be ready
           npx wait-on http://127.0.0.1:9000/health --timeout 30000
-          
+
           # 3. Run your tests
           echo "Running Newman tests..."
           npx newman run ../postman/validated_relationship_service.sandbox.postman_collection.json --env-var baseUrl=http://127.0.0.1:9000/FHIR/R4
-          
+
           # 4. Cleanup: Kill the Flask process using the PID we saved
           echo "Shutting down Flask..."
           kill -TERM -$FLASK_PID
