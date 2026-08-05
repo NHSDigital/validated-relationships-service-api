@@ -33,32 +33,46 @@ extends:
     prod_producer_approval: true
     apigee_deployments:
       - environment: internal-dev
+        enable_monitoring: false
+        enable_status_monitoring: false
         post_deploy:
           - template: ./templates/run-tests.yml
             parameters:
               full: true
       - environment: internal-dev-sandbox
+        enable_monitoring: false
+        enable_status_monitoring: false
         proxy_path: sandbox
         post_deploy:
           - template: ./templates/run-tests.yml
       - environment: internal-qa
+        enable_monitoring: false
+        enable_status_monitoring: false
         post_deploy:
           - template: ./templates/run-tests.yml
             parameters:
               full: true
       - environment: internal-qa-sandbox
+        enable_monitoring: false
+        enable_status_monitoring: false
         proxy_path: sandbox
         post_deploy:
           - template: ./templates/run-tests.yml
       - environment: sandbox
+        enable_monitoring: false
+        enable_status_monitoring: false
         proxy_path: sandbox
         # post_deploy:
         #   - template: ./templates/run-tests.yml
       - environment: int
+        enable_monitoring: true
+        enable_status_monitoring: true
         depends_on:
           - internal_qa
           - internal_qa_sandbox
       - environment: prod
+        enable_monitoring: true
+        enable_status_monitoring: true
         depends_on:
           - int
         # post_deploy:
