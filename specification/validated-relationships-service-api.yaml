@@ -2228,7 +2228,7 @@ components:
                     system:
                       type: string
                       description: FHIR codesystem.
-                      default: "https://terminology.hl7.org/CodeSystem/v3-RoleCode"
+                      default: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
                       enum:
                         [
                           "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
