@@ -1360,6 +1360,7 @@ components:
                                   enum:
                                     [
                                       "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                                      "https://terminology.hl7.org/CodeSystem/v3-RoleCode",
                                       "https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole",
                                       "https://fhir.nhs.uk/STU3/CodeSystem/RARecord-ProxyRole-1",
                                     ]
@@ -1403,7 +1404,7 @@ components:
                                   type: string
                                   enum:
                                     [
-                                      "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                                      "https://terminology.hl7.org/CodeSystem/v3-RoleCode",
                                       "http://terminology.hl7.org/CodeSystem/v3-RoleClass",
                                       "https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole",
                                     ]
@@ -2226,10 +2227,10 @@ components:
                     system:
                       type: string
                       description: FHIR codesystem.
-                      default: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+                      default: "https://terminology.hl7.org/CodeSystem/v3-RoleCode"
                       enum:
                         [
-                          "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                          "https://terminology.hl7.org/CodeSystem/v3-RoleCode",
                           "https://fhir.hl7.org.uk/CodeSystem/UKCore-AdditionalPersonRelationshipRole",
                         ]
                     code:
