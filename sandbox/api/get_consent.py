@@ -1,5 +1,4 @@
 from logging import INFO, basicConfig, getLogger
-from typing import Union
 
 from flask import request
 
@@ -36,11 +35,11 @@ basicConfig(level=INFO, format="%(asctime)s - %(message)s")
 logger = getLogger(__name__)
 
 
-def get_consent_response() -> Union[dict, tuple]:
+def get_consent_response() -> dict | tuple:
     """Sandbox API for GET /Consent
 
     Returns:
-        Union[dict, tuple]: Response for GET /Consent
+        dict | tuple: Response for GET /Consent
     """
     try:
         # Check Headers
