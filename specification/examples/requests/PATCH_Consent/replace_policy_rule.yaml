@@ -1,6 +1,6 @@
 ReplacePolicyRuleRequest:
   summary: Replace policy rule
-  description: payload used to add a new policy rule to the consent provision
+  description: payload used to add a new legal basis to the proxy role
   value:
     - op: add
       path: /policyRule

@@ -2451,7 +2451,8 @@ components:
               format: date-time
         actor:
           type: array
-          description: "Individuals or organisations involved in the provision"
+          description: "Individuals or organisations involved in the provision. Deprecated - use policyRule instead."
+          deprecated: true
           items:
             type: object
             properties:
