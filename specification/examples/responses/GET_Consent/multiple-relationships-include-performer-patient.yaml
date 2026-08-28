@@ -129,7 +129,6 @@ ConsentMultipleRelationshipsIncludePerformerPatientBundle:
                 display: Parental responsibility
           provision:
             type: permit
-
             period:
               end: "2026-02-11"
               start: "2025-02-11"
@@ -231,7 +230,6 @@ ConsentMultipleRelationshipsIncludePerformerPatientBundle:
                 display: "Best Interest"
           provision:
             type: permit
-
             period:
               end: "2026-02-11"
               start: "2025-02-11"
