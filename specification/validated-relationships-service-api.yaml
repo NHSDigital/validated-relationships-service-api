@@ -783,6 +783,7 @@ paths:
             | 400         | `MISSING_SCOPE`             | Missing scope.                                                                                                                            |
             | 400         | `MISSING_CATEGORY`          | Missing category.                                                                                                                         |
             | 400         | `MISSING_DATETIME`          | Missing datetime.                                                                                                                         |
+            | 400         | `MISSING_POLICY_RULE`       | Policy Rule is required when creating or activating an active proxy role.                                                                 |
             | 400         | `BAD_REQUEST`               | Invalid request. For details, see the `diagnostics` field.                                                                                |
             | 401         | `ACCESS_DENIED`             | Missing or invalid OAuth 2.0 bearer token in request.                                                                                     |
             | 403         | `FORBIDDEN`                 | Access denied to resource.                                                                                                                |
@@ -798,6 +799,7 @@ paths:
             | 422         | `INVALID_CATEGORY`          | Invalid category.                                                                                                                         |
             | 422         | `INVALID_DATETIME`          | Invalid datetime.                                                                                                                         |
             | 422         | `INVALID_PROVISION`         | Invalid provision.                                                                                                                        |
+            | 422         | `INVALID_POLICY_RULE`       | Invalid policy rule.                                                                                                                      |
             | 422         | `INVALID_EXTENSION`         | Invalid extension.                                                                                                                        |
             | 422         | `INVALID_GRANTOR_VALUE`     | Grantor ODS code is missing, empty, whitespace-only or invalid format.                                                                    |
             | 422         | `INVALID_PERFORMER`         | Invalid performer.                                                                                                                        |
@@ -1075,6 +1077,7 @@ paths:
             | ----------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
             | 400         | `MISSING_VALUE`             | Missing header or parameter. For details, see the `diagnostics` field.                                                                    |
             | 400         | `MISSING_GRANTOR`           | Grantor extension is required when creating or activating a consent with status "active". For details, see the `diagnostics` field.       |
+            | 400         | `MISSING_POLICY_RULE`       | Policy Rule is required when creating or activating a consent with status "active". For details, see the `diagnostics` field.             |
             | 400         | `MISSING_GRANTOR_REFERENCE` | Grantor extension reference is required when creating or activating a consent with status "active". For details, see the `diagnostics` field.       |
             | 400         | `MISSING_GRANTOR_IDENTIFIER`| Grantor extension identifier is required when creating or activating a consent with status "active". For details, see the `diagnostics` field.       |
             | 400         | `INVALID_PATCH`             | Invalid patch.                                                                                                                            |
@@ -1094,6 +1097,7 @@ paths:
             | 422         | `INVALID_END_DATE`          | End date is invalid.                                                                                                                      |
             | 422         | `INVALID_GRANTOR_VALUE`     | Invalid grantor identifier value. For details, see the `diagnostics` field.                                                               |
             | 422         | `INVALID_GRANTOR_SYSTEM`    | Invalid grantor system value. For details, see the `diagnostics` field.                                                                   |
+            | 422         | `INVALID_POLICY_RULE`       | Invalid policy rule value. For details, see the `diagnostics` field.                                                                      |
             | 429         | `THROTTLED`                 | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
 
           content:
