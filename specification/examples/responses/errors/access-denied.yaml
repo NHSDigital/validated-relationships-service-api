@@ -10,6 +10,6 @@ AccessDeniedError:
               display: "Missing or invalid OAuth 2.0 bearer token in request."
               "system": "https://fhir.nhs.uk/R4/CodeSystem/ValidatedRelationships-ErrorOrWarningCode"
               version: "1"
-        diagnostics: "Missing or invalid OAuth 2.0 bearer token in request"
+        diagnostics: "Invalid access token - Access Denied."
         severity: error
     resourceType: "OperationOutcome"
