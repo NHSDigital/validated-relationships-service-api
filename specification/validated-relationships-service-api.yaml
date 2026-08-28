@@ -2306,7 +2306,6 @@ components:
         - patient
         - dateTime
         - extension
-        - policyRule
       description: The details of the consent including who the patient and care "performer" are, status of the relationship and whether consent was given by a patient with capacity.
       properties:
         resourceType:
