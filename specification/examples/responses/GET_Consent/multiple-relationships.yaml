@@ -44,11 +44,6 @@ ConsentMultipleRelationshipsBundle:
                 display: Parental responsibility
           provision:
             type: permit
-            actor:
-            - reference:
-                identifier:
-                  system: https://fhir.nhs.uk/Id/nhs-number
-                  value: '9000000022'
             period:
               end: '2026-02-11'
               start: '2025-02-11'
@@ -102,11 +97,6 @@ ConsentMultipleRelationshipsBundle:
                 display: Parental responsibility
           provision:
             type: permit
-            actor:
-            - reference:
-                identifier:
-                  system: https://fhir.nhs.uk/Id/nhs-number
-                  value: '9000000022'
             period:
               end: '2026-02-11'
               start: '2025-02-11'
@@ -160,11 +150,6 @@ ConsentMultipleRelationshipsBundle:
                 display: Parental responsibility
           provision:
             type: permit
-            actor:
-            - reference:
-                identifier:
-                  system: https://fhir.nhs.uk/Id/nhs-number
-                  value: '9000000022'
             period:
               end: '2026-02-11'
               start: '2025-02-11'
