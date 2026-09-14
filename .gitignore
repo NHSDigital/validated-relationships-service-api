@@ -29,3 +29,11 @@ sandbox/archive/
 sandbox/.hypothesis/
 
 .tool-versions
+
+
+# unit test coverage reports
+.coverage
+sandbox/.coverage
+sandbox/coverage.xml
+htmlcov
+lambdas/htmlcov
