@@ -53,7 +53,7 @@ def parse_fhir_status_params(status_list: List[str]) -> Optional[Set[str]]:
         return None
 
     # Each item in status_list is an AND group; values within each group are OR alternatives
-    and_groups = [{value.strip() for value in item.split(",")} for item in status_list]
+    and_groups = [set(value.strip() for value in item.split(",")) for item in status_list]
 
     # Intersect across AND groups — for a single-valued field, only values common to all groups can match
     result = and_groups[0]
