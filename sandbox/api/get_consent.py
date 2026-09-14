@@ -39,7 +39,7 @@ def get_consent_response() -> Response:
     """Sandbox API for GET /Consent
 
     Returns:
-        Union[dict, tuple]: Response for GET /Consent
+        Response: Response for GET /Consent
     """
     try:
         # Check Headers

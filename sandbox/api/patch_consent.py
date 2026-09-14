@@ -30,7 +30,7 @@ def patch_consent_response(id: str) -> Response:
         id (str): Consent id to be patched
 
     Returns:
-        Union[dict, tuple]: Response for PATCH /Consent
+        Response: Response for PATCH /Consent
     """
     try:
         logger.debug("Received request to PATCH consent")

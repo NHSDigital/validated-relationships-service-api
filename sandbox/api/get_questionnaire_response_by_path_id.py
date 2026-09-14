@@ -18,7 +18,7 @@ def get_questionnaire_response_by_path_id_response(access_request_id: str) -> Re
     """Sandbox API for GET /QuestionnaireResponse/{id}
 
     Returns:
-        Union[dict, tuple]: Response for GET /QuestionnaireResponse/{id}
+        Response: Response for GET /QuestionnaireResponse/{id}
     """
     try:
         if access_request_id == "156e1560-e532-4e2a-85ad-5aeff03dc43e":

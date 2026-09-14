@@ -25,7 +25,7 @@ def post_consent_response() -> Response:
     """Sandbox API for POST /Consent
 
     Returns:
-        Union[dict, tuple]: Response for POST /Consent
+        Response: Response for POST /Consent
     """
     try:
         logger.debug("Received request to POST consent")

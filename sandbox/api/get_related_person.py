@@ -30,7 +30,7 @@ def get_related_person_response() -> Response:
     """Sandbox API for GET /RelatedPerson
 
     Returns:
-        Union[dict, tuple]: Response for GET /RelatedPerson
+        Response: Response for GET /RelatedPerson
     """
     try:
         # Check Headers

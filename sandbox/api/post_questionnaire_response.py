@@ -21,7 +21,7 @@ def post_questionnaire_response_response() -> Response:
     """Sandbox API for POST /QuestionnaireResponse
 
     Returns:
-        Union[dict, tuple]: Response for POST /QuestionnaireResponse
+        Response: Response for POST /QuestionnaireResponse
     """
     try:
         logger.debug("Received request to POST questionnaire response")

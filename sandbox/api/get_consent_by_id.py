@@ -25,7 +25,7 @@ def get_consent_by_id_response(identifier: str) -> Response:
     """Sandbox API for GET /Consent/{id}
 
     Returns:
-        Union[dict, tuple]: Response for GET /Consent/{id}
+        Response: Response for GET /Consent/{id}
     """
     try:
         params = request.args.to_dict()
