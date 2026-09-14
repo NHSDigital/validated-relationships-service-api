@@ -1,10 +1,10 @@
 {
   "_": {
-    "postman_id": "a96fd6fd-b55b-4386-a39a-db066e68224d"
+    "postman_id": "eb1f9e23-49dd-4509-9ca3-4a2c903d6a35"
   },
   "item": [
     {
-      "id": "6f28c880-573d-4f67-acc2-708655a9576f",
+      "id": "cf5539e3-2865-4830-8c02-1e0a90f42897",
       "name": "QuestionnaireResponse",
       "description": {
         "content": "",
@@ -12,7 +12,7 @@
       },
       "item": [
         {
-          "id": "7bd984fd-2c34-4b56-8916-bac5aa6ea9f9",
+          "id": "c58d0b57-96ec-4c43-b726-8cb865669c3c",
           "name": "New Access request",
           "request": {
             "name": "New Access request",
@@ -75,7 +75,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "7a2c4905-5a18-4f63-a398-e7a0ee703c16",
+                "id": "7f0b1aad-c766-49fb-822e-aebf1d28f106",
                 "type": "text/javascript",
                 "exec": [
                   "// Validate status 2xx \npm.test(\"[POST]::/QuestionnaireResponse - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
@@ -90,7 +90,7 @@
           }
         },
         {
-          "id": "63abab48-1f85-4a74-a829-75257161ae0c",
+          "id": "06a4723c-38a7-4e1c-84ca-9a9c57ddba9c",
           "name": "{id}",
           "description": {
             "content": "",
@@ -98,7 +98,7 @@
           },
           "item": [
             {
-              "id": "c60828a4-b479-4843-83ad-46a79d9e2173",
+              "id": "9cd88853-4848-4c70-8e27-43781946da17",
               "name": "Get a proxy access request",
               "request": {
                 "name": "Get a proxy access request",
@@ -160,7 +160,7 @@
                 {
                   "listen": "test",
                   "script": {
-                    "id": "20ed5c76-52e7-47b9-9801-13f09dc7f77d",
+                    "id": "fe84e8fc-9302-4347-b3a5-98210ff01216",
                     "type": "text/javascript",
                     "exec": [
                       "// Validate status 2xx \npm.test(\"[GET]::/QuestionnaireResponse/:id - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
@@ -181,7 +181,7 @@
       "event": []
     },
     {
-      "id": "7f90752d-e5ab-4ae1-a66b-5b2d44aaa815",
+      "id": "ec34db9b-67bf-40d3-9030-f49850afd8cb",
       "name": "RelatedPerson",
       "description": {
         "content": "",
@@ -189,7 +189,7 @@
       },
       "item": [
         {
-          "id": "e2a2d9f3-ba62-4e2e-9181-cdc35399d9d2",
+          "id": "3f7ae5de-a7b8-4c11-88c2-89ac7d51bb9d",
           "name": "Get verified candidate relationships",
           "request": {
             "name": "Get verified candidate relationships",
@@ -267,7 +267,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "765b8900-cb7f-448a-8be3-ff14cc7c441b",
+                "id": "174a9108-3454-4fa4-8ff8-5354a699f225",
                 "type": "text/javascript",
                 "exec": [
                   "// Validate status 2xx \npm.test(\"[GET]::/RelatedPerson - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
@@ -285,7 +285,7 @@
       "event": []
     },
     {
-      "id": "38e0bb05-0901-4105-b62e-21af679d4dce",
+      "id": "12151482-d50e-4631-87aa-2b3d34fd78fb",
       "name": "Consent",
       "description": {
         "content": "",
@@ -293,7 +293,7 @@
       },
       "item": [
         {
-          "id": "bb215ba5-9908-4f81-bc31-dd8288fac157",
+          "id": "fbcf971f-995e-492f-afdb-9442e4bfde9a",
           "name": "Get proxy roles",
           "request": {
             "name": "Get proxy roles",
@@ -398,7 +398,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "d1df533e-047a-41c8-98ca-84f1b8390e8c",
+                "id": "35190e41-bcf2-4ef5-a6fb-9667cb4cad54",
                 "type": "text/javascript",
                 "exec": [
                   "// Validate status 2xx \npm.test(\"[GET]::/Consent - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
@@ -413,7 +413,7 @@
           }
         },
         {
-          "id": "6805cc2e-bed7-4aea-8185-b09f5b03df7e",
+          "id": "07567cc6-9123-4924-b3d1-da5922035f0d",
           "name": "Create a proxy role",
           "request": {
             "name": "Create a proxy role",
@@ -462,7 +462,7 @@
             "method": "POST",
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"resourceType\": \"Consent\",\n  \"status\": \"active\",\n  \"scope\": {\n    \"coding\": [\n      {\n        \"system\": \"https://terminology.hl7.org/CodeSystem/consentscope\",\n        \"code\": \"patient-privacy\",\n        \"display\": \"Privacy Consent\"\n      }\n    ]\n  },\n  \"category\": [\n    {\n      \"coding\": [\n        {\n          \"system\": \"https://terminology.hl7.org/CodeSystem/v3-ActCode\",\n          \"code\": \"INFA\",\n          \"display\": \"information access\"\n        }\n      ]\n    }\n  ],\n  \"patient\": {\n    \"type\": \"Patient\",\n    \"identifier\": {\n      \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n      \"value\": \"9000000012\"\n    }\n  },\n  \"dateTime\": \"2025-02-11T14:30:00Z\",\n  \"performer\": [\n    {\n      \"identifier\": {\n        \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n        \"value\": \"9000000009\"\n      }\n    }\n  ],\n  \"policyRule\": [\n    {\n      \"coding\": [\n        {\n          \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis\",\n          \"code\": \"parental-responsibility\",\n          \"display\": \"Parental responsibility\"\n        }\n      ]\n    }\n  ],\n  \"provision\": {\n    \"type\": \"permit\",\n    \"period\": {\n      \"start\": \"2025-02-11T14:30:00Z\",\n      \"end\": \"2029-02-11T14:30:00Z\"\n    }\n  },\n  \"extension\": [\n    {\n      \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",\n      \"valueCodeableConcept\": {\n        \"coding\": [\n          {\n            \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",\n            \"code\": \"ROLE_CREATED\",\n            \"display\": \"Role created from scratch by GP\"\n          }\n        ]\n      }\n    },\n    {\n      \"url\": \"https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor\",\n      \"valueReference\": {\n        \"identifier\": {\n          \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",\n          \"value\": \"G8101234\"\n        }\n      }\n    }\n  ]\n}",
+              "raw": "{\n  \"resourceType\": \"Consent\",\n  \"status\": \"active\",\n  \"scope\": {\n    \"coding\": [\n      {\n        \"system\": \"https://terminology.hl7.org/CodeSystem/consentscope\",\n        \"code\": \"patient-privacy\",\n        \"display\": \"Privacy Consent\"\n      }\n    ]\n  },\n  \"category\": [\n    {\n      \"coding\": [\n        {\n          \"system\": \"https://terminology.hl7.org/CodeSystem/v3-ActCode\",\n          \"code\": \"INFA\",\n          \"display\": \"information access\"\n        }\n      ]\n    }\n  ],\n  \"patient\": {\n    \"type\": \"Patient\",\n    \"identifier\": {\n      \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n      \"value\": \"9000000012\"\n    }\n  },\n  \"dateTime\": \"2025-02-11T14:30:00Z\",\n  \"performer\": [\n    {\n      \"identifier\": {\n        \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n        \"value\": \"9000000009\"\n      }\n    }\n  ],\n  \"policyRule\": {\n    \"coding\": [\n      {\n        \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-NHSProxyLegalBasis\",\n        \"code\": \"parental-responsibility\",\n        \"display\": \"Parental responsibility\"\n      }\n    ]\n  },\n  \"provision\": {\n    \"type\": \"permit\",\n    \"period\": {\n      \"start\": \"2025-02-11T14:30:00Z\",\n      \"end\": \"2029-02-11T14:30:00Z\"\n    }\n  },\n  \"extension\": [\n    {\n      \"url\": \"https://fhir.nhs.uk/England/StructureDefinition/Extension-England-Consent-Status-Reason\",\n      \"valueCodeableConcept\": {\n        \"coding\": [\n          {\n            \"system\": \"https://fhir.nhs.uk/England/CodeSystem/England-ConsentStatusReason\",\n            \"code\": \"ROLE_CREATED\",\n            \"display\": \"Role created from scratch by GP\"\n          }\n        ]\n      }\n    },\n    {\n      \"url\": \"https://hl7.org/fhir/5.0/StructureDefinition/extension-Consent.grantor\",\n      \"valueReference\": {\n        \"identifier\": {\n          \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",\n          \"value\": \"G8101234\"\n        }\n      }\n    }\n  ]\n}",
               "options": {
                 "raw": {
                   "headerFamily": "json",
@@ -476,7 +476,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "3f774e3e-4ab6-44c1-b4d2-242dc1380152",
+                "id": "e5c74279-a374-4214-bf67-32d9bdee4ff0",
                 "type": "text/javascript",
                 "exec": [
                   "// Validate status 2xx \npm.test(\"[POST]::/Consent - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
@@ -491,7 +491,7 @@
           }
         },
         {
-          "id": "45bf998b-f283-4fc3-a586-0c93e08d3fda",
+          "id": "ac02059a-96a4-4d08-a849-bc1124e576a0",
           "name": "{id}",
           "description": {
             "content": "",
@@ -499,7 +499,7 @@
           },
           "item": [
             {
-              "id": "45405d89-1683-4d7d-994c-bc5630051e38",
+              "id": "5b9c73f7-2b51-4095-9cb7-8df2065d6dc7",
               "name": "Get proxy role",
               "request": {
                 "name": "Get proxy role",
@@ -580,7 +580,7 @@
                 {
                   "listen": "test",
                   "script": {
-                    "id": "a71d2408-23e2-4b21-9688-51285e93116d",
+                    "id": "a7faf6aa-e03e-4f04-bd77-06252e42039d",
                     "type": "text/javascript",
                     "exec": [
                       "// Validate status 2xx \npm.test(\"[GET]::/Consent/:id - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
@@ -595,7 +595,7 @@
               }
             },
             {
-              "id": "2365cacb-f50b-4582-a103-b7527f6d8136",
+              "id": "e4562b0b-b96b-43d0-8d36-fe92a30fcc9c",
               "name": "Update a proxy role",
               "request": {
                 "name": "Update a proxy role",
@@ -627,6 +627,24 @@
                 },
                 "header": [
                   {
+                    "disabled": false,
+                    "description": {
+                      "content": "(Required) A globally unique identifier (GUID) for the request, which we use to correlate logs through different components.\nMust be a universally unique identifier (UUID) (ideally version 4).\nMirrored back in a response header.\n",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Request-ID",
+                    "value": "60E0B220-8136-4CA5-AE46-1D97EF59D068"
+                  },
+                  {
+                    "disabled": false,
+                    "description": {
+                      "content": "An optional ID which you can use to track transactions across multiple systems.\nMust be a universally unique identifier (UUID) (ideally version 4).\nMirrored back in a response header.\n",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Correlation-ID",
+                    "value": "11C46F5F-CDEF-4865-94B2-0EE0EDCC26DA"
+                  },
+                  {
                     "key": "Content-Type",
                     "value": "application/json-patch+json"
                   },
@@ -652,7 +670,7 @@
                 {
                   "listen": "test",
                   "script": {
-                    "id": "5dd323fa-ac42-4c2d-a10c-4c4b7edb7c35",
+                    "id": "c810a16d-0bc1-4960-a962-4b9eac5dd62f",
                     "type": "text/javascript",
                     "exec": [
                       "// Validate status 2xx \npm.test(\"[PATCH]::/Consent/:id - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
@@ -682,20 +700,20 @@
     }
   ],
   "info": {
-    "_postman_id": "a96fd6fd-b55b-4386-a39a-db066e68224d",
+    "_postman_id": "eb1f9e23-49dd-4509-9ca3-4a2c903d6a35",
     "name": "Validated Relationships Service API",
     "version": {
-      "raw": "1.22.0",
+      "raw": "1.28.0",
       "major": 1,
-      "minor": 22,
+      "minor": 28,
       "patch": 0,
       "prerelease": [],
       "build": [],
-      "string": "1.22.0"
+      "string": "1.28.0"
     },
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
-      "content": "## Overview\nThis service underpins the National Proxy Programme whose core objective is to allow Patients to be supported with\ntheir healthcare by someone they trust (a Proxy) as part of a digitally-enabled journey. The service has two core\nuses. Firstly, it surfaces verified candidate relationships (i.e. indicates suitable Proxies for a Patient such as\nBirth Mothers) to support GP’s decision-making when granting Proxy access. Secondly, it supports the subsequent\ncreation, use and management of Proxy roles which are stored in a central, national database. The Proxy roles held\nby the database are strictly for the purpose of enabling access to healthcare services, initially in Primary Care.\n\nWith this service you can:\n\n- Create a new Proxy access request (Submit an online application via NHS App)\n- View Pending Proxy access requests\n- Get verified candidate relationships (to support decision making when granting proxy access)\n- Create a Proxy role\n- Get Proxy roles\n- Get a Proxy role by ID\n- Update (or revoke) a Proxy role\n\n## Who can use this API\nThis API can only be used where there is a legal basis to do so. Make sure you have this and a valid use case before\nyou go too far with your development by [contacting us](https://digital.nhs.uk/developer/help-and-support).\n\nYou must do this before you can go live (see the 'Onboarding' section below).\n\n## Related APIs\nThe following APIs are related to this API:\n\n- [Personal Demographics Service - FHIR API](https://digital.nhs.uk/developer/api-catalogue/personal-demographics-service-fhir) - we use the data held in PDS as a source of data to verify relationships.\n\n## API status and roadmap\nThis API is [in production, beta](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#statuses), meaning:\n- we might make breaking changes, but only if we cannot avoid it, and we will give advance notice\n\n## Service level\nThis API is a bronze service, meaning it is operational and supported only during business hours (8am to 6pm), Monday to Friday excluding bank holidays.\n\nFor more details, see [service levels](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#service-levels).\n\n## Technology\nThis API is [RESTful](https://digital.nhs.uk/developer/guides-and-documentation/our-api-technologies#basic-rest).\n\nIt conforms to the [FHIR](https://digital.nhs.uk/developer/guides-and-documentation/our-api-technologies#fhir) global standard for health care data exchange, specifically to [FHIR R4 (v4.0.1)](https://hl7.org/fhir/r4/), except that it does not support the [capabilities](http://hl7.org/fhir/R4/http.html#capabilities) interaction.\n\nIt includes some country-specific FHIR extensions, which are built against [FHIR UK Core](https://digital.nhs.uk/services/fhir-uk-core), specifically [UK.core.r4 1.0.0](https://simplifier.net/packages/uk.core.r4/1.0.0).\n\nYou do not need to know much about FHIR to use this API - FHIR APIs are just RESTful APIs that follow specific rules.\nIn particular:\n- resource names are capitalised and singular, for example `/RelatedPerson` not `/relatedpersons`\n- array names are singular, for example `name` not `names` for the recorded names of a patient\n\nThere are [libraries and SDKs available](https://digital.nhs.uk/developer/guides-and-documentation/api-technologies-at-nhs-digital#fhir-libraries-and-sdks) to help with FHIR API integration.\n\n## Guidance for developers\n\nSupplementary documentation and guidance for developers:\n\n- National Proxy Service developer documentation (link to be added)\n\n## Network access\nThis API is available on the internet.\n\nFor more details see [Network access for APIs](https://digital.nhs.uk/developer/guides-and-documentation/network-access-for-apis).\n\n## Security and authorisation\n\nThis API supports both [user-restricted](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#user-restricted-apis) and [application-restricted](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#application-restricted-apis) access types with the following access modes:\n\n| Access mode                   | Access type            |\n|-------------------------------|------------------------|\n| Patient access                | User-restricted        |\n| Healthcare worker access      | User-restricted        |\n| Application-restricted access | Application-restricted |\n\nFor more information on access modes and how to use them, see the developer [security and authorisation guide](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation).\n\nEach API operation section of this documentation indicates the access modes that the endpoint supports.\n\n### User-restricted access\n\nUser-restricted access meaning an end user must be present, authenticated and authorised.\n\n#### Patient access mode\nIf the end user is a patient then you must use this access mode.\n\n[Review all patient access modes](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#patient-access-mode)\n\nAll API endpoints that support this access mode require that the user has proven their identity to a high level\nand authenticated using strong authentication credentials. The combination of these forms a [Vector of Trust](https://nhsconnect.github.io/nhslogin/vectors-of-trust/) profile.\n\nAllowed vectors of trust are:\n- `P9.Cp.Cd`\n- `P9.Cp.Ck`\n- `P9.Cm`\n\n#### Healthcare worker access mode\nIf the end user is a healthcare worker then you must use this access mode. All API endpoints that support this\naccess mode require that the user has been authenticated with a \"very high confidence\" authenticator ([AAL3](https://digital.nhs.uk/services/care-identity-service/applications-and-services/cis2-authentication/integrate/design-and-build/authenticator-guidance-for-developers)).\n\n[Review all CIS2 healthcare worker access modes](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#healthcare-worker-access-mode)\n\n### Application-restricted access\n\nThis API is application-restricted, meaning we authenticate the calling application but not the end user. This\nshould only be utilised where user-restrcited access modes are not feasible or practical.\n\n[Review all application-restricted access modes](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#application-restricted-apis)\n\n## Headers\nThis API is case-insensitive when processing request headers, meaning it will accept headers regardless of the letter casing used. (e.g. X-Request-Id, x-request-id are treated the same). When sending headers back in the response, we preserve the exact casing as received in the original request.\n\n## Errors\nWe use standard HTTP status codes to show whether an API request succeeded or not. They are usually in the range:\n\n* 200 to 299 if it succeeded, including code 202 if it was accepted by an API that needs to wait for further action\n* 400 to 499 if it failed because of a client error by your application\n* 500 to 599 if it failed because of an error on our server\n\nErrors specific to each API are shown in the Operations section. See our [reference guide](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#http-status-codes) for more information on errors.\n\n## Open source\nYou might find the following [open source](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#open-source) resources useful:\n\n| Resource                         | Description                                                                                                  | Links                                                                                                                                                          |\n| -------------------------------- | ------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| Validated Relationships FHIR API | Source code for the API proxy, sandbox and specification.                                                    | [GitHub repo](https://github.com/NHSDigital/validated-relationships-service-api)                                                                               |\n| FHIR libraries and SDKs          | Various open source libraries for integrating with FHIR APIs.                                                | [FHIR libraries and SDKs](https://digital.nhs.uk/developer/guides-and-documentation/api-technologies-at-nhs-digital#fhir-libraries-and-sdks)                   |\n| nhs-number                       | Python package containing utilities for NHS numbers including validity checks, normalisation and generation. | [GitHub repo](https://github.com/uk-fci/nhs-number) \\| [Python Package index](https://pypi.org/project/nhs-number/) \\| [Docs](https://nhs-number.uk-fci.tech/) |\n\nWe currently don't have any open source client libraries or sample code for this API and the source code for the Validated Relationship Service FHIR application is not currently in the open. If you think this would be useful, [contact us](https://digital.nhs.uk/developer/help-and-support).\n\n## Environments and testing\n| Environment       | Base URL                                                                             |\n| ----------------- | ------------------------------------------------------------------------------------ |\n| Sandbox           | `https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/`                |\n| Integration test  | `https://int.api.service.nhs.uk/validated-relationships/FHIR/R4/`                    |\n| Production        | `https://api.service.nhs.uk/validated-relationships/FHIR/R4/`                        |\n\n### Sandbox testing\nOur [sandbox environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#sandbox-testing)\n\n* is for early developer testing\n* only covers a limited set of scenarios\n* is open access, so does not allow you to test authorisation\n\n[![Import Postman Collection](https://img.shields.io/badge/Import-Postman%20Collection-orange?logo=postman)](https://raw.githubusercontent.com/NHSDigital/validated-relationships-service-api/master/postman/validated_relationship_service.sandbox.postman_collection.json)\n\nImport the  postman collection to run requests against sandbox.\n\n### Integration testing\n\nOur [integration test environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#integration-testing)\n\n* is for formal integration testing\n* requires authorisation using a supported access mode\n\n[<img src=\"https://run.pstmn.io/button.svg\" alt=\"Run In Postman\" style=\"width: 128px; height: 32px;\">](https://app.getpostman.com/run-collection/50544839-b6783b4e-de59-42c6-a80e-72cf64fa5ec9?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D50544839-b6783b4e-de59-42c6-a80e-72cf64fa5ec9%26entityType%3Dcollection%26workspaceId%3D082e43b8-9a51-4a16-af66-0d2b233cd69c#?env%5BINT%5D=W3sia2V5IjoiY2lzMl90b2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InNlY3JldCIsInNlc3Npb25WYWx1ZSI6InFNQnZnNVVId0kxc3k3UWx4WUtQc1VxekZoQXIiLCJjb21wbGV0ZVNlc3Npb25WYWx1ZSI6InFNQnZnNVVId0kxc3k3UWx4WUtQc1VxekZoQXIiLCJzZXNzaW9uSW5kZXgiOjB9LHsia2V5IjoibG9naW5fdG9rZW4iLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJzZWNyZXQiLCJzZXNzaW9uVmFsdWUiOiJqOXcxNUxMa1VjbWtzOU15c0FHbGpmTW9LMGdGIiwiY29tcGxldGVTZXNzaW9uVmFsdWUiOiJqOXcxNUxMa1VjbWtzOU15c0FHbGpmTW9LMGdGIiwic2Vzc2lvbkluZGV4IjoxfSx7ImtleSI6ImFwaV9iYXNlX3VybCIsInZhbHVlIjoiaHR0cHM6Ly9pbnQuYXBpLnNlcnZpY2UubmhzLnVrL3ZhbGlkYXRlZC1yZWxhdGlvbnNoaXBzL0ZISVIvUjQiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoiZGVmYXVsdCIsInNlc3Npb25WYWx1ZSI6Imh0dHBzOi8vaW50LmFwaS5zZXJ2aWNlLm5ocy51ay92YWxpZGF0ZWQtcmVsYXRpb25zaGlwcy9GSElSL1I0IiwiY29tcGxldGVTZXNzaW9uVmFsdWUiOiJodHRwczovL2ludC5hcGkuc2VydmljZS5uaHMudWsvdmFsaWRhdGVkLXJlbGF0aW9uc2hpcHMvRkhJUi9SNCIsInNlc3Npb25JbmRleCI6Mn0seyJrZXkiOiJ2cnNfYXBpX3ByaXZhdGVfa2V5IiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoic2VjcmV0Iiwic2Vzc2lvblZhbHVlIjoiLS0tLS1CRUdJTiBQUklWQVRFLi4uIiwiY29tcGxldGVTZXNzaW9uVmFsdWUiOiItLS0tLUJFR0lOIFBSSVZBVEUgS0VZLS0tLS1cXG5NSUlKUVFJQkFEQU5CZ2txaGtpRzl3MEJBUUVGQUFTQ0NTc3dnZ2tuQWdFQUFvSUNBUURVMDhhUGJWckxRR0R3XFxuTGE2NlNYeVNzc1hTZ0VWa3V5cW9XVGJGbWVlV0ZVaWx5d0xLMGp1aTRpcjI5V1VadWpqNmt0NWg5MFdaMER5Slxcbml3SU9lOWJQdVlnbXR2am9RY2lWZ1J2UUJ4UlZYYzhJUnlveUVnV0pYZVgxUXVPVFVVWEZwT2VzZUFyOXJXeXhcXG5iVTUwek1NTFo3REtId1llUGlNZG1zaExoUGI2bWdScEdQaXpseFJDUXF6RGJxVzh0REM1YWhaYUN5UG1xYWhKXFxuYXFpSzgyQWNpbW5PL1FnZTFjd1JKMGtMU2d0ZG5tS3hGVFpvbm5WOWJJc2wwNUhrczM3R096S3B6ZEt0cFBZdlxcbmFCaGhZVUZzY24yR3grUmxocGo2UWdSS2VwNUpDUXN1UzExbUJKM2E2ZVZDRXlZa3VOdHl0WVh4aVB2YXJYVk5cXG5VZFpIQ0tNb3pjcUpNTHpXZlVKQW9UWGtwMVJ3RURkbDVzTHlPOWxuZlhOdHZKYkx2OGhBalNJT08vY0VCOGJLXFxuVmVyV2I5bnBLMTl4cXhSRjNEdTJiOFdweW5HMEVpZ21NK0lVbkVYQjZMVUNxWWpiVjl0ejMzVDBSM1BkaHg0WFxcbkY4dktzWHY2V0NYVXlVWktNSi9BVTAyc3ZvYlltV3JwOTFEdEdidy9YZ0pFZjBhSVUySzNaTGRUNzV5RWRPWHpcXG4rK2FZNW03VjIzbEpBQjgzU3o4T1R1QW1iMkdkY3IvV2xYRUh6NG5xdms0bVBSU3pzcWFVenBXOEpyS1dBR0JMXFxuU1J0bVU4dWFIZ1kweWFoRnpINWtNNy9oa1NTQTZoeURpaDFxeTkwSjJRN0s0Q1crbE9LbmROYTZaQTh0ZVNBY1xcbm53dHB5aDBWSS9yd3A3TURuZVZ5L0x1Q1dRU0dOd0lEQVFBQkFvSUNBRTc3SElmam5Ec3JkQTROMWZiNkNJbmtcXG5ZRGVETkwxeUhCMkhwaVRrdmFYYjFpNzR6TnQ1ODNtNkZ4bTQ3Y0VEYzl2Qm4xZVp6VEdNcnJxWVpMWDlUVFdmXFxuYzZCeWJLSzhydlNVaWo3RU1jNlFWcUdLejJUdmZUQ0NNVEc0bGYzNHZqemZ1cjR0ZWw2eitrOUo4a0MwTUhuT1xcbkREU21HTDRtYngrd2JqNWdaTXVSVnF1dUFiV2NEbitjZ01LeUVEMmNYU3loNnhPVmFNaFVFOGpURlNNanVIbytcXG4vNDg2SmNaVHJ6eDZhTWdRdlhFTHN6Sm1YZCtyVm95cU9HVmNRNXNzNVpJcEs5OEtLL0lXOHVtYTV0bFVuMVBnXFxubFNic2paMER1MGU4TWgxMXJjSUs0aVJYQVowM2YyRmJSYUlrdXhZTHFCekVzcVYxSVlvQXJ6UjNkMTY3SE5qOVxcbmJCYmF4SVdPcDRBUmpzU1ByM3JDMmVNSXR2bzh4OGVjVG5pZ2llS2ViSXJVcy9xMS9BNGFiZVl6Yk9Ob1JZWGRcXG5wWUc4QTB5RVNHWGpDeUd2bXZDL1krQ0hpSmJVNXB2SkNDUU8vVHNlR21Ed0N6Nk1JTldOK3NKWlpHaU5idTJ6XFxuejJGM0ZUVlJ4VTlTOFdRV3NiZmxFMjgyWmJ5VDNYNzV1TVMzZG5ZTjNta3A1NmsvRkJkWXZmUzhTN0VtLzNOWlxcbk5kbUtuMi83QnB5ZEVaSk9RYitISHVSbWFua09YVEVmUU9aUE5SbXhFU1NWUHJEaWZMaVhLOFMyK1lvb0F2RERcXG4vandvOG1rcU5lVWNEOTlhWWthTk52NHJLaDZpRitSZmhvSm85aHFIOVFCR2swUGZ6TW5yN0w0QWFNcHRkS1duXFxuK0NLLzJuR1VXcWZtZUhZamF2TmhBb0lCQVFEc0JBSFNPaFdDQnlFQU9ZNGdub3hPZ29yeDJCOUdGT1J0TmpRK1xcbnhtMXV4Z3B5ams1RGFUKzRBQ1daRVMvdXNrYkhTV0NuVStlMXlNWjFTdFE5ZlpHcGNyVmpuZ0ZJOXRMVG13VmdcXG5zcmxwUGpWQ2lHS1QzR3MyQ0NodjZwenlidGN3U0RCVjVYbEVkTXJ2ZkVBRFBEaURCZ2Q1ck5QVUZhQjNJVDJjXFxuaVJHMlN6VDFGRWNmME1UNHg3MmQvMVFIbWhoVFowT2tMREkyc0hOODlXcjRrQ1MrUXhOWGY2WHpzUXlDWnBqK1xcbk93ZElnM3V5aVJEaHgvR213UDBVdGJzdXJSZ3dLcVVaZitpa3R3WnRHYmp6QytZWmphTU9zWDdkWTNhSFUyNDdcXG52Q29GZzltZG1nZ1d0Mzd0d1JZMGxjSnpzemIwL1c2bjAzTXBqeXJ1SE50bCtIS1JBb0lCQVFEbTJTQUhEc2xwXFxuSnZMSEJ5aEgvektmcGY1MFJSTFFCWWxvM2NGcGZsd1Bob0lyK25wbjNoRmdoY2x5MU15N214U3Q0Ulh2YjZaVVxcbm9IM2MyV2wrb2NGUWxsNStncGhyaU1ibC9RclJ4bS8wK2lmM3BRK0RjK1M1ZW1OSDdaN3hmSDA5TGdsRFFkMmpcXG5WU1V5SU56OVA2d1cwbm9vOWZna0Nucy9tQVo1QnRyWklHZE92QjhBejdZMm1oWWlSOEZNMTFqZGxLRHlvMWZVXFxuZFc0L0NXdjhLTmxnU1ZFemlMMVBNcHRPUloyYUFybTZZMTl3ZnVwa0crR1o4VEswQ0FTME5QNUFROGwyZUVaMFxcbmZhUEFvNU5RMUZzSWYxamdJVk9wY00xd1ZQVE1xSEk4Q0FRRm5uVEhFL0N1ZW9KSWFSa1drc0tCS0ZITk5jOE5cXG4wcThvSkNWQU1NQkhBb0lCQUhSd2dhbURLSXRQRXhQMlVVMThpMEpNbTFvM3d5NGpMcE5HODcyb3plS2g2Qk9lXFxuYTdSTVg3aGFzakh6VGMrWXV0eWxNZjg3b1F5SmNvZjVrLzZHVGUvb2ZOOFozQTV3WDVFd1lSWFU5eTZhRjFLc1xcbjBOMmNHSFMrejV4dmhtRUJHRDlremh3Q3E3Si9ZSU9JckZnc1JNRTNuMGFEWXJxMnRNVXhiQ0VuYXNxaURnMS9cXG5wSnRvdDFUNXptMzl3eXBBOXhGbTEvTk9MclBXbUJPbFROSTI0em5QQStMZVFqU1pPOCsxNkhNOUVoblBiSjZuXFxuaXVHcGNHcFJ1a3FXWWpQa0NCUHpaaUxQZlNxT2RhZ3IwWmh2WFdWc0FHOUdXSTNHL1hwRVNoVkVmd0xiaXVoN1xcblR0Uk9VVnZoTUNCZlptRUlvT3Q3Z1RWaFYrYkFFSEVMWVo3TVZWRUNnZ0VBZkgvakx3dEJnczEzcC9GclB4RWFcXG5LMUhwM3FrV0VVeTdJK3hkRUZrT3EyemVyWHRFSXRwNFFyZEV3d0tUZkNhU1M0aVdQUERaSXREL3NHa3M1UmUxXFxuMjVHTld1dHg2cVQwcURzRlo4ZCt2LzllS01oRGlxQ3BYWUx0SW5DOEJQOGZ5Q3dZNE1ZWUU2dXJDTk1DZkM2blxcbjBCTXB3UWVQRVZqNXlYMWpHRWlqSlBDOTVvKzhwTUpoUWlkdUFvVHljays5NUpyeEJvc2pwampEQVlwQ1M5ZDRcXG5ETjdkeFU1YzB1YTNMY3FMeWZEb1crYVdKV1M5WXNwS3JLeVJyTmlhT05wUHVUY1Y0eWZRejZpbTlSRUROVmVoXFxuMVA1aFgxZDUrR3NXMFJ0d2Z5UGxvQXl1cHAwajIrNGNJdTE5Y0RJR1RzOU55VHlHaVljWXFSclVUbkRZQ2p1QVxcbnB3S0NBUUFXeFF4V0J6TnZ4L1pNZFlQK0o3eTd3VDlTY1JYZHR5MlRpbFJ0dWxTTGpGZmx1bnRCcUF1ZTVlWTZcXG41Y0hNRGp3N09lajhmaFFXdDN2Yi9xUHBEeXdoOXRTS0hCR0JxWXRJK3NCRXY3bktqNUcvTnVWWUhYOEVuOHBvXFxuc1pTUnphL3FxeHdSTDZtaHppNDlGOEo5ZGdZWHJLUzl6OUpDaTFZRUlCVzA1Y0xpVFk5ZFZiOGZFbTByMllNOFxcbkJOZjQ1NExlNG1TWnJSTjRoMG5ETDdMZzdMTFp5eW85S1Zjc1lDSG5rQ2FGVTNNS0NlTnp5ZEY4YXpyZ2FkU29cXG5xQzMybkxiSDFZMFN5UmhFM1EzOVlDVWVGek5Zbzl3d3luemVmakZ1cHNyckNxaEFPZTFnQytRMTEyNHRGTVp1XFxuS0VIdzJBQkJFT1crTU4ydkZXcEZ5WnBlVHg5Tlxcbi0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS0iLCJzZXNzaW9uSW5kZXgiOjN9LHsia2V5IjoibmhzX2RldmVsb3Blcl9hY2NvdW50X2FwaV9rZXkiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJzZWNyZXQiLCJzZXNzaW9uVmFsdWUiOiI0aHdpdnBKQVpJcXZwSmxBV09jdFJYQ1NnVU1sd1p1SyIsImNvbXBsZXRlU2Vzc2lvblZhbHVlIjoiNGh3aXZwSkFaSXF2cEpsQVdPY3RSWENTZ1VNbHdadUsiLCJzZXNzaW9uSW5kZXgiOjR9LHsia2V5IjoiY29uc2VudF9hcHBfYXV0aF9oZWFkZXJfdmFsdWUiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJzZWNyZXQiLCJzZXNzaW9uVmFsdWUiOiJDU1ZjYm90QVFHYmhMcUdabjFWVEZHY1FudEFFIiwiY29tcGxldGVTZXNzaW9uVmFsdWUiOiJDU1ZjYm90QVFHYmhMcUdabjFWVEZHY1FudEFFIiwic2Vzc2lvbkluZGV4Ijo1fSx7ImtleSI6InRwcF85Njc0OTk4NTM1X2FjY2Vzc190b2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InNlY3JldCIsInNlc3Npb25WYWx1ZSI6IntcIkFjY291bnRJZFwiOlwiNTUyODY5ODM0XCIsXCJQYXNzcGhyYXNlXCI6XCJ2UkpxdTEzOWQ3ZHZlclpnKzhlVzd2V0ZTQ2FTbndBV0ZSNlk0dFlYalA3L3VGU2d0djdrMklPd0E0NzhPV3A3WkRxNE1CWUM2aGNUSVRFcm5Od2dieFZtN1ZaOGYzUVVuTC4uLiIsImNvbXBsZXRlU2Vzc2lvblZhbHVlIjoie1wiQWNjb3VudElkXCI6XCI1NTI4Njk4MzRcIixcIlBhc3NwaHJhc2VcIjpcInZSSnF1MTM5ZDdkdmVyWmcrOGVXN3ZXRlNDYVNud0FXRlI2WTR0WVhqUDcvdUZTZ3R2N2sySU93QTQ3OE9XcDdaRHE0TUJZQzZoY1RJVEVybk53Z2J4Vm03Vlo4ZjNRVW5MUFdoKzRLN0VQNWkvNEswQWRHWjBJSzBVdzcrQzdYWmM3RkhnOFJTY0lqaCsyTXFGN3Z1WjQ0dW1lUHZnOGVTTTQ4V1I4SzRYRT1cIixcIlByb3ZpZGVySWRcIjpcImI4OTFmYzNiNTFkNWU3YzFcIixcIkltMUNhY2hlS2V5XCI6XCJ6OEVsQ0RJM2Uxc2xXTGJac0lSVXdpaHk4V1pGc2NyMmRQbVRmVXVpK2dBcVE3WmgwV1BWSVhvL005RHVFVnpPM1hhRk9wYkIzd2M5eWhBVWhBWmhVZz09XCJ9Iiwic2Vzc2lvbkluZGV4Ijo2fSx7ImtleSI6InRwcF85Njc0OTk4NDU0X2FjY2Vzc190b2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InNlY3JldCIsInNlc3Npb25WYWx1ZSI6IntcIkFjY291bnRJZFwiOlwiODU4ODAzMjAzXCIsXCJQYXNzcGhyYXNlXCI6XCJKVzRIc3JXTWw0SEhNamx4OUJJVW5zUzV1QkpmcUFsWnk0L2VZbUt3a3U5VUZRL0xBQ21PR21tWGJkOG95VUZiMHY3NE14bkVmKzl6UVdPQTQ0QUtPSXQ3bEtFdlJJbzVNYy4uLiIsImNvbXBsZXRlU2Vzc2lvblZhbHVlIjoie1wiQWNjb3VudElkXCI6XCI4NTg4MDMyMDNcIixcIlBhc3NwaHJhc2VcIjpcIkpXNEhzcldNbDRISE1qbHg5QklVbnNTNXVCSmZxQWxaeTQvZVltS3drdTlVRlEvTEFDbU9HbW1YYmQ4b3lVRmIwdjc0TXhuRWYrOXpRV09BNDRBS09JdDdsS0V2UklvNU1jQjVOanZaTkJCaWhMTE82N09xNm9KY0x5bHpDRzFaZUhqTEl4MTJrUnQwblZEc3ZqQ2IyMTZuRm5EYk9mNWkxQWFYbXBTdFVIY1xcdTAwM2RcIixcIlByb3ZpZGVySWRcIjpcImI4OTFmYzNiNTFkNWU3YzFcIixcIkltMUNhY2hlS2V5XCI6XCJrMFlPWVdzVHRteGdrVlpTWXA1YXkraEd6eUYyWUhTcEE2YnpxQTZHODdiOWtxbitHTy9XQ3E0RFRiQ2RISGhkUmZCRVhhZThUU2hHa2lpOEt1Qnd3QVxcdTAwM2RcXHUwMDNkXCJ9Iiwic2Vzc2lvbkluZGV4Ijo3fSx7ImtleSI6ImVtaXNfOTY5MjExMzY5OF9hY2Nlc3NfdG9rZW4iLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJzZWNyZXQiLCJzZXNzaW9uVmFsdWUiOiJ7XCJJbTFDYWNoZUtleVwiOlwiV3VqUGxITDNGK0p4SUpReDdGUER3aWNvKzZWamVEYXp3Zjd2eW91a1M0b2c2RnllZXFxSUlVSkVVdS8zRHZZRkljQUVBenFEdk5hMXk2UGY3Rlg5Q3c9PVwiLFwiQWNjZXNzSWRlbnRpdHlHdWlkXCI6XCI3OWU4MzkyOS0uLi4iLCJjb21wbGV0ZVNlc3Npb25WYWx1ZSI6IntcIkltMUNhY2hlS2V5XCI6XCJXdWpQbEhMM0YrSnhJSlF4N0ZQRHdpY28rNlZqZURhendmN3Z5b3VrUzRvZzZGeWVlcXFJSVVKRVV1LzNEdllGSWNBRUF6cUR2TmExeTZQZjdGWDlDdz09XCIsXCJBY2Nlc3NJZGVudGl0eUd1aWRcIjpcIjc5ZTgzOTI5LWFiNzctNDI2Ni1iMWI5LWZjN2I4MjNjMTUyNVwifSIsInNlc3Npb25JbmRleCI6OH0seyJrZXkiOiJlbWlzXzk2OTIxMTM2MTJfYWNjZXNzX3Rva2VuIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoic2VjcmV0Iiwic2Vzc2lvblZhbHVlIjoie1wiSW0xQ2FjaGVLZXlcIjpcIkM4QXZheEp0YjZaMlFlemNSelEzWUprbFRlSVVtU2N6Y0F6Mno1a2tDazlPNjQ0dlVqV20veUJzRWF6c0htZmxPT0V1MDBlc3IvbGxDT2g4RzQzbWNBPT1cIixcIkFjY2Vzc0lkZW50aXR5R3VpZFwiOlwiMjE3ZWY2ZjEtLi4uIiwiY29tcGxldGVTZXNzaW9uVmFsdWUiOiJ7XCJJbTFDYWNoZUtleVwiOlwiQzhBdmF4SnRiNloyUWV6Y1J6UTNZSmtsVGVJVW1TY3pjQXoyejVra0NrOU82NDR2VWpXbS95QnNFYXpzSG1mbE9PRXUwMGVzci9sbENPaDhHNDNtY0E9PVwiLFwiQWNjZXNzSWRlbnRpdHlHdWlkXCI6XCIyMTdlZjZmMS0xZDcwLTRhOGUtYjcyOC02NjQzMTZjNzU2NTRcIn0iLCJzZXNzaW9uSW5kZXgiOjl9XQ==)\n## Onboarding\n\nYou need to get your software approved by us before it can go live with this API. We call this onboarding. The onboarding process can sometimes be quite long, so it's worth planning well ahead.\n\nAs part of this process, you need to demonstrate your technical conformance to the requirements for this API.\n\nYou also need to demonstrate that you can manage risks. This might impact the design of your software.\n\nTo understand how our online digital onboarding process works, see [digital onboarding](https://digital.nhs.uk/developer/guides-and-documentation/digital-onboarding).\n\n## Contact us\n\nFor help and support connecting to our APIs and to join our developer community, see [Help and support building healthcare software](https://digital.nhs.uk/developer/help-and-support).\n\n\nContact Support:\n Name: Validated Relationships Service API Support\n Email: api.management@nhs.net",
+      "content": "## Overview\nThis service underpins the National Proxy Programme whose core objective is to allow Patients to be supported with\ntheir healthcare by someone they trust (a Proxy) as part of a digitally-enabled journey. The service has two core\nuses. Firstly, it surfaces verified candidate relationships (i.e. indicates suitable Proxies for a Patient such as\nBirth Mothers) to support GP's decision-making when granting Proxy access. Secondly, it supports the subsequent\ncreation, use and management of Proxy roles which are stored in a central, national database. The Proxy roles held\nby the database are strictly for the purpose of enabling access to healthcare services, initially in Primary Care.\n\nWith this service you can:\n\n- Create a new Proxy access request (Submit an online application via NHS App)\n- View Pending Proxy access requests\n- Get verified candidate relationships (to support decision making when granting proxy access)\n- Create a Proxy role\n- Get Proxy roles\n- Get a Proxy role by ID\n- Update (or revoke) a Proxy role\n\n## Who can use this API\nThis API can only be used where there is a legal basis to do so. Make sure you have this and a valid use case before\nyou go too far with your development by [contacting us](https://digital.nhs.uk/developer/help-and-support).\n\nYou must do this before you can go live (see the 'Onboarding' section below).\n\n## Related APIs\nThe following APIs are related to this API:\n\n- [NHS Notify API](https://digital.nhs.uk/developer/api-catalogue/nhs-notify) - we use NHS Notify to send communications to patients, proxies and GPs about their use of this service.\n- [Personal Demographics Service - FHIR API](https://digital.nhs.uk/developer/api-catalogue/personal-demographics-service-fhir) - we use the data held in PDS as a source of data to verify relationships.\n- [Related Person Network - FHIR API](https://digital.nhs.uk/developer/api-catalogue/related-person-network---fhir-api) - we use the data held in RPN as a source of data to verify relationships.\n\n## API status and roadmap\nThis API is [in production, beta](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#statuses), meaning:\n- we might make breaking changes, but only if we cannot avoid it, and we will give advance notice\n\n## Service level\nThis API is a bronze service, meaning it is operational and supported only during business hours (8am to 6pm), Monday to Friday excluding bank holidays.\n\nFor more details, see [service levels](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#service-levels).\n\n## Technology\nThis API is [RESTful](https://digital.nhs.uk/developer/guides-and-documentation/our-api-technologies#basic-rest).\n\nIt conforms to the [FHIR](https://digital.nhs.uk/developer/guides-and-documentation/our-api-technologies#fhir) global standard for health care data exchange, specifically to [FHIR R4 (v4.0.1)](https://hl7.org/fhir/r4/), except that it does not support the [capabilities](http://hl7.org/fhir/R4/http.html#capabilities) interaction.\n\nIt includes some country-specific FHIR extensions, which are built against [FHIR UK Core](https://digital.nhs.uk/services/fhir-uk-core), specifically [UK.core.r4 1.0.0](https://simplifier.net/packages/uk.core.r4/1.0.0).\n\nYou do not need to know much about FHIR to use this API - FHIR APIs are just RESTful APIs that follow specific rules.\nIn particular:\n- resource names are capitalised and singular, for example `/RelatedPerson` not `/relatedpersons`\n- array names are singular, for example `name` not `names` for the recorded names of a patient\n\nThere are [libraries and SDKs available](https://digital.nhs.uk/developer/guides-and-documentation/api-technologies-at-nhs-digital#fhir-libraries-and-sdks) to help with FHIR API integration.\n\n## Guidance for developers\n\nSupplementary documentation and guidance for developers:\n\n- National Proxy Service developer documentation (link to be added)\n\n## Network access\nThis API is available on the internet.\n\nFor more details see [Network access for APIs](https://digital.nhs.uk/developer/guides-and-documentation/network-access-for-apis).\n\n## Security and authorisation\n\nThis API supports both [user-restricted](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#user-restricted-apis) and [application-restricted](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#application-restricted-apis) access types with the following access modes:\n\n| Access mode                   | Access type            |\n|-------------------------------|------------------------|\n| Patient access                | User-restricted        |\n| Healthcare worker access      | User-restricted        |\n| Application-restricted access | Application-restricted |\n\nFor more information on access modes and how to use them, see the developer [security and authorisation guide](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation).\n\nEach API operation section of this documentation indicates the access modes that the endpoint supports.\n\n### User-restricted access\n\nUser-restricted access meaning an end user must be present, authenticated and authorised.\n\n#### Patient access mode\nIf the end user is a patient then you must use this access mode.\n\n[Review all patient access modes](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#patient-access-mode)\n\nAll API endpoints that support this access mode require that the user has proven their identity to a high level\nand authenticated using strong authentication credentials. The combination of these forms a [Vector of Trust](https://nhsconnect.github.io/nhslogin/vectors-of-trust/) profile.\n\nAllowed vectors of trust are:\n- `P9.Cp.Cd`\n- `P9.Cp.Ck`\n- `P9.Cm`\n\n#### Healthcare worker access mode\nIf the end user is a healthcare worker then you must use this access mode. All API endpoints that support this\naccess mode require that the user has been authenticated with a \"very high confidence\" authenticator ([AAL3](https://digital.nhs.uk/services/care-identity-service/applications-and-services/cis2-authentication/integrate/design-and-build/authenticator-guidance-for-developers)).\n\n[Review all CIS2 healthcare worker access modes](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#healthcare-worker-access-mode)\n\n### Application-restricted access\n\nThis API is application-restricted, meaning we authenticate the calling application but not the end user. This\nshould only be utilised where user-restrcited access modes are not feasible or practical.\n\n[Review all application-restricted access modes](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#application-restricted-apis)\n\n## Headers\nThis API is case-insensitive when processing request headers, meaning it will accept headers regardless of the letter casing used. (e.g. X-Request-Id, x-request-id are treated the same). When sending headers back in the response, we preserve the exact casing as received in the original request.\n\n## Errors\nWe use standard HTTP status codes to show whether an API request succeeded or not. They are usually in the range:\n\n* 200 to 299 if it succeeded, including code 202 if it was accepted by an API that needs to wait for further action\n* 400 to 499 if it failed because of a client error by your application\n* 500 to 599 if it failed because of an error on our server\n\nErrors specific to each API are shown in the Operations section. See our [reference guide](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#http-status-codes) for more information on errors.\n\n## Open source\nYou might find the following [open source](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#open-source) resources useful:\n\n| Resource                         | Description                                                                                                  | Links                                                                                                                                                          |\n| -------------------------------- | ------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| Validated Relationships FHIR API | Source code for the API proxy, sandbox and specification.                                                    | [GitHub repo](https://github.com/NHSDigital/validated-relationships-service-api)                                                                               |\n| FHIR libraries and SDKs          | Various open source libraries for integrating with FHIR APIs.                                                | [FHIR libraries and SDKs](https://digital.nhs.uk/developer/guides-and-documentation/api-technologies-at-nhs-digital#fhir-libraries-and-sdks)                   |\n| nhs-number                       | Python package containing utilities for NHS numbers including validity checks, normalisation and generation. | [GitHub repo](https://github.com/uk-fci/nhs-number) \\| [Python Package index](https://pypi.org/project/nhs-number/) \\| [Docs](https://nhs-number.uk-fci.tech/) |\n\nWe currently don't have any open source client libraries or sample code for this API and the source code for the Validated Relationship Service FHIR application is not currently in the open. If you think this would be useful, [contact us](https://digital.nhs.uk/developer/help-and-support).\n\n## Environments and testing\n| Environment       | Base URL                                                                             |\n| ----------------- | ------------------------------------------------------------------------------------ |\n| Sandbox           | `https://sandbox.api.service.nhs.uk/validated-relationships/FHIR/R4/`                |\n| Integration test  | `https://int.api.service.nhs.uk/validated-relationships/FHIR/R4/`                    |\n| Production        | `https://api.service.nhs.uk/validated-relationships/FHIR/R4/`                        |\n\n### Sandbox testing\nOur [sandbox environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#sandbox-testing)\n\n* is for early developer testing\n* only covers a limited set of scenarios\n* is open access, so does not allow you to test authorisation\n\n[![Import Postman Collection](https://img.shields.io/badge/Import-Postman%20Collection-orange?logo=postman)](https://raw.githubusercontent.com/NHSDigital/validated-relationships-service-api/master/postman/validated_relationship_service.sandbox.postman_collection.json)\n\nImport the  postman collection to run requests against sandbox.\n\n### Integration testing\n\nOur [integration test environment](https://digital.nhs.uk/developer/guides-and-documentation/testing#integration-testing)\n\n* is for formal integration testing\n* requires authorisation using a supported access mode\n\n## Onboarding\n\nYou need to get your software approved by us before it can go live with this API. We call this onboarding. The onboarding process can sometimes be quite long, so it's worth planning well ahead.\n\nAs part of this process, you need to demonstrate your technical conformance to the requirements for this API.\n\nYou also need to demonstrate that you can manage risks. This might impact the design of your software.\n\nTo understand how our online digital onboarding process works, see [digital onboarding](https://digital.nhs.uk/developer/guides-and-documentation/digital-onboarding).\n\n## Contact us\n\nFor help and support connecting to our APIs and to join our developer community, see [Help and support building healthcare software](https://digital.nhs.uk/developer/help-and-support).\n\n\nContact Support:\n Name: Validated Relationships Service API Support\n Email: api.management@nhs.net",
       "type": "text/plain"
     }
   }
