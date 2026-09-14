@@ -110,7 +110,7 @@ def check_for_get_consent_errors(request: Request) -> Optional[Response]:
         request (Request): Flask request object
 
     Returns:
-        Optional[tuple]: Tuple with response and status code if error is found
+        Optional[Response]: Response if error is found
     """
     performer_identifier = request.args.get("performer:identifier")
     patient_identifier = request.args.get("patient:identifier")
