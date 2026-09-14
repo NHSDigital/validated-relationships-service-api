@@ -1,5 +1,5 @@
 from logging import INFO, basicConfig, getLogger
-from typing import Union
+from flask import Response
 
 from flask import request
 
@@ -21,7 +21,7 @@ basicConfig(level=INFO, format="%(asctime)s - %(message)s")
 logger = getLogger(__name__)
 
 
-def post_consent_response() -> Union[dict, tuple]:
+def post_consent_response() -> Response:
     """Sandbox API for POST /Consent
 
     Returns:

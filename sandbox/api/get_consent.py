@@ -1,7 +1,6 @@
 from logging import INFO, basicConfig, getLogger
-from typing import Union
 
-from flask import request
+from flask import request, Response
 
 from .constants import (
     GET_CONSENT__FILTERED_RELATIONSHIPS_STATUS_ACTIVE,
@@ -36,7 +35,7 @@ basicConfig(level=INFO, format="%(asctime)s - %(message)s")
 logger = getLogger(__name__)
 
 
-def get_consent_response() -> Union[dict, tuple]:
+def get_consent_response() -> Response:
     """Sandbox API for GET /Consent
 
     Returns:
