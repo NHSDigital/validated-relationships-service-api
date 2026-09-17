@@ -2495,7 +2495,7 @@ components:
                   - ROLE_DEACTIVATED_PROXY_DECEASED
                   - ROLE_DEACTIVATED_CHANGE_IN_RELATIONSHIP
                   - ROLE_DEACTIVATED_PROXY_LACKS_CAPACITY
-                  - ROLE_DEACTIVATED_MISUSE_OF_SYSTEM
+                  - ROLE_DEACTIVATED_SYSTEM_MISUSE
                   - ROLE_DEACTIVATED_PATIENT_GP_TRANSFERRED
                   - ROLE_DEACTIVATED_PROXY_GP_TRANSFERRED
                   - ROLE_DEACTIVATED_PROXY_NOT_LIVING_IN_ENGLAND_OR_WALES
@@ -2530,7 +2530,7 @@ components:
                   - `ROLE_DEACTIVATED_PROXY_DECEASED`: Proxy deceased
                   - `ROLE_DEACTIVATED_CHANGE_IN_RELATIONSHIP`: Change in relationship
                   - `ROLE_DEACTIVATED_PROXY_LACKS_CAPACITY`: Proxy lacks capacity
-                  - `ROLE_DEACTIVATED_MISUSE_OF_SYSTEM`: Misuse of system
+                  - `ROLE_DEACTIVATED_SYSTEM_MISUSE`: Misuse of system
                   - `ROLE_DEACTIVATED_PATIENT_GP_TRANSFERRED`: Patient GP transferred
                   - `ROLE_DEACTIVATED_PROXY_GP_TRANSFERRED`: Proxy GP transferred
                   - `ROLE_DEACTIVATED_PROXY_NOT_LIVING_IN_ENGLAND_OR_WALES`: Proxy not living in England or Wales
