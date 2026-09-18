@@ -989,6 +989,7 @@ paths:
         * The proxy role must exist and be identified by a valid ID
         * JSON Patch operations must be valid according to RFC 6902
         * Status changes must use valid status codes from <http://hl7.org/fhir/consent-state-codes>
+        * Each patch operation in the request body is validated according to its `path`. The allowed `op` values and shape of `value` depend on which `path` is being patched - see the `PatchOperation` schema for the full set of supported per-path operations.
 
         ### IMPORTANT: Business Rule Enforcement for `/status` updates
 
@@ -2692,30 +2693,160 @@ components:
           description: "A human-readable representation of the code."
 
     PatchOperation:
+      description: |
+        A single JSON Patch (RFC 6902) operation to apply to a Consent resource.
+
+        This is a discriminated union, keyed on `path`. The set of allowed `op` values, and the shape of `value`, is
+        specific to each `path` - see each per-path schema below for details. Providing an `op` that isn't listed for
+        a given `path` (e.g. `remove` on `/status`) will be rejected as invalid.
+
+        Supported paths are:
+        - `/status` - update the status of the proxy role. Must be paired with a `/extension/-` operation in the same
+          patch array to supply the `statusReason`.
+        - `/extension/-` - append an extension (e.g. `statusReason` or `grantor`) to the Consent resource.
+        - `/policyRule` - update the legal basis for the proxy role.
+        - `/provision/period/end` - add, replace or remove the end date of the proxy role, for time-bound access.
+        - `/provision/actor` - deprecated and not supported for update; any request including this path is rejected.
+      oneOf:
+        - $ref: "#/components/schemas/StatusPatchOperation"
+        - $ref: "#/components/schemas/ExtensionPatchOperation"
+        - $ref: "#/components/schemas/PolicyRulePatchOperation"
+        - $ref: "#/components/schemas/ProvisionPeriodEndPatchOperation"
+        - $ref: "#/components/schemas/ProvisionActorPatchOperation"
+      discriminator:
+        propertyName: path
+        mapping:
+          /status: "#/components/schemas/StatusPatchOperation"
+          /extension/-: "#/components/schemas/ExtensionPatchOperation"
+          /policyRule: "#/components/schemas/PolicyRulePatchOperation"
+          /provision/period/end: "#/components/schemas/ProvisionPeriodEndPatchOperation"
+          /provision/actor: "#/components/schemas/ProvisionActorPatchOperation"
+
+    StatusPatchOperation:
       type: object
+      description: |
+        Update the status of the proxy role. Must be accompanied by a `/extension/-` operation in the same patch
+        array, adding a `statusReason` extension. The requested status transition is validated against the proxy
+        role lifecycle.
+      required:
+        - op
+        - path
+        - value
+      properties:
+        op:
+          type: string
+          description: Only `replace` is supported for `/status`.
+          enum:
+            - replace
+        path:
+          type: string
+          enum:
+            - /status
+        value:
+          type: string
+          description: "The new status, following the ConsentStateCodes value set: http://hl7.org/fhir/consent-state-codes"
+          enum:
+            - proposed
+            - active
+            - rejected
+            - inactive
+            - entered-in-error
+
+    ExtensionPatchOperation:
+      type: object
+      description: |
+        Append an extension to the Consent resource. Used to provide a `statusReason` (required alongside a
+        `/status` update) and/or a `grantor` (required when creating or activating an active proxy role).
+      required:
+        - op
+        - path
+        - value
+      properties:
+        op:
+          type: string
+          description: Only `add` is supported for `/extension/-`.
+          enum:
+            - add
+        path:
+          type: string
+          enum:
+            - /extension/-
+        value:
+          type: array
+          minItems: 1
+          items:
+            anyOf:
+              - $ref: "#/components/schemas/StatusReasonExtension"
+              - $ref: "#/components/schemas/GrantorExtension"
+
+    PolicyRulePatchOperation:
+      type: object
+      description: Update the legal basis (policy rule) for the proxy role.
+      required:
+        - op
+        - path
+        - value
+      properties:
+        op:
+          type: string
+          description: "`add` or `replace` are supported for `/policyRule`."
+          enum:
+            - add
+            - replace
+        path:
+          type: string
+          enum:
+            - /policyRule
+        value:
+          $ref: "#/components/schemas/LegalBasisCodeableConcept"
+
+    ProvisionPeriodEndPatchOperation:
+      type: object
+      description: |
+        Add, replace or remove the end date of the proxy role, for time-bound access. `value` is not required when
+        `op` is `remove`.
       required:
         - op
         - path
       properties:
         op:
           type: string
-          enum: [add, remove, replace]
+          description: "`add`, `replace` or `remove` are supported for `/provision/period/end`."
+          enum:
+            - add
+            - replace
+            - remove
         path:
           type: string
-          oneOf:
-            - description: "Static paths that do not require an index."
-              enum:
-                - /status
-                - /extension/-
-                - /provision/period/end
-                - /provision/actor
-                - /policyRule
+          enum:
+            - /provision/period/end
         value:
-          oneOf:
-            - type: string
-            - type: array
-              items:
-                type: object
+          type: string
+          format: date
+          description: "The end date of the proxy role. Not required, and disregarded, when `op` is `remove`."
+
+    ProvisionActorPatchOperation:
+      type: object
+      description: |
+        This path is deprecated and not supported for update. It is documented here for completeness only - any
+        request including a patch operation with this path will be rejected with an
+        `INVALID_LEGAL_BASIS_UPDATE_REQUEST` error. Use `/policyRule` instead.
+      deprecated: true
+      required:
+        - op
+        - path
+      properties:
+        op:
+          type: string
+          description: Any `op` value provided with `/provision/actor` will be rejected.
+        path:
+          type: string
+          enum:
+            - /provision/actor
+        value:
+          type: array
+          items:
+            type: object
 
     PDSName:
       type: array
