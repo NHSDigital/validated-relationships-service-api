@@ -1,7 +1,6 @@
 from logging import INFO, basicConfig, getLogger
-from typing import Union
 
-from flask import Flask
+from flask import Flask, Response
 
 from .get_consent import get_consent_response
 from .get_consent_by_id import get_consent_by_id_response
@@ -32,84 +31,84 @@ def health() -> dict:
 
 
 @app.route(f"/{COMMON_PATH}/RelatedPerson", methods=["GET"])
-def get_related_persons() -> Union[dict, tuple]:
+def get_related_persons() -> Response:
     """Sandbox API for GET /RelatedPerson
 
     Returns:
-        Union[dict, tuple]: Response for GET /RelatedPerson
+        Response: Response for GET /RelatedPerson
     """
     return get_related_person_response()
 
 
 @app.route(f"/{COMMON_PATH}/QuestionnaireResponse", methods=["GET"])
 @app.route(f"/{COMMON_PATH}/QuestionnaireResponse/", methods=["GET"])
-def get_questionnaire_response() -> Union[dict, tuple]:
+def get_questionnaire_response() -> Response:
     """Sandbox API for GET /QuestionnaireResponse
 
     Returns:
-        Union[dict, tuple]: Response for GET /QuestionnaireResponse
+        Response: Response for GET /QuestionnaireResponse
     """
     return generate_response_from_example(METHOD_NOT_ALLOWED, 405)
 
 
 @app.route(f"/{COMMON_PATH}/QuestionnaireResponse/<identifier>", methods=["GET"])
-def get_questionnaire_response_id(identifier: str) -> Union[dict, tuple]:
+def get_questionnaire_response_id(identifier: str) -> Response:
     """Sandbox API for GET /QuestionnaireResponse
 
     Returns:
-        Union[dict, tuple]: Response for GET /QuestionnaireResponse
+        Response: Response for GET /QuestionnaireResponse
     """
     return get_questionnaire_response_by_path_id_response(identifier)
 
 
 @app.route(f"/{COMMON_PATH}/QuestionnaireResponse", methods=["POST"])
-def post_questionnaire_response() -> Union[dict, tuple]:
+def post_questionnaire_response() -> Response:
     """Sandbox API for POST /QuestionnaireResponse
 
     Returns:
-        Union[dict, tuple]: Response for POST /QuestionnaireResponse
+        Response: Response for POST /QuestionnaireResponse
     """
     return post_questionnaire_response_response()
 
 
 @app.route(f"/{COMMON_PATH}/Consent", methods=["GET"])
-def get_consent() -> Union[dict, tuple]:
+def get_consent() -> Response:
     """Sandbox API for GET /Consent
 
     Returns:
-        Union[dict, tuple]: Response for GET /Consent
+        Response: Response for GET /Consent
     """
     return get_consent_response()
 
 
 @app.route(f"/{COMMON_PATH}/Consent/<identifier>", methods=["GET"])
-def get_consent_by_id(identifier: str) -> Union[dict, tuple]:
+def get_consent_by_id(identifier: str) -> Response:
     """Sandbox API for GET /Consent/{id}
 
     Returns:
-        Union[dict, tuple]: Response for GET /Consent/{id}
+        Response: Response for GET /Consent/{id}
     """
     return get_consent_by_id_response(identifier)
 
 
 @app.route(f"/{COMMON_PATH}/Consent", methods=["POST"])
-def post_consent() -> Union[dict, tuple]:
+def post_consent() -> Response:
     """Sandbox API for POST /Consent
 
     Returns:
-        Union[dict, tuple]: Response for POST /Consent
+        Response: Response for POST /Consent
     """
     return post_consent_response()
 
 
 @app.route(f"/{COMMON_PATH}/Consent/<identifier>", methods=["PATCH"])
-def patch_consent(identifier: str) -> Union[dict, tuple]:
+def patch_consent(identifier: str) -> Response:
     """Sandbox API for PATCH /Consent
 
     Args:
         identifier (str): Consent identifier to be patched
 
     Returns:
-        Union[dict, tuple]: Response for PATCH /Consent
+        Response: Response for PATCH /Consent
     """
     return patch_consent_response(identifier)

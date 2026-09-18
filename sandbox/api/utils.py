@@ -69,14 +69,14 @@ def load_json_file(file_name: str) -> dict:
         return load(file)
 
 
-def check_for_get_related_person_errors(request: Request) -> Optional[tuple]:
+def check_for_get_related_person_errors(request: Request) -> Optional[Response]:
     """Check for errors in the request headers and arguments for a Get /Related Person request
 
     Args:
         request (Request): Flask request object
 
     Returns:
-        Optional[tuple]: Tuple with response and status code if error is found
+        Response: Response object if error is found
     """
     identifier = request.args.get("identifier")
     patient = request.args.get("patient:identifier")
@@ -103,14 +103,14 @@ def check_for_get_related_person_errors(request: Request) -> Optional[tuple]:
 GET_CONSENT_ERRORS = "./api/examples/GET_Consent/errors"
 
 
-def check_for_get_consent_errors(request: Request) -> Optional[tuple]:
+def check_for_get_consent_errors(request: Request) -> Optional[Response]:
     """Check for errors in the request headers and arguments for a GET /Consent request
 
     Args:
         request (Request): Flask request object
 
     Returns:
-        Optional[tuple]: Tuple with response and status code if error is found
+        Optional[Response]: Response if error is found
     """
     performer_identifier = request.args.get("performer:identifier")
     patient_identifier = request.args.get("patient:identifier")
@@ -139,7 +139,7 @@ def check_for_get_consent_errors(request: Request) -> Optional[tuple]:
             return generate_response_from_example(f"{GET_CONSENT_ERRORS}/gp-practice-not-found.yaml", 404)
 
 
-def check_for_empty(identifier: str, patient_identifier: str) -> Response:
+def check_for_empty(identifier: str, patient_identifier: str) -> Response | None:
     """Checks for not found or empty responses
 
     Args:
@@ -167,7 +167,7 @@ def check_for_validate(
     include: str,
     base_file: str,
     inc_file: str,
-) -> Response:
+) -> Response | None:
     """Checks for validate request responses for a given relationship record
 
     Args:
@@ -189,7 +189,7 @@ def check_for_validate(
         return generate_response_from_example(base_file, 200)
 
 
-def check_for_list(value: str, identifier: str, include: str, base_file: str, inc_file: str) -> Response:
+def check_for_list(value: str, identifier: str, include: str, base_file: str, inc_file: str) -> Response | None:
     """Check for a list relationship response for a given NHS number
 
     Args:
@@ -210,7 +210,7 @@ def check_for_list(value: str, identifier: str, include: str, base_file: str, in
         return generate_response_from_example(base_file, 200)
 
 
-def generate_response(content: str, status: int = 200):
+def generate_response(content: str, status: int = 200) -> Response:
     """Creates a response object with the supplied data and content type of "application/fhir+json"
 
     Args:
@@ -240,12 +240,13 @@ def remove_system(identifier: Any) -> str:
     return ""
 
 
-def generate_response_from_example(example_path: str, status_code: int, headers: dict = None) -> Response:
+def generate_response_from_example(example_path: str, status_code: int, headers: Optional[dict] = None) -> Response:
     """Converts an example file (yaml) to a response
 
     Args:
         example_path (str): Path to the example file
         status_code (int): Status code for the response
+        headers (Optional[dict], optional): Headers to include in the response. Defaults to None.
 
     Returns:
         response: Resultant Response object based on input.
@@ -265,9 +266,9 @@ def generate_response_from_example(example_path: str, status_code: int, headers:
 def check_for_consent_include_params(
     _include: List[str],
     include_none_response_yaml: str,
-    include_both_response_yaml: str = None,
-    include_patient_response_yaml: str = None,
-    include_performer_response_yaml: str = None,
+    include_both_response_yaml: str = "",
+    include_patient_response_yaml: str = "",
+    include_performer_response_yaml: str = "",
 ) -> Response:
     """Checks the GET consent request include params and provides the related response
 

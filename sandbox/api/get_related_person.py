@@ -1,7 +1,6 @@
 from logging import INFO, basicConfig, getLogger
-from typing import Union
 
-from flask import request
+from flask import request, Response
 
 from .constants import (
     INTERNAL_SERVER_ERROR_EXAMPLE,
@@ -27,11 +26,11 @@ basicConfig(level=INFO, format="%(asctime)s - %(message)s")
 logger = getLogger(__name__)
 
 
-def get_related_person_response() -> Union[dict, tuple]:
+def get_related_person_response() -> Response:
     """Sandbox API for GET /RelatedPerson
 
     Returns:
-        Union[dict, tuple]: Response for GET /RelatedPerson
+        Response: Response for GET /RelatedPerson
     """
     try:
         # Check Headers
@@ -42,7 +41,7 @@ def get_related_person_response() -> Union[dict, tuple]:
         print("******** ERROR**** ")
         identifier = remove_system(request.args.get("identifier"))
         patient_identifier = remove_system(request.args.get("patient:identifier"))
-        include = request.args.get("_include")
+        include = request.args.get("_include", "")
 
         if empty := check_for_empty(identifier, patient_identifier):
             return empty

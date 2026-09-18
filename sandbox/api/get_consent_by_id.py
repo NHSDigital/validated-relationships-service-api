@@ -1,7 +1,6 @@
 from logging import getLogger
-from typing import Union
 
-from flask import request
+from flask import request, Response
 
 from .constants import (
     INTERNAL_SERVER_ERROR_EXAMPLE,
@@ -22,11 +21,11 @@ from .utils import generate_response_from_example, check_for_consent_include_par
 logger = getLogger(__name__)
 
 
-def get_consent_by_id_response(identifier: str) -> Union[dict, tuple]:
+def get_consent_by_id_response(identifier: str) -> Response:
     """Sandbox API for GET /Consent/{id}
 
     Returns:
-        Union[dict, tuple]: Response for GET /Consent/{id}
+        Response: Response for GET /Consent/{id}
     """
     try:
         params = request.args.to_dict()

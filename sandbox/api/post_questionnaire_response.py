@@ -1,5 +1,5 @@
 from logging import INFO, basicConfig, getLogger
-from typing import Union
+from flask import Response
 
 from flask import request
 
@@ -17,11 +17,11 @@ basicConfig(level=INFO, format="%(asctime)s - %(message)s")
 logger = getLogger(__name__)
 
 
-def post_questionnaire_response_response() -> Union[dict, tuple]:
+def post_questionnaire_response_response() -> Response:
     """Sandbox API for POST /QuestionnaireResponse
 
     Returns:
-        Union[dict, tuple]: Response for POST /QuestionnaireResponse
+        Response: Response for POST /QuestionnaireResponse
     """
     try:
         logger.debug("Received request to POST questionnaire response")

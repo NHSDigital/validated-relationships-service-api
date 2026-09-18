@@ -2309,6 +2309,7 @@ components:
         - category
         - patient
         - dateTime
+        - policyRule
         - extension
       description: The details of the consent including who the patient and care "performer" are, status of the relationship and whether consent was given by a patient with capacity.
       properties:
@@ -2453,20 +2454,6 @@ components:
               type: string
               description: "End time with inclusive boundary, if not ongoing"
               format: date-time
-        actor:
-          type: array
-          description: "Individuals or organisations involved in the provision. Deprecated - use policyRule instead."
-          deprecated: true
-          items:
-            type: object
-            properties:
-              reference:
-                $ref: "#/components/schemas/Reference"
-                description: "Individuals or organizations that agreed to the consent"
-              role:
-                $ref: "#/components/schemas/CodeableConcept"
-                description: "Deprecated. Instead use policyRule."
-                deprecated: true
 
     StatusReasonCodeableConcept:
       type: object
@@ -2708,7 +2695,6 @@ components:
                 - /status
                 - /extension/-
                 - /provision/period/end
-                - /provision/actor
                 - /policyRule
         value:
           oneOf:
